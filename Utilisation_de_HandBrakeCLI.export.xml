@@ -1,0 +1,514 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Utilisation de HandBrakeCLI</title>
+    <ns>0</ns>
+    <id>609</id>
+    <revision>
+      <id>3344</id>
+      <timestamp>2012-12-27T21:33:38Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;  = A quick introduction to HandBrakeCLI: =   ==The CLI is Your Friend:==  Don't be put off by the CLI bit, once you have the basic command stored in your ~/.bashrc all you ha...&quot;</comment>
+      <text xml:space="preserve" bytes="4217">
+
+= A quick introduction to HandBrakeCLI: =
+
+
+==The CLI is Your Friend:==
+
+Don't be put off by the CLI bit, once you have the basic command stored in your ~/.bashrc all you have to do is recall the command with a couple of letters, I use &quot;hb&quot; &amp; edit it to suit your project, which is as simple as can be.
+
+
+==Introducing HandBrake:==
+
+I've jumped the gun a bit here, so for those that don't know HandBrake - be it the CLI or GUI version - is a brilliant media ripping tool. If you have a pile of DVD's &amp; you want to rip them to .mp4 or .mkv format, to create a library stored on a HDD, then this is the tool for you.
+
+To see the broad brush picture of what HandBrake can do, have a look at [http://handbrake.fr/details.php/ this page].
+
+It also rips to a variety of [https://trac.handbrake.fr/wiki/BuiltInPresets predefined presets].
+
+
+==HandBrake Loves You to the Core(s):==
+
+HandBrake is very intelligent when it comes to using your CPU power, the more cores you have the quicker it does the job. Roughly 1.5hrs on my old iMac core2duo 2.4Mhz, 1GB RAM, which is better than twice as fast as my Athlon64 3500+ single core job with 2GB RAM.
+
+
+==Subtitles? Bring them On:==
+
+These days Handbrake handles soft subtitles for both .mp4 &amp; .mkv, it has a plethora of subtitle options which I won't go into here. Suffice it to say that we can now have multiple subs to choose from, that's if we want to use any at all. This is vastly superior to having them hard coded into the movie as was the case with the previous version.
+
+
+==Meet My Alias:==
+
+When I use HandBrakeCLI to backup a DVD onto my HDD, I first change directory to where I want the HandBrakeCLI's output to go. I do this via a ~/.bashrc alias as seen below, have a read of it:
+
+
+ #------------------------
+ # Handbrake &amp; associated:
+ #------------------------
+ 
+ # The following alias &quot;.tmp&quot; allows me in 
+ # four keystrokes to changes directory to 
+ # where I want HandBrakeCLI's output to 
+ # be saved:
+ 
+ alias .tmp=&quot;cd /mnt/store/pkg/vid/.tmp&quot;
+ 
+ # The following alias doesn't do anything but
+ # echo the looong command to the Terminal 
+ # window where it can be copied, pasted &amp; 
+ # edited for use:
+ 
+ alias hb=&quot;echo HandBrakeCLI -t 0 -i /media/dvd -o  NAME.HERE.mp4 -e x264 -b 1000 -B 192 -s 1 --subtitle-burn
+ 
+ # This alias brings up the HandBrakeCLI help:
+  
+ alias hbhelp=&quot;HandBrakeCLI --help&quot;
+
+
+==Use Your Alias:==
+
+Then I call my HandBrakeCLI command line (which I could never remember) via another ~/.bashrc alias as seen above. Once that command line is echoed to the Terminal, I copy it to the prompt &amp; edit the '''NAME.HERE.mp4''' as seen above in the command line, to the name of the movie.
+
+
+==Finding the Main-Feature:==
+
+Then I run the command (by typing hitting the Enter key);- which by using the '''-t 0''' option, it quickly scans the source for titles &amp; displays what it finds as it goes, giving each title a number &amp; showing information about it, most importantly how long it runs for.
+
+I use the length of the title to discern which is the main title &amp; then recall the previously used HandBrakeCLI command line using the curser key &amp; changing the '''-t 0''' to '''-t 3''' or whatever number had the longest run time (if I was after the main feature).
+
+
+==More than One Way to Do It:==
+
+Another way to get the main feature is to use the '''--main-feature''' argument instead of the '''-t &lt;number&gt;''' parameter like so (though I have found this to be unreliable sometimes &amp; the previous method is not):
+
+
+ HandBrakeCLI --main-feature -i /media/dvd -o NAME-HERE.mp4 -e x264 -b 1000 -B 192 -N eng -s1&quot;
+
+
+==Options, Options...==
+
+Both of the command lines shown for HandBrakeCLI share the -b 1000 video bitrate setting (which is the default these days) which gives me on average about a 1GB sized movie ripped from a dual layer DVD. 
+
+I won't list all of the options available for HandBrakeCLI here, as there are a lot of them, &amp; anyone who has HandBrakeCLI just has to enter '''HandBrakeCLI --help''' at the command prompt to see them.
+
+Here is a link to [http://trac.handbrake.fr/wiki/CLIGuide/ the official how-to page for HandBrakeCLI], which is currently up to date. It has all of the command line options &amp; more listed &amp; explained.</text>
+      <sha1>3urkqjrv6sqmx5slrjqj4xybfwa27xx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3348</id>
+      <parentid>3344</parentid>
+      <timestamp>2012-12-27T21:41:06Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* A quick introduction to HandBrakeCLI: */</comment>
+      <text xml:space="preserve" bytes="4328">
+
+= Introduction rapide à HandBrakeCLI: =
+
+
+==La ligne de commande est votre amie :==
+
+Ne soyez pas rebutés par la ligne de commande : une fois que vous disposez de la commande de base stockée dans votre fichier ~ /.bashrc, tout ce que vous avez à faire est de rappeler la commande avec un couple de lettres, j'utilise &quot;hb&quot;, et modifier votre projet en co,séquence, cequi est aussi simple que ça peut l'être.
+
+
+==Introducing HandBrake:==
+
+I've jumped the gun a bit here, so for those that don't know HandBrake - be it the CLI or GUI version - is a brilliant media ripping tool. If you have a pile of DVD's &amp; you want to rip them to .mp4 or .mkv format, to create a library stored on a HDD, then this is the tool for you.
+
+To see the broad brush picture of what HandBrake can do, have a look at [http://handbrake.fr/details.php/ this page].
+
+It also rips to a variety of [https://trac.handbrake.fr/wiki/BuiltInPresets predefined presets].
+
+
+==HandBrake Loves You to the Core(s):==
+
+HandBrake is very intelligent when it comes to using your CPU power, the more cores you have the quicker it does the job. Roughly 1.5hrs on my old iMac core2duo 2.4Mhz, 1GB RAM, which is better than twice as fast as my Athlon64 3500+ single core job with 2GB RAM.
+
+
+==Subtitles? Bring them On:==
+
+These days Handbrake handles soft subtitles for both .mp4 &amp; .mkv, it has a plethora of subtitle options which I won't go into here. Suffice it to say that we can now have multiple subs to choose from, that's if we want to use any at all. This is vastly superior to having them hard coded into the movie as was the case with the previous version.
+
+
+==Meet My Alias:==
+
+When I use HandBrakeCLI to backup a DVD onto my HDD, I first change directory to where I want the HandBrakeCLI's output to go. I do this via a ~/.bashrc alias as seen below, have a read of it:
+
+
+ #------------------------
+ # Handbrake &amp; associated:
+ #------------------------
+ 
+ # The following alias &quot;.tmp&quot; allows me in 
+ # four keystrokes to changes directory to 
+ # where I want HandBrakeCLI's output to 
+ # be saved:
+ 
+ alias .tmp=&quot;cd /mnt/store/pkg/vid/.tmp&quot;
+ 
+ # The following alias doesn't do anything but
+ # echo the looong command to the Terminal 
+ # window where it can be copied, pasted &amp; 
+ # edited for use:
+ 
+ alias hb=&quot;echo HandBrakeCLI -t 0 -i /media/dvd -o  NAME.HERE.mp4 -e x264 -b 1000 -B 192 -s 1 --subtitle-burn
+ 
+ # This alias brings up the HandBrakeCLI help:
+  
+ alias hbhelp=&quot;HandBrakeCLI --help&quot;
+
+
+==Use Your Alias:==
+
+Then I call my HandBrakeCLI command line (which I could never remember) via another ~/.bashrc alias as seen above. Once that command line is echoed to the Terminal, I copy it to the prompt &amp; edit the '''NAME.HERE.mp4''' as seen above in the command line, to the name of the movie.
+
+
+==Finding the Main-Feature:==
+
+Then I run the command (by typing hitting the Enter key);- which by using the '''-t 0''' option, it quickly scans the source for titles &amp; displays what it finds as it goes, giving each title a number &amp; showing information about it, most importantly how long it runs for.
+
+I use the length of the title to discern which is the main title &amp; then recall the previously used HandBrakeCLI command line using the curser key &amp; changing the '''-t 0''' to '''-t 3''' or whatever number had the longest run time (if I was after the main feature).
+
+
+==More than One Way to Do It:==
+
+Another way to get the main feature is to use the '''--main-feature''' argument instead of the '''-t &lt;number&gt;''' parameter like so (though I have found this to be unreliable sometimes &amp; the previous method is not):
+
+
+ HandBrakeCLI --main-feature -i /media/dvd -o NAME-HERE.mp4 -e x264 -b 1000 -B 192 -N eng -s1&quot;
+
+
+==Options, Options...==
+
+Both of the command lines shown for HandBrakeCLI share the -b 1000 video bitrate setting (which is the default these days) which gives me on average about a 1GB sized movie ripped from a dual layer DVD. 
+
+I won't list all of the options available for HandBrakeCLI here, as there are a lot of them, &amp; anyone who has HandBrakeCLI just has to enter '''HandBrakeCLI --help''' at the command prompt to see them.
+
+Here is a link to [http://trac.handbrake.fr/wiki/CLIGuide/ the official how-to page for HandBrakeCLI], which is currently up to date. It has all of the command line options &amp; more listed &amp; explained.</text>
+      <sha1>hnwyfmnvpguzwcnstoezs2k2v3jpir9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3349</id>
+      <parentid>3348</parentid>
+      <timestamp>2012-12-27T21:42:00Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* La ligne de commande est votre amie : */</comment>
+      <text xml:space="preserve" bytes="4328">
+
+= Introduction rapide à HandBrakeCLI: =
+
+
+==La ligne de commande est votre amie :==
+
+Ne soyez pas rebutés par la ligne de commande : une fois que vous disposez de la commande de base stockée dans votre fichier ~ /.bashrc, tout ce que vous avez à faire est de rappeler la commande avec un couple de lettres, j'utilise &quot;hb&quot;, et modifier votre projet en conséquence, ce qui est aussi simple que ça peut l'être.
+
+==Introducing HandBrake:==
+
+I've jumped the gun a bit here, so for those that don't know HandBrake - be it the CLI or GUI version - is a brilliant media ripping tool. If you have a pile of DVD's &amp; you want to rip them to .mp4 or .mkv format, to create a library stored on a HDD, then this is the tool for you.
+
+To see the broad brush picture of what HandBrake can do, have a look at [http://handbrake.fr/details.php/ this page].
+
+It also rips to a variety of [https://trac.handbrake.fr/wiki/BuiltInPresets predefined presets].
+
+
+==HandBrake Loves You to the Core(s):==
+
+HandBrake is very intelligent when it comes to using your CPU power, the more cores you have the quicker it does the job. Roughly 1.5hrs on my old iMac core2duo 2.4Mhz, 1GB RAM, which is better than twice as fast as my Athlon64 3500+ single core job with 2GB RAM.
+
+
+==Subtitles? Bring them On:==
+
+These days Handbrake handles soft subtitles for both .mp4 &amp; .mkv, it has a plethora of subtitle options which I won't go into here. Suffice it to say that we can now have multiple subs to choose from, that's if we want to use any at all. This is vastly superior to having them hard coded into the movie as was the case with the previous version.
+
+
+==Meet My Alias:==
+
+When I use HandBrakeCLI to backup a DVD onto my HDD, I first change directory to where I want the HandBrakeCLI's output to go. I do this via a ~/.bashrc alias as seen below, have a read of it:
+
+
+ #------------------------
+ # Handbrake &amp; associated:
+ #------------------------
+ 
+ # The following alias &quot;.tmp&quot; allows me in 
+ # four keystrokes to changes directory to 
+ # where I want HandBrakeCLI's output to 
+ # be saved:
+ 
+ alias .tmp=&quot;cd /mnt/store/pkg/vid/.tmp&quot;
+ 
+ # The following alias doesn't do anything but
+ # echo the looong command to the Terminal 
+ # window where it can be copied, pasted &amp; 
+ # edited for use:
+ 
+ alias hb=&quot;echo HandBrakeCLI -t 0 -i /media/dvd -o  NAME.HERE.mp4 -e x264 -b 1000 -B 192 -s 1 --subtitle-burn
+ 
+ # This alias brings up the HandBrakeCLI help:
+  
+ alias hbhelp=&quot;HandBrakeCLI --help&quot;
+
+
+==Use Your Alias:==
+
+Then I call my HandBrakeCLI command line (which I could never remember) via another ~/.bashrc alias as seen above. Once that command line is echoed to the Terminal, I copy it to the prompt &amp; edit the '''NAME.HERE.mp4''' as seen above in the command line, to the name of the movie.
+
+
+==Finding the Main-Feature:==
+
+Then I run the command (by typing hitting the Enter key);- which by using the '''-t 0''' option, it quickly scans the source for titles &amp; displays what it finds as it goes, giving each title a number &amp; showing information about it, most importantly how long it runs for.
+
+I use the length of the title to discern which is the main title &amp; then recall the previously used HandBrakeCLI command line using the curser key &amp; changing the '''-t 0''' to '''-t 3''' or whatever number had the longest run time (if I was after the main feature).
+
+
+==More than One Way to Do It:==
+
+Another way to get the main feature is to use the '''--main-feature''' argument instead of the '''-t &lt;number&gt;''' parameter like so (though I have found this to be unreliable sometimes &amp; the previous method is not):
+
+
+ HandBrakeCLI --main-feature -i /media/dvd -o NAME-HERE.mp4 -e x264 -b 1000 -B 192 -N eng -s1&quot;
+
+
+==Options, Options...==
+
+Both of the command lines shown for HandBrakeCLI share the -b 1000 video bitrate setting (which is the default these days) which gives me on average about a 1GB sized movie ripped from a dual layer DVD. 
+
+I won't list all of the options available for HandBrakeCLI here, as there are a lot of them, &amp; anyone who has HandBrakeCLI just has to enter '''HandBrakeCLI --help''' at the command prompt to see them.
+
+Here is a link to [http://trac.handbrake.fr/wiki/CLIGuide/ the official how-to page for HandBrakeCLI], which is currently up to date. It has all of the command line options &amp; more listed &amp; explained.</text>
+      <sha1>a9osfvs9xe1idhwdz16020pyyvda8zs</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3350</id>
+      <parentid>3349</parentid>
+      <timestamp>2012-12-27T21:42:57Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Introducing HandBrake: */</comment>
+      <text xml:space="preserve" bytes="4332">
+
+= Introduction rapide à HandBrakeCLI: =
+
+
+==La ligne de commande est votre amie :==
+
+Ne soyez pas rebutés par la ligne de commande : une fois que vous disposez de la commande de base stockée dans votre fichier ~ /.bashrc, tout ce que vous avez à faire est de rappeler la commande avec un couple de lettres, j'utilise &quot;hb&quot;, et modifier votre projet en conséquence, ce qui est aussi simple que ça peut l'être.
+
+==Introduction à HandBrake :==
+
+I've jumped the gun a bit here, so for those that don't know HandBrake - be it the CLI or GUI version - is a brilliant media ripping tool. If you have a pile of DVD's &amp; you want to rip them to .mp4 or .mkv format, to create a library stored on a HDD, then this is the tool for you.
+
+To see the broad brush picture of what HandBrake can do, have a look at [http://handbrake.fr/details.php/ this page].
+
+It also rips to a variety of [https://trac.handbrake.fr/wiki/BuiltInPresets predefined presets].
+
+==HandBrake Loves You to the Core(s):==
+
+HandBrake is very intelligent when it comes to using your CPU power, the more cores you have the quicker it does the job. Roughly 1.5hrs on my old iMac core2duo 2.4Mhz, 1GB RAM, which is better than twice as fast as my Athlon64 3500+ single core job with 2GB RAM.
+
+
+==Subtitles? Bring them On:==
+
+These days Handbrake handles soft subtitles for both .mp4 &amp; .mkv, it has a plethora of subtitle options which I won't go into here. Suffice it to say that we can now have multiple subs to choose from, that's if we want to use any at all. This is vastly superior to having them hard coded into the movie as was the case with the previous version.
+
+
+==Meet My Alias:==
+
+When I use HandBrakeCLI to backup a DVD onto my HDD, I first change directory to where I want the HandBrakeCLI's output to go. I do this via a ~/.bashrc alias as seen below, have a read of it:
+
+
+ #------------------------
+ # Handbrake &amp; associated:
+ #------------------------
+ 
+ # The following alias &quot;.tmp&quot; allows me in 
+ # four keystrokes to changes directory to 
+ # where I want HandBrakeCLI's output to 
+ # be saved:
+ 
+ alias .tmp=&quot;cd /mnt/store/pkg/vid/.tmp&quot;
+ 
+ # The following alias doesn't do anything but
+ # echo the looong command to the Terminal 
+ # window where it can be copied, pasted &amp; 
+ # edited for use:
+ 
+ alias hb=&quot;echo HandBrakeCLI -t 0 -i /media/dvd -o  NAME.HERE.mp4 -e x264 -b 1000 -B 192 -s 1 --subtitle-burn
+ 
+ # This alias brings up the HandBrakeCLI help:
+  
+ alias hbhelp=&quot;HandBrakeCLI --help&quot;
+
+
+==Use Your Alias:==
+
+Then I call my HandBrakeCLI command line (which I could never remember) via another ~/.bashrc alias as seen above. Once that command line is echoed to the Terminal, I copy it to the prompt &amp; edit the '''NAME.HERE.mp4''' as seen above in the command line, to the name of the movie.
+
+
+==Finding the Main-Feature:==
+
+Then I run the command (by typing hitting the Enter key);- which by using the '''-t 0''' option, it quickly scans the source for titles &amp; displays what it finds as it goes, giving each title a number &amp; showing information about it, most importantly how long it runs for.
+
+I use the length of the title to discern which is the main title &amp; then recall the previously used HandBrakeCLI command line using the curser key &amp; changing the '''-t 0''' to '''-t 3''' or whatever number had the longest run time (if I was after the main feature).
+
+
+==More than One Way to Do It:==
+
+Another way to get the main feature is to use the '''--main-feature''' argument instead of the '''-t &lt;number&gt;''' parameter like so (though I have found this to be unreliable sometimes &amp; the previous method is not):
+
+
+ HandBrakeCLI --main-feature -i /media/dvd -o NAME-HERE.mp4 -e x264 -b 1000 -B 192 -N eng -s1&quot;
+
+
+==Options, Options...==
+
+Both of the command lines shown for HandBrakeCLI share the -b 1000 video bitrate setting (which is the default these days) which gives me on average about a 1GB sized movie ripped from a dual layer DVD. 
+
+I won't list all of the options available for HandBrakeCLI here, as there are a lot of them, &amp; anyone who has HandBrakeCLI just has to enter '''HandBrakeCLI --help''' at the command prompt to see them.
+
+Here is a link to [http://trac.handbrake.fr/wiki/CLIGuide/ the official how-to page for HandBrakeCLI], which is currently up to date. It has all of the command line options &amp; more listed &amp; explained.</text>
+      <sha1>poliescmgibae1srb7xthhj5jwxb4g7</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3353</id>
+      <parentid>3350</parentid>
+      <timestamp>2012-12-27T21:49:55Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Introduction à HandBrake : */</comment>
+      <text xml:space="preserve" bytes="4414">
+
+= Introduction rapide à HandBrakeCLI: =
+
+
+==La ligne de commande est votre amie :==
+
+Ne soyez pas rebutés par la ligne de commande : une fois que vous disposez de la commande de base stockée dans votre fichier ~ /.bashrc, tout ce que vous avez à faire est de rappeler la commande avec un couple de lettres, j'utilise &quot;hb&quot;, et modifier votre projet en conséquence, ce qui est aussi simple que ça peut l'être.
+
+==Introduction à HandBrake :==
+
+J'ai été un peu vite ici, donc pour ceux qui ne connaissent pas HandBrake - que ce soit la version CLI ou GUI - c'est un outil magnifique pour ripper un média. Si vous avez une pile de DVDs et vous voulez led ripper en format mp4 ou mkv, pour créer une bibliothèque stockée sur un disque dur, alors c'est l'outil qu'il vous faut.
+
+
+Pour avoir un large éventail des possibilités de HandBrake peut faire, jetez un coup d'oeil à  [http://handbrake.fr/details.php/ cette page].
+
+It also rips to a variety of [https://trac.handbrake.fr/wiki/BuiltInPresets predefined presets].
+
+==HandBrake Loves You to the Core(s):==
+
+HandBrake is very intelligent when it comes to using your CPU power, the more cores you have the quicker it does the job. Roughly 1.5hrs on my old iMac core2duo 2.4Mhz, 1GB RAM, which is better than twice as fast as my Athlon64 3500+ single core job with 2GB RAM.
+
+
+==Subtitles? Bring them On:==
+
+These days Handbrake handles soft subtitles for both .mp4 &amp; .mkv, it has a plethora of subtitle options which I won't go into here. Suffice it to say that we can now have multiple subs to choose from, that's if we want to use any at all. This is vastly superior to having them hard coded into the movie as was the case with the previous version.
+
+
+==Meet My Alias:==
+
+When I use HandBrakeCLI to backup a DVD onto my HDD, I first change directory to where I want the HandBrakeCLI's output to go. I do this via a ~/.bashrc alias as seen below, have a read of it:
+
+
+ #------------------------
+ # Handbrake &amp; associated:
+ #------------------------
+ 
+ # The following alias &quot;.tmp&quot; allows me in 
+ # four keystrokes to changes directory to 
+ # where I want HandBrakeCLI's output to 
+ # be saved:
+ 
+ alias .tmp=&quot;cd /mnt/store/pkg/vid/.tmp&quot;
+ 
+ # The following alias doesn't do anything but
+ # echo the looong command to the Terminal 
+ # window where it can be copied, pasted &amp; 
+ # edited for use:
+ 
+ alias hb=&quot;echo HandBrakeCLI -t 0 -i /media/dvd -o  NAME.HERE.mp4 -e x264 -b 1000 -B 192 -s 1 --subtitle-burn
+ 
+ # This alias brings up the HandBrakeCLI help:
+  
+ alias hbhelp=&quot;HandBrakeCLI --help&quot;
+
+
+==Use Your Alias:==
+
+Then I call my HandBrakeCLI command line (which I could never remember) via another ~/.bashrc alias as seen above. Once that command line is echoed to the Terminal, I copy it to the prompt &amp; edit the '''NAME.HERE.mp4''' as seen above in the command line, to the name of the movie.
+
+
+==Finding the Main-Feature:==
+
+Then I run the command (by typing hitting the Enter key);- which by using the '''-t 0''' option, it quickly scans the source for titles &amp; displays what it finds as it goes, giving each title a number &amp; showing information about it, most importantly how long it runs for.
+
+I use the length of the title to discern which is the main title &amp; then recall the previously used HandBrakeCLI command line using the curser key &amp; changing the '''-t 0''' to '''-t 3''' or whatever number had the longest run time (if I was after the main feature).
+
+
+==More than One Way to Do It:==
+
+Another way to get the main feature is to use the '''--main-feature''' argument instead of the '''-t &lt;number&gt;''' parameter like so (though I have found this to be unreliable sometimes &amp; the previous method is not):
+
+
+ HandBrakeCLI --main-feature -i /media/dvd -o NAME-HERE.mp4 -e x264 -b 1000 -B 192 -N eng -s1&quot;
+
+
+==Options, Options...==
+
+Both of the command lines shown for HandBrakeCLI share the -b 1000 video bitrate setting (which is the default these days) which gives me on average about a 1GB sized movie ripped from a dual layer DVD. 
+
+I won't list all of the options available for HandBrakeCLI here, as there are a lot of them, &amp; anyone who has HandBrakeCLI just has to enter '''HandBrakeCLI --help''' at the command prompt to see them.
+
+Here is a link to [http://trac.handbrake.fr/wiki/CLIGuide/ the official how-to page for HandBrakeCLI], which is currently up to date. It has all of the command line options &amp; more listed &amp; explained.</text>
+      <sha1>qg030vfhasthnxe3u2qe2poi2wdwo6t</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,1349 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Accéder aux dépôts Testing</title>
+    <ns>0</ns>
+    <id>638</id>
+    <revision>
+      <id>3822</id>
+      <timestamp>2013-01-02T13:28:53Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =  {{warning|Software downloaded and installed from the ''testing repositories'' will by nature have not been fully tested, and may be unstable.}}   One of the many...&quot;</comment>
+      <text xml:space="preserve" bytes="11885">= Overview =
+
+{{warning|Software downloaded and installed from the ''testing repositories'' will by nature have not been fully tested, and may be unstable.}}
+
+
+One of the many features that sets Manjaro apart from other Arch-based distributions is that it uses its own dedicated software repositories, rather than relying on those provided by Arch itself. In fact, to ensure continued stability and reliability, Manjaro actually uses three distinct types of software repositories:
+
+
+* '''Unstable repositories''': These are used to store software packages that have known or suspected stability and/or compatibility issues. This software may therefore be subject to patching by the Manjaro developers prior to being released to the ''testing repositories.'' Although the very latest software will be located here, &lt;u&gt;using the ''unstable respositories'' may consequently break your system!&lt;/u&gt;
+
+
+* '''Testing repositories''': These are used to store patched software packages from the ''unstable repositories'', as well other new software releases that are considered at least sufficiently stable. This software will be subject to further checks by developers and testers for potential bugs and/or stability issues, prior to being released to the ''stable repositories'' for public use.
+
+
+* '''Stable repositories''': These are the default repositories used by Manjaro systems to provide updates and downloads to the general user base.
+
+
+A consequence of using this model is that Manjaro's default ''stable repositories'' will be updated slightly later than Arch's, in order to accommodate the testing process. However, it is possible to bypass the ''stable repositories'' completely by enabling direct access to the ''testing repositories'' instead.
+
+
+= Enabling Access to the Testing Repositories =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to use the testing repositories. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+== Verify Syncfirst ==
+
+It is &lt;u&gt;'''absolutely essential'''&lt;/u&gt; to ensure that '''[[Pacman|pacman]]''' - the package manager used by Manjaro to update and install software on your system - is always updated first, especially when switching to the testing repositories. Not doing so may result in pacman consequently being unable to update your system or install new software.
+
+To ensure that pacman is always updated first, find the line '''&lt;font color=&quot;green&quot;&gt;SyncFirst = manjaro-system pacman&lt;/font color&gt;''', which should be located in the '''GENERAL OPTIONS''' section at the top of the configuration file. The text itself has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' below for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg     = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, all that is required is to ensure that there is not a hash at the beginning of this particular line. This should in fact be the case by default, although it is still worthwhile checking. Otherwise, if necessary, delete the hash yourself so that it looks ''exactly'' like the example above. '''Please DO NOT add or remove hashes from any other lines!'''
+
+
+== Amend the Repository Names ==
+
+{{warning|The ''[basis-multilib]'' and ''[multilib]'' repository names only need to be amended for 64-bit (x86_64) Manjaro installations, as they are used to provide 32-bit software packages. '''Do not alter, amend, or remove the hashes ('#') from these repository names for 32-bit (i686) installations of Manjaro'''.}}
+
+
+Once you have verified that pacman will be updated first, the final step is to replace the names of the default stable repositories used with those of the testing repositories, to use those instead. All that is required is to amend the names of the existing repositories by adding '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' at the end of each of them. All repository names will be located in the '''REPSOSITORIES''' section near the bottom of the configuration file. The repository names themselves will also be enclosed in square brackets. They are:
+
+* [basis]
+* [platform]
+* [addon]
+* [extra]
+* [community]
+* [basis-multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+* [multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+
+
+An example of the repositories section has been provided below, with the necessary amendments to the repository names '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[basis&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[platform&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[addon&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[extra&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[community&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[basis-multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Update Your System ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the testing repositories and to update your system from them. To do so, enter the following command in the terminal:
+
+ sudo pacman -Syyu
+
+
+Now you have access to the ''very latest'' bleeding edge software, without having to wait for it to be transferred to the stable repositories.
+
+{{tip|Why not become and active part of the Manjaro community by becoming a tester? Just let us know of any bugs by reporting them via our '''[http://blog.manjaro.org/feedback/ feedback form]'''.}}
+
+
+=Reverting Back to the Stable Repositories=
+
+You may at any time revert back to the Stable Repositories, if you wish. To do so, once again, it will be necessary to edit the pacman configuration file using your terminal. To edit the file within the terminal using the nano text editor, enter the command:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise, to use gedit in your desktop environment, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+==Amend the Repository Names==
+
+Once the pacman configuration file has been opened, you can revert back to the stable repositories simply by removing the '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' amendments made to the repository names. An example of the original / reverted repositories section has been provided below. The reversions have been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;platform&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;addon&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;extra&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;community&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis-multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+==Update Your System==
+
+Once the pacman configuration file has been reverted back to the stable repositories, as before it will be necessary to synchronise and to update your system from them.
+
+
+'''1. First, to synchronise with the stable repositories''' enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. And Second, to to update your entire system''' enter the command:
+
+ sudo pacman -Suu
+
+
+You have now successfully reverted back to using the stable repositories.
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>3gbrbpf2et3k4i4z6s8ctl1sg988ljg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3823</id>
+      <parentid>3822</parentid>
+      <timestamp>2013-01-02T13:56:06Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="12005">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|Les logiciels téléchargés et installés depuis les dépôts testing n'ont par nature pas été complètement testés, et peuvent être instables.}}
+
+
+One of the many features that sets Manjaro apart from other Arch-based distributions is that it uses its own dedicated software repositories, rather than relying on those provided by Arch itself. In fact, to ensure continued stability and reliability, Manjaro actually uses three distinct types of software repositories:
+
+
+* '''Unstable repositories''': These are used to store software packages that have known or suspected stability and/or compatibility issues. This software may therefore be subject to patching by the Manjaro developers prior to being released to the ''testing repositories.'' Although the very latest software will be located here, &lt;u&gt;using the ''unstable respositories'' may consequently break your system!&lt;/u&gt;
+
+
+* '''Testing repositories''': These are used to store patched software packages from the ''unstable repositories'', as well other new software releases that are considered at least sufficiently stable. This software will be subject to further checks by developers and testers for potential bugs and/or stability issues, prior to being released to the ''stable repositories'' for public use.
+
+
+* '''Stable repositories''': These are the default repositories used by Manjaro systems to provide updates and downloads to the general user base.
+
+
+A consequence of using this model is that Manjaro's default ''stable repositories'' will be updated slightly later than Arch's, in order to accommodate the testing process. However, it is possible to bypass the ''stable repositories'' completely by enabling direct access to the ''testing repositories'' instead.
+
+
+= Enabling Access to the Testing Repositories =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to use the testing repositories. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+== Verify Syncfirst ==
+
+It is &lt;u&gt;'''absolutely essential'''&lt;/u&gt; to ensure that '''[[Pacman|pacman]]''' - the package manager used by Manjaro to update and install software on your system - is always updated first, especially when switching to the testing repositories. Not doing so may result in pacman consequently being unable to update your system or install new software.
+
+To ensure that pacman is always updated first, find the line '''&lt;font color=&quot;green&quot;&gt;SyncFirst = manjaro-system pacman&lt;/font color&gt;''', which should be located in the '''GENERAL OPTIONS''' section at the top of the configuration file. The text itself has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' below for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg     = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, all that is required is to ensure that there is not a hash at the beginning of this particular line. This should in fact be the case by default, although it is still worthwhile checking. Otherwise, if necessary, delete the hash yourself so that it looks ''exactly'' like the example above. '''Please DO NOT add or remove hashes from any other lines!'''
+
+
+== Amend the Repository Names ==
+
+{{warning|The ''[basis-multilib]'' and ''[multilib]'' repository names only need to be amended for 64-bit (x86_64) Manjaro installations, as they are used to provide 32-bit software packages. '''Do not alter, amend, or remove the hashes ('#') from these repository names for 32-bit (i686) installations of Manjaro'''.}}
+
+
+Once you have verified that pacman will be updated first, the final step is to replace the names of the default stable repositories used with those of the testing repositories, to use those instead. All that is required is to amend the names of the existing repositories by adding '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' at the end of each of them. All repository names will be located in the '''REPSOSITORIES''' section near the bottom of the configuration file. The repository names themselves will also be enclosed in square brackets. They are:
+
+* [basis]
+* [platform]
+* [addon]
+* [extra]
+* [community]
+* [basis-multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+* [multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+
+
+An example of the repositories section has been provided below, with the necessary amendments to the repository names '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[basis&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[platform&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[addon&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[extra&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[community&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[basis-multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Update Your System ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the testing repositories and to update your system from them. To do so, enter the following command in the terminal:
+
+ sudo pacman -Syyu
+
+
+Now you have access to the ''very latest'' bleeding edge software, without having to wait for it to be transferred to the stable repositories.
+
+{{tip|Why not become and active part of the Manjaro community by becoming a tester? Just let us know of any bugs by reporting them via our '''[http://blog.manjaro.org/feedback/ feedback form]'''.}}
+
+
+=Reverting Back to the Stable Repositories=
+
+You may at any time revert back to the Stable Repositories, if you wish. To do so, once again, it will be necessary to edit the pacman configuration file using your terminal. To edit the file within the terminal using the nano text editor, enter the command:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise, to use gedit in your desktop environment, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+==Amend the Repository Names==
+
+Once the pacman configuration file has been opened, you can revert back to the stable repositories simply by removing the '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' amendments made to the repository names. An example of the original / reverted repositories section has been provided below. The reversions have been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;platform&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;addon&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;extra&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;community&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis-multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+==Update Your System==
+
+Once the pacman configuration file has been reverted back to the stable repositories, as before it will be necessary to synchronise and to update your system from them.
+
+
+'''1. First, to synchronise with the stable repositories''' enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. And Second, to to update your entire system''' enter the command:
+
+ sudo pacman -Suu
+
+
+You have now successfully reverted back to using the stable repositories.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>pulgr53kem132hhzk239hfqaxt8musx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3824</id>
+      <parentid>3823</parentid>
+      <timestamp>2013-01-02T13:56:31Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="12008">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|Les logiciels téléchargés et installés depuis les ''dépôts testing'' n'ont par nature pas été complètement testés, et peuvent être instables.}}
+
+
+One of the many features that sets Manjaro apart from other Arch-based distributions is that it uses its own dedicated software repositories, rather than relying on those provided by Arch itself. In fact, to ensure continued stability and reliability, Manjaro actually uses three distinct types of software repositories:
+
+
+* '''Unstable repositories''': These are used to store software packages that have known or suspected stability and/or compatibility issues. This software may therefore be subject to patching by the Manjaro developers prior to being released to the ''testing repositories.'' Although the very latest software will be located here, &lt;u&gt;using the ''unstable respositories'' may consequently break your system!&lt;/u&gt;
+
+
+* '''Testing repositories''': These are used to store patched software packages from the ''unstable repositories'', as well other new software releases that are considered at least sufficiently stable. This software will be subject to further checks by developers and testers for potential bugs and/or stability issues, prior to being released to the ''stable repositories'' for public use.
+
+
+* '''Stable repositories''': These are the default repositories used by Manjaro systems to provide updates and downloads to the general user base.
+
+
+A consequence of using this model is that Manjaro's default ''stable repositories'' will be updated slightly later than Arch's, in order to accommodate the testing process. However, it is possible to bypass the ''stable repositories'' completely by enabling direct access to the ''testing repositories'' instead.
+
+= Enabling Access to the Testing Repositories =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to use the testing repositories. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+== Verify Syncfirst ==
+
+It is &lt;u&gt;'''absolutely essential'''&lt;/u&gt; to ensure that '''[[Pacman|pacman]]''' - the package manager used by Manjaro to update and install software on your system - is always updated first, especially when switching to the testing repositories. Not doing so may result in pacman consequently being unable to update your system or install new software.
+
+To ensure that pacman is always updated first, find the line '''&lt;font color=&quot;green&quot;&gt;SyncFirst = manjaro-system pacman&lt;/font color&gt;''', which should be located in the '''GENERAL OPTIONS''' section at the top of the configuration file. The text itself has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' below for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg     = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, all that is required is to ensure that there is not a hash at the beginning of this particular line. This should in fact be the case by default, although it is still worthwhile checking. Otherwise, if necessary, delete the hash yourself so that it looks ''exactly'' like the example above. '''Please DO NOT add or remove hashes from any other lines!'''
+
+
+== Amend the Repository Names ==
+
+{{warning|The ''[basis-multilib]'' and ''[multilib]'' repository names only need to be amended for 64-bit (x86_64) Manjaro installations, as they are used to provide 32-bit software packages. '''Do not alter, amend, or remove the hashes ('#') from these repository names for 32-bit (i686) installations of Manjaro'''.}}
+
+
+Once you have verified that pacman will be updated first, the final step is to replace the names of the default stable repositories used with those of the testing repositories, to use those instead. All that is required is to amend the names of the existing repositories by adding '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' at the end of each of them. All repository names will be located in the '''REPSOSITORIES''' section near the bottom of the configuration file. The repository names themselves will also be enclosed in square brackets. They are:
+
+* [basis]
+* [platform]
+* [addon]
+* [extra]
+* [community]
+* [basis-multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+* [multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+
+
+An example of the repositories section has been provided below, with the necessary amendments to the repository names '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[basis&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[platform&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[addon&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[extra&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[community&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[basis-multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Update Your System ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the testing repositories and to update your system from them. To do so, enter the following command in the terminal:
+
+ sudo pacman -Syyu
+
+
+Now you have access to the ''very latest'' bleeding edge software, without having to wait for it to be transferred to the stable repositories.
+
+{{tip|Why not become and active part of the Manjaro community by becoming a tester? Just let us know of any bugs by reporting them via our '''[http://blog.manjaro.org/feedback/ feedback form]'''.}}
+
+
+=Reverting Back to the Stable Repositories=
+
+You may at any time revert back to the Stable Repositories, if you wish. To do so, once again, it will be necessary to edit the pacman configuration file using your terminal. To edit the file within the terminal using the nano text editor, enter the command:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise, to use gedit in your desktop environment, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+==Amend the Repository Names==
+
+Once the pacman configuration file has been opened, you can revert back to the stable repositories simply by removing the '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' amendments made to the repository names. An example of the original / reverted repositories section has been provided below. The reversions have been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;platform&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;addon&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;extra&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;community&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis-multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+==Update Your System==
+
+Once the pacman configuration file has been reverted back to the stable repositories, as before it will be necessary to synchronise and to update your system from them.
+
+
+'''1. First, to synchronise with the stable repositories''' enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. And Second, to to update your entire system''' enter the command:
+
+ sudo pacman -Suu
+
+
+You have now successfully reverted back to using the stable repositories.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>symtar48lb5m5zsu2235js4f1c765y6</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3825</id>
+      <parentid>3824</parentid>
+      <timestamp>2013-01-02T14:25:21Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="12045">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|Les logiciels téléchargés et installés depuis les ''dépôts testing'' n'ont par nature pas été complètement testés, et peuvent être instables.}}
+
+
+L'une des nombreuses caractéristiques qui distingue Manjaro des autres distributions basées sur Arcj est qu'elle utilise ses propres dépôts logiciels dédiés, plutôt que de compter sur ceux fournis par Arch elle-même. En pratique, pour assurer une stabilité et une fiabilité constantes, Manjaro utilise trois types distincts de dépôts logiciels :
+
+
+* '''Unstable repositories''': These are used to store software packages that have known or suspected stability and/or compatibility issues. This software may therefore be subject to patching by the Manjaro developers prior to being released to the ''testing repositories.'' Although the very latest software will be located here, &lt;u&gt;using the ''unstable respositories'' may consequently break your system!&lt;/u&gt;
+
+
+* '''Testing repositories''': These are used to store patched software packages from the ''unstable repositories'', as well other new software releases that are considered at least sufficiently stable. This software will be subject to further checks by developers and testers for potential bugs and/or stability issues, prior to being released to the ''stable repositories'' for public use.
+
+
+* '''Stable repositories''': These are the default repositories used by Manjaro systems to provide updates and downloads to the general user base.
+
+
+A consequence of using this model is that Manjaro's default ''stable repositories'' will be updated slightly later than Arch's, in order to accommodate the testing process. However, it is possible to bypass the ''stable repositories'' completely by enabling direct access to the ''testing repositories'' instead.
+
+= Enabling Access to the Testing Repositories =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to use the testing repositories. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+== Verify Syncfirst ==
+
+It is &lt;u&gt;'''absolutely essential'''&lt;/u&gt; to ensure that '''[[Pacman|pacman]]''' - the package manager used by Manjaro to update and install software on your system - is always updated first, especially when switching to the testing repositories. Not doing so may result in pacman consequently being unable to update your system or install new software.
+
+To ensure that pacman is always updated first, find the line '''&lt;font color=&quot;green&quot;&gt;SyncFirst = manjaro-system pacman&lt;/font color&gt;''', which should be located in the '''GENERAL OPTIONS''' section at the top of the configuration file. The text itself has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' below for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg     = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, all that is required is to ensure that there is not a hash at the beginning of this particular line. This should in fact be the case by default, although it is still worthwhile checking. Otherwise, if necessary, delete the hash yourself so that it looks ''exactly'' like the example above. '''Please DO NOT add or remove hashes from any other lines!'''
+
+
+== Amend the Repository Names ==
+
+{{warning|The ''[basis-multilib]'' and ''[multilib]'' repository names only need to be amended for 64-bit (x86_64) Manjaro installations, as they are used to provide 32-bit software packages. '''Do not alter, amend, or remove the hashes ('#') from these repository names for 32-bit (i686) installations of Manjaro'''.}}
+
+
+Once you have verified that pacman will be updated first, the final step is to replace the names of the default stable repositories used with those of the testing repositories, to use those instead. All that is required is to amend the names of the existing repositories by adding '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' at the end of each of them. All repository names will be located in the '''REPSOSITORIES''' section near the bottom of the configuration file. The repository names themselves will also be enclosed in square brackets. They are:
+
+* [basis]
+* [platform]
+* [addon]
+* [extra]
+* [community]
+* [basis-multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+* [multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+
+
+An example of the repositories section has been provided below, with the necessary amendments to the repository names '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[basis&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[platform&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[addon&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[extra&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[community&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[basis-multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Update Your System ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the testing repositories and to update your system from them. To do so, enter the following command in the terminal:
+
+ sudo pacman -Syyu
+
+
+Now you have access to the ''very latest'' bleeding edge software, without having to wait for it to be transferred to the stable repositories.
+
+{{tip|Why not become and active part of the Manjaro community by becoming a tester? Just let us know of any bugs by reporting them via our '''[http://blog.manjaro.org/feedback/ feedback form]'''.}}
+
+
+=Reverting Back to the Stable Repositories=
+
+You may at any time revert back to the Stable Repositories, if you wish. To do so, once again, it will be necessary to edit the pacman configuration file using your terminal. To edit the file within the terminal using the nano text editor, enter the command:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise, to use gedit in your desktop environment, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+==Amend the Repository Names==
+
+Once the pacman configuration file has been opened, you can revert back to the stable repositories simply by removing the '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' amendments made to the repository names. An example of the original / reverted repositories section has been provided below. The reversions have been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;platform&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;addon&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;extra&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;community&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis-multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+==Update Your System==
+
+Once the pacman configuration file has been reverted back to the stable repositories, as before it will be necessary to synchronise and to update your system from them.
+
+
+'''1. First, to synchronise with the stable repositories''' enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. And Second, to to update your entire system''' enter the command:
+
+ sudo pacman -Suu
+
+
+You have now successfully reverted back to using the stable repositories.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>327ps50d3idwtramoklupj76rlgcgf5</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3826</id>
+      <parentid>3825</parentid>
+      <timestamp>2013-01-02T14:34:38Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="12105">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|Les logiciels téléchargés et installés depuis les ''dépôts testing'' n'ont par nature pas été complètement testés, et peuvent être instables.}}
+
+
+L'une des nombreuses caractéristiques qui distingue Manjaro des autres distributions basées sur Arcj est qu'elle utilise ses propres dépôts logiciels dédiés, plutôt que de compter sur ceux fournis par Arch elle-même. En pratique, pour assurer une stabilité et une fiabilité constantes, Manjaro utilise trois types distincts de dépôts logiciels :
+
+
+* '''Les dépôts Unstable''' : Ils sont utilisés pour le stockage de logiciels qui sont connus ou suspectés d'avoir des problèmes de stabilité et/ou de compatibilité. Ces logiciels peuvent donc être soumis à des corrections de la part des développeurs Manjaro avant d'être transférés dans les ''dépôts testing''. Bien que les tous derniers logiciels y soient situés, &lt;u&gt;l'utilisation des dépôts unstable peut par conséquent casser votre système !&lt;/u&gt;
+
+
+* '''Les dépôts Testing''' : These are used to store patched software packages from the ''unstable repositories'', as well other new software releases that are considered at least sufficiently stable. This software will be subject to further checks by developers and testers for potential bugs and/or stability issues, prior to being released to the ''stable repositories'' for public use.
+
+
+* '''Stable repositories''': These are the default repositories used by Manjaro systems to provide updates and downloads to the general user base.
+
+
+A consequence of using this model is that Manjaro's default ''stable repositories'' will be updated slightly later than Arch's, in order to accommodate the testing process. However, it is possible to bypass the ''stable repositories'' completely by enabling direct access to the ''testing repositories'' instead.
+
+= Enabling Access to the Testing Repositories =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to use the testing repositories. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+== Verify Syncfirst ==
+
+It is &lt;u&gt;'''absolutely essential'''&lt;/u&gt; to ensure that '''[[Pacman|pacman]]''' - the package manager used by Manjaro to update and install software on your system - is always updated first, especially when switching to the testing repositories. Not doing so may result in pacman consequently being unable to update your system or install new software.
+
+To ensure that pacman is always updated first, find the line '''&lt;font color=&quot;green&quot;&gt;SyncFirst = manjaro-system pacman&lt;/font color&gt;''', which should be located in the '''GENERAL OPTIONS''' section at the top of the configuration file. The text itself has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' below for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg     = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, all that is required is to ensure that there is not a hash at the beginning of this particular line. This should in fact be the case by default, although it is still worthwhile checking. Otherwise, if necessary, delete the hash yourself so that it looks ''exactly'' like the example above. '''Please DO NOT add or remove hashes from any other lines!'''
+
+
+== Amend the Repository Names ==
+
+{{warning|The ''[basis-multilib]'' and ''[multilib]'' repository names only need to be amended for 64-bit (x86_64) Manjaro installations, as they are used to provide 32-bit software packages. '''Do not alter, amend, or remove the hashes ('#') from these repository names for 32-bit (i686) installations of Manjaro'''.}}
+
+
+Once you have verified that pacman will be updated first, the final step is to replace the names of the default stable repositories used with those of the testing repositories, to use those instead. All that is required is to amend the names of the existing repositories by adding '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' at the end of each of them. All repository names will be located in the '''REPSOSITORIES''' section near the bottom of the configuration file. The repository names themselves will also be enclosed in square brackets. They are:
+
+* [basis]
+* [platform]
+* [addon]
+* [extra]
+* [community]
+* [basis-multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+* [multilib] &lt;font color=&quot;red&quot;&gt;(64-bit installations only)&lt;/font color&gt;
+
+
+An example of the repositories section has been provided below, with the necessary amendments to the repository names '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[basis&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[platform&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[addon&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[extra&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[community&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[basis-multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[multilib&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Update Your System ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the testing repositories and to update your system from them. To do so, enter the following command in the terminal:
+
+ sudo pacman -Syyu
+
+
+Now you have access to the ''very latest'' bleeding edge software, without having to wait for it to be transferred to the stable repositories.
+
+{{tip|Why not become and active part of the Manjaro community by becoming a tester? Just let us know of any bugs by reporting them via our '''[http://blog.manjaro.org/feedback/ feedback form]'''.}}
+
+
+=Reverting Back to the Stable Repositories=
+
+You may at any time revert back to the Stable Repositories, if you wish. To do so, once again, it will be necessary to edit the pacman configuration file using your terminal. To edit the file within the terminal using the nano text editor, enter the command:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise, to use gedit in your desktop environment, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+==Amend the Repository Names==
+
+Once the pacman configuration file has been opened, you can revert back to the stable repositories simply by removing the '''&lt;font color=&quot;green&quot;&gt;-testing&lt;/font color&gt;''' amendments made to the repository names. An example of the original / reverted repositories section has been provided below. The reversions have been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # REPOSITORIES
+ #   - can be defined here or included from another file
+ #   - pacman will search repositories in the order defined here
+ #   - local/custom mirrors can be added here or in separate files
+ #   - repositories listed first will take precedence when packages
+ #     have identical names, regardless of version number
+ #   - URLs will have $repo replaced by the name of the current repo
+ #   - URLs will have $arch replaced by the name of the architecture
+ #
+ # Repository entries are of the format:
+ #       [repo-name]
+ #       Server = ServerName
+ #       Include = IncludePath
+ #
+ # The header [repo-name] is crucial - it must be present and
+ # uncommented to enable the repo.
+ #
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;platform&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;addon&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;extra&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;community&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ &lt;font color=&quot;red&quot;&gt;# If you want to run 32 bit applications on your x86_64 system,&lt;/font color&gt;
+ &lt;font color=&quot;red&quot;&gt;# enable the multilib repositories as required here.&lt;/font color&gt;
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;basis-multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+ 
+ '''[&lt;font color=&quot;green&quot;&gt;multilib&lt;/font color&gt;]'''
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+==Update Your System==
+
+Once the pacman configuration file has been reverted back to the stable repositories, as before it will be necessary to synchronise and to update your system from them.
+
+
+'''1. First, to synchronise with the stable repositories''' enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. And Second, to to update your entire system''' enter the command:
+
+ sudo pacman -Suu
+
+
+You have now successfully reverted back to using the stable repositories.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>sp7gzha12bcu1un2oeg9x5iiqav77i7</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

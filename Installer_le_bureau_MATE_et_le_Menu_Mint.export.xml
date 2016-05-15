@@ -1,0 +1,960 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Installer le bureau MATE et le Menu Mint</title>
+    <ns>0</ns>
+    <id>658</id>
+    <revision>
+      <id>4165</id>
+      <timestamp>2013-01-05T17:17:24Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = TRADUCTION EN COURS =  = Overview =  {{warning|This desktop environment is neither provided nor supported by the Manjaro Team...&quot;</comment>
+      <text xml:space="preserve" bytes="9622">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+= Overview =
+
+{{warning|This desktop environment is neither provided nor supported by the Manjaro Team. Install and use it at your own risk - there will likely be file conflicts to resolve during the installation process.}}
+
+[[File:mate-default.png|thumb|left|375px]]
+
+
+'''[http://mate-desktop.org/ MATE]''' (pronounced 'Mah-tay') is best known for its use in the popular Linux Mint distribution. Similar to the XFCE desktop environment, a 64 bit installation of Manjaro running MATE uses about 200MB of memory. MATE itself was developed to appease users of the Gnome 2 desktop after the radical transformation of Gnome 3 into a tablet-like interface. 
+
+As the MATE desktop environment is not available from the official Manjaro repositories, there are two alternative repositories available in order to download and install it: The unofficial Arch User Repository (AUR) or the official MATE repository. A brief overview of the advantages and disadvantages of using either has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mate-greenbird.png|thumb|left|375px]]
+
+
+'''1. The Arch User Repository (AUR)''': The advantage of this option is that new users may find using the AUR easier than having to go through the process of adding a new repository. The disadvantage is that the installation process itself will take longer, be more involved, and of course is from an unofficial source. Further effort will also be required to install additional MATE desktop extras, unlike the official source.
+
+
+'''2. The Official MATE repository''': The advantage of this option is that as an official source, it is more reliable and trustworthy. While additional steps are initially required to set up access, the installation process itself will be faster, and pacman will consequently be able to access the MATE repository just like the official Manjaro repositories. The disadvantage is that those wishing to install the ''MintMenu'' will still have to have to obtain it from the AUR, anyway.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 1: The Arch User Repository =
+
+{{warning|You must agree to replace any existing Manjaro packages with MATE equivalents in order to continue the installation. Otherwise, the process will be automatically aborted.}}
+
+[[File:mate-yaourt.png|thumb|left|375px]]
+
+
+If you are unfamiliar with the Arch User Repository, how to access to it, and/or how to search and install software from it, then the '''[[Arch User Repository]]''' guide will provide the appropriate information and instructions. Once the necessary software has been installed, the MATE desktop environment can then be installed by entering the following command in the terminal:
+
+ yaourt mate-desktop-environment
+
+
+Again, as covered in the Arch User Repository guide, you will be asked if you wish to edit PKGBUILD files. Unless you know what you are doing, always type '''n''' for 'no'. However, be aware that you will also be prompted on occasion to continue the installation as well. So make sure you read each prompt properly before entering anything, else you could end up accidentally aborting the installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 2: The Official MATE Repository =
+
+The MATE desktop environment itself can also be downloaded and installed from the official MATE repository. In this instance, it will first be necessary to edit the '''[[pacman]]''' configuration file in order to add the name and server address of the MATE repository to it. This will allow pacman - Manjaro's &lt;u&gt;pac&lt;/u&gt;kage &lt;u&gt;man&lt;/u&gt;ager - to find, download, and install software packages from the new MATE repository, just like the official Manjaro repositories. 
+
+
+==Open the Pacman Configuration File ==
+
+The syntax of the command to edit the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, don't worry if the contents of this file seem complex and intimidating. It is a very simple process to add the new repository.
+
+
+== Add the MATE Repository ==
+
+The MATE repository must be added to '''REPOSITORIES''' section, which is itself located at the bottom of the pacman configuration file. The lines to be added to the configuration file are as follows:
+
+ [mate]
+ # Official MATE repo:
+ Server = http://repo.mate-desktop.org/archlinux/$arch
+
+
+An example has been provided below where the repositories section has been amended to enable access to the MATE repository. This amendment has been &lt;font color=&quot;green&quot;&gt;'''coloured in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # An example of a custom package repository.  See the pacman manpage for
+ # tips on creating your own repositories.
+ #[custom]
+ #SigLevel = Optional TrustAll
+ #Server = file:///home/custompkgs
+ 
+ &lt;font color=&quot;green&quot;&gt;'''[mate]'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''# Official MATE repo:'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''Server = http://repo.mate-desktop.org/archlinux/$arch'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, save the changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Synchronise the Pacman Database ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the newly enabled MATE repository in order to install software from it. To do so, enter the command:
+
+ sudo pacman -Syy
+
+
+== Install the MATE Desktop Environment ==
+
+{{warning|You must agree to replace any existing Manjaro packages with MATE equivalents in order to continue the installation. Otherwise, the process will be automatically aborted.}}
+
+[[File:mate-terminal.png|thumb|left|375px]]
+
+
+To install the MATE desktop environment, enter the following command:
+
+ sudo pacman -S mate
+
+To additionally install extra MATE-related themes and software applications, then add the command:
+
+ sudo pacman -S mate-extras
+
+You will be able to select individual components of the desktop and extras to install or ignore as desired. To do so in either instance, simply enter the number(s) of the corresponding package(s) to install. '''Otherwise, to install everything (particularly as far as the desktop environment is concerned), just press &lt;enter&gt; when prompted'''. Once installed, the MATE desktop will be immediately selectable from the login screen. The only exception is if using the SLiM display manager, which will require additional configuration (see below).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Install the Mint Menu (optional) =
+
+[[File:mintmenu-yaourt.png|thumb|left|375px]]
+
+
+Unfortunately, perhaps the most popular and distinguishing feature of the MATE desktop - the so-called '''Mint Menu''' - is not pre-installed by default. Users will instead encounter a typical (though entirely functional) drop-down menu. As it is not currently possible to install the Mint Menu from the official MATE repository, it must instead be obtained from the Arch User Repository (AUR). To install the Mint Menu - and assuming the necessary software to access the AUR has been installed - enter the following command in to the terminal:
+
+ yaourt mintmenu
+
+As illustrated, the appropriate option should be the second one, which is the only Mint Menu version listed specifically for the MATE desktop environment. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mintmenu-MATE.png|thumb|left|375px]]
+
+
+Once the Mint Menu has been installed, it will be necessary to log out and then log back in before being able to add it to the MATE panel for use. After logging back in, to add the Mint Menu:
+
+1. Right-click the MATE Panel to bring up the available options
+
+2. Select '''Add to Panel...'''
+
+3. Locate the MintMenu (e.g. by scrolling down or by typing '''mint''' into the search bar)
+
+4. Highlight the MintMenu and then click the '''Add''' Button.
+
+5. Optionally remove the old menu and/or move the MintMenu to the desired position by right-clicking on them, respectively.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring Slim (Where Appropriate) =
+
+[[File:lxdm-MATE.png|thumb|left|375px]]
+
+
+{{tip|If you are not sure whether or not you are using SLiM, then the chances are you are not. SLiM is not currently pre-installed in any Manjaro flavour, and as such, must be installed, enabled, and configured manually.}}
+
+As illustrated with the LXDM display manager, your existing login screen / display manager will automatically list the MATE desktop environment for selection. The only exception to this is the SLiM display manager, which must be manually configured to do so. In this instance, please see the '''[[SLiM Configuration]]''' guide in order to use the MATE desktop with it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Install Desktop Environments|Install New Desktop Environments]]'''
+* '''[http://wiki.mate-desktop.org/ MATE Wiki]'''
+* '''[http://wiki.mate-desktop.org/archlinux_custom_repo MATE Wiki Custom Repository Section]'''
+
+[[Category:Customisation and Configuration]]
+[[MATE Desktop Environment|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>jcplcs61u1convikxwpqgutpnrdkdot</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4237</id>
+      <parentid>4165</parentid>
+      <timestamp>2013-01-06T15:43:00Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="9679">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+= Overview =
+
+{{warning|This desktop environment is neither provided nor supported by the Manjaro Team. Install and use it at your own risk - there will likely be file conflicts to resolve during the installation process.}}
+
+[[File:mate-default.png|thumb|left|375px]]
+
+
+'''[http://mate-desktop.org/ MATE]''' (pronounced 'Mah-tay') is best known for its use in the popular Linux Mint distribution. Similar to the XFCE desktop environment, a 64 bit installation of Manjaro running MATE uses about 200MB of memory. MATE itself was developed to appease users of the Gnome 2 desktop after the radical transformation of Gnome 3 into a tablet-like interface. 
+
+As the MATE desktop environment is not available from the official Manjaro repositories, there are two alternative repositories available in order to download and install it: The unofficial Arch User Repository (AUR) or the official MATE repository. A brief overview of the advantages and disadvantages of using either has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mate-greenbird.png|thumb|left|375px]]
+
+
+'''1. The Arch User Repository (AUR)''': The advantage of this option is that new users may find using the AUR easier than having to go through the process of adding a new repository. The disadvantage is that the installation process itself will take longer, be more involved, and of course is from an unofficial source. Further effort will also be required to install additional MATE desktop extras, unlike the official source.
+
+
+'''2. The Official MATE repository''': The advantage of this option is that as an official source, it is more reliable and trustworthy. While additional steps are initially required to set up access, the installation process itself will be faster, and pacman will consequently be able to access the MATE repository just like the official Manjaro repositories. The disadvantage is that those wishing to install the ''MintMenu'' will still have to have to obtain it from the AUR, anyway.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 1: The Arch User Repository =
+
+{{warning|You must agree to replace any existing Manjaro packages with MATE equivalents in order to continue the installation. Otherwise, the process will be automatically aborted.}}
+
+[[File:mate-yaourt.png|thumb|left|375px]]
+
+
+If you are unfamiliar with the Arch User Repository, how to access to it, and/or how to search and install software from it, then the '''[[Arch User Repository]]''' guide will provide the appropriate information and instructions. Once the necessary software has been installed, the MATE desktop environment can then be installed by entering the following command in the terminal:
+
+ yaourt mate-desktop-environment
+
+
+Again, as covered in the Arch User Repository guide, you will be asked if you wish to edit PKGBUILD files. Unless you know what you are doing, always type '''n''' for 'no'. However, be aware that you will also be prompted on occasion to continue the installation as well. So make sure you read each prompt properly before entering anything, else you could end up accidentally aborting the installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 2: The Official MATE Repository =
+
+The MATE desktop environment itself can also be downloaded and installed from the official MATE repository. In this instance, it will first be necessary to edit the '''[[pacman]]''' configuration file in order to add the name and server address of the MATE repository to it. This will allow pacman - Manjaro's &lt;u&gt;pac&lt;/u&gt;kage &lt;u&gt;man&lt;/u&gt;ager - to find, download, and install software packages from the new MATE repository, just like the official Manjaro repositories. 
+
+
+==Open the Pacman Configuration File ==
+
+The syntax of the command to edit the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, don't worry if the contents of this file seem complex and intimidating. It is a very simple process to add the new repository.
+
+
+== Add the MATE Repository ==
+
+The MATE repository must be added to '''REPOSITORIES''' section, which is itself located at the bottom of the pacman configuration file. The lines to be added to the configuration file are as follows:
+
+ [mate]
+ # Official MATE repo:
+ Server = http://repo.mate-desktop.org/archlinux/$arch
+
+
+An example has been provided below where the repositories section has been amended to enable access to the MATE repository. This amendment has been &lt;font color=&quot;green&quot;&gt;'''coloured in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # An example of a custom package repository.  See the pacman manpage for
+ # tips on creating your own repositories.
+ #[custom]
+ #SigLevel = Optional TrustAll
+ #Server = file:///home/custompkgs
+ 
+ &lt;font color=&quot;green&quot;&gt;'''[mate]'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''# Official MATE repo:'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''Server = http://repo.mate-desktop.org/archlinux/$arch'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, save the changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Synchronise the Pacman Database ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the newly enabled MATE repository in order to install software from it. To do so, enter the command:
+
+ sudo pacman -Syy
+
+
+== Install the MATE Desktop Environment ==
+
+{{warning|You must agree to replace any existing Manjaro packages with MATE equivalents in order to continue the installation. Otherwise, the process will be automatically aborted.}}
+
+[[File:mate-terminal.png|thumb|left|375px]]
+
+
+To install the MATE desktop environment, enter the following command:
+
+ sudo pacman -S mate
+
+To additionally install extra MATE-related themes and software applications, then add the command:
+
+ sudo pacman -S mate-extras
+
+You will be able to select individual components of the desktop and extras to install or ignore as desired. To do so in either instance, simply enter the number(s) of the corresponding package(s) to install. '''Otherwise, to install everything (particularly as far as the desktop environment is concerned), just press &lt;enter&gt; when prompted'''. Once installed, the MATE desktop will be immediately selectable from the login screen. The only exception is if using the SLiM display manager, which will require additional configuration (see below).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Install the Mint Menu (optional) =
+
+[[File:mintmenu-yaourt.png|thumb|left|375px]]
+
+
+Unfortunately, perhaps the most popular and distinguishing feature of the MATE desktop - the so-called '''Mint Menu''' - is not pre-installed by default. Users will instead encounter a typical (though entirely functional) drop-down menu. As it is not currently possible to install the Mint Menu from the official MATE repository, it must instead be obtained from the Arch User Repository (AUR). To install the Mint Menu - and assuming the necessary software to access the AUR has been installed - enter the following command in to the terminal:
+
+ yaourt mintmenu
+
+As illustrated, the appropriate option should be the second one, which is the only Mint Menu version listed specifically for the MATE desktop environment. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mintmenu-MATE.png|thumb|left|375px]]
+
+
+Once the Mint Menu has been installed, it will be necessary to log out and then log back in before being able to add it to the MATE panel for use. After logging back in, to add the Mint Menu:
+
+1. Right-click the MATE Panel to bring up the available options
+
+2. Select '''Add to Panel...'''
+
+3. Locate the MintMenu (e.g. by scrolling down or by typing '''mint''' into the search bar)
+
+4. Highlight the MintMenu and then click the '''Add''' Button.
+
+5. Optionally remove the old menu and/or move the MintMenu to the desired position by right-clicking on them, respectively.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring Slim (Where Appropriate) =
+
+[[File:lxdm-MATE.png|thumb|left|375px]]
+
+
+{{tip|If you are not sure whether or not you are using SLiM, then the chances are you are not. SLiM is not currently pre-installed in any Manjaro flavour, and as such, must be installed, enabled, and configured manually.}}
+
+As illustrated with the LXDM display manager, your existing login screen / display manager will automatically list the MATE desktop environment for selection. The only exception to this is the SLiM display manager, which must be manually configured to do so. In this instance, please see the '''[[SLiM Configuration]]''' guide in order to use the MATE desktop with it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Installez divers environnements de bureau et gestionnaires de fenêtres|Installer de nouveaux environnements de bureau]]'''
+* '''[http://wiki.mate-desktop.org/ MATE Wiki]'''
+* '''[http://wiki.mate-desktop.org/archlinux_custom_repo MATE Wiki Custom Repository Section]'''
+
+[[Category:Customisation and Configuration]]
+[[MATE Desktop Environment|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>rzqp5hwjqfk2rfteu94dcejn8v8knzv</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4238</id>
+      <parentid>4237</parentid>
+      <timestamp>2013-01-06T15:43:41Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="9681">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+= Overview =
+
+{{warning|This desktop environment is neither provided nor supported by the Manjaro Team. Install and use it at your own risk - there will likely be file conflicts to resolve during the installation process.}}
+
+[[File:mate-default.png|thumb|left|375px]]
+
+
+'''[http://mate-desktop.org/ MATE]''' (pronounced 'Mah-tay') is best known for its use in the popular Linux Mint distribution. Similar to the XFCE desktop environment, a 64 bit installation of Manjaro running MATE uses about 200MB of memory. MATE itself was developed to appease users of the Gnome 2 desktop after the radical transformation of Gnome 3 into a tablet-like interface. 
+
+As the MATE desktop environment is not available from the official Manjaro repositories, there are two alternative repositories available in order to download and install it: The unofficial Arch User Repository (AUR) or the official MATE repository. A brief overview of the advantages and disadvantages of using either has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mate-greenbird.png|thumb|left|375px]]
+
+
+'''1. The Arch User Repository (AUR)''': The advantage of this option is that new users may find using the AUR easier than having to go through the process of adding a new repository. The disadvantage is that the installation process itself will take longer, be more involved, and of course is from an unofficial source. Further effort will also be required to install additional MATE desktop extras, unlike the official source.
+
+
+'''2. The Official MATE repository''': The advantage of this option is that as an official source, it is more reliable and trustworthy. While additional steps are initially required to set up access, the installation process itself will be faster, and pacman will consequently be able to access the MATE repository just like the official Manjaro repositories. The disadvantage is that those wishing to install the ''MintMenu'' will still have to have to obtain it from the AUR, anyway.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 1: The Arch User Repository =
+
+{{warning|You must agree to replace any existing Manjaro packages with MATE equivalents in order to continue the installation. Otherwise, the process will be automatically aborted.}}
+
+[[File:mate-yaourt.png|thumb|left|375px]]
+
+
+If you are unfamiliar with the Arch User Repository, how to access to it, and/or how to search and install software from it, then the '''[[Arch User Repository]]''' guide will provide the appropriate information and instructions. Once the necessary software has been installed, the MATE desktop environment can then be installed by entering the following command in the terminal:
+
+ yaourt mate-desktop-environment
+
+
+Again, as covered in the Arch User Repository guide, you will be asked if you wish to edit PKGBUILD files. Unless you know what you are doing, always type '''n''' for 'no'. However, be aware that you will also be prompted on occasion to continue the installation as well. So make sure you read each prompt properly before entering anything, else you could end up accidentally aborting the installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 2: The Official MATE Repository =
+
+The MATE desktop environment itself can also be downloaded and installed from the official MATE repository. In this instance, it will first be necessary to edit the '''[[pacman]]''' configuration file in order to add the name and server address of the MATE repository to it. This will allow pacman - Manjaro's &lt;u&gt;pac&lt;/u&gt;kage &lt;u&gt;man&lt;/u&gt;ager - to find, download, and install software packages from the new MATE repository, just like the official Manjaro repositories. 
+
+
+==Open the Pacman Configuration File ==
+
+The syntax of the command to edit the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, don't worry if the contents of this file seem complex and intimidating. It is a very simple process to add the new repository.
+
+
+== Add the MATE Repository ==
+
+The MATE repository must be added to '''REPOSITORIES''' section, which is itself located at the bottom of the pacman configuration file. The lines to be added to the configuration file are as follows:
+
+ [mate]
+ # Official MATE repo:
+ Server = http://repo.mate-desktop.org/archlinux/$arch
+
+
+An example has been provided below where the repositories section has been amended to enable access to the MATE repository. This amendment has been &lt;font color=&quot;green&quot;&gt;'''coloured in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # An example of a custom package repository.  See the pacman manpage for
+ # tips on creating your own repositories.
+ #[custom]
+ #SigLevel = Optional TrustAll
+ #Server = file:///home/custompkgs
+ 
+ &lt;font color=&quot;green&quot;&gt;'''[mate]'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''# Official MATE repo:'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''Server = http://repo.mate-desktop.org/archlinux/$arch'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, save the changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Synchronise the Pacman Database ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the newly enabled MATE repository in order to install software from it. To do so, enter the command:
+
+ sudo pacman -Syy
+
+
+== Install the MATE Desktop Environment ==
+
+{{warning|You must agree to replace any existing Manjaro packages with MATE equivalents in order to continue the installation. Otherwise, the process will be automatically aborted.}}
+
+[[File:mate-terminal.png|thumb|left|375px]]
+
+
+To install the MATE desktop environment, enter the following command:
+
+ sudo pacman -S mate
+
+To additionally install extra MATE-related themes and software applications, then add the command:
+
+ sudo pacman -S mate-extras
+
+You will be able to select individual components of the desktop and extras to install or ignore as desired. To do so in either instance, simply enter the number(s) of the corresponding package(s) to install. '''Otherwise, to install everything (particularly as far as the desktop environment is concerned), just press &lt;enter&gt; when prompted'''. Once installed, the MATE desktop will be immediately selectable from the login screen. The only exception is if using the SLiM display manager, which will require additional configuration (see below).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Install the Mint Menu (optional) =
+
+[[File:mintmenu-yaourt.png|thumb|left|375px]]
+
+
+Unfortunately, perhaps the most popular and distinguishing feature of the MATE desktop - the so-called '''Mint Menu''' - is not pre-installed by default. Users will instead encounter a typical (though entirely functional) drop-down menu. As it is not currently possible to install the Mint Menu from the official MATE repository, it must instead be obtained from the Arch User Repository (AUR). To install the Mint Menu - and assuming the necessary software to access the AUR has been installed - enter the following command in to the terminal:
+
+ yaourt mintmenu
+
+As illustrated, the appropriate option should be the second one, which is the only Mint Menu version listed specifically for the MATE desktop environment. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mintmenu-MATE.png|thumb|left|375px]]
+
+
+Once the Mint Menu has been installed, it will be necessary to log out and then log back in before being able to add it to the MATE panel for use. After logging back in, to add the Mint Menu:
+
+1. Right-click the MATE Panel to bring up the available options
+
+2. Select '''Add to Panel...'''
+
+3. Locate the MintMenu (e.g. by scrolling down or by typing '''mint''' into the search bar)
+
+4. Highlight the MintMenu and then click the '''Add''' Button.
+
+5. Optionally remove the old menu and/or move the MintMenu to the desired position by right-clicking on them, respectively.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring Slim (Where Appropriate) =
+
+[[File:lxdm-MATE.png|thumb|left|375px]]
+
+
+{{tip|If you are not sure whether or not you are using SLiM, then the chances are you are not. SLiM is not currently pre-installed in any Manjaro flavour, and as such, must be installed, enabled, and configured manually.}}
+
+As illustrated with the LXDM display manager, your existing login screen / display manager will automatically list the MATE desktop environment for selection. The only exception to this is the SLiM display manager, which must be manually configured to do so. In this instance, please see the '''[[SLiM Configuration]]''' guide in order to use the MATE desktop with it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Installez divers environnements de bureau et gestionnaires de fenêtres|Installer de nouveaux environnements de bureau]]'''
+* '''[http://wiki.mate-desktop.org/ MATE Wiki]'''
+* '''[http://wiki.mate-desktop.org/archlinux_custom_repo MATE Wiki Custom Repository Section]'''
+
+[[Category:Customisation and Configuration]]
+
+
+[[MATE Desktop Environment|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>r5m2day0yepev0v09lmtkgnsici6au6</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4239</id>
+      <parentid>4238</parentid>
+      <timestamp>2013-01-06T15:45:12Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="9680">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+= Overview =
+
+{{warning|This desktop environment is neither provided nor supported by the Manjaro Team. Install and use it at your own risk - there will likely be file conflicts to resolve during the installation process.}}
+
+[[File:mate-default.png|thumb|left|375px]]
+
+
+'''[http://mate-desktop.org/ MATE]''' (pronounced 'Mah-tay') is best known for its use in the popular Linux Mint distribution. Similar to the XFCE desktop environment, a 64 bit installation of Manjaro running MATE uses about 200MB of memory. MATE itself was developed to appease users of the Gnome 2 desktop after the radical transformation of Gnome 3 into a tablet-like interface. 
+
+As the MATE desktop environment is not available from the official Manjaro repositories, there are two alternative repositories available in order to download and install it: The unofficial Arch User Repository (AUR) or the official MATE repository. A brief overview of the advantages and disadvantages of using either has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mate-greenbird.png|thumb|left|375px]]
+
+
+'''1. The Arch User Repository (AUR)''': The advantage of this option is that new users may find using the AUR easier than having to go through the process of adding a new repository. The disadvantage is that the installation process itself will take longer, be more involved, and of course is from an unofficial source. Further effort will also be required to install additional MATE desktop extras, unlike the official source.
+
+
+'''2. The Official MATE repository''': The advantage of this option is that as an official source, it is more reliable and trustworthy. While additional steps are initially required to set up access, the installation process itself will be faster, and pacman will consequently be able to access the MATE repository just like the official Manjaro repositories. The disadvantage is that those wishing to install the ''MintMenu'' will still have to have to obtain it from the AUR, anyway.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 1: The Arch User Repository =
+
+{{warning|You must agree to replace any existing Manjaro packages with MATE equivalents in order to continue the installation. Otherwise, the process will be automatically aborted.}}
+
+[[File:mate-yaourt.png|thumb|left|375px]]
+
+
+If you are unfamiliar with the Arch User Repository, how to access to it, and/or how to search and install software from it, then the '''[[Arch User Repository]]''' guide will provide the appropriate information and instructions. Once the necessary software has been installed, the MATE desktop environment can then be installed by entering the following command in the terminal:
+
+ yaourt mate-desktop-environment
+
+
+Again, as covered in the Arch User Repository guide, you will be asked if you wish to edit PKGBUILD files. Unless you know what you are doing, always type '''n''' for 'no'. However, be aware that you will also be prompted on occasion to continue the installation as well. So make sure you read each prompt properly before entering anything, else you could end up accidentally aborting the installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 2: The Official MATE Repository =
+
+The MATE desktop environment itself can also be downloaded and installed from the official MATE repository. In this instance, it will first be necessary to edit the '''[[pacman]]''' configuration file in order to add the name and server address of the MATE repository to it. This will allow pacman - Manjaro's &lt;u&gt;pac&lt;/u&gt;kage &lt;u&gt;man&lt;/u&gt;ager - to find, download, and install software packages from the new MATE repository, just like the official Manjaro repositories. 
+
+
+==Open the Pacman Configuration File ==
+
+The syntax of the command to edit the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, don't worry if the contents of this file seem complex and intimidating. It is a very simple process to add the new repository.
+
+
+== Add the MATE Repository ==
+
+The MATE repository must be added to '''REPOSITORIES''' section, which is itself located at the bottom of the pacman configuration file. The lines to be added to the configuration file are as follows:
+
+ [mate]
+ # Official MATE repo:
+ Server = http://repo.mate-desktop.org/archlinux/$arch
+
+
+An example has been provided below where the repositories section has been amended to enable access to the MATE repository. This amendment has been &lt;font color=&quot;green&quot;&gt;'''coloured in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # An example of a custom package repository.  See the pacman manpage for
+ # tips on creating your own repositories.
+ #[custom]
+ #SigLevel = Optional TrustAll
+ #Server = file:///home/custompkgs
+ 
+ &lt;font color=&quot;green&quot;&gt;'''[mate]'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''# Official MATE repo:'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''Server = http://repo.mate-desktop.org/archlinux/$arch'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, save the changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+== Synchronise the Pacman Database ==
+
+Once the pacman configuration file has been amended, it will be necessary to synchronise with the newly enabled MATE repository in order to install software from it. To do so, enter the command:
+
+ sudo pacman -Syy
+
+
+== Install the MATE Desktop Environment ==
+
+{{warning|You must agree to replace any existing Manjaro packages with MATE equivalents in order to continue the installation. Otherwise, the process will be automatically aborted.}}
+
+[[File:mate-terminal.png|thumb|left|375px]]
+
+
+To install the MATE desktop environment, enter the following command:
+
+ sudo pacman -S mate
+
+To additionally install extra MATE-related themes and software applications, then add the command:
+
+ sudo pacman -S mate-extras
+
+You will be able to select individual components of the desktop and extras to install or ignore as desired. To do so in either instance, simply enter the number(s) of the corresponding package(s) to install. '''Otherwise, to install everything (particularly as far as the desktop environment is concerned), just press &lt;enter&gt; when prompted'''. Once installed, the MATE desktop will be immediately selectable from the login screen. The only exception is if using the SLiM display manager, which will require additional configuration (see below).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Install the Mint Menu (optional) =
+
+[[File:mintmenu-yaourt.png|thumb|left|375px]]
+
+
+Unfortunately, perhaps the most popular and distinguishing feature of the MATE desktop - the so-called '''Mint Menu''' - is not pre-installed by default. Users will instead encounter a typical (though entirely functional) drop-down menu. As it is not currently possible to install the Mint Menu from the official MATE repository, it must instead be obtained from the Arch User Repository (AUR). To install the Mint Menu - and assuming the necessary software to access the AUR has been installed - enter the following command in to the terminal:
+
+ yaourt mintmenu
+
+As illustrated, the appropriate option should be the second one, which is the only Mint Menu version listed specifically for the MATE desktop environment. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mintmenu-MATE.png|thumb|left|375px]]
+
+
+Once the Mint Menu has been installed, it will be necessary to log out and then log back in before being able to add it to the MATE panel for use. After logging back in, to add the Mint Menu:
+
+1. Right-click the MATE Panel to bring up the available options
+
+2. Select '''Add to Panel...'''
+
+3. Locate the MintMenu (e.g. by scrolling down or by typing '''mint''' into the search bar)
+
+4. Highlight the MintMenu and then click the '''Add''' Button.
+
+5. Optionally remove the old menu and/or move the MintMenu to the desired position by right-clicking on them, respectively.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring Slim (Where Appropriate) =
+
+[[File:lxdm-MATE.png|thumb|left|375px]]
+
+
+{{tip|If you are not sure whether or not you are using SLiM, then the chances are you are not. SLiM is not currently pre-installed in any Manjaro flavour, and as such, must be installed, enabled, and configured manually.}}
+
+As illustrated with the LXDM display manager, your existing login screen / display manager will automatically list the MATE desktop environment for selection. The only exception to this is the SLiM display manager, which must be manually configured to do so. In this instance, please see the '''[[SLiM Configuration]]''' guide in order to use the MATE desktop with it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Installez divers environnements de bureau et gestionnaires de fenêtres|Installer de nouveaux environnements de bureau]]'''
+* '''[http://wiki.mate-desktop.org/ MATE Wiki]'''
+* '''[http://wiki.mate-desktop.org/archlinux_custom_repo MATE Wiki Custom Repository Section]'''
+
+
+[[MATE Desktop Environment|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Customisation and Configuration]]
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>p6gz8vzat7kldfzqpzop65z5szi1b4e</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4242</id>
+      <parentid>4239</parentid>
+      <timestamp>2013-01-06T17:48:51Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10908">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|Cet environnement de bureau n'est ni prévu, ni pris en charge par l'équipe Manjaro. Installer et utiliser ce bureau sera à vos risques et périls - il y aura probablement des conflits de fichiers à résoudre au cours du processus d'installation.}}
+
+[[File:mate-default.png|thumb|left|375px]]
+
+
+'''[http://mate-desktop.org/ MATE]''' MATE (prononcez «Mah-tay») est surtout connu pour son utilisation dans la très populaire distribution Linux Mint. Comme l'environnement de bureau XFCE, une installation 64 bits de Manjaro MATE utilise environ 200 Mo de mémoire. MATE a été mis au point pour apaiser les utilisateurs du bureau GNOME 2 après la transformation radicale de Gnome 3 vers une interface de type tablette.
+
+Comme l'environnement de bureau MATE n'est pas disponible dans les dépôts officiels de Manjaro, il y a deux dépôts alternatifs disponibles pour le télécharger et l'installer: le dépôt non-officiel Arch User Repository (AUR) et le dépôt officiel MATE. Ci-dessous suit un bref aperçu des avantages et des inconvénients de l'utilisation de l'un ou l'autre dépôt.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mate-greenbird.png|thumb|left|375px]]
+
+
+'''1. Le dépôt Arch User Repository (AUR):''' l'avantage de cette option est que les nouveaux utilisateurs peuvent trouver plus facile l'utilisation de AUR plutôt que d'avoir à passer par l'ajout d'un nouveau dépôt. L'inconvénient est que le processus d'installation prendra plus de temps, demandera plus d'implication, et bien sûr, proviendra d'une source non-officielle. Des manipulations supplémentaires seront également nécessaires pour installer d'autres extras du bureau MATE, contrairement à la source officielle.
+
+
+'''2. Le dépôt MATE officiel:''' l'avantage de cette option est qu'une source officielle est plus fiable et digne de confiance. Des étapes supplémentaires sont initialement requises pour configurer l'accès; le processus d'installation sera plus rapide, et pacman sera par conséquent en mesure d'accéder au dépôt MATE comme aux dépôts officiels de Manjaro. L'inconvénient est que ceux qui souhaiteront installer le ''Menu Mint'' devront, de toute façon, l'obtenir à partir du dépôt AUR.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 1: Le dépôt Arch User Repository (AUR) =
+
+{{Attention|Vous devrez accepter de remplacer les paquets existants de Manjaro par les équivalents de MATE afin de poursuivre l'installation. Dans le cas contraire, le processus sera automatiquement annulé.}}
+
+[[File:mate-yaourt.png|thumb|left|375px]]
+
+
+Si vous n'êtes pas familier du dépôt Arch User Repository, le guide '''[[Dépôt AUR (Arch User Repository)|Guide du dépôt AUR]]''' fournira les informations et instructions appropriées (comment accéder au dépôt, comment rechercher et installer un logiciel à partir du dépôt, etc.). Une fois le logiciel nécessaire installé (''yaourt''), l'environnement de bureau MATE peut alors être installé en entrant la commande suivante dans le terminal:
+
+ yaourt mate-desktop-environment
+
+
+Encore une fois, comme expliqué dans le guide du dépôt AUR, il vous sera demandé si vous souhaitez modifier des fichiers PKGBUILD. Sauf si vous savez ce que vous faites, toujours taper '''n''' pour «non». Toutefois, sachez que vous serez également invité, à l'occasion, à poursuivre l'installation ainsi. Donc, assurez-vous de lire chaque invite correctement avant d'entrer quoi que ce soit, sinon vous pourriez accidentellement annuler l'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Option 2: Le dépôt officiel MATE =
+
+L'environnement de bureau MATE peut également être téléchargé et installé à partir du dépôt officiel MATE. Dans ce cas, il sera d'abord nécessaire d'éditer le fichier de configuration '''[[Pacman et Yaourt|pacman]]''' afin d'ajouter le nom et l'adresse du serveur du dépôt MATE. Cela permettra à pacman - gestionnaire de paquets de Manjaro (&lt;u&gt;pac&lt;/u&gt;kage &lt;u&gt;man&lt;/u&gt;ager) - de trouver, télécharger et installer des logiciels à partir du nouveau dépôt MATE, tout comme avec les dépôts officiels de Manjaro.
+
+
+== Ouvrez le fichier de configuration Pacman ==
+
+La syntaxe de la commande pour éditer le fichier de configuration de pacman est:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+Par exemple, si vous souhaitez modifier le fichier dans le terminal en utilisant nano (un éditeur de texte standard basé sur le terminal), entrez:
+
+ sudo nano /etc/pacman.conf
+
+
+Dans le cas contraire - si vous avez installé la version complète de Manjaro (et non la NET-Edition) - vous trouverez peut-être plus facile d'utiliser l'éditeur de texte pré-installé ''gedit''. Cela permettra d'ouvrir le fichier de configuration sous forme de document, ce qui le rend plus facile à lire et à modifier. Pour utiliser gedit, la commande est:
+
+ sudo gedit /etc/pacman.conf
+
+
+Une fois le fichier de configuration pacman ouvert, ne vous inquiétez pas si le contenu de ce fichier sembler complexe et intimidant. Il est très simple d'ajouter le nouveau dépôt.
+
+
+== Ajouter le dépôt MATE ==
+
+Le dépôt MATE doit être ajouté à la section '''REPOSITORIES''', qui est située en bas du fichier de configuration de pacman. Les lignes à ajouter au fichier de configuration sont les suivantes:
+
+ [mate]
+ # Official MATE repo:
+ Server = http://repo.mate-desktop.org/archlinux/$arch
+
+
+Un exemple a été fourni ci-dessous, où la section des dépôts a été modifiée pour permettre l'accès au dépôt MATE. Cet ajout a été &lt;font color=&quot;green&quot;&gt;'''coloré en vert'''&lt;/font color&gt; à titre indicatif:
+
+ # An example of a custom package repository.  See the pacman manpage for
+ # tips on creating your own repositories.
+ #[custom]
+ #SigLevel = Optional TrustAll
+ #Server = file:///home/custompkgs
+ 
+ &lt;font color=&quot;green&quot;&gt;'''[mate]'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''# Official MATE repo:'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''Server = http://repo.mate-desktop.org/archlinux/$arch'''&lt;/font color&gt;
+
+
+Une fois votre ajout réalisé, enregistrez les modifications et fermez le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+== Synchronisez la base de données Pacman ==
+
+Une fois le fichier de configuration pacman modifié, il sera nécessaire de se synchroniser avec le dépôt MATE nouvellement activé pour pouvoir installer le logiciel à partir de celui-ci. Pour ce faire, entrez la commande:
+
+ sudo pacman -Syy
+
+
+== Installer l'environnement de bureau MATE ==
+
+{{Attention|Vous devrez accepter de remplacer les paquets existants de Manjaro par les équivalents de MATE afin de poursuivre l'installation. Dans le cas contraire, le processus sera automatiquement annulé.}}
+
+[[File:mate-terminal.png|thumb|left|375px]]
+
+
+Pour installer l'environnement de bureau MATE, entrez la commande suivante:
+
+ sudo pacman -S mate
+
+Pour installer en plus les extras supplémentairesde MATE liés à des thèmes et à des applications logicielles, ajoutez la commande suivante:
+
+ sudo pacman -S mate-extras
+
+Vous serez en mesure de sélectionner des composants individuels du bureau et des extras pour les installer ou les ignorer comme vous le souhaitez. Pour cela, dans les deux cas, il suffit d'entrer le(s) numéro(s) du(des) paquet(s) correspondant(s) à installer. '''Sinon, pour installer tout (en particulier ce qui concerne l'environnement de bureau concerné), il suffit d'appuyer sur &lt;Entrée&gt; lorsque vous êtes invité.''' Une fois installé, le bureau MATE sera immédiatement sélectionnable de l'écran de connexion. La seule exception est si vous utilisez le gestionnaire de connexion SLiM, qui nécessite une configuration supplémentaire (voir ci-dessous).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installer le Menu Mint (optionnel) =
+
+[[File:mintmenu-yaourt.png|thumb|left|375px]]
+
+
+Malheureusement, peut-être la fonctionnalité la plus populaire et distinctive du bureau MATE - le soi-disant '''Menu Mint''' - n'est pas préinstallé par défaut. Les utilisateurs rencontreront à la place un menu déroulant typique (mais entièrement fonctionnel). Comme il n'est pas actuellement possible d'installer le Menu Mint depuis le dépôt officiel de MATE, il doit à la place être obtenu à partir du dépôt Arch User Repository (AUR). Pour installer le Menu Mint - et en supposant que le logiciel nécessaire pour accéder au dépôt AUR ait été installé (''yaourt'') - entrez la commande suivante dans le terminal:
+
+ yaourt mintmenu
+
+Comme illustré, l'option appropriée devrait être la deuxième, qui est la version Mint Menu spécifique pour l'environnement de bureau MATE.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:mintmenu-MATE.png|thumb|left|375px]]
+
+
+Une fois le Menu Mint installé, il sera nécessaire de vous déconnecter puis vous reconnecter afin de pouvoir l'ajouter au tableau de bord et commencer à l'utiliser. Après vous être connecté, pour ajouter le Menu Mint:
+
+1. Clic droit sur le tableau de bord pour faire apparaître les options disponibles
+
+2. Sélectionnez '''Ajouter au tableau de bord...'''
+
+3. Recherchez le Menu Mint (par exemple en faisant défiler vers le bas ou en tapant '''mint''' dans la barre de recherche)
+
+4. Mettez en surbrillance le Menu Mint puis cliquez sur le bouton '''Ajouter'''.
+
+5. Éventuellement supprimer l'ancien menu et/ou déplacer le Menu Mint à la position désirée en faisant un clic droit sur eux et '''Déplacer'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuration de Slim (le cas échéant) =
+
+[[File:lxdm-MATE.png|thumb|left|375px]]
+
+
+{{Astuce|Si vous n'êtes pas sûr de savoir si vous utilisez ou non SLiM, il y a alors toutes les chances que vous ne l'utilisiez pas. SLiM n'est pas actuellement pré-installé dans les versions de Manjaro; il doit être installé, activé et configuré manuellement.}}
+
+Tel qu'illustré avec le gestionnaire de connexion LXDM, votre écran de connexion existant/gestionnaire de connexion répertorie automatiquement les environnements de bureau. La seule exception à cela est le gestionnaire de connexion SLiM, qui doit être configuré manuellement pour le faire. Dans ce cas, consultez le '''[[Gestionnaire de connexion SLiM: Guide français|Guide de connexion SLiM]]''' pour utiliser le bureau MATE avec lui.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Voir aussi =
+
+* '''[[Installez divers environnements de bureau et gestionnaires de fenêtres|Installer de nouveaux environnements de bureau]]'''
+* '''[http://wiki.mate-desktop.org/ MATE Wiki]'''
+* '''[http://wiki.mate-desktop.org/archlinux_custom_repo MATE Wiki Custom Repository Section]'''
+
+
+[[MATE Desktop Environment|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Customisation and Configuration]]
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>6muixjo9fwvmxy0z3zt0fz0pcez15qn</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

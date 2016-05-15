@@ -1,0 +1,2428 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide d'installation de manjaro 0.8.2 Expert</title>
+    <ns>0</ns>
+    <id>568</id>
+    <revision>
+      <id>3128</id>
+      <timestamp>2012-12-26T11:10:29Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;EN COURS DE REALISATION  [[Category:Présentation]]&quot;</comment>
+      <text xml:space="preserve" bytes="51">EN COURS DE REALISATION
+
+[[Category:Présentation]]</text>
+      <sha1>6iln9imx4amserj7sb76p3eas9uwn3i</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3180</id>
+      <parentid>3128</parentid>
+      <timestamp>2012-12-26T17:55:25Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="31358">= Vue d'ensemble =
+
+{{Astuce|si possible, '''assurez-vous que vous êtes connecté à internet''' avant de démarrer à partir de votre support d'installation. Si vous avez une connexion filaire via un câble Ethernet, alors Manjaro se connectera automatiquement à internet. Sinon, une fois que vous aurez démarré dans le bureau Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil. }}
+
+
+Ce '''guide pour utilisateurs expérimentés''' est destiné aux personnes ayant de l'expérience ou au moins à l'aise avec l'idée de partitionnement manuel de leurs disques durs, ainsi qu'avec la modification manuelle des fichiers de configuration nécessaires. Les avantages qui en découlent sont:
+
+* le contrôle total de l'utilisation des partitions et des espaces disque utilisés;
+* le dual-boot avec un autre système d'exploitation;
+* l'activation du support multi-langages;
+* le réglage fin de l'installation de Manjaro.
+
+
+Le '''[[Guide d'installation de manjaro 0.8.2 Débutant|Guide d'installation de manjaro 0.8.2 Débutant]]''' est plus adapté aux personnes ayant des connaissances et une expérience limitées. En utilisant ce guide, l'installateur va partitionner le disque dur pour vous, et il n'y aura pas besoin de modifier à la main différents fichiers système. Cependant, il entraînera également l'effacement complet de votre disque dur lors de l'installation. Manjaro sera installé seul.
+
+
+= Pré-installation : configuration de la langue et de la disposition de clavier =
+
+[[File: 0.png|thumb|left|375px]] 
+
+
+Une fois Manjaro lancé, vous allez voir s'afficher l'écran de démarrage. Avant de lancer l'environnement de bureau du Live-CD, il est recommandé de choisir d'abord votre '''langue préférée''' (F2) et votre '''disposition clavier''' (F3). 
+
+{{Astuce|Les langues supportées peuvent au début ne pas être toutes présentes dans la liste. Défilez vers le bas pour voir quelques langues et claviers supplémentaires. Si malgré tout votre langue préférée et votre clavier ne sont pas dans la liste, il sera possible de les activer en modifiant les fichiers de configuration appropriés durant le processus d'installation même.}}
+
+Une fois ces préparatifs initiaux terminés, il est possible de démarrer Manjaro pour commencer le processus d'installation. Deux options principales sont disponibles:
+
+'''1. Boot Manjaro Linux''' - démarrer en utilisant les pilotes libres/open-source développés par la communauté Linux
+
+'''2. Boot Manjaro Linux with non-free graphics drivers''' - démarrer en utilisant les pilotes graphiques propriétaires (les pilotes développés par les fabricants de vos cartes graphiques et dont ils sont propriétaires)
+
+Mettez en surbrillance votre choix et appuyez sur &lt;Entrée&gt; pour démarrer dans l'environnement de bureau du live-CD.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-082.png|thumb|left|375px]] 
+
+
+Comme on le voit ici, Manjaro 0.8.2 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la variante (environnement de bureau) Manjaro que vous avez choisi d'installer, l'installation elle-même sera toujours identique.
+
+{{Astuce|si vous souhaitez vous connecter à Internet en utilisant une connexion Wifi, c'est le moment de le faire. Autrement, il est possible de configurer votre connexion en utilisant l'installateur.}}
+
+Pour commencer le processus d'installation, fermez la fenêtre de bienvenue, puis double-cliquez sur l'icône «Manjaro CLI Installer».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Démarrage du programme d'installation stable =
+
+[[File: clistart-082.png|thumb|left|375px]]
+
+
+Le programme d'installation commence par signaler qu'il existe deux versions d'installateur disponibles: '''le programme d'installation stable et l'installation de test.''' Ce guide utilise le programme d'installation stable.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-082.png|thumb|left|375px]]
+
+
+Manjaro devrait détecter automatiquement votre réseau et le configurer. Cependant, si ça n'a pas été possible, vous avez la possibilité de configurer manuellement  à la fois votre liaison câblée et votre liaison sans fil en sélectionnant '''Set up Network (optional).''' Vous aurez besoin de connaissances réseau pour le réaliser même si l'équipe de développement Manjaro a fourni un '''didacticiel vidéo sur la configuration de votre réseau''' '''[http://vimeo.com/51256804 video tutorial on setting up your network]''' pour vous y guider.
+
+Dans le cas contraire (ou après avoir correctement configuré votre réseau), mettez en surbrillance '''Use stable installer.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: stableconfirm-082.png|thumb|left|375px]]
+
+
+Un message de confirmation va apparaître pour indiquer que l'installateur stable a commencé.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Réglage de la date et de l'heure =
+
+[[File: SetDateTime-082.png|thumb|left|375px]]
+
+
+'''Le réglage de la date et de l'heure''' devrait déjà être mis en surbrillance. Sinon, utiliser les touches fléchées pour le faire. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: utc-082.png|thumb|left|375px]]
+
+
+Assurez-vous que l''''UTC''' (Temps Universel Coordonné - l'heure normale primaire à partir de laquelle le monde règle ses horloges et ses heures) est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setregion-082.png|thumb|left|375px]]
+
+
+'''Sélectionnez la région où vous vivez.''' Dans notre cas, l'Europe a été choisie, car c'est la région correspondant à la France. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: settimezone.png|thumb|left|375px]]
+
+
+'''Sélectionnez votre fuseau horaire.''' Ceci est réalisé en mettant en surbrillance la capitale appropriée. Pour la France, choisissez Paris. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setdate-082.png|thumb|left|375px]]
+
+
+'''Réglez la date.''' Si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases jour, mois et année, et utilisez les flèches haut ou bas pour les modifier. 
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: settime-082.png|thumb|left|375px]]
+
+
+'''Enfin, réglez l'heure.''' Encore une fois, si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases heures, minutes et secondes, et utilisez les flèches haut ou bas pour les modifier. 
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour être ramené au menu principal d'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Préparation du disque dur =
+
+Manjaro utilise un outil en mode texte appelé ''cfdisk.'' Votre choix de partitionnement disque est largement conditionné par vos préférences personnelles. Cependant, certaines indications ont été fournies, en particulier pour les nouveaux utilisateurs qui souhaitent partitionner manuellement leurs disques durs. Le partitionnement (c'est-à-dire la division) de  votre disque dur lors de l'installation d'un système d'exploitation peut être entrepris pour un certain nombre de raisons différentes. Les exemples les plus courants sont :
+
+* répondre aux exigences de certains systèmes d'exploitation (par exemple Windows nécessite au moins deux partitions: une pour le démarrage, et l'autre pour Windows lui-même)
+* la possibilité d'installer plusieurs systèmes d'exploitation sur un seul disque dur
+* séparer les parties du disque dur pour des fins spécifiques (par exemple une pour le démarrage, pour servir de mémoire virtuelle / Swap), et
+* séparer les parties du disque dur pour y stocker des types de fichiers spécifiques (par exemple pour les fichiers système, les fichiers personnels, etc.).
+
+
+==Partitions principales et lecteurs logiques==
+
+Deux types de partitions peuvent être utilisés pour diviser un disque dur. Les '''partitions principales''' et les '''partitions étendues.''' Les ''partitions principales'' datent du début de l'informatique, et ne permettent de diviser un disque qu'en quatre parties. La notion de ''partition étendue'' et de ''lecteurs logiques'' a été développée pour contourner cette limitation. Elle permet, pour simplifier, de découper une partition primaire. Une partition primaire ainsi découpée est renommée '''partition étendue.'''
+
+Alors que le nombre maximum de partitions principales est de 4, en utilisant les lecteurs logiques il devient possible de diviser un disque IDE en 60 partitions et un disque SCSI en une douzaine. Ci-dessous, une image simple de la manière dont les lecteurs logiques peuvent être utilisés pour diviser un disque dur en huit morceaux:
+
+
+&lt;center&gt;[[file:partitions.png]]&lt;/center&gt;
+&lt;center&gt;(courtesy of [http://www.linuxquestions.org/questions/slackware-14/primary-vs-logical-487883/ LinuxQuestions.org])&lt;/center&gt;
+
+
+==Conventions et Instructions==
+
+* La convention de nommage de disques et des partitions est : sd '''[lettre de disque dur] [numéro de partition]'''. Par exemple, le premier (ou le seul) disque dur connecté à votre système sera nommé sd'''a''', le second sd'''b''', et ainsi de suite. En ce qui concerne les partitions, sda'''1''' va être la première partition du premier disque dur, sda'''2''' la seconde, et ainsi de suite. Les lecteurs logiques commenceront toujours à partir de '5'.
+
+* Contrairement à Windows (qui nécessite une partition principale particulière pour démarrer), les systèmes Linux comme Manjaro n'ont aucune exigence particulière concernant l'utilisation des partitions principales ou logiques.  Par exemple, Manjaro peut être installé en utilisant toutes les partitions primaires, tous les lecteurs logiques, ou un mélange des deux.
+
+* Bien que la méthode de préparation assistée crée des partitions séparées pour le GRUB (boot), la mémoire virtuelle (swap), le système (root), et les fichiers personnels (home), c'est un paramétrage totalement optionnel. Par exemple, les partitions boot, root, et home peuvent être aisément regroupées en une seule. C'est le cas avec d'autres distributions populaires comme Mint.
+
+* Séparer ou regrouper des partitions, c'est là que jouent les préférences personnelles. Chaque disposition a ses avantages et ses inconvénients. Par exemple, séparer les partitions boot, root et home présente l'avantage de faciliter la sauvegarde et/ou de réparer les problèmes de l'une sans affecter les autres. Un inconvénient peut être de déborder de l'espace alloué pour une partition, par exemple pour root, même s'il y a suffisamment d'espace libre sur le reste du disque.
+
+* Bien que l'allocation d'une partition swap soit tout à fait optionnelle, il est '''fortement recommandé''' de le faire, en particulier si vous comptez utiliser les fonctionnalités d''''hibernation''' ou de '''veille''' qui la nécessitent. Manjaro doit donc être installé en utilisant deux partitions au minimum.
+
+* A moins que vous ne sachiez exactement ce que vous faites, la taille de la partition de swap doit être la même que celle de la RAM utilisée par votre système (par exemple, 2 gigaoctets d'espace alloué au swap pour 2 gigaoctets de mémoire).
+
+* Quelle que soit votre décision concernant le partitionnement, n'importe laquelle de ces partitions peut être choisie comme partition de démarrage et contenir le GRUB. L'exception est la partition de swap.
+
+* Deux systèmes d'exploitation Linux installés sur le même ordinateur peuvent partager les mêmes partitions de GRUB et de swap. Ils n'en ont pas besoin d'une chacun.
+
+
+== Utilisation d'une table de partitionnement Linux existante ==
+
+Il est intéressant de noter que l'installateur Manjaro n'écrasera pas un dossier home s'il contient un nom d'utilisateur existant. En conséquence, l'environnement de bureau pré-installé perdra sa configuration Manjaro, et reviendra à ses paramètres fondamentaux («vanilla»). Afin de restaurer les paramètres de configuration Manjaro, après avoir démarré le système fraîchement installé, il sera nécessaire d'entrer la commande suivante dans un terminal:
+
+ cp -a /etc/skel/. /home/'''[username]'''
+
+
+Par exemple, par un compte nommé ''carl'', taper:
+
+ cp -a /etc/skel/. /home/'''carl'''
+
+
+A la fin, de l'installation,  il sera alors nécessaire de s'assurer que vous avez la pleine propriété du dossier home en entrant la commande suivante:
+
+ chown -R '''[username]''' /home/'''[username]'''
+
+
+Par exemple, pour un utilisateur nommé ''carl'':
+
+ chown -R '''carl''' /home/'''carl'''
+
+
+== Partitionnement manuel du disque dur ==
+
+[[File: discprep-082.png|thumb|left|375px]]
+
+
+'''Préparer le disque dur de votre ordinateur pour l'installation.''' La méthode de partitionnement manuel est choisie, car c'est la plus adaptée aux utilisateurs expérimentés.
+
+Assurez-vous que '''Disk(s) Preparation''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mandiscprep-082.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Partition by hand and choose the partitions to use''' est en surbrillance.
+
+{{note| l'espace à réserver sur votre disque dur à chaque étape est mesuré en mégaoctets (Mo). Il est également important de garder à l'esprit la quantité d'espace disque qu'il vous reste à chaque étape.}}
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: availabledisks-082.png|thumb|left|375px]]
+
+
+L'installateur va automatiquement détecter et lister tous les disques durs connectés à votre système. Le premier disque sera listé comme '''sda''', le second '''sdb''', et ainsi de suite. Dans cet exemple, il n'y a qu'un disque dur de connecté.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: choosedisks-082.png|thumb|left|375px]]
+
+
+Si plus d'un disque dur a été détecté, passez en surbrillance le disque sur lequel vous souhaitez installer Manjaro.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskwarning-082.png|thumb|left|375px]]
+
+
+Vous verrez un message indiquant que cfdisk est sur le point d'être lancé.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Scénarios de partitionnement de disques===
+
+Deux scénarios distincts de partitionnement sont fournis. C'est aussi bien pour illustrer nos propos que pour pousser à une plus grande compréhension des choix disponibles lorsque vous déciderez du partitionnement que vous voulez utiliser. Ces exemples peuvent être utilisés uniquement à titre informatif, ou l'ensemble des informations fournies pour l'un ou l'autre peut être utilisé pour créer votre propre table de partitions. Cet article en lui-même est lié à la section '''Installation de Manjaro,''' ci-dessous.
+
+* '''[[cfdisk Basic Partitioning Scenarios#A Two Partition Scenario|Création de deux partitions]]''': ce scénario explique comment combiner boot, root et home dans une seule partition principale. Un lecteur logique pour le swap est aussi créé.
+
+* '''[[cfdisk Basic Partitioning Scenarios#A Three Partition Scenario|Création de trois partitions]]''': ce scénario explique comment créer une partition de boot séparée, une partition pour root et home, et une partition de swap. Toutes les trois sont des partitions principales.
+
+{{note|ces scénarios utilisent des disques de tailles différentes. Le scénario ''deux partitions'' utilise un disque dur de 40 Go, alors que le ''scénario trois partitions'' utilise un disque dur de 8,5 Go. Toutefois, les principes sont toujours les mêmes.}}
+
+
+= Installation de Manjaro =
+
+[[File: installoption-082.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install System''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installstart-082.png|thumb|left|375px]]
+
+
+'''Démarrer l'installation.''' Un message s'affiche indiquant que l'installation est sur le point de commencer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installcomplete.png|thumb|left|375px]]
+
+
+Après quelques instants, un message s'affiche pour confirmer que Manjaro a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfigure-082.png|thumb|left|375px]]
+
+
+Le programme d'installation va automatiquement configurer votre système, détecter votre matériel, et installer les pilotes appropriés. Il permettra également de trouver les serveurs disponibles Manjaro à partir desquels vous serez en mesure de télécharger des mises à jour, des logiciels et des applications. S'il vous plaît soyez patient, car ce processus peut prendre une minute ou deux.
+
+{{Attention|Manjaro ne sera pas en mesure de trouver les serveurs disponibles si vous n'êtes pas connecté à Internet.}}
+
+A la fin, vous reviendrez automatiquement au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuration de Manjaro =
+
+[[File: configureoption.png|thumb|left|375px]]
+
+
+'''Il va maintenant être nécessaire de configurer Manjaro.''' Etant donné que ce guide est pour ''utilisateurs expérimentés,'' ce processus va faire appel à la modification de quelques fichiers principaux.
+
+Veillez à ce que '''Configure System''' soit mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Mot de passe root ==
+
+[[File: rootpassword-082.png|thumb|left|375px]]
+
+
+'''Définir le mot de passe root.''' Assurez-vous que '''Change Root Password''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: enterroot-082.png|thumb|left|375px]]
+
+
+Tapez le mot de passe root que vous avez choisi.
+
+{{Astuce| Les mots de passe seront sensibles à la casse.}}
+
+Dès que c'est fait appuyez sur &lt;Entrée&gt; pour continuer. Vous aurez à entrer le mot de passe à nouveau pour le confirmer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Compte utilisateur ==
+
+[[File: setupuser-082.png|thumb|left|375px]]
+
+
+'''Mettre en place votre propre compte utilisateur personnel.''' Assurez-vous que '''Setup user account(s)''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: enteruser-082.png|thumb|left|375px]]
+
+
+Tapez le nom de compte / login que vous avez choisi.
+
+{{Attention| Bien que vous puissiez entrer presque tout ce que voulez, '''faire en sorte que toutes les lettres de votre nom soient en minuscules'''.}}
+
+Lorsque vous avez terminé, vérifiez que '''OK''' est sélectionné. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: usersudo-082.png|thumb|left|375px]]
+
+
+Confirmez que vous souhaitez obtenir les droits sudo.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: sudopass-082.png|thumb|left|375px]]
+
+
+Tapez le mot de passe choisi pour votre compte personnel.
+
+{{Astuce|Pour garder les choses simples, il vous suffit de taper le même mot de passe que celui utilisé pour le compte root.}}
+
+Dès que c'est fait appuyez sur &lt;Entrée&gt; pour continuer. Vous aurez à entrer le mot de passe à nouveau pour le confirmer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Editer la configuration du système (optionnel)==
+
+[[File: sysconfigoption-082.png|thumb|left|375px]]
+
+
+Il va maintenant falloir vérifier/modifier certains fichiers de configuration importants pour Manjaro. Ce sont ceux relatifs à la langue utilisée, à la disposition du clavier,  et à l'accès au serveur logiciel.
+
+{{Astuce|Si vous avez été en mesure de choisir votre langue préférée et la disposition du clavier (keymap) dès le début, alors pratiquement tout devrait déjà avoir été configuré pour vous!}}
+
+Assurez-vous que '''Edit system configuration (optional)''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langues système===
+
+[[File: editsyslang-082.png|thumb|left|375px]]
+
+
+La modification de ce fichier vous permet de choisir lesquelles et combien de langues différentes Manjaro prend en charge. Ceci inclut tous les caractères spéciaux (c.-à-d. en dehors des 26 lettres de l'alphabet français) qu'elles utilisent.
+
+{{Astuce| Il est possible que le système charge plusieurs langues, vous n'êtes pas limité à une seule ou deux. Elles pourront également être facilement sélectionnables à tout moment lors de la connexion si vous utilisez le ''gestionnaire d'affichage LXDM''.}}
+
+Assurez-vous que  '''Edit system languages''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: syslangfile-082.png|thumb|left|375px]]
+
+
+Pour activer dans Manjaro le support des langues souhaitées, supprimez le dièse ('#') situé au début des lignes appropriées et qui se terminent par '''UTF-8''' et '''ISO''' quand c'est possible. Si vous avez pu définir votre langue préférée au début, il ne s'agira ici que de vérifier que les # ont bien été enlevés.
+
+{{Astuce|Si vous n'êtes pas sûr de ce que repré- sentent les codes langues et des pays particuliers, une petite sélection d'exemples sont disponibles ici '''[http://www.fincher.org/Utilities/CountryLanguageList.shtml ici]''' (ne pas tenir compte de l'utilisation des tirets ''''-'''' au lieu de soulignement ''''_'''').}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant d'appuyer sur &lt;Entrée&gt; pour revenir au menu fichier de configuration.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue utilisée par défaut===
+
+[[File: deflang-082.png|thumb|left|375px]]
+
+
+'''Modifier la langue utilisé par défaut.''' La modification de ce fichier vous permettra de choisir la langue principale devant être utilisée par Manjaro en standard.
+
+Assurez-vous que '''Edit default used language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: deflangfile-082.png|thumb|left|375px]]
+
+
+La langue par défaut utilisée par Manjaro est définie par la commande '''LANG='''. Plus précisément, cela s'applique à la langue utilisée par les applications logicielles. Comme le montre l'exemple, l'''anglais britannique'' a été sélectionné au début, et le code UTF-8 adéquat a déjà été défini.
+
+{{Astuce|Si vous avez été en mesure de définir votre langue préférée au début, ça devrait être aussi le cas chez vous. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix.}}
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que l'UTF-8 dans le code n'est pas répertorié deux fois ici, bien qu'ils soient affichés comme tels dans le fichier de configuration des ''langues système''.
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue de l'environnement===
+
+[[File: envlang-082.png|thumb|left|375px]]
+
+
+'''Modifier la langue de l'environnement.''' La modification de ce fichier vous permettra de définir la langue utilisée par Manjaro lors de l'affichage des informations et des messages qui vous sont destinés. Ce n'est pas la même chose que le jeu de langue par défaut pour les applications logicielles.
+
+Assurez-vous que '''Edit Environment Language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: envlangfile-082.png|thumb|left|375px]]
+
+
+'''Le code de la langue dans ce fichier doit être exactement le même que celui défini dans le fichier de configuration de la langue par défaut.''' Sinon le système Manjaro et ses applications installées vont utiliser des langues différentes.
+
+Comme illustré, le code UTF-8 pour anglais, la Grande-Bretagne a déjà été mis, et c'est exactement le même code que celui utilisé dans le fichier de configuration de la ''langue par défaut''.
+
+Encore une fois, si vous avez été en mesure de définir votre langue préférée au début, tout devrait déjà être réglé aussi. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix après '''LANG='''.
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que la partie UTF-8 du code n'est pas répertorié deux fois ici, bien qu'il apparaisse ainsi dans le fichier de configuration des ''langues du système.'' Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur Entrée pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Liste des miroirs de paquets===
+
+[[File: packmirlist-082.png|thumb|left|375px]]
+
+
+'''Modifier la liste des miroirs de paquets.''' La modification de ce fichier vous permettra de sélectionner les serveurs Internet Manjaro les plus appropriés à partir desquels télécharger les mises à jour, les fichiers et les applications.
+
+Assurez-vous que '''Packages mirror list''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: pkmirlistfile-082.png|thumb|left|375px]]
+
+
+Le miroir du Royaume-Uni (Grande-Bretagne) est le serveur par défaut de l'installation. Veuillez supprimer le caractère dièse (&quot;#&quot;) devant la ligne du serveur français (plus performant) pour l'activer. Tout serveur peut être choisi ou ignoré en supprimant ou en ajoutant le caractère dièse  (&quot;#&quot;) en début de la ligne, respectivement.
+
+{{Astuce|En règle générale, Manjaro essaie de se connecter aux serveurs sélectionnés dans l'ordre où ils sont énumérés.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Disposition du clavier de la console===
+
+[[File: ckl-082.png|thumb|left|375px]]
+
+
+'''Modifier la disposition du clavier de la console.''' La modification de ce fichier vous permettra de définir le type de clavier par défaut correspondant à votre pays.
+
+Assurez-vous que '''Console keyboard layout''' est mis en surbrillance.
+ 
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cklfile-082.png|thumb|left|375px]]
+
+
+La langue par défaut à utiliser pour Manjaro est défini par la commande '''KEYMAP='''. Dans notre cas, le clavier ''anglais, GB'' a été sélectionné au début de l'installation, il a déjà été paramétré pour le Royaume-Uni (Grande-Bretagne). Si vous avez été en mesure de configurer votre clavier au début, ça devrait déjà être le cas chez vous aussi. Dans le cas contraire, il sera nécessaire d'entrer manuellement votre propre clavier, ce qui peut également nécessiter la spécification de la police à utiliser pour cela (sinon les caractères spéciaux peuvent apparaître comme des carrés blancs).
+
+{{Astuce|Si vous rencontrez des problèmes avec cela, alors vous pouvez utiliser l'option '''Change vconsole keymap''', qui est répertoriée dans le '''menu de configuration'''. Cela fournira une liste des codes qui correspondent aux différentes dispositions de clavier différentes disponibles. Voir la section '''paramétrage du clavier''' dans le Guide d'installation pour les débutants pour plus d'informations.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Quittez le menu de configuration===
+
+[[File: exitconfig-082.png|thumb|left|375px]]
+
+La configuration étant terminée, quittez le menu de configuration en sélectionnant '''Main Menu'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-082.png|thumb|left|375px]]
+
+
+Il sera alors nécessaire d'attendre quelques instants pendant que l'installation Manjaro est automatiquement configurée selon vos préférences. Une fois terminé, vous serez automatiquement dirigé vers le menu principal. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installation du chargeur de démarrage =
+
+[[File: bootloaderoption-082.png|thumb|left|375px]]
+
+
+'''Installer le GRUB.'''  Si vous n'utilisez pas un GRUB existant (fourni par un sytème Linux déjà installé), assurez-vous que '''Install Bootloader''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installGRUB.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install GRUB2 (needed to boot)''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: GRUBconfirm-082.png|thumb|left|375px]]
+
+
+Le programme d'installation va détecter automatiquement toute partition marquée comme '''amorçable''', et par conséquent va l'afficher comme  partition cible pour installer le GRUB2 dans un message de demande de confirmation. 
+
+Appuyez sur &lt;Entrée&gt; pour lancer l'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: GRUBinstalled-082.png|thumb|left|375px]]
+
+
+Un message de confirmation apparaîtra après quelques secondes, indiquant que GRUB2 a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour revenir au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Fin de l'installation =
+
+[[File: QuitInstaller-082.png|thumb|left|375px]]
+
+
+Tout est fait! Maintenant mettez en surbrillance '''Quit''' pour terminer l'installation!
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+
+Le programme d'installation va prendre quelques instants pour finaliser l'installation. Un message de confirmation s'affiche alors, indiquant que le processus d'installation est terminé.
+Le programme d'installation va alors se fermer automatiquement, et vous serez renvoyé à l'environnement de bureau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: restartManjaro-082.png|thumb|left|375px]]
+
+
+'''Vous pouvez maintenant redémarrer votre ordinateur pour démarrer votre système d'exploitation nouvellement installé Manjaro!'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: 56.png|thumb|left|375px]]
+
+
+Lors du redémarrage (ou de l'arrêt), il vous sera rappelé d'avoir à retirer le support d'installation avant d'appuyer sur &lt;Entrée&gt; pour continuer. Si vous ne le faites pas, vous allez redémarrer à nouveau dans le support d'installation.
+
+{{Astuce| La première chose que vous devez faire lors du démarrage de Manjaro est de mettre à jour votre système.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+* '''[[Installation_Guide_for_the_NET_Edition_0.8.2|Installation Guide for the NET Edition]]'''
+* '''[[Cfdisk_Basic_Partitioning_Scenarios|Basic Partitioning Scenarios Using cfdisk]]'''
+
+
+[[Category:Getting Started]]
+
+[[Category:Présentation]]</text>
+      <sha1>5oi04ie76o56cohq47bh8g7zylys32j</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3321</id>
+      <parentid>3180</parentid>
+      <timestamp>2012-12-27T18:44:41Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* See Also */</comment>
+      <text xml:space="preserve" bytes="31357">= Vue d'ensemble =
+
+{{Astuce|si possible, '''assurez-vous que vous êtes connecté à internet''' avant de démarrer à partir de votre support d'installation. Si vous avez une connexion filaire via un câble Ethernet, alors Manjaro se connectera automatiquement à internet. Sinon, une fois que vous aurez démarré dans le bureau Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil. }}
+
+
+Ce '''guide pour utilisateurs expérimentés''' est destiné aux personnes ayant de l'expérience ou au moins à l'aise avec l'idée de partitionnement manuel de leurs disques durs, ainsi qu'avec la modification manuelle des fichiers de configuration nécessaires. Les avantages qui en découlent sont:
+
+* le contrôle total de l'utilisation des partitions et des espaces disque utilisés;
+* le dual-boot avec un autre système d'exploitation;
+* l'activation du support multi-langages;
+* le réglage fin de l'installation de Manjaro.
+
+
+Le '''[[Guide d'installation de manjaro 0.8.2 Débutant|Guide d'installation de manjaro 0.8.2 Débutant]]''' est plus adapté aux personnes ayant des connaissances et une expérience limitées. En utilisant ce guide, l'installateur va partitionner le disque dur pour vous, et il n'y aura pas besoin de modifier à la main différents fichiers système. Cependant, il entraînera également l'effacement complet de votre disque dur lors de l'installation. Manjaro sera installé seul.
+
+
+= Pré-installation : configuration de la langue et de la disposition de clavier =
+
+[[File: 0.png|thumb|left|375px]] 
+
+
+Une fois Manjaro lancé, vous allez voir s'afficher l'écran de démarrage. Avant de lancer l'environnement de bureau du Live-CD, il est recommandé de choisir d'abord votre '''langue préférée''' (F2) et votre '''disposition clavier''' (F3). 
+
+{{Astuce|Les langues supportées peuvent au début ne pas être toutes présentes dans la liste. Défilez vers le bas pour voir quelques langues et claviers supplémentaires. Si malgré tout votre langue préférée et votre clavier ne sont pas dans la liste, il sera possible de les activer en modifiant les fichiers de configuration appropriés durant le processus d'installation même.}}
+
+Une fois ces préparatifs initiaux terminés, il est possible de démarrer Manjaro pour commencer le processus d'installation. Deux options principales sont disponibles:
+
+'''1. Boot Manjaro Linux''' - démarrer en utilisant les pilotes libres/open-source développés par la communauté Linux
+
+'''2. Boot Manjaro Linux with non-free graphics drivers''' - démarrer en utilisant les pilotes graphiques propriétaires (les pilotes développés par les fabricants de vos cartes graphiques et dont ils sont propriétaires)
+
+Mettez en surbrillance votre choix et appuyez sur &lt;Entrée&gt; pour démarrer dans l'environnement de bureau du live-CD.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-082.png|thumb|left|375px]] 
+
+
+Comme on le voit ici, Manjaro 0.8.2 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la variante (environnement de bureau) Manjaro que vous avez choisi d'installer, l'installation elle-même sera toujours identique.
+
+{{Astuce|si vous souhaitez vous connecter à Internet en utilisant une connexion Wifi, c'est le moment de le faire. Autrement, il est possible de configurer votre connexion en utilisant l'installateur.}}
+
+Pour commencer le processus d'installation, fermez la fenêtre de bienvenue, puis double-cliquez sur l'icône «Manjaro CLI Installer».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Démarrage du programme d'installation stable =
+
+[[File: clistart-082.png|thumb|left|375px]]
+
+
+Le programme d'installation commence par signaler qu'il existe deux versions d'installateur disponibles: '''le programme d'installation stable et l'installation de test.''' Ce guide utilise le programme d'installation stable.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-082.png|thumb|left|375px]]
+
+
+Manjaro devrait détecter automatiquement votre réseau et le configurer. Cependant, si ça n'a pas été possible, vous avez la possibilité de configurer manuellement  à la fois votre liaison câblée et votre liaison sans fil en sélectionnant '''Set up Network (optional).''' Vous aurez besoin de connaissances réseau pour le réaliser même si l'équipe de développement Manjaro a fourni un '''didacticiel vidéo sur la configuration de votre réseau''' '''[http://vimeo.com/51256804 video tutorial on setting up your network]''' pour vous y guider.
+
+Dans le cas contraire (ou après avoir correctement configuré votre réseau), mettez en surbrillance '''Use stable installer.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: stableconfirm-082.png|thumb|left|375px]]
+
+
+Un message de confirmation va apparaître pour indiquer que l'installateur stable a commencé.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Réglage de la date et de l'heure =
+
+[[File: SetDateTime-082.png|thumb|left|375px]]
+
+
+'''Le réglage de la date et de l'heure''' devrait déjà être mis en surbrillance. Sinon, utiliser les touches fléchées pour le faire. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: utc-082.png|thumb|left|375px]]
+
+
+Assurez-vous que l''''UTC''' (Temps Universel Coordonné - l'heure normale primaire à partir de laquelle le monde règle ses horloges et ses heures) est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setregion-082.png|thumb|left|375px]]
+
+
+'''Sélectionnez la région où vous vivez.''' Dans notre cas, l'Europe a été choisie, car c'est la région correspondant à la France. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: settimezone.png|thumb|left|375px]]
+
+
+'''Sélectionnez votre fuseau horaire.''' Ceci est réalisé en mettant en surbrillance la capitale appropriée. Pour la France, choisissez Paris. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setdate-082.png|thumb|left|375px]]
+
+
+'''Réglez la date.''' Si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases jour, mois et année, et utilisez les flèches haut ou bas pour les modifier. 
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: settime-082.png|thumb|left|375px]]
+
+
+'''Enfin, réglez l'heure.''' Encore une fois, si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases heures, minutes et secondes, et utilisez les flèches haut ou bas pour les modifier. 
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour être ramené au menu principal d'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Préparation du disque dur =
+
+Manjaro utilise un outil en mode texte appelé ''cfdisk.'' Votre choix de partitionnement disque est largement conditionné par vos préférences personnelles. Cependant, certaines indications ont été fournies, en particulier pour les nouveaux utilisateurs qui souhaitent partitionner manuellement leurs disques durs. Le partitionnement (c'est-à-dire la division) de  votre disque dur lors de l'installation d'un système d'exploitation peut être entrepris pour un certain nombre de raisons différentes. Les exemples les plus courants sont :
+
+* répondre aux exigences de certains systèmes d'exploitation (par exemple Windows nécessite au moins deux partitions: une pour le démarrage, et l'autre pour Windows lui-même)
+* la possibilité d'installer plusieurs systèmes d'exploitation sur un seul disque dur
+* séparer les parties du disque dur pour des fins spécifiques (par exemple une pour le démarrage, pour servir de mémoire virtuelle / Swap), et
+* séparer les parties du disque dur pour y stocker des types de fichiers spécifiques (par exemple pour les fichiers système, les fichiers personnels, etc.).
+
+
+==Partitions principales et lecteurs logiques==
+
+Deux types de partitions peuvent être utilisés pour diviser un disque dur. Les '''partitions principales''' et les '''partitions étendues.''' Les ''partitions principales'' datent du début de l'informatique, et ne permettent de diviser un disque qu'en quatre parties. La notion de ''partition étendue'' et de ''lecteurs logiques'' a été développée pour contourner cette limitation. Elle permet, pour simplifier, de découper une partition primaire. Une partition primaire ainsi découpée est renommée '''partition étendue.'''
+
+Alors que le nombre maximum de partitions principales est de 4, en utilisant les lecteurs logiques il devient possible de diviser un disque IDE en 60 partitions et un disque SCSI en une douzaine. Ci-dessous, une image simple de la manière dont les lecteurs logiques peuvent être utilisés pour diviser un disque dur en huit morceaux:
+
+
+&lt;center&gt;[[file:partitions.png]]&lt;/center&gt;
+&lt;center&gt;(courtesy of [http://www.linuxquestions.org/questions/slackware-14/primary-vs-logical-487883/ LinuxQuestions.org])&lt;/center&gt;
+
+
+==Conventions et Instructions==
+
+* La convention de nommage de disques et des partitions est : sd '''[lettre de disque dur] [numéro de partition]'''. Par exemple, le premier (ou le seul) disque dur connecté à votre système sera nommé sd'''a''', le second sd'''b''', et ainsi de suite. En ce qui concerne les partitions, sda'''1''' va être la première partition du premier disque dur, sda'''2''' la seconde, et ainsi de suite. Les lecteurs logiques commenceront toujours à partir de '5'.
+
+* Contrairement à Windows (qui nécessite une partition principale particulière pour démarrer), les systèmes Linux comme Manjaro n'ont aucune exigence particulière concernant l'utilisation des partitions principales ou logiques.  Par exemple, Manjaro peut être installé en utilisant toutes les partitions primaires, tous les lecteurs logiques, ou un mélange des deux.
+
+* Bien que la méthode de préparation assistée crée des partitions séparées pour le GRUB (boot), la mémoire virtuelle (swap), le système (root), et les fichiers personnels (home), c'est un paramétrage totalement optionnel. Par exemple, les partitions boot, root, et home peuvent être aisément regroupées en une seule. C'est le cas avec d'autres distributions populaires comme Mint.
+
+* Séparer ou regrouper des partitions, c'est là que jouent les préférences personnelles. Chaque disposition a ses avantages et ses inconvénients. Par exemple, séparer les partitions boot, root et home présente l'avantage de faciliter la sauvegarde et/ou de réparer les problèmes de l'une sans affecter les autres. Un inconvénient peut être de déborder de l'espace alloué pour une partition, par exemple pour root, même s'il y a suffisamment d'espace libre sur le reste du disque.
+
+* Bien que l'allocation d'une partition swap soit tout à fait optionnelle, il est '''fortement recommandé''' de le faire, en particulier si vous comptez utiliser les fonctionnalités d''''hibernation''' ou de '''veille''' qui la nécessitent. Manjaro doit donc être installé en utilisant deux partitions au minimum.
+
+* A moins que vous ne sachiez exactement ce que vous faites, la taille de la partition de swap doit être la même que celle de la RAM utilisée par votre système (par exemple, 2 gigaoctets d'espace alloué au swap pour 2 gigaoctets de mémoire).
+
+* Quelle que soit votre décision concernant le partitionnement, n'importe laquelle de ces partitions peut être choisie comme partition de démarrage et contenir le GRUB. L'exception est la partition de swap.
+
+* Deux systèmes d'exploitation Linux installés sur le même ordinateur peuvent partager les mêmes partitions de GRUB et de swap. Ils n'en ont pas besoin d'une chacun.
+
+
+== Utilisation d'une table de partitionnement Linux existante ==
+
+Il est intéressant de noter que l'installateur Manjaro n'écrasera pas un dossier home s'il contient un nom d'utilisateur existant. En conséquence, l'environnement de bureau pré-installé perdra sa configuration Manjaro, et reviendra à ses paramètres fondamentaux («vanilla»). Afin de restaurer les paramètres de configuration Manjaro, après avoir démarré le système fraîchement installé, il sera nécessaire d'entrer la commande suivante dans un terminal:
+
+ cp -a /etc/skel/. /home/'''[username]'''
+
+
+Par exemple, par un compte nommé ''carl'', taper:
+
+ cp -a /etc/skel/. /home/'''carl'''
+
+
+A la fin, de l'installation,  il sera alors nécessaire de s'assurer que vous avez la pleine propriété du dossier home en entrant la commande suivante:
+
+ chown -R '''[username]''' /home/'''[username]'''
+
+
+Par exemple, pour un utilisateur nommé ''carl'':
+
+ chown -R '''carl''' /home/'''carl'''
+
+
+== Partitionnement manuel du disque dur ==
+
+[[File: discprep-082.png|thumb|left|375px]]
+
+
+'''Préparer le disque dur de votre ordinateur pour l'installation.''' La méthode de partitionnement manuel est choisie, car c'est la plus adaptée aux utilisateurs expérimentés.
+
+Assurez-vous que '''Disk(s) Preparation''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mandiscprep-082.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Partition by hand and choose the partitions to use''' est en surbrillance.
+
+{{note| l'espace à réserver sur votre disque dur à chaque étape est mesuré en mégaoctets (Mo). Il est également important de garder à l'esprit la quantité d'espace disque qu'il vous reste à chaque étape.}}
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: availabledisks-082.png|thumb|left|375px]]
+
+
+L'installateur va automatiquement détecter et lister tous les disques durs connectés à votre système. Le premier disque sera listé comme '''sda''', le second '''sdb''', et ainsi de suite. Dans cet exemple, il n'y a qu'un disque dur de connecté.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: choosedisks-082.png|thumb|left|375px]]
+
+
+Si plus d'un disque dur a été détecté, passez en surbrillance le disque sur lequel vous souhaitez installer Manjaro.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskwarning-082.png|thumb|left|375px]]
+
+
+Vous verrez un message indiquant que cfdisk est sur le point d'être lancé.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Scénarios de partitionnement de disques===
+
+Deux scénarios distincts de partitionnement sont fournis. C'est aussi bien pour illustrer nos propos que pour pousser à une plus grande compréhension des choix disponibles lorsque vous déciderez du partitionnement que vous voulez utiliser. Ces exemples peuvent être utilisés uniquement à titre informatif, ou l'ensemble des informations fournies pour l'un ou l'autre peut être utilisé pour créer votre propre table de partitions. Cet article en lui-même est lié à la section '''Installation de Manjaro,''' ci-dessous.
+
+* '''[[cfdisk Basic Partitioning Scenarios#A Two Partition Scenario|Création de deux partitions]]''': ce scénario explique comment combiner boot, root et home dans une seule partition principale. Un lecteur logique pour le swap est aussi créé.
+
+* '''[[cfdisk Basic Partitioning Scenarios#A Three Partition Scenario|Création de trois partitions]]''': ce scénario explique comment créer une partition de boot séparée, une partition pour root et home, et une partition de swap. Toutes les trois sont des partitions principales.
+
+{{note|ces scénarios utilisent des disques de tailles différentes. Le scénario ''deux partitions'' utilise un disque dur de 40 Go, alors que le ''scénario trois partitions'' utilise un disque dur de 8,5 Go. Toutefois, les principes sont toujours les mêmes.}}
+
+
+= Installation de Manjaro =
+
+[[File: installoption-082.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install System''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installstart-082.png|thumb|left|375px]]
+
+
+'''Démarrer l'installation.''' Un message s'affiche indiquant que l'installation est sur le point de commencer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installcomplete.png|thumb|left|375px]]
+
+
+Après quelques instants, un message s'affiche pour confirmer que Manjaro a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfigure-082.png|thumb|left|375px]]
+
+
+Le programme d'installation va automatiquement configurer votre système, détecter votre matériel, et installer les pilotes appropriés. Il permettra également de trouver les serveurs disponibles Manjaro à partir desquels vous serez en mesure de télécharger des mises à jour, des logiciels et des applications. S'il vous plaît soyez patient, car ce processus peut prendre une minute ou deux.
+
+{{Attention|Manjaro ne sera pas en mesure de trouver les serveurs disponibles si vous n'êtes pas connecté à Internet.}}
+
+A la fin, vous reviendrez automatiquement au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuration de Manjaro =
+
+[[File: configureoption.png|thumb|left|375px]]
+
+
+'''Il va maintenant être nécessaire de configurer Manjaro.''' Etant donné que ce guide est pour ''utilisateurs expérimentés,'' ce processus va faire appel à la modification de quelques fichiers principaux.
+
+Veillez à ce que '''Configure System''' soit mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Mot de passe root ==
+
+[[File: rootpassword-082.png|thumb|left|375px]]
+
+
+'''Définir le mot de passe root.''' Assurez-vous que '''Change Root Password''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: enterroot-082.png|thumb|left|375px]]
+
+
+Tapez le mot de passe root que vous avez choisi.
+
+{{Astuce| Les mots de passe seront sensibles à la casse.}}
+
+Dès que c'est fait appuyez sur &lt;Entrée&gt; pour continuer. Vous aurez à entrer le mot de passe à nouveau pour le confirmer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Compte utilisateur ==
+
+[[File: setupuser-082.png|thumb|left|375px]]
+
+
+'''Mettre en place votre propre compte utilisateur personnel.''' Assurez-vous que '''Setup user account(s)''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: enteruser-082.png|thumb|left|375px]]
+
+
+Tapez le nom de compte / login que vous avez choisi.
+
+{{Attention| Bien que vous puissiez entrer presque tout ce que voulez, '''faire en sorte que toutes les lettres de votre nom soient en minuscules'''.}}
+
+Lorsque vous avez terminé, vérifiez que '''OK''' est sélectionné. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: usersudo-082.png|thumb|left|375px]]
+
+
+Confirmez que vous souhaitez obtenir les droits sudo.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: sudopass-082.png|thumb|left|375px]]
+
+
+Tapez le mot de passe choisi pour votre compte personnel.
+
+{{Astuce|Pour garder les choses simples, il vous suffit de taper le même mot de passe que celui utilisé pour le compte root.}}
+
+Dès que c'est fait appuyez sur &lt;Entrée&gt; pour continuer. Vous aurez à entrer le mot de passe à nouveau pour le confirmer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Editer la configuration du système (optionnel)==
+
+[[File: sysconfigoption-082.png|thumb|left|375px]]
+
+
+Il va maintenant falloir vérifier/modifier certains fichiers de configuration importants pour Manjaro. Ce sont ceux relatifs à la langue utilisée, à la disposition du clavier,  et à l'accès au serveur logiciel.
+
+{{Astuce|Si vous avez été en mesure de choisir votre langue préférée et la disposition du clavier (keymap) dès le début, alors pratiquement tout devrait déjà avoir été configuré pour vous!}}
+
+Assurez-vous que '''Edit system configuration (optional)''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langues système===
+
+[[File: editsyslang-082.png|thumb|left|375px]]
+
+
+La modification de ce fichier vous permet de choisir lesquelles et combien de langues différentes Manjaro prend en charge. Ceci inclut tous les caractères spéciaux (c.-à-d. en dehors des 26 lettres de l'alphabet français) qu'elles utilisent.
+
+{{Astuce| Il est possible que le système charge plusieurs langues, vous n'êtes pas limité à une seule ou deux. Elles pourront également être facilement sélectionnables à tout moment lors de la connexion si vous utilisez le ''gestionnaire d'affichage LXDM''.}}
+
+Assurez-vous que  '''Edit system languages''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: syslangfile-082.png|thumb|left|375px]]
+
+
+Pour activer dans Manjaro le support des langues souhaitées, supprimez le dièse ('#') situé au début des lignes appropriées et qui se terminent par '''UTF-8''' et '''ISO''' quand c'est possible. Si vous avez pu définir votre langue préférée au début, il ne s'agira ici que de vérifier que les # ont bien été enlevés.
+
+{{Astuce|Si vous n'êtes pas sûr de ce que repré- sentent les codes langues et des pays particuliers, une petite sélection d'exemples sont disponibles ici '''[http://www.fincher.org/Utilities/CountryLanguageList.shtml ici]''' (ne pas tenir compte de l'utilisation des tirets ''''-'''' au lieu de soulignement ''''_'''').}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant d'appuyer sur &lt;Entrée&gt; pour revenir au menu fichier de configuration.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue utilisée par défaut===
+
+[[File: deflang-082.png|thumb|left|375px]]
+
+
+'''Modifier la langue utilisé par défaut.''' La modification de ce fichier vous permettra de choisir la langue principale devant être utilisée par Manjaro en standard.
+
+Assurez-vous que '''Edit default used language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: deflangfile-082.png|thumb|left|375px]]
+
+
+La langue par défaut utilisée par Manjaro est définie par la commande '''LANG='''. Plus précisément, cela s'applique à la langue utilisée par les applications logicielles. Comme le montre l'exemple, l'''anglais britannique'' a été sélectionné au début, et le code UTF-8 adéquat a déjà été défini.
+
+{{Astuce|Si vous avez été en mesure de définir votre langue préférée au début, ça devrait être aussi le cas chez vous. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix.}}
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que l'UTF-8 dans le code n'est pas répertorié deux fois ici, bien qu'ils soient affichés comme tels dans le fichier de configuration des ''langues système''.
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue de l'environnement===
+
+[[File: envlang-082.png|thumb|left|375px]]
+
+
+'''Modifier la langue de l'environnement.''' La modification de ce fichier vous permettra de définir la langue utilisée par Manjaro lors de l'affichage des informations et des messages qui vous sont destinés. Ce n'est pas la même chose que le jeu de langue par défaut pour les applications logicielles.
+
+Assurez-vous que '''Edit Environment Language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: envlangfile-082.png|thumb|left|375px]]
+
+
+'''Le code de la langue dans ce fichier doit être exactement le même que celui défini dans le fichier de configuration de la langue par défaut.''' Sinon le système Manjaro et ses applications installées vont utiliser des langues différentes.
+
+Comme illustré, le code UTF-8 pour anglais, la Grande-Bretagne a déjà été mis, et c'est exactement le même code que celui utilisé dans le fichier de configuration de la ''langue par défaut''.
+
+Encore une fois, si vous avez été en mesure de définir votre langue préférée au début, tout devrait déjà être réglé aussi. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix après '''LANG='''.
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que la partie UTF-8 du code n'est pas répertorié deux fois ici, bien qu'il apparaisse ainsi dans le fichier de configuration des ''langues du système.'' Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur Entrée pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Liste des miroirs de paquets===
+
+[[File: packmirlist-082.png|thumb|left|375px]]
+
+
+'''Modifier la liste des miroirs de paquets.''' La modification de ce fichier vous permettra de sélectionner les serveurs Internet Manjaro les plus appropriés à partir desquels télécharger les mises à jour, les fichiers et les applications.
+
+Assurez-vous que '''Packages mirror list''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: pkmirlistfile-082.png|thumb|left|375px]]
+
+
+Le miroir du Royaume-Uni (Grande-Bretagne) est le serveur par défaut de l'installation. Veuillez supprimer le caractère dièse (&quot;#&quot;) devant la ligne du serveur français (plus performant) pour l'activer. Tout serveur peut être choisi ou ignoré en supprimant ou en ajoutant le caractère dièse  (&quot;#&quot;) en début de la ligne, respectivement.
+
+{{Astuce|En règle générale, Manjaro essaie de se connecter aux serveurs sélectionnés dans l'ordre où ils sont énumérés.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Disposition du clavier de la console===
+
+[[File: ckl-082.png|thumb|left|375px]]
+
+
+'''Modifier la disposition du clavier de la console.''' La modification de ce fichier vous permettra de définir le type de clavier par défaut correspondant à votre pays.
+
+Assurez-vous que '''Console keyboard layout''' est mis en surbrillance.
+ 
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cklfile-082.png|thumb|left|375px]]
+
+
+La langue par défaut à utiliser pour Manjaro est défini par la commande '''KEYMAP='''. Dans notre cas, le clavier ''anglais, GB'' a été sélectionné au début de l'installation, il a déjà été paramétré pour le Royaume-Uni (Grande-Bretagne). Si vous avez été en mesure de configurer votre clavier au début, ça devrait déjà être le cas chez vous aussi. Dans le cas contraire, il sera nécessaire d'entrer manuellement votre propre clavier, ce qui peut également nécessiter la spécification de la police à utiliser pour cela (sinon les caractères spéciaux peuvent apparaître comme des carrés blancs).
+
+{{Astuce|Si vous rencontrez des problèmes avec cela, alors vous pouvez utiliser l'option '''Change vconsole keymap''', qui est répertoriée dans le '''menu de configuration'''. Cela fournira une liste des codes qui correspondent aux différentes dispositions de clavier différentes disponibles. Voir la section '''paramétrage du clavier''' dans le Guide d'installation pour les débutants pour plus d'informations.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Quittez le menu de configuration===
+
+[[File: exitconfig-082.png|thumb|left|375px]]
+
+La configuration étant terminée, quittez le menu de configuration en sélectionnant '''Main Menu'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-082.png|thumb|left|375px]]
+
+
+Il sera alors nécessaire d'attendre quelques instants pendant que l'installation Manjaro est automatiquement configurée selon vos préférences. Une fois terminé, vous serez automatiquement dirigé vers le menu principal. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installation du chargeur de démarrage =
+
+[[File: bootloaderoption-082.png|thumb|left|375px]]
+
+
+'''Installer le GRUB.'''  Si vous n'utilisez pas un GRUB existant (fourni par un sytème Linux déjà installé), assurez-vous que '''Install Bootloader''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installGRUB.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install GRUB2 (needed to boot)''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: GRUBconfirm-082.png|thumb|left|375px]]
+
+
+Le programme d'installation va détecter automatiquement toute partition marquée comme '''amorçable''', et par conséquent va l'afficher comme  partition cible pour installer le GRUB2 dans un message de demande de confirmation. 
+
+Appuyez sur &lt;Entrée&gt; pour lancer l'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: GRUBinstalled-082.png|thumb|left|375px]]
+
+
+Un message de confirmation apparaîtra après quelques secondes, indiquant que GRUB2 a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour revenir au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Fin de l'installation =
+
+[[File: QuitInstaller-082.png|thumb|left|375px]]
+
+
+Tout est fait! Maintenant mettez en surbrillance '''Quit''' pour terminer l'installation!
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+
+Le programme d'installation va prendre quelques instants pour finaliser l'installation. Un message de confirmation s'affiche alors, indiquant que le processus d'installation est terminé.
+Le programme d'installation va alors se fermer automatiquement, et vous serez renvoyé à l'environnement de bureau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: restartManjaro-082.png|thumb|left|375px]]
+
+
+'''Vous pouvez maintenant redémarrer votre ordinateur pour démarrer votre système d'exploitation nouvellement installé Manjaro!'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: 56.png|thumb|left|375px]]
+
+
+Lors du redémarrage (ou de l'arrêt), il vous sera rappelé d'avoir à retirer le support d'installation avant d'appuyer sur &lt;Entrée&gt; pour continuer. Si vous ne le faites pas, vous allez redémarrer à nouveau dans le support d'installation.
+
+{{Astuce| La première chose que vous devez faire lors du démarrage de Manjaro est de mettre à jour votre système.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+* '''[[Installation_Guide_for_the_NET_Edition_0.8.2|Installation Guide for the NET Edition]]'''
+* '''[[Cfdisk_Basic_Partitioning_Scenarios|Basic Partitioning Scenarios Using cfdisk]]'''
+
+
+[[Category:Getting Started]]
+
+[[Category:Installation]]</text>
+      <sha1>rg1ntaqjc4rhlcrzf2hokgonoq9gecf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3429</id>
+      <parentid>3321</parentid>
+      <timestamp>2012-12-28T20:03:35Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* See Also */</comment>
+      <text xml:space="preserve" bytes="31379">= Vue d'ensemble =
+
+{{Astuce|si possible, '''assurez-vous que vous êtes connecté à internet''' avant de démarrer à partir de votre support d'installation. Si vous avez une connexion filaire via un câble Ethernet, alors Manjaro se connectera automatiquement à internet. Sinon, une fois que vous aurez démarré dans le bureau Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil. }}
+
+
+Ce '''guide pour utilisateurs expérimentés''' est destiné aux personnes ayant de l'expérience ou au moins à l'aise avec l'idée de partitionnement manuel de leurs disques durs, ainsi qu'avec la modification manuelle des fichiers de configuration nécessaires. Les avantages qui en découlent sont:
+
+* le contrôle total de l'utilisation des partitions et des espaces disque utilisés;
+* le dual-boot avec un autre système d'exploitation;
+* l'activation du support multi-langages;
+* le réglage fin de l'installation de Manjaro.
+
+
+Le '''[[Guide d'installation de manjaro 0.8.2 Débutant|Guide d'installation de manjaro 0.8.2 Débutant]]''' est plus adapté aux personnes ayant des connaissances et une expérience limitées. En utilisant ce guide, l'installateur va partitionner le disque dur pour vous, et il n'y aura pas besoin de modifier à la main différents fichiers système. Cependant, il entraînera également l'effacement complet de votre disque dur lors de l'installation. Manjaro sera installé seul.
+
+
+= Pré-installation : configuration de la langue et de la disposition de clavier =
+
+[[File: 0.png|thumb|left|375px]] 
+
+
+Une fois Manjaro lancé, vous allez voir s'afficher l'écran de démarrage. Avant de lancer l'environnement de bureau du Live-CD, il est recommandé de choisir d'abord votre '''langue préférée''' (F2) et votre '''disposition clavier''' (F3). 
+
+{{Astuce|Les langues supportées peuvent au début ne pas être toutes présentes dans la liste. Défilez vers le bas pour voir quelques langues et claviers supplémentaires. Si malgré tout votre langue préférée et votre clavier ne sont pas dans la liste, il sera possible de les activer en modifiant les fichiers de configuration appropriés durant le processus d'installation même.}}
+
+Une fois ces préparatifs initiaux terminés, il est possible de démarrer Manjaro pour commencer le processus d'installation. Deux options principales sont disponibles:
+
+'''1. Boot Manjaro Linux''' - démarrer en utilisant les pilotes libres/open-source développés par la communauté Linux
+
+'''2. Boot Manjaro Linux with non-free graphics drivers''' - démarrer en utilisant les pilotes graphiques propriétaires (les pilotes développés par les fabricants de vos cartes graphiques et dont ils sont propriétaires)
+
+Mettez en surbrillance votre choix et appuyez sur &lt;Entrée&gt; pour démarrer dans l'environnement de bureau du live-CD.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-082.png|thumb|left|375px]] 
+
+
+Comme on le voit ici, Manjaro 0.8.2 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la variante (environnement de bureau) Manjaro que vous avez choisi d'installer, l'installation elle-même sera toujours identique.
+
+{{Astuce|si vous souhaitez vous connecter à Internet en utilisant une connexion Wifi, c'est le moment de le faire. Autrement, il est possible de configurer votre connexion en utilisant l'installateur.}}
+
+Pour commencer le processus d'installation, fermez la fenêtre de bienvenue, puis double-cliquez sur l'icône «Manjaro CLI Installer».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Démarrage du programme d'installation stable =
+
+[[File: clistart-082.png|thumb|left|375px]]
+
+
+Le programme d'installation commence par signaler qu'il existe deux versions d'installateur disponibles: '''le programme d'installation stable et l'installation de test.''' Ce guide utilise le programme d'installation stable.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-082.png|thumb|left|375px]]
+
+
+Manjaro devrait détecter automatiquement votre réseau et le configurer. Cependant, si ça n'a pas été possible, vous avez la possibilité de configurer manuellement  à la fois votre liaison câblée et votre liaison sans fil en sélectionnant '''Set up Network (optional).''' Vous aurez besoin de connaissances réseau pour le réaliser même si l'équipe de développement Manjaro a fourni un '''didacticiel vidéo sur la configuration de votre réseau''' '''[http://vimeo.com/51256804 video tutorial on setting up your network]''' pour vous y guider.
+
+Dans le cas contraire (ou après avoir correctement configuré votre réseau), mettez en surbrillance '''Use stable installer.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: stableconfirm-082.png|thumb|left|375px]]
+
+
+Un message de confirmation va apparaître pour indiquer que l'installateur stable a commencé.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Réglage de la date et de l'heure =
+
+[[File: SetDateTime-082.png|thumb|left|375px]]
+
+
+'''Le réglage de la date et de l'heure''' devrait déjà être mis en surbrillance. Sinon, utiliser les touches fléchées pour le faire. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: utc-082.png|thumb|left|375px]]
+
+
+Assurez-vous que l''''UTC''' (Temps Universel Coordonné - l'heure normale primaire à partir de laquelle le monde règle ses horloges et ses heures) est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setregion-082.png|thumb|left|375px]]
+
+
+'''Sélectionnez la région où vous vivez.''' Dans notre cas, l'Europe a été choisie, car c'est la région correspondant à la France. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: settimezone.png|thumb|left|375px]]
+
+
+'''Sélectionnez votre fuseau horaire.''' Ceci est réalisé en mettant en surbrillance la capitale appropriée. Pour la France, choisissez Paris. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setdate-082.png|thumb|left|375px]]
+
+
+'''Réglez la date.''' Si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases jour, mois et année, et utilisez les flèches haut ou bas pour les modifier. 
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: settime-082.png|thumb|left|375px]]
+
+
+'''Enfin, réglez l'heure.''' Encore une fois, si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases heures, minutes et secondes, et utilisez les flèches haut ou bas pour les modifier. 
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour être ramené au menu principal d'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Préparation du disque dur =
+
+Manjaro utilise un outil en mode texte appelé ''cfdisk.'' Votre choix de partitionnement disque est largement conditionné par vos préférences personnelles. Cependant, certaines indications ont été fournies, en particulier pour les nouveaux utilisateurs qui souhaitent partitionner manuellement leurs disques durs. Le partitionnement (c'est-à-dire la division) de  votre disque dur lors de l'installation d'un système d'exploitation peut être entrepris pour un certain nombre de raisons différentes. Les exemples les plus courants sont :
+
+* répondre aux exigences de certains systèmes d'exploitation (par exemple Windows nécessite au moins deux partitions: une pour le démarrage, et l'autre pour Windows lui-même)
+* la possibilité d'installer plusieurs systèmes d'exploitation sur un seul disque dur
+* séparer les parties du disque dur pour des fins spécifiques (par exemple une pour le démarrage, pour servir de mémoire virtuelle / Swap), et
+* séparer les parties du disque dur pour y stocker des types de fichiers spécifiques (par exemple pour les fichiers système, les fichiers personnels, etc.).
+
+
+==Partitions principales et lecteurs logiques==
+
+Deux types de partitions peuvent être utilisés pour diviser un disque dur. Les '''partitions principales''' et les '''partitions étendues.''' Les ''partitions principales'' datent du début de l'informatique, et ne permettent de diviser un disque qu'en quatre parties. La notion de ''partition étendue'' et de ''lecteurs logiques'' a été développée pour contourner cette limitation. Elle permet, pour simplifier, de découper une partition primaire. Une partition primaire ainsi découpée est renommée '''partition étendue.'''
+
+Alors que le nombre maximum de partitions principales est de 4, en utilisant les lecteurs logiques il devient possible de diviser un disque IDE en 60 partitions et un disque SCSI en une douzaine. Ci-dessous, une image simple de la manière dont les lecteurs logiques peuvent être utilisés pour diviser un disque dur en huit morceaux:
+
+
+&lt;center&gt;[[file:partitions.png]]&lt;/center&gt;
+&lt;center&gt;(courtesy of [http://www.linuxquestions.org/questions/slackware-14/primary-vs-logical-487883/ LinuxQuestions.org])&lt;/center&gt;
+
+
+==Conventions et Instructions==
+
+* La convention de nommage de disques et des partitions est : sd '''[lettre de disque dur] [numéro de partition]'''. Par exemple, le premier (ou le seul) disque dur connecté à votre système sera nommé sd'''a''', le second sd'''b''', et ainsi de suite. En ce qui concerne les partitions, sda'''1''' va être la première partition du premier disque dur, sda'''2''' la seconde, et ainsi de suite. Les lecteurs logiques commenceront toujours à partir de '5'.
+
+* Contrairement à Windows (qui nécessite une partition principale particulière pour démarrer), les systèmes Linux comme Manjaro n'ont aucune exigence particulière concernant l'utilisation des partitions principales ou logiques.  Par exemple, Manjaro peut être installé en utilisant toutes les partitions primaires, tous les lecteurs logiques, ou un mélange des deux.
+
+* Bien que la méthode de préparation assistée crée des partitions séparées pour le GRUB (boot), la mémoire virtuelle (swap), le système (root), et les fichiers personnels (home), c'est un paramétrage totalement optionnel. Par exemple, les partitions boot, root, et home peuvent être aisément regroupées en une seule. C'est le cas avec d'autres distributions populaires comme Mint.
+
+* Séparer ou regrouper des partitions, c'est là que jouent les préférences personnelles. Chaque disposition a ses avantages et ses inconvénients. Par exemple, séparer les partitions boot, root et home présente l'avantage de faciliter la sauvegarde et/ou de réparer les problèmes de l'une sans affecter les autres. Un inconvénient peut être de déborder de l'espace alloué pour une partition, par exemple pour root, même s'il y a suffisamment d'espace libre sur le reste du disque.
+
+* Bien que l'allocation d'une partition swap soit tout à fait optionnelle, il est '''fortement recommandé''' de le faire, en particulier si vous comptez utiliser les fonctionnalités d''''hibernation''' ou de '''veille''' qui la nécessitent. Manjaro doit donc être installé en utilisant deux partitions au minimum.
+
+* A moins que vous ne sachiez exactement ce que vous faites, la taille de la partition de swap doit être la même que celle de la RAM utilisée par votre système (par exemple, 2 gigaoctets d'espace alloué au swap pour 2 gigaoctets de mémoire).
+
+* Quelle que soit votre décision concernant le partitionnement, n'importe laquelle de ces partitions peut être choisie comme partition de démarrage et contenir le GRUB. L'exception est la partition de swap.
+
+* Deux systèmes d'exploitation Linux installés sur le même ordinateur peuvent partager les mêmes partitions de GRUB et de swap. Ils n'en ont pas besoin d'une chacun.
+
+
+== Utilisation d'une table de partitionnement Linux existante ==
+
+Il est intéressant de noter que l'installateur Manjaro n'écrasera pas un dossier home s'il contient un nom d'utilisateur existant. En conséquence, l'environnement de bureau pré-installé perdra sa configuration Manjaro, et reviendra à ses paramètres fondamentaux («vanilla»). Afin de restaurer les paramètres de configuration Manjaro, après avoir démarré le système fraîchement installé, il sera nécessaire d'entrer la commande suivante dans un terminal:
+
+ cp -a /etc/skel/. /home/'''[username]'''
+
+
+Par exemple, par un compte nommé ''carl'', taper:
+
+ cp -a /etc/skel/. /home/'''carl'''
+
+
+A la fin, de l'installation,  il sera alors nécessaire de s'assurer que vous avez la pleine propriété du dossier home en entrant la commande suivante:
+
+ chown -R '''[username]''' /home/'''[username]'''
+
+
+Par exemple, pour un utilisateur nommé ''carl'':
+
+ chown -R '''carl''' /home/'''carl'''
+
+
+== Partitionnement manuel du disque dur ==
+
+[[File: discprep-082.png|thumb|left|375px]]
+
+
+'''Préparer le disque dur de votre ordinateur pour l'installation.''' La méthode de partitionnement manuel est choisie, car c'est la plus adaptée aux utilisateurs expérimentés.
+
+Assurez-vous que '''Disk(s) Preparation''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mandiscprep-082.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Partition by hand and choose the partitions to use''' est en surbrillance.
+
+{{note| l'espace à réserver sur votre disque dur à chaque étape est mesuré en mégaoctets (Mo). Il est également important de garder à l'esprit la quantité d'espace disque qu'il vous reste à chaque étape.}}
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: availabledisks-082.png|thumb|left|375px]]
+
+
+L'installateur va automatiquement détecter et lister tous les disques durs connectés à votre système. Le premier disque sera listé comme '''sda''', le second '''sdb''', et ainsi de suite. Dans cet exemple, il n'y a qu'un disque dur de connecté.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: choosedisks-082.png|thumb|left|375px]]
+
+
+Si plus d'un disque dur a été détecté, passez en surbrillance le disque sur lequel vous souhaitez installer Manjaro.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskwarning-082.png|thumb|left|375px]]
+
+
+Vous verrez un message indiquant que cfdisk est sur le point d'être lancé.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Scénarios de partitionnement de disques===
+
+Deux scénarios distincts de partitionnement sont fournis. C'est aussi bien pour illustrer nos propos que pour pousser à une plus grande compréhension des choix disponibles lorsque vous déciderez du partitionnement que vous voulez utiliser. Ces exemples peuvent être utilisés uniquement à titre informatif, ou l'ensemble des informations fournies pour l'un ou l'autre peut être utilisé pour créer votre propre table de partitions. Cet article en lui-même est lié à la section '''Installation de Manjaro,''' ci-dessous.
+
+* '''[[cfdisk Basic Partitioning Scenarios#A Two Partition Scenario|Création de deux partitions]]''': ce scénario explique comment combiner boot, root et home dans une seule partition principale. Un lecteur logique pour le swap est aussi créé.
+
+* '''[[cfdisk Basic Partitioning Scenarios#A Three Partition Scenario|Création de trois partitions]]''': ce scénario explique comment créer une partition de boot séparée, une partition pour root et home, et une partition de swap. Toutes les trois sont des partitions principales.
+
+{{note|ces scénarios utilisent des disques de tailles différentes. Le scénario ''deux partitions'' utilise un disque dur de 40 Go, alors que le ''scénario trois partitions'' utilise un disque dur de 8,5 Go. Toutefois, les principes sont toujours les mêmes.}}
+
+
+= Installation de Manjaro =
+
+[[File: installoption-082.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install System''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installstart-082.png|thumb|left|375px]]
+
+
+'''Démarrer l'installation.''' Un message s'affiche indiquant que l'installation est sur le point de commencer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installcomplete.png|thumb|left|375px]]
+
+
+Après quelques instants, un message s'affiche pour confirmer que Manjaro a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfigure-082.png|thumb|left|375px]]
+
+
+Le programme d'installation va automatiquement configurer votre système, détecter votre matériel, et installer les pilotes appropriés. Il permettra également de trouver les serveurs disponibles Manjaro à partir desquels vous serez en mesure de télécharger des mises à jour, des logiciels et des applications. S'il vous plaît soyez patient, car ce processus peut prendre une minute ou deux.
+
+{{Attention|Manjaro ne sera pas en mesure de trouver les serveurs disponibles si vous n'êtes pas connecté à Internet.}}
+
+A la fin, vous reviendrez automatiquement au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuration de Manjaro =
+
+[[File: configureoption.png|thumb|left|375px]]
+
+
+'''Il va maintenant être nécessaire de configurer Manjaro.''' Etant donné que ce guide est pour ''utilisateurs expérimentés,'' ce processus va faire appel à la modification de quelques fichiers principaux.
+
+Veillez à ce que '''Configure System''' soit mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Mot de passe root ==
+
+[[File: rootpassword-082.png|thumb|left|375px]]
+
+
+'''Définir le mot de passe root.''' Assurez-vous que '''Change Root Password''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: enterroot-082.png|thumb|left|375px]]
+
+
+Tapez le mot de passe root que vous avez choisi.
+
+{{Astuce| Les mots de passe seront sensibles à la casse.}}
+
+Dès que c'est fait appuyez sur &lt;Entrée&gt; pour continuer. Vous aurez à entrer le mot de passe à nouveau pour le confirmer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Compte utilisateur ==
+
+[[File: setupuser-082.png|thumb|left|375px]]
+
+
+'''Mettre en place votre propre compte utilisateur personnel.''' Assurez-vous que '''Setup user account(s)''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: enteruser-082.png|thumb|left|375px]]
+
+
+Tapez le nom de compte / login que vous avez choisi.
+
+{{Attention| Bien que vous puissiez entrer presque tout ce que voulez, '''faire en sorte que toutes les lettres de votre nom soient en minuscules'''.}}
+
+Lorsque vous avez terminé, vérifiez que '''OK''' est sélectionné. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: usersudo-082.png|thumb|left|375px]]
+
+
+Confirmez que vous souhaitez obtenir les droits sudo.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: sudopass-082.png|thumb|left|375px]]
+
+
+Tapez le mot de passe choisi pour votre compte personnel.
+
+{{Astuce|Pour garder les choses simples, il vous suffit de taper le même mot de passe que celui utilisé pour le compte root.}}
+
+Dès que c'est fait appuyez sur &lt;Entrée&gt; pour continuer. Vous aurez à entrer le mot de passe à nouveau pour le confirmer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Editer la configuration du système (optionnel)==
+
+[[File: sysconfigoption-082.png|thumb|left|375px]]
+
+
+Il va maintenant falloir vérifier/modifier certains fichiers de configuration importants pour Manjaro. Ce sont ceux relatifs à la langue utilisée, à la disposition du clavier,  et à l'accès au serveur logiciel.
+
+{{Astuce|Si vous avez été en mesure de choisir votre langue préférée et la disposition du clavier (keymap) dès le début, alors pratiquement tout devrait déjà avoir été configuré pour vous!}}
+
+Assurez-vous que '''Edit system configuration (optional)''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langues système===
+
+[[File: editsyslang-082.png|thumb|left|375px]]
+
+
+La modification de ce fichier vous permet de choisir lesquelles et combien de langues différentes Manjaro prend en charge. Ceci inclut tous les caractères spéciaux (c.-à-d. en dehors des 26 lettres de l'alphabet français) qu'elles utilisent.
+
+{{Astuce| Il est possible que le système charge plusieurs langues, vous n'êtes pas limité à une seule ou deux. Elles pourront également être facilement sélectionnables à tout moment lors de la connexion si vous utilisez le ''gestionnaire d'affichage LXDM''.}}
+
+Assurez-vous que  '''Edit system languages''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: syslangfile-082.png|thumb|left|375px]]
+
+
+Pour activer dans Manjaro le support des langues souhaitées, supprimez le dièse ('#') situé au début des lignes appropriées et qui se terminent par '''UTF-8''' et '''ISO''' quand c'est possible. Si vous avez pu définir votre langue préférée au début, il ne s'agira ici que de vérifier que les # ont bien été enlevés.
+
+{{Astuce|Si vous n'êtes pas sûr de ce que repré- sentent les codes langues et des pays particuliers, une petite sélection d'exemples sont disponibles ici '''[http://www.fincher.org/Utilities/CountryLanguageList.shtml ici]''' (ne pas tenir compte de l'utilisation des tirets ''''-'''' au lieu de soulignement ''''_'''').}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant d'appuyer sur &lt;Entrée&gt; pour revenir au menu fichier de configuration.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue utilisée par défaut===
+
+[[File: deflang-082.png|thumb|left|375px]]
+
+
+'''Modifier la langue utilisé par défaut.''' La modification de ce fichier vous permettra de choisir la langue principale devant être utilisée par Manjaro en standard.
+
+Assurez-vous que '''Edit default used language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: deflangfile-082.png|thumb|left|375px]]
+
+
+La langue par défaut utilisée par Manjaro est définie par la commande '''LANG='''. Plus précisément, cela s'applique à la langue utilisée par les applications logicielles. Comme le montre l'exemple, l'''anglais britannique'' a été sélectionné au début, et le code UTF-8 adéquat a déjà été défini.
+
+{{Astuce|Si vous avez été en mesure de définir votre langue préférée au début, ça devrait être aussi le cas chez vous. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix.}}
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que l'UTF-8 dans le code n'est pas répertorié deux fois ici, bien qu'ils soient affichés comme tels dans le fichier de configuration des ''langues système''.
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue de l'environnement===
+
+[[File: envlang-082.png|thumb|left|375px]]
+
+
+'''Modifier la langue de l'environnement.''' La modification de ce fichier vous permettra de définir la langue utilisée par Manjaro lors de l'affichage des informations et des messages qui vous sont destinés. Ce n'est pas la même chose que le jeu de langue par défaut pour les applications logicielles.
+
+Assurez-vous que '''Edit Environment Language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: envlangfile-082.png|thumb|left|375px]]
+
+
+'''Le code de la langue dans ce fichier doit être exactement le même que celui défini dans le fichier de configuration de la langue par défaut.''' Sinon le système Manjaro et ses applications installées vont utiliser des langues différentes.
+
+Comme illustré, le code UTF-8 pour anglais, la Grande-Bretagne a déjà été mis, et c'est exactement le même code que celui utilisé dans le fichier de configuration de la ''langue par défaut''.
+
+Encore une fois, si vous avez été en mesure de définir votre langue préférée au début, tout devrait déjà être réglé aussi. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix après '''LANG='''.
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que la partie UTF-8 du code n'est pas répertorié deux fois ici, bien qu'il apparaisse ainsi dans le fichier de configuration des ''langues du système.'' Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur Entrée pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Liste des miroirs de paquets===
+
+[[File: packmirlist-082.png|thumb|left|375px]]
+
+
+'''Modifier la liste des miroirs de paquets.''' La modification de ce fichier vous permettra de sélectionner les serveurs Internet Manjaro les plus appropriés à partir desquels télécharger les mises à jour, les fichiers et les applications.
+
+Assurez-vous que '''Packages mirror list''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: pkmirlistfile-082.png|thumb|left|375px]]
+
+
+Le miroir du Royaume-Uni (Grande-Bretagne) est le serveur par défaut de l'installation. Veuillez supprimer le caractère dièse (&quot;#&quot;) devant la ligne du serveur français (plus performant) pour l'activer. Tout serveur peut être choisi ou ignoré en supprimant ou en ajoutant le caractère dièse  (&quot;#&quot;) en début de la ligne, respectivement.
+
+{{Astuce|En règle générale, Manjaro essaie de se connecter aux serveurs sélectionnés dans l'ordre où ils sont énumérés.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Disposition du clavier de la console===
+
+[[File: ckl-082.png|thumb|left|375px]]
+
+
+'''Modifier la disposition du clavier de la console.''' La modification de ce fichier vous permettra de définir le type de clavier par défaut correspondant à votre pays.
+
+Assurez-vous que '''Console keyboard layout''' est mis en surbrillance.
+ 
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cklfile-082.png|thumb|left|375px]]
+
+
+La langue par défaut à utiliser pour Manjaro est défini par la commande '''KEYMAP='''. Dans notre cas, le clavier ''anglais, GB'' a été sélectionné au début de l'installation, il a déjà été paramétré pour le Royaume-Uni (Grande-Bretagne). Si vous avez été en mesure de configurer votre clavier au début, ça devrait déjà être le cas chez vous aussi. Dans le cas contraire, il sera nécessaire d'entrer manuellement votre propre clavier, ce qui peut également nécessiter la spécification de la police à utiliser pour cela (sinon les caractères spéciaux peuvent apparaître comme des carrés blancs).
+
+{{Astuce|Si vous rencontrez des problèmes avec cela, alors vous pouvez utiliser l'option '''Change vconsole keymap''', qui est répertoriée dans le '''menu de configuration'''. Cela fournira une liste des codes qui correspondent aux différentes dispositions de clavier différentes disponibles. Voir la section '''paramétrage du clavier''' dans le Guide d'installation pour les débutants pour plus d'informations.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Quittez le menu de configuration===
+
+[[File: exitconfig-082.png|thumb|left|375px]]
+
+La configuration étant terminée, quittez le menu de configuration en sélectionnant '''Main Menu'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-082.png|thumb|left|375px]]
+
+
+Il sera alors nécessaire d'attendre quelques instants pendant que l'installation Manjaro est automatiquement configurée selon vos préférences. Une fois terminé, vous serez automatiquement dirigé vers le menu principal. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installation du chargeur de démarrage =
+
+[[File: bootloaderoption-082.png|thumb|left|375px]]
+
+
+'''Installer le GRUB.'''  Si vous n'utilisez pas un GRUB existant (fourni par un sytème Linux déjà installé), assurez-vous que '''Install Bootloader''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installGRUB.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install GRUB2 (needed to boot)''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: GRUBconfirm-082.png|thumb|left|375px]]
+
+
+Le programme d'installation va détecter automatiquement toute partition marquée comme '''amorçable''', et par conséquent va l'afficher comme  partition cible pour installer le GRUB2 dans un message de demande de confirmation. 
+
+Appuyez sur &lt;Entrée&gt; pour lancer l'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: GRUBinstalled-082.png|thumb|left|375px]]
+
+
+Un message de confirmation apparaîtra après quelques secondes, indiquant que GRUB2 a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour revenir au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Fin de l'installation =
+
+[[File: QuitInstaller-082.png|thumb|left|375px]]
+
+
+Tout est fait! Maintenant mettez en surbrillance '''Quit''' pour terminer l'installation!
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+
+Le programme d'installation va prendre quelques instants pour finaliser l'installation. Un message de confirmation s'affiche alors, indiquant que le processus d'installation est terminé.
+Le programme d'installation va alors se fermer automatiquement, et vous serez renvoyé à l'environnement de bureau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: restartManjaro-082.png|thumb|left|375px]]
+
+
+'''Vous pouvez maintenant redémarrer votre ordinateur pour démarrer votre système d'exploitation nouvellement installé Manjaro!'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: 56.png|thumb|left|375px]]
+
+
+Lors du redémarrage (ou de l'arrêt), il vous sera rappelé d'avoir à retirer le support d'installation avant d'appuyer sur &lt;Entrée&gt; pour continuer. Si vous ne le faites pas, vous allez redémarrer à nouveau dans le support d'installation.
+
+{{Astuce| La première chose que vous devez faire lors du démarrage de Manjaro est de mettre à jour votre système.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+* '''[[Installation_Guide_for_the_NET_Edition_0.8.2|Installation Guide for the NET Edition]]'''
+* '''[[Cfdisk_Basic_Partitioning_Scenarios|Basic Partitioning Scenarios Using cfdisk]]'''
+
+
+[[Category:Getting Started]]
+[[Category:Français]]
+[[Category:Installation]]</text>
+      <sha1>9uryjxdn3omswgmvz7xp6ixyuifytpx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3518</id>
+      <parentid>3429</parentid>
+      <timestamp>2012-12-29T15:10:21Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <text xml:space="preserve" bytes="31459">[[Page_Principale|Retour à l'accueil]]
+
+= Vue d'ensemble =
+
+{{Astuce|si possible, '''assurez-vous que vous êtes connecté à internet''' avant de démarrer à partir de votre support d'installation. Si vous avez une connexion filaire via un câble Ethernet, alors Manjaro se connectera automatiquement à internet. Sinon, une fois que vous aurez démarré dans le bureau Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil. }}
+
+
+Ce '''guide pour utilisateurs expérimentés''' est destiné aux personnes ayant de l'expérience ou au moins à l'aise avec l'idée de partitionnement manuel de leurs disques durs, ainsi qu'avec la modification manuelle des fichiers de configuration nécessaires. Les avantages qui en découlent sont:
+
+* le contrôle total de l'utilisation des partitions et des espaces disque utilisés;
+* le dual-boot avec un autre système d'exploitation;
+* l'activation du support multi-langages;
+* le réglage fin de l'installation de Manjaro.
+
+
+Le '''[[Guide d'installation de manjaro 0.8.2 Débutant|Guide d'installation de manjaro 0.8.2 Débutant]]''' est plus adapté aux personnes ayant des connaissances et une expérience limitées. En utilisant ce guide, l'installateur va partitionner le disque dur pour vous, et il n'y aura pas besoin de modifier à la main différents fichiers système. Cependant, il entraînera également l'effacement complet de votre disque dur lors de l'installation. Manjaro sera installé seul.
+
+
+= Pré-installation : configuration de la langue et de la disposition de clavier =
+
+[[File: 0.png|thumb|left|375px]] 
+
+
+Une fois Manjaro lancé, vous allez voir s'afficher l'écran de démarrage. Avant de lancer l'environnement de bureau du Live-CD, il est recommandé de choisir d'abord votre '''langue préférée''' (F2) et votre '''disposition clavier''' (F3). 
+
+{{Astuce|Les langues supportées peuvent au début ne pas être toutes présentes dans la liste. Défilez vers le bas pour voir quelques langues et claviers supplémentaires. Si malgré tout votre langue préférée et votre clavier ne sont pas dans la liste, il sera possible de les activer en modifiant les fichiers de configuration appropriés durant le processus d'installation même.}}
+
+Une fois ces préparatifs initiaux terminés, il est possible de démarrer Manjaro pour commencer le processus d'installation. Deux options principales sont disponibles:
+
+'''1. Boot Manjaro Linux''' - démarrer en utilisant les pilotes libres/open-source développés par la communauté Linux
+
+'''2. Boot Manjaro Linux with non-free graphics drivers''' - démarrer en utilisant les pilotes graphiques propriétaires (les pilotes développés par les fabricants de vos cartes graphiques et dont ils sont propriétaires)
+
+Mettez en surbrillance votre choix et appuyez sur &lt;Entrée&gt; pour démarrer dans l'environnement de bureau du live-CD.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-082.png|thumb|left|375px]] 
+
+
+Comme on le voit ici, Manjaro 0.8.2 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la variante (environnement de bureau) Manjaro que vous avez choisi d'installer, l'installation elle-même sera toujours identique.
+
+{{Astuce|si vous souhaitez vous connecter à Internet en utilisant une connexion Wifi, c'est le moment de le faire. Autrement, il est possible de configurer votre connexion en utilisant l'installateur.}}
+
+Pour commencer le processus d'installation, fermez la fenêtre de bienvenue, puis double-cliquez sur l'icône «Manjaro CLI Installer».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Démarrage du programme d'installation stable =
+
+[[File: clistart-082.png|thumb|left|375px]]
+
+
+Le programme d'installation commence par signaler qu'il existe deux versions d'installateur disponibles: '''le programme d'installation stable et l'installation de test.''' Ce guide utilise le programme d'installation stable.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-082.png|thumb|left|375px]]
+
+
+Manjaro devrait détecter automatiquement votre réseau et le configurer. Cependant, si ça n'a pas été possible, vous avez la possibilité de configurer manuellement  à la fois votre liaison câblée et votre liaison sans fil en sélectionnant '''Set up Network (optional).''' Vous aurez besoin de connaissances réseau pour le réaliser même si l'équipe de développement Manjaro a fourni un '''didacticiel vidéo sur la configuration de votre réseau''' '''[http://vimeo.com/51256804 video tutorial on setting up your network]''' pour vous y guider.
+
+Dans le cas contraire (ou après avoir correctement configuré votre réseau), mettez en surbrillance '''Use stable installer.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: stableconfirm-082.png|thumb|left|375px]]
+
+
+Un message de confirmation va apparaître pour indiquer que l'installateur stable a commencé.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Réglage de la date et de l'heure =
+
+[[File: SetDateTime-082.png|thumb|left|375px]]
+
+
+'''Le réglage de la date et de l'heure''' devrait déjà être mis en surbrillance. Sinon, utiliser les touches fléchées pour le faire. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: utc-082.png|thumb|left|375px]]
+
+
+Assurez-vous que l''''UTC''' (Temps Universel Coordonné - l'heure normale primaire à partir de laquelle le monde règle ses horloges et ses heures) est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setregion-082.png|thumb|left|375px]]
+
+
+'''Sélectionnez la région où vous vivez.''' Dans notre cas, l'Europe a été choisie, car c'est la région correspondant à la France. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: settimezone.png|thumb|left|375px]]
+
+
+'''Sélectionnez votre fuseau horaire.''' Ceci est réalisé en mettant en surbrillance la capitale appropriée. Pour la France, choisissez Paris. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setdate-082.png|thumb|left|375px]]
+
+
+'''Réglez la date.''' Si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases jour, mois et année, et utilisez les flèches haut ou bas pour les modifier. 
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: settime-082.png|thumb|left|375px]]
+
+
+'''Enfin, réglez l'heure.''' Encore une fois, si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases heures, minutes et secondes, et utilisez les flèches haut ou bas pour les modifier. 
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour être ramené au menu principal d'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Préparation du disque dur =
+
+Manjaro utilise un outil en mode texte appelé ''cfdisk.'' Votre choix de partitionnement disque est largement conditionné par vos préférences personnelles. Cependant, certaines indications ont été fournies, en particulier pour les nouveaux utilisateurs qui souhaitent partitionner manuellement leurs disques durs. Le partitionnement (c'est-à-dire la division) de  votre disque dur lors de l'installation d'un système d'exploitation peut être entrepris pour un certain nombre de raisons différentes. Les exemples les plus courants sont :
+
+* répondre aux exigences de certains systèmes d'exploitation (par exemple Windows nécessite au moins deux partitions: une pour le démarrage, et l'autre pour Windows lui-même)
+* la possibilité d'installer plusieurs systèmes d'exploitation sur un seul disque dur
+* séparer les parties du disque dur pour des fins spécifiques (par exemple une pour le démarrage, pour servir de mémoire virtuelle / Swap), et
+* séparer les parties du disque dur pour y stocker des types de fichiers spécifiques (par exemple pour les fichiers système, les fichiers personnels, etc.).
+
+
+==Partitions principales et lecteurs logiques==
+
+Deux types de partitions peuvent être utilisés pour diviser un disque dur. Les '''partitions principales''' et les '''partitions étendues.''' Les ''partitions principales'' datent du début de l'informatique, et ne permettent de diviser un disque qu'en quatre parties. La notion de ''partition étendue'' et de ''lecteurs logiques'' a été développée pour contourner cette limitation. Elle permet, pour simplifier, de découper une partition primaire. Une partition primaire ainsi découpée est renommée '''partition étendue.'''
+
+Alors que le nombre maximum de partitions principales est de 4, en utilisant les lecteurs logiques il devient possible de diviser un disque IDE en 60 partitions et un disque SCSI en une douzaine. Ci-dessous, une image simple de la manière dont les lecteurs logiques peuvent être utilisés pour diviser un disque dur en huit morceaux:
+
+
+&lt;center&gt;[[file:partitions.png]]&lt;/center&gt;
+&lt;center&gt;(courtesy of [http://www.linuxquestions.org/questions/slackware-14/primary-vs-logical-487883/ LinuxQuestions.org])&lt;/center&gt;
+
+
+==Conventions et Instructions==
+
+* La convention de nommage de disques et des partitions est : sd '''[lettre de disque dur] [numéro de partition]'''. Par exemple, le premier (ou le seul) disque dur connecté à votre système sera nommé sd'''a''', le second sd'''b''', et ainsi de suite. En ce qui concerne les partitions, sda'''1''' va être la première partition du premier disque dur, sda'''2''' la seconde, et ainsi de suite. Les lecteurs logiques commenceront toujours à partir de '5'.
+
+* Contrairement à Windows (qui nécessite une partition principale particulière pour démarrer), les systèmes Linux comme Manjaro n'ont aucune exigence particulière concernant l'utilisation des partitions principales ou logiques.  Par exemple, Manjaro peut être installé en utilisant toutes les partitions primaires, tous les lecteurs logiques, ou un mélange des deux.
+
+* Bien que la méthode de préparation assistée crée des partitions séparées pour le GRUB (boot), la mémoire virtuelle (swap), le système (root), et les fichiers personnels (home), c'est un paramétrage totalement optionnel. Par exemple, les partitions boot, root, et home peuvent être aisément regroupées en une seule. C'est le cas avec d'autres distributions populaires comme Mint.
+
+* Séparer ou regrouper des partitions, c'est là que jouent les préférences personnelles. Chaque disposition a ses avantages et ses inconvénients. Par exemple, séparer les partitions boot, root et home présente l'avantage de faciliter la sauvegarde et/ou de réparer les problèmes de l'une sans affecter les autres. Un inconvénient peut être de déborder de l'espace alloué pour une partition, par exemple pour root, même s'il y a suffisamment d'espace libre sur le reste du disque.
+
+* Bien que l'allocation d'une partition swap soit tout à fait optionnelle, il est '''fortement recommandé''' de le faire, en particulier si vous comptez utiliser les fonctionnalités d''''hibernation''' ou de '''veille''' qui la nécessitent. Manjaro doit donc être installé en utilisant deux partitions au minimum.
+
+* A moins que vous ne sachiez exactement ce que vous faites, la taille de la partition de swap doit être la même que celle de la RAM utilisée par votre système (par exemple, 2 gigaoctets d'espace alloué au swap pour 2 gigaoctets de mémoire).
+
+* Quelle que soit votre décision concernant le partitionnement, n'importe laquelle de ces partitions peut être choisie comme partition de démarrage et contenir le GRUB. L'exception est la partition de swap.
+
+* Deux systèmes d'exploitation Linux installés sur le même ordinateur peuvent partager les mêmes partitions de GRUB et de swap. Ils n'en ont pas besoin d'une chacun.
+
+
+== Utilisation d'une table de partitionnement Linux existante ==
+
+Il est intéressant de noter que l'installateur Manjaro n'écrasera pas un dossier home s'il contient un nom d'utilisateur existant. En conséquence, l'environnement de bureau pré-installé perdra sa configuration Manjaro, et reviendra à ses paramètres fondamentaux («vanilla»). Afin de restaurer les paramètres de configuration Manjaro, après avoir démarré le système fraîchement installé, il sera nécessaire d'entrer la commande suivante dans un terminal:
+
+ cp -a /etc/skel/. /home/'''[username]'''
+
+
+Par exemple, par un compte nommé ''carl'', taper:
+
+ cp -a /etc/skel/. /home/'''carl'''
+
+
+A la fin, de l'installation,  il sera alors nécessaire de s'assurer que vous avez la pleine propriété du dossier home en entrant la commande suivante:
+
+ chown -R '''[username]''' /home/'''[username]'''
+
+
+Par exemple, pour un utilisateur nommé ''carl'':
+
+ chown -R '''carl''' /home/'''carl'''
+
+
+== Partitionnement manuel du disque dur ==
+
+[[File: discprep-082.png|thumb|left|375px]]
+
+
+'''Préparer le disque dur de votre ordinateur pour l'installation.''' La méthode de partitionnement manuel est choisie, car c'est la plus adaptée aux utilisateurs expérimentés.
+
+Assurez-vous que '''Disk(s) Preparation''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mandiscprep-082.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Partition by hand and choose the partitions to use''' est en surbrillance.
+
+{{note| l'espace à réserver sur votre disque dur à chaque étape est mesuré en mégaoctets (Mo). Il est également important de garder à l'esprit la quantité d'espace disque qu'il vous reste à chaque étape.}}
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: availabledisks-082.png|thumb|left|375px]]
+
+
+L'installateur va automatiquement détecter et lister tous les disques durs connectés à votre système. Le premier disque sera listé comme '''sda''', le second '''sdb''', et ainsi de suite. Dans cet exemple, il n'y a qu'un disque dur de connecté.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: choosedisks-082.png|thumb|left|375px]]
+
+
+Si plus d'un disque dur a été détecté, passez en surbrillance le disque sur lequel vous souhaitez installer Manjaro.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskwarning-082.png|thumb|left|375px]]
+
+
+Vous verrez un message indiquant que cfdisk est sur le point d'être lancé.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Scénarios de partitionnement de disques===
+
+Deux scénarios distincts de partitionnement sont fournis. C'est aussi bien pour illustrer nos propos que pour pousser à une plus grande compréhension des choix disponibles lorsque vous déciderez du partitionnement que vous voulez utiliser. Ces exemples peuvent être utilisés uniquement à titre informatif, ou l'ensemble des informations fournies pour l'un ou l'autre peut être utilisé pour créer votre propre table de partitions. Cet article en lui-même est lié à la section '''Installation de Manjaro,''' ci-dessous.
+
+* '''[[cfdisk Basic Partitioning Scenarios#A Two Partition Scenario|Création de deux partitions]]''': ce scénario explique comment combiner boot, root et home dans une seule partition principale. Un lecteur logique pour le swap est aussi créé.
+
+* '''[[cfdisk Basic Partitioning Scenarios#A Three Partition Scenario|Création de trois partitions]]''': ce scénario explique comment créer une partition de boot séparée, une partition pour root et home, et une partition de swap. Toutes les trois sont des partitions principales.
+
+{{note|ces scénarios utilisent des disques de tailles différentes. Le scénario ''deux partitions'' utilise un disque dur de 40 Go, alors que le ''scénario trois partitions'' utilise un disque dur de 8,5 Go. Toutefois, les principes sont toujours les mêmes.}}
+
+
+= Installation de Manjaro =
+
+[[File: installoption-082.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install System''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installstart-082.png|thumb|left|375px]]
+
+
+'''Démarrer l'installation.''' Un message s'affiche indiquant que l'installation est sur le point de commencer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installcomplete.png|thumb|left|375px]]
+
+
+Après quelques instants, un message s'affiche pour confirmer que Manjaro a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfigure-082.png|thumb|left|375px]]
+
+
+Le programme d'installation va automatiquement configurer votre système, détecter votre matériel, et installer les pilotes appropriés. Il permettra également de trouver les serveurs disponibles Manjaro à partir desquels vous serez en mesure de télécharger des mises à jour, des logiciels et des applications. S'il vous plaît soyez patient, car ce processus peut prendre une minute ou deux.
+
+{{Attention|Manjaro ne sera pas en mesure de trouver les serveurs disponibles si vous n'êtes pas connecté à Internet.}}
+
+A la fin, vous reviendrez automatiquement au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuration de Manjaro =
+
+[[File: configureoption.png|thumb|left|375px]]
+
+
+'''Il va maintenant être nécessaire de configurer Manjaro.''' Etant donné que ce guide est pour ''utilisateurs expérimentés,'' ce processus va faire appel à la modification de quelques fichiers principaux.
+
+Veillez à ce que '''Configure System''' soit mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Mot de passe root ==
+
+[[File: rootpassword-082.png|thumb|left|375px]]
+
+
+'''Définir le mot de passe root.''' Assurez-vous que '''Change Root Password''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: enterroot-082.png|thumb|left|375px]]
+
+
+Tapez le mot de passe root que vous avez choisi.
+
+{{Astuce| Les mots de passe seront sensibles à la casse.}}
+
+Dès que c'est fait appuyez sur &lt;Entrée&gt; pour continuer. Vous aurez à entrer le mot de passe à nouveau pour le confirmer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Compte utilisateur ==
+
+[[File: setupuser-082.png|thumb|left|375px]]
+
+
+'''Mettre en place votre propre compte utilisateur personnel.''' Assurez-vous que '''Setup user account(s)''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: enteruser-082.png|thumb|left|375px]]
+
+
+Tapez le nom de compte / login que vous avez choisi.
+
+{{Attention| Bien que vous puissiez entrer presque tout ce que voulez, '''faire en sorte que toutes les lettres de votre nom soient en minuscules'''.}}
+
+Lorsque vous avez terminé, vérifiez que '''OK''' est sélectionné. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: usersudo-082.png|thumb|left|375px]]
+
+
+Confirmez que vous souhaitez obtenir les droits sudo.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: sudopass-082.png|thumb|left|375px]]
+
+
+Tapez le mot de passe choisi pour votre compte personnel.
+
+{{Astuce|Pour garder les choses simples, il vous suffit de taper le même mot de passe que celui utilisé pour le compte root.}}
+
+Dès que c'est fait appuyez sur &lt;Entrée&gt; pour continuer. Vous aurez à entrer le mot de passe à nouveau pour le confirmer.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Editer la configuration du système (optionnel)==
+
+[[File: sysconfigoption-082.png|thumb|left|375px]]
+
+
+Il va maintenant falloir vérifier/modifier certains fichiers de configuration importants pour Manjaro. Ce sont ceux relatifs à la langue utilisée, à la disposition du clavier,  et à l'accès au serveur logiciel.
+
+{{Astuce|Si vous avez été en mesure de choisir votre langue préférée et la disposition du clavier (keymap) dès le début, alors pratiquement tout devrait déjà avoir été configuré pour vous!}}
+
+Assurez-vous que '''Edit system configuration (optional)''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langues système===
+
+[[File: editsyslang-082.png|thumb|left|375px]]
+
+
+La modification de ce fichier vous permet de choisir lesquelles et combien de langues différentes Manjaro prend en charge. Ceci inclut tous les caractères spéciaux (c.-à-d. en dehors des 26 lettres de l'alphabet français) qu'elles utilisent.
+
+{{Astuce| Il est possible que le système charge plusieurs langues, vous n'êtes pas limité à une seule ou deux. Elles pourront également être facilement sélectionnables à tout moment lors de la connexion si vous utilisez le ''gestionnaire d'affichage LXDM''.}}
+
+Assurez-vous que  '''Edit system languages''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: syslangfile-082.png|thumb|left|375px]]
+
+
+Pour activer dans Manjaro le support des langues souhaitées, supprimez le dièse ('#') situé au début des lignes appropriées et qui se terminent par '''UTF-8''' et '''ISO''' quand c'est possible. Si vous avez pu définir votre langue préférée au début, il ne s'agira ici que de vérifier que les # ont bien été enlevés.
+
+{{Astuce|Si vous n'êtes pas sûr de ce que repré- sentent les codes langues et des pays particuliers, une petite sélection d'exemples sont disponibles ici '''[http://www.fincher.org/Utilities/CountryLanguageList.shtml ici]''' (ne pas tenir compte de l'utilisation des tirets ''''-'''' au lieu de soulignement ''''_'''').}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant d'appuyer sur &lt;Entrée&gt; pour revenir au menu fichier de configuration.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue utilisée par défaut===
+
+[[File: deflang-082.png|thumb|left|375px]]
+
+
+'''Modifier la langue utilisé par défaut.''' La modification de ce fichier vous permettra de choisir la langue principale devant être utilisée par Manjaro en standard.
+
+Assurez-vous que '''Edit default used language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: deflangfile-082.png|thumb|left|375px]]
+
+
+La langue par défaut utilisée par Manjaro est définie par la commande '''LANG='''. Plus précisément, cela s'applique à la langue utilisée par les applications logicielles. Comme le montre l'exemple, l'''anglais britannique'' a été sélectionné au début, et le code UTF-8 adéquat a déjà été défini.
+
+{{Astuce|Si vous avez été en mesure de définir votre langue préférée au début, ça devrait être aussi le cas chez vous. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix.}}
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que l'UTF-8 dans le code n'est pas répertorié deux fois ici, bien qu'ils soient affichés comme tels dans le fichier de configuration des ''langues système''.
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue de l'environnement===
+
+[[File: envlang-082.png|thumb|left|375px]]
+
+
+'''Modifier la langue de l'environnement.''' La modification de ce fichier vous permettra de définir la langue utilisée par Manjaro lors de l'affichage des informations et des messages qui vous sont destinés. Ce n'est pas la même chose que le jeu de langue par défaut pour les applications logicielles.
+
+Assurez-vous que '''Edit Environment Language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: envlangfile-082.png|thumb|left|375px]]
+
+
+'''Le code de la langue dans ce fichier doit être exactement le même que celui défini dans le fichier de configuration de la langue par défaut.''' Sinon le système Manjaro et ses applications installées vont utiliser des langues différentes.
+
+Comme illustré, le code UTF-8 pour anglais, la Grande-Bretagne a déjà été mis, et c'est exactement le même code que celui utilisé dans le fichier de configuration de la ''langue par défaut''.
+
+Encore une fois, si vous avez été en mesure de définir votre langue préférée au début, tout devrait déjà être réglé aussi. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix après '''LANG='''.
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que la partie UTF-8 du code n'est pas répertorié deux fois ici, bien qu'il apparaisse ainsi dans le fichier de configuration des ''langues du système.'' Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur Entrée pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Liste des miroirs de paquets===
+
+[[File: packmirlist-082.png|thumb|left|375px]]
+
+
+'''Modifier la liste des miroirs de paquets.''' La modification de ce fichier vous permettra de sélectionner les serveurs Internet Manjaro les plus appropriés à partir desquels télécharger les mises à jour, les fichiers et les applications.
+
+Assurez-vous que '''Packages mirror list''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: pkmirlistfile-082.png|thumb|left|375px]]
+
+
+Le miroir du Royaume-Uni (Grande-Bretagne) est le serveur par défaut de l'installation. Veuillez supprimer le caractère dièse (&quot;#&quot;) devant la ligne du serveur français (plus performant) pour l'activer. Tout serveur peut être choisi ou ignoré en supprimant ou en ajoutant le caractère dièse  (&quot;#&quot;) en début de la ligne, respectivement.
+
+{{Astuce|En règle générale, Manjaro essaie de se connecter aux serveurs sélectionnés dans l'ordre où ils sont énumérés.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Disposition du clavier de la console===
+
+[[File: ckl-082.png|thumb|left|375px]]
+
+
+'''Modifier la disposition du clavier de la console.''' La modification de ce fichier vous permettra de définir le type de clavier par défaut correspondant à votre pays.
+
+Assurez-vous que '''Console keyboard layout''' est mis en surbrillance.
+ 
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cklfile-082.png|thumb|left|375px]]
+
+
+La langue par défaut à utiliser pour Manjaro est défini par la commande '''KEYMAP='''. Dans notre cas, le clavier ''anglais, GB'' a été sélectionné au début de l'installation, il a déjà été paramétré pour le Royaume-Uni (Grande-Bretagne). Si vous avez été en mesure de configurer votre clavier au début, ça devrait déjà être le cas chez vous aussi. Dans le cas contraire, il sera nécessaire d'entrer manuellement votre propre clavier, ce qui peut également nécessiter la spécification de la police à utiliser pour cela (sinon les caractères spéciaux peuvent apparaître comme des carrés blancs).
+
+{{Astuce|Si vous rencontrez des problèmes avec cela, alors vous pouvez utiliser l'option '''Change vconsole keymap''', qui est répertoriée dans le '''menu de configuration'''. Cela fournira une liste des codes qui correspondent aux différentes dispositions de clavier différentes disponibles. Voir la section '''paramétrage du clavier''' dans le Guide d'installation pour les débutants pour plus d'informations.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Quittez le menu de configuration===
+
+[[File: exitconfig-082.png|thumb|left|375px]]
+
+La configuration étant terminée, quittez le menu de configuration en sélectionnant '''Main Menu'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-082.png|thumb|left|375px]]
+
+
+Il sera alors nécessaire d'attendre quelques instants pendant que l'installation Manjaro est automatiquement configurée selon vos préférences. Une fois terminé, vous serez automatiquement dirigé vers le menu principal. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installation du chargeur de démarrage =
+
+[[File: bootloaderoption-082.png|thumb|left|375px]]
+
+
+'''Installer le GRUB.'''  Si vous n'utilisez pas un GRUB existant (fourni par un sytème Linux déjà installé), assurez-vous que '''Install Bootloader''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: installGRUB.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install GRUB2 (needed to boot)''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: GRUBconfirm-082.png|thumb|left|375px]]
+
+
+Le programme d'installation va détecter automatiquement toute partition marquée comme '''amorçable''', et par conséquent va l'afficher comme  partition cible pour installer le GRUB2 dans un message de demande de confirmation. 
+
+Appuyez sur &lt;Entrée&gt; pour lancer l'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: GRUBinstalled-082.png|thumb|left|375px]]
+
+
+Un message de confirmation apparaîtra après quelques secondes, indiquant que GRUB2 a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour revenir au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Fin de l'installation =
+
+[[File: QuitInstaller-082.png|thumb|left|375px]]
+
+
+Tout est fait! Maintenant mettez en surbrillance '''Quit''' pour terminer l'installation!
+
+Appuyez sur &lt;Entrée&gt; pour continuer. 
+
+Le programme d'installation va prendre quelques instants pour finaliser l'installation. Un message de confirmation s'affiche alors, indiquant que le processus d'installation est terminé.
+Le programme d'installation va alors se fermer automatiquement, et vous serez renvoyé à l'environnement de bureau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: restartManjaro-082.png|thumb|left|375px]]
+
+
+'''Vous pouvez maintenant redémarrer votre ordinateur pour démarrer votre système d'exploitation nouvellement installé Manjaro!'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: 56.png|thumb|left|375px]]
+
+
+Lors du redémarrage (ou de l'arrêt), il vous sera rappelé d'avoir à retirer le support d'installation avant d'appuyer sur &lt;Entrée&gt; pour continuer. Si vous ne le faites pas, vous allez redémarrer à nouveau dans le support d'installation.
+
+{{Astuce| La première chose que vous devez faire lors du démarrage de Manjaro est de mettre à jour votre système.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+* '''[[Installation_Guide_for_the_NET_Edition_0.8.2|Installation Guide for the NET Edition]]'''
+* '''[[Cfdisk_Basic_Partitioning_Scenarios|Basic Partitioning Scenarios Using cfdisk]]'''
+
+[[Page_Principale|Retour à l'accueil]]
+[[Category:Getting Started]]
+[[Category:Français]]
+[[Category:Installation]]</text>
+      <sha1>7on1iiwuddvpxuqpjwnr3wxsolddy87</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

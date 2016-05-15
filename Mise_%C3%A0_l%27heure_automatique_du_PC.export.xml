@@ -1,0 +1,169 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Mise à l'heure automatique du PC</title>
+    <ns>0</ns>
+    <id>721</id>
+    <revision>
+      <id>4786</id>
+      <timestamp>2013-01-19T15:10:02Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  '''(PAGE EN COURS DE REDACTION)'''    &lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt; [[Category:Présentation]] [[Category:Fran...&quot;</comment>
+      <text xml:space="preserve" bytes="182">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+'''(PAGE EN COURS DE REDACTION)'''
+
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>t0b75hnyojypxw3f568rnatlyii9odi</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4787</id>
+      <parentid>4786</parentid>
+      <timestamp>2013-01-19T15:18:21Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="565">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+'''(PAGE EN COURS DE REDACTION)'''
+
+
+= Vue d'ensemble =
+
+Il est important de maintenir votre PC à une heure aussi précise que possible, non seulement pour que vous ne manquiez pas vos rendez-vous, mais aussi pour la bonne marche de votre système : nombre d'outils Linux se servent en effet d'une comparaison entre l'heure de celui-ci et celle des logiciels pour conditionner notamment l'exécution de mises à jour.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>cw2h0fpti0zkgccu29zi5ukgbwxx8i3</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4788</id>
+      <parentid>4787</parentid>
+      <timestamp>2013-01-19T15:24:17Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="816">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+'''(PAGE EN COURS DE REDACTION)'''
+
+
+= Vue d'ensemble =
+
+Il est important de maintenir votre PC à une heure aussi précise que possible, non seulement pour que vous ne manquiez pas vos rendez-vous, mais aussi pour la bonne marche de votre système : nombre d'outils Linux se servent en effet d'une comparaison entre l'heure de celui-ci et celle des logiciels pour conditionner notamment l'exécution de mises à jour.
+
+Dans le monde, il existe un ensemble de &quot;serveurs de temps&quot; qui le permettent, via le protocole NTP [[Wikipedia:Network Time Protocol|Network Time Protocol]]. Ces serveurs ne servent d'ailleurs pas qu'aux PCs, bien d'autres matériels les utilisent.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>6wzqjlhjuao3vyga2wqb6rpk0myn0qj</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4789</id>
+      <parentid>4788</parentid>
+      <timestamp>2013-01-19T15:41:24Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1272">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+'''(PAGE EN COURS DE REDACTION)'''
+
+
+= Vue d'ensemble =
+
+Il est important de maintenir votre PC à une heure aussi précise que possible, non seulement pour que vous ne manquiez pas vos rendez-vous, mais aussi pour la bonne marche de votre système : nombre d'outils Linux se servent en effet d'une comparaison entre l'heure de celui-ci et celle des logiciels pour conditionner notamment l'exécution de mises à jour.
+
+Dans le monde, il existe un ensemble de &quot;serveurs de temps&quot; qui le permettent, via le protocole NTP [[Wikipedia:Network Time Protocol|Network Time Protocol]]. Ces serveurs ne servent d'ailleurs pas qu'aux PCs, bien d'autres matériels les utilisent.
+
+Ces serveurs utilisent tous le Temps universel, une échelle de temps basée sur la rotation de la terre, fourni actuellement en [[http://fr.wikipedia.org/wiki/Temps_universel_coordonn%C3%A9 UTC]] par les serveurs, en remplacement de l'ancien GMT.
+
+C'est ce temps UTC que doit contenir le BIOS de votre PC, l'heure locale étant ensuite fournie par le système via un décalage lié à vos paramètres régionaux (et à l'heure d'été, d'hiver, etc...).
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>1m82h4c4dstldpc36wxpqaz33amtesg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4790</id>
+      <parentid>4789</parentid>
+      <timestamp>2013-01-19T15:46:25Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="1271">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+'''(PAGE EN COURS DE REDACTION)'''
+
+
+= Vue d'ensemble =
+
+Il est important de maintenir votre PC à une heure aussi précise que possible, non seulement pour que vous ne manquiez pas vos rendez-vous, mais aussi pour la bonne marche de votre système : nombre d'outils Linux se servent en effet d'une comparaison entre l'heure de celui-ci et celles des logiciels pour conditionner notamment l'exécution de mises à jour.
+
+Dans le monde, il existe un ensemble de &quot;serveurs de temps&quot; qui le permettent, via le protocole NTP [[Wikipedia:Network Time Protocol|Network Time Protocol]]. Ces serveurs ne servent d'ailleurs pas qu'aux PCs, bien d'autres matériels les utilisent.
+
+Ces serveurs utilisent tous le Temps universel, une échelle de temps basée sur la rotation de la terre, fourni actuellement en [http://fr.wikipedia.org/wiki/Temps_universel_coordonn%C3%A9 UTC] par les serveurs, en remplacement de l'ancien GMT.
+
+C'est ce temps UTC que doit contenir le BIOS de votre PC, l'heure locale étant ensuite fournie par le système via un décalage lié à vos paramètres régionaux (et à l'heure d'été, d'hiver, etc...).
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>efgvaxcirt13ctf6mlr2r2d22sxvt71</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

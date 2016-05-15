@@ -1,0 +1,519 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Erreur lors du chargement du noyau</title>
+    <ns>0</ns>
+    <id>663</id>
+    <revision>
+      <id>4257</id>
+      <timestamp>2013-01-06T21:10:26Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =  {{tip|'''Parallel ATA''' ('''[http://en.wikipedia.org/wiki/Parallel_ATA PATA]''') is an interface standard to connect storage devices, and the '''Advanced Config...&quot;</comment>
+      <text xml:space="preserve" bytes="4034">= Overview =
+
+{{tip|'''Parallel ATA''' ('''[http://en.wikipedia.org/wiki/Parallel_ATA PATA]''') is an interface standard to connect storage devices, and the '''Advanced Configuration and Power Interface''' ('''[http://en.wikipedia.org/wiki/Acpi ACPI]''') is used for device configuration and power management.}}
+
+
+This problem may affect particular computer systems using the '''[http://en.wikipedia.org/wiki/JMicron JMicron PATA Controller chipset]''', which is used to control and access storage devices, such as Solid State Drives ('''[http://en.wikipedia.org/wiki/Solid-state_drive SSD]'''). More specifically, it may be due to the '''PATA ACPI driver''' being loaded by the GRUB ('''GR'''and '''U'''nified '''B'''ootloader), which has consequently resulted in a conflict with the ''JMicron'' chipset. Should this indeed be the case, then an error message similar - or identical - to the example provided below should be displayed upon attempting to boot the affected kernel version(s):
+
+ ERROR: device 'UUID=......' not found. Skipping FSCK'
+ ERROR: Unable to find root device 'UUID=......'
+ You are being dropped to the recovery shell
+ Type 'exit' to try and continue booting
+ sh: can't access tty: job control turned off'
+ 
+ .....
+ 
+ mount: can't find UUID='.....'
+ You are now being dropped into the emergency shell.
+
+
+If so, then the solution is to simply stop the ''PATA ACPI'' driver from being loaded in the first place. This is a simple task, undertaken by amending a single line in the '''default grub''' file.
+
+
+= Opening the Default GRUB File = 
+
+{{warning|'''DO NOT edit the ''grub.cfg'' file'''. This is not the same as the ''grub'' file, which does not have an extension at the end of its name.}}
+
+
+The syntax of the command to open the grub file is:
+ 
+ sudo [text editor] /etc/default/grub
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+ 
+ sudo nano /etc/default/grub
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the file up as a document, making it easier to read and edit. To use ''gedit'' instead, enter:
+ 
+ sudo gedit /etc/default/grub
+
+
+= Editing the Default GRUB File =
+
+Once the ''default grub'' file has been opened, it will be necessary to amend the '''GRUB_CMDLINE_LINUX=&quot;&quot;''' command, which is itself located near the top of the file. An example has been provided below, with the appropriate line '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' below for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ &lt;font color=&quot;green&quot;&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/font color&gt;
+
+
+To prevent the ''PATA ACPI'' driver from being loaded, '''modprobe.blacklist=pata_acpi''' must be added in between the otherwise empty speech marks. An example of the necessary amendment has been provided below, which has again been '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ '''GRUB_CMDLINE_LINUX=&quot;&lt;font color=&quot;green&quot;&gt;modprobe.blacklist=pata_acpi&lt;/font color&gt;&quot;'''
+
+
+Once you have completed the amendments, save the change and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is necessary is to '''update the GRUB''' before rebooting.
+
+
+= Updating the GRUB =
+
+To update the GRUB, ensure that the terminal is open, and enter the folliwing command:
+
+ sudo update-grub
+
+
+Once complete, reboot your system for the change to take effect.
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>sjz52yhfpk8bepdora4hkne4sd5oazj</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4259</id>
+      <parentid>4257</parentid>
+      <timestamp>2013-01-06T21:12:58Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="4040">
+= Vue d'ensemble =
+
+{{tip|'''Parallel ATA''' ('''[http://en.wikipedia.org/wiki/Parallel_ATA PATA]''') is an interface standard to connect storage devices, and the '''Advanced Configuration and Power Interface''' ('''[http://en.wikipedia.org/wiki/Acpi ACPI]''') is used for device configuration and power management.}}
+
+
+This problem may affect particular computer systems using the '''[http://en.wikipedia.org/wiki/JMicron JMicron PATA Controller chipset]''', which is used to control and access storage devices, such as Solid State Drives ('''[http://en.wikipedia.org/wiki/Solid-state_drive SSD]'''). More specifically, it may be due to the '''PATA ACPI driver''' being loaded by the GRUB ('''GR'''and '''U'''nified '''B'''ootloader), which has consequently resulted in a conflict with the ''JMicron'' chipset. Should this indeed be the case, then an error message similar - or identical - to the example provided below should be displayed upon attempting to boot the affected kernel version(s):
+
+ ERROR: device 'UUID=......' not found. Skipping FSCK'
+ ERROR: Unable to find root device 'UUID=......'
+ You are being dropped to the recovery shell
+ Type 'exit' to try and continue booting
+ sh: can't access tty: job control turned off'
+ 
+ .....
+ 
+ mount: can't find UUID='.....'
+ You are now being dropped into the emergency shell.
+
+
+If so, then the solution is to simply stop the ''PATA ACPI'' driver from being loaded in the first place. This is a simple task, undertaken by amending a single line in the '''default grub''' file.
+
+= Opening the Default GRUB File = 
+
+{{warning|'''DO NOT edit the ''grub.cfg'' file'''. This is not the same as the ''grub'' file, which does not have an extension at the end of its name.}}
+
+
+The syntax of the command to open the grub file is:
+ 
+ sudo [text editor] /etc/default/grub
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+ 
+ sudo nano /etc/default/grub
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the file up as a document, making it easier to read and edit. To use ''gedit'' instead, enter:
+ 
+ sudo gedit /etc/default/grub
+
+
+= Editing the Default GRUB File =
+
+Once the ''default grub'' file has been opened, it will be necessary to amend the '''GRUB_CMDLINE_LINUX=&quot;&quot;''' command, which is itself located near the top of the file. An example has been provided below, with the appropriate line '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' below for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ &lt;font color=&quot;green&quot;&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/font color&gt;
+
+
+To prevent the ''PATA ACPI'' driver from being loaded, '''modprobe.blacklist=pata_acpi''' must be added in between the otherwise empty speech marks. An example of the necessary amendment has been provided below, which has again been '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ '''GRUB_CMDLINE_LINUX=&quot;&lt;font color=&quot;green&quot;&gt;modprobe.blacklist=pata_acpi&lt;/font color&gt;&quot;'''
+
+
+Once you have completed the amendments, save the change and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is necessary is to '''update the GRUB''' before rebooting.
+
+
+= Updating the GRUB =
+
+To update the GRUB, ensure that the terminal is open, and enter the folliwing command:
+
+ sudo update-grub
+
+
+Once complete, reboot your system for the change to take effect.
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>0vz0gktzf8mryrtsuwumc7bhhixfggc</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4260</id>
+      <parentid>4259</parentid>
+      <timestamp>2013-01-06T21:13:23Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="4041">
+
+= Vue d'ensemble =
+
+{{tip|'''Parallel ATA''' ('''[http://en.wikipedia.org/wiki/Parallel_ATA PATA]''') is an interface standard to connect storage devices, and the '''Advanced Configuration and Power Interface''' ('''[http://en.wikipedia.org/wiki/Acpi ACPI]''') is used for device configuration and power management.}}
+
+
+This problem may affect particular computer systems using the '''[http://en.wikipedia.org/wiki/JMicron JMicron PATA Controller chipset]''', which is used to control and access storage devices, such as Solid State Drives ('''[http://en.wikipedia.org/wiki/Solid-state_drive SSD]'''). More specifically, it may be due to the '''PATA ACPI driver''' being loaded by the GRUB ('''GR'''and '''U'''nified '''B'''ootloader), which has consequently resulted in a conflict with the ''JMicron'' chipset. Should this indeed be the case, then an error message similar - or identical - to the example provided below should be displayed upon attempting to boot the affected kernel version(s):
+
+ ERROR: device 'UUID=......' not found. Skipping FSCK'
+ ERROR: Unable to find root device 'UUID=......'
+ You are being dropped to the recovery shell
+ Type 'exit' to try and continue booting
+ sh: can't access tty: job control turned off'
+ 
+ .....
+ 
+ mount: can't find UUID='.....'
+ You are now being dropped into the emergency shell.
+
+
+If so, then the solution is to simply stop the ''PATA ACPI'' driver from being loaded in the first place. This is a simple task, undertaken by amending a single line in the '''default grub''' file.
+
+= Opening the Default GRUB File = 
+
+{{warning|'''DO NOT edit the ''grub.cfg'' file'''. This is not the same as the ''grub'' file, which does not have an extension at the end of its name.}}
+
+
+The syntax of the command to open the grub file is:
+ 
+ sudo [text editor] /etc/default/grub
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+ 
+ sudo nano /etc/default/grub
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the file up as a document, making it easier to read and edit. To use ''gedit'' instead, enter:
+ 
+ sudo gedit /etc/default/grub
+
+
+= Editing the Default GRUB File =
+
+Once the ''default grub'' file has been opened, it will be necessary to amend the '''GRUB_CMDLINE_LINUX=&quot;&quot;''' command, which is itself located near the top of the file. An example has been provided below, with the appropriate line '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' below for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ &lt;font color=&quot;green&quot;&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/font color&gt;
+
+
+To prevent the ''PATA ACPI'' driver from being loaded, '''modprobe.blacklist=pata_acpi''' must be added in between the otherwise empty speech marks. An example of the necessary amendment has been provided below, which has again been '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ '''GRUB_CMDLINE_LINUX=&quot;&lt;font color=&quot;green&quot;&gt;modprobe.blacklist=pata_acpi&lt;/font color&gt;&quot;'''
+
+
+Once you have completed the amendments, save the change and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is necessary is to '''update the GRUB''' before rebooting.
+
+
+= Updating the GRUB =
+
+To update the GRUB, ensure that the terminal is open, and enter the folliwing command:
+
+ sudo update-grub
+
+
+Once complete, reboot your system for the change to take effect.
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>7do2e2d3bxob2tlt6b8lu6jywzcpt64</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4261</id>
+      <parentid>4260</parentid>
+      <timestamp>2013-01-06T21:31:03Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="4097">
+
+= Vue d'ensemble =
+
+{{Astuce|'''Parallel ATA''' ('''[http://en.wikipedia.org/wiki/Parallel_ATA PATA]''') est une interface standard pour connecter des périphériques de stockage, et l''''Advanced Configuration and Power Interface''' ('''[http://en.wikipedia.org/wiki/Acpi ACPI]''') est utilisé pour la configuratioon des périphériques et la gestion de l'alimentation.}}
+
+
+This problem may affect particular computer systems using the '''[http://en.wikipedia.org/wiki/JMicron JMicron PATA Controller chipset]''', which is used to control and access storage devices, such as Solid State Drives ('''[http://en.wikipedia.org/wiki/Solid-state_drive SSD]'''). More specifically, it may be due to the '''PATA ACPI driver''' being loaded by the GRUB ('''GR'''and '''U'''nified '''B'''ootloader), which has consequently resulted in a conflict with the ''JMicron'' chipset. Should this indeed be the case, then an error message similar - or identical - to the example provided below should be displayed upon attempting to boot the affected kernel version(s):
+
+ ERROR: device 'UUID=......' not found. Skipping FSCK'
+ ERROR: Unable to find root device 'UUID=......'
+ You are being dropped to the recovery shell
+ Type 'exit' to try and continue booting
+ sh: can't access tty: job control turned off'
+ 
+ .....
+ 
+ mount: can't find UUID='.....'
+ You are now being dropped into the emergency shell.
+
+
+If so, then the solution is to simply stop the ''PATA ACPI'' driver from being loaded in the first place. This is a simple task, undertaken by amending a single line in the '''default grub''' file.
+
+= Opening the Default GRUB File = 
+
+{{warning|'''DO NOT edit the ''grub.cfg'' file'''. This is not the same as the ''grub'' file, which does not have an extension at the end of its name.}}
+
+
+The syntax of the command to open the grub file is:
+ 
+ sudo [text editor] /etc/default/grub
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+ 
+ sudo nano /etc/default/grub
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the file up as a document, making it easier to read and edit. To use ''gedit'' instead, enter:
+ 
+ sudo gedit /etc/default/grub
+
+
+= Editing the Default GRUB File =
+
+Once the ''default grub'' file has been opened, it will be necessary to amend the '''GRUB_CMDLINE_LINUX=&quot;&quot;''' command, which is itself located near the top of the file. An example has been provided below, with the appropriate line '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' below for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ &lt;font color=&quot;green&quot;&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/font color&gt;
+
+
+To prevent the ''PATA ACPI'' driver from being loaded, '''modprobe.blacklist=pata_acpi''' must be added in between the otherwise empty speech marks. An example of the necessary amendment has been provided below, which has again been '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ '''GRUB_CMDLINE_LINUX=&quot;&lt;font color=&quot;green&quot;&gt;modprobe.blacklist=pata_acpi&lt;/font color&gt;&quot;'''
+
+
+Once you have completed the amendments, save the change and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is necessary is to '''update the GRUB''' before rebooting.
+
+
+= Updating the GRUB =
+
+To update the GRUB, ensure that the terminal is open, and enter the folliwing command:
+
+ sudo update-grub
+
+
+Once complete, reboot your system for the change to take effect.
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>t6jzimj0iz4tsl93m1srpn7fmii58qw</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4262</id>
+      <parentid>4261</parentid>
+      <timestamp>2013-01-06T21:49:09Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="4117">
+
+= Vue d'ensemble =
+
+{{Astuce|'''Parallel ATA''' ('''[http://en.wikipedia.org/wiki/Parallel_ATA PATA]''') est une interface standard pour connecter des périphériques de stockage, et l''''Advanced Configuration and Power Interface''' ('''[http://en.wikipedia.org/wiki/Acpi ACPI]''') est utilisée pour la configuratioon des périphériques et la gestion de l'alimentation.}}
+
+
+Ce problème peut affecter certains ordinateurs utilisant un '''[http://en.wikipedia.org/wiki/JMicron JMicron PATA Controller chipset]''', qui est utilisé pour contrôler et accéder à des périphériques de stockage, tels que les Solid State Drives ('''[http://en.wikipedia.org/wiki/Solid-state_drive SSD]'''). Plus spécifiquement, ça peut être dû au pilote '''PATA ACPI''' chargé par le GRUB ('''GR'''and '''U'''nified '''B'''ootloader), ce qui a pour conséquence un conflit avec la puce ''JMicron''. Should this indeed be the case, then an error message similar - or identical - to the example provided below should be displayed upon attempting to boot the affected kernel version(s):
+
+ ERROR: device 'UUID=......' not found. Skipping FSCK'
+ ERROR: Unable to find root device 'UUID=......'
+ You are being dropped to the recovery shell
+ Type 'exit' to try and continue booting
+ sh: can't access tty: job control turned off'
+ 
+ .....
+ 
+ mount: can't find UUID='.....'
+ You are now being dropped into the emergency shell.
+
+
+If so, then the solution is to simply stop the ''PATA ACPI'' driver from being loaded in the first place. This is a simple task, undertaken by amending a single line in the '''default grub''' file.
+
+= Opening the Default GRUB File = 
+
+{{warning|'''DO NOT edit the ''grub.cfg'' file'''. This is not the same as the ''grub'' file, which does not have an extension at the end of its name.}}
+
+
+The syntax of the command to open the grub file is:
+ 
+ sudo [text editor] /etc/default/grub
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+ 
+ sudo nano /etc/default/grub
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the file up as a document, making it easier to read and edit. To use ''gedit'' instead, enter:
+ 
+ sudo gedit /etc/default/grub
+
+
+= Editing the Default GRUB File =
+
+Once the ''default grub'' file has been opened, it will be necessary to amend the '''GRUB_CMDLINE_LINUX=&quot;&quot;''' command, which is itself located near the top of the file. An example has been provided below, with the appropriate line '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' below for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ &lt;font color=&quot;green&quot;&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/font color&gt;
+
+
+To prevent the ''PATA ACPI'' driver from being loaded, '''modprobe.blacklist=pata_acpi''' must be added in between the otherwise empty speech marks. An example of the necessary amendment has been provided below, which has again been '''&lt;font color=&quot;green&quot;&gt;highlighted in green&lt;/font&gt;''' for illustrative purposes:
+
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR=&quot;Manjaro&quot;
+ GRUB_CMDLINE_LINUX_DEFAULT=&quot;GRUB_CMDLINE_LINUX_DEFAULT= resume=/dev/disk/by-uuid/4cbb5d28-6569-4225-a5a0-adf5f6c372b0&quot;
+ '''GRUB_CMDLINE_LINUX=&quot;&lt;font color=&quot;green&quot;&gt;modprobe.blacklist=pata_acpi&lt;/font color&gt;&quot;'''
+
+
+Once you have completed the amendments, save the change and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is necessary is to '''update the GRUB''' before rebooting.
+
+
+= Updating the GRUB =
+
+To update the GRUB, ensure that the terminal is open, and enter the folliwing command:
+
+ sudo update-grub
+
+
+Once complete, reboot your system for the change to take effect.
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>fx0effpljloxj45ug1b192tszhp7hey</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

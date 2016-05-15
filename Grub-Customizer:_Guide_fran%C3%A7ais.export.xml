@@ -1,0 +1,435 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Grub-Customizer: Guide français</title>
+    <ns>0</ns>
+    <id>646</id>
+    <revision>
+      <id>4064</id>
+      <timestamp>2013-01-04T15:00:42Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = EN COURS DE TRADUCTION =  =What is the GRUB=  [[File:grubcustomiser2.png|left|375px]]  For good reason few users want to call...&quot;</comment>
+      <text xml:space="preserve" bytes="6373">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN COURS DE TRADUCTION =
+
+=What is the GRUB=
+
+[[File:grubcustomiser2.png|left|375px]]
+
+For good reason few users want to call GRUB by its long name, which is [https://en.wikipedia.org/wiki/GNU_GRUB#Features/ '''GNU GRand Unified Bootloader''']. Though its long name does give somewhat more of a clue as to what the purpose of this GRUB thing is. We see GRUB written in both all upper case; all lower case; &amp; lower case with the capital G. It would seem that using all upper case is the correct method of writing it, though it certainly is not the most common way to write it.
+
+In simple terms, the computer motherboard has software that is located in a chip called its [https://en.wikipedia.org/wiki/BIOS/ BIOS] (Basic Input/Output System) chip; software in a chip is generally called firmware. The purpose of the BIOS is to allow a certain amount of low level system configuration to enable the hardware to function together; to do low level system checks called [https://en.wikipedia.org/wiki/Power-on_self-test/ Power On System Test (POSpngT)] when it is powered on; &amp; to boot-up the system. 
+
+In general PC's are made to boot-up Windows &amp; have Windows centric BIOS's. Apple are a hardware manufacturer &amp; of course build their systems to boot-up the Apple OS. Depending on the Apple model &amp; its firmware, you can even have trouble booting a LiveCD - The walled garden strikes again! 
+
+To boot nearly all of the other operating systems outside of (but not excluding) the two mentioned above, there is a need for a bootloader with the function of being able to not only boot the operating system but also to be able to boot multiple operating systems on the same machine - whether they are on multiple partitions on one drive; are on multiple drives connected to the same machine; are on optical media; flash media; or any other kind that can be used. This is the purpose of GRUB &amp; it does its job very well. 
+
+People sometimes have many operating systems such as Windows; OS/X; more than one BSD; &amp; multiple Linux distros all running on the same computer &amp; GRUB lists these in its boot menu allowing the user to choose which system to boot. GRUB currently handles the [https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface/ UEFI] &amp; [https://en.wikipedia.org/wiki/GUID_Partition_Table/ GPT] technology. The legacy GRUB(1) did not. The Legacy GRUB was simpler &amp; much easier to configure than GRUB(2) is.
+
+That is why I have written this wiki page, as it introduces a very good GUI tool for GRUB configuration. For those wanting to know how to configure GRUB manually '''[http://www.dedoimedo.com/computers/grub-2.html/ this]''' is a very good page to read.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Background==
+
+I come from the old legacy GRUB school &amp; even over the years I spent with Arch &amp; prior to that, I only rarely ever had to get in &amp; edit the /boot/grub/menu.lst file, which is easy enough when you know what you are there for. When GRUB2 (the current GRUB) came along it looked to be bringing in so many complications &amp; extra files; editing it wasn't as simple as it used to be (at least to the uninitiated who rarely needed to dabble in it). The current GRUB overcomes problems that needed to be fixed so that GRUB could deal with both the current &amp; coming technologies.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Why I Needed to Customise Grub==
+
+As of this writing I'm pretty new to Manjaro &amp; although I've been using GRUB(2) for some months prior to installing Manjaro, I don't know much about its gizzards. The problem I have been living with is tiny fonts in the GRUB menu &amp; during the boot process. Not everyone would have this problem, those of us who are running a high resolution screen (I'm using 1920x1200) would know what I'm talking about.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Getting the GRUB-Customizer==
+
+[[file:grubcust.png|thumb|left|375px]]
+
+
+''For those unfamiliar with the Arch User Repositories - AUR, you may find some of what follows more meaningful if you read this Manjaro wiki page [[Arch User Repository|Arch User Repository]] before continuing here.'' 
+
+I decided that the time has come to fix the problem, so I did a search &amp; found [https://answers.launchpad.net/grub-customizer/+faq/1355/ grub-customizer] , which is in [https://aur.archlinux.org/packages/grub-customizer/ AUR]. I installed it &amp; quickly found the '''Appearance Settings''' tab where I could almost as quickly set the boot screen resolution to 1024x768 &amp; choose the font that suited me. Rebooted &amp; now I can read everything with ease. Who said GUI's are bad for you? The command to obtain the GRUB-Customiser from the AUR is:
+
+ yaourt grub-customizer
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The Easy Way==
+
+This saves me (the GRUB configuration tourist) from having to bother learning about how to get in &amp; edit the correct files by hand. Which if you want to learn you can do it from [https://wiki.archlinux.org/index.php/GRUB2/ here]. I don't normally mind editing config' files (quite enjoy it actually) but for this particular job I'm happy to throw it to a GUI.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==There are Other Choices==
+
+[https://wiki.archlinux.org/index.php/GRUB2#GUI_configuration_tools/ There are a number of GUIs available for the job], though I have only used grub-customizer. We have to remain flexible...
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Some links that may be helpful==
+
+[http://www.howtogeek.com/howto/43471/how-to-configure-the-linux-grub2-boot-menu-the-easy-way/ Here] is a link to a pictorial how-to for grub-customizer (it is for Ubuntu but - apart from the installation process - that makes absolutely no difference). There are a number of how-to's on the web very similar to the one above, which is really quite limited but the pictures are helpful to those interested:
+
+* '''[http://www.howtogeek.com/howto/43471/how-to-configure-the-linux-grub2-boot-menu-the-easy-way/ HowToGeek.com article]'''
+* '''[http://ubuntuforums.org/showthread.php?p=10340183/ This how-to on the Ubuntu forum is the most in depth I have found]'''
+* '''[https://answers.launchpad.net/grub-customizer/+faq/1355/ I think that this FAQ from the creator of grub-cutomizer - Daniel Richter, is well worth reading by the more technically savy user]'''
+
+[[Grub-Customizer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>ltatw8h8hsqpaslthx2eacfp0eow930</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4074</id>
+      <parentid>4064</parentid>
+      <timestamp>2013-01-04T19:10:08Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6481">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Qu'est-ce que le GRUB ?=
+
+[[File:grubcustomiser2.png|left|375px]]
+
+Pour une bonne raison, certains utilisateurs préfèrent appeler GRUB par son nom entier qui est [https://fr.wikipedia.org/wiki/GNU_GRUB#Features/ '''GNU GRand Unified Bootloader'''], bien que ce nom entier ne donne pas beaucoup plus d'idée de ce qu'est GRUB. Nous voyons GRUB écrit en majuscules, en minuscules, en minuscules avec le G en majuscule. Il semblerait que l'utilisation des majuscules soit la bonne manière de l'écrire, mais ce ne soit certainement pas la façon la plus courante de l'écrire.
+
+En termes simples, la carte-mère de l'ordinateur dispose d'un logiciel appelé [https://fr.wikipedia.org/wiki/BIOS/ BIOS] (Basic Input/Output System), traduisez ''Système de gestion élémentaire des entrées/sorties''. C'est un composant essentiel de l'ordinateur, permettant le contrôle des éléments matériels afin de permettre d'amorcer le système. Il s'agit d'un petit logiciel dont une partie est dans une ROM (mémoire morte, c'est-à-dire une mémoire qui ne peut pas être modifiée), et une autre partie est dans un EEPROM (mémoire modifiable par impulsions électriques, d'où le terme flasher pour désigner l'action de modifier l'EEPROM).
+
+En général, les PC sont faits pour démarrer de Windows et de ce fait le BIOS est conçu pour Windows. Apple est un fabricant de matériel et bien sûr a construit son propre système d'amorçage pour son système d'exploitation. Selon le modèle d'Apple et de son progiciel, vous pouvez même avoir des problèmes lors d'un LiveCD!
+
+Pour démarrer presque tous les autres systèmes d'exploitation en dehors des deux mentionnés ci-dessus (mais pas exclusivement), il y a besoin d'un chargeur de démarrage avec la fonction d'être en mesure non seulement de démarrer le système d'exploitation, mais aussi d'être en mesure de démarrer plusieurs systèmes d'exploitation installés sur la même machine - qu'ils soient sur plusieurs partitions d'un disque, sur d'autres disques connectés à la même machine, sur ​​des supports optiques, mémoire flash, ou tout autre support qui peut être utilisé. C'est le but de GRUB et il fait très bien son travail.
+
+Les gens ont parfois plusieurs systèmes d'exploitation tels que Windows, OS/X, système BSD, et plusieurs distributions Linux tous exécutés sur le même ordinateur. GRUB liste ceux-ci dans son menu de démarrage afin de permettre à l'utilisateur de choisir le système à démarrer. GRUB gère actuellement la technologie [https://fr.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface/ UEFI] et [https://fr.wikipedia.org/wiki/GUID_Partition_Table/ GPT]. Le GRUB Legacy(1) ne le fait pas. Le GRUB Legacy était plus simple et beaucoup plus facile à configurer que GRUB(2).
+
+C'est pourquoi cette page wiki a été écrite, car Grub-Customizer est un très bon outil avec interface graphique pour la configuration de GRUB. Pour ceux qui veulent savoir comment configurer manuellement GRUB, '''[http://www.linuxpedia.fr/doku.php/expert/grub2 cette page]''' est très bien.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Background==
+
+Je viens de la vieille école de Grub Legacy et même au cours des années que j'ai passées avec Arch, je n'ai que rarement, voire jamais, dû éditer le fichier /boot/grub/menu.lst, ce qui était assez facile. Quand GRUB2 (le GRUB actuel) est arrivé, il a apporté nombre de complications et de dossiers supplémentaires; son édition n'était plus aussi simple qu'auparavant (au moins pour les non-initiés qui ont rarement besoin d'aller dans celui-ci). Le GRUB actuel surmonte les problèmes qui doivent être fixés de manière que GRUB pourrait traiter à la fois les technologies actuelles et à venir.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Pourquoi aurais-je besoin de personnaliser Grub==
+
+Le problème que j'ai vécu est avec les polices minuscules dans le menu GRUB et pendant le processus de démarrage. Pas tout le monde aurait ce problème, ceux d'entre nous qui utilisent un écran haute résolution (1920x1200) savent ce que je veux dire.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Obtenir GRUB-Customizer==
+
+[[file:grubcust.png|thumb|left|375px]]
+
+
+''Pour ceux qui ne connaissent pas le dépôt Arch User Repository - AUR, vous trouverez peut-être plus de sens à ce qui suit si vous lisez la page du wiki'' '''[[Dépôt AUR (Arch User Repository)|Dépôt AUR]]''' ''avant de continuer.''
+
+J'ai décidé que le moment était venu de régler le problème, alors j'ai fait une recherche et j'ai trouvé [https://answers.launchpad.net/grub-customizer/+faq/1355/ grub-customizer], qui est dans [https://aur.archlinux.org/packages/grub-customizer/ AUR]. Je l'ai installé et j'ai rapidement trouvé l'onglet '''Apparence''' où je trouve presque aussi rapidement comment régler la résolution d'écran de démarrage à 1024x768 et comment choisir la police qui me convenait. Un redémarrage plus tard, je peux tout lire avec facilité. Qui a dit que l'interface graphique est mauvaise? La commande pour obtenir le GRUB-Customizer du dépôt AUR est la suivante:
+
+ yaourt grub-customizer
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==La solution de facilité==
+
+Ce qui me sauve ''(le touriste de configuration de GRUB)'' c'est d'avoir à peine à apprendre comment obtenir et modifier les fichiers appropriés à la main. Si vous voulez comprendre GRUB, vous pouvez le faire partir d'[https://wiki.archlinux.org/index.php/GRUB2/ ici].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Il y a d'autres choix==
+
+'''[https://wiki.archlinux.org/index.php/GRUB2#GUI_configuration_tools/ Il y a un certain nombre d'autres interfaces graphiques disponibles pour ce travail]''', mais je n'ai utilisé que grub-customizer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Quelques liens qui peuvent être utiles==
+
+'''[http://doc.ubuntu-fr.org/grub-customizer Ici]''' un lien vers un tutoriel pour l'utilisation de grub-customizer (c'est pour Ubuntu, mais - mis à part le processus d'installation - pour l'utilisation il n'y a aucune différence). Il y a un certain nombre d'autres tutoriels sur le web très similaires:
+
+* '''[http://bret-actu.fr/tuto-configurer-le-demarrage-dubuntu-avec-grub-customizer/ ]'''
+* '''[http://www.tux-planet.fr/grub-customizer/ ]'''
+* '''[http://blog.guiona.com/2011/05/grub-customizer-un-outil-graphique-pour-configurer-grub2/ ]'''
+
+[[Grub-Customizer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>7v12wfx3em8yh3d9eo9iyy52mtlswho</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4076</id>
+      <parentid>4074</parentid>
+      <timestamp>2013-01-04T19:14:49Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6481">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Qu'est-ce que le GRUB ?=
+
+[[File:grubcustomiser2.png|left|375px]]
+
+Pour une bonne raison, certains utilisateurs préfèrent appeler GRUB par son nom entier qui est [https://fr.wikipedia.org/wiki/GNU_GRUB#Features/ '''GNU GRand Unified Bootloader'''], bien que ce nom entier ne donne pas beaucoup plus d'idée de ce qu'est GRUB. Nous voyons GRUB écrit en majuscules, en minuscules, en minuscules avec le G en majuscule. Il semblerait que l'utilisation des majuscules soit la bonne manière de l'écrire, mais ce ne soit certainement pas la façon la plus courante de l'écrire.
+
+En termes simples, la carte-mère de l'ordinateur dispose d'un logiciel appelé [https://en.wikipedia.org/wiki/BIOS/ BIOS] (Basic Input/Output System), traduisez ''Système de gestion élémentaire des entrées/sorties''. C'est un composant essentiel de l'ordinateur, permettant le contrôle des éléments matériels afin de permettre d'amorcer le système. Il s'agit d'un petit logiciel dont une partie est dans une ROM (mémoire morte, c'est-à-dire une mémoire qui ne peut pas être modifiée), et une autre partie est dans un EEPROM (mémoire modifiable par impulsions électriques, d'où le terme flasher pour désigner l'action de modifier l'EEPROM).
+
+En général, les PC sont faits pour démarrer de Windows et de ce fait le BIOS est conçu pour Windows. Apple est un fabricant de matériel et bien sûr a construit son propre système d'amorçage pour son système d'exploitation. Selon le modèle d'Apple et de son progiciel, vous pouvez même avoir des problèmes lors d'un LiveCD!
+
+Pour démarrer presque tous les autres systèmes d'exploitation en dehors des deux mentionnés ci-dessus (mais pas exclusivement), il y a besoin d'un chargeur de démarrage avec la fonction d'être en mesure non seulement de démarrer le système d'exploitation, mais aussi d'être en mesure de démarrer plusieurs systèmes d'exploitation installés sur la même machine - qu'ils soient sur plusieurs partitions d'un disque, sur d'autres disques connectés à la même machine, sur ​​des supports optiques, mémoire flash, ou tout autre support qui peut être utilisé. C'est le but de GRUB et il fait très bien son travail.
+
+Les gens ont parfois plusieurs systèmes d'exploitation tels que Windows, OS/X, système BSD, et plusieurs distributions Linux tous exécutés sur le même ordinateur. GRUB liste ceux-ci dans son menu de démarrage afin de permettre à l'utilisateur de choisir le système à démarrer. GRUB gère actuellement la technologie [https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface/ UEFI] et [https://en.wikipedia.org/wiki/GUID_Partition_Table/ GPT]. Le GRUB Legacy(1) ne le fait pas. Le GRUB Legacy était plus simple et beaucoup plus facile à configurer que GRUB(2).
+
+C'est pourquoi cette page wiki a été écrite, car Grub-Customizer est un très bon outil avec interface graphique pour la configuration de GRUB. Pour ceux qui veulent savoir comment configurer manuellement GRUB, '''[http://www.linuxpedia.fr/doku.php/expert/grub2 cette page]''' est très bien.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Background==
+
+Je viens de la vieille école de Grub Legacy et même au cours des années que j'ai passées avec Arch, je n'ai que rarement, voire jamais, dû éditer le fichier /boot/grub/menu.lst, ce qui était assez facile. Quand GRUB2 (le GRUB actuel) est arrivé, il a apporté nombre de complications et de dossiers supplémentaires; son édition n'était plus aussi simple qu'auparavant (au moins pour les non-initiés qui ont rarement besoin d'aller dans celui-ci). Le GRUB actuel surmonte les problèmes qui doivent être fixés de manière que GRUB pourrait traiter à la fois les technologies actuelles et à venir.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Pourquoi aurais-je besoin de personnaliser Grub==
+
+Le problème que j'ai vécu est avec les polices minuscules dans le menu GRUB et pendant le processus de démarrage. Pas tout le monde aurait ce problème, ceux d'entre nous qui utilisent un écran haute résolution (1920x1200) savent ce que je veux dire.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Obtenir GRUB-Customizer==
+
+[[file:grubcust.png|thumb|left|375px]]
+
+
+''Pour ceux qui ne connaissent pas le dépôt Arch User Repository - AUR, vous trouverez peut-être plus de sens à ce qui suit si vous lisez la page du wiki'' '''[[Dépôt AUR (Arch User Repository)|Dépôt AUR]]''' ''avant de continuer.''
+
+J'ai décidé que le moment était venu de régler le problème, alors j'ai fait une recherche et j'ai trouvé [https://answers.launchpad.net/grub-customizer/+faq/1355/ grub-customizer], qui est dans [https://aur.archlinux.org/packages/grub-customizer/ AUR]. Je l'ai installé et j'ai rapidement trouvé l'onglet '''Apparence''' où je trouve presque aussi rapidement comment régler la résolution d'écran de démarrage à 1024x768 et comment choisir la police qui me convenait. Un redémarrage plus tard, je peux tout lire avec facilité. Qui a dit que l'interface graphique est mauvaise? La commande pour obtenir le GRUB-Customizer du dépôt AUR est la suivante:
+
+ yaourt grub-customizer
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==La solution de facilité==
+
+Ce qui me sauve ''(le touriste de configuration de GRUB)'' c'est d'avoir à peine à apprendre comment obtenir et modifier les fichiers appropriés à la main. Si vous voulez comprendre GRUB, vous pouvez le faire partir d'[https://wiki.archlinux.org/index.php/GRUB2/ ici].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Il y a d'autres choix==
+
+'''[https://wiki.archlinux.org/index.php/GRUB2#GUI_configuration_tools/ Il y a un certain nombre d'autres interfaces graphiques disponibles pour ce travail]''', mais je n'ai utilisé que grub-customizer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Quelques liens qui peuvent être utiles==
+
+'''[http://doc.ubuntu-fr.org/grub-customizer Ici]''' un lien vers un tutoriel pour l'utilisation de grub-customizer (c'est pour Ubuntu, mais - mis à part le processus d'installation - pour l'utilisation il n'y a aucune différence). Il y a un certain nombre d'autres tutoriels sur le web très similaires:
+
+* '''[http://bret-actu.fr/tuto-configurer-le-demarrage-dubuntu-avec-grub-customizer/ ]'''
+* '''[http://www.tux-planet.fr/grub-customizer/ ]'''
+* '''[http://blog.guiona.com/2011/05/grub-customizer-un-outil-graphique-pour-configurer-grub2/ ]'''
+
+[[Grub-Customizer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>lq74rac13zn8385qmfhrtboqqcve1qm</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4078</id>
+      <parentid>4076</parentid>
+      <timestamp>2013-01-04T19:23:52Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6476">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Qu'est-ce que le GRUB ?=
+
+[[File:grubcustomiser2.png|left|375px]]
+
+Pour une bonne raison, certains utilisateurs préfèrent appeler GRUB par son nom entier qui est [https://fr.wikipedia.org/wiki/GNU_GRUB#Features/ '''GNU GRand Unified Bootloader'''], bien que ce nom entier ne donne pas beaucoup plus d'idée de ce qu'est GRUB. Nous voyons GRUB écrit en majuscules, en minuscules, en minuscules avec le G en majuscule. Il semblerait que l'utilisation des majuscules soit la bonne manière de l'écrire, mais ce ne soit certainement pas la façon la plus courante de l'écrire.
+
+En termes simples, la carte-mère de l'ordinateur dispose d'un logiciel appelé [http://www.commentcamarche.net/contents/pc/bios.php3 BIOS] (Basic Input/Output System), traduisez ''Système de gestion élémentaire des entrées/sorties''. C'est un composant essentiel de l'ordinateur, permettant le contrôle des éléments matériels afin de permettre d'amorcer le système. Il s'agit d'un petit logiciel dont une partie est dans une ROM (mémoire morte, c'est-à-dire une mémoire qui ne peut pas être modifiée), et une autre partie est dans un EEPROM (mémoire modifiable par impulsions électriques, d'où le terme flasher pour désigner l'action de modifier l'EEPROM).
+
+En général, les PC sont faits pour démarrer de Windows et de ce fait le BIOS est conçu pour Windows. Apple est un fabricant de matériel et bien sûr a construit son propre système d'amorçage pour son système d'exploitation. Selon le modèle d'Apple et de son progiciel, vous pouvez même avoir des problèmes lors d'un LiveCD!
+
+Pour démarrer presque tous les autres systèmes d'exploitation en dehors des deux mentionnés ci-dessus (mais pas exclusivement), il y a besoin d'un chargeur de démarrage avec la fonction d'être en mesure non seulement de démarrer le système d'exploitation, mais aussi d'être en mesure de démarrer plusieurs systèmes d'exploitation installés sur la même machine - qu'ils soient sur plusieurs partitions d'un disque, sur d'autres disques connectés à la même machine, sur ​​des supports optiques, mémoire flash, ou tout autre support qui peut être utilisé. C'est le but de GRUB et il fait très bien son travail.
+
+Les gens ont parfois plusieurs systèmes d'exploitation tels que Windows, OS/X, système BSD, et plusieurs distributions Linux tous exécutés sur le même ordinateur. GRUB liste ceux-ci dans son menu de démarrage afin de permettre à l'utilisateur de choisir le système à démarrer. GRUB gère actuellement la technologie [http://www.commentcamarche.net/news/5853145-bye-bye-le-bios-bonjour-l-uefi] et [http://doc.ubuntu-fr.org/gpt GPT]. Le GRUB Legacy(1) ne le fait pas. Le GRUB Legacy était plus simple et beaucoup plus facile à configurer que GRUB(2).
+
+C'est pourquoi cette page wiki a été écrite, car Grub-Customizer est un très bon outil avec interface graphique pour la configuration de GRUB. Pour ceux qui veulent savoir comment configurer manuellement GRUB, '''[http://www.linuxpedia.fr/doku.php/expert/grub2 cette page]''' est très bien.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Background==
+
+Je viens de la vieille école de Grub Legacy et même au cours des années que j'ai passées avec Arch, je n'ai que rarement, voire jamais, dû éditer le fichier /boot/grub/menu.lst, ce qui était assez facile. Quand GRUB2 (le GRUB actuel) est arrivé, il a apporté nombre de complications et de dossiers supplémentaires; son édition n'était plus aussi simple qu'auparavant (au moins pour les non-initiés qui ont rarement besoin d'aller dans celui-ci). Le GRUB actuel surmonte les problèmes qui doivent être fixés de manière que GRUB pourrait traiter à la fois les technologies actuelles et à venir.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Pourquoi aurais-je besoin de personnaliser Grub==
+
+Le problème que j'ai vécu est avec les polices minuscules dans le menu GRUB et pendant le processus de démarrage. Pas tout le monde aurait ce problème, ceux d'entre nous qui utilisent un écran haute résolution (1920x1200) savent ce que je veux dire.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Obtenir GRUB-Customizer==
+
+[[file:grubcust.png|thumb|left|375px]]
+
+
+''Pour ceux qui ne connaissent pas le dépôt Arch User Repository - AUR, vous trouverez peut-être plus de sens à ce qui suit si vous lisez la page du wiki'' '''[[Dépôt AUR (Arch User Repository)|Dépôt AUR]]''' ''avant de continuer.''
+
+J'ai décidé que le moment était venu de régler le problème, alors j'ai fait une recherche et j'ai trouvé [https://answers.launchpad.net/grub-customizer/+faq/1355/ grub-customizer], qui est dans [https://aur.archlinux.org/packages/grub-customizer/ AUR]. Je l'ai installé et j'ai rapidement trouvé l'onglet '''Apparence''' où je trouve presque aussi rapidement comment régler la résolution d'écran de démarrage à 1024x768 et comment choisir la police qui me convenait. Un redémarrage plus tard, je peux tout lire avec facilité. Qui a dit que l'interface graphique est mauvaise? La commande pour obtenir le GRUB-Customizer du dépôt AUR est la suivante:
+
+ yaourt grub-customizer
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==La solution de facilité==
+
+Ce qui me sauve ''(le touriste de configuration de GRUB)'' c'est d'avoir à peine à apprendre comment obtenir et modifier les fichiers appropriés à la main. Si vous voulez comprendre GRUB, vous pouvez le faire partir d'[https://wiki.archlinux.org/index.php/GRUB2/ ici].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Il y a d'autres choix==
+
+'''[https://wiki.archlinux.org/index.php/GRUB2#GUI_configuration_tools/ Il y a un certain nombre d'autres interfaces graphiques disponibles pour ce travail]''', mais je n'ai utilisé que grub-customizer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Quelques liens qui peuvent être utiles==
+
+'''[http://doc.ubuntu-fr.org/grub-customizer Ici]''' un lien vers un tutoriel pour l'utilisation de grub-customizer (c'est pour Ubuntu, mais - mis à part le processus d'installation - pour l'utilisation il n'y a aucune différence). Il y a un certain nombre d'autres tutoriels sur le web très similaires:
+
+* '''[http://bret-actu.fr/tuto-configurer-le-demarrage-dubuntu-avec-grub-customizer/ ]'''
+* '''[http://www.tux-planet.fr/grub-customizer/ ]'''
+* '''[http://blog.guiona.com/2011/05/grub-customizer-un-outil-graphique-pour-configurer-grub2/ ]'''
+
+[[Grub-Customizer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>47arfqcoikqert66z85fts2kzmcxwi9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4079</id>
+      <parentid>4078</parentid>
+      <timestamp>2013-01-04T19:25:12Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6481">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Qu'est-ce que le GRUB ?=
+
+[[File:grubcustomiser2.png|left|375px]]
+
+Pour une bonne raison, certains utilisateurs préfèrent appeler GRUB par son nom entier qui est [https://fr.wikipedia.org/wiki/GNU_GRUB#Features/ '''GNU GRand Unified Bootloader'''], bien que ce nom entier ne donne pas beaucoup plus d'idée de ce qu'est GRUB. Nous voyons GRUB écrit en majuscules, en minuscules, en minuscules avec le G en majuscule. Il semblerait que l'utilisation des majuscules soit la bonne manière de l'écrire, mais ce ne soit certainement pas la façon la plus courante de l'écrire.
+
+En termes simples, la carte-mère de l'ordinateur dispose d'un logiciel appelé [http://www.commentcamarche.net/contents/pc/bios.php3 BIOS] (Basic Input/Output System), traduisez ''Système de gestion élémentaire des entrées/sorties''. C'est un composant essentiel de l'ordinateur, permettant le contrôle des éléments matériels afin de permettre d'amorcer le système. Il s'agit d'un petit logiciel dont une partie est dans une ROM (mémoire morte, c'est-à-dire une mémoire qui ne peut pas être modifiée), et une autre partie est dans un EEPROM (mémoire modifiable par impulsions électriques, d'où le terme flasher pour désigner l'action de modifier l'EEPROM).
+
+En général, les PC sont faits pour démarrer de Windows et de ce fait le BIOS est conçu pour Windows. Apple est un fabricant de matériel et bien sûr a construit son propre système d'amorçage pour son système d'exploitation. Selon le modèle d'Apple et de son progiciel, vous pouvez même avoir des problèmes lors d'un LiveCD!
+
+Pour démarrer presque tous les autres systèmes d'exploitation en dehors des deux mentionnés ci-dessus (mais pas exclusivement), il y a besoin d'un chargeur de démarrage avec la fonction d'être en mesure non seulement de démarrer le système d'exploitation, mais aussi d'être en mesure de démarrer plusieurs systèmes d'exploitation installés sur la même machine - qu'ils soient sur plusieurs partitions d'un disque, sur d'autres disques connectés à la même machine, sur ​​des supports optiques, mémoire flash, ou tout autre support qui peut être utilisé. C'est le but de GRUB et il fait très bien son travail.
+
+Les gens ont parfois plusieurs systèmes d'exploitation tels que Windows, OS/X, système BSD, et plusieurs distributions Linux tous exécutés sur le même ordinateur. GRUB liste ceux-ci dans son menu de démarrage afin de permettre à l'utilisateur de choisir le système à démarrer. GRUB gère actuellement la technologie [http://www.commentcamarche.net/news/5853145-bye-bye-le-bios-bonjour-l-uefi UEFI] et [http://doc.ubuntu-fr.org/gpt GPT]. Le GRUB Legacy(1) ne le fait pas. Le GRUB Legacy était plus simple et beaucoup plus facile à configurer que GRUB(2).
+
+C'est pourquoi cette page wiki a été écrite, car Grub-Customizer est un très bon outil avec interface graphique pour la configuration de GRUB. Pour ceux qui veulent savoir comment configurer manuellement GRUB, '''[http://www.linuxpedia.fr/doku.php/expert/grub2 cette page]''' est très bien.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Background==
+
+Je viens de la vieille école de Grub Legacy et même au cours des années que j'ai passées avec Arch, je n'ai que rarement, voire jamais, dû éditer le fichier /boot/grub/menu.lst, ce qui était assez facile. Quand GRUB2 (le GRUB actuel) est arrivé, il a apporté nombre de complications et de dossiers supplémentaires; son édition n'était plus aussi simple qu'auparavant (au moins pour les non-initiés qui ont rarement besoin d'aller dans celui-ci). Le GRUB actuel surmonte les problèmes qui doivent être fixés de manière que GRUB pourrait traiter à la fois les technologies actuelles et à venir.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Pourquoi aurais-je besoin de personnaliser Grub==
+
+Le problème que j'ai vécu est avec les polices minuscules dans le menu GRUB et pendant le processus de démarrage. Pas tout le monde aurait ce problème, ceux d'entre nous qui utilisent un écran haute résolution (1920x1200) savent ce que je veux dire.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Obtenir GRUB-Customizer==
+
+[[file:grubcust.png|thumb|left|375px]]
+
+
+''Pour ceux qui ne connaissent pas le dépôt Arch User Repository - AUR, vous trouverez peut-être plus de sens à ce qui suit si vous lisez la page du wiki'' '''[[Dépôt AUR (Arch User Repository)|Dépôt AUR]]''' ''avant de continuer.''
+
+J'ai décidé que le moment était venu de régler le problème, alors j'ai fait une recherche et j'ai trouvé [https://answers.launchpad.net/grub-customizer/+faq/1355/ grub-customizer], qui est dans [https://aur.archlinux.org/packages/grub-customizer/ AUR]. Je l'ai installé et j'ai rapidement trouvé l'onglet '''Apparence''' où je trouve presque aussi rapidement comment régler la résolution d'écran de démarrage à 1024x768 et comment choisir la police qui me convenait. Un redémarrage plus tard, je peux tout lire avec facilité. Qui a dit que l'interface graphique est mauvaise? La commande pour obtenir le GRUB-Customizer du dépôt AUR est la suivante:
+
+ yaourt grub-customizer
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==La solution de facilité==
+
+Ce qui me sauve ''(le touriste de configuration de GRUB)'' c'est d'avoir à peine à apprendre comment obtenir et modifier les fichiers appropriés à la main. Si vous voulez comprendre GRUB, vous pouvez le faire partir d'[https://wiki.archlinux.org/index.php/GRUB2/ ici].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Il y a d'autres choix==
+
+'''[https://wiki.archlinux.org/index.php/GRUB2#GUI_configuration_tools/ Il y a un certain nombre d'autres interfaces graphiques disponibles pour ce travail]''', mais je n'ai utilisé que grub-customizer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Quelques liens qui peuvent être utiles==
+
+'''[http://doc.ubuntu-fr.org/grub-customizer Ici]''' un lien vers un tutoriel pour l'utilisation de grub-customizer (c'est pour Ubuntu, mais - mis à part le processus d'installation - pour l'utilisation il n'y a aucune différence). Il y a un certain nombre d'autres tutoriels sur le web très similaires:
+
+* '''[http://bret-actu.fr/tuto-configurer-le-demarrage-dubuntu-avec-grub-customizer/ ]'''
+* '''[http://www.tux-planet.fr/grub-customizer/ ]'''
+* '''[http://blog.guiona.com/2011/05/grub-customizer-un-outil-graphique-pour-configurer-grub2/ ]'''
+
+[[Grub-Customizer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>qo67hdmwf3jzoutx95efsmje6lyr8j0</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

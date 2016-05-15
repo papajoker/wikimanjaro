@@ -1,0 +1,654 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Noyaux Manjaro: Guide français</title>
+    <ns>0</ns>
+    <id>561</id>
+    <revision>
+      <id>3021</id>
+      <timestamp>2012-12-25T13:49:12Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;= Vue d'ensemble =  Comme son nom l'implique, et comme le noyau d'un fruit, le noyau Linux est le cœur d'un système d'exploitation Linux. Tous les autres éléments d'un sys...&quot;</comment>
+      <text xml:space="preserve" bytes="7613">= Vue d'ensemble =
+
+Comme son nom l'implique, et comme le noyau d'un fruit, le noyau Linux est le cœur d'un système d'exploitation Linux. Tous les autres éléments d'un système d'exploitation basé sur Linux sont construits autour du noyau qui agit comme une interface entre le matériel de votre ordinateur et les applications qui s'exécutent dedans. Les applications matérielles et logicielles devenant plus complexes et sophistiquées, les noyaux font pareil pour les utiliser pleinement. Ainsi, les noyaux Linux sont toujours en cours de développement, avec de nouvelles révisions ou versions régulièrement publiées. Plus d'informations sur les derniers développements dans la technologie du noyau peuvent être trouvés sur le Linux Kernel Archives [http://www.kernel.org/ The Linux Kernel Archives]
+
+Le premier noyau de Linux a été développé à l'origine par Linus Torvalds [http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds] le créateur de Linux. En tant que projet open source, et bien que les noyaux modernes contiennent maintenant des millions de lignes de code générées par des milliers de programmeurs, Linus Torvalds a toujours le dernier mot sur leur développement et la gestion de leurs versions.
+
+
+= Identifier le noyau en cours d'utilisation =
+
+Si le noyau existant en cours d'exécution dans Manjaro n'est pas immédiatement visible (c'est-à-dire à travers l'affichage d'un Conky pré-installé sur votre bureau), alors il peut être trouvé en ouvrant le terminal, puis en tapant la commande suivante:
+
+ uname -r
+
+[[File:Kernel_ID2.png]]
+
+
+Par exemple, Manjaro peut fonctionner avec le noyau '3.6.0-1-MANJARO'. L'information ainsi fournie n'est pas arbitraire, chaque partie a une signification précise concernant le noyau:
+
+* Le 3 indique la version
+* Le 6 indique la révision majeure
+* Le 0 indique la révision mineure
+* Le 1 indique les corrections de bugs
+* MANJARO indique la distribution spécifique utilisée
+
+
+= Ajout de nouveaux noyaux =
+
+{{tip| '''mhwd-kernel mettra automatiquement à jour un noyau nouvellement installé et ses modules ainsi que tous les modules actuellement utilisés de votre noyau existant'''. Par exemple, si vous deviez mettre à jour à partir du noyau 3.5 vers le 3.6, mhwd-kernel mettrait automatiquement à jour le noyau 3.6 avec ses modules et tous ceux présents en 3.5. Qu'en dites-vous!}}
+
+Manjaro supporte non seulement l'utilisation de ''plusieurs'' noyaux (sélectionnables depuis l'écran de démarrage), mais permet d'accéder facilement aux '''derniers noyaux '''''flambants neufs'''''. C'est réalisé grâce à l'utilisation de la commande spécifique ''Manjaro MHWD-kernel'' (Manjaro Hard-Ware Detection). La syntaxe de cette commande est la suivante:
+
+ sudo mhwd-kernel [new kernel: linux(version)] [optional - remove the current kernel: rmc]
+
+
+Pour indiquer un nouveau noyau à installer par cette commande, il n'est pas nécessaire d'écrire le numéro de version complet. Par exemple, n'importe quelle version du noyau 3.5 peut simplement être indiquée comme 'linux35', n'importe quelle version du noyau 3.6 comme 'linux36', et ainsi de suite. 
+
+L'option '''rmc''' ('''&lt;u&gt;r&lt;/u&gt;'''e'''&lt;u&gt;m&lt;/u&gt;'''ove '''&lt;u&gt;c&lt;/u&gt;'''urrent) est d'une importance vitale. Son utilisation entraînera la suppression de  votre noyau existant lors de l'installation du nouveau noyau. Dans le cas contraire, si elle n'est pas utilisée, le noyau existant sera conservé et pourra être sélectionné à côté du nouveau noyau dans l'écran de démarrage. '''Il est recommandé – surtout si la mise à jour concerne le tout dernier noyau flambant neuf – de garder votre ancien, même si ce n'est que pour un court laps de temps ensuite.''' C'est plus sûr, et l'ancien noyau s'enlève facilement lorsque vous êtes satisfait de la stabilité et des fonctionnalités du nouveau.
+
+
+Par exemple, la commande suivante, entrée dans un terminal, va installer un nouveau noyau (3.6) '''sans supprimer celui couramment utilisé''':
+
+ sudo mhwd-kernel linux36
+
+
+Par contre, la commande suivante va installer un nouveau noyau (3.6) en remplacement de l'actuel, '''qui va être supprimé''':
+
+ sudo mhwd-kernel linux36 '''rmc'''
+
+
+Dans les deux cas, Manjaro va configurer le nouveau noyau pour vous, prêt pour un usage immédiat. A la fin, fermez le terminal et redémarrez le PC pour faire prendre en compte les changements.
+
+
+= Suppression de noyaux =
+
+{{warning|NE TENTEZ PAS de détruire un noyau existant et en cours d'utilisation par Manjaro au même moment. Vous pouvez d'abord identifier la version qui tourne dans votre système par la commande '''uname -r''' (voir ci-dessus).}}
+
+Quand plusieurs noyaux sont présents dans votre système, ''pacman'' peut être utilisé depuis le terminal pour les supprimer. Il peut être nécessaire de détruire trois éléments d'un noyau pour le supprimer complètement:
+
+# Le noyau lui-même
+# Les en-têtes du noyau
+# Les modules supplémentaires du noyau
+
+Que les en-têtes et les modules supplémentaires aient à être supprimés ou non dépend du fait qu'ils aient été installés ou non. La syntaxe de pacman pour détruire un noyau est la suivante: 
+
+
+1. '''Pour supprimer un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]
+
+
+Par exemple, pour supprimer du système la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35
+
+
+2. '''Pour supprimer les en-têtes d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-headers
+
+
+Par exemple, pour supprimer du système les en-têtes de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-headers
+
+
+3. '''Pour supprimer les modules supplémentaires d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-extramodules
+
+
+Par exemple, pour supprimer du système les modules supplémentaires de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-extramodules
+
+
+4. '''Pour supprimer tous les éléments d'un noyau en même temps''', qu'ils soient présents ou non dans votre système, la syntaxe est:
+ sudo pacman -R linux[version] linux[version]-headers linux[version]-extramodules
+
+
+Par exemple, pour supprimer complètement tous les éléments du noyau version 3.5, il faut entrer la commande:
+ sudo pacman -R linux35 linux35-headers linux35-extramodules
+
+Notez quand même s'il vous plaît que si vous essayez de supprimer plusieurs éléments d'un coup et s'ils ne sont pas présents dans votre système, un message d'erreur apparaîtra et l'opération elle-même avortera.  Il est également intéressant de savoir que, si Manjaro a été lancé dans une machine virtuelle (comme Oracle VirtualBox), vous ne pourrez pas détruire certains noyaux s'ils sont importants pour le processus de virtualisation lui-même.
+
+
+= Sélection d'un noyau =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+Tous les noyaux disponibles dans votre système vont vous être présentés au moment du démarrage. Comme illustré, cela inclut les copies de sauvegarde de chaque version du noyau installé (qui seront également automatiquement supprimées si ou quand une version du noyau est supprimée). Pour sélectionner un noyau, il suffit d'utiliser les touches fléchées pour sélectionner la version souhaitée, puis d'appuyer sur &lt;entrée&gt;.
+
+Si aucune sélection n'est faite, Manjaro va habituellement sélectionner automatiquement une version du noyau après avoir attendu une réponse pendant cinq secondes. La version automatiquement sélectionnée sera généralement celle utilisée précédemment.
+&lt;br clear=&quot;all&quot; /&gt;</text>
+      <sha1>fkjxk8aymubbto57rm50jth3qty3faj</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3112</id>
+      <parentid>3021</parentid>
+      <timestamp>2012-12-25T23:06:41Z</timestamp>
+      <contributor>
+        <username>Verityproductions</username>
+        <id>4</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7641">= Vue d'ensemble =
+
+Comme son nom l'implique, et comme le noyau d'un fruit, le noyau Linux est le cœur d'un système d'exploitation Linux. Tous les autres éléments d'un système d'exploitation basé sur Linux sont construits autour du noyau qui agit comme une interface entre le matériel de votre ordinateur et les applications qui s'exécutent dedans. Les applications matérielles et logicielles devenant plus complexes et sophistiquées, les noyaux font pareil pour les utiliser pleinement. Ainsi, les noyaux Linux sont toujours en cours de développement, avec de nouvelles révisions ou versions régulièrement publiées. Plus d'informations sur les derniers développements dans la technologie du noyau peuvent être trouvés sur le Linux Kernel Archives [http://www.kernel.org/ The Linux Kernel Archives]
+
+Le premier noyau de Linux a été développé à l'origine par Linus Torvalds [http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds] le créateur de Linux. En tant que projet open source, et bien que les noyaux modernes contiennent maintenant des millions de lignes de code générées par des milliers de programmeurs, Linus Torvalds a toujours le dernier mot sur leur développement et la gestion de leurs versions.
+
+
+= Identifier le noyau en cours d'utilisation =
+
+Si le noyau existant en cours d'exécution dans Manjaro n'est pas immédiatement visible (c'est-à-dire à travers l'affichage d'un Conky pré-installé sur votre bureau), alors il peut être trouvé en ouvrant le terminal, puis en tapant la commande suivante:
+
+ uname -r
+
+[[File:Kernel_ID2.png]]
+
+
+Par exemple, Manjaro peut fonctionner avec le noyau '3.6.0-1-MANJARO'. L'information ainsi fournie n'est pas arbitraire, chaque partie a une signification précise concernant le noyau:
+
+* Le 3 indique la version
+* Le 6 indique la révision majeure
+* Le 0 indique la révision mineure
+* Le 1 indique les corrections de bugs
+* MANJARO indique la distribution spécifique utilisée
+
+
+= Ajout de nouveaux noyaux =
+
+{{tip| '''mhwd-kernel mettra automatiquement à jour un noyau nouvellement installé et ses modules ainsi que tous les modules actuellement utilisés de votre noyau existant'''. Par exemple, si vous deviez mettre à jour à partir du noyau 3.5 vers le 3.6, mhwd-kernel mettrait automatiquement à jour le noyau 3.6 avec ses modules et tous ceux présents en 3.5. Qu'en dites-vous!}}
+
+Manjaro supporte non seulement l'utilisation de ''plusieurs'' noyaux (sélectionnables depuis l'écran de démarrage), mais permet d'accéder facilement aux '''derniers noyaux '''''flambants neufs'''''. C'est réalisé grâce à l'utilisation de la commande spécifique ''Manjaro MHWD-kernel'' (Manjaro Hard-Ware Detection). La syntaxe de cette commande est la suivante:
+
+ sudo mhwd-kernel [new kernel: linux(version)] [optional - remove the current kernel: rmc]
+
+
+Pour indiquer un nouveau noyau à installer par cette commande, il n'est pas nécessaire d'écrire le numéro de version complet. Par exemple, n'importe quelle version du noyau 3.5 peut simplement être indiquée comme 'linux35', n'importe quelle version du noyau 3.6 comme 'linux36', et ainsi de suite. 
+
+L'option '''rmc''' ('''&lt;u&gt;r&lt;/u&gt;'''e'''&lt;u&gt;m&lt;/u&gt;'''ove '''&lt;u&gt;c&lt;/u&gt;'''urrent) est d'une importance vitale. Son utilisation entraînera la suppression de  votre noyau existant lors de l'installation du nouveau noyau. Dans le cas contraire, si elle n'est pas utilisée, le noyau existant sera conservé et pourra être sélectionné à côté du nouveau noyau dans l'écran de démarrage. '''Il est recommandé – surtout si la mise à jour concerne le tout dernier noyau flambant neuf – de garder votre ancien, même si ce n'est que pour un court laps de temps ensuite.''' C'est plus sûr, et l'ancien noyau s'enlève facilement lorsque vous êtes satisfait de la stabilité et des fonctionnalités du nouveau.
+
+
+Par exemple, la commande suivante, entrée dans un terminal, va installer un nouveau noyau (3.6) '''sans supprimer celui couramment utilisé''':
+
+ sudo mhwd-kernel linux36
+
+
+Par contre, la commande suivante va installer un nouveau noyau (3.6) en remplacement de l'actuel, '''qui va être supprimé''':
+
+ sudo mhwd-kernel linux36 '''rmc'''
+
+
+Dans les deux cas, Manjaro va configurer le nouveau noyau pour vous, prêt pour un usage immédiat. A la fin, fermez le terminal et redémarrez le PC pour faire prendre en compte les changements.
+
+
+= Suppression de noyaux =
+
+{{warning|NE TENTEZ PAS de détruire un noyau existant et en cours d'utilisation par Manjaro au même moment. Vous pouvez d'abord identifier la version qui tourne dans votre système par la commande '''uname -r''' (voir ci-dessus).}}
+
+Quand plusieurs noyaux sont présents dans votre système, ''pacman'' peut être utilisé depuis le terminal pour les supprimer. Il peut être nécessaire de détruire trois éléments d'un noyau pour le supprimer complètement:
+
+# Le noyau lui-même
+# Les en-têtes du noyau
+# Les modules supplémentaires du noyau
+
+Que les en-têtes et les modules supplémentaires aient à être supprimés ou non dépend du fait qu'ils aient été installés ou non. La syntaxe de pacman pour détruire un noyau est la suivante: 
+
+
+1. '''Pour supprimer un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]
+
+
+Par exemple, pour supprimer du système la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35
+
+
+2. '''Pour supprimer les en-têtes d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-headers
+
+
+Par exemple, pour supprimer du système les en-têtes de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-headers
+
+
+3. '''Pour supprimer les modules supplémentaires d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-extramodules
+
+
+Par exemple, pour supprimer du système les modules supplémentaires de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-extramodules
+
+
+4. '''Pour supprimer tous les éléments d'un noyau en même temps''', qu'ils soient présents ou non dans votre système, la syntaxe est:
+ sudo pacman -R linux[version] linux[version]-headers linux[version]-extramodules
+
+
+Par exemple, pour supprimer complètement tous les éléments du noyau version 3.5, il faut entrer la commande:
+ sudo pacman -R linux35 linux35-headers linux35-extramodules
+
+Notez quand même s'il vous plaît que si vous essayez de supprimer plusieurs éléments d'un coup et s'ils ne sont pas présents dans votre système, un message d'erreur apparaîtra et l'opération elle-même avortera.  Il est également intéressant de savoir que, si Manjaro a été lancé dans une machine virtuelle (comme Oracle VirtualBox), vous ne pourrez pas détruire certains noyaux s'ils sont importants pour le processus de virtualisation lui-même.
+
+
+= Sélection d'un noyau =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+Tous les noyaux disponibles dans votre système vont vous être présentés au moment du démarrage. Comme illustré, cela inclut les copies de sauvegarde de chaque version du noyau installé (qui seront également automatiquement supprimées si ou quand une version du noyau est supprimée). Pour sélectionner un noyau, il suffit d'utiliser les touches fléchées pour sélectionner la version souhaitée, puis d'appuyer sur &lt;entrée&gt;.
+
+Si aucune sélection n'est faite, Manjaro va habituellement sélectionner automatiquement une version du noyau après avoir attendu une réponse pendant cinq secondes. La version automatiquement sélectionnée sera généralement celle utilisée précédemment.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Category:Présentation]]</text>
+      <sha1>909jprjlo74qnitux14gucb4j0gr49c</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3176</id>
+      <parentid>3112</parentid>
+      <timestamp>2012-12-26T17:40:08Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7646">= Vue d'ensemble =
+
+Comme son nom l'implique, et comme le noyau d'un fruit, le noyau Linux est le cœur d'un système d'exploitation Linux. Tous les autres éléments d'un système d'exploitation basé sur Linux sont construits autour du noyau qui agit comme une interface entre le matériel de votre ordinateur et les applications qui s'exécutent dedans. Les applications matérielles et logicielles devenant plus complexes et sophistiquées, les noyaux font pareil pour les utiliser pleinement. Ainsi, les noyaux Linux sont toujours en cours de développement, avec de nouvelles révisions ou versions régulièrement publiées. Plus d'informations sur les derniers développements dans la technologie du noyau peuvent être trouvés sur le Linux Kernel Archives [http://www.kernel.org/ The Linux Kernel Archives]
+
+Le premier noyau de Linux a été développé à l'origine par Linus Torvalds [http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds] le créateur de Linux. En tant que projet open source, et bien que les noyaux modernes contiennent maintenant des millions de lignes de code générées par des milliers de programmeurs, Linus Torvalds a toujours le dernier mot sur leur développement et la gestion de leurs versions.
+
+
+= Identifier le noyau en cours d'utilisation =
+
+Si le noyau existant en cours d'exécution dans Manjaro n'est pas immédiatement visible (c'est-à-dire à travers l'affichage d'un Conky pré-installé sur votre bureau), alors il peut être trouvé en ouvrant le terminal, puis en tapant la commande suivante:
+
+ uname -r
+
+[[File:Kernel_ID2.png]]
+
+
+Par exemple, Manjaro peut fonctionner avec le noyau '3.6.0-1-MANJARO'. L'information ainsi fournie n'est pas arbitraire, chaque partie a une signification précise concernant le noyau:
+
+* Le 3 indique la version
+* Le 6 indique la révision majeure
+* Le 0 indique la révision mineure
+* Le 1 indique les corrections de bugs
+* MANJARO indique la distribution spécifique utilisée
+
+
+= Ajout de nouveaux noyaux =
+
+{{Astuce| '''mhwd-kernel mettra automatiquement à jour un noyau nouvellement installé et ses modules ainsi que tous les modules actuellement utilisés de votre noyau existant'''. Par exemple, si vous deviez mettre à jour à partir du noyau 3.5 vers le 3.6, mhwd-kernel mettrait automatiquement à jour le noyau 3.6 avec ses modules et tous ceux présents en 3.5. Qu'en dites-vous!}}
+
+Manjaro supporte non seulement l'utilisation de ''plusieurs'' noyaux (sélectionnables depuis l'écran de démarrage), mais permet d'accéder facilement aux '''derniers noyaux '''''flambants neufs'''''. C'est réalisé grâce à l'utilisation de la commande spécifique ''Manjaro MHWD-kernel'' (Manjaro Hard-Ware Detection). La syntaxe de cette commande est la suivante:
+
+ sudo mhwd-kernel [new kernel: linux(version)] [optional - remove the current kernel: rmc]
+
+
+Pour indiquer un nouveau noyau à installer par cette commande, il n'est pas nécessaire d'écrire le numéro de version complet. Par exemple, n'importe quelle version du noyau 3.5 peut simplement être indiquée comme 'linux35', n'importe quelle version du noyau 3.6 comme 'linux36', et ainsi de suite. 
+
+L'option '''rmc''' ('''&lt;u&gt;r&lt;/u&gt;'''e'''&lt;u&gt;m&lt;/u&gt;'''ove '''&lt;u&gt;c&lt;/u&gt;'''urrent) est d'une importance vitale. Son utilisation entraînera la suppression de  votre noyau existant lors de l'installation du nouveau noyau. Dans le cas contraire, si elle n'est pas utilisée, le noyau existant sera conservé et pourra être sélectionné à côté du nouveau noyau dans l'écran de démarrage. '''Il est recommandé – surtout si la mise à jour concerne le tout dernier noyau flambant neuf – de garder votre ancien, même si ce n'est que pour un court laps de temps ensuite.''' C'est plus sûr, et l'ancien noyau s'enlève facilement lorsque vous êtes satisfait de la stabilité et des fonctionnalités du nouveau.
+
+
+Par exemple, la commande suivante, entrée dans un terminal, va installer un nouveau noyau (3.6) '''sans supprimer celui couramment utilisé''':
+
+ sudo mhwd-kernel linux36
+
+
+Par contre, la commande suivante va installer un nouveau noyau (3.6) en remplacement de l'actuel, '''qui va être supprimé''':
+
+ sudo mhwd-kernel linux36 '''rmc'''
+
+
+Dans les deux cas, Manjaro va configurer le nouveau noyau pour vous, prêt pour un usage immédiat. A la fin, fermez le terminal et redémarrez le PC pour faire prendre en compte les changements.
+
+
+= Suppression de noyaux =
+
+{{Attention|NE TENTEZ PAS de détruire un noyau existant et en cours d'utilisation par Manjaro au même moment. Vous pouvez d'abord identifier la version qui tourne dans votre système par la commande '''uname -r''' (voir ci-dessus).}}
+
+Quand plusieurs noyaux sont présents dans votre système, ''pacman'' peut être utilisé depuis le terminal pour les supprimer. Il peut être nécessaire de détruire trois éléments d'un noyau pour le supprimer complètement:
+
+# Le noyau lui-même
+# Les en-têtes du noyau
+# Les modules supplémentaires du noyau
+
+Que les en-têtes et les modules supplémentaires aient à être supprimés ou non dépend du fait qu'ils aient été installés ou non. La syntaxe de pacman pour détruire un noyau est la suivante: 
+
+
+1. '''Pour supprimer un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]
+
+
+Par exemple, pour supprimer du système la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35
+
+
+2. '''Pour supprimer les en-têtes d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-headers
+
+
+Par exemple, pour supprimer du système les en-têtes de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-headers
+
+
+3. '''Pour supprimer les modules supplémentaires d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-extramodules
+
+
+Par exemple, pour supprimer du système les modules supplémentaires de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-extramodules
+
+
+4. '''Pour supprimer tous les éléments d'un noyau en même temps''', qu'ils soient présents ou non dans votre système, la syntaxe est:
+ sudo pacman -R linux[version] linux[version]-headers linux[version]-extramodules
+
+
+Par exemple, pour supprimer complètement tous les éléments du noyau version 3.5, il faut entrer la commande:
+ sudo pacman -R linux35 linux35-headers linux35-extramodules
+
+Notez quand même s'il vous plaît que si vous essayez de supprimer plusieurs éléments d'un coup et s'ils ne sont pas présents dans votre système, un message d'erreur apparaîtra et l'opération elle-même avortera.  Il est également intéressant de savoir que, si Manjaro a été lancé dans une machine virtuelle (comme Oracle VirtualBox), vous ne pourrez pas détruire certains noyaux s'ils sont importants pour le processus de virtualisation lui-même.
+
+
+= Sélection d'un noyau =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+Tous les noyaux disponibles dans votre système vont vous être présentés au moment du démarrage. Comme illustré, cela inclut les copies de sauvegarde de chaque version du noyau installé (qui seront également automatiquement supprimées si ou quand une version du noyau est supprimée). Pour sélectionner un noyau, il suffit d'utiliser les touches fléchées pour sélectionner la version souhaitée, puis d'appuyer sur &lt;entrée&gt;.
+
+Si aucune sélection n'est faite, Manjaro va habituellement sélectionner automatiquement une version du noyau après avoir attendu une réponse pendant cinq secondes. La version automatiquement sélectionnée sera généralement celle utilisée précédemment.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Category:Présentation]]</text>
+      <sha1>16vfze69fhel7icjmvi507bton5gny9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3698</id>
+      <parentid>3176</parentid>
+      <timestamp>2012-12-30T15:57:12Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7816">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Comme son nom l'implique, et comme le noyau d'un fruit, le noyau Linux est le cœur d'un système d'exploitation Linux. Tous les autres éléments d'un système d'exploitation basé sur Linux sont construits autour du noyau qui agit comme une interface entre le matériel de votre ordinateur et les applications qui s'exécutent dedans. Les applications matérielles et logicielles devenant plus complexes et sophistiquées, les noyaux font pareil pour les utiliser pleinement. Ainsi, les noyaux Linux sont toujours en cours de développement, avec de nouvelles révisions ou versions régulièrement publiées. Plus d'informations sur les derniers développements dans la technologie du noyau peuvent être trouvés sur le Linux Kernel Archives [http://www.kernel.org/ The Linux Kernel Archives]
+
+Le premier noyau de Linux a été développé à l'origine par Linus Torvalds [http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds] le créateur de Linux. En tant que projet open source, et bien que les noyaux modernes contiennent maintenant des millions de lignes de code générées par des milliers de programmeurs, Linus Torvalds a toujours le dernier mot sur leur développement et la gestion de leurs versions.
+
+
+= Identifier le noyau en cours d'utilisation =
+
+Si le noyau existant en cours d'exécution dans Manjaro n'est pas immédiatement visible (c'est-à-dire à travers l'affichage d'un Conky pré-installé sur votre bureau), alors il peut être trouvé en ouvrant le terminal, puis en tapant la commande suivante:
+
+ uname -r
+
+[[File:Kernel_ID2.png]]
+
+
+Par exemple, Manjaro peut fonctionner avec le noyau '3.6.0-1-MANJARO'. L'information ainsi fournie n'est pas arbitraire, chaque partie a une signification précise concernant le noyau:
+
+* Le 3 indique la version
+* Le 6 indique la révision majeure
+* Le 0 indique la révision mineure
+* Le 1 indique les corrections de bugs
+* MANJARO indique la distribution spécifique utilisée
+
+
+= Ajout de nouveaux noyaux =
+
+{{Astuce| '''mhwd-kernel mettra automatiquement à jour un noyau nouvellement installé et ses modules ainsi que tous les modules actuellement utilisés de votre noyau existant'''. Par exemple, si vous deviez mettre à jour à partir du noyau 3.5 vers le 3.6, mhwd-kernel mettrait automatiquement à jour le noyau 3.6 avec ses modules et tous ceux présents en 3.5. Qu'en dites-vous!}}
+
+Manjaro supporte non seulement l'utilisation de ''plusieurs'' noyaux (sélectionnables depuis l'écran de démarrage), mais permet d'accéder facilement aux '''derniers noyaux '''''flambants neufs'''''. C'est réalisé grâce à l'utilisation de la commande spécifique ''Manjaro MHWD-kernel'' (Manjaro Hard-Ware Detection). La syntaxe de cette commande est la suivante:
+
+ sudo mhwd-kernel [new kernel: linux(version)] [optional - remove the current kernel: rmc]
+
+
+Pour indiquer un nouveau noyau à installer par cette commande, il n'est pas nécessaire d'écrire le numéro de version complet. Par exemple, n'importe quelle version du noyau 3.5 peut simplement être indiquée comme 'linux35', n'importe quelle version du noyau 3.6 comme 'linux36', et ainsi de suite. 
+
+L'option '''rmc''' ('''&lt;u&gt;r&lt;/u&gt;'''e'''&lt;u&gt;m&lt;/u&gt;'''ove '''&lt;u&gt;c&lt;/u&gt;'''urrent) est d'une importance vitale. Son utilisation entraînera la suppression de  votre noyau existant lors de l'installation du nouveau noyau. Dans le cas contraire, si elle n'est pas utilisée, le noyau existant sera conservé et pourra être sélectionné à côté du nouveau noyau dans l'écran de démarrage. '''Il est recommandé – surtout si la mise à jour concerne le tout dernier noyau flambant neuf – de garder votre ancien, même si ce n'est que pour un court laps de temps ensuite.''' C'est plus sûr, et l'ancien noyau s'enlève facilement lorsque vous êtes satisfait de la stabilité et des fonctionnalités du nouveau.
+
+
+Par exemple, la commande suivante, entrée dans un terminal, va installer un nouveau noyau (3.6) '''sans supprimer celui couramment utilisé''':
+
+ sudo mhwd-kernel linux36
+
+
+Par contre, la commande suivante va installer un nouveau noyau (3.6) en remplacement de l'actuel, '''qui va être supprimé''':
+
+ sudo mhwd-kernel linux36 '''rmc'''
+
+
+Dans les deux cas, Manjaro va configurer le nouveau noyau pour vous, prêt pour un usage immédiat. A la fin, fermez le terminal et redémarrez le PC pour faire prendre en compte les changements.
+
+
+= Suppression de noyaux =
+
+{{Attention|NE TENTEZ PAS de détruire un noyau existant et en cours d'utilisation par Manjaro au même moment. Vous pouvez d'abord identifier la version qui tourne dans votre système par la commande '''uname -r''' (voir ci-dessus).}}
+
+Quand plusieurs noyaux sont présents dans votre système, ''pacman'' peut être utilisé depuis le terminal pour les supprimer. Il peut être nécessaire de détruire trois éléments d'un noyau pour le supprimer complètement:
+
+# Le noyau lui-même
+# Les en-têtes du noyau
+# Les modules supplémentaires du noyau
+
+Que les en-têtes et les modules supplémentaires aient à être supprimés ou non dépend du fait qu'ils aient été installés ou non. La syntaxe de pacman pour détruire un noyau est la suivante: 
+
+
+1. '''Pour supprimer un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]
+
+
+Par exemple, pour supprimer du système la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35
+
+
+2. '''Pour supprimer les en-têtes d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-headers
+
+
+Par exemple, pour supprimer du système les en-têtes de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-headers
+
+
+3. '''Pour supprimer les modules supplémentaires d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-extramodules
+
+
+Par exemple, pour supprimer du système les modules supplémentaires de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-extramodules
+
+
+4. '''Pour supprimer tous les éléments d'un noyau en même temps''', qu'ils soient présents ou non dans votre système, la syntaxe est:
+ sudo pacman -R linux[version] linux[version]-headers linux[version]-extramodules
+
+
+Par exemple, pour supprimer complètement tous les éléments du noyau version 3.5, il faut entrer la commande:
+ sudo pacman -R linux35 linux35-headers linux35-extramodules
+
+Notez quand même s'il vous plaît que si vous essayez de supprimer plusieurs éléments d'un coup et s'ils ne sont pas présents dans votre système, un message d'erreur apparaîtra et l'opération elle-même avortera.  Il est également intéressant de savoir que, si Manjaro a été lancé dans une machine virtuelle (comme Oracle VirtualBox), vous ne pourrez pas détruire certains noyaux s'ils sont importants pour le processus de virtualisation lui-même.
+
+
+= Sélection d'un noyau =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+Tous les noyaux disponibles dans votre système vont vous être présentés au moment du démarrage. Comme illustré, cela inclut les copies de sauvegarde de chaque version du noyau installé (qui seront également automatiquement supprimées si ou quand une version du noyau est supprimée). Pour sélectionner un noyau, il suffit d'utiliser les touches fléchées pour sélectionner la version souhaitée, puis d'appuyer sur &lt;entrée&gt;.
+
+Si aucune sélection n'est faite, Manjaro va habituellement sélectionner automatiquement une version du noyau après avoir attendu une réponse pendant cinq secondes. La version automatiquement sélectionnée sera généralement celle utilisée précédemment.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Manjaro Kernels|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>73kuitypkdtqfm1hff7nc8uapzwkys8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4040</id>
+      <parentid>3698</parentid>
+      <timestamp>2013-01-04T14:09:25Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7852">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Comme son nom l'implique, et comme le noyau d'un fruit, le noyau Linux est le cœur d'un système d'exploitation Linux. Tous les autres éléments d'un système d'exploitation basé sur Linux sont construits autour du noyau qui agit comme une interface entre le matériel de votre ordinateur et les applications qui s'exécutent dedans. Les applications matérielles et logicielles devenant plus complexes et sophistiquées, les noyaux font pareil pour les utiliser pleinement. Ainsi, les noyaux Linux sont toujours en cours de développement, avec de nouvelles révisions ou versions régulièrement publiées. Plus d'informations sur les derniers développements dans la technologie du noyau peuvent être trouvés sur le Linux Kernel Archives [http://www.kernel.org/ The Linux Kernel Archives]
+
+Le premier noyau de Linux a été développé à l'origine par Linus Torvalds [http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds] le créateur de Linux. En tant que projet open source, et bien que les noyaux modernes contiennent maintenant des millions de lignes de code générées par des milliers de programmeurs, Linus Torvalds a toujours le dernier mot sur leur développement et la gestion de leurs versions.
+
+
+= Identifier le noyau en cours d'utilisation =
+
+Si le noyau existant en cours d'exécution dans Manjaro n'est pas immédiatement visible (c'est-à-dire à travers l'affichage d'un Conky pré-installé sur votre bureau), alors il peut être trouvé en ouvrant le terminal, puis en tapant la commande suivante:
+
+ uname -r
+
+[[File:Kernel_ID2.png]]
+
+
+Par exemple, Manjaro peut fonctionner avec le noyau '3.6.0-1-MANJARO'. L'information ainsi fournie n'est pas arbitraire, chaque partie a une signification précise concernant le noyau:
+
+* Le 3 indique la version
+* Le 6 indique la révision majeure
+* Le 0 indique la révision mineure
+* Le 1 indique les corrections de bugs
+* MANJARO indique la distribution spécifique utilisée
+
+
+= Ajout de nouveaux noyaux =
+
+{{Astuce| '''mhwd-kernel mettra automatiquement à jour un noyau nouvellement installé et ses modules ainsi que tous les modules actuellement utilisés de votre noyau existant'''. Par exemple, si vous deviez mettre à jour à partir du noyau 3.5 vers le 3.6, mhwd-kernel mettrait automatiquement à jour le noyau 3.6 avec ses modules et tous ceux présents en 3.5. Qu'en dites-vous!}}
+
+Manjaro supporte non seulement l'utilisation de ''plusieurs'' noyaux (sélectionnables depuis l'écran de démarrage), mais permet d'accéder facilement aux '''derniers noyaux '''''flambants neufs'''''. C'est réalisé grâce à l'utilisation de la commande spécifique ''Manjaro MHWD-kernel'' (Manjaro Hard-Ware Detection). La syntaxe de cette commande est la suivante:
+
+ sudo mhwd-kernel [new kernel: linux(version)] [optional - remove the current kernel: rmc]
+
+
+Pour indiquer un nouveau noyau à installer par cette commande, il n'est pas nécessaire d'écrire le numéro de version complet. Par exemple, n'importe quelle version du noyau 3.5 peut simplement être indiquée comme 'linux35', n'importe quelle version du noyau 3.6 comme 'linux36', et ainsi de suite. 
+
+L'option '''rmc''' ('''&lt;u&gt;r&lt;/u&gt;'''e'''&lt;u&gt;m&lt;/u&gt;'''ove '''&lt;u&gt;c&lt;/u&gt;'''urrent) est d'une importance vitale. Son utilisation entraînera la suppression de  votre noyau existant lors de l'installation du nouveau noyau. Dans le cas contraire, si elle n'est pas utilisée, le noyau existant sera conservé et pourra être sélectionné à côté du nouveau noyau dans l'écran de démarrage. '''Il est recommandé – surtout si la mise à jour concerne le tout dernier noyau flambant neuf – de garder votre ancien, même si ce n'est que pour un court laps de temps ensuite.''' C'est plus sûr, et l'ancien noyau s'enlève facilement lorsque vous êtes satisfait de la stabilité et des fonctionnalités du nouveau.
+
+
+Par exemple, la commande suivante, entrée dans un terminal, va installer un nouveau noyau (3.6) '''sans supprimer celui couramment utilisé''':
+
+ sudo mhwd-kernel linux36
+
+
+Par contre, la commande suivante va installer un nouveau noyau (3.6) en remplacement de l'actuel, '''qui va être supprimé''':
+
+ sudo mhwd-kernel linux36 '''rmc'''
+
+
+Dans les deux cas, Manjaro va configurer le nouveau noyau pour vous, prêt pour un usage immédiat. A la fin, fermez le terminal et redémarrez le PC pour faire prendre en compte les changements.
+
+
+= Suppression de noyaux =
+
+{{Attention|NE TENTEZ PAS de détruire un noyau existant et en cours d'utilisation par Manjaro au même moment. Vous pouvez d'abord identifier la version qui tourne dans votre système par la commande '''uname -r''' (voir ci-dessus).}}
+
+Quand plusieurs noyaux sont présents dans votre système, ''pacman'' peut être utilisé depuis le terminal pour les supprimer. Il peut être nécessaire de détruire trois éléments d'un noyau pour le supprimer complètement:
+
+# Le noyau lui-même
+# Les en-têtes du noyau
+# Les modules supplémentaires du noyau
+
+Que les en-têtes et les modules supplémentaires aient à être supprimés ou non dépend du fait qu'ils aient été installés ou non. La syntaxe de pacman pour détruire un noyau est la suivante: 
+
+
+1. '''Pour supprimer un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]
+
+
+Par exemple, pour supprimer du système la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35
+
+
+2. '''Pour supprimer les en-têtes d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-headers
+
+
+Par exemple, pour supprimer du système les en-têtes de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-headers
+
+
+3. '''Pour supprimer les modules supplémentaires d'un noyau''', la syntaxe est:
+ sudo pacman -R linux[version]-extramodules
+
+
+Par exemple, pour supprimer du système les modules supplémentaires de la version 3.5 du noyau, il faut entrer la commande suivante:
+ sudo pacman -R linux35-extramodules
+
+
+4. '''Pour supprimer tous les éléments d'un noyau en même temps''', qu'ils soient présents ou non dans votre système, la syntaxe est:
+ sudo pacman -R linux[version] linux[version]-headers linux[version]-extramodules
+
+
+Par exemple, pour supprimer complètement tous les éléments du noyau version 3.5, il faut entrer la commande:
+ sudo pacman -R linux35 linux35-headers linux35-extramodules
+
+Notez quand même s'il vous plaît que si vous essayez de supprimer plusieurs éléments d'un coup et s'ils ne sont pas présents dans votre système, un message d'erreur apparaîtra et l'opération elle-même avortera.  Il est également intéressant de savoir que, si Manjaro a été lancé dans une machine virtuelle (comme Oracle VirtualBox), vous ne pourrez pas détruire certains noyaux s'ils sont importants pour le processus de virtualisation lui-même.
+
+
+= Sélection d'un noyau =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+Tous les noyaux disponibles dans votre système vont vous être présentés au moment du démarrage. Comme illustré, cela inclut les copies de sauvegarde de chaque version du noyau installé (qui seront également automatiquement supprimées si ou quand une version du noyau est supprimée). Pour sélectionner un noyau, il suffit d'utiliser les touches fléchées pour sélectionner la version souhaitée, puis d'appuyer sur &lt;entrée&gt;.
+
+Si aucune sélection n'est faite, Manjaro va habituellement sélectionner automatiquement une version du noyau après avoir attendu une réponse pendant cinq secondes. La version automatiquement sélectionnée sera généralement celle utilisée précédemment.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Manjaro Kernels|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Utilisation de Manjaro]]</text>
+      <sha1>536sl7me7ag6ejoas0ki17g61j1jpsu</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

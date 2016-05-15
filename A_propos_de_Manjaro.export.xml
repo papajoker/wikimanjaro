@@ -1,0 +1,492 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>A propos de Manjaro</title>
+    <ns>0</ns>
+    <id>269</id>
+    <revision>
+      <id>1419</id>
+      <timestamp>2012-10-25T21:23:18Z</timestamp>
+      <contributor>
+        <username>Verityproductions</username>
+        <id>4</id>
+      </contributor>
+      <comment>Created page with &quot;:&lt;blockquote&gt;&lt;font size=&quot;4&quot;&gt;''Manjaro Linux se destine à la fois aux débutants et aux utilisateurs avancés. Elle comporte des outils graphiques et des scripts qui rendent l...&quot;</comment>
+      <text xml:space="preserve" bytes="4600">:&lt;blockquote&gt;&lt;font size=&quot;4&quot;&gt;''Manjaro Linux se destine à la fois aux débutants et aux utilisateurs avancés. Elle comporte des outils graphiques et des scripts qui rendent la vie plus facile. Manjaro prend en charge la technologie Optimus de NVIDIA sans intervention de votre part (&quot;out of the box&quot;)' '''Philip Müller - Manjaro Developer'''&lt;/font size&gt;&lt;/blockquote&gt;
+
+= Présentation =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+'''Manjaro''' est une distribution Linux conviviale, basée sur le système d'exploitation indépendant Arch. Au sein de la communauté Linux, Arch est connue comme étant une distribution exceptionnellement rapide, puissante et légère qui permet l'accès aux toutes dernières versions des logiciels disponibles. Cependant, Arch se destine à des utilisateurs avancés, intéressés par l'aspect technique du système. En tant que telle, on la considère généralement comme étant hors de portée de celles et ceux qui manqueraient des connaissances techniques (ou de la persévérance) nécessaires.
+
+Développé en Autriche, en France et en Allemagne, Manjaro combine l'ensemble des avantages d'Arch avec une approche centrée sur la convivialité et l'accessibilité. Disponible à la fois en version 32 et 64 bits, Manjaro convient tant aux débutants qu'aux utilisateurs avancés. Pour les débutants, Manjaro offre un installeur convivial et le système est conçu de façon à ce que tout fonctionne directement, sans intervention de votre part (&quot;out of the box&quot;). Manjaro comporte notamment :
+
+* un environnement de bureau pré-installé
+* des applications graphiques  pré-installées permettant une installation aisée de nouveaux logiciels ainsi que la mise à jour du système
+* des codecs multimédias pré-installés 
+* les logiciels les plus courants, comme Skype, Firefox et LibreOffice.
+
+'''Pour les utilisateurs plus avancés - et plus aventureux -''' Manjaro permet également une grande configurabilité et une grande versatilité qui permettent de la modeler et de l'adapter à vos goûts et besoins personnels. De plus, est également disponible une &quot;net-edition&quot; minimaliste en versions 32 et 64 bits. Dénuée de toute logiciel pré-installé, cette version permet une installation de base sur laquelle bâtir votre propre système : en démarrant depuis une ligne de commandes, vous êtes complètement libre de choisir votre propre gestionnaire de connexion, bureau, pilotes matériel, logiciels, etc.
+
+
+= Caractéristiques =
+
+Manjaro partage avec Arch un grand nombre d'aspects, dont :
+
+* la rapidité, la puissante et l'efficacité
+* l'accès aux toutes dernières versions des logiciels
+* un modèle de développement en publication continue (&quot;rolling release&quot;) qui fournit le système le plus à jour possible sans avoir besoin d'installer manuellement les nouvelles versions des logiciels
+* l'accès à l'Arch User Repository, le dépôt Arch contributif (AUR)
+
+
+Cependant, Manjaro est fière de proposer également toute une série d'éléments qui lui sont propres, comme par exemple :
+
+* une procédure d'installation simplifiée et conviviale
+* l'autodétection du matériel de votre ordinateur (par exemple, votre carte graphique)
+* l'installation automatique des logiciels nécessaires à votre système (par exemple, les pilotes de votre carte graphique)
+* ses propres dépôts de logiciels qui assurent que les paquets soient pleinement stables et testés avant d'être installés sur votre ordinateur
+* l'installation et l'utilisation aisées de plusieurs versions du noyau
+
+
+&lt;center&gt;[[file:xfce.png]]&lt;/center&gt;
+
+
+= Tests et critiques =
+
+* '''[http://frederic.bezies.free.fr/blog/?p=8305 Test de la version 0.8.0 sur le blog de Frédéric Bezies]'''
+
+
+= Plus d'infos =
+
+* La page consacrée à Manjaro sur [http://distrowatch.com/table.php?distribution=manjaro| Distrowatch.com]  (en Anglais)
+
+
+= L'équipe de développement de Manjaro =
+
+
+=== Noyau de l'équipe ===
+
+'''Roland Singer''' -  Chef du projet, designer, développeur, développeur Web, empaqueteur
+
+'''Guillaume Benoit''' - Maintenance du serveur, empaqueteur, modérateur
+ 
+'''Philip Müller''' - Manager des serveurs miroirs, empaqueteur, développeur, développeur Web
+
+  
+=== Équipe du site Web et de l'artwork ===
+
+'''Tillman Ebert''' - Développeur Web, consultant Web, designer
+
+'''Wlad Meixner''' - Développeur Web, consultant web
+
+
+=== Forum, communauté, support ===
+
+'''Allesandro Calo''' -  communauté, forum, site web
+ 
+'''Carl Duff''' - communauté, wiki, documentation
+
+
+Traduit par '''ElVirolo'''
+
+[[Category:Présentation]]
+[[Category:Sommaire]]</text>
+      <sha1>0yiody4onux4mrhuroic63ftjf1dl5g</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3423</id>
+      <parentid>1419</parentid>
+      <timestamp>2012-12-28T19:14:16Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* Forum, communauté, support */</comment>
+      <text xml:space="preserve" bytes="4601">:&lt;blockquote&gt;&lt;font size=&quot;4&quot;&gt;''Manjaro Linux se destine à la fois aux débutants et aux utilisateurs avancés. Elle comporte des outils graphiques et des scripts qui rendent la vie plus facile. Manjaro prend en charge la technologie Optimus de NVIDIA sans intervention de votre part (&quot;out of the box&quot;)' '''Philip Müller - Manjaro Developer'''&lt;/font size&gt;&lt;/blockquote&gt;
+
+= Présentation =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+'''Manjaro''' est une distribution Linux conviviale, basée sur le système d'exploitation indépendant Arch. Au sein de la communauté Linux, Arch est connue comme étant une distribution exceptionnellement rapide, puissante et légère qui permet l'accès aux toutes dernières versions des logiciels disponibles. Cependant, Arch se destine à des utilisateurs avancés, intéressés par l'aspect technique du système. En tant que telle, on la considère généralement comme étant hors de portée de celles et ceux qui manqueraient des connaissances techniques (ou de la persévérance) nécessaires.
+
+Développé en Autriche, en France et en Allemagne, Manjaro combine l'ensemble des avantages d'Arch avec une approche centrée sur la convivialité et l'accessibilité. Disponible à la fois en version 32 et 64 bits, Manjaro convient tant aux débutants qu'aux utilisateurs avancés. Pour les débutants, Manjaro offre un installeur convivial et le système est conçu de façon à ce que tout fonctionne directement, sans intervention de votre part (&quot;out of the box&quot;). Manjaro comporte notamment :
+
+* un environnement de bureau pré-installé
+* des applications graphiques  pré-installées permettant une installation aisée de nouveaux logiciels ainsi que la mise à jour du système
+* des codecs multimédias pré-installés 
+* les logiciels les plus courants, comme Skype, Firefox et LibreOffice.
+
+'''Pour les utilisateurs plus avancés - et plus aventureux -''' Manjaro permet également une grande configurabilité et une grande versatilité qui permettent de la modeler et de l'adapter à vos goûts et besoins personnels. De plus, est également disponible une &quot;net-edition&quot; minimaliste en versions 32 et 64 bits. Dénuée de toute logiciel pré-installé, cette version permet une installation de base sur laquelle bâtir votre propre système : en démarrant depuis une ligne de commandes, vous êtes complètement libre de choisir votre propre gestionnaire de connexion, bureau, pilotes matériel, logiciels, etc.
+
+
+= Caractéristiques =
+
+Manjaro partage avec Arch un grand nombre d'aspects, dont :
+
+* la rapidité, la puissante et l'efficacité
+* l'accès aux toutes dernières versions des logiciels
+* un modèle de développement en publication continue (&quot;rolling release&quot;) qui fournit le système le plus à jour possible sans avoir besoin d'installer manuellement les nouvelles versions des logiciels
+* l'accès à l'Arch User Repository, le dépôt Arch contributif (AUR)
+
+
+Cependant, Manjaro est fière de proposer également toute une série d'éléments qui lui sont propres, comme par exemple :
+
+* une procédure d'installation simplifiée et conviviale
+* l'autodétection du matériel de votre ordinateur (par exemple, votre carte graphique)
+* l'installation automatique des logiciels nécessaires à votre système (par exemple, les pilotes de votre carte graphique)
+* ses propres dépôts de logiciels qui assurent que les paquets soient pleinement stables et testés avant d'être installés sur votre ordinateur
+* l'installation et l'utilisation aisées de plusieurs versions du noyau
+
+
+&lt;center&gt;[[file:xfce.png]]&lt;/center&gt;
+
+
+= Tests et critiques =
+
+* '''[http://frederic.bezies.free.fr/blog/?p=8305 Test de la version 0.8.0 sur le blog de Frédéric Bezies]'''
+
+
+= Plus d'infos =
+
+* La page consacrée à Manjaro sur [http://distrowatch.com/table.php?distribution=manjaro| Distrowatch.com]  (en Anglais)
+
+
+= L'équipe de développement de Manjaro =
+
+
+=== Noyau de l'équipe ===
+
+'''Roland Singer''' -  Chef du projet, designer, développeur, développeur Web, empaqueteur
+
+'''Guillaume Benoit''' - Maintenance du serveur, empaqueteur, modérateur
+ 
+'''Philip Müller''' - Manager des serveurs miroirs, empaqueteur, développeur, développeur Web
+
+  
+=== Équipe du site Web et de l'artwork ===
+
+'''Tillman Ebert''' - Développeur Web, consultant Web, designer
+
+'''Wlad Meixner''' - Développeur Web, consultant web
+
+
+=== Forum, communauté, support ===
+
+'''Allesandro Calo''' -  communauté, forum, site web
+ 
+'''Carl Duff''' - communauté, wiki, documentation
+
+
+Traduit par '''ElVirolo'''
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>hgg5lwtak818455qix586n43vfnl29m</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3439</id>
+      <parentid>3423</parentid>
+      <timestamp>2012-12-28T21:07:59Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Forum, communauté, support */</comment>
+      <text xml:space="preserve" bytes="4573">:&lt;blockquote&gt;&lt;font size=&quot;4&quot;&gt;''Manjaro Linux se destine à la fois aux débutants et aux utilisateurs avancés. Elle comporte des outils graphiques et des scripts qui rendent la vie plus facile. Manjaro prend en charge la technologie Optimus de NVIDIA sans intervention de votre part (&quot;out of the box&quot;)' '''Philip Müller - Manjaro Developer'''&lt;/font size&gt;&lt;/blockquote&gt;
+
+= Présentation =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+'''Manjaro''' est une distribution Linux conviviale, basée sur le système d'exploitation indépendant Arch. Au sein de la communauté Linux, Arch est connue comme étant une distribution exceptionnellement rapide, puissante et légère qui permet l'accès aux toutes dernières versions des logiciels disponibles. Cependant, Arch se destine à des utilisateurs avancés, intéressés par l'aspect technique du système. En tant que telle, on la considère généralement comme étant hors de portée de celles et ceux qui manqueraient des connaissances techniques (ou de la persévérance) nécessaires.
+
+Développé en Autriche, en France et en Allemagne, Manjaro combine l'ensemble des avantages d'Arch avec une approche centrée sur la convivialité et l'accessibilité. Disponible à la fois en version 32 et 64 bits, Manjaro convient tant aux débutants qu'aux utilisateurs avancés. Pour les débutants, Manjaro offre un installeur convivial et le système est conçu de façon à ce que tout fonctionne directement, sans intervention de votre part (&quot;out of the box&quot;). Manjaro comporte notamment :
+
+* un environnement de bureau pré-installé
+* des applications graphiques  pré-installées permettant une installation aisée de nouveaux logiciels ainsi que la mise à jour du système
+* des codecs multimédias pré-installés 
+* les logiciels les plus courants, comme Skype, Firefox et LibreOffice.
+
+'''Pour les utilisateurs plus avancés - et plus aventureux -''' Manjaro permet également une grande configurabilité et une grande versatilité qui permettent de la modeler et de l'adapter à vos goûts et besoins personnels. De plus, est également disponible une &quot;net-edition&quot; minimaliste en versions 32 et 64 bits. Dénuée de toute logiciel pré-installé, cette version permet une installation de base sur laquelle bâtir votre propre système : en démarrant depuis une ligne de commandes, vous êtes complètement libre de choisir votre propre gestionnaire de connexion, bureau, pilotes matériel, logiciels, etc.
+
+
+= Caractéristiques =
+
+Manjaro partage avec Arch un grand nombre d'aspects, dont :
+
+* la rapidité, la puissante et l'efficacité
+* l'accès aux toutes dernières versions des logiciels
+* un modèle de développement en publication continue (&quot;rolling release&quot;) qui fournit le système le plus à jour possible sans avoir besoin d'installer manuellement les nouvelles versions des logiciels
+* l'accès à l'Arch User Repository, le dépôt Arch contributif (AUR)
+
+
+Cependant, Manjaro est fière de proposer également toute une série d'éléments qui lui sont propres, comme par exemple :
+
+* une procédure d'installation simplifiée et conviviale
+* l'autodétection du matériel de votre ordinateur (par exemple, votre carte graphique)
+* l'installation automatique des logiciels nécessaires à votre système (par exemple, les pilotes de votre carte graphique)
+* ses propres dépôts de logiciels qui assurent que les paquets soient pleinement stables et testés avant d'être installés sur votre ordinateur
+* l'installation et l'utilisation aisées de plusieurs versions du noyau
+
+
+&lt;center&gt;[[file:xfce.png]]&lt;/center&gt;
+
+
+= Tests et critiques =
+
+* '''[http://frederic.bezies.free.fr/blog/?p=8305 Test de la version 0.8.0 sur le blog de Frédéric Bezies]'''
+
+
+= Plus d'infos =
+
+* La page consacrée à Manjaro sur [http://distrowatch.com/table.php?distribution=manjaro| Distrowatch.com]  (en Anglais)
+
+
+= L'équipe de développement de Manjaro =
+
+
+=== Noyau de l'équipe ===
+
+'''Roland Singer''' -  Chef du projet, designer, développeur, développeur Web, empaqueteur
+
+'''Guillaume Benoit''' - Maintenance du serveur, empaqueteur, modérateur
+ 
+'''Philip Müller''' - Manager des serveurs miroirs, empaqueteur, développeur, développeur Web
+
+  
+=== Équipe du site Web et de l'artwork ===
+
+'''Tillman Ebert''' - Développeur Web, consultant Web, designer
+
+'''Wlad Meixner''' - Développeur Web, consultant web
+
+
+=== Forum, communauté, support ===
+
+'''Allesandro Calo''' -  communauté, forum, site web
+ 
+'''Carl Duff''' - communauté, wiki, documentation
+
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>dap1bewmivoh8kut95pnjhv13bkdd95</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3493</id>
+      <parentid>3439</parentid>
+      <timestamp>2012-12-29T09:23:05Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4593">:&lt;blockquote&gt;&lt;font size=&quot;4&quot;&gt;''Manjaro Linux se destine à la fois aux débutants et aux utilisateurs avancés. Elle comporte des outils graphiques et des scripts qui rendent la vie plus facile. Manjaro prend en charge la technologie Optimus de NVIDIA sans intervention de votre part (&quot;out of the box&quot;)' '''Philip Müller - Manjaro Developer'''&lt;/font size&gt;&lt;/blockquote&gt;
+
+= Présentation =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+'''Manjaro''' est une distribution Linux conviviale, basée sur le système d'exploitation indépendant Arch. Au sein de la communauté Linux, Arch est connue comme étant une distribution exceptionnellement rapide, puissante et légère qui permet l'accès aux toutes dernières versions des logiciels disponibles. Cependant, Arch se destine à des utilisateurs avancés, intéressés par l'aspect technique du système. En tant que telle, on la considère généralement comme étant hors de portée de celles et ceux qui manqueraient des connaissances techniques (ou de la persévérance) nécessaires.
+
+Développé en Autriche, en France et en Allemagne, Manjaro combine l'ensemble des avantages d'Arch avec une approche centrée sur la convivialité et l'accessibilité. Disponible à la fois en version 32 et 64 bits, Manjaro convient tant aux débutants qu'aux utilisateurs avancés. Pour les débutants, Manjaro offre un installeur convivial et le système est conçu de façon à ce que tout fonctionne directement, sans intervention de votre part (&quot;out of the box&quot;). Manjaro comporte notamment :
+
+* un environnement de bureau pré-installé
+* des applications graphiques  pré-installées permettant une installation aisée de nouveaux logiciels ainsi que la mise à jour du système
+* des codecs multimédias pré-installés 
+* les logiciels les plus courants, comme Skype, Firefox et LibreOffice.
+
+'''Pour les utilisateurs plus avancés - et plus aventureux -''' Manjaro permet également une grande configurabilité et une grande versatilité qui permettent de la modeler et de l'adapter à vos goûts et besoins personnels. De plus, est également disponible une &quot;net-edition&quot; minimaliste en versions 32 et 64 bits. Dénuée de toute logiciel pré-installé, cette version permet une installation de base sur laquelle bâtir votre propre système : en démarrant depuis une ligne de commandes, vous êtes complètement libre de choisir votre propre gestionnaire de connexion, bureau, pilotes matériel, logiciels, etc.
+
+
+= Caractéristiques =
+
+Manjaro partage avec Arch un grand nombre d'aspects, dont :
+
+* la rapidité, la puissante et l'efficacité
+* l'accès aux toutes dernières versions des logiciels
+* un modèle de développement en publication continue (&quot;rolling release&quot;) qui fournit le système le plus à jour possible sans avoir besoin d'installer manuellement les nouvelles versions des logiciels
+* l'accès à l'Arch User Repository, le dépôt Arch contributif (AUR)
+
+
+Cependant, Manjaro est fière de proposer également toute une série d'éléments qui lui sont propres, comme par exemple :
+
+* une procédure d'installation simplifiée et conviviale
+* l'autodétection du matériel de votre ordinateur (par exemple, votre carte graphique)
+* l'installation automatique des logiciels nécessaires à votre système (par exemple, les pilotes de votre carte graphique)
+* ses propres dépôts de logiciels qui assurent que les paquets soient pleinement stables et testés avant d'être installés sur votre ordinateur
+* l'installation et l'utilisation aisées de plusieurs versions du noyau
+
+
+&lt;center&gt;[[file:xfce.png]]&lt;/center&gt;
+
+
+= Tests et critiques =
+
+* '''[http://frederic.bezies.free.fr/blog/?p=8305 Test de la version 0.8.0 sur le blog de Frédéric Bezies]'''
+
+
+= Plus d'infos =
+
+* La page consacrée à Manjaro sur [http://distrowatch.com/table.php?distribution=manjaro| Distrowatch.com]  (en Anglais)
+
+
+= L'équipe de développement de Manjaro =
+
+
+=== Noyau de l'équipe ===
+
+'''Roland Singer''' -  Chef du projet, designer, développeur, développeur Web, empaqueteur
+
+'''Guillaume Benoit''' - Maintenance du serveur, empaqueteur, modérateur
+ 
+'''Philip Müller''' - Manager des serveurs miroirs, empaqueteur, développeur, développeur Web
+
+  
+=== Équipe du site Web et de l'artwork ===
+
+'''Tillman Ebert''' - Développeur Web, consultant Web, designer
+
+'''Wlad Meixner''' - Développeur Web, consultant web
+
+
+=== Forum, communauté, support ===
+
+'''Allesandro Calo''' -  communauté, forum, site web
+ 
+'''Carl Duff''' - communauté, wiki, documentation
+
+
+[[Category:Présentation]]
+[[Category:Français]]
+[[Page Principale]]</text>
+      <sha1>dzmge5s53ml0fjrvagokrwcgcrorqj5</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3494</id>
+      <parentid>3493</parentid>
+      <timestamp>2012-12-29T09:23:37Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4602">:&lt;blockquote&gt;&lt;font size=&quot;4&quot;&gt;''Manjaro Linux se destine à la fois aux débutants et aux utilisateurs avancés. Elle comporte des outils graphiques et des scripts qui rendent la vie plus facile. Manjaro prend en charge la technologie Optimus de NVIDIA sans intervention de votre part (&quot;out of the box&quot;)' '''Philip Müller - Manjaro Developer'''&lt;/font size&gt;&lt;/blockquote&gt;
+
+= Présentation =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+'''Manjaro''' est une distribution Linux conviviale, basée sur le système d'exploitation indépendant Arch. Au sein de la communauté Linux, Arch est connue comme étant une distribution exceptionnellement rapide, puissante et légère qui permet l'accès aux toutes dernières versions des logiciels disponibles. Cependant, Arch se destine à des utilisateurs avancés, intéressés par l'aspect technique du système. En tant que telle, on la considère généralement comme étant hors de portée de celles et ceux qui manqueraient des connaissances techniques (ou de la persévérance) nécessaires.
+
+Développé en Autriche, en France et en Allemagne, Manjaro combine l'ensemble des avantages d'Arch avec une approche centrée sur la convivialité et l'accessibilité. Disponible à la fois en version 32 et 64 bits, Manjaro convient tant aux débutants qu'aux utilisateurs avancés. Pour les débutants, Manjaro offre un installeur convivial et le système est conçu de façon à ce que tout fonctionne directement, sans intervention de votre part (&quot;out of the box&quot;). Manjaro comporte notamment :
+
+* un environnement de bureau pré-installé
+* des applications graphiques  pré-installées permettant une installation aisée de nouveaux logiciels ainsi que la mise à jour du système
+* des codecs multimédias pré-installés 
+* les logiciels les plus courants, comme Skype, Firefox et LibreOffice.
+
+'''Pour les utilisateurs plus avancés - et plus aventureux -''' Manjaro permet également une grande configurabilité et une grande versatilité qui permettent de la modeler et de l'adapter à vos goûts et besoins personnels. De plus, est également disponible une &quot;net-edition&quot; minimaliste en versions 32 et 64 bits. Dénuée de toute logiciel pré-installé, cette version permet une installation de base sur laquelle bâtir votre propre système : en démarrant depuis une ligne de commandes, vous êtes complètement libre de choisir votre propre gestionnaire de connexion, bureau, pilotes matériel, logiciels, etc.
+
+
+= Caractéristiques =
+
+Manjaro partage avec Arch un grand nombre d'aspects, dont :
+
+* la rapidité, la puissante et l'efficacité
+* l'accès aux toutes dernières versions des logiciels
+* un modèle de développement en publication continue (&quot;rolling release&quot;) qui fournit le système le plus à jour possible sans avoir besoin d'installer manuellement les nouvelles versions des logiciels
+* l'accès à l'Arch User Repository, le dépôt Arch contributif (AUR)
+
+
+Cependant, Manjaro est fière de proposer également toute une série d'éléments qui lui sont propres, comme par exemple :
+
+* une procédure d'installation simplifiée et conviviale
+* l'autodétection du matériel de votre ordinateur (par exemple, votre carte graphique)
+* l'installation automatique des logiciels nécessaires à votre système (par exemple, les pilotes de votre carte graphique)
+* ses propres dépôts de logiciels qui assurent que les paquets soient pleinement stables et testés avant d'être installés sur votre ordinateur
+* l'installation et l'utilisation aisées de plusieurs versions du noyau
+
+
+&lt;center&gt;[[file:xfce.png]]&lt;/center&gt;
+
+
+= Tests et critiques =
+
+* '''[http://frederic.bezies.free.fr/blog/?p=8305 Test de la version 0.8.0 sur le blog de Frédéric Bezies]'''
+
+
+= Plus d'infos =
+
+* La page consacrée à Manjaro sur [http://distrowatch.com/table.php?distribution=manjaro| Distrowatch.com]  (en Anglais)
+
+
+= L'équipe de développement de Manjaro =
+
+
+=== Noyau de l'équipe ===
+
+'''Roland Singer''' -  Chef du projet, designer, développeur, développeur Web, empaqueteur
+
+'''Guillaume Benoit''' - Maintenance du serveur, empaqueteur, modérateur
+ 
+'''Philip Müller''' - Manager des serveurs miroirs, empaqueteur, développeur, développeur Web
+
+  
+=== Équipe du site Web et de l'artwork ===
+
+'''Tillman Ebert''' - Développeur Web, consultant Web, designer
+
+'''Wlad Meixner''' - Développeur Web, consultant web
+
+
+=== Forum, communauté, support ===
+
+'''Allesandro Calo''' -  communauté, forum, site web
+ 
+'''Carl Duff''' - communauté, wiki, documentation
+
+
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Page Principale]]</text>
+      <sha1>6y3utbbh2m7f7mlqo613zvncczjb76g</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

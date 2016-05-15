@@ -1,0 +1,859 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Synergy - Souris et Clavier partagés</title>
+    <ns>0</ns>
+    <id>664</id>
+    <revision>
+      <id>4291</id>
+      <timestamp>2013-01-07T02:20:20Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;==Synergy - Mouse &amp; k/board Sharing Across Multiple OS's==     &lt;br clear=&quot;all&quot; /&gt; ==Introduction==  Synergy is a brilliant piece of software that doesn't require much effort t...&quot;</comment>
+      <text xml:space="preserve" bytes="5993">==Synergy - Mouse &amp; k/board Sharing Across Multiple OS's==
+
+
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Introduction==
+
+Synergy is a brilliant piece of software that doesn't require much effort to get going, Though after that it required me some more time to get it to function just how I want it to = faultless autostart.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So What Does Synergy Do?== 
+
+I can now use my favourite keyboard &amp; mouse to operate two computers (synergy will do plenty more computers if you have them) one at a time of course... 
+
+The two machines are set up to load synergy when they boot, &amp; it doesn't matter what order the server or the client is booted in, when they are both up, synergy automatically does its stuff, using next to no system resources.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Three B's - BS, Blurb &amp; Bug:==
+
+Years ago I paid a lot of money for a really good quality four machine handling KVM switch box. It worked very well via keyboard command until the day it failed. :(  In those days when I was fixing computers, that KVM was far superior to synergy because it was hardware that was system independent &amp; worked on anything that had a working BIOS.
+
+For my needs today, the synergy system shits all over a KVM, though there are varying limitations which are dictated by the display manager / OS you are using. 
+
+Running Openbox, I can't make use of synergy until OB has loaded. On some Linux display managers you can use it before hand &amp; I'm sure that OS/X &amp; the various Windows all have their strengths &amp; weaknesses in this regard. In the end this doesn't really matter to me as I spend very little time outside of OB anyway. So for my current computer usage synergy is all but gob smacking perfect. 
+
+All but? Yes, just one tiny bug that effects a few of us. For some users when moving the mouse from one computer screen to another you get a one or (far more rare) a two second black screen. 
+
+I got the one second one when moving from the client to the server. For most this is fixed by issuing the command  '''xset -dpms'''. This works for me so I issue it in ''~/.xinitrc'' so the problem never appears. 
+
+This problem has been around for about a year, &amp; someone has written a patch for it inside of the last month, so I'll hang back &amp; wait for the next release which I expect to have killed this bug, in the mean time I no longer know it exists.
+
+I'm sure that this bug no longer exists, don't be put off by it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Synergys Server:==
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Installation:===
+
+Rather than me duplicating it, the Archwiki has a great page on [https://wiki.archlinux.org/index.php/Synergy/ Synergy installation].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Configuration:===
+
+My '''/etc/hosts''' file follows which should speak for itself:
+
+
+ 192.168.1.3             rightpc.localdomain  rightpc         ## the HP server
+ 192.168.1.6             leftpc.localdomain      leftpc          ## the iMac client
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Synergy.conf===
+
+Here is a great start (a complete solution in my case) for a very smoothly running pair of machines (easily edited for more though), via one mouse &amp; keyboard being connected to the synergys server - this '''synergy.conf''' is the server configuration file which does the job faultlessly for me:
+
+
+
+ #synergy.conf
+ 
+ section: screens
+ 	leftpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ 	rightpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ end
+ 
+ section: aliases
+ leftpc:
+ 192.168.1.6
+ rightpc:
+ 192.168.1.3
+ end
+ 
+ section: links
+ 	leftpc:
+ 		right = rightpc
+ 	rightpc:
+ 		left = leftpc
+ end
+ 
+ section: options
+ 	heartbeat = 1000
+ 	relativeMouseMoves = false
+ 	screenSaverSync = false
+ 	win32KeepForeground = false
+ 	switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 	switchCornerSize = 4
+ end
+&lt;br clear=&quot;all&quot; /&gt;
+This '''synergyc.conf''' file suits my uses perfectly, I found it on the Arch wiki, &amp; it needed no functional modification. I put it in /home/handy as a &lt;.dot&gt; file i.e. ~/.synergy.conf .
+
+OK, that is the server taken care of above, now its time for;-
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The Synergy Client(s):==
+
+Install synergy.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Client /etc/hosts:===
+
+Edit the '''/etc/hosts''' file, mine is below for those that do need to reference, &amp; if you do make sure you compare it with the server side one posted earlier on this page:
+
+ 192.168.1.6     leftpc.localdomain               leftpc          ## the iMac client
+ 192.168.1.3     rightpc.localdomain             rightpc         ## the HP server [/code]
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Synergy shares the clipboard too!!!====
+
+''(By the way, due to synergy I could just use the keyboard shortcuts to copy the above from the Terminal on the client &amp; then move my mouse over to the server where I'm typing this &amp; then use the keyboard to paste it! '''Synergy shares the clipboard too!!!''' Which is brilliant.)''
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===~/.xinitrc===
+
+Add the following to the '''~/.xinitrc''' file (guess how I copied it?):
+
+ synergyc -d ERROR rightpc
+
+No need for the xset -dpms bug fix on this machine thankfully (It extremely likely that this bug is now long dead).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Conclusion:==
+
+The server is where the hardest work is, beyond that it comes down to getting your auto-start sorted so that it just works no matter which machine(s) come on in what order. For me the above works in that regard perfectly, (once Openbox has loaded).
+
+I hope the above makes the info that is already on the net just a little easier to optimise for your usage.
+
+I'm SO happy to at last not be swapping the ***king keyboards &amp; mouses all the time, it drives me ***king nuts.
+
+[[Category:Contents Page]]</text>
+      <sha1>7522g8rxdxtaqfbr6hussa5jt2yltro</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4292</id>
+      <parentid>4291</parentid>
+      <timestamp>2013-01-07T02:21:36Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6113">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+==Synergy - Mouse &amp; k/board Sharing Across Multiple OS's==
+
+
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Introduction==
+
+Synergy is a brilliant piece of software that doesn't require much effort to get going, Though after that it required me some more time to get it to function just how I want it to = faultless autostart.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So What Does Synergy Do?== 
+
+I can now use my favourite keyboard &amp; mouse to operate two computers (synergy will do plenty more computers if you have them) one at a time of course... 
+
+The two machines are set up to load synergy when they boot, &amp; it doesn't matter what order the server or the client is booted in, when they are both up, synergy automatically does its stuff, using next to no system resources.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Three B's - BS, Blurb &amp; Bug:==
+
+Years ago I paid a lot of money for a really good quality four machine handling KVM switch box. It worked very well via keyboard command until the day it failed. :(  In those days when I was fixing computers, that KVM was far superior to synergy because it was hardware that was system independent &amp; worked on anything that had a working BIOS.
+
+For my needs today, the synergy system shits all over a KVM, though there are varying limitations which are dictated by the display manager / OS you are using. 
+
+Running Openbox, I can't make use of synergy until OB has loaded. On some Linux display managers you can use it before hand &amp; I'm sure that OS/X &amp; the various Windows all have their strengths &amp; weaknesses in this regard. In the end this doesn't really matter to me as I spend very little time outside of OB anyway. So for my current computer usage synergy is all but gob smacking perfect. 
+
+All but? Yes, just one tiny bug that effects a few of us. For some users when moving the mouse from one computer screen to another you get a one or (far more rare) a two second black screen. 
+
+I got the one second one when moving from the client to the server. For most this is fixed by issuing the command  '''xset -dpms'''. This works for me so I issue it in ''~/.xinitrc'' so the problem never appears. 
+
+This problem has been around for about a year, &amp; someone has written a patch for it inside of the last month, so I'll hang back &amp; wait for the next release which I expect to have killed this bug, in the mean time I no longer know it exists.
+
+I'm sure that this bug no longer exists, don't be put off by it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Synergys Server:==
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Installation:===
+
+Rather than me duplicating it, the Archwiki has a great page on [https://wiki.archlinux.org/index.php/Synergy/ Synergy installation].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Configuration:===
+
+My '''/etc/hosts''' file follows which should speak for itself:
+
+
+ 192.168.1.3             rightpc.localdomain  rightpc         ## the HP server
+ 192.168.1.6             leftpc.localdomain      leftpc          ## the iMac client
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Synergy.conf===
+
+Here is a great start (a complete solution in my case) for a very smoothly running pair of machines (easily edited for more though), via one mouse &amp; keyboard being connected to the synergys server - this '''synergy.conf''' is the server configuration file which does the job faultlessly for me:
+
+
+
+ #synergy.conf
+ 
+ section: screens
+ 	leftpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ 	rightpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ end
+ 
+ section: aliases
+ leftpc:
+ 192.168.1.6
+ rightpc:
+ 192.168.1.3
+ end
+ 
+ section: links
+ 	leftpc:
+ 		right = rightpc
+ 	rightpc:
+ 		left = leftpc
+ end
+ 
+ section: options
+ 	heartbeat = 1000
+ 	relativeMouseMoves = false
+ 	screenSaverSync = false
+ 	win32KeepForeground = false
+ 	switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 	switchCornerSize = 4
+ end
+&lt;br clear=&quot;all&quot; /&gt;
+This '''synergyc.conf''' file suits my uses perfectly, I found it on the Arch wiki, &amp; it needed no functional modification. I put it in /home/handy as a &lt;.dot&gt; file i.e. ~/.synergy.conf .
+
+OK, that is the server taken care of above, now its time for;-
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The Synergy Client(s):==
+
+Install synergy.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Client /etc/hosts:===
+
+Edit the '''/etc/hosts''' file, mine is below for those that do need to reference, &amp; if you do make sure you compare it with the server side one posted earlier on this page:
+
+ 192.168.1.6     leftpc.localdomain               leftpc          ## the iMac client
+ 192.168.1.3     rightpc.localdomain             rightpc         ## the HP server [/code]
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Synergy shares the clipboard too!!!====
+
+''(By the way, due to synergy I could just use the keyboard shortcuts to copy the above from the Terminal on the client &amp; then move my mouse over to the server where I'm typing this &amp; then use the keyboard to paste it! '''Synergy shares the clipboard too!!!''' Which is brilliant.)''
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===~/.xinitrc===
+
+Add the following to the '''~/.xinitrc''' file (guess how I copied it?):
+
+ synergyc -d ERROR rightpc
+
+No need for the xset -dpms bug fix on this machine thankfully (It extremely likely that this bug is now long dead).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Conclusion:==
+
+The server is where the hardest work is, beyond that it comes down to getting your auto-start sorted so that it just works no matter which machine(s) come on in what order. For me the above works in that regard perfectly, (once Openbox has loaded).
+
+I hope the above makes the info that is already on the net just a little easier to optimise for your usage.
+
+I'm SO happy to at last not be swapping the ***king keyboards &amp; mouses all the time, it drives me ***king nuts.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>tjeg4nyb4ocf17xt3qwtemoym4l3y54</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4293</id>
+      <parentid>4292</parentid>
+      <timestamp>2013-01-07T02:22:13Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Conclusion: */</comment>
+      <text xml:space="preserve" bytes="6114">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+==Synergy - Mouse &amp; k/board Sharing Across Multiple OS's==
+
+
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Introduction==
+
+Synergy is a brilliant piece of software that doesn't require much effort to get going, Though after that it required me some more time to get it to function just how I want it to = faultless autostart.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So What Does Synergy Do?== 
+
+I can now use my favourite keyboard &amp; mouse to operate two computers (synergy will do plenty more computers if you have them) one at a time of course... 
+
+The two machines are set up to load synergy when they boot, &amp; it doesn't matter what order the server or the client is booted in, when they are both up, synergy automatically does its stuff, using next to no system resources.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Three B's - BS, Blurb &amp; Bug:==
+
+Years ago I paid a lot of money for a really good quality four machine handling KVM switch box. It worked very well via keyboard command until the day it failed. :(  In those days when I was fixing computers, that KVM was far superior to synergy because it was hardware that was system independent &amp; worked on anything that had a working BIOS.
+
+For my needs today, the synergy system shits all over a KVM, though there are varying limitations which are dictated by the display manager / OS you are using. 
+
+Running Openbox, I can't make use of synergy until OB has loaded. On some Linux display managers you can use it before hand &amp; I'm sure that OS/X &amp; the various Windows all have their strengths &amp; weaknesses in this regard. In the end this doesn't really matter to me as I spend very little time outside of OB anyway. So for my current computer usage synergy is all but gob smacking perfect. 
+
+All but? Yes, just one tiny bug that effects a few of us. For some users when moving the mouse from one computer screen to another you get a one or (far more rare) a two second black screen. 
+
+I got the one second one when moving from the client to the server. For most this is fixed by issuing the command  '''xset -dpms'''. This works for me so I issue it in ''~/.xinitrc'' so the problem never appears. 
+
+This problem has been around for about a year, &amp; someone has written a patch for it inside of the last month, so I'll hang back &amp; wait for the next release which I expect to have killed this bug, in the mean time I no longer know it exists.
+
+I'm sure that this bug no longer exists, don't be put off by it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Synergys Server:==
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Installation:===
+
+Rather than me duplicating it, the Archwiki has a great page on [https://wiki.archlinux.org/index.php/Synergy/ Synergy installation].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Configuration:===
+
+My '''/etc/hosts''' file follows which should speak for itself:
+
+
+ 192.168.1.3             rightpc.localdomain  rightpc         ## the HP server
+ 192.168.1.6             leftpc.localdomain      leftpc          ## the iMac client
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Synergy.conf===
+
+Here is a great start (a complete solution in my case) for a very smoothly running pair of machines (easily edited for more though), via one mouse &amp; keyboard being connected to the synergys server - this '''synergy.conf''' is the server configuration file which does the job faultlessly for me:
+
+
+
+ #synergy.conf
+ 
+ section: screens
+ 	leftpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ 	rightpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ end
+ 
+ section: aliases
+ leftpc:
+ 192.168.1.6
+ rightpc:
+ 192.168.1.3
+ end
+ 
+ section: links
+ 	leftpc:
+ 		right = rightpc
+ 	rightpc:
+ 		left = leftpc
+ end
+ 
+ section: options
+ 	heartbeat = 1000
+ 	relativeMouseMoves = false
+ 	screenSaverSync = false
+ 	win32KeepForeground = false
+ 	switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 	switchCornerSize = 4
+ end
+&lt;br clear=&quot;all&quot; /&gt;
+This '''synergyc.conf''' file suits my uses perfectly, I found it on the Arch wiki, &amp; it needed no functional modification. I put it in /home/handy as a &lt;.dot&gt; file i.e. ~/.synergy.conf .
+
+OK, that is the server taken care of above, now its time for;-
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The Synergy Client(s):==
+
+Install synergy.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Client /etc/hosts:===
+
+Edit the '''/etc/hosts''' file, mine is below for those that do need to reference, &amp; if you do make sure you compare it with the server side one posted earlier on this page:
+
+ 192.168.1.6     leftpc.localdomain               leftpc          ## the iMac client
+ 192.168.1.3     rightpc.localdomain             rightpc         ## the HP server [/code]
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Synergy shares the clipboard too!!!====
+
+''(By the way, due to synergy I could just use the keyboard shortcuts to copy the above from the Terminal on the client &amp; then move my mouse over to the server where I'm typing this &amp; then use the keyboard to paste it! '''Synergy shares the clipboard too!!!''' Which is brilliant.)''
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===~/.xinitrc===
+
+Add the following to the '''~/.xinitrc''' file (guess how I copied it?):
+
+ synergyc -d ERROR rightpc
+
+No need for the xset -dpms bug fix on this machine thankfully (It extremely likely that this bug is now long dead).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Conclusion:==
+
+The server is where the hardest work is, beyond that it comes down to getting your auto-start sorted so that it just works no matter which machine(s) come on in what order. For me the above works in that regard perfectly, (once Openbox has loaded).
+
+I hope the above makes the info that is already on the net just a little easier to optimise for your usage.
+
+I'm SO happy to at last not be swapping the ***king keyboards &amp; mouses all the time, it drives me ***king nuts.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>pc7pmbs3m1ye22bz0z8sgmxixrpx002</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4354</id>
+      <parentid>4293</parentid>
+      <timestamp>2013-01-07T12:35:24Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Synergy - Mouse &amp; k/board Sharing Across Multiple OS's */</comment>
+      <text xml:space="preserve" bytes="6146">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+==Synergy - Partage de la souris et du clavier entre plusieurs systèmes d'exploitation==
+
+
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Introduction==
+
+Synergy is a brilliant piece of software that doesn't require much effort to get going, Though after that it required me some more time to get it to function just how I want it to = faultless autostart.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So What Does Synergy Do?== 
+
+I can now use my favourite keyboard &amp; mouse to operate two computers (synergy will do plenty more computers if you have them) one at a time of course... 
+
+The two machines are set up to load synergy when they boot, &amp; it doesn't matter what order the server or the client is booted in, when they are both up, synergy automatically does its stuff, using next to no system resources.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Three B's - BS, Blurb &amp; Bug:==
+
+Years ago I paid a lot of money for a really good quality four machine handling KVM switch box. It worked very well via keyboard command until the day it failed. :(  In those days when I was fixing computers, that KVM was far superior to synergy because it was hardware that was system independent &amp; worked on anything that had a working BIOS.
+
+For my needs today, the synergy system shits all over a KVM, though there are varying limitations which are dictated by the display manager / OS you are using. 
+
+Running Openbox, I can't make use of synergy until OB has loaded. On some Linux display managers you can use it before hand &amp; I'm sure that OS/X &amp; the various Windows all have their strengths &amp; weaknesses in this regard. In the end this doesn't really matter to me as I spend very little time outside of OB anyway. So for my current computer usage synergy is all but gob smacking perfect. 
+
+All but? Yes, just one tiny bug that effects a few of us. For some users when moving the mouse from one computer screen to another you get a one or (far more rare) a two second black screen. 
+
+I got the one second one when moving from the client to the server. For most this is fixed by issuing the command  '''xset -dpms'''. This works for me so I issue it in ''~/.xinitrc'' so the problem never appears. 
+
+This problem has been around for about a year, &amp; someone has written a patch for it inside of the last month, so I'll hang back &amp; wait for the next release which I expect to have killed this bug, in the mean time I no longer know it exists.
+
+I'm sure that this bug no longer exists, don't be put off by it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Synergys Server:==
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Installation:===
+
+Rather than me duplicating it, the Archwiki has a great page on [https://wiki.archlinux.org/index.php/Synergy/ Synergy installation].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Configuration:===
+
+My '''/etc/hosts''' file follows which should speak for itself:
+
+
+ 192.168.1.3             rightpc.localdomain  rightpc         ## the HP server
+ 192.168.1.6             leftpc.localdomain      leftpc          ## the iMac client
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Synergy.conf===
+
+Here is a great start (a complete solution in my case) for a very smoothly running pair of machines (easily edited for more though), via one mouse &amp; keyboard being connected to the synergys server - this '''synergy.conf''' is the server configuration file which does the job faultlessly for me:
+
+
+
+ #synergy.conf
+ 
+ section: screens
+ 	leftpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ 	rightpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ end
+ 
+ section: aliases
+ leftpc:
+ 192.168.1.6
+ rightpc:
+ 192.168.1.3
+ end
+ 
+ section: links
+ 	leftpc:
+ 		right = rightpc
+ 	rightpc:
+ 		left = leftpc
+ end
+ 
+ section: options
+ 	heartbeat = 1000
+ 	relativeMouseMoves = false
+ 	screenSaverSync = false
+ 	win32KeepForeground = false
+ 	switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 	switchCornerSize = 4
+ end
+&lt;br clear=&quot;all&quot; /&gt;
+This '''synergyc.conf''' file suits my uses perfectly, I found it on the Arch wiki, &amp; it needed no functional modification. I put it in /home/handy as a &lt;.dot&gt; file i.e. ~/.synergy.conf .
+
+OK, that is the server taken care of above, now its time for;-
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The Synergy Client(s):==
+
+Install synergy.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Client /etc/hosts:===
+
+Edit the '''/etc/hosts''' file, mine is below for those that do need to reference, &amp; if you do make sure you compare it with the server side one posted earlier on this page:
+
+ 192.168.1.6     leftpc.localdomain               leftpc          ## the iMac client
+ 192.168.1.3     rightpc.localdomain             rightpc         ## the HP server [/code]
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Synergy shares the clipboard too!!!====
+
+''(By the way, due to synergy I could just use the keyboard shortcuts to copy the above from the Terminal on the client &amp; then move my mouse over to the server where I'm typing this &amp; then use the keyboard to paste it! '''Synergy shares the clipboard too!!!''' Which is brilliant.)''
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===~/.xinitrc===
+
+Add the following to the '''~/.xinitrc''' file (guess how I copied it?):
+
+ synergyc -d ERROR rightpc
+
+No need for the xset -dpms bug fix on this machine thankfully (It extremely likely that this bug is now long dead).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Conclusion:==
+
+The server is where the hardest work is, beyond that it comes down to getting your auto-start sorted so that it just works no matter which machine(s) come on in what order. For me the above works in that regard perfectly, (once Openbox has loaded).
+
+I hope the above makes the info that is already on the net just a little easier to optimise for your usage.
+
+I'm SO happy to at last not be swapping the ***king keyboards &amp; mouses all the time, it drives me ***king nuts.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>pw6vkbb3wnx8mk0kr3vrqndgz9wy7tp</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4355</id>
+      <parentid>4354</parentid>
+      <timestamp>2013-01-07T12:40:50Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Introduction */</comment>
+      <text xml:space="preserve" bytes="6156">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+==Synergy - Partage de la souris et du clavier entre plusieurs systèmes d'exploitation==
+
+
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Introduction==
+
+Synergy  est un logiciel brillant, facile à mettre en oeuvre, bien qu'il m'ait demandé un peu de temps pour j'arrive à lui faire faire exactement ce que je voulais : un démarrage automatique irréprochable. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+==So What Does Synergy Do?== 
+
+I can now use my favourite keyboard &amp; mouse to operate two computers (synergy will do plenty more computers if you have them) one at a time of course... 
+
+The two machines are set up to load synergy when they boot, &amp; it doesn't matter what order the server or the client is booted in, when they are both up, synergy automatically does its stuff, using next to no system resources.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Three B's - BS, Blurb &amp; Bug:==
+
+Years ago I paid a lot of money for a really good quality four machine handling KVM switch box. It worked very well via keyboard command until the day it failed. :(  In those days when I was fixing computers, that KVM was far superior to synergy because it was hardware that was system independent &amp; worked on anything that had a working BIOS.
+
+For my needs today, the synergy system shits all over a KVM, though there are varying limitations which are dictated by the display manager / OS you are using. 
+
+Running Openbox, I can't make use of synergy until OB has loaded. On some Linux display managers you can use it before hand &amp; I'm sure that OS/X &amp; the various Windows all have their strengths &amp; weaknesses in this regard. In the end this doesn't really matter to me as I spend very little time outside of OB anyway. So for my current computer usage synergy is all but gob smacking perfect. 
+
+All but? Yes, just one tiny bug that effects a few of us. For some users when moving the mouse from one computer screen to another you get a one or (far more rare) a two second black screen. 
+
+I got the one second one when moving from the client to the server. For most this is fixed by issuing the command  '''xset -dpms'''. This works for me so I issue it in ''~/.xinitrc'' so the problem never appears. 
+
+This problem has been around for about a year, &amp; someone has written a patch for it inside of the last month, so I'll hang back &amp; wait for the next release which I expect to have killed this bug, in the mean time I no longer know it exists.
+
+I'm sure that this bug no longer exists, don't be put off by it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Synergys Server:==
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Installation:===
+
+Rather than me duplicating it, the Archwiki has a great page on [https://wiki.archlinux.org/index.php/Synergy/ Synergy installation].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Configuration:===
+
+My '''/etc/hosts''' file follows which should speak for itself:
+
+
+ 192.168.1.3             rightpc.localdomain  rightpc         ## the HP server
+ 192.168.1.6             leftpc.localdomain      leftpc          ## the iMac client
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Synergy.conf===
+
+Here is a great start (a complete solution in my case) for a very smoothly running pair of machines (easily edited for more though), via one mouse &amp; keyboard being connected to the synergys server - this '''synergy.conf''' is the server configuration file which does the job faultlessly for me:
+
+
+
+ #synergy.conf
+ 
+ section: screens
+ 	leftpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ 	rightpc:
+ 		halfDuplexCapsLock = false
+ 		halfDuplexNumLock = false
+ 		halfDuplexScrollLock = false
+ 		xtestIsXineramaUnaware = false
+ 		switchCorners = none +top-left +top-right +bottom-left +bottom-right 
+ 		switchCornerSize = 0
+ end
+ 
+ section: aliases
+ leftpc:
+ 192.168.1.6
+ rightpc:
+ 192.168.1.3
+ end
+ 
+ section: links
+ 	leftpc:
+ 		right = rightpc
+ 	rightpc:
+ 		left = leftpc
+ end
+ 
+ section: options
+ 	heartbeat = 1000
+ 	relativeMouseMoves = false
+ 	screenSaverSync = false
+ 	win32KeepForeground = false
+ 	switchCorners = none +top-left +top-right  +bottom-left +bottom-right 
+ 	switchCornerSize = 4
+ end
+&lt;br clear=&quot;all&quot; /&gt;
+This '''synergyc.conf''' file suits my uses perfectly, I found it on the Arch wiki, &amp; it needed no functional modification. I put it in /home/handy as a &lt;.dot&gt; file i.e. ~/.synergy.conf .
+
+OK, that is the server taken care of above, now its time for;-
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The Synergy Client(s):==
+
+Install synergy.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Client /etc/hosts:===
+
+Edit the '''/etc/hosts''' file, mine is below for those that do need to reference, &amp; if you do make sure you compare it with the server side one posted earlier on this page:
+
+ 192.168.1.6     leftpc.localdomain               leftpc          ## the iMac client
+ 192.168.1.3     rightpc.localdomain             rightpc         ## the HP server [/code]
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Synergy shares the clipboard too!!!====
+
+''(By the way, due to synergy I could just use the keyboard shortcuts to copy the above from the Terminal on the client &amp; then move my mouse over to the server where I'm typing this &amp; then use the keyboard to paste it! '''Synergy shares the clipboard too!!!''' Which is brilliant.)''
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+===~/.xinitrc===
+
+Add the following to the '''~/.xinitrc''' file (guess how I copied it?):
+
+ synergyc -d ERROR rightpc
+
+No need for the xset -dpms bug fix on this machine thankfully (It extremely likely that this bug is now long dead).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Conclusion:==
+
+The server is where the hardest work is, beyond that it comes down to getting your auto-start sorted so that it just works no matter which machine(s) come on in what order. For me the above works in that regard perfectly, (once Openbox has loaded).
+
+I hope the above makes the info that is already on the net just a little easier to optimise for your usage.
+
+I'm SO happy to at last not be swapping the ***king keyboards &amp; mouses all the time, it drives me ***king nuts.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>3mc0boo3sxt9ydo7mbv43jmpk81abed</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

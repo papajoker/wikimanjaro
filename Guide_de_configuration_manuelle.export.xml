@@ -1,0 +1,370 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide de configuration manuelle</title>
+    <ns>0</ns>
+    <id>834</id>
+    <revision>
+      <id>5221</id>
+      <timestamp>2013-03-05T17:09:30Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Configurer manuellement Manjaro =  {{Astuce|Si vous avez été en mesure de choisir votre ''langue préférée'' et la ''disp...&quot;</comment>
+      <text xml:space="preserve" bytes="10352">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Configurer manuellement Manjaro =
+
+{{Astuce|Si vous avez été en mesure de choisir votre ''langue préférée'' et la ''disposition du clavier'' (keymap) dès le début, alors pratiquement tout devrait déjà avoir été configuré pour vous !}}
+
+
+Ce guide est destiné aux débutants comme aux utilisateurs expérimentés pour ce qui concerne la modification manuelle des fichiers de configuration principaux lors de l'installation. Cette expérience peut être particulièrement utile pour les nouveaux arrivants pour en savoir davantage sur le fonctionnement du système, ainsi que pour activer certaines fonctions supplémentaires - comme le support multi-langues - qui pourraient ne pas être activées.
+
+En particulier, au cours du processus d'installation, il sera nécessaire de vérifier manuellement / modifier certains fichiers de configuration importants pour Manjaro. Ceux-ci se rapportent au support linguistique, la disposition du clavier, et l'accès au serveur logiciel.
+
+
+[[File: sysconfigoption-083.png|thumb|left|375px]]
+
+
+Pour commencer, après la sélection de l'option '''Configure System''' dans le menu principal d'installation, assurez-vous que la '''configuration du système Edition (en option)''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langues système===
+
+[[File: editsyslang-083.png|thumb|left|375px]]
+
+
+La modification de ce fichier vous permet de choisir lesquelles et combien de langues différentes Manjaro prend en charge. Ceci inclut tous les caractères spéciaux (c.-à-d. en dehors des 26 lettres de l'alphabet français) qu'elles utilisent. 
+
+{{Astuce| Il est possible que le système charge plusieurs langues, vous n'êtes pas limité à une seule ou deux. Elles pourront également être facilement sélectionnables à tout moment lors de la connexion si vous utilisez le ''gestionnaire d'affichage LXDM''.}}
+
+Assurez-vous que  '''Edit system languages''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: syslangfile-083.png|thumb|left|375px]]
+
+
+Pour activer dans Manjaro le support des langues souhaitées, supprimez le dièse ('#') situé au début des lignes appropriées et qui se terminent par '''UTF-8''' et '''ISO''' quand c'est possible. Si vous avez pu définir votre langue préférée au début, il ne s'agira ici que de vérifier que les # ont bien été enlevés.
+
+{{Astuce|Si vous n'êtes pas sûr de ce que représentent les codes langues et des pays particuliers, une petite sélection d'exemples sont disponibles ici '''[http://www.fincher.org/Utilities/CountryLanguageList.shtml ici]''' (ne pas tenir compte de l'utilisation des tirets ''''-'''' au lieu de soulignement ''''_'''').}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant d'appuyer sur &lt;Entrée&gt; pour revenir au menu fichier de configuration.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue utilisée par défaut===
+
+[[File: deflang-083.png|thumb|left|375px]]
+
+
+'''Modifier la langue utilisé par défaut.''' La modification de ce fichier vous permettra de choisir la langue principale devant être utilisée par Manjaro en standard.
+
+Assurez-vous que '''Edit default used language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: deflangfile-083.png|thumb|left|375px]]
+
+
+La langue par défaut utilisée par Manjaro est définie par la commande '''LANG='''. Plus précisément, cela s'applique à la langue utilisée par les applications logicielles. Comme le montre l'exemple, l'''anglais britannique'' a été sélectionné au début, et le code UTF-8 adéquat a déjà été défini.
+
+{{Astuce|Si vous avez été en mesure de définir votre langue préférée au début, ça devrait être aussi le cas chez vous. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix.}}
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que l'UTF-8 dans le code n'est pas répertorié deux fois ici, bien qu'ils soient affichés comme tels dans le fichier de configuration des ''langues système''.
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue de l'environnement===
+
+[[File: envlang-083.png|thumb|left|375px]]
+
+
+'''Modifier la langue de l'environnement.''' La modification de ce fichier vous permettra de définir la langue utilisée par Manjaro lors de l'affichage des informations et des messages qui vous sont destinés. Ce n'est pas la même chose que le jeu de langue par défaut pour les applications logicielles.
+
+Assurez-vous que '''Edit Environment Language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: envlangfile-083.png|thumb|left|375px]]
+
+
+'''Le code de la langue dans ce fichier doit être exactement le même que celui défini dans le fichier de configuration de la langue par défaut.''' Sinon le système Manjaro et ses applications installées vont utiliser des langues différentes.
+
+Comme illustré, le code UTF-8 pour anglais, la Grande-Bretagne a déjà été mis, et c'est exactement le même code que celui utilisé dans le fichier de configuration de la ''langue par défaut''.
+
+Encore une fois, si vous avez été en mesure de définir votre langue préférée au début, tout devrait déjà être réglé aussi. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix après '''LANG='''.
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que la partie UTF-8 du code n'est pas répertorié deux fois ici, bien qu'il apparaisse ainsi dans le fichier de configuration des ''langues du système.'' Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur Entrée pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Liste des miroirs de paquets===
+
+[[File: packmirlist-083.png|thumb|left|375px]]
+
+
+'''Modifier la liste des miroirs de paquets.''' La modification de ce fichier vous permettra de sélectionner les serveurs Internet Manjaro les plus appropriés à partir desquels télécharger les mises à jour, les fichiers et les applications.
+
+Assurez-vous que '''Packages mirror list''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: pkmirlistfile-083.png|thumb|left|375px]]
+
+
+Le miroir du Royaume-Uni (Grande-Bretagne) est le serveur par défaut de l'installation. Veuillez supprimer le caractère dièse (&quot;#&quot;) devant la ligne du serveur français (plus performant) pour l'activer. Tout serveur peut être choisi ou ignoré en supprimant ou en ajoutant le caractère dièse  (&quot;#&quot;) en début de la ligne, respectivement.
+
+{{Astuce|En règle générale, Manjaro essaie de se connecter aux serveurs sélectionnés dans l'ordre où ils sont énumérés.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Disposition du clavier de la console===
+
+[[File: ckl-083.png|thumb|left|375px]]
+
+
+'''Modifier la disposition du clavier de la console.''' La modification de ce fichier vous permettra de définir le type de clavier par défaut correspondant à votre pays.
+
+Assurez-vous que '''Console keyboard layout''' est mis en surbrillance.
+ 
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cklfile-083.png|thumb|left|375px]]
+
+
+La langue par défaut à utiliser pour Manjaro est défini par la commande '''KEYMAP='''. Dans notre cas, le clavier ''anglais, GB'' a été sélectionné au début de l'installation, il a déjà été paramétré pour le Royaume-Uni (Grande-Bretagne). Si vous avez été en mesure de configurer votre clavier au début, ça devrait déjà être le cas chez vous aussi. Dans le cas contraire, il sera nécessaire d'entrer manuellement votre propre clavier, ce qui peut également nécessiter la spécification de la police à utiliser pour cela (sinon les caractères spéciaux peuvent apparaître comme des carrés blancs).
+
+{{Astuce|Si vous rencontrez des problèmes avec cela, alors vous pouvez utiliser l'option '''Change vconsole keymap''', qui est répertoriée dans le '''menu de configuration'''. Cela fournira une liste des codes qui correspondent aux différentes dispositions de clavier différentes disponibles. Voir la section '''[[Guide d'installation de manjaro 0.8.2 Débutant#Set Keymap (facultatif)|Réglage du clavier]]''' dans le Guide d'installation pour les débutants pour plus d'informations.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Quittez le menu de configuration===
+
+[[File: exitconfig-083.png|thumb|left|375px]]
+
+
+La configuration étant terminée, quittez le menu de configuration en sélectionnant '''Main Menu'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-083.png|thumb|left|375px]]
+
+
+Il sera alors nécessaire d'attendre quelques instants pendant que l'installation Manjaro est automatiquement configurée selon vos préférences. Une fois terminé, vous serez automatiquement dirigé vers le menu principal. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Manual Configuration Guide|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>no9x865obu8ud5w9rhq6ns2cwykc0mg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5223</id>
+      <parentid>5221</parentid>
+      <timestamp>2013-03-05T17:13:35Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10378">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Configurer manuellement Manjaro =
+
+{{Astuce|Si vous avez été en mesure de choisir votre ''langue préférée'' et la ''disposition du clavier'' (keymap) dès le début, alors pratiquement tout devrait déjà avoir été configuré pour vous !}}
+
+
+Ce guide est destiné aux débutants comme aux utilisateurs expérimentés pour ce qui concerne la modification manuelle des fichiers de configuration principaux lors de l'installation. Cette expérience peut être particulièrement utile pour les nouveaux arrivants pour en savoir davantage sur le fonctionnement du système, ainsi que pour activer certaines fonctions supplémentaires - comme le support multi-langues - qui pourraient ne pas être activées.
+
+En particulier, au cours du processus d'installation, il sera nécessaire de vérifier manuellement / modifier certains fichiers de configuration importants pour Manjaro. Ceux-ci se rapportent au support linguistique, la disposition du clavier, et l'accès au serveur logiciel.
+
+
+[[File: sysconfigoption-083.png|thumb|left|375px]]
+
+
+Pour commencer, après la sélection de l'option '''Configure System''' dans le menu principal d'installation, assurez-vous que la '''configuration du système Edition (en option)''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langues système===
+
+[[File: editsyslang-083.png|thumb|left|375px]]
+
+
+La modification de ce fichier vous permet de choisir lesquelles et combien de langues différentes Manjaro prend en charge. Ceci inclut tous les caractères spéciaux (c.-à-d. en dehors des 26 lettres de l'alphabet français) qu'elles utilisent. 
+
+{{Astuce| Il est possible que le système charge plusieurs langues, vous n'êtes pas limité à une seule ou deux. Elles pourront également être facilement sélectionnables à tout moment lors de la connexion si vous utilisez le ''gestionnaire d'affichage LXDM''.}}
+
+Assurez-vous que  '''Edit system languages''' est en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: syslangfile-083.png|thumb|left|375px]]
+
+
+Pour activer dans Manjaro le support des langues souhaitées, supprimez le dièse ('#') situé au début des lignes appropriées et qui se terminent par '''UTF-8''' et '''ISO''' quand c'est possible. Si vous avez pu définir votre langue préférée au début, il ne s'agira ici que de vérifier que les # ont bien été enlevés.
+
+{{Astuce|Si vous n'êtes pas sûr de ce que représentent les codes langues et des pays particuliers, une petite sélection d'exemples sont disponibles ici '''[http://www.fincher.org/Utilities/CountryLanguageList.shtml ici]''' (ne pas tenir compte de l'utilisation des tirets ''''-'''' au lieu de soulignement ''''_'''').}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant d'appuyer sur &lt;Entrée&gt; pour revenir au menu fichier de configuration.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue utilisée par défaut===
+
+[[File: deflang-083.png|thumb|left|375px]]
+
+
+'''Modifier la langue utilisé par défaut.''' La modification de ce fichier vous permettra de choisir la langue principale devant être utilisée par Manjaro en standard.
+
+Assurez-vous que '''Edit default used language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: deflangfile-083.png|thumb|left|375px]]
+
+
+La langue par défaut utilisée par Manjaro est définie par la commande '''LANG='''. Plus précisément, cela s'applique à la langue utilisée par les applications logicielles. Comme le montre l'exemple, l'''anglais britannique'' a été sélectionné au début, et le code UTF-8 adéquat a déjà été défini.
+
+{{Astuce|Si vous avez été en mesure de définir votre langue préférée au début, ça devrait être aussi le cas chez vous. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix.}}
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que l'UTF-8 dans le code n'est pas répertorié deux fois ici, bien qu'ils soient affichés comme tels dans le fichier de configuration des ''langues système''.
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Langue de l'environnement===
+
+[[File: envlang-083.png|thumb|left|375px]]
+
+
+'''Modifier la langue de l'environnement.''' La modification de ce fichier vous permettra de définir la langue utilisée par Manjaro lors de l'affichage des informations et des messages qui vous sont destinés. Ce n'est pas la même chose que le jeu de langue par défaut pour les applications logicielles.
+
+Assurez-vous que '''Edit Environment Language''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: envlangfile-083.png|thumb|left|375px]]
+
+
+'''Le code de la langue dans ce fichier doit être exactement le même que celui défini dans le fichier de configuration de la langue par défaut.''' Sinon le système Manjaro et ses applications installées vont utiliser des langues différentes.
+
+Comme illustré, le code UTF-8 pour anglais, la Grande-Bretagne a déjà été mis, et c'est exactement le même code que celui utilisé dans le fichier de configuration de la ''langue par défaut''.
+
+Encore une fois, si vous avez été en mesure de définir votre langue préférée au début, tout devrait déjà être réglé aussi. Dans le cas contraire, il sera nécessaire de remplacer manuellement le code UTF-8 avec votre propre choix après '''LANG='''.
+
+'''Utilisez TOUJOURS le code UTF-8 de votre langue, si possible.''' Notez également que la partie UTF-8 du code n'est pas répertorié deux fois ici, bien qu'il apparaisse ainsi dans le fichier de configuration des ''langues du système.'' Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur Entrée pour revenir au menu configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Liste des miroirs de paquets===
+
+[[File: packmirlist-083.png|thumb|left|375px]]
+
+
+'''Modifier la liste des miroirs de paquets.''' La modification de ce fichier vous permettra de sélectionner les serveurs Internet Manjaro les plus appropriés à partir desquels télécharger les mises à jour, les fichiers et les applications.
+
+Assurez-vous que '''Packages mirror list''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: pkmirlistfile-083.png|thumb|left|375px]]
+
+
+Le miroir du Royaume-Uni (Grande-Bretagne) est le serveur par défaut de l'installation. Veuillez supprimer le caractère dièse (&quot;#&quot;) devant la ligne du serveur français (plus performant) pour l'activer. Tout serveur peut être choisi ou ignoré en supprimant ou en ajoutant le caractère dièse  (&quot;#&quot;) en début de la ligne, respectivement.
+
+{{Astuce|En règle générale, Manjaro essaie de se connecter aux serveurs sélectionnés dans l'ordre où ils sont énumérés.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Disposition du clavier de la console===
+
+[[File: ckl-083.png|thumb|left|375px]]
+
+
+'''Modifier la disposition du clavier de la console.''' La modification de ce fichier vous permettra de définir le type de clavier par défaut correspondant à votre pays.
+
+Assurez-vous que '''Console keyboard layout''' est mis en surbrillance.
+ 
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cklfile-083.png|thumb|left|375px]]
+
+
+La langue par défaut à utiliser pour Manjaro est défini par la commande '''KEYMAP='''. Dans notre cas, le clavier ''anglais, GB'' a été sélectionné au début de l'installation, il a déjà été paramétré pour le Royaume-Uni (Grande-Bretagne). Si vous avez été en mesure de configurer votre clavier au début, ça devrait déjà être le cas chez vous aussi. Dans le cas contraire, il sera nécessaire d'entrer manuellement votre propre clavier, ce qui peut également nécessiter la spécification de la police à utiliser pour cela (sinon les caractères spéciaux peuvent apparaître comme des carrés blancs).
+
+{{Astuce|Si vous rencontrez des problèmes avec cela, alors vous pouvez utiliser l'option '''Change vconsole keymap''', qui est répertoriée dans le '''menu de configuration'''. Cela fournira une liste des codes qui correspondent aux différentes dispositions de clavier différentes disponibles. Voir la section '''[[Guide d'installation de manjaro 0.8.2 Débutant#Set Keymap (facultatif)|Réglage du clavier]]''' dans le Guide d'installation pour les débutants pour plus d'informations.}}
+
+Quand c'est fini, maintenez la touche CTRL enfoncée et appuyez sur X pour quitter. Si vous avez effectué des modifications, vous serez invité à taper &quot;y&quot; pour confirmer qu'elles doivent être enregistrées avant  d'appuyer sur &lt;Entrée&gt; pour revenir au menu de configuration des fichiers.
+&lt;br clear=&quot;all&quot; /&gt;
+
+===Quittez le menu de configuration===
+
+[[File: exitconfig-083.png|thumb|left|375px]]
+
+
+La configuration étant terminée, quittez le menu de configuration en sélectionnant '''Main Menu'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-083.png|thumb|left|375px]]
+
+
+Il sera alors nécessaire d'attendre quelques instants pendant que l'installation Manjaro est automatiquement configurée selon vos préférences. Une fois terminé, vous serez automatiquement dirigé vers le menu principal. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Manual Configuration Guide|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>q856fw7khv8w2p2fwzg1fw5r18bqxv4</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

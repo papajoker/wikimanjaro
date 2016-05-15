@@ -1,0 +1,313 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Installer les imprimantes HP LaserJet séries P1000 et P1100</title>
+    <ns>0</ns>
+    <id>922</id>
+    <revision>
+      <id>5618</id>
+      <timestamp>2013-05-10T12:40:52Z</timestamp>
+      <contributor>
+        <username>Tonypad</username>
+        <id>71</id>
+      </contributor>
+      <comment>Created page with &quot;Page en cours d'écriture&quot;</comment>
+      <text xml:space="preserve" bytes="25">Page en cours d'écriture</text>
+      <sha1>qu92bj4t19k15wxj2ttov8tt77yvl11</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5619</id>
+      <parentid>5618</parentid>
+      <timestamp>2013-05-10T12:50:51Z</timestamp>
+      <contributor>
+        <username>Tonypad</username>
+        <id>71</id>
+      </contributor>
+      <text xml:space="preserve" bytes="543">
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Les imprimantes HP sont en générale bien gérées par Manjaro. Ce n'est malheureusement pas le cas pour certaines d'entre elles, comme la HP laserJet P1005.
+Lorsqu'on branche l'imprimante, elle semble être reconnue et installée, mais on ne peut pas imprimer. Le problème se trouve au niveau d'un plugin HP qui n'est pas téléchargé comme il le devrait et du firmware qui n'est pas transmis à l'imprimante. Celle-ci ne n'est donc pas opérationnelle sans ces deux éléments.</text>
+      <sha1>8c13de132jg9jt0ycseeuba56py9a08</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5627</id>
+      <parentid>5619</parentid>
+      <timestamp>2013-05-11T13:02:17Z</timestamp>
+      <contributor>
+        <username>Tonypad</username>
+        <id>71</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1938">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Les imprimantes HP sont en générale bien gérées par Manjaro. Ce n'est malheureusement pas le cas pour certaines d'entre elles, comme la HP laserJet P1005.
+Lorsqu'on branche l'imprimante, elle semble être reconnue et installée, mais on ne peut pas imprimer. Le problème se trouve au niveau d'un plugin HP qui n'est pas téléchargé comme il le devrait et du firmware qui n'est pas transmis à l'imprimante. Celle-ci ne n'est donc pas opérationnelle sans ces deux éléments.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Installation de l'imprimante =
+
+La méthode qui fonctionne le mieux est de taper cette série de commandes dans un terminal (taper chaque ligne dans le terminal en taper &quot;Entrée&quot; à la fin de chaque ligne. Cela exécutera chaque commande au fur et à mesure. Entrer le mot de passe lorsqu'il est demandé) :
+
+ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+ tar zxf foo2zjs.tar.gz
+ cd foo2zjs
+ make
+ ./getweb P1005
+ su
+ make install
+ make install-hotplug
+
+Ensuite, redémarrer l'ordinateur pour que ce pilote soit pris en compte. 
+
+Il est possible que ce pilote (foo2xqx) ne soit pas activé pour l'imprimante automatiquement. 
+
+Dans ce cas, il faut procéder comme suit : 
+
+[[File: hp_p1005_print_settings.png|thumb|left|375px]]
+
+Ouvrir &quot;Print settings&quot; accessible dans le menu du système et ouvrir les propriétés de l'imprimante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: hp_p1005_propietes.png|thumb|left|375px]]
+
+On peut modifier ici le pilote en choisissant &quot;foomatic/foo2xqx&quot;.
+
+Une fois toute la procédure terminée, on redémarre encore l'ordinateur. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+Maintenant l'imprimante devrait fonctionner normalement.
+
+= Liens à consulter =
+
+[http://foo2zjs.rkkda.com/|''http://foo2zjs.rkkda.com/'']
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>rfhtobwexqzfe6fxzdo3geadgv9jhsx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5630</id>
+      <parentid>5627</parentid>
+      <timestamp>2013-05-11T13:52:28Z</timestamp>
+      <contributor>
+        <username>Tonypad</username>
+        <id>71</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2844">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Les imprimantes HP sont en générale bien gérées par Manjaro. Ce n'est malheureusement pas le cas pour certaines d'entre elles, comme la HP laserJet P1005.
+Lorsqu'on branche l'imprimante, elle semble être reconnue et installée, mais on ne peut pas imprimer. Le problème se trouve au niveau d'un plugin HP qui n'est pas téléchargé comme il le devrait et du firmware qui n'est pas transmis à l'imprimante. Celle-ci ne n'est donc pas opérationnelle sans ces deux éléments.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Installation de l'imprimante. Première méthode =
+
+La méthode qui fonctionne le mieux est de taper cette série de commandes dans un terminal (taper chaque ligne dans le terminal en taper &quot;Entrée&quot; à la fin de chaque ligne. Cela exécutera chaque commande au fur et à mesure. Entrer le mot de passe lorsqu'il est demandé) :
+
+ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+ tar zxf foo2zjs.tar.gz
+ cd foo2zjs
+ make
+ ./getweb P1005
+ su
+ make install
+ make install-hotplug
+
+Ensuite, redémarrer l'ordinateur pour que ce pilote soit pris en compte. 
+
+Il est possible que ce pilote (foo2xqx) ne soit pas activé pour l'imprimante automatiquement. 
+
+Dans ce cas, il faut procéder comme suit : 
+
+[[File: hp_p1005_print_settings.png|thumb|left|375px]]
+
+Ouvrir &quot;Print settings&quot; accessible dans le menu du système et ouvrir les propriétés de l'imprimante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: hp_p1005_propietes.png|thumb|left|375px]]
+
+On peut modifier ici le pilote en choisissant &quot;foomatic/foo2xqx&quot;.
+
+Une fois toute la procédure terminée, on redémarre encore l'ordinateur. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+Maintenant l'imprimante devrait fonctionner normalement.
+
+Dans le cas où les difficultés continuent et l'imprimante ne fonctionne pas comme elle le devrait, il y a une autre méthode.
+
+= Deuxième méthode =
+
+Installer le plugin HP grâce au dépôt AUR et et transmettre manuellement le firmware manuellement à l'imprimante :
+
+Installation du plugin HP. Dans un terminal, taper :
+
+ yaourt -S hplip-plugin
+
+Installer l'imprimante. Dans un terminal, taper :
+
+ sudo hp-setup
+
+Et suivre les instructions jusqu'au bout.
+
+[[File: Hp_p1005_download_firmware.png|thumb|left|375px]]
+
+Ensuite, ouvrir &quot;HP device manager&quot; à partir du menu et cliquer sur &quot;Download Firmware&quot;
+
+&lt;br clear=&quot;all&quot; /&gt;
+À partir de là, l'imprimante devrait fonctionner.
+
+Normalement, ces méthodes devraient aussi fonctionner pour les imprimantes HP LaserJet P1006, P1007, P1008, P1505, P2014 et d'autres imprimantes figurant sur le site dont le lien figure ci-dessous.   
+
+= Liens à consulter =
+
+[http://foo2zjs.rkkda.com/|''http://foo2zjs.rkkda.com/'']
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>5xn5m7r53ofrhqv0w73u5wbqly93h0n</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5631</id>
+      <parentid>5630</parentid>
+      <timestamp>2013-05-11T13:57:35Z</timestamp>
+      <contributor>
+        <username>Tonypad</username>
+        <id>71</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2929">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Les imprimantes HP sont en générale bien gérées par Manjaro. Ce n'est malheureusement pas le cas pour certaines d'entre elles, comme la HP laserJet P1005.
+Lorsqu'on branche l'imprimante, elle semble être reconnue et installée, mais on ne peut pas imprimer. Le problème se trouve au niveau d'un plugin HP qui n'est pas téléchargé comme il le devrait et du firmware qui n'est pas transmis à l'imprimante. Celle-ci ne n'est donc pas opérationnelle sans ces deux éléments.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Installation de l'imprimante. Première méthode =
+
+La méthode qui fonctionne le mieux est de taper cette série de commandes dans un terminal (taper chaque ligne dans le terminal en taper &quot;Entrée&quot; à la fin de chaque ligne. Cela exécutera chaque commande au fur et à mesure. Entrer le mot de passe lorsqu'il est demandé) :
+
+ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+ tar zxf foo2zjs.tar.gz
+ cd foo2zjs
+ make
+ ./getweb P1005
+ su
+ make install
+ make install-hotplug
+
+Ensuite, redémarrer l'ordinateur pour que ce pilote soit pris en compte. 
+
+Il est possible que ce pilote (foo2xqx) ne soit pas activé pour l'imprimante automatiquement. 
+
+Dans ce cas, il faut procéder comme suit : 
+
+[[File: hp_p1005_print_settings.png|thumb|left|375px]]
+
+Ouvrir &quot;Print settings&quot; accessible dans le menu du système et ouvrir les propriétés de l'imprimante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: hp_p1005_propietes.png|thumb|left|375px]]
+
+On peut modifier ici le pilote en choisissant &quot;foomatic/foo2xqx&quot;.
+
+Une fois toute la procédure terminée, on redémarre encore l'ordinateur. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+Maintenant l'imprimante devrait fonctionner normalement.
+
+Dans le cas où les difficultés continuent et l'imprimante ne fonctionne pas comme elle le devrait, il y a une autre méthode.
+
+= Deuxième méthode =
+
+Installer le plugin HP grâce au dépôt AUR et et transmettre manuellement le firmware manuellement à l'imprimante :
+
+Installation du plugin HP. Dans un terminal, taper :
+
+ yaourt -S hplip-plugin
+
+Installer l'imprimante. Dans un terminal, taper :
+
+ sudo hp-setup
+
+Et suivre les instructions jusqu'au bout.
+
+[[File: Hp_p1005_download_firmware.png|thumb|left|375px]]
+
+Ensuite, ouvrir &quot;HP device manager&quot; à partir du menu et cliquer sur &quot;Download Firmware&quot;
+
+&lt;br clear=&quot;all&quot; /&gt;
+À partir de là, l'imprimante devrait fonctionner.
+
+Normalement, ces méthodes devraient aussi fonctionner pour les imprimantes HP LaserJet P1006, P1007, P1008, P1505, P2014 et d'autres imprimantes figurant sur le site dont le lien figure ci-dessous.   
+
+= Liens à consulter =
+
+* '''[[Configuration de l'imprimante]]'''
+* '''[[Activation de l'impression]]'''
+* [http://foo2zjs.rkkda.com/|'''http://foo2zjs.rkkda.com/''']
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>0gwvpico19pgujo8q15c4z6cjwg9m2f</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

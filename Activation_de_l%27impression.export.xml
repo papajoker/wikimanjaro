@@ -1,0 +1,345 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Activation de l'impression</title>
+    <ns>0</ns>
+    <id>633</id>
+    <revision>
+      <id>3714</id>
+      <timestamp>2012-12-30T16:42:25Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = EN COURS DE TRADUCTION =  = Overview =  {{note| All the necessary printer software will be already pre-installed in the full ...&quot;</comment>
+      <text xml:space="preserve" bytes="2297">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN COURS DE TRADUCTION =
+
+= Overview =
+
+{{note| All the necessary printer software will be already pre-installed in the full versions of Manjaro 0.8.0 to 0.8.2. Once the software has been installed, '''it will also be necessary to enable printing capabilities as well'''.}}
+
+
+Printing is undertaken through the use of '''[http://en.wikipedia.org/wiki/CUPS CUPS]''' (previously an acronym for '''C'''ommon '''U'''nix '''P'''rinting '''S'''ystem). This is a popular open source printing system used in most Linux distributions due to its ease of use. As stated by Wikipedia:
+
+:&lt;blockquote&gt;'' 'CUPS consists of a print spooler and scheduler, a filter system that converts the print data to a format that the printer will understand, and a backend system that sends this data to the print device. CUPS uses the Internet Printing Protocol (IPP) as the basis for managing print jobs and queues.'' '&lt;/blockquote&gt;
+
+Several software packages must be installed in order to enable ''full and comprehensive'' printing capabilities on your system. Particularly to assist new users, it is possible in Manjaro to install everything that is required with just a single command. However, once the necessary software packages have been installed, it will then also be necessary to actually enable printing capabilities as well.
+
+
+= Installing the Printer Software =
+
+To just install the necessary software packages, enter the following command:
+
+ sudo pacman -Sy manjaro-printer
+
+
+= Enabling Printing Capabilities =
+
+Once the necessary software has been installed, to enable printing capabilities, enter the following command:
+
+ sudo systemctl enable cups.service
+
+
+Once printing has been enabled, in order to start doing so immediately without rebooting, input the command:
+
+ sudo sudo systemctl start cups.service
+
+
+= Disabling Printing Capabilities =
+
+If for any reason you wish to disable CUPS (e.g. in order to use an alternative printing system), open your terminal and enter the following command:
+
+ sudo systemctl disable cups.service
+
+
+=See Also=
+
+* '''[[Printer Configuration|Setting up Printers]]'''
+
+
+[[Printing Enablement|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>6kcnxx0psvbjrtob25by6tok38g9l7h</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3948</id>
+      <parentid>3714</parentid>
+      <timestamp>2013-01-03T12:44:06Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2800">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Tous les logiciels nécessaires aux imprimantes sont déjà pré-installés dans les versions complètes de Manjaro 0.8.0 à 0.8.2. Une fois que le logiciel a été installé, '''il sera également nécessaire d'activer les fonctions d'impression'''.}}
+
+
+L'impression est réalisée par l'utilisation de '''[http://en.wikipedia.org/wiki/CUPS CUPS]''' (précédemment un acronyme pour '''C'''ommon '''U'''nix '''P'''rinting '''S'''ystem). Il s'agit d'un système d'impression populaire open source utilisé dans la plupart des distributions Linux en raison de sa facilité d'utilisation. Comme l'a dit Wikipedia.fr:
+
+:&lt;blockquote&gt;'' 'CUPS fournit un mécanisme qui permet aux applications d'imprimer de façon standardisée, c'est lui qui s'occupe de converser avec les imprimantes. Le système est organisé en trois couches: 1. les applications envoient les documents à imprimer à un gestionnaire de tâche sur le serveur CUPS ; 2. ce gestionnaire passe le document à travers un filtre pour le convertir dans un langage que l'imprimante peut comprendre ; 2. le document ainsi transformé est livré à un module de transport qui se charge de transmettre les données d'impression à un périphérique local ou une connexion réseau.'' '&lt;/blockquote&gt;
+
+Plusieurs logiciels doivent être installés afin de permettre le complet accès aux capacités d'impression sur votre système. En particulier pour aider les nouveaux utilisateurs, il est possible d'installer dans Manjaro tout ce qui est nécessaire avec une simple commande. Cependant, une fois que les logiciels nécessaires ont été installés, il sera alors également nécessaire d'activer réellement les fonctions d'impression ainsi.
+
+
+= Installation du logiciel de l'imprimante =
+
+Pour installer les logiciels nécessaires, il suffit d'entrer la commande suivante:
+
+ sudo pacman -Sy manjaro-printer
+
+
+= Activer les fonctions d'impression =
+
+Une fois que le logiciel nécessaire a été installé, pour activer les fonctions d'impression, entrez la commande suivante:
+
+ sudo systemctl enable cups.service
+
+
+Une fois les fonctions d'impression activées, afin d'y avoir accès immédiatement sans redémarrer, entrez la commande suivante:
+
+ sudo sudo systemctl start cups.service
+
+
+= Désactiver les fonctions d'impression =
+
+Si pour une raison quelconque vous souhaitez désactiver CUPS (par exemple pour utiliser un système d'impression de remplacement), ouvrez votre terminal et entrez la commande suivante:
+
+ sudo systemctl disable cups.service
+
+
+=Voir aussi=
+
+* '''[[Configuration de l'imprimante]]'''
+
+
+[[Printing Enablement|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>aawvmg1uoy0hodgwh3rq8l8d4l0v6yx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3949</id>
+      <parentid>3948</parentid>
+      <timestamp>2013-01-03T12:46:27Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2794">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Tous les logiciels nécessaires aux imprimantes sont déjà pré-installés dans les versions complètes de Manjaro 0.8.0 à 0.8.2. Une fois que le logiciel a été installé, '''il sera également nécessaire d'activer les fonctions d'impression'''.}}
+
+
+L'impression est réalisée par l'utilisation de '''[http://en.wikipedia.org/wiki/CUPS CUPS]''' (précédemment un acronyme pour '''C'''ommon '''U'''nix '''P'''rinting '''S'''ystem). Il s'agit d'un système d'impression populaire open source utilisé dans la plupart des distributions Linux en raison de sa facilité d'utilisation. Comme l'a dit Wikipedia.fr:
+
+:&lt;blockquote&gt;'' 'CUPS fournit un mécanisme qui permet aux applications d'imprimer de façon standardisée, c'est lui qui s'occupe de converser avec les imprimantes. Le système est organisé en trois couches: 1. les applications envoient les documents à imprimer à un gestionnaire de tâche sur le serveur CUPS ; 2. ce gestionnaire passe le document à travers un filtre pour le convertir dans un langage que l'imprimante peut comprendre ; 2. le document ainsi transformé est livré à un module de transport qui se charge de transmettre les données d'impression à un périphérique local ou une connexion réseau.'' '&lt;/blockquote&gt;
+
+Plusieurs logiciels doivent être installés afin de permettre le complet accès aux capacités d'impression sur votre système. En particulier pour aider les nouveaux utilisateurs, il est possible d'installer dans Manjaro tout ce qui est nécessaire avec une simple commande. Cependant, une fois que les logiciels nécessaires ont été installés, il sera alors également nécessaire d'activer réellement les fonctions d'impression.
+
+
+= Installation du logiciel de l'imprimante =
+
+Pour installer les logiciels nécessaires, il suffit d'entrer la commande suivante:
+
+ sudo pacman -Sy manjaro-printer
+
+
+= Activer les fonctions d'impression =
+
+Une fois que le logiciel nécessaire a été installé, pour activer les fonctions d'impression, entrez la commande suivante:
+
+ sudo systemctl enable cups.service
+
+
+Une fois les fonctions d'impression activées, afin d'y avoir accès immédiatement sans redémarrer, entrez la commande suivante:
+
+ sudo sudo systemctl start cups.service
+
+
+= Désactiver les fonctions d'impression =
+
+Si pour une raison quelconque vous souhaitez désactiver CUPS (par exemple pour utiliser un système d'impression de remplacement), ouvrez votre terminal et entrez la commande suivante:
+
+ sudo systemctl disable cups.service
+
+
+=Voir aussi=
+
+* '''[[Configuration de l'imprimante]]'''
+
+
+[[Printing Enablement|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>4utnwc078i88fc594kujmklm3oocyy1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>10207</id>
+      <parentid>3949</parentid>
+      <timestamp>2014-11-17T10:43:33Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2824">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Tous les logiciels nécessaires aux imprimantes sont déjà pré-installés dans les versions complètes de Manjaro 0.8.0 à 0.8.2. Une fois que le logiciel a été installé, '''il sera également nécessaire d'activer les fonctions d'impression'''.}}
+
+
+L'impression est réalisée par l'utilisation de '''[http://en.wikipedia.org/wiki/CUPS CUPS]''' (précédemment un acronyme pour '''C'''ommon '''U'''nix '''P'''rinting '''S'''ystem). Il s'agit d'un système d'impression populaire open source utilisé dans la plupart des distributions Linux en raison de sa facilité d'utilisation. Comme l'a dit Wikipedia.fr:
+
+:&lt;blockquote&gt;'' 'CUPS fournit un mécanisme qui permet aux applications d'imprimer de façon standardisée, c'est lui qui s'occupe de converser avec les imprimantes. Le système est organisé en trois couches: 1. les applications envoient les documents à imprimer à un gestionnaire de tâche sur le serveur CUPS ; 2. ce gestionnaire passe le document à travers un filtre pour le convertir dans un langage que l'imprimante peut comprendre ; 2. le document ainsi transformé est livré à un module de transport qui se charge de transmettre les données d'impression à un périphérique local ou une connexion réseau.'' '&lt;/blockquote&gt;
+
+Plusieurs logiciels doivent être installés afin de permettre le complet accès aux capacités d'impression sur votre système. En particulier pour aider les nouveaux utilisateurs, il est possible d'installer dans Manjaro tout ce qui est nécessaire avec une simple commande. Cependant, une fois que les logiciels nécessaires ont été installés, il sera alors également nécessaire d'activer réellement les fonctions d'impression.
+
+
+= Installation du logiciel de l'imprimante =
+
+Pour installer les logiciels nécessaires, il suffit d'entrer la commande suivante:
+
+ sudo pacman -Sy manjaro-printer
+
+
+= Activer les fonctions d'impression =
+
+Une fois que le logiciel nécessaire a été installé, pour activer les fonctions d'impression, entrez la commande suivante:
+
+ sudo systemctl enable org.cups.cupsd.service
+
+
+Une fois les fonctions d'impression activées, afin d'y avoir accès immédiatement sans redémarrer, entrez la commande suivante:
+
+ sudo sudo systemctl start org.cups.cupsd.service
+
+
+= Désactiver les fonctions d'impression =
+
+Si pour une raison quelconque vous souhaitez désactiver CUPS (par exemple pour utiliser un système d'impression de remplacement), ouvrez votre terminal et entrez la commande suivante:
+
+ sudo systemctl disable org.cups.cupsd.service
+
+
+=Voir aussi=
+
+* '''[[Configuration de l'imprimante]]'''
+
+
+[[Printing Enablement|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>o89z0h71ah9q1nazi00jptq8ra44f4u</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>10208</id>
+      <parentid>10207</parentid>
+      <timestamp>2014-11-17T10:48:52Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2819">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Tous les logiciels nécessaires aux imprimantes sont déjà pré-installés dans les versions complètes de Manjaro 0.8.0 à 0.8.2. Une fois que le logiciel a été installé, '''il sera également nécessaire d'activer les fonctions d'impression'''.}}
+
+
+L'impression est réalisée par l'utilisation de '''[http://en.wikipedia.org/wiki/CUPS CUPS]''' (précédemment un acronyme pour '''C'''ommon '''U'''nix '''P'''rinting '''S'''ystem). Il s'agit d'un système d'impression populaire open source utilisé dans la plupart des distributions Linux en raison de sa facilité d'utilisation. Comme l'a dit Wikipedia.fr:
+
+:&lt;blockquote&gt;'' 'CUPS fournit un mécanisme qui permet aux applications d'imprimer de façon standardisée, c'est lui qui s'occupe de converser avec les imprimantes. Le système est organisé en trois couches: 1. les applications envoient les documents à imprimer à un gestionnaire de tâche sur le serveur CUPS ; 2. ce gestionnaire passe le document à travers un filtre pour le convertir dans un langage que l'imprimante peut comprendre ; 2. le document ainsi transformé est livré à un module de transport qui se charge de transmettre les données d'impression à un périphérique local ou une connexion réseau.'' '&lt;/blockquote&gt;
+
+Plusieurs logiciels doivent être installés afin de permettre le complet accès aux capacités d'impression sur votre système. En particulier pour aider les nouveaux utilisateurs, il est possible d'installer dans Manjaro tout ce qui est nécessaire avec une simple commande. Cependant, une fois que les logiciels nécessaires ont été installés, il sera alors également nécessaire d'activer réellement les fonctions d'impression.
+
+
+= Installation du logiciel de l'imprimante =
+
+Pour installer les logiciels nécessaires, il suffit d'entrer la commande suivante:
+
+ sudo pacman -Sy manjaro-printer
+
+
+= Activer les fonctions d'impression =
+
+Une fois que le logiciel nécessaire a été installé, pour activer les fonctions d'impression, entrez la commande suivante:
+
+ sudo systemctl enable org.cups.cupsd.service
+
+
+Une fois les fonctions d'impression activées, afin d'y avoir accès immédiatement sans redémarrer, entrez la commande suivante:
+
+ sudo systemctl start org.cups.cupsd.service
+
+
+= Désactiver les fonctions d'impression =
+
+Si pour une raison quelconque vous souhaitez désactiver CUPS (par exemple pour utiliser un système d'impression de remplacement), ouvrez votre terminal et entrez la commande suivante:
+
+ sudo systemctl disable org.cups.cupsd.service
+
+
+=Voir aussi=
+
+* '''[[Configuration de l'imprimante]]'''
+
+
+[[Printing Enablement|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>gzsb1s7lke475rd92f2i72emedti9oo</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

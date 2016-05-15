@@ -1,0 +1,218 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Modèle de développement 'Rolling Release'</title>
+    <ns>0</ns>
+    <id>618</id>
+    <revision>
+      <id>3451</id>
+      <timestamp>2012-12-29T01:55:14Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;[[File:BigManjaroIcon.png|left|90px]]  It would seem that some confusion has arisen due to the regular (and somewhat rapid) occurrence of new Manjaro releases. This confusion ...&quot;</comment>
+      <text xml:space="preserve" bytes="3742">[[File:BigManjaroIcon.png|left|90px]]
+
+It would seem that some confusion has arisen due to the regular (and somewhat rapid) occurrence of new Manjaro releases. This confusion has been compounded still further by the use of version numbers (e.g. 0.8.1, 0.8.2, etc), a custom normally associated with the ''Standard Release Development Model'', where a brand-new release of an operating system must be re-installed over an old version in order to access any new features provided.
+
+However, Manjaro uses a '''Rolling Release Development Model''', whereby rather than being replaced, the same core system will instead be continually updated and upgraded. As such, it is not – nor will it ever be – necessary to re-install a later release of Manjaro in order to enjoy the very latest and most up-to-date system possible. &lt;u&gt;By virtue of keeping an existing installation updated, it is already the latest release&lt;/u&gt;. 
+ 
+
+=Why are new versions of Manjaro being released?=
+ 
+These releases are more accurately new snapshots of the Manjaro system. Just like photographs, these snapshots are in essence images that portray the Manjaro system at a particular point in its development. As such, one purpose they serve is to to help the developers to both chart and evaluate the continued development of the Manjaro system, as it is of course easier to pick up on the finer details from a single image than from a moving picture.
+ 
+Furthermore, due to being in a beta stage of development, Manjaro is evolving at a very rapid pace. Existing users may themselves have noticed how frequently new software updates and upgrades have become available, and how much the system has changed in only a few months. As a consequence, a snapshot of the Manjaro system – again rather like a photograph – will very quickly become out of date. New snapshots are therefore also released in order to make life easier for new users, who may otherwise be faced with the prospect of downloading huge volumes of new software packages to update and upgrade their newly installed systems.
+ 
+Where these snapshots most obviously differ is in the choice of pre-installed software applications provided, as well as other smaller tweaks such as the default theme(s) used. However, the core Manjaro system running underneath is the same, and any applications added or removed from a particular snapshot can also be added or removed from an existing installation. And – of course – users will tweak and customise their own systems in accordance with their own personal preferences and tastes, anyway. Again, irrespective of whatever release of Manjaro has been installed, provided it is kept up to date, then that will be the latest version available.
+ 
+ 
+=Why are new releases given version numbers?=
+ 
+Quite simply, version numbers have been assigned to snapshots of Manjaro by the developers to help them clearly mark each stage of its development. For example, amongst some other planned changes, once development has progressed to the stage where a user-friendly graphical interface has replaced the current text-based installer, then those snapshots will be assigned 0.9x version numbers.
+ 
+Users may also have noticed that version numbers currently all begin with a zero. This is used to indicate to the public that Manjaro is currently still in a beta stage of testing and development, as it has not yet reached an officially stable first release. However, we do appreciate that the use of version numbers in this manner has indeed been the source of some confusion, and it is consequently likely that upon the first stable release of Manjaro, they will be replaced with the dates that the snapshots were taken.
+
+
+[[Category:Overview]]
+[[Category:Contents Page]]</text>
+      <sha1>bn2722kcvhwgwwhf7bxhs2g7v5saaez</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3496</id>
+      <parentid>3451</parentid>
+      <timestamp>2012-12-29T11:43:42Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3879">[[File:BigManjaroIcon.png|left|90px]]
+
+Il semble qu'une certaine confusion ait surgi en raison de la régulière (et un peu rapide) apparition de nouvelles versions Manjaro. Cette confusion a été encore aggravée par l'utilisation de numéros de version (par exemple, 0.8.1, 0.8.2, etc), une coutume normalement associée à la version standard d'un modèle de développement , où une version toute neuve d'un système d'exploitation doit être à nouveau installée sur une ancienne version afin d'accéder à toutes les nouvelles fonctionnalités prévues.
+
+Cependant, Manjaro utilise un '''modèle de développement rolling release''' où, plutôt que d'être remplacé, le même système de base sera au contraire continuellement mis à jour et amélioré. En tant que tel, il n'est pas - et ne sera jamais - nécessaire de ré-installer une version ultérieure de Manjaro afin de profiter du système le plus récent et le plus à jour possible. Il suffit de garder à jour une installation existante pour en être déjà à la dernière version.
+ 
+
+=Why are new versions of Manjaro being released?=
+ 
+These releases are more accurately new snapshots of the Manjaro system. Just like photographs, these snapshots are in essence images that portray the Manjaro system at a particular point in its development. As such, one purpose they serve is to to help the developers to both chart and evaluate the continued development of the Manjaro system, as it is of course easier to pick up on the finer details from a single image than from a moving picture.
+ 
+Furthermore, due to being in a beta stage of development, Manjaro is evolving at a very rapid pace. Existing users may themselves have noticed how frequently new software updates and upgrades have become available, and how much the system has changed in only a few months. As a consequence, a snapshot of the Manjaro system – again rather like a photograph – will very quickly become out of date. New snapshots are therefore also released in order to make life easier for new users, who may otherwise be faced with the prospect of downloading huge volumes of new software packages to update and upgrade their newly installed systems.
+ 
+Where these snapshots most obviously differ is in the choice of pre-installed software applications provided, as well as other smaller tweaks such as the default theme(s) used. However, the core Manjaro system running underneath is the same, and any applications added or removed from a particular snapshot can also be added or removed from an existing installation. And – of course – users will tweak and customise their own systems in accordance with their own personal preferences and tastes, anyway. Again, irrespective of whatever release of Manjaro has been installed, provided it is kept up to date, then that will be the latest version available.
+ 
+ 
+=Why are new releases given version numbers?=
+ 
+Quite simply, version numbers have been assigned to snapshots of Manjaro by the developers to help them clearly mark each stage of its development. For example, amongst some other planned changes, once development has progressed to the stage where a user-friendly graphical interface has replaced the current text-based installer, then those snapshots will be assigned 0.9x version numbers.
+ 
+Users may also have noticed that version numbers currently all begin with a zero. This is used to indicate to the public that Manjaro is currently still in a beta stage of testing and development, as it has not yet reached an officially stable first release. However, we do appreciate that the use of version numbers in this manner has indeed been the source of some confusion, and it is consequently likely that upon the first stable release of Manjaro, they will be replaced with the dates that the snapshots were taken.
+
+
+[[Category:Overview]]
+[[Category:Contents Page]]</text>
+      <sha1>8hf5y68vlrwh6tdgxfzfleumz9y3cgt</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3497</id>
+      <parentid>3496</parentid>
+      <timestamp>2012-12-29T11:45:26Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3886">[[File:BigManjaroIcon.png|left|90px]]
+
+Il semble qu'une certaine confusion ait surgi en raison de la régulière (et un peu rapide) apparition de nouvelles versions Manjaro. Cette confusion a été encore aggravée par l'utilisation de numéros de version (par exemple, 0.8.1, 0.8.2, etc), une coutume normalement associée à la version standard d'un modèle de développement , où une version toute neuve d'un système d'exploitation doit être à nouveau installée sur une ancienne version afin d'accéder à toutes les nouvelles fonctionnalités prévues.
+
+Cependant, Manjaro utilise un '''modèle de développement rolling release''' où, plutôt que d'être remplacé, le même système de base sera au contraire continuellement mis à jour et amélioré. En tant que tel, il n'est pas - et ne sera jamais - nécessaire de ré-installer une version ultérieure de Manjaro afin de profiter du système le plus récent et le plus à jour possible. &lt;u&gt;Il suffit de garder à jour une installation existante pour en être déjà à la dernière version&lt;/u&gt;.
+ 
+
+=Why are new versions of Manjaro being released?=
+ 
+These releases are more accurately new snapshots of the Manjaro system. Just like photographs, these snapshots are in essence images that portray the Manjaro system at a particular point in its development. As such, one purpose they serve is to to help the developers to both chart and evaluate the continued development of the Manjaro system, as it is of course easier to pick up on the finer details from a single image than from a moving picture.
+ 
+Furthermore, due to being in a beta stage of development, Manjaro is evolving at a very rapid pace. Existing users may themselves have noticed how frequently new software updates and upgrades have become available, and how much the system has changed in only a few months. As a consequence, a snapshot of the Manjaro system – again rather like a photograph – will very quickly become out of date. New snapshots are therefore also released in order to make life easier for new users, who may otherwise be faced with the prospect of downloading huge volumes of new software packages to update and upgrade their newly installed systems.
+ 
+Where these snapshots most obviously differ is in the choice of pre-installed software applications provided, as well as other smaller tweaks such as the default theme(s) used. However, the core Manjaro system running underneath is the same, and any applications added or removed from a particular snapshot can also be added or removed from an existing installation. And – of course – users will tweak and customise their own systems in accordance with their own personal preferences and tastes, anyway. Again, irrespective of whatever release of Manjaro has been installed, provided it is kept up to date, then that will be the latest version available.
+ 
+ 
+=Why are new releases given version numbers?=
+ 
+Quite simply, version numbers have been assigned to snapshots of Manjaro by the developers to help them clearly mark each stage of its development. For example, amongst some other planned changes, once development has progressed to the stage where a user-friendly graphical interface has replaced the current text-based installer, then those snapshots will be assigned 0.9x version numbers.
+ 
+Users may also have noticed that version numbers currently all begin with a zero. This is used to indicate to the public that Manjaro is currently still in a beta stage of testing and development, as it has not yet reached an officially stable first release. However, we do appreciate that the use of version numbers in this manner has indeed been the source of some confusion, and it is consequently likely that upon the first stable release of Manjaro, they will be replaced with the dates that the snapshots were taken.
+
+
+[[Category:Overview]]
+[[Category:Contents Page]]</text>
+      <sha1>79pbj7mepv7r2lp61371jw9870d9zbs</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3498</id>
+      <parentid>3497</parentid>
+      <timestamp>2012-12-29T12:05:01Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Why are new versions of Manjaro being released? */</comment>
+      <text xml:space="preserve" bytes="4141">[[File:BigManjaroIcon.png|left|90px]]
+
+Il semble qu'une certaine confusion ait surgi en raison de la régulière (et un peu rapide) apparition de nouvelles versions Manjaro. Cette confusion a été encore aggravée par l'utilisation de numéros de version (par exemple, 0.8.1, 0.8.2, etc), une coutume normalement associée à la version standard d'un modèle de développement , où une version toute neuve d'un système d'exploitation doit être à nouveau installée sur une ancienne version afin d'accéder à toutes les nouvelles fonctionnalités prévues.
+
+Cependant, Manjaro utilise un '''modèle de développement rolling release''' où, plutôt que d'être remplacé, le même système de base sera au contraire continuellement mis à jour et amélioré. En tant que tel, il n'est pas - et ne sera jamais - nécessaire de ré-installer une version ultérieure de Manjaro afin de profiter du système le plus récent et le plus à jour possible. &lt;u&gt;Il suffit de garder à jour une installation existante pour en être déjà à la dernière version&lt;/u&gt;.
+ 
+
+=Pourquoi de nouvelles versions de Manjaro sortent-elles ?=
+ 
+Ces versions sont plus précisément des instantanés du système Manjaro. Tout comme les photographies, ces clichés sont des images qui dépeignent l'état du système Manjaro à un moment donné de son développement. En tant que tels, leur but est d'aider les développeurs à marquer une étape et évaluer le développement continu du système Manjaro, étant donné qu'il est bien sûr plus facile de repérer les détails les plus fins sur une seule image que sur un film.
+
+En outre, Manjaro, étant dans une phase bêta de son développement, évolue très rapidement. Les utilisateurs existant auront peut-être noté eux-même la fréquence à laquelle les mises à jours logicielles deviennent disponibles, et à quel point le système a changé en seulement quelques mois. En conséquence, un instantané du système Manjaro - encore une fois un peu comme une photographie - va très vite devenir obsolète. De nouveaux clichés sont donc également publiés dans le but de rendre la vie plus facile aux nouveaux utilisateurs, qui pourraient sinon être confrontés à la perspective d'énormes volumes de téléchargement de nouveaux logiciels à mettre à jour pour améliorer leurs systèmes nouvellement installés.
+
+Là où ces clichés de toute évidence peuvent diffèrer, c'est dans le choix des logiciels préinstallés fournis, ainsi que d'autres modifications plus mineures telles que le thème par défaut utilisé. Cependant, le système de base Manjaro tournant en dessous est le même, et toutes les applications ajoutées ou supprimées à partir d'un cliché particulier peut également être ajoutés ou supprimés à une installation existante. Et - bien sûr - les utilisateurs ajuster et personnaliser leurs propres systèmes en fonction de leurs propres préférences et goûts personnels, de toute façon. Encore une fois, quelle que soit la version de Manjaro qui ait été installée, si elle est tenue à jour, alors elle sera la dernière version disponible.
+
+=Why are new releases given version numbers?=
+ 
+Quite simply, version numbers have been assigned to snapshots of Manjaro by the developers to help them clearly mark each stage of its development. For example, amongst some other planned changes, once development has progressed to the stage where a user-friendly graphical interface has replaced the current text-based installer, then those snapshots will be assigned 0.9x version numbers.
+ 
+Users may also have noticed that version numbers currently all begin with a zero. This is used to indicate to the public that Manjaro is currently still in a beta stage of testing and development, as it has not yet reached an officially stable first release. However, we do appreciate that the use of version numbers in this manner has indeed been the source of some confusion, and it is consequently likely that upon the first stable release of Manjaro, they will be replaced with the dates that the snapshots were taken.
+
+
+[[Category:Overview]]
+[[Category:Contents Page]]</text>
+      <sha1>gw37b234whyhsdq80gvxtuqlbmm839t</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3499</id>
+      <parentid>3498</parentid>
+      <timestamp>2012-12-29T12:06:59Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Why are new releases given version numbers? */</comment>
+      <text xml:space="preserve" bytes="4331">[[File:BigManjaroIcon.png|left|90px]]
+
+Il semble qu'une certaine confusion ait surgi en raison de la régulière (et un peu rapide) apparition de nouvelles versions Manjaro. Cette confusion a été encore aggravée par l'utilisation de numéros de version (par exemple, 0.8.1, 0.8.2, etc), une coutume normalement associée à la version standard d'un modèle de développement , où une version toute neuve d'un système d'exploitation doit être à nouveau installée sur une ancienne version afin d'accéder à toutes les nouvelles fonctionnalités prévues.
+
+Cependant, Manjaro utilise un '''modèle de développement rolling release''' où, plutôt que d'être remplacé, le même système de base sera au contraire continuellement mis à jour et amélioré. En tant que tel, il n'est pas - et ne sera jamais - nécessaire de ré-installer une version ultérieure de Manjaro afin de profiter du système le plus récent et le plus à jour possible. &lt;u&gt;Il suffit de garder à jour une installation existante pour en être déjà à la dernière version&lt;/u&gt;.
+ 
+
+=Pourquoi de nouvelles versions de Manjaro sortent-elles ?=
+ 
+Ces versions sont plus précisément des instantanés du système Manjaro. Tout comme les photographies, ces clichés sont des images qui dépeignent l'état du système Manjaro à un moment donné de son développement. En tant que tels, leur but est d'aider les développeurs à marquer une étape et évaluer le développement continu du système Manjaro, étant donné qu'il est bien sûr plus facile de repérer les détails les plus fins sur une seule image que sur un film.
+
+En outre, Manjaro, étant dans une phase bêta de son développement, évolue très rapidement. Les utilisateurs existant auront peut-être noté eux-même la fréquence à laquelle les mises à jours logicielles deviennent disponibles, et à quel point le système a changé en seulement quelques mois. En conséquence, un instantané du système Manjaro - encore une fois un peu comme une photographie - va très vite devenir obsolète. De nouveaux clichés sont donc également publiés dans le but de rendre la vie plus facile aux nouveaux utilisateurs, qui pourraient sinon être confrontés à la perspective d'énormes volumes de téléchargement de nouveaux logiciels à mettre à jour pour améliorer leurs systèmes nouvellement installés.
+
+Là où ces clichés de toute évidence peuvent diffèrer, c'est dans le choix des logiciels préinstallés fournis, ainsi que d'autres modifications plus mineures telles que le thème par défaut utilisé. Cependant, le système de base Manjaro tournant en dessous est le même, et toutes les applications ajoutées ou supprimées à partir d'un cliché particulier peut également être ajoutés ou supprimés à une installation existante. Et - bien sûr - les utilisateurs ajuster et personnaliser leurs propres systèmes en fonction de leurs propres préférences et goûts personnels, de toute façon. Encore une fois, quelle que soit la version de Manjaro qui ait été installée, si elle est tenue à jour, alors elle sera la dernière version disponible.
+
+=Pourquoi ces nouvelles versions ont-elles des numéros ?=
+ 
+Tout simplement, des numéros de version sont affectés à des instantanés de Manjaro par les développeurs pour les aider à bien marquer chaque étape de son développement. Par exemple, parmi d'autres changements prévus, dès que le développement aura progressé à un stade où une interface graphique conviviale aura remplacé le programme d'installation actuel en mode texte, ces instantanés se verront attribuer des numéros de version en 0.9x.
+
+Les utilisateurs peuvent également remarquer que les numéros de version en cours commencent tous par un zéro. Il est utilisé pour indiquer au public que Manjaro en est actuellement encore au stade bêta de test et de développement, car elle n'a pas encore atteint le niveau d'une première version officielle stable. Cependant, nous nous rendons compte que l'utilisation de numéros de version de cette manière a en effet été à l'origine d'une certaine confusion, et il est par conséquent probable que lors de la première version stable de Manjaro, ils seront remplacés par les dates auxquelles les clichés ont été pris.
+
+
+[[Category:Overview]]
+[[Category:Contents Page]]</text>
+      <sha1>mbmwxy818tj5bgmps8x4m7q2g0f60p1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

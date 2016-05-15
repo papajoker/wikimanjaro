@@ -1,0 +1,1007 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Installer Compiz et Emerald</title>
+    <ns>0</ns>
+    <id>639</id>
+    <revision>
+      <id>3859</id>
+      <timestamp>2013-01-02T16:44:42Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = EN COURS DE TRADUCTION =   = Overview =  {{warning|At present, Compiz Fusion is only compatible with the XFCE and KDE desktop...&quot;</comment>
+      <text xml:space="preserve" bytes="11323">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN COURS DE TRADUCTION =
+
+
+= Overview =
+
+{{warning|At present, Compiz Fusion is only compatible with the XFCE and KDE desktop environments. It will not work with Gnome / Cinnamon. It is also worth noting that if you are running Manjaro in Oracle's Virtualbox (i.e. in a virtual machine), Compiz may not work fully.}}
+
+
+'''Compiz Fusion''' is a compositing manager that allows you to easily add a wide variety of fancy effects and animations to your desktop environment. Some of the more well known - and popular - examples include:
+
+* Turning the desktop into a 3D cube, cylinder, or sphere to switch between workspaces / virtual desktops
+* Wobbly and stretchy windows
+* Zooming in on the desktop
+
+
+'''Emerald''' is a window decorator that allows for a wide variety new looks to be added to appplication windows. It also allows for decorations to be edited or even created from scratch. For now, there are plenty of existing Emerald themes that can be downloaded and used first.
+
+
+Using Compiz Fusion and Emerald together can produce some genuinely stunning-looking desktop environments, although it is still possible to install and use them seperately. More information about Compiz Fusion and Emerald - including their features - can be found in '''[http://wiki.compiz.org The Compiz Wiki]'''.
+
+
+&lt;center&gt; [[File:cube2.png]] [[File:expo.jpg]] &lt;/center&gt;
+
+
+= Install Compiz Fusion and/or Emerald =
+
+[[File: compiz_dependencies.png|thumb|left|375px]]
+
+
+Although it is possible to download and install them via the ''Add/Remove Software'' application provided with Manjaro, it is actually faster and easier to use the terminal, which will be used in this tutorial.
+
+{{Tip|pacman will automatically download dependencies, so it is not necessary to actually specify ALL the packages we need. For example, asking pacman to download and install Emerald's themes will automatically result in downloading Emerald itself, if not already installed. This is because the themes are dependent on using Emerald.}}
+
+As illustrated, entering the command to install both Compiz Fusion and Emerald together for XFCE has resulted in pacman automatically pulling a few extra packages as dependencies of the ones specified (i.e. seven packages have been listed, but eleven are being downloaded in this instance).
+
+Once installed, it will not be necessary to reboot your machine; you can start setting them up straight away!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Installation for XFCE ==
+
+To install both '''Compiz Fusion and Emerald''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+To install '''just Compiz Fusion''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+To install '''just Emerald''':
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+== Installation for KDE ==
+
+To install '''both Compiz Fusion and Emerald''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+To install '''just Compiz Fusion''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+To install '''just Emerald''':
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+= The Compiz Configuration Settings Manager (ccsm) =
+
+[[File: ccsm.png|thumb|left|375px]] 
+
+
+This is where you can activate and tweak any and all of the special effects and animations you want. Although they are quite easy and straightforward to set up, there are a wide variety of options available, and an even wider variety of tweaks that can be done to them. It is worthwhile taking your time to explore what's available - you may end up being pleasantly surprised!
+
+As illustrated, the Compiz Configuration Settings Manager itself can be found in the ''Settings'' section of your desktop menu. Alternatively, typing '''ccsm''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about Windows Management ==
+
+[[file:ccsmwindows.png|thumb|left|375px]]
+
+
+{{warning|Before enabling Compiz Fusion you &lt;u&gt;'''MUST'''&lt;/u&gt; go to the '''Window Management''' section of the Compiz Configuration Settings Manager and enable '''Move Window''', '''Resize Window''' and '''Place Windows'''. Failure to enable these options will result in being unable to move or resize application windows, or to determine their placement on the screen when activated (i.e. they will usually just appear in the top-left corner).}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about 3D Cubes, Cylinders, and Spheres ==
+
+[[File:workspaces.png|thumb|left|375px]]
+
+
+{{tip| To activate this feature fully, you must enable Desktop Cube, Rotate Cube, and 3D windows in the Compiz Configuration Manager.}}
+
+'''1. Make sure you have enough workspaces / virtual desktops to form the 3D shape(s) you want'''. For the cube and sphere, you should have at least four workspaces  - try them with less and see what happens! For the cylinder, you should have at least three workspaces.
+
+'''2. The number of workspaces set in the Compiz Configuration Manager &lt;u&gt;MUST&lt;/u&gt; match the number of workspaces set in your XFCE or KDE desktop'''. For example, as illustrated, if you set three workspaces in Compiz, you must also set three workspaces in your desktop environment, and vice-versa. If there is a mismatch, applications placed on different workspaces may seem to disappear and/or there may be problems switching between the workspaces themselves.
+
+The workspace settings of your desktop can be found in the ''Settings'' section of your desktop menu. Alternatively, typing '''workspace''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:ccsmworkspaces.png|thumb|left|375px]]
+
+
+The workspace settings of the Compiz Configuration Manager can be found by first going to ''General Options'', and then selecting the ''Desktop Size'' tab.
+
+As illustrated, the horizontal virtual size setting is 3. This means that there are three virtual desktops sitting side by side (i.e. horizontally). This matches both the number and position of the three virtual desktops set in the XFCE desktop, as shown in the taskbar at the bottom of the screen. '''You can click on the image to enlarge it''' to see this; there are three squares representing the workspaces sitting side by side (i.e. horizontally) adjacent the time.
+
+The remaining two options can just be set to 1, as they will multiply the number of desktops (e.g. if the vertical desktop size was also set to 2, then the total number of desktops would be 6 in this instance: 3 * 2 = 6)
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about Key Bindings ==
+
+
+[[file:keybindings.png|thumb|left|375px]]
+
+
+''Key Bindings'' are also a very important element of Compiz. In fact, they will literally affect the way you use and enjoy the features provided. In essence, they are used to determine how certain effects are activated, such as by pressing certain keys together or by placing the mouse at a certain edge or corner of the screen. 
+
+Many features will automatically activate, even if key bindings are listed for them. For example, the ability to have your application windows stretch like elastic will happen automatically when resizing them (if activated!), even though key bindings are listed to do so. It is also worth noting that not all key bindings need your attention; many can be ignored.
+
+For example, as illustrated, the ''initiate'' key binding to activate the ability to turn the desktop into a cube/cylinder/sphere and rotate it has been changed. Whereas before a certain combination of keys had to be pressed, now all that needs to be done is to click in the top-right corner of the screen. The cube/cylinder/sphere can be rotated by just holding down the mouse button and moving the mouse. '''Only this key binding needs to be looked at. All the rest can be completely ignored!'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= The Emerald Theme Manager =
+
+[[File:emeraldthemes.png|thumb|left|375px]]
+
+
+Thanks to having downloaded the emerald-themes package, there will be plenty of themes available to choose from. If the Fusion Icon has already been started (see below), then Emerald will be automatically activated as the window decorator, and clicking on any of the themes will instantly change your window decoration. As illustrated, selecting the ''Scaled_Black_Mod'' theme has changed Emerald's own window.
+
+{{tip| '''You can also download many new Emerald themes from the internet, such as from [http://www.compiz-themes.org Compiz-Themes.org]'''. Once downloaded, they are very easy to import and use. To do so, once you've downloaded a theme:
+
+'''1.''' Select the ''import'' button in the Emerald Theme Manager
+
+'''2.''' Find the location of your downloaded theme (e.g. in the ''Downloads'' folder) and click to highlight it
+
+'''3.''' Select Open
+
+Now your selected theme has been imported into Emerald and is ready to use!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using the Fusion Icon to Start Compiz and/or Emerald =
+
+[[file: fusionmenu.png|thumb|left|375px]]
+
+
+Both Compiz and Emerald are activated through starting the Compiz Fusion Icon. This can be found in the ''System'' section of your desktop menu. Alternatively, typing '''fusion''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up. Upon being selected, your screen will momentarily flicker if Compiz has been installed as it activates. The red and black Fusion icon itself will appear in your desktop's taskbar.
+
+Right-clicking the activated Fusion Icon will bring up its menu. Here you will be able to access the Compiz Configuration Settings Manager, as well as the Emerald Theme Manager. Compiz can be found in '''Select Window Manager''', while Emerald can be found in '''Select Window Decorator'''. Either will allow you to activate or deactivate Compiz and/or Emerald at will, respectively.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file: autostart.png|thumb|left|375px]]
+
+
+'''To set Compiz as your default window manager and/or Emerald as your default window decorator''', the fusion icon must be added to the desktop's ''Application Autostart'' in the ''Session and Startup Settings''. This determines what programs and applications are automatically activated when the desktop starts. The Session and Startup settings of your desktop can be found in the ''Settings'' section of your desktop menu. Alternatively, typing ''session'' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up. Once open, select the ''Application Autostart'' tab, and click the ''Add'' button.
+
+'''1.''' In the name field type '''fusion-icon'''
+
+'''2.''' In the command field type: '''fusion-icon'''
+
+'''3.''' Click OK
+
+The Fusion Icon should now appear near the bottom of the list. Ensure that the check-box next to it is activated, and then close the application window. Provided they have been activated before logging out or shutting down your computer, Compiz and/or Emerald will now start automatically every time!
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Compiz and Emerald|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>d1bwvz0qj79i0h8texq80hp7ii43mtw</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4029</id>
+      <parentid>3859</parentid>
+      <timestamp>2013-01-04T13:18:56Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="11651">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|A l'heure actuelle, Compiz Fusion est compatible uniquement avec les environnements de bureau XFCE et KDE. Il ne fonctionnera pas avec Gnome / Cinnamon. Il est également à noter que si vous exécutez Manjaro dans Virtualbox d'Oracle, Compiz ne fonctionne pas parfaitement.}}
+
+
+'''Compiz Fusion''' est un gestionnaire de bureau en 3D qui vous permettra d'ajouter facilement divers effets graphiques et animations à votre environnement de bureau. Parmi les plus connus - et les plus populaires - exemples:
+
+* Transformation du bureau en cube 3D, cylindre ou sphère, pour switcher entre les espaces de travail/bureaux virtuels
+* Fenêtres molles et extensible
+* Zoom sur le bureau.
+
+
+'''Emerald''' est un décorateur de fenêtre qui permet une grande variété de nouveaux looks pour être ajouté aux fenêtres d'appplication. Il tient compte également pour que des décorations soient éditées ou même créées à partir de zéro. Pour l'instant, il y a de nombreux thèmes Emerald qui peuvent être téléchargés et utilisés en premier.
+
+
+Utiliser ensemble Compiz Fusion et Emerald peut produire des environnements de travail d'allure vraiment superbe. Il est possible de les installer et de les utiliser séparément. Davantage d'informations sur Compiz Fusion et Emerald - y compris leurs caractéristiques - peuvent être trouvées dans '''[http://wiki.compiz.org Le Wiki Compiz en anglais]'''. Une autre documentation, en français, sur Compiz Fusion est disponible dans '''[http://www.linuxpedia.fr/doku.php/compiz-fusion-effets Le Wiki compiz-fusion-effets de Linuxpedia.fr]'''.
+
+
+&lt;center&gt; [[File:cube2.png]] [[File:expo.jpg]] &lt;/center&gt;
+
+
+= Install Compiz Fusion and/or Emerald =
+
+[[File: compiz_dependencies.png|thumb|left|375px]]
+
+
+Although it is possible to download and install them via the ''Add/Remove Software'' application provided with Manjaro, it is actually faster and easier to use the terminal, which will be used in this tutorial.
+
+{{Tip|pacman will automatically download dependencies, so it is not necessary to actually specify ALL the packages we need. For example, asking pacman to download and install Emerald's themes will automatically result in downloading Emerald itself, if not already installed. This is because the themes are dependent on using Emerald.}}
+
+As illustrated, entering the command to install both Compiz Fusion and Emerald together for XFCE has resulted in pacman automatically pulling a few extra packages as dependencies of the ones specified (i.e. seven packages have been listed, but eleven are being downloaded in this instance).
+
+Once installed, it will not be necessary to reboot your machine; you can start setting them up straight away!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Installation for XFCE ==
+
+To install both '''Compiz Fusion and Emerald''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+To install '''just Compiz Fusion''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+To install '''just Emerald''':
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+== Installation for KDE ==
+
+To install '''both Compiz Fusion and Emerald''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+To install '''just Compiz Fusion''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+To install '''just Emerald''':
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+= The Compiz Configuration Settings Manager (ccsm) =
+
+[[File: ccsm.png|thumb|left|375px]] 
+
+
+This is where you can activate and tweak any and all of the special effects and animations you want. Although they are quite easy and straightforward to set up, there are a wide variety of options available, and an even wider variety of tweaks that can be done to them. It is worthwhile taking your time to explore what's available - you may end up being pleasantly surprised!
+
+As illustrated, the Compiz Configuration Settings Manager itself can be found in the ''Settings'' section of your desktop menu. Alternatively, typing '''ccsm''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about Windows Management ==
+
+[[file:ccsmwindows.png|thumb|left|375px]]
+
+
+{{warning|Before enabling Compiz Fusion you &lt;u&gt;'''MUST'''&lt;/u&gt; go to the '''Window Management''' section of the Compiz Configuration Settings Manager and enable '''Move Window''', '''Resize Window''' and '''Place Windows'''. Failure to enable these options will result in being unable to move or resize application windows, or to determine their placement on the screen when activated (i.e. they will usually just appear in the top-left corner).}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about 3D Cubes, Cylinders, and Spheres ==
+
+[[File:workspaces.png|thumb|left|375px]]
+
+
+{{tip| To activate this feature fully, you must enable Desktop Cube, Rotate Cube, and 3D windows in the Compiz Configuration Manager.}}
+
+'''1. Make sure you have enough workspaces / virtual desktops to form the 3D shape(s) you want'''. For the cube and sphere, you should have at least four workspaces  - try them with less and see what happens! For the cylinder, you should have at least three workspaces.
+
+'''2. The number of workspaces set in the Compiz Configuration Manager &lt;u&gt;MUST&lt;/u&gt; match the number of workspaces set in your XFCE or KDE desktop'''. For example, as illustrated, if you set three workspaces in Compiz, you must also set three workspaces in your desktop environment, and vice-versa. If there is a mismatch, applications placed on different workspaces may seem to disappear and/or there may be problems switching between the workspaces themselves.
+
+The workspace settings of your desktop can be found in the ''Settings'' section of your desktop menu. Alternatively, typing '''workspace''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:ccsmworkspaces.png|thumb|left|375px]]
+
+
+The workspace settings of the Compiz Configuration Manager can be found by first going to ''General Options'', and then selecting the ''Desktop Size'' tab.
+
+As illustrated, the horizontal virtual size setting is 3. This means that there are three virtual desktops sitting side by side (i.e. horizontally). This matches both the number and position of the three virtual desktops set in the XFCE desktop, as shown in the taskbar at the bottom of the screen. '''You can click on the image to enlarge it''' to see this; there are three squares representing the workspaces sitting side by side (i.e. horizontally) adjacent the time.
+
+The remaining two options can just be set to 1, as they will multiply the number of desktops (e.g. if the vertical desktop size was also set to 2, then the total number of desktops would be 6 in this instance: 3 * 2 = 6)
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about Key Bindings ==
+
+
+[[file:keybindings.png|thumb|left|375px]]
+
+
+''Key Bindings'' are also a very important element of Compiz. In fact, they will literally affect the way you use and enjoy the features provided. In essence, they are used to determine how certain effects are activated, such as by pressing certain keys together or by placing the mouse at a certain edge or corner of the screen. 
+
+Many features will automatically activate, even if key bindings are listed for them. For example, the ability to have your application windows stretch like elastic will happen automatically when resizing them (if activated!), even though key bindings are listed to do so. It is also worth noting that not all key bindings need your attention; many can be ignored.
+
+For example, as illustrated, the ''initiate'' key binding to activate the ability to turn the desktop into a cube/cylinder/sphere and rotate it has been changed. Whereas before a certain combination of keys had to be pressed, now all that needs to be done is to click in the top-right corner of the screen. The cube/cylinder/sphere can be rotated by just holding down the mouse button and moving the mouse. '''Only this key binding needs to be looked at. All the rest can be completely ignored!'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= The Emerald Theme Manager =
+
+[[File:emeraldthemes.png|thumb|left|375px]]
+
+
+Thanks to having downloaded the emerald-themes package, there will be plenty of themes available to choose from. If the Fusion Icon has already been started (see below), then Emerald will be automatically activated as the window decorator, and clicking on any of the themes will instantly change your window decoration. As illustrated, selecting the ''Scaled_Black_Mod'' theme has changed Emerald's own window.
+
+{{tip| '''You can also download many new Emerald themes from the internet, such as from [http://www.compiz-themes.org Compiz-Themes.org]'''. Once downloaded, they are very easy to import and use. To do so, once you've downloaded a theme:
+
+'''1.''' Select the ''import'' button in the Emerald Theme Manager
+
+'''2.''' Find the location of your downloaded theme (e.g. in the ''Downloads'' folder) and click to highlight it
+
+'''3.''' Select Open
+
+Now your selected theme has been imported into Emerald and is ready to use!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using the Fusion Icon to Start Compiz and/or Emerald =
+
+[[file: fusionmenu.png|thumb|left|375px]]
+
+
+Both Compiz and Emerald are activated through starting the Compiz Fusion Icon. This can be found in the ''System'' section of your desktop menu. Alternatively, typing '''fusion''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up. Upon being selected, your screen will momentarily flicker if Compiz has been installed as it activates. The red and black Fusion icon itself will appear in your desktop's taskbar.
+
+Right-clicking the activated Fusion Icon will bring up its menu. Here you will be able to access the Compiz Configuration Settings Manager, as well as the Emerald Theme Manager. Compiz can be found in '''Select Window Manager''', while Emerald can be found in '''Select Window Decorator'''. Either will allow you to activate or deactivate Compiz and/or Emerald at will, respectively.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file: autostart.png|thumb|left|375px]]
+
+
+'''To set Compiz as your default window manager and/or Emerald as your default window decorator''', the fusion icon must be added to the desktop's ''Application Autostart'' in the ''Session and Startup Settings''. This determines what programs and applications are automatically activated when the desktop starts. The Session and Startup settings of your desktop can be found in the ''Settings'' section of your desktop menu. Alternatively, typing ''session'' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up. Once open, select the ''Application Autostart'' tab, and click the ''Add'' button.
+
+'''1.''' In the name field type '''fusion-icon'''
+
+'''2.''' In the command field type: '''fusion-icon'''
+
+'''3.''' Click OK
+
+The Fusion Icon should now appear near the bottom of the list. Ensure that the check-box next to it is activated, and then close the application window. Provided they have been activated before logging out or shutting down your computer, Compiz and/or Emerald will now start automatically every time!
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Compiz and Emerald|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>35jks0ygd344v2zl4bwnf16ui2nryxy</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4030</id>
+      <parentid>4029</parentid>
+      <timestamp>2013-01-04T13:22:07Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="11597">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|A l'heure actuelle, Compiz Fusion est compatible uniquement avec les environnements de bureau XFCE et KDE. Il ne fonctionnera pas avec Gnome / Cinnamon. Il est également à noter que si vous exécutez Manjaro dans Virtualbox d'Oracle, Compiz ne fonctionne pas parfaitement.}}
+
+
+'''Compiz Fusion''' est un gestionnaire de bureau en 3D qui vous permettra d'ajouter facilement divers effets graphiques et animations à votre environnement de bureau. Parmi les plus connus - et les plus populaires - exemples:
+
+* Transformation du bureau en cube 3D, cylindre ou sphère, pour switcher entre les espaces de travail/bureaux virtuels
+* Fenêtres molles et extensible
+* Zoom sur le bureau.
+
+
+'''Emerald''' est un décorateur de fenêtre qui permet une grande variété de nouveaux looks pour être ajouté aux fenêtres d'appplication. Il tient compte également pour que des décorations soient éditées ou même créées à partir de zéro. Pour l'instant, il y a de nombreux thèmes Emerald qui peuvent être téléchargés et utilisés en premier.
+
+
+Utiliser ensemble Compiz Fusion et Emerald peut produire des environnements de travail d'allure vraiment superbe. Il est possible de les installer et de les utiliser séparément. Davantage d'informations sur Compiz Fusion et Emerald - y compris leurs caractéristiques - peuvent être trouvées:
+* en français dans '''[http://www.linuxpedia.fr/doku.php/compiz-fusion-effets Le Wiki compiz-fusion-effets de Linuxpédia.fr]'''
+* en anglais dans '''[http://wiki.compiz.org Le Wiki Compiz]'''.
+
+
+&lt;center&gt; [[File:cube2.png]] [[File:expo.jpg]] &lt;/center&gt;
+
+
+= Install Compiz Fusion and/or Emerald =
+
+[[File: compiz_dependencies.png|thumb|left|375px]]
+
+
+Although it is possible to download and install them via the ''Add/Remove Software'' application provided with Manjaro, it is actually faster and easier to use the terminal, which will be used in this tutorial.
+
+{{Tip|pacman will automatically download dependencies, so it is not necessary to actually specify ALL the packages we need. For example, asking pacman to download and install Emerald's themes will automatically result in downloading Emerald itself, if not already installed. This is because the themes are dependent on using Emerald.}}
+
+As illustrated, entering the command to install both Compiz Fusion and Emerald together for XFCE has resulted in pacman automatically pulling a few extra packages as dependencies of the ones specified (i.e. seven packages have been listed, but eleven are being downloaded in this instance).
+
+Once installed, it will not be necessary to reboot your machine; you can start setting them up straight away!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Installation for XFCE ==
+
+To install both '''Compiz Fusion and Emerald''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+To install '''just Compiz Fusion''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+To install '''just Emerald''':
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+== Installation for KDE ==
+
+To install '''both Compiz Fusion and Emerald''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+To install '''just Compiz Fusion''':
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+To install '''just Emerald''':
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+= The Compiz Configuration Settings Manager (ccsm) =
+
+[[File: ccsm.png|thumb|left|375px]] 
+
+
+This is where you can activate and tweak any and all of the special effects and animations you want. Although they are quite easy and straightforward to set up, there are a wide variety of options available, and an even wider variety of tweaks that can be done to them. It is worthwhile taking your time to explore what's available - you may end up being pleasantly surprised!
+
+As illustrated, the Compiz Configuration Settings Manager itself can be found in the ''Settings'' section of your desktop menu. Alternatively, typing '''ccsm''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about Windows Management ==
+
+[[file:ccsmwindows.png|thumb|left|375px]]
+
+
+{{warning|Before enabling Compiz Fusion you &lt;u&gt;'''MUST'''&lt;/u&gt; go to the '''Window Management''' section of the Compiz Configuration Settings Manager and enable '''Move Window''', '''Resize Window''' and '''Place Windows'''. Failure to enable these options will result in being unable to move or resize application windows, or to determine their placement on the screen when activated (i.e. they will usually just appear in the top-left corner).}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about 3D Cubes, Cylinders, and Spheres ==
+
+[[File:workspaces.png|thumb|left|375px]]
+
+
+{{tip| To activate this feature fully, you must enable Desktop Cube, Rotate Cube, and 3D windows in the Compiz Configuration Manager.}}
+
+'''1. Make sure you have enough workspaces / virtual desktops to form the 3D shape(s) you want'''. For the cube and sphere, you should have at least four workspaces  - try them with less and see what happens! For the cylinder, you should have at least three workspaces.
+
+'''2. The number of workspaces set in the Compiz Configuration Manager &lt;u&gt;MUST&lt;/u&gt; match the number of workspaces set in your XFCE or KDE desktop'''. For example, as illustrated, if you set three workspaces in Compiz, you must also set three workspaces in your desktop environment, and vice-versa. If there is a mismatch, applications placed on different workspaces may seem to disappear and/or there may be problems switching between the workspaces themselves.
+
+The workspace settings of your desktop can be found in the ''Settings'' section of your desktop menu. Alternatively, typing '''workspace''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:ccsmworkspaces.png|thumb|left|375px]]
+
+
+The workspace settings of the Compiz Configuration Manager can be found by first going to ''General Options'', and then selecting the ''Desktop Size'' tab.
+
+As illustrated, the horizontal virtual size setting is 3. This means that there are three virtual desktops sitting side by side (i.e. horizontally). This matches both the number and position of the three virtual desktops set in the XFCE desktop, as shown in the taskbar at the bottom of the screen. '''You can click on the image to enlarge it''' to see this; there are three squares representing the workspaces sitting side by side (i.e. horizontally) adjacent the time.
+
+The remaining two options can just be set to 1, as they will multiply the number of desktops (e.g. if the vertical desktop size was also set to 2, then the total number of desktops would be 6 in this instance: 3 * 2 = 6)
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== A Note about Key Bindings ==
+
+
+[[file:keybindings.png|thumb|left|375px]]
+
+
+''Key Bindings'' are also a very important element of Compiz. In fact, they will literally affect the way you use and enjoy the features provided. In essence, they are used to determine how certain effects are activated, such as by pressing certain keys together or by placing the mouse at a certain edge or corner of the screen. 
+
+Many features will automatically activate, even if key bindings are listed for them. For example, the ability to have your application windows stretch like elastic will happen automatically when resizing them (if activated!), even though key bindings are listed to do so. It is also worth noting that not all key bindings need your attention; many can be ignored.
+
+For example, as illustrated, the ''initiate'' key binding to activate the ability to turn the desktop into a cube/cylinder/sphere and rotate it has been changed. Whereas before a certain combination of keys had to be pressed, now all that needs to be done is to click in the top-right corner of the screen. The cube/cylinder/sphere can be rotated by just holding down the mouse button and moving the mouse. '''Only this key binding needs to be looked at. All the rest can be completely ignored!'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= The Emerald Theme Manager =
+
+[[File:emeraldthemes.png|thumb|left|375px]]
+
+
+Thanks to having downloaded the emerald-themes package, there will be plenty of themes available to choose from. If the Fusion Icon has already been started (see below), then Emerald will be automatically activated as the window decorator, and clicking on any of the themes will instantly change your window decoration. As illustrated, selecting the ''Scaled_Black_Mod'' theme has changed Emerald's own window.
+
+{{tip| '''You can also download many new Emerald themes from the internet, such as from [http://www.compiz-themes.org Compiz-Themes.org]'''. Once downloaded, they are very easy to import and use. To do so, once you've downloaded a theme:
+
+'''1.''' Select the ''import'' button in the Emerald Theme Manager
+
+'''2.''' Find the location of your downloaded theme (e.g. in the ''Downloads'' folder) and click to highlight it
+
+'''3.''' Select Open
+
+Now your selected theme has been imported into Emerald and is ready to use!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using the Fusion Icon to Start Compiz and/or Emerald =
+
+[[file: fusionmenu.png|thumb|left|375px]]
+
+
+Both Compiz and Emerald are activated through starting the Compiz Fusion Icon. This can be found in the ''System'' section of your desktop menu. Alternatively, typing '''fusion''' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up. Upon being selected, your screen will momentarily flicker if Compiz has been installed as it activates. The red and black Fusion icon itself will appear in your desktop's taskbar.
+
+Right-clicking the activated Fusion Icon will bring up its menu. Here you will be able to access the Compiz Configuration Settings Manager, as well as the Emerald Theme Manager. Compiz can be found in '''Select Window Manager''', while Emerald can be found in '''Select Window Decorator'''. Either will allow you to activate or deactivate Compiz and/or Emerald at will, respectively.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file: autostart.png|thumb|left|375px]]
+
+
+'''To set Compiz as your default window manager and/or Emerald as your default window decorator''', the fusion icon must be added to the desktop's ''Application Autostart'' in the ''Session and Startup Settings''. This determines what programs and applications are automatically activated when the desktop starts. The Session and Startup settings of your desktop can be found in the ''Settings'' section of your desktop menu. Alternatively, typing ''session'' in XFCE's ''Application Finder'' or KDE's built-in search bar will also bring it up. Once open, select the ''Application Autostart'' tab, and click the ''Add'' button.
+
+'''1.''' In the name field type '''fusion-icon'''
+
+'''2.''' In the command field type: '''fusion-icon'''
+
+'''3.''' Click OK
+
+The Fusion Icon should now appear near the bottom of the list. Ensure that the check-box next to it is activated, and then close the application window. Provided they have been activated before logging out or shutting down your computer, Compiz and/or Emerald will now start automatically every time!
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Compiz and Emerald|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>92ighhl0eyxht94avjhzuzts7nanxe5</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4031</id>
+      <parentid>4030</parentid>
+      <timestamp>2013-01-04T13:35:56Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="13077">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|A l'heure actuelle, Compiz Fusion est compatible uniquement avec les environnements de bureau XFCE et KDE. Il ne fonctionnera pas avec Gnome / Cinnamon. Il est également à noter que si vous exécutez Manjaro dans Virtualbox d'Oracle, Compiz ne fonctionne pas parfaitement.}}
+
+
+'''Compiz Fusion''' est un gestionnaire de bureau en 3D qui vous permettra d'ajouter facilement divers effets graphiques et animations à votre environnement de bureau. Parmi les plus connus - et les plus populaires - exemples:
+
+* Transformation du bureau en cube 3D, cylindre ou sphère, pour switcher entre les espaces de travail/bureaux virtuels
+* Fenêtres molles et extensible
+* Zoom sur le bureau.
+
+
+'''Emerald''' est un décorateur de fenêtre qui permet une grande variété de nouveaux looks pour être ajouté aux fenêtres d'appplication. Il tient compte également pour que des décorations soient éditées ou même créées à partir de zéro. Pour l'instant, il y a de nombreux thèmes Emerald qui peuvent être téléchargés et utilisés en premier.
+
+
+Utiliser ensemble Compiz Fusion et Emerald peut produire des environnements de travail d'allure vraiment superbe. Il est possible de les installer et de les utiliser séparément. Davantage d'informations sur Compiz Fusion et Emerald - y compris leurs caractéristiques - peuvent être trouvées:
+* en français dans '''[http://www.linuxpedia.fr/doku.php/compiz-fusion-effets Le Wiki compiz-fusion-effets de Linuxpédia.fr]'''
+* en anglais dans '''[http://wiki.compiz.org Le Wiki Compiz]'''.
+
+
+&lt;center&gt; [[File:cube2.png]] [[File:expo.jpg]] &lt;/center&gt;
+
+
+= Installer Compiz Fusion et/ou Emerald =
+
+[[File: compiz_dependencies.png|thumb|left|375px]]
+
+
+Bien qu'il soit possible de les télécharger et de les installer via l'option du menu ''Ajouter/supprimer des logiciels'' fourni avec Manjaro, il est plus rapide et facile d'utiliser le terminal; c'est ce qui sera utilisé dans ce tutoriel.
+
+{{Astuce|pacman téléchargera automatiquement les dépendances, de sorte qu'il n'est pas nécessaire de spécifier TOUS les paquets dont nous avons besoin. Par exemple, demander à pacman de télécharger et installer des thèmes pour Emerald entraînera automatiquement le téléchargement d'Emerald lui-même, s'il n'est pas déjà installé. C'est parce que les thèmes sont tributaires de l'utilisation d'Emerald.}}
+
+Comme illustré, entrer la commande pour installer à la fois Compiz Fusion et Emerald pour XFCE fait que pacman propose automatiquement quelques paquets supplémentaires comme des dépendances de celles spécifiées (soit sept paquets répertoriés, mais onze sont en cours de téléchargement dans ce cas).
+
+Une fois installé, il ne sera pas nécessaire de redémarrer votre machine; vous pouvez commencer à les mettre en place tout de suite!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Installation pour XFCE ==
+
+Pour installer à la fois '''Compiz Fusion et Emerald:'''
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+Pour installer '''seulement Compiz Fusion:'''
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+Pour installer '''seulement Emerald:'''
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+== Installation pour KDE ==
+
+Pour installer à la fois '''Compiz Fusion et Emerald:'''
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+Pour installer '''seulement Compiz Fusion:'''
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+Pour installer '''seulement Emerald:'''
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+= Le Gestionnaire de Configuration CompizConfig (ccsm) =
+
+[[File: ccsm.png|thumb|left|375px]] 
+
+
+C'est là que vous pouvez tout activer et régler tous les effets spéciaux et animations que vous souhaitez. Bien que ce soit assez simple à mettre en place, il y a une grande variété d'options disponibles, et une plus grande variété de réglages qui peuvent être faits. Prenez votre temps pour explorer tout ce qui est disponible - vous finirez forcément par être agréablement surpris!
+
+Comme illustré, le Gestionnaire de Configuration CompizConfig peut être trouvé dans la section ''Paramètres'' du menu de votre bureau. Sinon tapez '''ccsm''' dans l'application ''Lancer le programme'' de XFCE ou dans la barre de recherche intégrée de KDE.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Note à propos du Gestionnaire de Fenêtre ==
+
+[[file:ccsmwindows.png|thumb|left|375px]]
+
+
+{{Attention|Avant d'activer Compiz Fusion vous &lt;u&gt;'''DEVEZ'''&lt;/u&gt; aller à la section '''Gestion des fenêtres''' du Gestionnaire de Configuration CompizConfig et permettre '''Déplacer la fenêtre''', '''Redimensionner la fenêtre''' et '''Placer des fenêtres'''. Ne pas activer ces options entraîne l'impossibilité de déplacer ou redimensionner les fenêtres des applications, ou de déterminer leur emplacement sur l'écran lorsqu'il est activé (c'est-à-dire qu'ils apparaîtront juste dans le coin en haut à gauche).}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Note à propos du cube 3D, du cylindre ou de la sphère ==
+
+[[File:workspaces.png|thumb|left|375px]]
+
+
+{{Astuce|Pour activer entièrement cette fonction, vous devez activer le Cube du bureau, la Rotation du Cube, et les fenêtres 3D dans le Gestionnaire de Configuration CompizConfig.}}
+
+'''1. Assurez-vous que vous avez suffisamment d'espaces de travail / postes de travail virtuels pour réaliser les formes 3D que vous souhaitez'''. Pour le cube et la sphère, vous devriez avoir au moins quatre espaces de travail - ou essayez avec moins et voir ce qui se passe! Pour le cylindre, vous devriez avoir au moins trois espaces de travail.
+
+'''2. Le nombre d'espaces de travail définis dans le Gestionnaire de Configuration CompizConfig &lt;u&gt;DOIT&lt;/u&gt; correspondre au nombre d'espaces de travail définis dans votre bureau XFCE ou KDE.''' Par exemple, comme illustré, si vous définissez trois espaces de travail dans Compiz, vous devez également définir trois espaces de travail dans votre environnement de bureau, et vice-versa. S'il y a un décalage, les applications placées sur les différents espaces de travail peuvent sembler disparaître et/ou il peut y avoir des problèmes de commutation entre les espaces de travail eux-mêmes.
+
+Le paramétrage des espaces de travail de votre bureau se trouve dans la section ''Paramètres'' du menu de votre bureau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:ccsmworkspaces.png|thumb|left|375px]]
+
+
+Le paramétrage des espaces de travail du Gestionnaire de Configuration CompizConfig peut être trouvé en allant d'abord à ''Options Générales'', puis en sélectionnant l'onglet ''Taille du bureau''.
+
+Comme illustré, le réglage de la taille horizontale virtuelle est de 3. Cela signifie qu'il y a trois postes de travail virtuels assis côte à côte (c'est à dire horizontalement). Cela correspond à la fois au nombre et à la position des trois postes de travail virtuels définis dans le bureau XFCE, comme indiqué dans la barre des tâches en bas de l'écran. '''Vous pouvez cliquer sur l'image pour l'agrandir''' et la visualiser; il y a trois cases représentant les espaces de travail assis côte à côte (c'est-à-dire horizontalement).
+
+Les deux autres options peuvent être réglées seulement à 1, car elles multiplieront le nombre de bureaux (par exemple, si la taille verticale du bureau a également été fixée à 2, alors le nombre total de postes de travail serait de 6 dans ce cas: 3 * 2 = 6).
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Note à propos des Raccourcis Clavier ==
+
+
+[[file:keybindings.png|thumb|left|375px]]
+
+
+Les ''raccourcis clavier'' sont aussi un élément très important de Compiz. En fait, ils vont littéralement affecter la façon dont vous utiliserez et apprécierez les fonctionnalités fournies. Pour l'essentiel, ils sont utilisés pour déterminer la façon dont certains effets sont activés, par exemple en appuyant sur certaines touches simultanément ou en plaçant la souris sur un certain bord ou un certain coin de l'écran.
+
+De nombreuses fonctionnalités s'activeront automatiquement, même si les raccourcis clavier sont indiqués pour eux. Par exemple, la possibilité d'avoir la fenêtre extensible se fera automatiquement lors de son redimensionnement (si elle est activée!), même si les raccourcis clavier sont indiqués pour le faire. Il est également intéressant de noter que tous les raccourcis clavier ont besoin de votre attention; beaucoup peuvent être ignorés.
+
+Par exemple, comme illustré, le raccourci clavier ''Lancer'' (pour activer la capacité de transformer le bureau en cube/cylindre/sphère et le tourner) a été modifié. Auparavant une certaine combinaison de touches devait être pressée; maintenant tout ce qui reste à faire est de cliquer dans le coin en haut à droite de l'écran. Le cube/cylindre/sphère peut être tourné juste en maintenant le bouton de la souris tout en la déplaçant. '''Seule contrainte: évidemment ce raccourci doit être regardé. Tout le reste peut être complètement ignoré!'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Le Gestionnaire de thèmes Emerald =
+
+[[File:emeraldthemes.png|thumb|left|375px]]
+
+
+Grâce au téléchargement du paquet ''emerald-themes'' vous aurez de nombreux thèmes disponibles à choix. Si ''Compiz Fusion Icon'' a déjà été démarré (voir ci-dessous), quand Emerald sera automatiquement activé en tant que décorateur de fenêtres, cliquer sur ​​l'un des thèmes fera instantanément changer votre décoration de fenêtre. Comme illustré, le choix du thème ''Scaled_Black_Mod'' a changé la propre fenêtre d'Emerald.
+
+{{Astuce| '''Vous pouvez également télécharger de nombreux nouveaux thèmes Emerald, sur des sites internet tels que de [http://www.compiz-themes.org Compiz-Themes.org]'''. Une fois téléchargés, ils seront très faciles à importer et à utiliser. Pour ce faire, une fois le thème téléchargé:
+
+'''1.''' Sélectionnez le bouton ''Import...'' dans le Gestionnaire de thèmes Emerald
+
+'''2.''' Naviguez jusqu'à l'emplacement de votre thème téléchargé (par exemple, dans le dossier Téléchargements) et cliquez pour le sélectionner
+
+'''3.''' Sélectionnez ''Ouvrir''.
+
+Maintenant votre thème sélectionné a été importé dans Emerald et est prêt à l'emploi!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Utilisation de Compiz Fusion Icon pour démarrer Compiz et/ou Emerald =
+
+[[file: fusionmenu.png|thumb|left|375px]]
+
+
+Compiz et Emerald sont activés en sélectionnant l'entrée du menu ''Compiz Fusion Icon''. Cette entrée peut être trouvée dans la section ''Système'' du menu de votre bureau. Alternativement, vous pouvez tapez '''fusion''' dans l'application ''Lancer le programme'' de XFCE ou dans la barre de recherche intégrée de KDE. Après avoir été sélectionné, si Compiz a été installé, l'écran clignotera momentanément pendant qu'il s'active. L'icône Fusion rouge et noir elle-même apparaîtra dans la barre des tâches de votre bureau.
+
+Un clic droit sur ​​l'icône ''Fusion'' fait apparaître son menu. Ici, vous serez en mesure d'accéder au gestionnaire de Configuration CompizConfig, ainsi qu'au gestionnaire de thèmes Emerald. Compiz peut être trouvé dans '''Sélectionner Gestionnaire de Fenêtre''', tandis qu'Emerald se trouve dans '''Sélectionner Décorateur de Fenêtre'''. Vous pourrez activer ou désactiver Compiz et/ou d'Emerald à volonté.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file: autostart.png|thumb|left|375px]]
+
+
+'''Pour configurer Compiz comme votre gestionnaire de fenêtre par défaut et/ou d'Emerald comme votre décorateur de fenêtres par défaut,''' vous devez ajouter '''Compiz Fusion Icon''' dans les ''Applications au démarrage'' de votre bureau. Cela permet de déterminer quels sont les programmes et applications qui sont automatiquement activés lorsque le bureau démarre. Les paramètres de démarrage de votre ordinateur de bureau peuvent être trouvés dans la section appropriée du menu de votre bureau. Pour XFCE, allez dans la section ''Paramètres'' du menu, ''Session et démarrage''; une fois ouvert, sélectionnez l'onglet ''Démarrage automatique'', puis cliquez sur le bouton ''+ Ajouter''.
+
+'''1.''' Dans le champ ''Nom'', tapez '''fusion-icon'''
+
+'''2.''' Dans le champ ''Commande'', tapez '''fusion-icon'''
+
+'''3.''' Cliquez sur Valider.
+
+'''fusion-icon''' devrait maintenant apparaître au bas de la liste. Assurez-vous que la case qui est en face soit cochée, puis fermez la fenêtre de l'application. Pour autant qu'ils aient été activés avant de vous déconnecter ou éteindre votre ordinateur, Compiz et/ou Emerald démarreront à chaque fois automatiquement!
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Compiz and Emerald|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>3feh27rtts56azvn3kg90v9f9hin4wz</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4032</id>
+      <parentid>4031</parentid>
+      <timestamp>2013-01-04T13:37:00Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="13078">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|A l'heure actuelle, Compiz Fusion est compatible uniquement avec les environnements de bureau XFCE et KDE. Il ne fonctionnera pas avec Gnome / Cinnamon. Il est également à noter que si vous exécutez Manjaro dans Virtualbox d'Oracle, Compiz ne fonctionne pas parfaitement.}}
+
+
+'''Compiz Fusion''' est un gestionnaire de bureau en 3D qui vous permettra d'ajouter facilement divers effets graphiques et animations à votre environnement de bureau. Parmi les plus connus - et les plus populaires - exemples:
+
+* Transformation du bureau en cube 3D, cylindre ou sphère, pour switcher entre les espaces de travail/bureaux virtuels
+* Fenêtres molles et extensibles
+* Zoom sur le bureau.
+
+
+'''Emerald''' est un décorateur de fenêtre qui permet une grande variété de nouveaux looks pour être ajouté aux fenêtres d'appplication. Il tient compte également pour que des décorations soient éditées ou même créées à partir de zéro. Pour l'instant, il y a de nombreux thèmes Emerald qui peuvent être téléchargés et utilisés en premier.
+
+
+Utiliser ensemble Compiz Fusion et Emerald peut produire des environnements de travail d'allure vraiment superbe. Il est possible de les installer et de les utiliser séparément. Davantage d'informations sur Compiz Fusion et Emerald - y compris leurs caractéristiques - peuvent être trouvées:
+* en français dans '''[http://www.linuxpedia.fr/doku.php/compiz-fusion-effets Le Wiki compiz-fusion-effets de Linuxpédia.fr]'''
+* en anglais dans '''[http://wiki.compiz.org Le Wiki Compiz]'''.
+
+
+&lt;center&gt; [[File:cube2.png]] [[File:expo.jpg]] &lt;/center&gt;
+
+
+= Installer Compiz Fusion et/ou Emerald =
+
+[[File: compiz_dependencies.png|thumb|left|375px]]
+
+
+Bien qu'il soit possible de les télécharger et de les installer via l'option du menu ''Ajouter/supprimer des logiciels'' fourni avec Manjaro, il est plus rapide et facile d'utiliser le terminal; c'est ce qui sera utilisé dans ce tutoriel.
+
+{{Astuce|pacman téléchargera automatiquement les dépendances, de sorte qu'il n'est pas nécessaire de spécifier TOUS les paquets dont nous avons besoin. Par exemple, demander à pacman de télécharger et installer des thèmes pour Emerald entraînera automatiquement le téléchargement d'Emerald lui-même, s'il n'est pas déjà installé. C'est parce que les thèmes sont tributaires de l'utilisation d'Emerald.}}
+
+Comme illustré, entrer la commande pour installer à la fois Compiz Fusion et Emerald pour XFCE fait que pacman propose automatiquement quelques paquets supplémentaires comme des dépendances de celles spécifiées (soit sept paquets répertoriés, mais onze sont en cours de téléchargement dans ce cas).
+
+Une fois installé, il ne sera pas nécessaire de redémarrer votre machine; vous pouvez commencer à les mettre en place tout de suite!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Installation pour XFCE ==
+
+Pour installer à la fois '''Compiz Fusion et Emerald:'''
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+Pour installer '''seulement Compiz Fusion:'''
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager
+
+
+Pour installer '''seulement Emerald:'''
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+== Installation pour KDE ==
+
+Pour installer à la fois '''Compiz Fusion et Emerald:'''
+
+ sudo pacman -S ccsm compiz-core fusion-icon emerald-themes compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+Pour installer '''seulement Compiz Fusion:'''
+
+ sudo pacman -S ccsm compiz-core fusion-icon compiz-fusion-plugins-extra libcompizconfig compiz-manager compiz-decorator-kde
+
+
+Pour installer '''seulement Emerald:'''
+
+ sudo pacman -S fusion-icon emerald-themes
+
+
+= Le Gestionnaire de Configuration CompizConfig (ccsm) =
+
+[[File: ccsm.png|thumb|left|375px]] 
+
+
+C'est là que vous pouvez tout activer et régler tous les effets spéciaux et animations que vous souhaitez. Bien que ce soit assez simple à mettre en place, il y a une grande variété d'options disponibles, et une plus grande variété de réglages qui peuvent être faits. Prenez votre temps pour explorer tout ce qui est disponible - vous finirez forcément par être agréablement surpris!
+
+Comme illustré, le Gestionnaire de Configuration CompizConfig peut être trouvé dans la section ''Paramètres'' du menu de votre bureau. Sinon tapez '''ccsm''' dans l'application ''Lancer le programme'' de XFCE ou dans la barre de recherche intégrée de KDE.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Note à propos du Gestionnaire de Fenêtre ==
+
+[[file:ccsmwindows.png|thumb|left|375px]]
+
+
+{{Attention|Avant d'activer Compiz Fusion vous &lt;u&gt;'''DEVEZ'''&lt;/u&gt; aller à la section '''Gestion des fenêtres''' du Gestionnaire de Configuration CompizConfig et permettre '''Déplacer la fenêtre''', '''Redimensionner la fenêtre''' et '''Placer des fenêtres'''. Ne pas activer ces options entraîne l'impossibilité de déplacer ou redimensionner les fenêtres des applications, ou de déterminer leur emplacement sur l'écran lorsqu'il est activé (c'est-à-dire qu'ils apparaîtront juste dans le coin en haut à gauche).}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Note à propos du cube 3D, du cylindre ou de la sphère ==
+
+[[File:workspaces.png|thumb|left|375px]]
+
+
+{{Astuce|Pour activer entièrement cette fonction, vous devez activer le Cube du bureau, la Rotation du Cube, et les fenêtres 3D dans le Gestionnaire de Configuration CompizConfig.}}
+
+'''1. Assurez-vous que vous avez suffisamment d'espaces de travail / postes de travail virtuels pour réaliser les formes 3D que vous souhaitez'''. Pour le cube et la sphère, vous devriez avoir au moins quatre espaces de travail - ou essayez avec moins et voir ce qui se passe! Pour le cylindre, vous devriez avoir au moins trois espaces de travail.
+
+'''2. Le nombre d'espaces de travail définis dans le Gestionnaire de Configuration CompizConfig &lt;u&gt;DOIT&lt;/u&gt; correspondre au nombre d'espaces de travail définis dans votre bureau XFCE ou KDE.''' Par exemple, comme illustré, si vous définissez trois espaces de travail dans Compiz, vous devez également définir trois espaces de travail dans votre environnement de bureau, et vice-versa. S'il y a un décalage, les applications placées sur les différents espaces de travail peuvent sembler disparaître et/ou il peut y avoir des problèmes de commutation entre les espaces de travail eux-mêmes.
+
+Le paramétrage des espaces de travail de votre bureau se trouve dans la section ''Paramètres'' du menu de votre bureau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:ccsmworkspaces.png|thumb|left|375px]]
+
+
+Le paramétrage des espaces de travail du Gestionnaire de Configuration CompizConfig peut être trouvé en allant d'abord à ''Options Générales'', puis en sélectionnant l'onglet ''Taille du bureau''.
+
+Comme illustré, le réglage de la taille horizontale virtuelle est de 3. Cela signifie qu'il y a trois postes de travail virtuels assis côte à côte (c'est à dire horizontalement). Cela correspond à la fois au nombre et à la position des trois postes de travail virtuels définis dans le bureau XFCE, comme indiqué dans la barre des tâches en bas de l'écran. '''Vous pouvez cliquer sur l'image pour l'agrandir''' et la visualiser; il y a trois cases représentant les espaces de travail assis côte à côte (c'est-à-dire horizontalement).
+
+Les deux autres options peuvent être réglées seulement à 1, car elles multiplieront le nombre de bureaux (par exemple, si la taille verticale du bureau a également été fixée à 2, alors le nombre total de postes de travail serait de 6 dans ce cas: 3 * 2 = 6).
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Note à propos des Raccourcis Clavier ==
+
+
+[[file:keybindings.png|thumb|left|375px]]
+
+
+Les ''raccourcis clavier'' sont aussi un élément très important de Compiz. En fait, ils vont littéralement affecter la façon dont vous utiliserez et apprécierez les fonctionnalités fournies. Pour l'essentiel, ils sont utilisés pour déterminer la façon dont certains effets sont activés, par exemple en appuyant sur certaines touches simultanément ou en plaçant la souris sur un certain bord ou un certain coin de l'écran.
+
+De nombreuses fonctionnalités s'activeront automatiquement, même si les raccourcis clavier sont indiqués pour eux. Par exemple, la possibilité d'avoir la fenêtre extensible se fera automatiquement lors de son redimensionnement (si elle est activée!), même si les raccourcis clavier sont indiqués pour le faire. Il est également intéressant de noter que tous les raccourcis clavier ont besoin de votre attention; beaucoup peuvent être ignorés.
+
+Par exemple, comme illustré, le raccourci clavier ''Lancer'' (pour activer la capacité de transformer le bureau en cube/cylindre/sphère et le tourner) a été modifié. Auparavant une certaine combinaison de touches devait être pressée; maintenant tout ce qui reste à faire est de cliquer dans le coin en haut à droite de l'écran. Le cube/cylindre/sphère peut être tourné juste en maintenant le bouton de la souris tout en la déplaçant. '''Seule contrainte: évidemment ce raccourci doit être regardé. Tout le reste peut être complètement ignoré!'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Le Gestionnaire de thèmes Emerald =
+
+[[File:emeraldthemes.png|thumb|left|375px]]
+
+
+Grâce au téléchargement du paquet ''emerald-themes'' vous aurez de nombreux thèmes disponibles à choix. Si ''Compiz Fusion Icon'' a déjà été démarré (voir ci-dessous), quand Emerald sera automatiquement activé en tant que décorateur de fenêtres, cliquer sur ​​l'un des thèmes fera instantanément changer votre décoration de fenêtre. Comme illustré, le choix du thème ''Scaled_Black_Mod'' a changé la propre fenêtre d'Emerald.
+
+{{Astuce| '''Vous pouvez également télécharger de nombreux nouveaux thèmes Emerald, sur des sites internet tels que de [http://www.compiz-themes.org Compiz-Themes.org]'''. Une fois téléchargés, ils seront très faciles à importer et à utiliser. Pour ce faire, une fois le thème téléchargé:
+
+'''1.''' Sélectionnez le bouton ''Import...'' dans le Gestionnaire de thèmes Emerald
+
+'''2.''' Naviguez jusqu'à l'emplacement de votre thème téléchargé (par exemple, dans le dossier Téléchargements) et cliquez pour le sélectionner
+
+'''3.''' Sélectionnez ''Ouvrir''.
+
+Maintenant votre thème sélectionné a été importé dans Emerald et est prêt à l'emploi!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Utilisation de Compiz Fusion Icon pour démarrer Compiz et/ou Emerald =
+
+[[file: fusionmenu.png|thumb|left|375px]]
+
+
+Compiz et Emerald sont activés en sélectionnant l'entrée du menu ''Compiz Fusion Icon''. Cette entrée peut être trouvée dans la section ''Système'' du menu de votre bureau. Alternativement, vous pouvez tapez '''fusion''' dans l'application ''Lancer le programme'' de XFCE ou dans la barre de recherche intégrée de KDE. Après avoir été sélectionné, si Compiz a été installé, l'écran clignotera momentanément pendant qu'il s'active. L'icône Fusion rouge et noir elle-même apparaîtra dans la barre des tâches de votre bureau.
+
+Un clic droit sur ​​l'icône ''Fusion'' fait apparaître son menu. Ici, vous serez en mesure d'accéder au gestionnaire de Configuration CompizConfig, ainsi qu'au gestionnaire de thèmes Emerald. Compiz peut être trouvé dans '''Sélectionner Gestionnaire de Fenêtre''', tandis qu'Emerald se trouve dans '''Sélectionner Décorateur de Fenêtre'''. Vous pourrez activer ou désactiver Compiz et/ou d'Emerald à volonté.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file: autostart.png|thumb|left|375px]]
+
+
+'''Pour configurer Compiz comme votre gestionnaire de fenêtre par défaut et/ou d'Emerald comme votre décorateur de fenêtres par défaut,''' vous devez ajouter '''Compiz Fusion Icon''' dans les ''Applications au démarrage'' de votre bureau. Cela permet de déterminer quels sont les programmes et applications qui sont automatiquement activés lorsque le bureau démarre. Les paramètres de démarrage de votre ordinateur de bureau peuvent être trouvés dans la section appropriée du menu de votre bureau. Pour XFCE, allez dans la section ''Paramètres'' du menu, ''Session et démarrage''; une fois ouvert, sélectionnez l'onglet ''Démarrage automatique'', puis cliquez sur le bouton ''+ Ajouter''.
+
+'''1.''' Dans le champ ''Nom'', tapez '''fusion-icon'''
+
+'''2.''' Dans le champ ''Commande'', tapez '''fusion-icon'''
+
+'''3.''' Cliquez sur Valider.
+
+'''fusion-icon''' devrait maintenant apparaître au bas de la liste. Assurez-vous que la case qui est en face soit cochée, puis fermez la fenêtre de l'application. Pour autant qu'ils aient été activés avant de vous déconnecter ou éteindre votre ordinateur, Compiz et/ou Emerald démarreront à chaque fois automatiquement!
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Compiz and Emerald|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>cw4zqdcfpjh0c9iv4shwxvwf51pefe2</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

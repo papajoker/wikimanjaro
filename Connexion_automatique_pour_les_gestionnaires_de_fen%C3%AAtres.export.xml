@@ -1,0 +1,421 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Connexion automatique pour les gestionnaires de fenêtres</title>
+    <ns>0</ns>
+    <id>684</id>
+    <revision>
+      <id>4644</id>
+      <timestamp>2013-01-10T20:53:44Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = TRADUCTION EN COURS=  ==Auto-Login without a Graphical Desktop Manager &amp; with Systemd:==  At last, we can boot our computers ...&quot;</comment>
+      <text xml:space="preserve" bytes="5809">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS=
+
+==Auto-Login without a Graphical Desktop Manager &amp; with Systemd:==
+
+At last, we can boot our computers straight into Openbox (&amp; very likely all the other Desktop Environments &amp; Window Managers) without laying a hand to keyboard or mouse or using a Graphical Desktop Manager of any kind. ''(again)''
+
+We had auto login happening for years with Openbox (&amp; others) on Arch. Then systemd came along &amp; we couldn't do it any more.
+
+
+==The First Step -&gt; Login Automatically calls Startx:==
+
+The closest we could get was done by adding the following lines to the user accounts '''~/.bash_profile''' .
+
+
+ ''' # Following automatically calls - startx when you login:'''
+ &lt;nowiki&gt;[[ -z $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]] &amp;&amp; exec startx&lt;/nowiki&gt;
+
+
+This gains the ability to just login at the console at the end of the boot process. The line of code quoted above automatically calls ''startx'' when you login; ''startx'' then runs the user's ''~/.xinitrc'' which may be set up to call Tint2, &amp; the like &amp; then finish off with Openbox, which of course loads Openbox. 
+
+This is OK, as it did away with the need to manually type in ''startx''.  Though this was still not good enough for those of us using secure, single user computers. So there has still been this particular need to satisfy since systemd has wrought so many core changes to so many distros.
+
+
+==A Solution has been found:==
+
+There are two ways of doing this next bit, so read both &amp; choose one of them before you start into it?
+
+You will need root access for which ever one you choose to use. 
+
+So '''either''' start your favourite file manager like this:
+
+
+ sudo &lt;file.manager.name&gt;
+
+
+&amp; then go to here '''/usr/lib/systemd/system/''' via the selecting the correct icons in your chosen file manager, &amp; then find this file '''getty@.service''' &amp; copy it to here '''/etc/systemd/system/''' where you need to rename it to '''autologin@.service'''
+
+
+'''OR''' ''(this is much quicker &amp; easier)'', copy the following command by triple left clicking with your mouse button on it. 
+
+Then paste it to your Terminal prompt after already having typed in '''sudo''' ''(or you can use the keyboard arrow keys to go back to the beginning of the command &amp; then type in sudo &amp; the space after it of course)'':
+
+
+ cp /usr/lib/systemd/system/getty@.service /etc/systemd/system/autologin@.service
+
+
+Then hit the Enter key, &amp; after putting in your password for sudo, the file will be copied &amp; renamed.
+
+
+==Just a Tiny bit of Text Editing:==
+
+Next we need to open our favourite text editor as '''root''' , so using the usual commands in the Terminal will do it quick smart:
+
+
+ sudo &lt;text.editor.name&gt; /etc/systemd/system/autologin@.service 
+
+
+Now we need to edit this file just a little bit. ;)
+
+Look at the file in your text editor &amp; you will find the section starting with '''[Service]''' it will be sitting tight against the left hand side of the document. Its not hard to find as the file isn't that big.
+
+Then we need to edit the 2nd line below the '''[Service]''' heading, which looks like this:
+
+
+ ExecStart=-/sbin/agetty --noclear %I 38400 linux 
+
+
+The edit requires us to add your ''user account name'', OK. Not root , the other one, &amp; a couple of other characters &amp; a space right before it, so there really isn't much to it really. 
+
+We want it to look like this but with your real user account name replacing the temporary place holder &lt;your.user.name&gt; :
+
+
+ ExecStart=-/sbin/agetty --noclear -a &lt;your.user.name&gt; %I 38400 linux 
+
+
+You should have noticed that there is now an '''-a''' there, one space before where your user name now should be, which also has a space ''after'' it.
+
+Mine looks like this now:
+
+
+ ExecStart=-/sbin/agetty --noclear -a handy %I 38400 linux
+
+
+Once you have got the '''-a &lt;your.user.name&gt;''' bit sorted out, save the file &amp; exit your text editor.
+
+
+==Copy &amp; Execute Four Commands:== 
+
+The next bit is easy, you just have to copy four commands to the Terminal, though first we'll enter '''super user''' mode, which will save mucking about with sudo just for this next bit. 
+
+So enter '''su''' at the Terminal prompt, then your root password.
+
+Now copy each one of these commands one after the other, from the top of the list to the bottom into the Terminal pressing enter after you paste each one in. 
+
+These commands are making permanent systemd configuration settings. 
+
+After the last one you will need to reboot straight away:
+
+
+ systemctl daemon-reload
+ systemctl disable getty@tty1
+ systemctl enable autologin@tty1
+ systemctl start autologin@tty1
+
+
+If all goes like it is supposed to, then you will boot straight to your Desktop or Window Manager's GUI interface.
+
+
+==Done Finished:==
+
+I don't have a Graphical Desktop Manager (GDM), installed, so I was already a couple of steps along the way in this process. I think that it is most suitable for people running WM's (window managers) like Openbox, but there are others who would happily do away with their GDM as they don't need it &amp; would prefer the lightest, quickest system that they can build.
+
+So thankfully, we now at last have a means to accomplish auto-login without the use of a GDM whilst using distros that incorporate systemd into the way they operate. 
+
+
+I found the core of this info on the Archwiki, though fair warning, they do overcomplicate it some: https://wiki.archlinux.org/index.php/Automatic_login_to_virtual_console
+
+If you are unlucky enough to strike a problem with the above process, then go over &amp; give their page ''(its not that long)'' a read through, as there is a chance that it ''may'' shed some light on the problem.
+
+[[Auto-Login for Window Managers|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>ssbugcl6zirl6x7jop6m9vaxdrhg8ln</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4738</id>
+      <parentid>4644</parentid>
+      <timestamp>2013-01-12T14:09:16Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5271">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+==Connexion automatique sans un gestionnaire de bureau graphique et avec Systemd:==
+
+Enfin, nous pouvons démarrer nos ordinateurs directement dans Openbox (et très probablement tous les autres environnements de bureau et gestionnaires de fenêtres) sans utiliser le clavier ou la souris ou un gestionnaire de bureau graphique quelconque.
+
+Nous avions la connexion automatique depuis des années avec Openbox (et autres) sur Arch. Puis est venu ''systemd'' et nous ne pouvions plus le faire.
+
+
+==La première étape -&gt; la connexion automatique appelle Startx:==
+
+Ce que nous avons pu obtenir a été fait en ajoutant les lignes suivantes à '''~/.bash_profile''' du compte de l'utilisateur.
+
+
+ ''' # Following automatically calls - startx when you login:'''
+ &lt;nowiki&gt;[[ -z $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]] &amp;&amp; exec startx&lt;/nowiki&gt;
+
+
+Cela donne la capacité de vous connecter simplement à la console à la fin du processus de démarrage. La ligne de code citée ci-dessus appelle automatiquement ''startx'' lorsque vous vous connectez; ''startx'' lance alors ''~/.xinitrc'' de l'utilisateur qui peut être réglé pour appeler Tint2, puis finir avec Openbox, ce qui bien sûr charge Openbox.
+
+C'est normal, car il a supprimé le besoin d'entrer manuellement dans ''startx''. Même si cela n'était toujours pas assez bon pour ceux d'entre nous qui utilisent des ordinateurs sécurisés mono-l'utilisateur. Il y a toujours eu ce besoin particulier à satisfaire depuis que systemd a apporté tellement de changements fondamentaux pour de nombreuses distributions.
+
+
+==Une solution a été trouvée:==
+
+Dans la séquence suivante, il y a deux façons de faire, alors lisez les deux et choisissez l'une d'entre elles avant de commencer.
+
+Qu'elle que soit la façon de faire, vous aurez besoin d'un accès root.
+
+Donc '''soit''' démarrer votre gestionnaire de fichiers préféré comme ceci:
+
+
+ sudo &lt;file.manager.name&gt;
+
+
+et puis allez ici: '''/usr/lib/systemd/system''' en sélectionnant les icônes correctes dans votre gestionnaire de fichiers. Puis cherchez ce fichier '''getty@.service''' et copiez-le ici: '''/etc/systemd/system/''' où vous devrez le renommer en '''autologin@.service'''
+
+
+'''OU''' ''(ce qui est beaucoup plus rapide et facile)'', copiez la commande suivante par un triple clic gauche avec votre souris sur celui-ci.
+
+Puis collez-la dans votre terminal après avoir préalablement tapé '''sudo''' ''(ou utilisez les touches fléchées du clavier pour revenir au début de la commande afin de rajouter sudo et un espace)'
+
+
+ cp /usr/lib/systemd/system/getty@.service /etc/systemd/system/autologin@.service
+
+
+Ensuite appuyez sur &lt;Entrée&gt;, et, après avoir renseigné votre mot de passe pour sudo, le fichier sera copié et renommé.
+
+
+==Juste un tout petit peu d'édition de texte:==
+
+Ensuite, nous devons ouvrir notre éditeur de texte préféré en tant que '''root''', donc en utilisant les commandes habituelles le terminal va le faire rapidement:
+
+
+ sudo &lt;text.editor.name&gt; /etc/systemd/system/autologin@.service 
+
+
+Maintenant il faut simplement éditer ce fichier.
+
+Consultez le fichier dans votre éditeur de texte et vous trouverez la section commençant par '''[Service]''' sur le côté gauche du document. Le fichier n'étant pas très volumineux, ce n'est pas difficile à trouver.
+
+Ensuite, nous devons modifier la deuxième ligne en dessous de la rubrique '''[Service]''', qui ressemble à ceci:
+
+
+ ExecStart=-/sbin/agetty --noclear %I 38400 linux 
+
+
+La modification exige d'ajouter votre ''nom d'utilisateur''.
+
+Nous voulons qu'il ressemble à cela, mais avec votre nom d'utilisateur réel remplaçant le &lt;your.user.name&gt; mis pour l'exemple:
+
+
+ ExecStart=-/sbin/agetty --noclear -a &lt;your.user.name&gt; %I 38400 linux 
+
+
+Vous remarquerez qu'il y a maintenant, avec un espace avant et après, un '''-a''', avant votre nom d'utilisateur.
+
+Le mien ressemble à ceci maintenant
+
+
+ ExecStart=-/sbin/agetty --noclear -a handy %I 38400 linux
+
+
+Une fois que vous avez obtenu '''-a &lt;your.user.name&gt;''', enregistrez le fichier et fermez votre éditeur de texte.
+
+
+==Copiez et exécutez quatre commandes:== 
+
+La séquence suivante est facile, il vous suffit juste de copier quatre commandes dans le terminal. Pour plus de simplicité, nous allons passer en mode '''super-utilisateur''' au lieu d'utiliser sudo.
+
+Alors tapez '''su''' dans le terminal, puis renseignez votre mot de passe root.
+
+Maintenant, copiez chacune de ces commandes dans le terminal, l'une après l'autre et dans le même ordre que ci-dessous, en appuyant sur &lt;Entrée&gt; à chaque fois
+
+Ces commandes activent de façon permanente, dans systemd, les paramètres de configuration réalisés plus haut.
+
+Après la dernière commande, vous aurez besoin de redémarrer tout de suite votre ordinateur:
+
+
+ systemctl daemon-reload
+ systemctl disable getty@tty1
+ systemctl enable autologin@tty1
+ systemctl start autologin@tty1
+
+
+Si tout se passe comme prévu, vous démarrez directement dans l'interface graphique de votre ordinateur de bureau ou du gestionnaire de fenêtres.
+
+
+[[Auto-Login for Window Managers|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>spbn2grq9juzh4muwdufuzukxok4m3v</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4753</id>
+      <parentid>4738</parentid>
+      <timestamp>2013-01-13T09:37:23Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5269">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Connexion automatique sans un gestionnaire de bureau graphique et avec Systemd:=
+
+Enfin, nous pouvons démarrer nos ordinateurs directement dans Openbox (et très probablement tous les autres environnements de bureau et gestionnaires de fenêtres) sans utiliser le clavier ou la souris ou un gestionnaire de bureau graphique quelconque.
+
+Nous avions la connexion automatique depuis des années avec Openbox (et autres) sur Arch. Puis est venu ''systemd'' et nous ne pouvions plus le faire.
+
+
+==La première étape -&gt; la connexion automatique appelle Startx:==
+
+Ce que nous avons pu obtenir a été fait en ajoutant les lignes suivantes à '''~/.bash_profile''' du compte de l'utilisateur.
+
+
+ ''' # Following automatically calls - startx when you login:'''
+ &lt;nowiki&gt;[[ -z $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]] &amp;&amp; exec startx&lt;/nowiki&gt;
+
+
+Cela donne la capacité de vous connecter simplement à la console à la fin du processus de démarrage. La ligne de code citée ci-dessus appelle automatiquement ''startx'' lorsque vous vous connectez; ''startx'' lance alors ''~/.xinitrc'' de l'utilisateur qui peut être réglé pour appeler Tint2, puis finir avec Openbox, ce qui bien sûr charge Openbox.
+
+C'est normal, car il a supprimé le besoin d'entrer manuellement dans ''startx''. Même si cela n'était toujours pas assez bon pour ceux d'entre nous qui utilisent des ordinateurs sécurisés mono-l'utilisateur. Il y a toujours eu ce besoin particulier à satisfaire depuis que systemd a apporté tellement de changements fondamentaux pour de nombreuses distributions.
+
+
+==Une solution a été trouvée:==
+
+Dans la séquence suivante, il y a deux façons de faire, alors lisez les deux et choisissez l'une d'entre elles avant de commencer.
+
+Qu'elle que soit la façon de faire, vous aurez besoin d'un accès root.
+
+Donc '''soit''' démarrer votre gestionnaire de fichiers préféré comme ceci:
+
+
+ sudo &lt;file.manager.name&gt;
+
+
+et puis allez ici: '''/usr/lib/systemd/system''' en sélectionnant les icônes correctes dans votre gestionnaire de fichiers. Puis cherchez ce fichier '''getty@.service''' et copiez-le ici: '''/etc/systemd/system/''' où vous devrez le renommer en '''autologin@.service'''
+
+
+'''OU''' ''(ce qui est beaucoup plus rapide et facile)'', copiez la commande suivante par un triple clic gauche avec votre souris sur celui-ci.
+
+Puis collez-la dans votre terminal après avoir préalablement tapé '''sudo''' ''(ou utilisez les touches fléchées du clavier pour revenir au début de la commande afin de rajouter sudo et un espace)'
+
+
+ cp /usr/lib/systemd/system/getty@.service /etc/systemd/system/autologin@.service
+
+
+Ensuite appuyez sur &lt;Entrée&gt;, et, après avoir renseigné votre mot de passe pour sudo, le fichier sera copié et renommé.
+
+
+==Juste un tout petit peu d'édition de texte:==
+
+Ensuite, nous devons ouvrir notre éditeur de texte préféré en tant que '''root''', donc en utilisant les commandes habituelles le terminal va le faire rapidement:
+
+
+ sudo &lt;text.editor.name&gt; /etc/systemd/system/autologin@.service 
+
+
+Maintenant il faut simplement éditer ce fichier.
+
+Consultez le fichier dans votre éditeur de texte et vous trouverez la section commençant par '''[Service]''' sur le côté gauche du document. Le fichier n'étant pas très volumineux, ce n'est pas difficile à trouver.
+
+Ensuite, nous devons modifier la deuxième ligne en dessous de la rubrique '''[Service]''', qui ressemble à ceci:
+
+
+ ExecStart=-/sbin/agetty --noclear %I 38400 linux 
+
+
+La modification exige d'ajouter votre ''nom d'utilisateur''.
+
+Nous voulons qu'il ressemble à cela, mais avec votre nom d'utilisateur réel remplaçant le &lt;your.user.name&gt; mis pour l'exemple:
+
+
+ ExecStart=-/sbin/agetty --noclear -a &lt;your.user.name&gt; %I 38400 linux 
+
+
+Vous remarquerez qu'il y a maintenant, avec un espace avant et après, un '''-a''', avant votre nom d'utilisateur.
+
+Le mien ressemble à ceci maintenant
+
+
+ ExecStart=-/sbin/agetty --noclear -a handy %I 38400 linux
+
+
+Une fois que vous avez obtenu '''-a &lt;your.user.name&gt;''', enregistrez le fichier et fermez votre éditeur de texte.
+
+
+==Copiez et exécutez quatre commandes:== 
+
+La séquence suivante est facile, il vous suffit juste de copier quatre commandes dans le terminal. Pour plus de simplicité, nous allons passer en mode '''super-utilisateur''' au lieu d'utiliser sudo.
+
+Alors tapez '''su''' dans le terminal, puis renseignez votre mot de passe root.
+
+Maintenant, copiez chacune de ces commandes dans le terminal, l'une après l'autre et dans le même ordre que ci-dessous, en appuyant sur &lt;Entrée&gt; à chaque fois
+
+Ces commandes activent de façon permanente, dans systemd, les paramètres de configuration réalisés plus haut.
+
+Après la dernière commande, vous aurez besoin de redémarrer tout de suite votre ordinateur:
+
+
+ systemctl daemon-reload
+ systemctl disable getty@tty1
+ systemctl enable autologin@tty1
+ systemctl start autologin@tty1
+
+
+Si tout se passe comme prévu, vous démarrez directement dans l'interface graphique de votre ordinateur de bureau ou du gestionnaire de fenêtres.
+
+
+[[Auto-Login for Window Managers|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>7vxjbojs83d2kg3hcypgudlg51oy4ml</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

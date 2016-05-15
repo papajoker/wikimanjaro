@@ -1,0 +1,2303 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Cfdisk : scénarios de partitionnement basique</title>
+    <ns>0</ns>
+    <id>680</id>
+    <revision>
+      <id>4559</id>
+      <timestamp>2013-01-09T21:42:13Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  =EN COURS DE TRADUCTION=  = Overview =  {{tip|The '''[[Installation_Guide_for_Experienced_Users_0.8.3#Preparing_the_Hard_Disk|D...&quot;</comment>
+      <text xml:space="preserve" bytes="16950">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+= Overview =
+
+{{tip|The '''[[Installation_Guide_for_Experienced_Users_0.8.3#Preparing_the_Hard_Disk|Disk Preparation Section]]''' of the Experienced User's guide provides an overview and explanation of primary and logical partitions, as well as advice on what to do if intending to use a shared Home Partition.}}
+
+
+Basic partitioning scenarios have been presented below for illustrative purposes. In particular, the intention is to illustrate the substantial degree of flexibility when deciding upon an appropriate partitioning scheme when using ''cfdisk''.
+
+
+=Scénario à deux partitions=
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A seperate swap partition will also be created in the remaining space, using a logical partition (SDA2/SDA5).
+
+==Creating the Partitions==
+
+[[File: NewPpart-082.png|thumb|left|375px]]
+
+
+Use the left and right arrow keys to select the available options in ''cfdisk''. The up and down arrow keys are used to select disk space / partitions. In this instance, Manjaro is being installed on a clean hard disk with no existing partitions or data. '''New''' has been highlighted to create the first new partition.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newprimary-082.png|thumb|left|375px]]
+
+
+The first step will be to define if it is a Primary or Logical Partition. In this instance, '''Primary''' has been selected.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newPsize-082.png|thumb|left|375px]]
+
+
+The second step is to define the size of the partition. In this instance, 40,949MB (40GB) out of a total of 42,949MB (42GB), has been allocated, with the intention to leave approximately 2000MB (2GB) remaining for the swap partition.
+
+{{tip|If, for example, the intention was to leave 20GB of unallocated space on the author's hard drive to install another operating system later, then 20949MB (20GB) would be allocated instead. Once the 2GB swap partition was allocated, this would leave 20GB of space remaining. An installer used by a distro like Mint or Ubuntu would even automatically detect and use this unallocated space for installation alongside Manjaro.}}
+
+Once the value has been set, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: newPplace-082.png|thumb|left|375px]]
+
+
+The third (and final) step is to define where the partition starts on your hard drive (i.e. from the beginning or the end of the available space). As with this instance - unless you have a specific reason to do otherwise - it is recommended to always start your partition(s) at the beginning of your hard drive / available space on your hard drive.
+
+Once the selection has been highlighted, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewPboot-082.png|thumb|left|375px]]
+
+
+This partition must also be bootable, as it is intended to contain the Boot/GRUB. To mark it as such, the '''Bootable''' flag/option has been highlighted.
+
+{{note|Unless you intend to use an existing bootable partition (i.e. used by an existing Linux operating system), then you must also do the same for the partition where you intended to store the GRUB.}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLpart-082.png|thumb|left|375px]]
+
+
+Note that the partition  - listed as sda1 - has now been flagged as ''boot''.
+
+With this complete, the swap partition will now be created. This is undertaken by first selecting the free space underneath the partition, and then highlighting the '''New''' option.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLogical-082.png|thumb|left|375px]]
+
+
+As before, the first step is to define the type of partition to be used. In this instance, for illustrative purposes, the swap partition has been defined as a '''Logical''' partition, although it would make no real difference if it were defined as a primary partition instead.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: logicalPsize-082.png|thumb|left|375px]]
+
+
+Again, the second step is to define the size of the new partition. In this instance, the remaining space of 2GB has been allocated, which has already been listed by default.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapdefine-082.png|thumb|left|375px]]
+
+
+As this newly created partition is intended to be used as a swap partition, it is necessary to specifically define its type as such. To do so, the '''Type''' option has been highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: typedefine-082.png|thumb|left|375px]]
+
+
+A list of (hexadecimal) codes corresponding to the available types of partition will be displayed. It will be necessary to press a key to continue and enter the appropriate code.
+
+In this instance - as illustrated - the code '''82''' has been typed in to define the partition type as swap.
+
+Once the code has been typed in, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: writepartv2-082.png|thumb|left|375px]]
+
+
+Note that the swap partition has been listed as '''sda5'''. This is because primary partitions only range from sda1 to sda4, while logical partitions always start from sda5. Also note that sda5 is listed as a swap partition.
+
+With both partitions created and defined, the partition table must now be written to the hard disk. To do so, the '''write''' option must be highlighted, before pressing &lt;enter&gt; to continue.
+
+Upon doing so a warning message will appear. It will also be necessary to confirm your intention to write the new partitions by typing in '''yes''' at the prompt and then pressing &lt;enter&gt; again.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskquit-082.png|thumb|left|375px]]
+
+
+With the partitions completed and written, highlight '''quit''' to exit from ''cfdisk''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File: partitiondone-082.png|thumb|left|375px]]
+
+
+You will be returned to the hard disk selection menu. Highlight '''Done''' as the disk partitioning has been completed.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: partitionmsg-082.png|thumb|left|375px]]
+
+
+A message will appear stating that it will now be necessary to select the appropriate partitions to use for the Manjaro installation.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectdiskagain-082.png|thumb|left|375px]]
+
+
+As before,The installer will automatically detect and display all hard discs connected to your system. Where more than one drive is present on your system, highlight the drive partitioned earlier.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmswap-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Swap'''. In this instance, the swap partition is '''sda5''', which has been highlighted for selection.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapwarn-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmroot-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Root'''. Again, this is where Manjaro itself (and later, any newly installed applications for it) will be stored. In this instance, it's an easy choice as the only remaining partition available is '''sda1'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmFS-082.png|thumb|left|375px]]
+
+
+'''Set the file system to manage your files'''. If you are unsure which file system to choose, as illustrated, then it is recommend to highlight [http://en.wikipedia.org/wiki/Ext4 ext4], as this is one of the latest and perhaps most widely used Linux file systems.
+
+Press &lt;enter&gt; to continue
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmRT-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntBoot-082.png|thumb|left|375px]]
+
+
+'''Select any other partitions to mount at bootup.''' If a separate ''Boot Partition'' had been created, it would be selected here. Upon pressing &lt;enter&gt; to continue, it would then be necessary to select which file system to use for it (e.g. ext4), and then to confirm that it is to be mounted at '/boot'.
+
+Once completed, the process would also be repeated for any other relevant partitions, such as if a separate ''Home Partition'' had been created. '''In essence, it will be necessary to select and mount all of the partitions you had created for your Manjaro installation so that they will all be available for use upon booting up'''.
+
+However, as in this instance only two partitions had been created (one of which combines Boot, Root, and Home), there are no further partitions to select.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmPart-082.png|thumb|left|375px]]
+
+
+'''Review and confirm the mounted partitions.''' A confirmation message will appear, listing all of the partitions to mounted during the bootup of your Manjaro installation. Ensure that all of your intended partitions have been listed, and that they have been listed correctly (e.g. purposes and file systems). If something is amiss, highlight ''No'' to be taken back.
+
+Again, in this instance, the message confirms that sda5 is to be mounted as the Swap Partition, and that sda1 is to be mounted (using the ext4 file system) for everything else.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntsuccess-082.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear to confirm that the partitions have been successfully mounted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: Pewgoback-082.png|thumb|left|375px]]
+
+
+'''Return to the Main Menu.''' As this step has been completed, highlight '''Main menu''' and press &lt;enter&gt; to be taken back to the installer's main menu. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Install Manjaro==
+
+'''[[Installation_Guide_for_Experienced_Users_0.8.2#Installing Manjaro|Return to the Installation Guide for Experienced Users]]'''
+
+
+=Scénario à trois partitions=
+
+In this scenario, a partition will be created especially for Boot, seperate from the partition for Root and Home. A seperate swap partition will also be created. All the partitions created will be Primary Partitions.
+
+==Creating the Partitions==
+[[File:partition_free.png|thumb|left|375px]]
+
+
+In order to create a new partition, use your arrow keys to switch through the options and choose '''new'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_pref.png|thumb|left|375px]]
+
+
+There are two preferences when creating partitions. ''Primary'' and ''Logical'' partitions. It's good to know that you can only create four primary partitions per Hard Drive.  Choose the desired preference, then press enter to select it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_boot_100.png|thumb|left|375px]]
+
+
+We are now going to create the ''boot'' partition. For the ''boot'' partition, 100 MB and higher in recommended. Enter the desired size and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_part_beg.png|thumb|left|375px]]
+
+
+After that, the ''Beginning'' option will be highlighted. It's recommended to keep it that way, press ENTER to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_bootable.png|thumb|left|375px]]
+
+
+We also need to make the ''boot'' partition ''Bootable'', press ENTER when ''Bootable'' is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:new_freespace.png|thumb|left|375px]]
+
+
+We are now going to create a ''swap'' partition. After creating the ''boot'' partition, use your UP/DOWN arrow keys and choose ''Free Space''. Use your arrow keys to navigate to the ''new'' option then, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:free_primary.png|thumb|left|375px]]
+
+
+After that, press ENTER again when the ''Primary'' preference is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_size.png|thumb|left|375px]]
+
+
+Now, enter a size for your ''swap'' partition. The recommended size for the swap partition is the same as your RAM. In this tutorial we are going to make a 1 GB swap partition, for that we will enter ''1000'' because ''cfdisk'' measures the size in MB.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type1.png|thumb|left|375px]]
+
+
+Because we'll use this partition for swap, we have to change it's type, so, when the ''Type'' option is highlighted, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type2.png|thumb|left|375px]]
+
+
+You will be prompted with a list of file systems, for swap we'll have to enter ''82'', we'll confirm by pressing ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_new.png|thumb|left|375px]]
+
+
+After that, we are going to create a ''root'' (/) partition. Here's where the Operating System is going to be installed. Again, use your UP/DOWN keys to select the ''Free Space'' option, press ENTER to confirm. Using your arrow keys, choose ''new'' from the options at the bottom then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_size.png|thumb|left|375px]]
+
+
+Enter the size in MB for your ''root'' partition. The recommended size for the ''root'' partition would be 4 GB or more and confirm it by pressing the ENTER key.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_write.png|thumb|left|375px]]
+
+
+After that, you'll be prompted with your new partition scheme. To continue, use your arrow keys and select the ''Write'' option at the bottom and press ENTER, this will apply the changes we've made so far.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_quit.png|thumb|left|375px]]
+
+
+That being done, use your arrow keys and select the ''Quit'' option and press ENTER to exit ''cfdisk''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File:part_done.png|thumb|left|375px]] 
+
+
+Now, hit ENTER on the ''Done'' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:prompt_ok.png|thumb|left|375px]]
+
+
+Press ENTER again, when you get prompted with some information about what's coming next.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:disk_list.png|thumb|left|375px]]
+
+
+You will be prompted with a list of available drives, choose the one you've partitioned earlier, then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_swap.png|thumb|left|375px]]
+
+
+You will now have to select the swap partition. In this case it's ''/dev/sda2''. Use your arrow keys and highlight your previously created swap partition and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_swap.png|thumb|left|375px]]
+
+
+When getting prompted for formatting the swap partition, choose ''Yes'' and hit ENTER. {{Warning|This will format the partition, the changes cannot be reverted.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_root.png|thumb|left|375px]]
+
+
+You will now have to select the ''root'' ( / ) partition. In this particular case it's ''/dev/sda3''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_fs.png|thumb|left|375px]]
+
+
+You'll be prompted with a list of file systems, choose one of them, preferably EXT4 and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_root.png|thumb|left|375px]]
+
+
+Choose ''Yes'' when prompted to format the partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_prompt.png|thumb|left|375px]]
+
+
+There will be an option to mount static partitions at boot. Here you'll select the ''boot'' partition you've created earlier.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_fs.png|thumb|left|375px]]
+
+
+Now, you will have to select a file system for you ''boot'' partition. The EXT2 file system is recommended but not necessary.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_mount.png|thumb|left|375px]]
+
+
+Set the mount point to ''/boot'' then hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_boot.png|thumb|left|375px]]
+
+
+Select ''Yes'' and press ENTER when prompted for formatting.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:additional_boot.png|thumb|left|375px]]
+
+
+You will be able to mount other partitions at boot up. It's very useful in case you have a ''home'' partition for example. Otherwise, select ''Done'' and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:final_prompt.png|thumb|left|375px]]
+
+
+An informational window will be prompted. Here you will be able to see info about your previously created partitions, including the mount points and types. Hit ENTER if you want to continue. Note: This will write the changes to your Hard Drive. The process if irreversible.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:installer_format.png|thumb|left|375px]]
+
+
+If you chose to continue (selected ''Yes''), the installer will format and set mount points for your partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_success.png|thumb|left|375px]]
+
+
+The process will take just a few seconds, depending on your hardware. Press ENTER when prompted with the success message.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:main_menu.png|thumb|left|375px]]
+
+
+Now, we're done setting up the partitions. Use your arrow keys and highlight ''Main menu'', then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Install Manjaro==
+
+'''[[Installation_Guide_for_Experienced_Users_0.8.3#Installing Manjaro|Return to the Installation Guide for Experienced Users]]'''
+
+
+=See Also=
+
+
+[[Cfdisk Basic Partitioning Scenarios|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Installation]]</text>
+      <sha1>qz3r1loip8ixr1kc9rdq348t5rs0qaa</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4561</id>
+      <parentid>4559</parentid>
+      <timestamp>2013-01-09T21:45:21Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16962">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+= Overview =
+
+{{tip|The '''[[Installation_Guide_for_Experienced_Users_0.8.3#Preparing_the_Hard_Disk|Disk Preparation Section]]''' of the Experienced User's guide provides an overview and explanation of primary and logical partitions, as well as advice on what to do if intending to use a shared Home Partition.}}
+
+
+Basic partitioning scenarios have been presented below for illustrative purposes. In particular, the intention is to illustrate the substantial degree of flexibility when deciding upon an appropriate partitioning scheme when using ''cfdisk''.
+
+
+=Scénario à deux partitions=
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A seperate swap partition will also be created in the remaining space, using a logical partition (SDA2/SDA5).
+
+==Creating the Partitions==
+
+[[File: NewPpart-082.png|thumb|left|375px]]
+
+
+Use the left and right arrow keys to select the available options in ''cfdisk''. The up and down arrow keys are used to select disk space / partitions. In this instance, Manjaro is being installed on a clean hard disk with no existing partitions or data. '''New''' has been highlighted to create the first new partition.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newprimary-082.png|thumb|left|375px]]
+
+
+The first step will be to define if it is a Primary or Logical Partition. In this instance, '''Primary''' has been selected.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newPsize-082.png|thumb|left|375px]]
+
+
+The second step is to define the size of the partition. In this instance, 40,949MB (40GB) out of a total of 42,949MB (42GB), has been allocated, with the intention to leave approximately 2000MB (2GB) remaining for the swap partition.
+
+{{tip|If, for example, the intention was to leave 20GB of unallocated space on the author's hard drive to install another operating system later, then 20949MB (20GB) would be allocated instead. Once the 2GB swap partition was allocated, this would leave 20GB of space remaining. An installer used by a distro like Mint or Ubuntu would even automatically detect and use this unallocated space for installation alongside Manjaro.}}
+
+Once the value has been set, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: newPplace-082.png|thumb|left|375px]]
+
+
+The third (and final) step is to define where the partition starts on your hard drive (i.e. from the beginning or the end of the available space). As with this instance - unless you have a specific reason to do otherwise - it is recommended to always start your partition(s) at the beginning of your hard drive / available space on your hard drive.
+
+Once the selection has been highlighted, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewPboot-082.png|thumb|left|375px]]
+
+
+This partition must also be bootable, as it is intended to contain the Boot/GRUB. To mark it as such, the '''Bootable''' flag/option has been highlighted.
+
+{{note|Unless you intend to use an existing bootable partition (i.e. used by an existing Linux operating system), then you must also do the same for the partition where you intended to store the GRUB.}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLpart-082.png|thumb|left|375px]]
+
+
+Note that the partition  - listed as sda1 - has now been flagged as ''boot''.
+
+With this complete, the swap partition will now be created. This is undertaken by first selecting the free space underneath the partition, and then highlighting the '''New''' option.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLogical-082.png|thumb|left|375px]]
+
+
+As before, the first step is to define the type of partition to be used. In this instance, for illustrative purposes, the swap partition has been defined as a '''Logical''' partition, although it would make no real difference if it were defined as a primary partition instead.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: logicalPsize-082.png|thumb|left|375px]]
+
+
+Again, the second step is to define the size of the new partition. In this instance, the remaining space of 2GB has been allocated, which has already been listed by default.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapdefine-082.png|thumb|left|375px]]
+
+
+As this newly created partition is intended to be used as a swap partition, it is necessary to specifically define its type as such. To do so, the '''Type''' option has been highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: typedefine-082.png|thumb|left|375px]]
+
+
+A list of (hexadecimal) codes corresponding to the available types of partition will be displayed. It will be necessary to press a key to continue and enter the appropriate code.
+
+In this instance - as illustrated - the code '''82''' has been typed in to define the partition type as swap.
+
+Once the code has been typed in, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: writepartv2-082.png|thumb|left|375px]]
+
+
+Note that the swap partition has been listed as '''sda5'''. This is because primary partitions only range from sda1 to sda4, while logical partitions always start from sda5. Also note that sda5 is listed as a swap partition.
+
+With both partitions created and defined, the partition table must now be written to the hard disk. To do so, the '''write''' option must be highlighted, before pressing &lt;enter&gt; to continue.
+
+Upon doing so a warning message will appear. It will also be necessary to confirm your intention to write the new partitions by typing in '''yes''' at the prompt and then pressing &lt;enter&gt; again.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskquit-082.png|thumb|left|375px]]
+
+
+With the partitions completed and written, highlight '''quit''' to exit from ''cfdisk''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File: partitiondone-082.png|thumb|left|375px]]
+
+
+You will be returned to the hard disk selection menu. Highlight '''Done''' as the disk partitioning has been completed.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: partitionmsg-082.png|thumb|left|375px]]
+
+
+A message will appear stating that it will now be necessary to select the appropriate partitions to use for the Manjaro installation.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectdiskagain-082.png|thumb|left|375px]]
+
+
+As before,The installer will automatically detect and display all hard discs connected to your system. Where more than one drive is present on your system, highlight the drive partitioned earlier.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmswap-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Swap'''. In this instance, the swap partition is '''sda5''', which has been highlighted for selection.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapwarn-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmroot-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Root'''. Again, this is where Manjaro itself (and later, any newly installed applications for it) will be stored. In this instance, it's an easy choice as the only remaining partition available is '''sda1'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmFS-082.png|thumb|left|375px]]
+
+
+'''Set the file system to manage your files'''. If you are unsure which file system to choose, as illustrated, then it is recommend to highlight [http://en.wikipedia.org/wiki/Ext4 ext4], as this is one of the latest and perhaps most widely used Linux file systems.
+
+Press &lt;enter&gt; to continue
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmRT-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntBoot-082.png|thumb|left|375px]]
+
+
+'''Select any other partitions to mount at bootup.''' If a separate ''Boot Partition'' had been created, it would be selected here. Upon pressing &lt;enter&gt; to continue, it would then be necessary to select which file system to use for it (e.g. ext4), and then to confirm that it is to be mounted at '/boot'.
+
+Once completed, the process would also be repeated for any other relevant partitions, such as if a separate ''Home Partition'' had been created. '''In essence, it will be necessary to select and mount all of the partitions you had created for your Manjaro installation so that they will all be available for use upon booting up'''.
+
+However, as in this instance only two partitions had been created (one of which combines Boot, Root, and Home), there are no further partitions to select.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmPart-082.png|thumb|left|375px]]
+
+
+'''Review and confirm the mounted partitions.''' A confirmation message will appear, listing all of the partitions to mounted during the bootup of your Manjaro installation. Ensure that all of your intended partitions have been listed, and that they have been listed correctly (e.g. purposes and file systems). If something is amiss, highlight ''No'' to be taken back.
+
+Again, in this instance, the message confirms that sda5 is to be mounted as the Swap Partition, and that sda1 is to be mounted (using the ext4 file system) for everything else.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntsuccess-082.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear to confirm that the partitions have been successfully mounted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: Pewgoback-082.png|thumb|left|375px]]
+
+
+'''Return to the Main Menu.''' As this step has been completed, highlight '''Main menu''' and press &lt;enter&gt; to be taken back to the installer's main menu. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Install Manjaro==
+
+'''[[Installation_Guide_for_Experienced_Users_0.8.2#Installing Manjaro|Return to the Installation Guide for Experienced Users]]'''
+
+
+=Scénario à trois partitions=
+
+In this scenario, a partition will be created especially for Boot, seperate from the partition for Root and Home. A seperate swap partition will also be created. All the partitions created will be Primary Partitions.
+
+==Creating the Partitions==
+[[File:partition_free.png|thumb|left|375px]]
+
+
+In order to create a new partition, use your arrow keys to switch through the options and choose '''new'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_pref.png|thumb|left|375px]]
+
+
+There are two preferences when creating partitions. ''Primary'' and ''Logical'' partitions. It's good to know that you can only create four primary partitions per Hard Drive.  Choose the desired preference, then press enter to select it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_boot_100.png|thumb|left|375px]]
+
+
+We are now going to create the ''boot'' partition. For the ''boot'' partition, 100 MB and higher in recommended. Enter the desired size and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_part_beg.png|thumb|left|375px]]
+
+
+After that, the ''Beginning'' option will be highlighted. It's recommended to keep it that way, press ENTER to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_bootable.png|thumb|left|375px]]
+
+
+We also need to make the ''boot'' partition ''Bootable'', press ENTER when ''Bootable'' is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:new_freespace.png|thumb|left|375px]]
+
+
+We are now going to create a ''swap'' partition. After creating the ''boot'' partition, use your UP/DOWN arrow keys and choose ''Free Space''. Use your arrow keys to navigate to the ''new'' option then, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:free_primary.png|thumb|left|375px]]
+
+
+After that, press ENTER again when the ''Primary'' preference is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_size.png|thumb|left|375px]]
+
+
+Now, enter a size for your ''swap'' partition. The recommended size for the swap partition is the same as your RAM. In this tutorial we are going to make a 1 GB swap partition, for that we will enter ''1000'' because ''cfdisk'' measures the size in MB.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type1.png|thumb|left|375px]]
+
+
+Because we'll use this partition for swap, we have to change it's type, so, when the ''Type'' option is highlighted, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type2.png|thumb|left|375px]]
+
+
+You will be prompted with a list of file systems, for swap we'll have to enter ''82'', we'll confirm by pressing ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_new.png|thumb|left|375px]]
+
+
+After that, we are going to create a ''root'' (/) partition. Here's where the Operating System is going to be installed. Again, use your UP/DOWN keys to select the ''Free Space'' option, press ENTER to confirm. Using your arrow keys, choose ''new'' from the options at the bottom then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_size.png|thumb|left|375px]]
+
+
+Enter the size in MB for your ''root'' partition. The recommended size for the ''root'' partition would be 4 GB or more and confirm it by pressing the ENTER key.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_write.png|thumb|left|375px]]
+
+
+After that, you'll be prompted with your new partition scheme. To continue, use your arrow keys and select the ''Write'' option at the bottom and press ENTER, this will apply the changes we've made so far.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_quit.png|thumb|left|375px]]
+
+
+That being done, use your arrow keys and select the ''Quit'' option and press ENTER to exit ''cfdisk''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File:part_done.png|thumb|left|375px]] 
+
+
+Now, hit ENTER on the ''Done'' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:prompt_ok.png|thumb|left|375px]]
+
+
+Press ENTER again, when you get prompted with some information about what's coming next.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:disk_list.png|thumb|left|375px]]
+
+
+You will be prompted with a list of available drives, choose the one you've partitioned earlier, then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_swap.png|thumb|left|375px]]
+
+
+You will now have to select the swap partition. In this case it's ''/dev/sda2''. Use your arrow keys and highlight your previously created swap partition and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_swap.png|thumb|left|375px]]
+
+
+When getting prompted for formatting the swap partition, choose ''Yes'' and hit ENTER. {{Warning|This will format the partition, the changes cannot be reverted.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_root.png|thumb|left|375px]]
+
+
+You will now have to select the ''root'' ( / ) partition. In this particular case it's ''/dev/sda3''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_fs.png|thumb|left|375px]]
+
+
+You'll be prompted with a list of file systems, choose one of them, preferably EXT4 and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_root.png|thumb|left|375px]]
+
+
+Choose ''Yes'' when prompted to format the partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_prompt.png|thumb|left|375px]]
+
+
+There will be an option to mount static partitions at boot. Here you'll select the ''boot'' partition you've created earlier.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_fs.png|thumb|left|375px]]
+
+
+Now, you will have to select a file system for you ''boot'' partition. The EXT2 file system is recommended but not necessary.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_mount.png|thumb|left|375px]]
+
+
+Set the mount point to ''/boot'' then hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_boot.png|thumb|left|375px]]
+
+
+Select ''Yes'' and press ENTER when prompted for formatting.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:additional_boot.png|thumb|left|375px]]
+
+
+You will be able to mount other partitions at boot up. It's very useful in case you have a ''home'' partition for example. Otherwise, select ''Done'' and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:final_prompt.png|thumb|left|375px]]
+
+
+An informational window will be prompted. Here you will be able to see info about your previously created partitions, including the mount points and types. Hit ENTER if you want to continue. Note: This will write the changes to your Hard Drive. The process if irreversible.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:installer_format.png|thumb|left|375px]]
+
+
+If you chose to continue (selected ''Yes''), the installer will format and set mount points for your partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_success.png|thumb|left|375px]]
+
+
+The process will take just a few seconds, depending on your hardware. Press ENTER when prompted with the success message.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:main_menu.png|thumb|left|375px]]
+
+
+Now, we're done setting up the partitions. Use your arrow keys and highlight ''Main menu'', then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Install Manjaro==
+
+'''[[Guide d'installation de manjaro 0.8.3 Expert#Installation de Manjaro|Retour au Guide d'installation poue utilisateurs expérimentés]]'''
+
+
+=See Also=
+
+
+[[Cfdisk Basic Partitioning Scenarios|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Installation]]</text>
+      <sha1>4zynpewubgultkj5pt8g119p7mtjx9m</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4562</id>
+      <parentid>4561</parentid>
+      <timestamp>2013-01-09T21:46:34Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16966">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+= Overview =
+
+{{tip|The '''[[Installation_Guide_for_Experienced_Users_0.8.3#Preparing_the_Hard_Disk|Disk Preparation Section]]''' of the Experienced User's guide provides an overview and explanation of primary and logical partitions, as well as advice on what to do if intending to use a shared Home Partition.}}
+
+
+Basic partitioning scenarios have been presented below for illustrative purposes. In particular, the intention is to illustrate the substantial degree of flexibility when deciding upon an appropriate partitioning scheme when using ''cfdisk''.
+
+
+=Scénario à deux partitions=
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A seperate swap partition will also be created in the remaining space, using a logical partition (SDA2/SDA5).
+
+==Creating the Partitions==
+
+[[File: NewPpart-082.png|thumb|left|375px]]
+
+
+Use the left and right arrow keys to select the available options in ''cfdisk''. The up and down arrow keys are used to select disk space / partitions. In this instance, Manjaro is being installed on a clean hard disk with no existing partitions or data. '''New''' has been highlighted to create the first new partition.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newprimary-082.png|thumb|left|375px]]
+
+
+The first step will be to define if it is a Primary or Logical Partition. In this instance, '''Primary''' has been selected.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newPsize-082.png|thumb|left|375px]]
+
+
+The second step is to define the size of the partition. In this instance, 40,949MB (40GB) out of a total of 42,949MB (42GB), has been allocated, with the intention to leave approximately 2000MB (2GB) remaining for the swap partition.
+
+{{tip|If, for example, the intention was to leave 20GB of unallocated space on the author's hard drive to install another operating system later, then 20949MB (20GB) would be allocated instead. Once the 2GB swap partition was allocated, this would leave 20GB of space remaining. An installer used by a distro like Mint or Ubuntu would even automatically detect and use this unallocated space for installation alongside Manjaro.}}
+
+Once the value has been set, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: newPplace-082.png|thumb|left|375px]]
+
+
+The third (and final) step is to define where the partition starts on your hard drive (i.e. from the beginning or the end of the available space). As with this instance - unless you have a specific reason to do otherwise - it is recommended to always start your partition(s) at the beginning of your hard drive / available space on your hard drive.
+
+Once the selection has been highlighted, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewPboot-082.png|thumb|left|375px]]
+
+
+This partition must also be bootable, as it is intended to contain the Boot/GRUB. To mark it as such, the '''Bootable''' flag/option has been highlighted.
+
+{{note|Unless you intend to use an existing bootable partition (i.e. used by an existing Linux operating system), then you must also do the same for the partition where you intended to store the GRUB.}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLpart-082.png|thumb|left|375px]]
+
+
+Note that the partition  - listed as sda1 - has now been flagged as ''boot''.
+
+With this complete, the swap partition will now be created. This is undertaken by first selecting the free space underneath the partition, and then highlighting the '''New''' option.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLogical-082.png|thumb|left|375px]]
+
+
+As before, the first step is to define the type of partition to be used. In this instance, for illustrative purposes, the swap partition has been defined as a '''Logical''' partition, although it would make no real difference if it were defined as a primary partition instead.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: logicalPsize-082.png|thumb|left|375px]]
+
+
+Again, the second step is to define the size of the new partition. In this instance, the remaining space of 2GB has been allocated, which has already been listed by default.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapdefine-082.png|thumb|left|375px]]
+
+
+As this newly created partition is intended to be used as a swap partition, it is necessary to specifically define its type as such. To do so, the '''Type''' option has been highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: typedefine-082.png|thumb|left|375px]]
+
+
+A list of (hexadecimal) codes corresponding to the available types of partition will be displayed. It will be necessary to press a key to continue and enter the appropriate code.
+
+In this instance - as illustrated - the code '''82''' has been typed in to define the partition type as swap.
+
+Once the code has been typed in, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: writepartv2-082.png|thumb|left|375px]]
+
+
+Note that the swap partition has been listed as '''sda5'''. This is because primary partitions only range from sda1 to sda4, while logical partitions always start from sda5. Also note that sda5 is listed as a swap partition.
+
+With both partitions created and defined, the partition table must now be written to the hard disk. To do so, the '''write''' option must be highlighted, before pressing &lt;enter&gt; to continue.
+
+Upon doing so a warning message will appear. It will also be necessary to confirm your intention to write the new partitions by typing in '''yes''' at the prompt and then pressing &lt;enter&gt; again.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskquit-082.png|thumb|left|375px]]
+
+
+With the partitions completed and written, highlight '''quit''' to exit from ''cfdisk''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File: partitiondone-082.png|thumb|left|375px]]
+
+
+You will be returned to the hard disk selection menu. Highlight '''Done''' as the disk partitioning has been completed.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: partitionmsg-082.png|thumb|left|375px]]
+
+
+A message will appear stating that it will now be necessary to select the appropriate partitions to use for the Manjaro installation.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectdiskagain-082.png|thumb|left|375px]]
+
+
+As before,The installer will automatically detect and display all hard discs connected to your system. Where more than one drive is present on your system, highlight the drive partitioned earlier.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmswap-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Swap'''. In this instance, the swap partition is '''sda5''', which has been highlighted for selection.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapwarn-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmroot-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Root'''. Again, this is where Manjaro itself (and later, any newly installed applications for it) will be stored. In this instance, it's an easy choice as the only remaining partition available is '''sda1'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmFS-082.png|thumb|left|375px]]
+
+
+'''Set the file system to manage your files'''. If you are unsure which file system to choose, as illustrated, then it is recommend to highlight [http://en.wikipedia.org/wiki/Ext4 ext4], as this is one of the latest and perhaps most widely used Linux file systems.
+
+Press &lt;enter&gt; to continue
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmRT-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntBoot-082.png|thumb|left|375px]]
+
+
+'''Select any other partitions to mount at bootup.''' If a separate ''Boot Partition'' had been created, it would be selected here. Upon pressing &lt;enter&gt; to continue, it would then be necessary to select which file system to use for it (e.g. ext4), and then to confirm that it is to be mounted at '/boot'.
+
+Once completed, the process would also be repeated for any other relevant partitions, such as if a separate ''Home Partition'' had been created. '''In essence, it will be necessary to select and mount all of the partitions you had created for your Manjaro installation so that they will all be available for use upon booting up'''.
+
+However, as in this instance only two partitions had been created (one of which combines Boot, Root, and Home), there are no further partitions to select.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmPart-082.png|thumb|left|375px]]
+
+
+'''Review and confirm the mounted partitions.''' A confirmation message will appear, listing all of the partitions to mounted during the bootup of your Manjaro installation. Ensure that all of your intended partitions have been listed, and that they have been listed correctly (e.g. purposes and file systems). If something is amiss, highlight ''No'' to be taken back.
+
+Again, in this instance, the message confirms that sda5 is to be mounted as the Swap Partition, and that sda1 is to be mounted (using the ext4 file system) for everything else.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntsuccess-082.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear to confirm that the partitions have been successfully mounted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: Pewgoback-082.png|thumb|left|375px]]
+
+
+'''Return to the Main Menu.''' As this step has been completed, highlight '''Main menu''' and press &lt;enter&gt; to be taken back to the installer's main menu. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Install Manjaro==
+
+'''[[Installation_Guide_for_Experienced_Users_0.8.2#Installing Manjaro|Return to the Installation Guide for Experienced Users]]'''
+
+
+=Scénario à trois partitions=
+
+In this scenario, a partition will be created especially for Boot, seperate from the partition for Root and Home. A seperate swap partition will also be created. All the partitions created will be Primary Partitions.
+
+==Creating the Partitions==
+[[File:partition_free.png|thumb|left|375px]]
+
+
+In order to create a new partition, use your arrow keys to switch through the options and choose '''new'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_pref.png|thumb|left|375px]]
+
+
+There are two preferences when creating partitions. ''Primary'' and ''Logical'' partitions. It's good to know that you can only create four primary partitions per Hard Drive.  Choose the desired preference, then press enter to select it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_boot_100.png|thumb|left|375px]]
+
+
+We are now going to create the ''boot'' partition. For the ''boot'' partition, 100 MB and higher in recommended. Enter the desired size and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_part_beg.png|thumb|left|375px]]
+
+
+After that, the ''Beginning'' option will be highlighted. It's recommended to keep it that way, press ENTER to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_bootable.png|thumb|left|375px]]
+
+
+We also need to make the ''boot'' partition ''Bootable'', press ENTER when ''Bootable'' is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:new_freespace.png|thumb|left|375px]]
+
+
+We are now going to create a ''swap'' partition. After creating the ''boot'' partition, use your UP/DOWN arrow keys and choose ''Free Space''. Use your arrow keys to navigate to the ''new'' option then, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:free_primary.png|thumb|left|375px]]
+
+
+After that, press ENTER again when the ''Primary'' preference is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_size.png|thumb|left|375px]]
+
+
+Now, enter a size for your ''swap'' partition. The recommended size for the swap partition is the same as your RAM. In this tutorial we are going to make a 1 GB swap partition, for that we will enter ''1000'' because ''cfdisk'' measures the size in MB.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type1.png|thumb|left|375px]]
+
+
+Because we'll use this partition for swap, we have to change it's type, so, when the ''Type'' option is highlighted, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type2.png|thumb|left|375px]]
+
+
+You will be prompted with a list of file systems, for swap we'll have to enter ''82'', we'll confirm by pressing ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_new.png|thumb|left|375px]]
+
+
+After that, we are going to create a ''root'' (/) partition. Here's where the Operating System is going to be installed. Again, use your UP/DOWN keys to select the ''Free Space'' option, press ENTER to confirm. Using your arrow keys, choose ''new'' from the options at the bottom then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_size.png|thumb|left|375px]]
+
+
+Enter the size in MB for your ''root'' partition. The recommended size for the ''root'' partition would be 4 GB or more and confirm it by pressing the ENTER key.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_write.png|thumb|left|375px]]
+
+
+After that, you'll be prompted with your new partition scheme. To continue, use your arrow keys and select the ''Write'' option at the bottom and press ENTER, this will apply the changes we've made so far.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_quit.png|thumb|left|375px]]
+
+
+That being done, use your arrow keys and select the ''Quit'' option and press ENTER to exit ''cfdisk''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File:part_done.png|thumb|left|375px]] 
+
+
+Now, hit ENTER on the ''Done'' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:prompt_ok.png|thumb|left|375px]]
+
+
+Press ENTER again, when you get prompted with some information about what's coming next.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:disk_list.png|thumb|left|375px]]
+
+
+You will be prompted with a list of available drives, choose the one you've partitioned earlier, then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_swap.png|thumb|left|375px]]
+
+
+You will now have to select the swap partition. In this case it's ''/dev/sda2''. Use your arrow keys and highlight your previously created swap partition and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_swap.png|thumb|left|375px]]
+
+
+When getting prompted for formatting the swap partition, choose ''Yes'' and hit ENTER. {{Warning|This will format the partition, the changes cannot be reverted.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_root.png|thumb|left|375px]]
+
+
+You will now have to select the ''root'' ( / ) partition. In this particular case it's ''/dev/sda3''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_fs.png|thumb|left|375px]]
+
+
+You'll be prompted with a list of file systems, choose one of them, preferably EXT4 and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_root.png|thumb|left|375px]]
+
+
+Choose ''Yes'' when prompted to format the partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_prompt.png|thumb|left|375px]]
+
+
+There will be an option to mount static partitions at boot. Here you'll select the ''boot'' partition you've created earlier.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_fs.png|thumb|left|375px]]
+
+
+Now, you will have to select a file system for you ''boot'' partition. The EXT2 file system is recommended but not necessary.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_mount.png|thumb|left|375px]]
+
+
+Set the mount point to ''/boot'' then hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_boot.png|thumb|left|375px]]
+
+
+Select ''Yes'' and press ENTER when prompted for formatting.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:additional_boot.png|thumb|left|375px]]
+
+
+You will be able to mount other partitions at boot up. It's very useful in case you have a ''home'' partition for example. Otherwise, select ''Done'' and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:final_prompt.png|thumb|left|375px]]
+
+
+An informational window will be prompted. Here you will be able to see info about your previously created partitions, including the mount points and types. Hit ENTER if you want to continue. Note: This will write the changes to your Hard Drive. The process if irreversible.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:installer_format.png|thumb|left|375px]]
+
+
+If you chose to continue (selected ''Yes''), the installer will format and set mount points for your partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_success.png|thumb|left|375px]]
+
+
+The process will take just a few seconds, depending on your hardware. Press ENTER when prompted with the success message.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:main_menu.png|thumb|left|375px]]
+
+
+Now, we're done setting up the partitions. Use your arrow keys and highlight ''Main menu'', then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Installer Manjaro==
+
+'''[[Guide d'installation de manjaro 0.8.3 Expert#Installation de Manjaro|Retour au Guide d'installation pour utilisateurs expérimentés]]'''
+
+
+=Voir aussi=
+
+
+[[Cfdisk Basic Partitioning Scenarios|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Installation]]</text>
+      <sha1>47pyz34jek8zcp66lzsp6va9ro1hkah</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4571</id>
+      <parentid>4562</parentid>
+      <timestamp>2013-01-09T22:32:55Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="17029">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+= Vue d'ensemble =
+
+{{Astuce|La '''[[Guide d'installation de manjaro 0.8.3 Expert# Préparation du disque dur |Section Préparation du disque dur]]''' du Guide pour utilisateurs expérimentés donne un aperçu et une explication des partitions primaires et logiques, ainsi que des conseils sur ce qu'il faut faire si l'intention est d'utiliser une partition Home partagée.}}
+
+
+Basic partitioning scenarios have been presented below for illustrative purposes. In particular, the intention is to illustrate the substantial degree of flexibility when deciding upon an appropriate partitioning scheme when using ''cfdisk''.
+
+
+=Scénario à deux partitions=
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A seperate swap partition will also be created in the remaining space, using a logical partition (SDA2/SDA5).
+
+==Creating the Partitions==
+
+[[File: NewPpart-082.png|thumb|left|375px]]
+
+
+Use the left and right arrow keys to select the available options in ''cfdisk''. The up and down arrow keys are used to select disk space / partitions. In this instance, Manjaro is being installed on a clean hard disk with no existing partitions or data. '''New''' has been highlighted to create the first new partition.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newprimary-082.png|thumb|left|375px]]
+
+
+The first step will be to define if it is a Primary or Logical Partition. In this instance, '''Primary''' has been selected.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newPsize-082.png|thumb|left|375px]]
+
+
+The second step is to define the size of the partition. In this instance, 40,949MB (40GB) out of a total of 42,949MB (42GB), has been allocated, with the intention to leave approximately 2000MB (2GB) remaining for the swap partition.
+
+{{tip|If, for example, the intention was to leave 20GB of unallocated space on the author's hard drive to install another operating system later, then 20949MB (20GB) would be allocated instead. Once the 2GB swap partition was allocated, this would leave 20GB of space remaining. An installer used by a distro like Mint or Ubuntu would even automatically detect and use this unallocated space for installation alongside Manjaro.}}
+
+Once the value has been set, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: newPplace-082.png|thumb|left|375px]]
+
+
+The third (and final) step is to define where the partition starts on your hard drive (i.e. from the beginning or the end of the available space). As with this instance - unless you have a specific reason to do otherwise - it is recommended to always start your partition(s) at the beginning of your hard drive / available space on your hard drive.
+
+Once the selection has been highlighted, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewPboot-082.png|thumb|left|375px]]
+
+
+This partition must also be bootable, as it is intended to contain the Boot/GRUB. To mark it as such, the '''Bootable''' flag/option has been highlighted.
+
+{{note|Unless you intend to use an existing bootable partition (i.e. used by an existing Linux operating system), then you must also do the same for the partition where you intended to store the GRUB.}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLpart-082.png|thumb|left|375px]]
+
+
+Note that the partition  - listed as sda1 - has now been flagged as ''boot''.
+
+With this complete, the swap partition will now be created. This is undertaken by first selecting the free space underneath the partition, and then highlighting the '''New''' option.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLogical-082.png|thumb|left|375px]]
+
+
+As before, the first step is to define the type of partition to be used. In this instance, for illustrative purposes, the swap partition has been defined as a '''Logical''' partition, although it would make no real difference if it were defined as a primary partition instead.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: logicalPsize-082.png|thumb|left|375px]]
+
+
+Again, the second step is to define the size of the new partition. In this instance, the remaining space of 2GB has been allocated, which has already been listed by default.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapdefine-082.png|thumb|left|375px]]
+
+
+As this newly created partition is intended to be used as a swap partition, it is necessary to specifically define its type as such. To do so, the '''Type''' option has been highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: typedefine-082.png|thumb|left|375px]]
+
+
+A list of (hexadecimal) codes corresponding to the available types of partition will be displayed. It will be necessary to press a key to continue and enter the appropriate code.
+
+In this instance - as illustrated - the code '''82''' has been typed in to define the partition type as swap.
+
+Once the code has been typed in, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: writepartv2-082.png|thumb|left|375px]]
+
+
+Note that the swap partition has been listed as '''sda5'''. This is because primary partitions only range from sda1 to sda4, while logical partitions always start from sda5. Also note that sda5 is listed as a swap partition.
+
+With both partitions created and defined, the partition table must now be written to the hard disk. To do so, the '''write''' option must be highlighted, before pressing &lt;enter&gt; to continue.
+
+Upon doing so a warning message will appear. It will also be necessary to confirm your intention to write the new partitions by typing in '''yes''' at the prompt and then pressing &lt;enter&gt; again.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskquit-082.png|thumb|left|375px]]
+
+
+With the partitions completed and written, highlight '''quit''' to exit from ''cfdisk''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File: partitiondone-082.png|thumb|left|375px]]
+
+
+You will be returned to the hard disk selection menu. Highlight '''Done''' as the disk partitioning has been completed.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: partitionmsg-082.png|thumb|left|375px]]
+
+
+A message will appear stating that it will now be necessary to select the appropriate partitions to use for the Manjaro installation.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectdiskagain-082.png|thumb|left|375px]]
+
+
+As before,The installer will automatically detect and display all hard discs connected to your system. Where more than one drive is present on your system, highlight the drive partitioned earlier.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmswap-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Swap'''. In this instance, the swap partition is '''sda5''', which has been highlighted for selection.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapwarn-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmroot-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Root'''. Again, this is where Manjaro itself (and later, any newly installed applications for it) will be stored. In this instance, it's an easy choice as the only remaining partition available is '''sda1'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmFS-082.png|thumb|left|375px]]
+
+
+'''Set the file system to manage your files'''. If you are unsure which file system to choose, as illustrated, then it is recommend to highlight [http://en.wikipedia.org/wiki/Ext4 ext4], as this is one of the latest and perhaps most widely used Linux file systems.
+
+Press &lt;enter&gt; to continue
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmRT-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntBoot-082.png|thumb|left|375px]]
+
+
+'''Select any other partitions to mount at bootup.''' If a separate ''Boot Partition'' had been created, it would be selected here. Upon pressing &lt;enter&gt; to continue, it would then be necessary to select which file system to use for it (e.g. ext4), and then to confirm that it is to be mounted at '/boot'.
+
+Once completed, the process would also be repeated for any other relevant partitions, such as if a separate ''Home Partition'' had been created. '''In essence, it will be necessary to select and mount all of the partitions you had created for your Manjaro installation so that they will all be available for use upon booting up'''.
+
+However, as in this instance only two partitions had been created (one of which combines Boot, Root, and Home), there are no further partitions to select.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmPart-082.png|thumb|left|375px]]
+
+
+'''Review and confirm the mounted partitions.''' A confirmation message will appear, listing all of the partitions to mounted during the bootup of your Manjaro installation. Ensure that all of your intended partitions have been listed, and that they have been listed correctly (e.g. purposes and file systems). If something is amiss, highlight ''No'' to be taken back.
+
+Again, in this instance, the message confirms that sda5 is to be mounted as the Swap Partition, and that sda1 is to be mounted (using the ext4 file system) for everything else.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntsuccess-082.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear to confirm that the partitions have been successfully mounted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: Pewgoback-082.png|thumb|left|375px]]
+
+
+'''Return to the Main Menu.''' As this step has been completed, highlight '''Main menu''' and press &lt;enter&gt; to be taken back to the installer's main menu. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Install Manjaro==
+
+'''[[Installation_Guide_for_Experienced_Users_0.8.2#Installing Manjaro|Return to the Installation Guide for Experienced Users]]'''
+
+
+=Scénario à trois partitions=
+
+In this scenario, a partition will be created especially for Boot, seperate from the partition for Root and Home. A seperate swap partition will also be created. All the partitions created will be Primary Partitions.
+
+==Creating the Partitions==
+[[File:partition_free.png|thumb|left|375px]]
+
+
+In order to create a new partition, use your arrow keys to switch through the options and choose '''new'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_pref.png|thumb|left|375px]]
+
+
+There are two preferences when creating partitions. ''Primary'' and ''Logical'' partitions. It's good to know that you can only create four primary partitions per Hard Drive.  Choose the desired preference, then press enter to select it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_boot_100.png|thumb|left|375px]]
+
+
+We are now going to create the ''boot'' partition. For the ''boot'' partition, 100 MB and higher in recommended. Enter the desired size and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_part_beg.png|thumb|left|375px]]
+
+
+After that, the ''Beginning'' option will be highlighted. It's recommended to keep it that way, press ENTER to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_bootable.png|thumb|left|375px]]
+
+
+We also need to make the ''boot'' partition ''Bootable'', press ENTER when ''Bootable'' is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:new_freespace.png|thumb|left|375px]]
+
+
+We are now going to create a ''swap'' partition. After creating the ''boot'' partition, use your UP/DOWN arrow keys and choose ''Free Space''. Use your arrow keys to navigate to the ''new'' option then, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:free_primary.png|thumb|left|375px]]
+
+
+After that, press ENTER again when the ''Primary'' preference is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_size.png|thumb|left|375px]]
+
+
+Now, enter a size for your ''swap'' partition. The recommended size for the swap partition is the same as your RAM. In this tutorial we are going to make a 1 GB swap partition, for that we will enter ''1000'' because ''cfdisk'' measures the size in MB.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type1.png|thumb|left|375px]]
+
+
+Because we'll use this partition for swap, we have to change it's type, so, when the ''Type'' option is highlighted, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type2.png|thumb|left|375px]]
+
+
+You will be prompted with a list of file systems, for swap we'll have to enter ''82'', we'll confirm by pressing ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_new.png|thumb|left|375px]]
+
+
+After that, we are going to create a ''root'' (/) partition. Here's where the Operating System is going to be installed. Again, use your UP/DOWN keys to select the ''Free Space'' option, press ENTER to confirm. Using your arrow keys, choose ''new'' from the options at the bottom then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_size.png|thumb|left|375px]]
+
+
+Enter the size in MB for your ''root'' partition. The recommended size for the ''root'' partition would be 4 GB or more and confirm it by pressing the ENTER key.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_write.png|thumb|left|375px]]
+
+
+After that, you'll be prompted with your new partition scheme. To continue, use your arrow keys and select the ''Write'' option at the bottom and press ENTER, this will apply the changes we've made so far.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_quit.png|thumb|left|375px]]
+
+
+That being done, use your arrow keys and select the ''Quit'' option and press ENTER to exit ''cfdisk''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File:part_done.png|thumb|left|375px]] 
+
+
+Now, hit ENTER on the ''Done'' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:prompt_ok.png|thumb|left|375px]]
+
+
+Press ENTER again, when you get prompted with some information about what's coming next.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:disk_list.png|thumb|left|375px]]
+
+
+You will be prompted with a list of available drives, choose the one you've partitioned earlier, then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_swap.png|thumb|left|375px]]
+
+
+You will now have to select the swap partition. In this case it's ''/dev/sda2''. Use your arrow keys and highlight your previously created swap partition and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_swap.png|thumb|left|375px]]
+
+
+When getting prompted for formatting the swap partition, choose ''Yes'' and hit ENTER. {{Warning|This will format the partition, the changes cannot be reverted.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_root.png|thumb|left|375px]]
+
+
+You will now have to select the ''root'' ( / ) partition. In this particular case it's ''/dev/sda3''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_fs.png|thumb|left|375px]]
+
+
+You'll be prompted with a list of file systems, choose one of them, preferably EXT4 and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_root.png|thumb|left|375px]]
+
+
+Choose ''Yes'' when prompted to format the partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_prompt.png|thumb|left|375px]]
+
+
+There will be an option to mount static partitions at boot. Here you'll select the ''boot'' partition you've created earlier.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_fs.png|thumb|left|375px]]
+
+
+Now, you will have to select a file system for you ''boot'' partition. The EXT2 file system is recommended but not necessary.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_mount.png|thumb|left|375px]]
+
+
+Set the mount point to ''/boot'' then hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_boot.png|thumb|left|375px]]
+
+
+Select ''Yes'' and press ENTER when prompted for formatting.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:additional_boot.png|thumb|left|375px]]
+
+
+You will be able to mount other partitions at boot up. It's very useful in case you have a ''home'' partition for example. Otherwise, select ''Done'' and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:final_prompt.png|thumb|left|375px]]
+
+
+An informational window will be prompted. Here you will be able to see info about your previously created partitions, including the mount points and types. Hit ENTER if you want to continue. Note: This will write the changes to your Hard Drive. The process if irreversible.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:installer_format.png|thumb|left|375px]]
+
+
+If you chose to continue (selected ''Yes''), the installer will format and set mount points for your partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_success.png|thumb|left|375px]]
+
+
+The process will take just a few seconds, depending on your hardware. Press ENTER when prompted with the success message.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:main_menu.png|thumb|left|375px]]
+
+
+Now, we're done setting up the partitions. Use your arrow keys and highlight ''Main menu'', then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Installer Manjaro==
+
+'''[[Guide d'installation de manjaro 0.8.3 Expert#Installation de Manjaro|Retour au Guide d'installation pour utilisateurs expérimentés]]'''
+
+
+=Voir aussi=
+
+
+[[Cfdisk Basic Partitioning Scenarios|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Installation]]</text>
+      <sha1>1xuuf7xxb3angg2pr7hhhfhenoyren9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4572</id>
+      <parentid>4571</parentid>
+      <timestamp>2013-01-09T22:35:23Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="17059">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+= Vue d'ensemble =
+
+{{Astuce|La '''[[Guide d'installation de manjaro 0.8.3 Expert# Préparation du disque dur |Section Préparation du disque dur]]''' du Guide pour utilisateurs expérimentés donne un aperçu et une explication des partitions primaires et logiques, ainsi que des conseils sur ce qu'il faut faire si l'intention est d'utiliser une partition Home partagée.}}
+
+
+Des scénarios de partitionnement basique sont présentés ci-dessous à des fins d'illustration. En particulier, l'intention est d'illustrer la grande marge de manœuvre qui existe au moment de décider un schéma de partitionnement approprié quand vous utilisez cfdisk.
+
+
+=Scénario à deux partitions=
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A seperate swap partition will also be created in the remaining space, using a logical partition (SDA2/SDA5).
+
+==Creating the Partitions==
+
+[[File: NewPpart-082.png|thumb|left|375px]]
+
+
+Use the left and right arrow keys to select the available options in ''cfdisk''. The up and down arrow keys are used to select disk space / partitions. In this instance, Manjaro is being installed on a clean hard disk with no existing partitions or data. '''New''' has been highlighted to create the first new partition.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newprimary-082.png|thumb|left|375px]]
+
+
+The first step will be to define if it is a Primary or Logical Partition. In this instance, '''Primary''' has been selected.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: newPsize-082.png|thumb|left|375px]]
+
+
+The second step is to define the size of the partition. In this instance, 40,949MB (40GB) out of a total of 42,949MB (42GB), has been allocated, with the intention to leave approximately 2000MB (2GB) remaining for the swap partition.
+
+{{tip|If, for example, the intention was to leave 20GB of unallocated space on the author's hard drive to install another operating system later, then 20949MB (20GB) would be allocated instead. Once the 2GB swap partition was allocated, this would leave 20GB of space remaining. An installer used by a distro like Mint or Ubuntu would even automatically detect and use this unallocated space for installation alongside Manjaro.}}
+
+Once the value has been set, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: newPplace-082.png|thumb|left|375px]]
+
+
+The third (and final) step is to define where the partition starts on your hard drive (i.e. from the beginning or the end of the available space). As with this instance - unless you have a specific reason to do otherwise - it is recommended to always start your partition(s) at the beginning of your hard drive / available space on your hard drive.
+
+Once the selection has been highlighted, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewPboot-082.png|thumb|left|375px]]
+
+
+This partition must also be bootable, as it is intended to contain the Boot/GRUB. To mark it as such, the '''Bootable''' flag/option has been highlighted.
+
+{{note|Unless you intend to use an existing bootable partition (i.e. used by an existing Linux operating system), then you must also do the same for the partition where you intended to store the GRUB.}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLpart-082.png|thumb|left|375px]]
+
+
+Note that the partition  - listed as sda1 - has now been flagged as ''boot''.
+
+With this complete, the swap partition will now be created. This is undertaken by first selecting the free space underneath the partition, and then highlighting the '''New''' option.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: NewLogical-082.png|thumb|left|375px]]
+
+
+As before, the first step is to define the type of partition to be used. In this instance, for illustrative purposes, the swap partition has been defined as a '''Logical''' partition, although it would make no real difference if it were defined as a primary partition instead.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: logicalPsize-082.png|thumb|left|375px]]
+
+
+Again, the second step is to define the size of the new partition. In this instance, the remaining space of 2GB has been allocated, which has already been listed by default.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapdefine-082.png|thumb|left|375px]]
+
+
+As this newly created partition is intended to be used as a swap partition, it is necessary to specifically define its type as such. To do so, the '''Type''' option has been highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: typedefine-082.png|thumb|left|375px]]
+
+
+A list of (hexadecimal) codes corresponding to the available types of partition will be displayed. It will be necessary to press a key to continue and enter the appropriate code.
+
+In this instance - as illustrated - the code '''82''' has been typed in to define the partition type as swap.
+
+Once the code has been typed in, press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: writepartv2-082.png|thumb|left|375px]]
+
+
+Note that the swap partition has been listed as '''sda5'''. This is because primary partitions only range from sda1 to sda4, while logical partitions always start from sda5. Also note that sda5 is listed as a swap partition.
+
+With both partitions created and defined, the partition table must now be written to the hard disk. To do so, the '''write''' option must be highlighted, before pressing &lt;enter&gt; to continue.
+
+Upon doing so a warning message will appear. It will also be necessary to confirm your intention to write the new partitions by typing in '''yes''' at the prompt and then pressing &lt;enter&gt; again.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: cfdiskquit-082.png|thumb|left|375px]]
+
+
+With the partitions completed and written, highlight '''quit''' to exit from ''cfdisk''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File: partitiondone-082.png|thumb|left|375px]]
+
+
+You will be returned to the hard disk selection menu. Highlight '''Done''' as the disk partitioning has been completed.
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: partitionmsg-082.png|thumb|left|375px]]
+
+
+A message will appear stating that it will now be necessary to select the appropriate partitions to use for the Manjaro installation.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectdiskagain-082.png|thumb|left|375px]]
+
+
+As before,The installer will automatically detect and display all hard discs connected to your system. Where more than one drive is present on your system, highlight the drive partitioned earlier.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmswap-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Swap'''. In this instance, the swap partition is '''sda5''', which has been highlighted for selection.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: swapwarn-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmroot-082.png|thumb|left|375px]]
+
+
+'''Select the appropriate partition to use for the Root'''. Again, this is where Manjaro itself (and later, any newly installed applications for it) will be stored. In this instance, it's an easy choice as the only remaining partition available is '''sda1'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: confirmFS-082.png|thumb|left|375px]]
+
+
+'''Set the file system to manage your files'''. If you are unsure which file system to choose, as illustrated, then it is recommend to highlight [http://en.wikipedia.org/wiki/Ext4 ext4], as this is one of the latest and perhaps most widely used Linux file systems.
+
+Press &lt;enter&gt; to continue
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmRT-082.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to format your chosen partition.'''
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntBoot-082.png|thumb|left|375px]]
+
+
+'''Select any other partitions to mount at bootup.''' If a separate ''Boot Partition'' had been created, it would be selected here. Upon pressing &lt;enter&gt; to continue, it would then be necessary to select which file system to use for it (e.g. ext4), and then to confirm that it is to be mounted at '/boot'.
+
+Once completed, the process would also be repeated for any other relevant partitions, such as if a separate ''Home Partition'' had been created. '''In essence, it will be necessary to select and mount all of the partitions you had created for your Manjaro installation so that they will all be available for use upon booting up'''.
+
+However, as in this instance only two partitions had been created (one of which combines Boot, Root, and Home), there are no further partitions to select.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: ConfirmPart-082.png|thumb|left|375px]]
+
+
+'''Review and confirm the mounted partitions.''' A confirmation message will appear, listing all of the partitions to mounted during the bootup of your Manjaro installation. Ensure that all of your intended partitions have been listed, and that they have been listed correctly (e.g. purposes and file systems). If something is amiss, highlight ''No'' to be taken back.
+
+Again, in this instance, the message confirms that sda5 is to be mounted as the Swap Partition, and that sda1 is to be mounted (using the ext4 file system) for everything else.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: mntsuccess-082.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear to confirm that the partitions have been successfully mounted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: Pewgoback-082.png|thumb|left|375px]]
+
+
+'''Return to the Main Menu.''' As this step has been completed, highlight '''Main menu''' and press &lt;enter&gt; to be taken back to the installer's main menu. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Install Manjaro==
+
+'''[[Installation_Guide_for_Experienced_Users_0.8.2#Installing Manjaro|Return to the Installation Guide for Experienced Users]]'''
+
+
+=Scénario à trois partitions=
+
+In this scenario, a partition will be created especially for Boot, seperate from the partition for Root and Home. A seperate swap partition will also be created. All the partitions created will be Primary Partitions.
+
+==Creating the Partitions==
+[[File:partition_free.png|thumb|left|375px]]
+
+
+In order to create a new partition, use your arrow keys to switch through the options and choose '''new'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_pref.png|thumb|left|375px]]
+
+
+There are two preferences when creating partitions. ''Primary'' and ''Logical'' partitions. It's good to know that you can only create four primary partitions per Hard Drive.  Choose the desired preference, then press enter to select it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:partition_boot_100.png|thumb|left|375px]]
+
+
+We are now going to create the ''boot'' partition. For the ''boot'' partition, 100 MB and higher in recommended. Enter the desired size and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_part_beg.png|thumb|left|375px]]
+
+
+After that, the ''Beginning'' option will be highlighted. It's recommended to keep it that way, press ENTER to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_bootable.png|thumb|left|375px]]
+
+
+We also need to make the ''boot'' partition ''Bootable'', press ENTER when ''Bootable'' is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:new_freespace.png|thumb|left|375px]]
+
+
+We are now going to create a ''swap'' partition. After creating the ''boot'' partition, use your UP/DOWN arrow keys and choose ''Free Space''. Use your arrow keys to navigate to the ''new'' option then, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:free_primary.png|thumb|left|375px]]
+
+
+After that, press ENTER again when the ''Primary'' preference is highlighted.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_size.png|thumb|left|375px]]
+
+
+Now, enter a size for your ''swap'' partition. The recommended size for the swap partition is the same as your RAM. In this tutorial we are going to make a 1 GB swap partition, for that we will enter ''1000'' because ''cfdisk'' measures the size in MB.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type1.png|thumb|left|375px]]
+
+
+Because we'll use this partition for swap, we have to change it's type, so, when the ''Type'' option is highlighted, press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:swap_type2.png|thumb|left|375px]]
+
+
+You will be prompted with a list of file systems, for swap we'll have to enter ''82'', we'll confirm by pressing ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_new.png|thumb|left|375px]]
+
+
+After that, we are going to create a ''root'' (/) partition. Here's where the Operating System is going to be installed. Again, use your UP/DOWN keys to select the ''Free Space'' option, press ENTER to confirm. Using your arrow keys, choose ''new'' from the options at the bottom then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_size.png|thumb|left|375px]]
+
+
+Enter the size in MB for your ''root'' partition. The recommended size for the ''root'' partition would be 4 GB or more and confirm it by pressing the ENTER key.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_write.png|thumb|left|375px]]
+
+
+After that, you'll be prompted with your new partition scheme. To continue, use your arrow keys and select the ''Write'' option at the bottom and press ENTER, this will apply the changes we've made so far.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_quit.png|thumb|left|375px]]
+
+
+That being done, use your arrow keys and select the ''Quit'' option and press ENTER to exit ''cfdisk''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Finalising the Disk Preparation==
+
+[[File:part_done.png|thumb|left|375px]] 
+
+
+Now, hit ENTER on the ''Done'' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:prompt_ok.png|thumb|left|375px]]
+
+
+Press ENTER again, when you get prompted with some information about what's coming next.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:disk_list.png|thumb|left|375px]]
+
+
+You will be prompted with a list of available drives, choose the one you've partitioned earlier, then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_swap.png|thumb|left|375px]]
+
+
+You will now have to select the swap partition. In this case it's ''/dev/sda2''. Use your arrow keys and highlight your previously created swap partition and press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_swap.png|thumb|left|375px]]
+
+
+When getting prompted for formatting the swap partition, choose ''Yes'' and hit ENTER. {{Warning|This will format the partition, the changes cannot be reverted.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:choose_root.png|thumb|left|375px]]
+
+
+You will now have to select the ''root'' ( / ) partition. In this particular case it's ''/dev/sda3''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:root_fs.png|thumb|left|375px]]
+
+
+You'll be prompted with a list of file systems, choose one of them, preferably EXT4 and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_root.png|thumb|left|375px]]
+
+
+Choose ''Yes'' when prompted to format the partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_prompt.png|thumb|left|375px]]
+
+
+There will be an option to mount static partitions at boot. Here you'll select the ''boot'' partition you've created earlier.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_fs.png|thumb|left|375px]]
+
+
+Now, you will have to select a file system for you ''boot'' partition. The EXT2 file system is recommended but not necessary.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:boot_mount.png|thumb|left|375px]]
+
+
+Set the mount point to ''/boot'' then hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:format_boot.png|thumb|left|375px]]
+
+
+Select ''Yes'' and press ENTER when prompted for formatting.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:additional_boot.png|thumb|left|375px]]
+
+
+You will be able to mount other partitions at boot up. It's very useful in case you have a ''home'' partition for example. Otherwise, select ''Done'' and hit ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:final_prompt.png|thumb|left|375px]]
+
+
+An informational window will be prompted. Here you will be able to see info about your previously created partitions, including the mount points and types. Hit ENTER if you want to continue. Note: This will write the changes to your Hard Drive. The process if irreversible.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:installer_format.png|thumb|left|375px]]
+
+
+If you chose to continue (selected ''Yes''), the installer will format and set mount points for your partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:part_success.png|thumb|left|375px]]
+
+
+The process will take just a few seconds, depending on your hardware. Press ENTER when prompted with the success message.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:main_menu.png|thumb|left|375px]]
+
+
+Now, we're done setting up the partitions. Use your arrow keys and highlight ''Main menu'', then press ENTER.
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Installer Manjaro==
+
+'''[[Guide d'installation de manjaro 0.8.3 Expert#Installation de Manjaro|Retour au Guide d'installation pour utilisateurs expérimentés]]'''
+
+
+=Voir aussi=
+
+
+[[Cfdisk Basic Partitioning Scenarios|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Installation]]</text>
+      <sha1>cx7joe6peqf8u5ly3wv4ffnro2baghf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

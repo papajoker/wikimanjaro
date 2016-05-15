@@ -1,0 +1,1077 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Installer l'imprimante multi-fonctions Brother DCP7055</title>
+    <ns>0</ns>
+    <id>725</id>
+    <revision>
+      <id>4851</id>
+      <timestamp>2013-02-01T14:33:24Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Vue d'ensemble =  [[File:BigManjaroIcon.png|left|90px]]   Cette imprimante, si on l'installe de manière classique, fonctionn...&quot;</comment>
+      <text xml:space="preserve" bytes="3232">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Cette imprimante, si on l'installe de manière classique, fonctionne soit seulement avec l'impression, soit seulement avec le scanner.
+
+En effet, si on installe les pilotes pour l'impression, pas de souci, la fonction d'impression est bien opérante. Par contre, dès qu'on installe le pilote du scanner, la fonction d'impression ne fonctionne plus, seule la fonction de scanner fonctionne.
+
+
+= Installation des pilotes pour l'imprimante =
+
+ yaourt -S brother-dcp7055-cupswrapper
+
+{{note|Pendant l'installation par yaourt le pilote '''brother-dcp7055-lpr''' sera aussi installé.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+A l'issue de l'installation des pilotes, veuillez redémarrer.
+
+Veuillez allumer l'imprimante, puis ouvrir '''Print Settings''', cliquez sur '''Ajouter''', renseignez votre mot de passe root.
+
+Vous devrez voir dans la fenêtre de gauche votre imprimante.
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Sélectionnez votre imprimante, puis cliquez sur 'Suivant'.
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Recherche de pilote, attendez quelques secondes.
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Brother (recommandé) est sélectionné, cliquez sur 'Suivant'.
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Allez en haut de la liste et sélectionnez 'DCP7055 for CUPS', puis cliquez sur 'Suivant'.
+
+A la fin de la procédure, renseignez de nouveau votre mot de passe à la demande.
+
+Enfin, vous pourrez, si vous le désirez, imprimer une page de test.
+
+
+== A vérifier ==
+
+Pour savoir si les pilotes sont bien installés, tapez en console :
+
+ pacman -Qs brother
+
+le retour devrait se présenter comme ci-dessous :
+
+ local/brother-dcp7055-cupswrapper 2.0.4_2-1
+     CUPS driver for Brother laser printer DCP-7055
+ local/brother-dcp7055-lpr 2.1.0_1-1
+     LPR driver for Brother laser printer DCP-7055
+
+
+Veuillez vérifier que vous faites partie des groupes lp et scanner.
+
+
+= Installation du pilote pour le scanner =
+
+ yaourt brscan4
+
+
+== Dernières opérations à effectuer ==
+
+Allez en root dans:
+
+ /etc/udev/rules.d
+
+il y a un fichier brscan4.rules; veuillez le renommer en .old
+
+
+Toujours en root dans
+
+ /etc/udev/rules.d
+
+créez un fichier 54-sane.rules contenant ces 2 lignes:
+
+ # Brother scanners rules
+ ATTRS{idVendor}==&quot;04f9&quot;, MODE=&quot;0666&quot;, GROUP=&quot;scanner&quot;, ENV{libsane_matched}=&quot;yes&quot;
+
+
+Veuillez redémarrer. Si tout s'est bien passé, votre imprimante multi-fonctions est entièrement fonctionnelle.
+
+
+== A vérifier ==
+
+Veuillez vérifier dans
+
+ /etc/sane.d/dll.conf
+
+qu'il y a en fin de fichier brother4 (normalement ce doit être le cas).
+
+Veuillez vérifier dans
+
+ /usr/lib/udev/rules.d
+
+qu'il y a le fichier 53-sane.rules (normalement ce doit être le cas).
+
+
+Pour savoir si le scanner est reconnu, tapez en console:
+
+ scanimage -L
+
+le retour devrait se présenter comme ci-dessous:
+
+ device `brother4:bus1;dev1' is a Brother DCP-7055 USB scanner
+
+
+= Voir aussi =
+
+* '''[[Configuration de l'imprimante]]'''
+* '''[[Activation de l'impression]]'''
+
+[[Check a Downloaded ISO Image For Errors|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>g5k0llrs1k04nvulb6i10nrw6ttnnzl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4856</id>
+      <parentid>4851</parentid>
+      <timestamp>2013-02-01T14:55:21Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3438">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Cette imprimante, si on l'installe de manière classique, fonctionne soit seulement avec l'impression, soit seulement avec le scanner.
+
+En effet, si on installe les pilotes pour l'impression, pas de souci, la fonction d'impression est bien opérante. Par contre, dès qu'on installe le pilote du scanner, la fonction d'impression ne fonctionne plus, seule la fonction de scanner fonctionne. '''L'installation décrite ci-dessous est pour une connexion USB.'''
+
+
+= Installation des pilotes pour l'imprimante =
+
+ yaourt -S brother-dcp7055-cupswrapper
+
+{{note|Pendant l'installation par yaourt le pilote '''brother-dcp7055-lpr''' sera aussi installé.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+A l'issue de l'installation des pilotes, veuillez redémarrer.
+
+Veuillez allumer l'imprimante, puis ouvrir '''Print Settings''', cliquez sur '''Ajouter''', renseignez votre mot de passe root.
+
+Vous devrez voir dans la fenêtre de gauche votre imprimante.
+
+
+[[File: capture1.png|thumb|left|375px]]
+
+
+Sélectionnez votre imprimante, puis cliquez sur 'Suivant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture2.png|thumb|left|375px]]
+
+
+
+
+Recherche de pilote, attendez quelques secondes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture3.png|thumb|left|375px]]
+
+
+
+Brother (recommandé) est sélectionné, cliquez sur 'Suivant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture4.png|thumb|left|375px]]
+
+
+
+
+Allez en haut de la liste et sélectionnez 'DCP7055 for CUPS', puis cliquez sur 'Suivant'.
+
+A la fin de la procédure, renseignez de nouveau votre mot de passe à la demande.
+
+Enfin, vous pourrez, si vous le désirez, imprimer une page de test.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+== A vérifier ==
+
+Pour savoir si les pilotes sont bien installés, tapez en console :
+
+ pacman -Qs brother
+
+le retour devrait se présenter comme ci-dessous :
+
+ local/brother-dcp7055-cupswrapper 2.0.4_2-1
+     CUPS driver for Brother laser printer DCP-7055
+ local/brother-dcp7055-lpr 2.1.0_1-1
+     LPR driver for Brother laser printer DCP-7055
+
+
+Veuillez aussi vérifier que vous faites partie des groupes lp et scanner.
+
+
+= Installation du pilote pour le scanner =
+
+ yaourt -S brscan4
+
+
+== Dernières opérations à effectuer ==
+
+Allez en root dans:
+
+ /etc/udev/rules.d
+
+il y a un fichier brscan4.rules; veuillez le renommer en .old comme ci-dessous
+
+ brscan4.rules.old
+
+
+Toujours en root dans
+
+ /etc/udev/rules.d
+
+créez un fichier 54-sane.rules contenant ces 2 lignes:
+
+ # Brother scanners rules
+ ATTRS{idVendor}==&quot;04f9&quot;, MODE=&quot;0666&quot;, GROUP=&quot;scanner&quot;, ENV{libsane_matched}=&quot;yes&quot;
+
+
+Veuillez redémarrer. Si tout s'est bien passé, votre imprimante multi-fonctions est entièrement fonctionnelle.
+
+
+== A vérifier ==
+
+Veuillez vérifier dans
+
+ /etc/sane.d/dll.conf
+
+qu'il y a en fin de fichier brother4 (normalement ce doit être le cas).
+
+
+Veuillez vérifier dans
+
+ /usr/lib/udev/rules.d
+
+qu'il y a le fichier 53-sane.rules (normalement ce doit être le cas).
+
+
+Pour savoir si le scanner est reconnu, tapez en console:
+
+ scanimage -L
+
+le retour devrait se présenter comme ci-dessous:
+
+ device `brother4:bus1;dev1' is a Brother DCP-7055 USB scanner
+
+
+= Voir aussi =
+
+* '''[[Configuration de l'imprimante]]'''
+* '''[[Activation de l'impression]]'''
+
+[[Check a Downloaded ISO Image For Errors|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>teu53jyzuztk29lqk8n1vypxgp02k0p</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4859</id>
+      <parentid>4856</parentid>
+      <timestamp>2013-02-01T15:25:40Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3316">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Cette imprimante, si on l'installe de manière classique, fonctionne soit seulement avec l'impression, soit seulement avec le scanner.
+
+En effet, si on installe les pilotes pour l'impression, pas de souci, la fonction d'impression est bien opérante. Par contre, dès qu'on installe le pilote du scanner, la fonction d'impression ne fonctionne plus, seule la fonction de scanner fonctionne. '''L'installation décrite ci-dessous est pour une connexion USB.'''
+
+
+= Installation des pilotes pour l'imprimante =
+
+ yaourt -S brother-dcp7055-cupswrapper
+
+{{note|Pendant l'installation par yaourt le pilote '''brother-dcp7055-lpr''' sera aussi installé.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+A l'issue de l'installation des pilotes, veuillez redémarrer.
+
+Veuillez allumer l'imprimante, puis ouvrir '''Print Settings''', cliquez sur '''Ajouter''', renseignez votre mot de passe root.
+
+Vous devrez voir dans la fenêtre de gauche votre imprimante.
+
+
+[[File: capture1.png|thumb|left|375px]]
+
+
+Sélectionnez votre imprimante, puis cliquez sur 'Suivant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture2.png|thumb|left|375px]]
+
+
+
+
+Recherche de pilote, attendez quelques secondes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture3.png|thumb|left|375px]]
+
+
+
+Brother (recommandé) est sélectionné, cliquez sur 'Suivant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture4.png|thumb|left|375px]]
+
+
+
+
+Allez en haut de la liste et sélectionnez 'DCP7055 for CUPS', puis cliquez sur 'Suivant'.
+
+A la fin de la procédure, renseignez de nouveau votre mot de passe à la demande.
+
+Enfin, vous pourrez, si vous le désirez, imprimer une page de test.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+== A vérifier ==
+
+Pour savoir si les pilotes sont bien installés, tapez en console :
+
+ pacman -Qs brother
+
+le retour devrait se présenter comme ci-dessous :
+
+ local/brother-dcp7055-cupswrapper 2.0.4_2-1
+     CUPS driver for Brother laser printer DCP-7055
+ local/brother-dcp7055-lpr 2.1.0_1-1
+     LPR driver for Brother laser printer DCP-7055
+
+
+Veuillez aussi vérifier que vous faites partie des groupes lp et scanner.
+
+
+= Installation du pilote pour le scanner =
+
+ yaourt -S brscan4
+
+
+== Dernières opérations à effectuer ==
+
+Allez en root dans:
+
+ /etc/udev/rules.d
+
+il y a un fichier brscan4.rules; veuillez le renommer en .old comme ci-dessous
+
+ brscan4.rules.old
+
+
+Toujours en root dans
+
+ /etc/udev/rules.d
+
+créez un fichier 54-sane.rules contenant ces 2 lignes:
+
+ # Brother scanners rules
+ ATTRS{idVendor}==&quot;04f9&quot;, MODE=&quot;0666&quot;, GROUP=&quot;scanner&quot;, ENV{libsane_matched}=&quot;yes&quot;
+
+
+Veuillez redémarrer. Si tout s'est bien passé, votre imprimante multi-fonctions est entièrement fonctionnelle.
+
+
+== A vérifier ==
+
+Veuillez vérifier dans
+
+ /etc/sane.d/dll.conf
+
+qu'il y a en fin de fichier brother4 (normalement ce doit être le cas).
+
+
+Pour savoir si le scanner est reconnu, tapez en console:
+
+ scanimage -L
+
+le retour devrait se présenter comme ci-dessous:
+
+ device `brother4:bus1;dev1' is a Brother DCP-7055 USB scanner
+
+
+= Voir aussi =
+
+* '''[[Configuration de l'imprimante]]'''
+* '''[[Activation de l'impression]]'''
+
+[[Check a Downloaded ISO Image For Errors|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>9xs0mrd8e2zavc4x2meexoo2yk5z4sf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5625</id>
+      <parentid>4859</parentid>
+      <timestamp>2013-05-11T10:54:45Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3355">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Cette imprimante, si on l'installe de manière classique, fonctionne soit seulement avec l'impression, soit seulement avec le scanner.
+
+En effet, si on installe les pilotes pour l'impression, pas de souci, la fonction d'impression est bien opérante. Par contre, dès qu'on installe le pilote du scanner, la fonction d'impression ne fonctionne plus, seule la fonction de scanner fonctionne. '''L'installation décrite ci-dessous est pour une connexion USB.'''
+
+
+= Installation des pilotes pour l'imprimante =
+
+ yaourt -S brother-dcp7055-cupswrapper
+
+{{note|Pendant l'installation par yaourt le pilote '''brother-dcp7055-lpr''' sera aussi installé.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+A l'issue de l'installation des pilotes, veuillez redémarrer.
+
+Veuillez allumer l'imprimante, puis ouvrir '''Print Settings''', cliquez sur '''Ajouter''', renseignez votre mot de passe root.
+
+Vous devrez voir dans la fenêtre de gauche votre imprimante.
+
+
+[[File: capture1.png|thumb|left|375px]]
+
+
+Sélectionnez votre imprimante, puis cliquez sur 'Suivant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture2.png|thumb|left|375px]]
+
+
+
+
+Recherche de pilote, attendez quelques secondes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture3.png|thumb|left|375px]]
+
+
+
+Brother (recommandé) est sélectionné, cliquez sur 'Suivant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture4.png|thumb|left|375px]]
+
+
+
+
+Allez en haut de la liste et sélectionnez 'DCP7055 for CUPS', puis cliquez sur 'Suivant'.
+
+A la fin de la procédure, renseignez de nouveau votre mot de passe à la demande.
+
+Enfin, vous pourrez, si vous le désirez, imprimer une page de test.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+== A vérifier ==
+
+Pour savoir si les pilotes sont bien installés, tapez en console :
+
+ pacman -Qs brother
+
+le retour devrait se présenter comme ci-dessous :
+
+ local/brother-dcp7055-cupswrapper 2.0.4_2-1
+     CUPS driver for Brother laser printer DCP-7055
+ local/brother-dcp7055-lpr 2.1.0_1-1
+     LPR driver for Brother laser printer DCP-7055
+
+
+Veuillez aussi vérifier que vous faites partie des groupes lp et scanner.
+
+
+= Installation du pilote pour le scanner =
+
+ yaourt -S brscan4
+
+
+== Dernières opérations à effectuer ==
+
+Allez en root dans:
+
+ /etc/udev/rules.d
+
+il y a un fichier brscan4.rules; veuillez le renommer en .old comme ci-dessous
+
+ brscan4.rules.old
+
+
+Toujours en root dans
+
+ /etc/udev/rules.d
+
+créez un fichier 54-sane.rules contenant ces 2 lignes:
+
+ # Brother scanners rules
+ ATTRS{idVendor}==&quot;04f9&quot;, MODE=&quot;0666&quot;, GROUP=&quot;scanner&quot;, ENV{libsane_matched}=&quot;yes&quot;
+
+
+Veuillez redémarrer. Si tout s'est bien passé, votre imprimante multi-fonctions est entièrement fonctionnelle.
+
+
+== A vérifier ==
+
+Veuillez vérifier dans
+
+ /etc/sane.d/dll.conf
+
+qu'il y a en fin de fichier brother4 (normalement ce doit être le cas).
+
+
+Pour savoir si le scanner est reconnu, tapez en console:
+
+ scanimage -L
+
+le retour devrait se présenter comme ci-dessous:
+
+ device `brother4:bus1;dev1' is a Brother DCP-7055 USB scanner
+
+http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+= Voir aussi =
+
+* '''[[Configuration de l'imprimante]]'''
+* '''[[Activation de l'impression]]'''
+
+[[Check a Downloaded ISO Image For Errors|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>p53hlgrktgxe8hhwy16mj46gdds8cnf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5626</id>
+      <parentid>5625</parentid>
+      <timestamp>2013-05-11T10:54:56Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3316">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+Cette imprimante, si on l'installe de manière classique, fonctionne soit seulement avec l'impression, soit seulement avec le scanner.
+
+En effet, si on installe les pilotes pour l'impression, pas de souci, la fonction d'impression est bien opérante. Par contre, dès qu'on installe le pilote du scanner, la fonction d'impression ne fonctionne plus, seule la fonction de scanner fonctionne. '''L'installation décrite ci-dessous est pour une connexion USB.'''
+
+
+= Installation des pilotes pour l'imprimante =
+
+ yaourt -S brother-dcp7055-cupswrapper
+
+{{note|Pendant l'installation par yaourt le pilote '''brother-dcp7055-lpr''' sera aussi installé.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+A l'issue de l'installation des pilotes, veuillez redémarrer.
+
+Veuillez allumer l'imprimante, puis ouvrir '''Print Settings''', cliquez sur '''Ajouter''', renseignez votre mot de passe root.
+
+Vous devrez voir dans la fenêtre de gauche votre imprimante.
+
+
+[[File: capture1.png|thumb|left|375px]]
+
+
+Sélectionnez votre imprimante, puis cliquez sur 'Suivant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture2.png|thumb|left|375px]]
+
+
+
+
+Recherche de pilote, attendez quelques secondes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture3.png|thumb|left|375px]]
+
+
+
+Brother (recommandé) est sélectionné, cliquez sur 'Suivant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[File: capture4.png|thumb|left|375px]]
+
+
+
+
+Allez en haut de la liste et sélectionnez 'DCP7055 for CUPS', puis cliquez sur 'Suivant'.
+
+A la fin de la procédure, renseignez de nouveau votre mot de passe à la demande.
+
+Enfin, vous pourrez, si vous le désirez, imprimer une page de test.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+== A vérifier ==
+
+Pour savoir si les pilotes sont bien installés, tapez en console :
+
+ pacman -Qs brother
+
+le retour devrait se présenter comme ci-dessous :
+
+ local/brother-dcp7055-cupswrapper 2.0.4_2-1
+     CUPS driver for Brother laser printer DCP-7055
+ local/brother-dcp7055-lpr 2.1.0_1-1
+     LPR driver for Brother laser printer DCP-7055
+
+
+Veuillez aussi vérifier que vous faites partie des groupes lp et scanner.
+
+
+= Installation du pilote pour le scanner =
+
+ yaourt -S brscan4
+
+
+== Dernières opérations à effectuer ==
+
+Allez en root dans:
+
+ /etc/udev/rules.d
+
+il y a un fichier brscan4.rules; veuillez le renommer en .old comme ci-dessous
+
+ brscan4.rules.old
+
+
+Toujours en root dans
+
+ /etc/udev/rules.d
+
+créez un fichier 54-sane.rules contenant ces 2 lignes:
+
+ # Brother scanners rules
+ ATTRS{idVendor}==&quot;04f9&quot;, MODE=&quot;0666&quot;, GROUP=&quot;scanner&quot;, ENV{libsane_matched}=&quot;yes&quot;
+
+
+Veuillez redémarrer. Si tout s'est bien passé, votre imprimante multi-fonctions est entièrement fonctionnelle.
+
+
+== A vérifier ==
+
+Veuillez vérifier dans
+
+ /etc/sane.d/dll.conf
+
+qu'il y a en fin de fichier brother4 (normalement ce doit être le cas).
+
+
+Pour savoir si le scanner est reconnu, tapez en console:
+
+ scanimage -L
+
+le retour devrait se présenter comme ci-dessous:
+
+ device `brother4:bus1;dev1' is a Brother DCP-7055 USB scanner
+
+
+= Voir aussi =
+
+* '''[[Configuration de l'imprimante]]'''
+* '''[[Activation de l'impression]]'''
+
+[[Check a Downloaded ISO Image For Errors|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>9xs0mrd8e2zavc4x2meexoo2yk5z4sf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

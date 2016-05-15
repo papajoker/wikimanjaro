@@ -1,0 +1,1039 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Installer divers environnements de bureau et gestionnaires de fenêtres</title>
+    <ns>0</ns>
+    <id>657</id>
+    <revision>
+      <id>4116</id>
+      <timestamp>2013-01-05T12:26:45Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = TRADUCTION EN COURS =  = Overview =  There are several Desktop Environments and Window Managers available for Manjaro, each w...&quot;</comment>
+      <text xml:space="preserve" bytes="10888">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+= Overview =
+
+There are several Desktop Environments and Window Managers available for Manjaro, each with their own unique style, interface, and features. Furthermore, it is possible to install multiple environments if desired, which can be selected at the login screen at any time. Users are not resitricted  to whatever comes pre-installed with a particular flavour of Manjaro.
+
+
+= Desktop Environments =
+
+It is worth noting that a desktop environment is not a single entity; it is actually a collection of different components that work together. This commonly includes a:
+
+* '''window manager''' to display, move and resize application windows
+* '''file manager''' to visually browse, copy and access files, etc. 
+* '''background provider''' to display wallpapers, etc.
+* '''panel''' to provide a menu and to display information such as the time
+* '''settings/configuration manager''' to change the look of the environment
+
+
+And so on. Most desktop environments will also come with their own preferred applications, in addition to various widgets, addons, and extensions to provide extra features. As such, upon entering the commands provided below in your terminal to download and install a desktop environment, you may be prompted to choose from a selection of components provided for it. '''To install a full desktop environment''' - complete with its own preferred file manager, applications, and so on - simply press &lt;enter&gt; when prompted. Everything will be downloaded and installed by default.
+
+
+{{note|If you install this way to use multiple desktop environments, you may find certain applications seem to appear several times in your application menus. For example, several different terminals may be available, as many desktop environments come with their own preferred version, which can also be used in other desktops.}}
+
+
+Where additional (and optional) extras for a desktop environment are availble, the terminal commands to obtain these have also been provided. These commands have been listed seperately to those for obtaining the desktop environments themselves.
+
+
+== XFCE ==
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+'''[http://xfce.org/ XFCE]''' is a lightweight and versatile desktop environment that utilises a classic drop-down menu to access applications. It is also compatible with '''[[Compiz_and_Emerald|Compiz]]'''. Although highly configurable, XFCE does provide a somewhat basic interface that may lack some modern features expected (e.g. no built-in search bar in the menu). A little time and effort will also be required to properly customise the deskop to suit personal taste. A 64 bit installation of Manjaro running XFCE uses about 200MB of memory. '''To install XFCE, enter the command:'''
+
+ sudo pacman -S xfce4
+
+To install extra themes, desktop backgrounds, and panel items (widgets), enter the command:
+
+ sudo pacman -S xfce4-goodies
+&lt;br clear=&quot;all&quot; /&gt;
+
+== KDE ==
+
+[[File: kdeDE.png|thumb|left|375px]]
+
+
+'''[http://www.kde.org/ KDE]''' is a feature-rich and versatile desktop environment that provides several different styles of menu to access applications. It is also compatible with '''[[Compiz_and_Emerald|Compiz]]'''. An excellent built-in interface to easily access and install new themes, widgets, etc, from the internet is also worth mentioning. While very user-friendly and certainly  flashy, KDE is also quite resource heavy and noticably slower to start and use than a desktop environment such as XFCE. A 64 bit installation of Manjaro running KDE uses about 550MB of memory. '''To install KDE, enter the command:'''
+
+ sudo pacman -S kde kdeplasma-applets-networkmanagement
+
+{{note|Upon installing, you will be asked to pick a gstreamer version (phonon or vlc). Gstreamer is a multimedia framework used to handle multimedia applications (i.e. audio and video playback and editing). If you are not sure which one you should choose, pick '''vlc'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Gnome 3 ==
+
+[[File: gnome3DE.png|thumb|left|375px]]
+
+
+'''[http://www.gnome.org/ Gnome 3]''' is an intuitive desktop environment that utilises a tablet or smartphone style interface to access applications. It is not compatible with compiz. Although Gnome is very easy to learn and use, its customisation options are quite limited, and it can be difficult to configure. A 64 bit installation of Manjaro running Gnome uses about 220MB of memory. '''To install Gnome, enter the command:'''
+
+ sudo pacman -S gnome
+
+To install extra themes, games, and features, enter the command:
+
+ sudo pacman -S gnome-extra
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Cinnamon ==
+
+[[File: cinnamonde.png|thumb|left|375px]]
+
+
+'''[http://cinnamon.linuxmint.com/ Cinnamon]''' is a desktop environment based on Gnome 3 that utilises a large panel-style menu to access applications. It is not compatible with compiz. Despite being based on Gnome, it has more customisation options and is easier to configure. Users of Windows Vista or Windows 7 may find Cinnamon's interface comfortably familiar. A 64 bit installation of Manjaro running Cinnamon uses about 350MB of memory. '''To install Cinnamon, enter the command:'''
+
+ sudo pacman -S cinnamon
+
+If you are installing Cinnamon alone on the NET Edition, then it is '''essential''' to install a terminal as well, as one will not be provided with Cinnamon by default. The command to install the Gnome terminal is:
+
+ sudo pacman -S gnome-terminal
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Razor-QT ==
+
+[[File: razorde2.png|thumb|left|375px]]
+
+
+'''[http://razor-qt.org/ Razor-QT]''' is a lightweight desktop environment still under development. It has no window manager of its own, although it can be configured to use Compiz as such (not using the Fusion-Icon, however). It is designed with lower-end computers in mind. At its current stage of development, Razor-QT may not be suitable for all users. A 64 bit installation of Manjaro running Razor-QT uses about 300MB of memory. '''To install Razor-QT, enter the command:'''
+
+ sudo pacman -S razor-qt
+
+To install the recommended Window Manager, use USB devices, and shutdown/reboot from Razor-QT, enter the command:
+
+ sudo pacman -S openbox upower udisks
+
+{{note|You will need to manually edit Razor-QT's configuration file '''~/.config/razor/session.conf''' to set the window manager.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== LXDE ==
+
+[[File: lxde.png|thumb|left|375px]]
+
+
+'''[http://lxde.org/ LXDE]''' is a super-lightweight desktop environment that is very similar to XFCE, with the exception that it is not compatible with Compiz. As with XFCE, LXDE is also a somewhat basic desktop environment, lacking some modern features that would be expected, such as a search-bar to find applications and files. However, it is also an excellent choice for less powerful computers, as a 64 bit installation of Manjaro running LXDE uses only about 150MB of memory. '''To install LXDE, enter the command:'''
+
+ sudo pacman -S lxde
+
+{{note|Installing LXDE will also result in installing ''Openbox'' as its default window manager. The LXDM display manager will also be downloaded, although it will be necessary to enable this yourself if you wish to replace your existing display manager.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Window Managers =
+
+{{note|By nature, building your own desktop environment from a Window Manager will take substantially more time and effort than simply downloading a pre-defined desktop environment.}}
+
+
+Although Desktop Environments commonly provide a good range of customisation options to suit personal taste and preference, they may still be seen as somewhat restrictive or controlled in the sense that they merely allow for the personalisation of their pre-defined components. However, certain Window Managers empower users to take a 'do it yourself' approach in order to create their own desktop environments. In essence, they may be used as a foundation on which to build upon, as literally every component and every aspect of the desktop is under the direct control and choice of the user. An environment may be as elaborate or as minimalistic as desired, and it is even possible to mix and match various components from other desktop environments. 
+
+Therefore extremely powerful and versatile, these window managers also carry the additional benefit of being faster and more resource efficient than pre-defined desktop environments. Interestingly, the super-lightweight LXDE environment is itself built on the Openbox window manager. 
+
+
+== Openbox ==
+
+[[File: openboxde.png|thumb|left|375px]]
+
+
+'''[http://openbox.org/ Openbox]''' is by far the most popular Window Manager available. Due to its popularity there is excellent documentation available, as well as a good choice of additional themes that may be downloaded. '''To install Openbox, enter the command:'''
+
+ sudo pacman -S openbox
+
+To install a logout script, configuration application, menu-editor, and extra themes specifically for Openbox, enter the following command:
+
+ sudo pacman -S oblogout obconf obmenu openbox-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: openbox-synapseb.png|thumb|left|375px]]
+
+
+To install the recommended file manager and terminal for use within openbox, enter the following command:
+
+ sudo pacman -S pcmanfm gnome-terminal
+
+To install the recommended configuration application, background provider, compositor, and menu generator, enter the following command:
+
+ sudo pacman -S lxappearance-obconf nitrogen xcompmgr menumaker
+
+{{note|In this illustration, Openbox is based around nitrogen, xcompmgr, the Thunar file manager, and panels from XFCE. Synapse is used instead of a menu.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== FluxBox ==
+
+[[File: fluxbox.png|thumb|left|375px]]
+
+
+'''[http://fluxbox.org/ FluxBox]''' is another popular Window Manager. It is particularly notable for providing some features not seen in Openbox, such as ''tabbing'', which allows for windows to be grouped together. '''To install FluxBox, enter the command''':
+
+ sudo pacman -S fluxbox
+
+To install the newsfetcher and workspace pager specifically for fluxbox, enter the command:
+
+ sudo pacman -S fbnews fluxter
+&lt;br clear=&quot;all&quot; /&gt;
+
+== IceWM ==
+
+[[File: icewm.png|thumb|left|375px]]
+
+
+'''[http://www.icewm.org/ IceWM]''' is a Window Manager notable for perhaps being closer to a full desktop environment than Openbox or FluxBox. This includes providing a panel complete with menu, in addition to a workspace switcher. '''To install IceWM, enter the command''':
+
+ sudo pacman -S icewm
+
+To install a suite of tools and themes specifically for IceWM, enter the command:
+
+ sudo pacman -S icewm-utils icewm-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[MATE_Desktop_Environment|Install the MATE Desktop Environment]]'''
+
+[[Category:Customisation and Configuration]]
+[[Install Desktop Environments|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>a9u4cwcbdtsc2y52qr8a20nwssxyx9c</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4167</id>
+      <parentid>4116</parentid>
+      <timestamp>2013-01-05T17:20:44Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10908">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+= Overview =
+
+There are several Desktop Environments and Window Managers available for Manjaro, each with their own unique style, interface, and features. Furthermore, it is possible to install multiple environments if desired, which can be selected at the login screen at any time. Users are not resitricted  to whatever comes pre-installed with a particular flavour of Manjaro.
+
+
+= Desktop Environments =
+
+It is worth noting that a desktop environment is not a single entity; it is actually a collection of different components that work together. This commonly includes a:
+
+* '''window manager''' to display, move and resize application windows
+* '''file manager''' to visually browse, copy and access files, etc. 
+* '''background provider''' to display wallpapers, etc.
+* '''panel''' to provide a menu and to display information such as the time
+* '''settings/configuration manager''' to change the look of the environment
+
+
+And so on. Most desktop environments will also come with their own preferred applications, in addition to various widgets, addons, and extensions to provide extra features. As such, upon entering the commands provided below in your terminal to download and install a desktop environment, you may be prompted to choose from a selection of components provided for it. '''To install a full desktop environment''' - complete with its own preferred file manager, applications, and so on - simply press &lt;enter&gt; when prompted. Everything will be downloaded and installed by default.
+
+
+{{note|If you install this way to use multiple desktop environments, you may find certain applications seem to appear several times in your application menus. For example, several different terminals may be available, as many desktop environments come with their own preferred version, which can also be used in other desktops.}}
+
+
+Where additional (and optional) extras for a desktop environment are availble, the terminal commands to obtain these have also been provided. These commands have been listed seperately to those for obtaining the desktop environments themselves.
+
+
+== XFCE ==
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+'''[http://xfce.org/ XFCE]''' is a lightweight and versatile desktop environment that utilises a classic drop-down menu to access applications. It is also compatible with '''[[Compiz_and_Emerald|Compiz]]'''. Although highly configurable, XFCE does provide a somewhat basic interface that may lack some modern features expected (e.g. no built-in search bar in the menu). A little time and effort will also be required to properly customise the deskop to suit personal taste. A 64 bit installation of Manjaro running XFCE uses about 200MB of memory. '''To install XFCE, enter the command:'''
+
+ sudo pacman -S xfce4
+
+To install extra themes, desktop backgrounds, and panel items (widgets), enter the command:
+
+ sudo pacman -S xfce4-goodies
+&lt;br clear=&quot;all&quot; /&gt;
+
+== KDE ==
+
+[[File: kdeDE.png|thumb|left|375px]]
+
+
+'''[http://www.kde.org/ KDE]''' is a feature-rich and versatile desktop environment that provides several different styles of menu to access applications. It is also compatible with '''[[Compiz_and_Emerald|Compiz]]'''. An excellent built-in interface to easily access and install new themes, widgets, etc, from the internet is also worth mentioning. While very user-friendly and certainly  flashy, KDE is also quite resource heavy and noticably slower to start and use than a desktop environment such as XFCE. A 64 bit installation of Manjaro running KDE uses about 550MB of memory. '''To install KDE, enter the command:'''
+
+ sudo pacman -S kde kdeplasma-applets-networkmanagement
+
+{{note|Upon installing, you will be asked to pick a gstreamer version (phonon or vlc). Gstreamer is a multimedia framework used to handle multimedia applications (i.e. audio and video playback and editing). If you are not sure which one you should choose, pick '''vlc'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Gnome 3 ==
+
+[[File: gnome3DE.png|thumb|left|375px]]
+
+
+'''[http://www.gnome.org/ Gnome 3]''' is an intuitive desktop environment that utilises a tablet or smartphone style interface to access applications. It is not compatible with compiz. Although Gnome is very easy to learn and use, its customisation options are quite limited, and it can be difficult to configure. A 64 bit installation of Manjaro running Gnome uses about 220MB of memory. '''To install Gnome, enter the command:'''
+
+ sudo pacman -S gnome
+
+To install extra themes, games, and features, enter the command:
+
+ sudo pacman -S gnome-extra
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Cinnamon ==
+
+[[File: cinnamonde.png|thumb|left|375px]]
+
+
+'''[http://cinnamon.linuxmint.com/ Cinnamon]''' is a desktop environment based on Gnome 3 that utilises a large panel-style menu to access applications. It is not compatible with compiz. Despite being based on Gnome, it has more customisation options and is easier to configure. Users of Windows Vista or Windows 7 may find Cinnamon's interface comfortably familiar. A 64 bit installation of Manjaro running Cinnamon uses about 350MB of memory. '''To install Cinnamon, enter the command:'''
+
+ sudo pacman -S cinnamon
+
+If you are installing Cinnamon alone on the NET Edition, then it is '''essential''' to install a terminal as well, as one will not be provided with Cinnamon by default. The command to install the Gnome terminal is:
+
+ sudo pacman -S gnome-terminal
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Razor-QT ==
+
+[[File: razorde2.png|thumb|left|375px]]
+
+
+'''[http://razor-qt.org/ Razor-QT]''' is a lightweight desktop environment still under development. It has no window manager of its own, although it can be configured to use Compiz as such (not using the Fusion-Icon, however). It is designed with lower-end computers in mind. At its current stage of development, Razor-QT may not be suitable for all users. A 64 bit installation of Manjaro running Razor-QT uses about 300MB of memory. '''To install Razor-QT, enter the command:'''
+
+ sudo pacman -S razor-qt
+
+To install the recommended Window Manager, use USB devices, and shutdown/reboot from Razor-QT, enter the command:
+
+ sudo pacman -S openbox upower udisks
+
+{{note|You will need to manually edit Razor-QT's configuration file '''~/.config/razor/session.conf''' to set the window manager.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== LXDE ==
+
+[[File: lxde.png|thumb|left|375px]]
+
+
+'''[http://lxde.org/ LXDE]''' is a super-lightweight desktop environment that is very similar to XFCE, with the exception that it is not compatible with Compiz. As with XFCE, LXDE is also a somewhat basic desktop environment, lacking some modern features that would be expected, such as a search-bar to find applications and files. However, it is also an excellent choice for less powerful computers, as a 64 bit installation of Manjaro running LXDE uses only about 150MB of memory. '''To install LXDE, enter the command:'''
+
+ sudo pacman -S lxde
+
+{{note|Installing LXDE will also result in installing ''Openbox'' as its default window manager. The LXDM display manager will also be downloaded, although it will be necessary to enable this yourself if you wish to replace your existing display manager.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Window Managers =
+
+{{note|By nature, building your own desktop environment from a Window Manager will take substantially more time and effort than simply downloading a pre-defined desktop environment.}}
+
+
+Although Desktop Environments commonly provide a good range of customisation options to suit personal taste and preference, they may still be seen as somewhat restrictive or controlled in the sense that they merely allow for the personalisation of their pre-defined components. However, certain Window Managers empower users to take a 'do it yourself' approach in order to create their own desktop environments. In essence, they may be used as a foundation on which to build upon, as literally every component and every aspect of the desktop is under the direct control and choice of the user. An environment may be as elaborate or as minimalistic as desired, and it is even possible to mix and match various components from other desktop environments. 
+
+Therefore extremely powerful and versatile, these window managers also carry the additional benefit of being faster and more resource efficient than pre-defined desktop environments. Interestingly, the super-lightweight LXDE environment is itself built on the Openbox window manager. 
+
+
+== Openbox ==
+
+[[File: openboxde.png|thumb|left|375px]]
+
+
+'''[http://openbox.org/ Openbox]''' is by far the most popular Window Manager available. Due to its popularity there is excellent documentation available, as well as a good choice of additional themes that may be downloaded. '''To install Openbox, enter the command:'''
+
+ sudo pacman -S openbox
+
+To install a logout script, configuration application, menu-editor, and extra themes specifically for Openbox, enter the following command:
+
+ sudo pacman -S oblogout obconf obmenu openbox-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: openbox-synapseb.png|thumb|left|375px]]
+
+
+To install the recommended file manager and terminal for use within openbox, enter the following command:
+
+ sudo pacman -S pcmanfm gnome-terminal
+
+To install the recommended configuration application, background provider, compositor, and menu generator, enter the following command:
+
+ sudo pacman -S lxappearance-obconf nitrogen xcompmgr menumaker
+
+{{note|In this illustration, Openbox is based around nitrogen, xcompmgr, the Thunar file manager, and panels from XFCE. Synapse is used instead of a menu.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== FluxBox ==
+
+[[File: fluxbox.png|thumb|left|375px]]
+
+
+'''[http://fluxbox.org/ FluxBox]''' is another popular Window Manager. It is particularly notable for providing some features not seen in Openbox, such as ''tabbing'', which allows for windows to be grouped together. '''To install FluxBox, enter the command''':
+
+ sudo pacman -S fluxbox
+
+To install the newsfetcher and workspace pager specifically for fluxbox, enter the command:
+
+ sudo pacman -S fbnews fluxter
+&lt;br clear=&quot;all&quot; /&gt;
+
+== IceWM ==
+
+[[File: icewm.png|thumb|left|375px]]
+
+
+'''[http://www.icewm.org/ IceWM]''' is a Window Manager notable for perhaps being closer to a full desktop environment than Openbox or FluxBox. This includes providing a panel complete with menu, in addition to a workspace switcher. '''To install IceWM, enter the command''':
+
+ sudo pacman -S icewm
+
+To install a suite of tools and themes specifically for IceWM, enter the command:
+
+ sudo pacman -S icewm-utils icewm-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Installez le bureau MATE et le Menu Mint|Installez le bureau MATE et le Menu Mint]]'''
+
+[[Category:Customisation and Configuration]]
+[[Install Desktop Environments|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>tbgq6lkhp1l5sq3ckvll5qhrqkk1ysr</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4169</id>
+      <parentid>4167</parentid>
+      <timestamp>2013-01-05T17:23:37Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10911">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+= Overview =
+
+There are several Desktop Environments and Window Managers available for Manjaro, each with their own unique style, interface, and features. Furthermore, it is possible to install multiple environments if desired, which can be selected at the login screen at any time. Users are not resitricted  to whatever comes pre-installed with a particular flavour of Manjaro.
+
+
+= Desktop Environments =
+
+It is worth noting that a desktop environment is not a single entity; it is actually a collection of different components that work together. This commonly includes a:
+
+* '''window manager''' to display, move and resize application windows
+* '''file manager''' to visually browse, copy and access files, etc. 
+* '''background provider''' to display wallpapers, etc.
+* '''panel''' to provide a menu and to display information such as the time
+* '''settings/configuration manager''' to change the look of the environment
+
+
+And so on. Most desktop environments will also come with their own preferred applications, in addition to various widgets, addons, and extensions to provide extra features. As such, upon entering the commands provided below in your terminal to download and install a desktop environment, you may be prompted to choose from a selection of components provided for it. '''To install a full desktop environment''' - complete with its own preferred file manager, applications, and so on - simply press &lt;enter&gt; when prompted. Everything will be downloaded and installed by default.
+
+
+{{note|If you install this way to use multiple desktop environments, you may find certain applications seem to appear several times in your application menus. For example, several different terminals may be available, as many desktop environments come with their own preferred version, which can also be used in other desktops.}}
+
+
+Where additional (and optional) extras for a desktop environment are availble, the terminal commands to obtain these have also been provided. These commands have been listed seperately to those for obtaining the desktop environments themselves.
+
+
+== XFCE ==
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+'''[http://xfce.org/ XFCE]''' is a lightweight and versatile desktop environment that utilises a classic drop-down menu to access applications. It is also compatible with '''[[Compiz_and_Emerald|Compiz]]'''. Although highly configurable, XFCE does provide a somewhat basic interface that may lack some modern features expected (e.g. no built-in search bar in the menu). A little time and effort will also be required to properly customise the deskop to suit personal taste. A 64 bit installation of Manjaro running XFCE uses about 200MB of memory. '''To install XFCE, enter the command:'''
+
+ sudo pacman -S xfce4
+
+To install extra themes, desktop backgrounds, and panel items (widgets), enter the command:
+
+ sudo pacman -S xfce4-goodies
+&lt;br clear=&quot;all&quot; /&gt;
+
+== KDE ==
+
+[[File: kdeDE.png|thumb|left|375px]]
+
+
+'''[http://www.kde.org/ KDE]''' is a feature-rich and versatile desktop environment that provides several different styles of menu to access applications. It is also compatible with '''[[Compiz_and_Emerald|Compiz]]'''. An excellent built-in interface to easily access and install new themes, widgets, etc, from the internet is also worth mentioning. While very user-friendly and certainly  flashy, KDE is also quite resource heavy and noticably slower to start and use than a desktop environment such as XFCE. A 64 bit installation of Manjaro running KDE uses about 550MB of memory. '''To install KDE, enter the command:'''
+
+ sudo pacman -S kde kdeplasma-applets-networkmanagement
+
+{{note|Upon installing, you will be asked to pick a gstreamer version (phonon or vlc). Gstreamer is a multimedia framework used to handle multimedia applications (i.e. audio and video playback and editing). If you are not sure which one you should choose, pick '''vlc'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Gnome 3 ==
+
+[[File: gnome3DE.png|thumb|left|375px]]
+
+
+'''[http://www.gnome.org/ Gnome 3]''' is an intuitive desktop environment that utilises a tablet or smartphone style interface to access applications. It is not compatible with compiz. Although Gnome is very easy to learn and use, its customisation options are quite limited, and it can be difficult to configure. A 64 bit installation of Manjaro running Gnome uses about 220MB of memory. '''To install Gnome, enter the command:'''
+
+ sudo pacman -S gnome
+
+To install extra themes, games, and features, enter the command:
+
+ sudo pacman -S gnome-extra
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Cinnamon ==
+
+[[File: cinnamonde.png|thumb|left|375px]]
+
+
+'''[http://cinnamon.linuxmint.com/ Cinnamon]''' is a desktop environment based on Gnome 3 that utilises a large panel-style menu to access applications. It is not compatible with compiz. Despite being based on Gnome, it has more customisation options and is easier to configure. Users of Windows Vista or Windows 7 may find Cinnamon's interface comfortably familiar. A 64 bit installation of Manjaro running Cinnamon uses about 350MB of memory. '''To install Cinnamon, enter the command:'''
+
+ sudo pacman -S cinnamon
+
+If you are installing Cinnamon alone on the NET Edition, then it is '''essential''' to install a terminal as well, as one will not be provided with Cinnamon by default. The command to install the Gnome terminal is:
+
+ sudo pacman -S gnome-terminal
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Razor-QT ==
+
+[[File: razorde2.png|thumb|left|375px]]
+
+
+'''[http://razor-qt.org/ Razor-QT]''' is a lightweight desktop environment still under development. It has no window manager of its own, although it can be configured to use Compiz as such (not using the Fusion-Icon, however). It is designed with lower-end computers in mind. At its current stage of development, Razor-QT may not be suitable for all users. A 64 bit installation of Manjaro running Razor-QT uses about 300MB of memory. '''To install Razor-QT, enter the command:'''
+
+ sudo pacman -S razor-qt
+
+To install the recommended Window Manager, use USB devices, and shutdown/reboot from Razor-QT, enter the command:
+
+ sudo pacman -S openbox upower udisks
+
+{{note|You will need to manually edit Razor-QT's configuration file '''~/.config/razor/session.conf''' to set the window manager.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== LXDE ==
+
+[[File: lxde.png|thumb|left|375px]]
+
+
+'''[http://lxde.org/ LXDE]''' is a super-lightweight desktop environment that is very similar to XFCE, with the exception that it is not compatible with Compiz. As with XFCE, LXDE is also a somewhat basic desktop environment, lacking some modern features that would be expected, such as a search-bar to find applications and files. However, it is also an excellent choice for less powerful computers, as a 64 bit installation of Manjaro running LXDE uses only about 150MB of memory. '''To install LXDE, enter the command:'''
+
+ sudo pacman -S lxde
+
+{{note|Installing LXDE will also result in installing ''Openbox'' as its default window manager. The LXDM display manager will also be downloaded, although it will be necessary to enable this yourself if you wish to replace your existing display manager.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Window Managers =
+
+{{note|By nature, building your own desktop environment from a Window Manager will take substantially more time and effort than simply downloading a pre-defined desktop environment.}}
+
+
+Although Desktop Environments commonly provide a good range of customisation options to suit personal taste and preference, they may still be seen as somewhat restrictive or controlled in the sense that they merely allow for the personalisation of their pre-defined components. However, certain Window Managers empower users to take a 'do it yourself' approach in order to create their own desktop environments. In essence, they may be used as a foundation on which to build upon, as literally every component and every aspect of the desktop is under the direct control and choice of the user. An environment may be as elaborate or as minimalistic as desired, and it is even possible to mix and match various components from other desktop environments. 
+
+Therefore extremely powerful and versatile, these window managers also carry the additional benefit of being faster and more resource efficient than pre-defined desktop environments. Interestingly, the super-lightweight LXDE environment is itself built on the Openbox window manager. 
+
+
+== Openbox ==
+
+[[File: openboxde.png|thumb|left|375px]]
+
+
+'''[http://openbox.org/ Openbox]''' is by far the most popular Window Manager available. Due to its popularity there is excellent documentation available, as well as a good choice of additional themes that may be downloaded. '''To install Openbox, enter the command:'''
+
+ sudo pacman -S openbox
+
+To install a logout script, configuration application, menu-editor, and extra themes specifically for Openbox, enter the following command:
+
+ sudo pacman -S oblogout obconf obmenu openbox-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: openbox-synapseb.png|thumb|left|375px]]
+
+
+To install the recommended file manager and terminal for use within openbox, enter the following command:
+
+ sudo pacman -S pcmanfm gnome-terminal
+
+To install the recommended configuration application, background provider, compositor, and menu generator, enter the following command:
+
+ sudo pacman -S lxappearance-obconf nitrogen xcompmgr menumaker
+
+{{note|In this illustration, Openbox is based around nitrogen, xcompmgr, the Thunar file manager, and panels from XFCE. Synapse is used instead of a menu.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== FluxBox ==
+
+[[File: fluxbox.png|thumb|left|375px]]
+
+
+'''[http://fluxbox.org/ FluxBox]''' is another popular Window Manager. It is particularly notable for providing some features not seen in Openbox, such as ''tabbing'', which allows for windows to be grouped together. '''To install FluxBox, enter the command''':
+
+ sudo pacman -S fluxbox
+
+To install the newsfetcher and workspace pager specifically for fluxbox, enter the command:
+
+ sudo pacman -S fbnews fluxter
+&lt;br clear=&quot;all&quot; /&gt;
+
+== IceWM ==
+
+[[File: icewm.png|thumb|left|375px]]
+
+
+'''[http://www.icewm.org/ IceWM]''' is a Window Manager notable for perhaps being closer to a full desktop environment than Openbox or FluxBox. This includes providing a panel complete with menu, in addition to a workspace switcher. '''To install IceWM, enter the command''':
+
+ sudo pacman -S icewm
+
+To install a suite of tools and themes specifically for IceWM, enter the command:
+
+ sudo pacman -S icewm-utils icewm-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Voir aussi =
+
+* '''[[Installez le bureau MATE et le Menu Mint|Installez le bureau MATE et le Menu Mint]]'''
+
+
+[[Install Desktop Environments|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Customisation and Configuration]]
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>0ch72ek5h4v388a45lkb0tpvd9vtu24</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4241</id>
+      <parentid>4169</parentid>
+      <timestamp>2013-01-06T17:37:19Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="13050">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Il existe plusieurs environnements de bureau et gestionnaires de fenêtres disponibles pour Manjaro, chacun ayant ses propres style, interface et fonctionnalités. De plus, si on le désire, il est possible d'installer plusieurs environnements qui peuvent être sélectionnés à tout moment à l'écran de connexion. Les utilisateurs ne sont pas restreints à tout ce qui est pré-installé avec une ambiance particulière à Manjaro.
+
+
+= Les environnements de bureau =
+
+Il est à noter qu'un environnement de bureau n'est pas une entité unique, mais plutôt une collection de composants qui fonctionnent ensemble. Cela comprend généralement un:
+
+* '''un gestionnaire de fenêtres''' pour afficher, déplacer et redimensionner les fenêtres des applications
+* '''un gestionnaire de fichiers''' pour parcourir visuellement, copier et accéder à des fichiers, etc
+* '''un gestionnaire de fond d'écran''' pour afficher des papiers peints, etc
+* '''un tableau de bord''' (ou panneau) pour procurer un menu et afficher des informations telles que l'heure
+* '''un gestionnaire de paramètres et de configuration''' pour changer le look de l'environnement.
+
+
+Et ainsi de suite. La plupart des environnements de bureau possèdent aussi leurs propres applications préférées, en plus de différents ''greffons'', ''addons'', et des extensions pour fournir des fonctionnalités supplémentaires. En entrant les commandes indiquées ci-dessous dans votre terminal pour télécharger et installer un environnement de bureau, vous pouvez être invité à choisir parmi une sélection de composants prévus à cet effet. '''Pour installer un environnement de bureau complet''' - avec son propre gestionnaire de fichiers préféré, les applications, et ainsi de suite - taper tout simplement &lt;Entrée&gt; lorsque vous y êtes invité. Tout sera téléchargé et installé par défaut.
+
+
+{{note|Si vous installez de cette façon plusieurs environnements de bureau, vous pourrez trouver que certaines applications semblent apparaître plusieurs fois dans votre menu des applications. Par exemple, comme les environnements de bureau sont livrés avec leur propre version préférée, plusieurs terminaux peuvent être disponibles. Ils peuvent être également utilisés dans les autres bureaux.}}
+
+
+Des extras pour un environnement de bureau sont disponibles; pour obtenir ceux-ci, les commandes à passer en terminal sont également fournies. Ces commandes ont été énumérées séparément de celles pour l'obtention des environnements de bureau eux-mêmes.
+
+
+== XFCE ==
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+'''[http://wiki.xfce.org/fr/start XFCE]''' est un environnement de bureau léger et polyvalent qui utilise un classique menu déroulant pour accéder aux applications. Il est également compatible avec '''[[Compiz_et_Emerald|Compiz]]'''. Bien que hautement configurable, XFCE fournit une interface assez basique qui peut manquer de certains éléments modernes qu'on pourrait attendre (par exemple pas de barre de recherche intégrée dans le menu). Avec un peu de temps et d'efforts vous pourrez parfaitement personnaliser votre bureau pour qu'il s'adapte à vos goûts personnels. Une installation 64 bits de Manjaro XFCE utilise, en cours d'exécution, environ 200 Mo de mémoire. '''Pour installer XFCE, entrez la commande:'''
+
+ sudo pacman -S xfce4
+
+Pour installer des thèmes supplémentaires, fonds d'écran, et éléments du tableau de bord (greffons), entrez la commande:
+
+ sudo pacman -S xfce4-goodies
+&lt;br clear=&quot;all&quot; /&gt;
+
+== KDE ==
+
+[[File: kdeDE.png|thumb|left|375px]]
+
+
+'''[http://www.kde.org/ KDE]''' est un environnement de bureau polyvalent riche en fonctionnalités qui offre différents styles de menu pour accéder aux applications. Il est également compatible avec '''[[Compiz_et_Emerald|Compiz]]'''. Il est également à signaler qu'une excellente interface intégrée permet d'accéder et installer facilement de nouveaux thèmes, widgets, etc, à partir d'Internet. Bien que très conviviale et certainement tendance, KDE est aussi plus gourmand en ressources mémoire et notablement plus lent à démarrer et à utiliser qu'un environnement de bureau comme XFCE. Une installation 64 bits de Manjaro KDE utilise, en cours d'exécution, environ 550 Mo de mémoire. '''Pour installer KDE, saisissez la commande suivante:'''
+
+ sudo pacman -S kde kdeplasma-applets-networkmanagement
+
+{{note|Lors de l'installation, il vous sera demandé de choisir une version gstreamer (phonon ou vlc). Gstreamer est une structure multimédia utilisée pour gérer les applications multimédia (lecture et édition audio et vidéo). Si vous n'êtes pas sûr de ce que vous devez choisir, choisissez '''vlc'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Gnome 3 ==
+
+[[File: gnome3DE.png|thumb|left|375px]]
+
+
+'''[http://www.gnomefr.org/ Gnome 3]''' est un environnement de bureau intuitif qui utilise un ''tableau'' ou une interface de type smartphone pour accéder aux applications. Il n'est pas compatible avec compiz. Bien que Gnome soit très facile à apprendre et à utiliser, ses options de personnalisation sont assez limitées, et il peut être difficile à configurer. Une installation 64 bits de Manjaro Gnome utilise, en cours d'utilisation, environ 220 Mo de mémoire. '''Pour installer Gnome, entrez la commande:'''
+
+ sudo pacman -S gnome
+
+Pour installer des thèmes, des jeux, et des fonctionnalités supplémentaires, entrez la commande:
+
+ sudo pacman -S gnome-extra
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Cinnamon ==
+
+[[File: cinnamonde.png|thumb|left|375px]]
+
+
+'''[http://cinnamon.linuxmint.com/ Cinnamon]''' est un environnement de bureau basé sur Gnome 3 qui utilise un large panneau de style menu pour accéder aux applications. Il n'est pas compatible avec compiz. Bien que basé sur Gnome, il a ses propres options de personnalisation et est plus facile à configurer. Les utilisateurs de Windows Vista ou Windows 7 peuvent trouver l'interface de Cinnamon familière. Une installation 64 bits de Manjaro Cinnamon utilise, en cours d'exécution, environ 350 Mo de mémoire. '''Pour installer Cinnamon, entrez la commande:'''
+
+ sudo pacman -S cinnamon
+
+Si vous installez Cinnamon seul sur la NET Edition, il est '''indispensable''' d'installer aussi un terminal, car il n'y en a pas de fourni avec Cinnamon par défaut. La commande pour installer le terminal de Gnome est la suivante:
+
+ sudo pacman -S gnome-terminal
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Razor-QT ==
+
+[[File: razorde2.png|thumb|left|375px]]
+
+
+'''[http://razor-qt.org/ Razor-QT]''' est un environnement de bureau léger en cours de développement. Il n'a pas de gestionnaire de fenêtres qui lui est propre, mais il peut être configuré pour utiliser '''[[Compiz_et_Emerald|Compiz]]''' en tant que tel '''(cependant il ne faut pas utiliser Fusion-Icon)'''. Il est conçu avec les ordinateurs peu puissants. Au stade actuel de son développement, Razor-QT peut ne pas convenir à tous les utilisateurs. Une installation 64 bits de Manjaro Razor-QT utilise, en cours d'exécution, environ 300 Mo de mémoire. '''Pour installer Razor-QT, entrez la commande:'''
+
+ sudo pacman -S razor-qt
+
+Pour installer le gestionnaire de fenêtres recommandé, utiliser des périphériques USB, et la fonction arrêt/redémarrage de Razor-QT, entrez la commande:
+
+ sudo pacman -S openbox upower udisks
+
+{{note|Vous devrez modifier manuellement le fichier de configuration Razor-QT '''~/.config/razor/session.conf''' pour définir le gestionnaire de fenêtres.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== LXDE ==
+
+[[File: lxde.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/fr/Accueil LXDE]''' est un environnement de bureau ultra-léger qui est assez similaire à XFCE, à l'exception notable qu'il n'est pas compatible avec Compiz. Comme avec XFCE, LXDE est également un environnement de bureau assez basique; il lui manque quelques fonctionnalités modernes auxquelles on pourrait s'attendre, comme une barre de recherche pour trouver les applications et les fichiers. Cependant, c'est également un excellent choix pour les ordinateurs moins puissants. Une installation 64 bits de Manjaro LXDE utilise, en cours d'utilisation, environ 150 Mo de mémoire. '''Pour installer LXDE, entrez la commande:'''
+
+ sudo pacman -S lxde
+
+{{note|L'installation de LXDE se traduira également par l'installation de ''Openbox'' comme gestionnaire de fenêtres par défaut. Le gestionnaire de connexion LXDM sera également téléchargé, mais il faudra faire le nécessaire si vous souhaitez remplacer votre gestionnaire d'affichage existant. Voir '''[http://wiki.manjaro.org/index.php/Gestionnaires_de_connexion:_Guide_fran%C3%A7ais#LXDM ici]'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Les gestionnaires de fenêtres =
+
+{{note|Par nature, construire votre propre environnement de bureau à partir d'un gestionnaire de fenêtres prendra beaucoup plus temps et d'efforts qu'en téléchargeant simplement un environnement de bureau prédéfini.}}
+
+
+Bien que les environnements de bureau offrent généralement une bonne gamme d'options de personnalisation en fonction des préférences et goûts personnels, ils peuvent encore être considérés comme quelque peu restrictifs ou contrôlés en ce sens qu'ils ne permettent simplement que la personnalisation de leurs composants prédéfinis. Cependant, certains gestionnaires de fenêtres permettent aux utilisateurs d'adopter une approche ''Faites-le vous-même'' afin de créer leurs propres environnements de bureau. Essentiellement, ils peuvent servir comme une base sur laquelle s'inspirer, où tous les composants et tous les aspects du bureau seraient sous le contrôle direct et au choix de l'utilisateur. Un environnement peut être aussi élaboré ou aussi minimaliste comme vous le souhaitez. Il est même possible de mélanger et assortir les différents composants de différents environnements de bureau.
+
+Par conséquent, extrêmement puissant et polyvalent, ces gestionnaires de fenêtres ont également l'avantage supplémentaire d'être plus rapide et plus efficace en gestion des ressources mémoire que les environnements de bureau pré-définis. Fait intéressant, l'environnement LXDE ultra-léger est lui-même construit sur le gestionnaire de fenêtres Openbox.
+
+
+== Openbox ==
+
+[[File: openboxde.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/fr/Openbox Openbox]''' est de loin le plus populaire des gestionnaires de fenêtres disponibles. En raison de sa popularité, il dispose d'une excellente documentation, ainsi que d'un bon choix de thèmes supplémentaires qui peuvent être téléchargés. '''Pour installer Openbox, entrez la commande:'''
+
+ sudo pacman -S openbox
+
+Pour installer un script de déconnexion, l'application de configuration, l'éditeur de menu, et les thèmes supplémentaires spécifiques pour Openbox, entrez la commande suivante:
+
+ sudo pacman -S oblogout obconf obmenu openbox-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: openbox-synapseb.png|thumb|left|375px]]
+
+
+Pour installer le gestionnaire de fichiers et le terminal recommandés pour une utilisation dans openbox, entrez la commande suivante:
+
+ sudo pacman -S pcmanfm gnome-terminal
+
+Pour installer l'application de configuration recommandée, le gestionnaire de fond d'écran, le compositeur et le générateur de menu, entrez la commande suivante:
+
+ sudo pacman -S lxappearance-obconf nitrogen xcompmgr menumaker
+
+{{note|Dans cette illustration, Openbox est basé autour de nitrogen, xcompmgr, le gestionnaire de fichiers Thunar, et les tableaux de bord de XFCE. Synapse est utilisé au lieu d'un menu.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== FluxBox ==
+
+[[File: fluxbox.png|thumb|left|375px]]
+
+
+'''[http://fluxbox.org/ FluxBox]''' est un autre gestionnaire de fenêtres populaire. Il est particulièrement remarquable pour fournir des fonctionnalités inexistantes dans Openbox, comme la ''tabulation'', ce qui permet de regrouper les fenêtres. '''Pour installer FluxBox, entrez la commande:'''
+
+ sudo pacman -S fluxbox
+
+Pour installer le lecteur RSS ''fbnews'' et ''fluxter'' (workspace pager), conçus pour fluxbox, entrez la commande:
+
+ sudo pacman -S fbnews fluxter
+&lt;br clear=&quot;all&quot; /&gt;
+
+== IceWM ==
+
+[[File: icewm.png|thumb|left|375px]]
+
+
+'''[http://www.icewm.org/ IceWM]''' est un gestionnaire de fenêtres remarquable pour être peut-être plus proche d'un environnement de bureau complet que Openbox ou FluxBox. Cela inclut un tableau de bord complet avec menu, en plus d'un sélecteur d'espace de travail. '''Pour installer IceWM, entrez la commande:'''
+
+ sudo pacman -S icewm
+
+Pour installer une suite d'outils et de thèmes spécifiques pour IceWM, entrez la commande:
+
+ sudo pacman -S icewm-utils icewm-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Voir aussi =
+
+* '''[[Installez le bureau MATE et le Menu Mint|Installez le bureau MATE et le Menu Mint]]'''
+
+
+[[Install Desktop Environments|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Customisation and Configuration]]
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>2lz3ggaf71fy9z7qvzttivklu2lc1x8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4401</id>
+      <parentid>4241</parentid>
+      <timestamp>2013-01-07T15:34:33Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <minor/>
+      <comment>Ewolnux moved page [[Installez divers environnements de bureau et gestionnaires de fenêtres]] to [[Installer divers environnements de bureau et gestionnaires de fenêtres]]</comment>
+      <text xml:space="preserve" bytes="13050">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Il existe plusieurs environnements de bureau et gestionnaires de fenêtres disponibles pour Manjaro, chacun ayant ses propres style, interface et fonctionnalités. De plus, si on le désire, il est possible d'installer plusieurs environnements qui peuvent être sélectionnés à tout moment à l'écran de connexion. Les utilisateurs ne sont pas restreints à tout ce qui est pré-installé avec une ambiance particulière à Manjaro.
+
+
+= Les environnements de bureau =
+
+Il est à noter qu'un environnement de bureau n'est pas une entité unique, mais plutôt une collection de composants qui fonctionnent ensemble. Cela comprend généralement un:
+
+* '''un gestionnaire de fenêtres''' pour afficher, déplacer et redimensionner les fenêtres des applications
+* '''un gestionnaire de fichiers''' pour parcourir visuellement, copier et accéder à des fichiers, etc
+* '''un gestionnaire de fond d'écran''' pour afficher des papiers peints, etc
+* '''un tableau de bord''' (ou panneau) pour procurer un menu et afficher des informations telles que l'heure
+* '''un gestionnaire de paramètres et de configuration''' pour changer le look de l'environnement.
+
+
+Et ainsi de suite. La plupart des environnements de bureau possèdent aussi leurs propres applications préférées, en plus de différents ''greffons'', ''addons'', et des extensions pour fournir des fonctionnalités supplémentaires. En entrant les commandes indiquées ci-dessous dans votre terminal pour télécharger et installer un environnement de bureau, vous pouvez être invité à choisir parmi une sélection de composants prévus à cet effet. '''Pour installer un environnement de bureau complet''' - avec son propre gestionnaire de fichiers préféré, les applications, et ainsi de suite - taper tout simplement &lt;Entrée&gt; lorsque vous y êtes invité. Tout sera téléchargé et installé par défaut.
+
+
+{{note|Si vous installez de cette façon plusieurs environnements de bureau, vous pourrez trouver que certaines applications semblent apparaître plusieurs fois dans votre menu des applications. Par exemple, comme les environnements de bureau sont livrés avec leur propre version préférée, plusieurs terminaux peuvent être disponibles. Ils peuvent être également utilisés dans les autres bureaux.}}
+
+
+Des extras pour un environnement de bureau sont disponibles; pour obtenir ceux-ci, les commandes à passer en terminal sont également fournies. Ces commandes ont été énumérées séparément de celles pour l'obtention des environnements de bureau eux-mêmes.
+
+
+== XFCE ==
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+'''[http://wiki.xfce.org/fr/start XFCE]''' est un environnement de bureau léger et polyvalent qui utilise un classique menu déroulant pour accéder aux applications. Il est également compatible avec '''[[Compiz_et_Emerald|Compiz]]'''. Bien que hautement configurable, XFCE fournit une interface assez basique qui peut manquer de certains éléments modernes qu'on pourrait attendre (par exemple pas de barre de recherche intégrée dans le menu). Avec un peu de temps et d'efforts vous pourrez parfaitement personnaliser votre bureau pour qu'il s'adapte à vos goûts personnels. Une installation 64 bits de Manjaro XFCE utilise, en cours d'exécution, environ 200 Mo de mémoire. '''Pour installer XFCE, entrez la commande:'''
+
+ sudo pacman -S xfce4
+
+Pour installer des thèmes supplémentaires, fonds d'écran, et éléments du tableau de bord (greffons), entrez la commande:
+
+ sudo pacman -S xfce4-goodies
+&lt;br clear=&quot;all&quot; /&gt;
+
+== KDE ==
+
+[[File: kdeDE.png|thumb|left|375px]]
+
+
+'''[http://www.kde.org/ KDE]''' est un environnement de bureau polyvalent riche en fonctionnalités qui offre différents styles de menu pour accéder aux applications. Il est également compatible avec '''[[Compiz_et_Emerald|Compiz]]'''. Il est également à signaler qu'une excellente interface intégrée permet d'accéder et installer facilement de nouveaux thèmes, widgets, etc, à partir d'Internet. Bien que très conviviale et certainement tendance, KDE est aussi plus gourmand en ressources mémoire et notablement plus lent à démarrer et à utiliser qu'un environnement de bureau comme XFCE. Une installation 64 bits de Manjaro KDE utilise, en cours d'exécution, environ 550 Mo de mémoire. '''Pour installer KDE, saisissez la commande suivante:'''
+
+ sudo pacman -S kde kdeplasma-applets-networkmanagement
+
+{{note|Lors de l'installation, il vous sera demandé de choisir une version gstreamer (phonon ou vlc). Gstreamer est une structure multimédia utilisée pour gérer les applications multimédia (lecture et édition audio et vidéo). Si vous n'êtes pas sûr de ce que vous devez choisir, choisissez '''vlc'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Gnome 3 ==
+
+[[File: gnome3DE.png|thumb|left|375px]]
+
+
+'''[http://www.gnomefr.org/ Gnome 3]''' est un environnement de bureau intuitif qui utilise un ''tableau'' ou une interface de type smartphone pour accéder aux applications. Il n'est pas compatible avec compiz. Bien que Gnome soit très facile à apprendre et à utiliser, ses options de personnalisation sont assez limitées, et il peut être difficile à configurer. Une installation 64 bits de Manjaro Gnome utilise, en cours d'utilisation, environ 220 Mo de mémoire. '''Pour installer Gnome, entrez la commande:'''
+
+ sudo pacman -S gnome
+
+Pour installer des thèmes, des jeux, et des fonctionnalités supplémentaires, entrez la commande:
+
+ sudo pacman -S gnome-extra
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Cinnamon ==
+
+[[File: cinnamonde.png|thumb|left|375px]]
+
+
+'''[http://cinnamon.linuxmint.com/ Cinnamon]''' est un environnement de bureau basé sur Gnome 3 qui utilise un large panneau de style menu pour accéder aux applications. Il n'est pas compatible avec compiz. Bien que basé sur Gnome, il a ses propres options de personnalisation et est plus facile à configurer. Les utilisateurs de Windows Vista ou Windows 7 peuvent trouver l'interface de Cinnamon familière. Une installation 64 bits de Manjaro Cinnamon utilise, en cours d'exécution, environ 350 Mo de mémoire. '''Pour installer Cinnamon, entrez la commande:'''
+
+ sudo pacman -S cinnamon
+
+Si vous installez Cinnamon seul sur la NET Edition, il est '''indispensable''' d'installer aussi un terminal, car il n'y en a pas de fourni avec Cinnamon par défaut. La commande pour installer le terminal de Gnome est la suivante:
+
+ sudo pacman -S gnome-terminal
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Razor-QT ==
+
+[[File: razorde2.png|thumb|left|375px]]
+
+
+'''[http://razor-qt.org/ Razor-QT]''' est un environnement de bureau léger en cours de développement. Il n'a pas de gestionnaire de fenêtres qui lui est propre, mais il peut être configuré pour utiliser '''[[Compiz_et_Emerald|Compiz]]''' en tant que tel '''(cependant il ne faut pas utiliser Fusion-Icon)'''. Il est conçu avec les ordinateurs peu puissants. Au stade actuel de son développement, Razor-QT peut ne pas convenir à tous les utilisateurs. Une installation 64 bits de Manjaro Razor-QT utilise, en cours d'exécution, environ 300 Mo de mémoire. '''Pour installer Razor-QT, entrez la commande:'''
+
+ sudo pacman -S razor-qt
+
+Pour installer le gestionnaire de fenêtres recommandé, utiliser des périphériques USB, et la fonction arrêt/redémarrage de Razor-QT, entrez la commande:
+
+ sudo pacman -S openbox upower udisks
+
+{{note|Vous devrez modifier manuellement le fichier de configuration Razor-QT '''~/.config/razor/session.conf''' pour définir le gestionnaire de fenêtres.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== LXDE ==
+
+[[File: lxde.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/fr/Accueil LXDE]''' est un environnement de bureau ultra-léger qui est assez similaire à XFCE, à l'exception notable qu'il n'est pas compatible avec Compiz. Comme avec XFCE, LXDE est également un environnement de bureau assez basique; il lui manque quelques fonctionnalités modernes auxquelles on pourrait s'attendre, comme une barre de recherche pour trouver les applications et les fichiers. Cependant, c'est également un excellent choix pour les ordinateurs moins puissants. Une installation 64 bits de Manjaro LXDE utilise, en cours d'utilisation, environ 150 Mo de mémoire. '''Pour installer LXDE, entrez la commande:'''
+
+ sudo pacman -S lxde
+
+{{note|L'installation de LXDE se traduira également par l'installation de ''Openbox'' comme gestionnaire de fenêtres par défaut. Le gestionnaire de connexion LXDM sera également téléchargé, mais il faudra faire le nécessaire si vous souhaitez remplacer votre gestionnaire d'affichage existant. Voir '''[http://wiki.manjaro.org/index.php/Gestionnaires_de_connexion:_Guide_fran%C3%A7ais#LXDM ici]'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Les gestionnaires de fenêtres =
+
+{{note|Par nature, construire votre propre environnement de bureau à partir d'un gestionnaire de fenêtres prendra beaucoup plus temps et d'efforts qu'en téléchargeant simplement un environnement de bureau prédéfini.}}
+
+
+Bien que les environnements de bureau offrent généralement une bonne gamme d'options de personnalisation en fonction des préférences et goûts personnels, ils peuvent encore être considérés comme quelque peu restrictifs ou contrôlés en ce sens qu'ils ne permettent simplement que la personnalisation de leurs composants prédéfinis. Cependant, certains gestionnaires de fenêtres permettent aux utilisateurs d'adopter une approche ''Faites-le vous-même'' afin de créer leurs propres environnements de bureau. Essentiellement, ils peuvent servir comme une base sur laquelle s'inspirer, où tous les composants et tous les aspects du bureau seraient sous le contrôle direct et au choix de l'utilisateur. Un environnement peut être aussi élaboré ou aussi minimaliste comme vous le souhaitez. Il est même possible de mélanger et assortir les différents composants de différents environnements de bureau.
+
+Par conséquent, extrêmement puissant et polyvalent, ces gestionnaires de fenêtres ont également l'avantage supplémentaire d'être plus rapide et plus efficace en gestion des ressources mémoire que les environnements de bureau pré-définis. Fait intéressant, l'environnement LXDE ultra-léger est lui-même construit sur le gestionnaire de fenêtres Openbox.
+
+
+== Openbox ==
+
+[[File: openboxde.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/fr/Openbox Openbox]''' est de loin le plus populaire des gestionnaires de fenêtres disponibles. En raison de sa popularité, il dispose d'une excellente documentation, ainsi que d'un bon choix de thèmes supplémentaires qui peuvent être téléchargés. '''Pour installer Openbox, entrez la commande:'''
+
+ sudo pacman -S openbox
+
+Pour installer un script de déconnexion, l'application de configuration, l'éditeur de menu, et les thèmes supplémentaires spécifiques pour Openbox, entrez la commande suivante:
+
+ sudo pacman -S oblogout obconf obmenu openbox-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: openbox-synapseb.png|thumb|left|375px]]
+
+
+Pour installer le gestionnaire de fichiers et le terminal recommandés pour une utilisation dans openbox, entrez la commande suivante:
+
+ sudo pacman -S pcmanfm gnome-terminal
+
+Pour installer l'application de configuration recommandée, le gestionnaire de fond d'écran, le compositeur et le générateur de menu, entrez la commande suivante:
+
+ sudo pacman -S lxappearance-obconf nitrogen xcompmgr menumaker
+
+{{note|Dans cette illustration, Openbox est basé autour de nitrogen, xcompmgr, le gestionnaire de fichiers Thunar, et les tableaux de bord de XFCE. Synapse est utilisé au lieu d'un menu.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+== FluxBox ==
+
+[[File: fluxbox.png|thumb|left|375px]]
+
+
+'''[http://fluxbox.org/ FluxBox]''' est un autre gestionnaire de fenêtres populaire. Il est particulièrement remarquable pour fournir des fonctionnalités inexistantes dans Openbox, comme la ''tabulation'', ce qui permet de regrouper les fenêtres. '''Pour installer FluxBox, entrez la commande:'''
+
+ sudo pacman -S fluxbox
+
+Pour installer le lecteur RSS ''fbnews'' et ''fluxter'' (workspace pager), conçus pour fluxbox, entrez la commande:
+
+ sudo pacman -S fbnews fluxter
+&lt;br clear=&quot;all&quot; /&gt;
+
+== IceWM ==
+
+[[File: icewm.png|thumb|left|375px]]
+
+
+'''[http://www.icewm.org/ IceWM]''' est un gestionnaire de fenêtres remarquable pour être peut-être plus proche d'un environnement de bureau complet que Openbox ou FluxBox. Cela inclut un tableau de bord complet avec menu, en plus d'un sélecteur d'espace de travail. '''Pour installer IceWM, entrez la commande:'''
+
+ sudo pacman -S icewm
+
+Pour installer une suite d'outils et de thèmes spécifiques pour IceWM, entrez la commande:
+
+ sudo pacman -S icewm-utils icewm-themes
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Voir aussi =
+
+* '''[[Installez le bureau MATE et le Menu Mint|Installez le bureau MATE et le Menu Mint]]'''
+
+
+[[Install Desktop Environments|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Customisation and Configuration]]
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>2lz3ggaf71fy9z7qvzttivklu2lc1x8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

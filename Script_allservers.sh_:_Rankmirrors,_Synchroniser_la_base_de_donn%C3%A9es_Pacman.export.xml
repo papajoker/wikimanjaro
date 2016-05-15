@@ -1,0 +1,1432 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Script allservers.sh : Rankmirrors, Synchroniser la base de données Pacman</title>
+    <ns>0</ns>
+    <id>630</id>
+    <revision>
+      <id>3650</id>
+      <timestamp>2012-12-30T12:06:22Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot; = The Allservers.sh Script: =  Here is a list of what the contents of this page attempts to do:-  Firstly the allservers.sh script does the following for you:  '''1'''. Downl...&quot;</comment>
+      <text xml:space="preserve" bytes="13039">
+= The Allservers.sh Script: =
+
+Here is a list of what the contents of this page attempts to do:-
+
+Firstly the allservers.sh script does the following for you:
+
+'''1'''. Downloads the most recent Manjaro mirror list to /etc/pacman.d/allservers
+
+'''2'''. Formats it to /etc/pacman.d/allservers
+
+'''3'''. Rankmirrors tests then updates /etc/pacman.d/mirrorlist
+
+'''4'''. Syncs the mirrors with your machine
+
+'''5'''. Then... presents you with a menu offering two system upgrade options: The first option will upgrade your system via running the '''pacman -Syu''' command. The second option will upgrade your system plus any packages from the ''AUR'' via running the '''yaourt -Syu --aur''' command.  Also, once the menu is up you can exit the script by hitting ''Return/Enter'' key.
+
+
+''The following additions are to make using this script as easy as possible:''
+
+'''6'''. I've also shown how to add a ''~/.bashrc'' alias that will enable you to call this script by typing just two letters into the terminal.
+
+'''7'''. And lastly, how to modify the default search paths for both ''root'' &amp; ''user'' accounts, so the system will automatically find your script(s) no matter where it or they are stored. This information is of course useful for any personalised storage directory where one may prefer access without having to enter the full path, for whatever reason.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Historically:==
+
+Phil told us what he does to make the new mirrorlist, so I've put that into a script, adding '''rankmirrors''' to find the three fastest mirrors of the moment &amp; '''pacman -Syy''' to sync the databases.
+
+Then Phil added his touch to my simple script making it look good &amp; to inform us somewhat of its progress when run. 
+
+Since then I've added a menu (&amp; made it more pleasing to the eye) that enables the upgrading of the system via either the '''pacman -Syu''' or '''yaourt -Syu --aur''' commands.
+
+Plus come up with a command line - '''sudo su -c allservers.sh''' - that will happily run via the input of two letters into the Terminal via a ''.bashrc alias'', &amp; done a couple of other things ''(see further down)'' to make it as easy &amp; convenient as possible to use the ''allservers.sh'' script.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== The Script Itself:==
+
+ #!/bin/bash
+ 
+ # allservers.sh - inspired by Manjaro's Carl &amp; Phil, initially hung together 
+ # by handy, the script's display prettied up &amp; progress information added by Phil, 
+ # the menu &amp; wiki page added by handy: 
+ # http://wiki.manjaro.org/index.php/Allservers.sh_Script:-_Rankmirrors,_Synchronise_Pacman_Database
+ 
+ # allservers.menu.sh MUST be run as root = after sudo su
+ # 1. Downloads the most recent Manjaro mirror list to /etc/pacman.d/allservers
+ # 2. Formats it to /etc/pacman.d/allservers
+ # 3. Rankmirrors tests then updates /etc/pacman.d/mirrorlist with the 3 fastest
+ # 4. Syncs the mirrors with your machine
+ # 5. Menu then appears asking you how you want to upgrade your system.
+ #    Choice 1. type s or S to call pacman -Syu
+ #    Choice 2. type a or A to call yaourt -Syu --aur
+ #    Hit Return to exit the script.
+ ###########################################################
+ 
+ err() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     RED=&quot;${BOLD}\e[1;31m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${RED}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ msg() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     GREEN=&quot;${BOLD}\e[1;32m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${GREEN}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ 
+ if &lt;nowiki&gt;[[ `whoami` != &quot;root&quot; ]];&lt;/nowiki&gt;
+ then
+   err &quot;Must use 'sudo su' before you run this script.&quot;
+   exit
+ fi
+ 
+ echo
+ msg &quot;Downloading latest mirrorlist&quot;
+ wget http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist -O /etc/pacman.d/allservers &gt;&amp; /dev/null
+ msg &quot;Editing allservers file&quot;
+ sed -ie s'/# Server/Server/'g /etc/pacman.d/allservers
+ msg &quot;Running rankmirrors&quot;
+ rankmirrors -n 3 /etc/pacman.d/allservers &gt; /etc/pacman.d/mirrorlist
+ msg &quot;Updating your pacman databases&quot;
+ echo
+ pacman -Syy
+ 
+ 
+ # menu options to upgrade system &amp; upgrade system plus AUR:
+ 
+ clear # Clear the screen.
+ 
+ echo
+ echo -e &quot;\033[1m                 allservers.sh \033[0m&quot;
+ echo
+ echo -e &quot;\e[1;32m    Choose how you want to upgrade Manjaro?&quot;
+ echo  &quot;    Choose the S/s or A/a key - or --&gt;&quot; 
+ echo  &quot;    Hit the Return/Enter key to Exit the script.&quot;
+ echo
+ echo
+ echo  &quot;    [S]ystem Only --&gt; pacman -Syu&quot;
+ echo
+ echo -e &quot;    [A]UR &amp; System --&gt; yaourt -Syu --aur  \e[1;0m&quot;
+ echo
+ echo
+ 
+ read option
+ 
+ case &quot;$option&quot; in
+ # Note variable is quoted.
+ 
+   &quot;S&quot; | &quot;s&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System:&quot;
+   echo
+   pacman -Syu
+   echo
+   msg &quot;System update complete.&quot;
+   ;;
+ # Note double semicolon to terminate each option.
+ 
+   &quot;A&quot; | &quot;a&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System &amp; AUR:&quot;
+   echo
+   yaourt -Syu --aur
+   echo
+   msg &quot;System including AUR packages are up to date.&quot;
+   ;;
+ 
+ esac
+ 
+ echo
+ 
+ exit 0
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Installation &amp; Execution:==
+
+To install this script on your computer, you will need to copy the text of the script off of this page &amp; into a '''New''' file in your favourite text editor.
+
+If you are using gedit, then when you first open it, you are given a blank page that is for creating a new file, which is exactly what we want. 
+
+Firstly use your mouse to highlight all of the ''allservers.sh'' script in the text box above. Then select the highlighted text with your right mouse button &amp; choose the '''Copy''' option from the drop down menu; then '''Paste''' it into the new blank gedit page by either using the right mouse button menu over the blank editor page or use the editor's '''Edit''' menu &amp; choose the '''Paste''' option.
+
+When you have the allservers.sh text in your text editor save it into your /home/&lt;user.name&gt; directory with the name '''allservers.sh''' like so: 
+
+ '''/home/&lt;user.name&gt;/allservers.sh''' . 
+
+After so doing you still won't be able to run the script as it needs to be made executable first ''(information on this to follow)''.
+
+Once the allservers.sh script has been made executable it will run by typing the following in the Terminal:
+
+ '''sudo su''' 
+
+Then after you have given your password for the above command you can enter the following to run the allservers.sh script:
+
+ '''allservers.sh''' 
+
+We will make the above process of calling &amp; running the script very much easier, so please read-on.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Make the allservers.sh Script Executable: ==
+
+
+The allservers.sh script must be made executable or it will not run. To do this, type the following into the Terminal: 
+
+
+ chmod +x &lt;path/to&gt;/allservers.sh
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Call sudo su allservers.sh with just two letters: ==
+
+
+To streamline the use of the allservers.sh script, I spent some time investigating running '''sudo su''' inside of the allservers.sh script. I discovered that it is difficult to do &amp; is also considered to be bad practice. 
+
+I eventually came up with a very simple solution that works really well via the use of a '''~/.bashrc''' alias:
+
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+
+''So now the way it works is you just have to enter '''as''' in the Terminal which brings a request to enter my password, then the script runs correctly doing all it was asked.'' 
+
+When it is finished you will have an /etc/pacman.d/mirrorlist with the three fastest mirrors listed &amp; your pacman database will be in sync with these mirrors. If you have chosen to add the previously mentioned edit to the script, then you will also have a completely updated system including those files from AUR (again if that was your choice).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==How to Edit Your ~/.bashrc:==
+
+To add the alias into your '''/home/&lt;user name&gt;/.bashrc''' you will need to open '''.bashrc''' in your favourite text editor. 
+
+Because the file we want is a ''hidden'' file, as can be seen by the ''&lt;.dot&gt;'' at the beginning of its name, it will generally be invisible in the File Requester that is called from using your editors File menu -&gt; Open option.
+
+This is how we find '''.bashrc''' in ''gedit'', most other GUI type text editors will function very similarly:
+
+Select the '''Open''' button in the top left of the ''gedit'' tool bar, then choose your user name in the left hand '''Places''' column, now in the '''Location:''' field up near the top of the file requester type '''.bashrc''' &amp; hit the '''Open''' button down at the bottom right of the file requester, this will open the '''.bashrc''' file in gedit.
+
+Once .bashrc is open we can add the alias to it by highlight the following text - triple left mouse button click on it, or drag the cursor with the left mouse button held down along the full length of the line:
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+Once you have highlighted the above line, select it with your right mouse button, this will cause a drop down menu to appear, from which you select the '''Copy''' option. Then go to your text editor with your '''.bashrc''' open in it &amp; make some space with the enter key, or paste it on the bottom of the file if you like. 
+
+It doesn't matter where it goes it will still work just as well (don't put it in the middle of something that is already there though), don't be scared of the .bashrc , if you are concerned that you might break your .bashrc , you can make a copy of it before you modify it. ''(This is always a good safe policy to follow when editing configuration files.)''
+
+An easy way to do this, is once you have opened '''.bashrc''' in your text editor, choose '''Save As''' from the '''File''' menu &amp; save '''.bashrc''' with a new name like so '''.bashrc_BAK''' . 
+
+This will make a new file in your '''/home/&lt;user name&gt;''' directory sitting right beside the old '''.bashrc''' . This gives you the ability to recover from a mistake by opening '''.bashrc_BAK''' , renaming it &amp; saving it back to its original name of '''.bashrc''' .
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Modifying the System's Search Path: ==
+
+On an associated note, I have my scripts stored in ''~/data/scripts'' which when calling a script located there would cause an unknown command or some such error because that path is not in the default system search paths.
+
+To remedy this I've added the path to both the ''root'' search path (for this script) &amp; my single user's too (which is where the path will be used for other scripts).
+
+The following methods described here can be used for as many directories that you need or desire to be in your default search path. Usually this is done in the user account &amp; rarely for the ''root'' (administrative) account.
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the Root Search Path: ===
+
+To edit files for ''root'' you will need to use your favourite text editor as ''root'' user. This is done in various ways depending on the type of editor. Console-based editors (those that operate in the Terminal without a Graphic User interface - GUI) are best called with the path to the file &amp; its name, whether you are opening an existing file or looking to create a new one, it is done like so, using nano as the example here: 
+
+For nano:
+
+ sudo nano &lt;path/to/file-name&gt;
+
+gedit &amp; the other desktop GUI-based editors will happily use the same method as those editors that are console-based, though for these desktop GUI-based text editors you can use their built in menu to open files. 
+
+The following example opens ''gedit'' for the ''root'' (administrative) user:
+
+ sudo gedit
+
+Adding '''/home/handy/data/scripts''' to my search path saves me having to type in that path to any of my scripts when they are called. To do this for '''root''' , I modified '''/etc/profile''' , adding my path to the end of the '''PATH=''' line, &amp; that is all there is to it:
+
+
+ # Set our default path
+ PATH=&quot;/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/handy/data/scripts&quot;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the User Search Path: ===
+
+It is far more common for someone to want to modify the path for a single user account (in my case that's handy) which is done via that user's '''~/.bash_profile''' by adding the following to the file:
+
+
+ PATH=$PATH:&lt;/your/path&gt;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Recapitulation: == 
+
+After all that (not too hard really); typing '''''as''''' in the Terminal gives us the fastest three mirrors of the moment &amp; syncs our pacman database with the servers. 
+
+By taking advantage of the incorporated ''menu'', you can choose to upgrade your system by choosing '''S''' or '''s''' from the ''menu'' which calls the '''pacman -Syu''' command, ''OR'' you can choose to upgrade your system &amp; any packages from the ''AUR'' by choosing '''A''' or '''a''' from the ''menu'' which calls the '''yaourt -Syu --aur''' command. &lt;smile&gt;
+
+If at the time your only requirements were to ''upgrade your mirror list &amp; sync your package databases'' then you can safely exit the script by hitting the ''Return/Enter'' key on your keyboard; as by the time you see the ''menu'' those two tasks have already been completed.</text>
+      <sha1>me47wlyjdm32591uei2j1k9724r8888</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3652</id>
+      <parentid>3650</parentid>
+      <timestamp>2012-12-30T12:10:41Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="13134">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= The Allservers.sh Script: =
+
+Here is a list of what the contents of this page attempts to do:-
+
+Firstly the allservers.sh script does the following for you:
+
+'''1'''. Downloads the most recent Manjaro mirror list to /etc/pacman.d/allservers
+
+'''2'''. Formats it to /etc/pacman.d/allservers
+
+'''3'''. Rankmirrors tests then updates /etc/pacman.d/mirrorlist
+
+'''4'''. Syncs the mirrors with your machine
+
+'''5'''. Then... presents you with a menu offering two system upgrade options: The first option will upgrade your system via running the '''pacman -Syu''' command. The second option will upgrade your system plus any packages from the ''AUR'' via running the '''yaourt -Syu --aur''' command.  Also, once the menu is up you can exit the script by hitting ''Return/Enter'' key.
+
+
+''The following additions are to make using this script as easy as possible:''
+
+'''6'''. I've also shown how to add a ''~/.bashrc'' alias that will enable you to call this script by typing just two letters into the terminal.
+
+'''7'''. And lastly, how to modify the default search paths for both ''root'' &amp; ''user'' accounts, so the system will automatically find your script(s) no matter where it or they are stored. This information is of course useful for any personalised storage directory where one may prefer access without having to enter the full path, for whatever reason.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Historically:==
+
+Phil told us what he does to make the new mirrorlist, so I've put that into a script, adding '''rankmirrors''' to find the three fastest mirrors of the moment &amp; '''pacman -Syy''' to sync the databases.
+
+Then Phil added his touch to my simple script making it look good &amp; to inform us somewhat of its progress when run. 
+
+Since then I've added a menu (&amp; made it more pleasing to the eye) that enables the upgrading of the system via either the '''pacman -Syu''' or '''yaourt -Syu --aur''' commands.
+
+Plus come up with a command line - '''sudo su -c allservers.sh''' - that will happily run via the input of two letters into the Terminal via a ''.bashrc alias'', &amp; done a couple of other things ''(see further down)'' to make it as easy &amp; convenient as possible to use the ''allservers.sh'' script.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== The Script Itself:==
+
+ #!/bin/bash
+ 
+ # allservers.sh - inspired by Manjaro's Carl &amp; Phil, initially hung together 
+ # by handy, the script's display prettied up &amp; progress information added by Phil, 
+ # the menu &amp; wiki page added by handy: 
+ # http://wiki.manjaro.org/index.php/Allservers.sh_Script:-_Rankmirrors,_Synchronise_Pacman_Database
+ 
+ # allservers.menu.sh MUST be run as root = after sudo su
+ # 1. Downloads the most recent Manjaro mirror list to /etc/pacman.d/allservers
+ # 2. Formats it to /etc/pacman.d/allservers
+ # 3. Rankmirrors tests then updates /etc/pacman.d/mirrorlist with the 3 fastest
+ # 4. Syncs the mirrors with your machine
+ # 5. Menu then appears asking you how you want to upgrade your system.
+ #    Choice 1. type s or S to call pacman -Syu
+ #    Choice 2. type a or A to call yaourt -Syu --aur
+ #    Hit Return to exit the script.
+ ###########################################################
+ 
+ err() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     RED=&quot;${BOLD}\e[1;31m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${RED}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ msg() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     GREEN=&quot;${BOLD}\e[1;32m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${GREEN}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ 
+ if &lt;nowiki&gt;[[ `whoami` != &quot;root&quot; ]];&lt;/nowiki&gt;
+ then
+   err &quot;Must use 'sudo su' before you run this script.&quot;
+   exit
+ fi
+ 
+ echo
+ msg &quot;Downloading latest mirrorlist&quot;
+ wget http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist -O /etc/pacman.d/allservers &gt;&amp; /dev/null
+ msg &quot;Editing allservers file&quot;
+ sed -ie s'/# Server/Server/'g /etc/pacman.d/allservers
+ msg &quot;Running rankmirrors&quot;
+ rankmirrors -n 3 /etc/pacman.d/allservers &gt; /etc/pacman.d/mirrorlist
+ msg &quot;Updating your pacman databases&quot;
+ echo
+ pacman -Syy
+ 
+ 
+ # menu options to upgrade system &amp; upgrade system plus AUR:
+ 
+ clear # Clear the screen.
+ 
+ echo
+ echo -e &quot;\033[1m                 allservers.sh \033[0m&quot;
+ echo
+ echo -e &quot;\e[1;32m    Choose how you want to upgrade Manjaro?&quot;
+ echo  &quot;    Choose the S/s or A/a key - or --&gt;&quot; 
+ echo  &quot;    Hit the Return/Enter key to Exit the script.&quot;
+ echo
+ echo
+ echo  &quot;    [S]ystem Only --&gt; pacman -Syu&quot;
+ echo
+ echo -e &quot;    [A]UR &amp; System --&gt; yaourt -Syu --aur  \e[1;0m&quot;
+ echo
+ echo
+ 
+ read option
+ 
+ case &quot;$option&quot; in
+ # Note variable is quoted.
+ 
+   &quot;S&quot; | &quot;s&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System:&quot;
+   echo
+   pacman -Syu
+   echo
+   msg &quot;System update complete.&quot;
+   ;;
+ # Note double semicolon to terminate each option.
+ 
+   &quot;A&quot; | &quot;a&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System &amp; AUR:&quot;
+   echo
+   yaourt -Syu --aur
+   echo
+   msg &quot;System including AUR packages are up to date.&quot;
+   ;;
+ 
+ esac
+ 
+ echo
+ 
+ exit 0
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Installation &amp; Execution:==
+
+To install this script on your computer, you will need to copy the text of the script off of this page &amp; into a '''New''' file in your favourite text editor.
+
+If you are using gedit, then when you first open it, you are given a blank page that is for creating a new file, which is exactly what we want. 
+
+Firstly use your mouse to highlight all of the ''allservers.sh'' script in the text box above. Then select the highlighted text with your right mouse button &amp; choose the '''Copy''' option from the drop down menu; then '''Paste''' it into the new blank gedit page by either using the right mouse button menu over the blank editor page or use the editor's '''Edit''' menu &amp; choose the '''Paste''' option.
+
+When you have the allservers.sh text in your text editor save it into your /home/&lt;user.name&gt; directory with the name '''allservers.sh''' like so: 
+
+ '''/home/&lt;user.name&gt;/allservers.sh''' . 
+
+After so doing you still won't be able to run the script as it needs to be made executable first ''(information on this to follow)''.
+
+Once the allservers.sh script has been made executable it will run by typing the following in the Terminal:
+
+ '''sudo su''' 
+
+Then after you have given your password for the above command you can enter the following to run the allservers.sh script:
+
+ '''allservers.sh''' 
+
+We will make the above process of calling &amp; running the script very much easier, so please read-on.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Make the allservers.sh Script Executable: ==
+
+
+The allservers.sh script must be made executable or it will not run. To do this, type the following into the Terminal: 
+
+
+ chmod +x &lt;path/to&gt;/allservers.sh
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Call sudo su allservers.sh with just two letters: ==
+
+
+To streamline the use of the allservers.sh script, I spent some time investigating running '''sudo su''' inside of the allservers.sh script. I discovered that it is difficult to do &amp; is also considered to be bad practice. 
+
+I eventually came up with a very simple solution that works really well via the use of a '''~/.bashrc''' alias:
+
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+
+''So now the way it works is you just have to enter '''as''' in the Terminal which brings a request to enter my password, then the script runs correctly doing all it was asked.'' 
+
+When it is finished you will have an /etc/pacman.d/mirrorlist with the three fastest mirrors listed &amp; your pacman database will be in sync with these mirrors. If you have chosen to add the previously mentioned edit to the script, then you will also have a completely updated system including those files from AUR (again if that was your choice).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==How to Edit Your ~/.bashrc:==
+
+To add the alias into your '''/home/&lt;user name&gt;/.bashrc''' you will need to open '''.bashrc''' in your favourite text editor. 
+
+Because the file we want is a ''hidden'' file, as can be seen by the ''&lt;.dot&gt;'' at the beginning of its name, it will generally be invisible in the File Requester that is called from using your editors File menu -&gt; Open option.
+
+This is how we find '''.bashrc''' in ''gedit'', most other GUI type text editors will function very similarly:
+
+Select the '''Open''' button in the top left of the ''gedit'' tool bar, then choose your user name in the left hand '''Places''' column, now in the '''Location:''' field up near the top of the file requester type '''.bashrc''' &amp; hit the '''Open''' button down at the bottom right of the file requester, this will open the '''.bashrc''' file in gedit.
+
+Once .bashrc is open we can add the alias to it by highlight the following text - triple left mouse button click on it, or drag the cursor with the left mouse button held down along the full length of the line:
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+Once you have highlighted the above line, select it with your right mouse button, this will cause a drop down menu to appear, from which you select the '''Copy''' option. Then go to your text editor with your '''.bashrc''' open in it &amp; make some space with the enter key, or paste it on the bottom of the file if you like. 
+
+It doesn't matter where it goes it will still work just as well (don't put it in the middle of something that is already there though), don't be scared of the .bashrc , if you are concerned that you might break your .bashrc , you can make a copy of it before you modify it. ''(This is always a good safe policy to follow when editing configuration files.)''
+
+An easy way to do this, is once you have opened '''.bashrc''' in your text editor, choose '''Save As''' from the '''File''' menu &amp; save '''.bashrc''' with a new name like so '''.bashrc_BAK''' . 
+
+This will make a new file in your '''/home/&lt;user name&gt;''' directory sitting right beside the old '''.bashrc''' . This gives you the ability to recover from a mistake by opening '''.bashrc_BAK''' , renaming it &amp; saving it back to its original name of '''.bashrc''' .
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Modifying the System's Search Path: ==
+
+On an associated note, I have my scripts stored in ''~/data/scripts'' which when calling a script located there would cause an unknown command or some such error because that path is not in the default system search paths.
+
+To remedy this I've added the path to both the ''root'' search path (for this script) &amp; my single user's too (which is where the path will be used for other scripts).
+
+The following methods described here can be used for as many directories that you need or desire to be in your default search path. Usually this is done in the user account &amp; rarely for the ''root'' (administrative) account.
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the Root Search Path: ===
+
+To edit files for ''root'' you will need to use your favourite text editor as ''root'' user. This is done in various ways depending on the type of editor. Console-based editors (those that operate in the Terminal without a Graphic User interface - GUI) are best called with the path to the file &amp; its name, whether you are opening an existing file or looking to create a new one, it is done like so, using nano as the example here: 
+
+For nano:
+
+ sudo nano &lt;path/to/file-name&gt;
+
+gedit &amp; the other desktop GUI-based editors will happily use the same method as those editors that are console-based, though for these desktop GUI-based text editors you can use their built in menu to open files. 
+
+The following example opens ''gedit'' for the ''root'' (administrative) user:
+
+ sudo gedit
+
+Adding '''/home/handy/data/scripts''' to my search path saves me having to type in that path to any of my scripts when they are called. To do this for '''root''' , I modified '''/etc/profile''' , adding my path to the end of the '''PATH=''' line, &amp; that is all there is to it:
+
+
+ # Set our default path
+ PATH=&quot;/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/handy/data/scripts&quot;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the User Search Path: ===
+
+It is far more common for someone to want to modify the path for a single user account (in my case that's handy) which is done via that user's '''~/.bash_profile''' by adding the following to the file:
+
+
+ PATH=$PATH:&lt;/your/path&gt;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Recapitulation: == 
+
+After all that (not too hard really); typing '''''as''''' in the Terminal gives us the fastest three mirrors of the moment &amp; syncs our pacman database with the servers. 
+
+By taking advantage of the incorporated ''menu'', you can choose to upgrade your system by choosing '''S''' or '''s''' from the ''menu'' which calls the '''pacman -Syu''' command, ''OR'' you can choose to upgrade your system &amp; any packages from the ''AUR'' by choosing '''A''' or '''a''' from the ''menu'' which calls the '''yaourt -Syu --aur''' command. &lt;smile&gt;
+
+If at the time your only requirements were to ''upgrade your mirror list &amp; sync your package databases'' then you can safely exit the script by hitting the ''Return/Enter'' key on your keyboard; as by the time you see the ''menu'' those two tasks have already been completed.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;</text>
+      <sha1>7cc6sxfm490ho37twqrqj1c1aqj11d2</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3653</id>
+      <parentid>3652</parentid>
+      <timestamp>2012-12-30T12:12:00Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Recapitulation: */</comment>
+      <text xml:space="preserve" bytes="13207">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= The Allservers.sh Script: =
+
+Here is a list of what the contents of this page attempts to do:-
+
+Firstly the allservers.sh script does the following for you:
+
+'''1'''. Downloads the most recent Manjaro mirror list to /etc/pacman.d/allservers
+
+'''2'''. Formats it to /etc/pacman.d/allservers
+
+'''3'''. Rankmirrors tests then updates /etc/pacman.d/mirrorlist
+
+'''4'''. Syncs the mirrors with your machine
+
+'''5'''. Then... presents you with a menu offering two system upgrade options: The first option will upgrade your system via running the '''pacman -Syu''' command. The second option will upgrade your system plus any packages from the ''AUR'' via running the '''yaourt -Syu --aur''' command.  Also, once the menu is up you can exit the script by hitting ''Return/Enter'' key.
+
+
+''The following additions are to make using this script as easy as possible:''
+
+'''6'''. I've also shown how to add a ''~/.bashrc'' alias that will enable you to call this script by typing just two letters into the terminal.
+
+'''7'''. And lastly, how to modify the default search paths for both ''root'' &amp; ''user'' accounts, so the system will automatically find your script(s) no matter where it or they are stored. This information is of course useful for any personalised storage directory where one may prefer access without having to enter the full path, for whatever reason.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Historically:==
+
+Phil told us what he does to make the new mirrorlist, so I've put that into a script, adding '''rankmirrors''' to find the three fastest mirrors of the moment &amp; '''pacman -Syy''' to sync the databases.
+
+Then Phil added his touch to my simple script making it look good &amp; to inform us somewhat of its progress when run. 
+
+Since then I've added a menu (&amp; made it more pleasing to the eye) that enables the upgrading of the system via either the '''pacman -Syu''' or '''yaourt -Syu --aur''' commands.
+
+Plus come up with a command line - '''sudo su -c allservers.sh''' - that will happily run via the input of two letters into the Terminal via a ''.bashrc alias'', &amp; done a couple of other things ''(see further down)'' to make it as easy &amp; convenient as possible to use the ''allservers.sh'' script.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== The Script Itself:==
+
+ #!/bin/bash
+ 
+ # allservers.sh - inspired by Manjaro's Carl &amp; Phil, initially hung together 
+ # by handy, the script's display prettied up &amp; progress information added by Phil, 
+ # the menu &amp; wiki page added by handy: 
+ # http://wiki.manjaro.org/index.php/Allservers.sh_Script:-_Rankmirrors,_Synchronise_Pacman_Database
+ 
+ # allservers.menu.sh MUST be run as root = after sudo su
+ # 1. Downloads the most recent Manjaro mirror list to /etc/pacman.d/allservers
+ # 2. Formats it to /etc/pacman.d/allservers
+ # 3. Rankmirrors tests then updates /etc/pacman.d/mirrorlist with the 3 fastest
+ # 4. Syncs the mirrors with your machine
+ # 5. Menu then appears asking you how you want to upgrade your system.
+ #    Choice 1. type s or S to call pacman -Syu
+ #    Choice 2. type a or A to call yaourt -Syu --aur
+ #    Hit Return to exit the script.
+ ###########################################################
+ 
+ err() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     RED=&quot;${BOLD}\e[1;31m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${RED}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ msg() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     GREEN=&quot;${BOLD}\e[1;32m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${GREEN}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ 
+ if &lt;nowiki&gt;[[ `whoami` != &quot;root&quot; ]];&lt;/nowiki&gt;
+ then
+   err &quot;Must use 'sudo su' before you run this script.&quot;
+   exit
+ fi
+ 
+ echo
+ msg &quot;Downloading latest mirrorlist&quot;
+ wget http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist -O /etc/pacman.d/allservers &gt;&amp; /dev/null
+ msg &quot;Editing allservers file&quot;
+ sed -ie s'/# Server/Server/'g /etc/pacman.d/allservers
+ msg &quot;Running rankmirrors&quot;
+ rankmirrors -n 3 /etc/pacman.d/allservers &gt; /etc/pacman.d/mirrorlist
+ msg &quot;Updating your pacman databases&quot;
+ echo
+ pacman -Syy
+ 
+ 
+ # menu options to upgrade system &amp; upgrade system plus AUR:
+ 
+ clear # Clear the screen.
+ 
+ echo
+ echo -e &quot;\033[1m                 allservers.sh \033[0m&quot;
+ echo
+ echo -e &quot;\e[1;32m    Choose how you want to upgrade Manjaro?&quot;
+ echo  &quot;    Choose the S/s or A/a key - or --&gt;&quot; 
+ echo  &quot;    Hit the Return/Enter key to Exit the script.&quot;
+ echo
+ echo
+ echo  &quot;    [S]ystem Only --&gt; pacman -Syu&quot;
+ echo
+ echo -e &quot;    [A]UR &amp; System --&gt; yaourt -Syu --aur  \e[1;0m&quot;
+ echo
+ echo
+ 
+ read option
+ 
+ case &quot;$option&quot; in
+ # Note variable is quoted.
+ 
+   &quot;S&quot; | &quot;s&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System:&quot;
+   echo
+   pacman -Syu
+   echo
+   msg &quot;System update complete.&quot;
+   ;;
+ # Note double semicolon to terminate each option.
+ 
+   &quot;A&quot; | &quot;a&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System &amp; AUR:&quot;
+   echo
+   yaourt -Syu --aur
+   echo
+   msg &quot;System including AUR packages are up to date.&quot;
+   ;;
+ 
+ esac
+ 
+ echo
+ 
+ exit 0
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Installation &amp; Execution:==
+
+To install this script on your computer, you will need to copy the text of the script off of this page &amp; into a '''New''' file in your favourite text editor.
+
+If you are using gedit, then when you first open it, you are given a blank page that is for creating a new file, which is exactly what we want. 
+
+Firstly use your mouse to highlight all of the ''allservers.sh'' script in the text box above. Then select the highlighted text with your right mouse button &amp; choose the '''Copy''' option from the drop down menu; then '''Paste''' it into the new blank gedit page by either using the right mouse button menu over the blank editor page or use the editor's '''Edit''' menu &amp; choose the '''Paste''' option.
+
+When you have the allservers.sh text in your text editor save it into your /home/&lt;user.name&gt; directory with the name '''allservers.sh''' like so: 
+
+ '''/home/&lt;user.name&gt;/allservers.sh''' . 
+
+After so doing you still won't be able to run the script as it needs to be made executable first ''(information on this to follow)''.
+
+Once the allservers.sh script has been made executable it will run by typing the following in the Terminal:
+
+ '''sudo su''' 
+
+Then after you have given your password for the above command you can enter the following to run the allservers.sh script:
+
+ '''allservers.sh''' 
+
+We will make the above process of calling &amp; running the script very much easier, so please read-on.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Make the allservers.sh Script Executable: ==
+
+
+The allservers.sh script must be made executable or it will not run. To do this, type the following into the Terminal: 
+
+
+ chmod +x &lt;path/to&gt;/allservers.sh
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Call sudo su allservers.sh with just two letters: ==
+
+
+To streamline the use of the allservers.sh script, I spent some time investigating running '''sudo su''' inside of the allservers.sh script. I discovered that it is difficult to do &amp; is also considered to be bad practice. 
+
+I eventually came up with a very simple solution that works really well via the use of a '''~/.bashrc''' alias:
+
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+
+''So now the way it works is you just have to enter '''as''' in the Terminal which brings a request to enter my password, then the script runs correctly doing all it was asked.'' 
+
+When it is finished you will have an /etc/pacman.d/mirrorlist with the three fastest mirrors listed &amp; your pacman database will be in sync with these mirrors. If you have chosen to add the previously mentioned edit to the script, then you will also have a completely updated system including those files from AUR (again if that was your choice).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==How to Edit Your ~/.bashrc:==
+
+To add the alias into your '''/home/&lt;user name&gt;/.bashrc''' you will need to open '''.bashrc''' in your favourite text editor. 
+
+Because the file we want is a ''hidden'' file, as can be seen by the ''&lt;.dot&gt;'' at the beginning of its name, it will generally be invisible in the File Requester that is called from using your editors File menu -&gt; Open option.
+
+This is how we find '''.bashrc''' in ''gedit'', most other GUI type text editors will function very similarly:
+
+Select the '''Open''' button in the top left of the ''gedit'' tool bar, then choose your user name in the left hand '''Places''' column, now in the '''Location:''' field up near the top of the file requester type '''.bashrc''' &amp; hit the '''Open''' button down at the bottom right of the file requester, this will open the '''.bashrc''' file in gedit.
+
+Once .bashrc is open we can add the alias to it by highlight the following text - triple left mouse button click on it, or drag the cursor with the left mouse button held down along the full length of the line:
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+Once you have highlighted the above line, select it with your right mouse button, this will cause a drop down menu to appear, from which you select the '''Copy''' option. Then go to your text editor with your '''.bashrc''' open in it &amp; make some space with the enter key, or paste it on the bottom of the file if you like. 
+
+It doesn't matter where it goes it will still work just as well (don't put it in the middle of something that is already there though), don't be scared of the .bashrc , if you are concerned that you might break your .bashrc , you can make a copy of it before you modify it. ''(This is always a good safe policy to follow when editing configuration files.)''
+
+An easy way to do this, is once you have opened '''.bashrc''' in your text editor, choose '''Save As''' from the '''File''' menu &amp; save '''.bashrc''' with a new name like so '''.bashrc_BAK''' . 
+
+This will make a new file in your '''/home/&lt;user name&gt;''' directory sitting right beside the old '''.bashrc''' . This gives you the ability to recover from a mistake by opening '''.bashrc_BAK''' , renaming it &amp; saving it back to its original name of '''.bashrc''' .
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Modifying the System's Search Path: ==
+
+On an associated note, I have my scripts stored in ''~/data/scripts'' which when calling a script located there would cause an unknown command or some such error because that path is not in the default system search paths.
+
+To remedy this I've added the path to both the ''root'' search path (for this script) &amp; my single user's too (which is where the path will be used for other scripts).
+
+The following methods described here can be used for as many directories that you need or desire to be in your default search path. Usually this is done in the user account &amp; rarely for the ''root'' (administrative) account.
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the Root Search Path: ===
+
+To edit files for ''root'' you will need to use your favourite text editor as ''root'' user. This is done in various ways depending on the type of editor. Console-based editors (those that operate in the Terminal without a Graphic User interface - GUI) are best called with the path to the file &amp; its name, whether you are opening an existing file or looking to create a new one, it is done like so, using nano as the example here: 
+
+For nano:
+
+ sudo nano &lt;path/to/file-name&gt;
+
+gedit &amp; the other desktop GUI-based editors will happily use the same method as those editors that are console-based, though for these desktop GUI-based text editors you can use their built in menu to open files. 
+
+The following example opens ''gedit'' for the ''root'' (administrative) user:
+
+ sudo gedit
+
+Adding '''/home/handy/data/scripts''' to my search path saves me having to type in that path to any of my scripts when they are called. To do this for '''root''' , I modified '''/etc/profile''' , adding my path to the end of the '''PATH=''' line, &amp; that is all there is to it:
+
+
+ # Set our default path
+ PATH=&quot;/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/handy/data/scripts&quot;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the User Search Path: ===
+
+It is far more common for someone to want to modify the path for a single user account (in my case that's handy) which is done via that user's '''~/.bash_profile''' by adding the following to the file:
+
+
+ PATH=$PATH:&lt;/your/path&gt;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Recapitulation: == 
+
+After all that (not too hard really); typing '''''as''''' in the Terminal gives us the fastest three mirrors of the moment &amp; syncs our pacman database with the servers. 
+
+By taking advantage of the incorporated ''menu'', you can choose to upgrade your system by choosing '''S''' or '''s''' from the ''menu'' which calls the '''pacman -Syu''' command, ''OR'' you can choose to upgrade your system &amp; any packages from the ''AUR'' by choosing '''A''' or '''a''' from the ''menu'' which calls the '''yaourt -Syu --aur''' command. &lt;smile&gt;
+
+If at the time your only requirements were to ''upgrade your mirror list &amp; sync your package databases'' then you can safely exit the script by hitting the ''Return/Enter'' key on your keyboard; as by the time you see the ''menu'' those two tasks have already been completed.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>054dv1sa3teyi045xwulqbtkn1m8eq1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3654</id>
+      <parentid>3653</parentid>
+      <timestamp>2012-12-30T12:16:11Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* The Allservers.sh Script: */</comment>
+      <text xml:space="preserve" bytes="13248">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Le Script Allservers.sh : =
+
+Voici une liste de ce que le contenu de cette page tente de faire.
+
+Tout d'abord le script allservers.sh effectue les opérations suivantes pour vous :
+
+'''1'''. Télécharge la liste la plus récente des miroirs Manjaro dans /etc/pacman.d/allservers ;
+
+'''2'''. Formats it to /etc/pacman.d/allservers
+
+'''3'''. Rankmirrors tests then updates /etc/pacman.d/mirrorlist
+
+'''4'''. Syncs the mirrors with your machine
+
+'''5'''. Then... presents you with a menu offering two system upgrade options: The first option will upgrade your system via running the '''pacman -Syu''' command. The second option will upgrade your system plus any packages from the ''AUR'' via running the '''yaourt -Syu --aur''' command.  Also, once the menu is up you can exit the script by hitting ''Return/Enter'' key.
+
+
+''The following additions are to make using this script as easy as possible:''
+
+'''6'''. I've also shown how to add a ''~/.bashrc'' alias that will enable you to call this script by typing just two letters into the terminal.
+
+'''7'''. And lastly, how to modify the default search paths for both ''root'' &amp; ''user'' accounts, so the system will automatically find your script(s) no matter where it or they are stored. This information is of course useful for any personalised storage directory where one may prefer access without having to enter the full path, for whatever reason.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Historically:==
+
+Phil told us what he does to make the new mirrorlist, so I've put that into a script, adding '''rankmirrors''' to find the three fastest mirrors of the moment &amp; '''pacman -Syy''' to sync the databases.
+
+Then Phil added his touch to my simple script making it look good &amp; to inform us somewhat of its progress when run. 
+
+Since then I've added a menu (&amp; made it more pleasing to the eye) that enables the upgrading of the system via either the '''pacman -Syu''' or '''yaourt -Syu --aur''' commands.
+
+Plus come up with a command line - '''sudo su -c allservers.sh''' - that will happily run via the input of two letters into the Terminal via a ''.bashrc alias'', &amp; done a couple of other things ''(see further down)'' to make it as easy &amp; convenient as possible to use the ''allservers.sh'' script.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== The Script Itself:==
+
+ #!/bin/bash
+ 
+ # allservers.sh - inspired by Manjaro's Carl &amp; Phil, initially hung together 
+ # by handy, the script's display prettied up &amp; progress information added by Phil, 
+ # the menu &amp; wiki page added by handy: 
+ # http://wiki.manjaro.org/index.php/Allservers.sh_Script:-_Rankmirrors,_Synchronise_Pacman_Database
+ 
+ # allservers.menu.sh MUST be run as root = after sudo su
+ # 1. Downloads the most recent Manjaro mirror list to /etc/pacman.d/allservers
+ # 2. Formats it to /etc/pacman.d/allservers
+ # 3. Rankmirrors tests then updates /etc/pacman.d/mirrorlist with the 3 fastest
+ # 4. Syncs the mirrors with your machine
+ # 5. Menu then appears asking you how you want to upgrade your system.
+ #    Choice 1. type s or S to call pacman -Syu
+ #    Choice 2. type a or A to call yaourt -Syu --aur
+ #    Hit Return to exit the script.
+ ###########################################################
+ 
+ err() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     RED=&quot;${BOLD}\e[1;31m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${RED}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ msg() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     GREEN=&quot;${BOLD}\e[1;32m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${GREEN}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ 
+ if &lt;nowiki&gt;[[ `whoami` != &quot;root&quot; ]];&lt;/nowiki&gt;
+ then
+   err &quot;Must use 'sudo su' before you run this script.&quot;
+   exit
+ fi
+ 
+ echo
+ msg &quot;Downloading latest mirrorlist&quot;
+ wget http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist -O /etc/pacman.d/allservers &gt;&amp; /dev/null
+ msg &quot;Editing allservers file&quot;
+ sed -ie s'/# Server/Server/'g /etc/pacman.d/allservers
+ msg &quot;Running rankmirrors&quot;
+ rankmirrors -n 3 /etc/pacman.d/allservers &gt; /etc/pacman.d/mirrorlist
+ msg &quot;Updating your pacman databases&quot;
+ echo
+ pacman -Syy
+ 
+ 
+ # menu options to upgrade system &amp; upgrade system plus AUR:
+ 
+ clear # Clear the screen.
+ 
+ echo
+ echo -e &quot;\033[1m                 allservers.sh \033[0m&quot;
+ echo
+ echo -e &quot;\e[1;32m    Choose how you want to upgrade Manjaro?&quot;
+ echo  &quot;    Choose the S/s or A/a key - or --&gt;&quot; 
+ echo  &quot;    Hit the Return/Enter key to Exit the script.&quot;
+ echo
+ echo
+ echo  &quot;    [S]ystem Only --&gt; pacman -Syu&quot;
+ echo
+ echo -e &quot;    [A]UR &amp; System --&gt; yaourt -Syu --aur  \e[1;0m&quot;
+ echo
+ echo
+ 
+ read option
+ 
+ case &quot;$option&quot; in
+ # Note variable is quoted.
+ 
+   &quot;S&quot; | &quot;s&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System:&quot;
+   echo
+   pacman -Syu
+   echo
+   msg &quot;System update complete.&quot;
+   ;;
+ # Note double semicolon to terminate each option.
+ 
+   &quot;A&quot; | &quot;a&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System &amp; AUR:&quot;
+   echo
+   yaourt -Syu --aur
+   echo
+   msg &quot;System including AUR packages are up to date.&quot;
+   ;;
+ 
+ esac
+ 
+ echo
+ 
+ exit 0
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Installation &amp; Execution:==
+
+To install this script on your computer, you will need to copy the text of the script off of this page &amp; into a '''New''' file in your favourite text editor.
+
+If you are using gedit, then when you first open it, you are given a blank page that is for creating a new file, which is exactly what we want. 
+
+Firstly use your mouse to highlight all of the ''allservers.sh'' script in the text box above. Then select the highlighted text with your right mouse button &amp; choose the '''Copy''' option from the drop down menu; then '''Paste''' it into the new blank gedit page by either using the right mouse button menu over the blank editor page or use the editor's '''Edit''' menu &amp; choose the '''Paste''' option.
+
+When you have the allservers.sh text in your text editor save it into your /home/&lt;user.name&gt; directory with the name '''allservers.sh''' like so: 
+
+ '''/home/&lt;user.name&gt;/allservers.sh''' . 
+
+After so doing you still won't be able to run the script as it needs to be made executable first ''(information on this to follow)''.
+
+Once the allservers.sh script has been made executable it will run by typing the following in the Terminal:
+
+ '''sudo su''' 
+
+Then after you have given your password for the above command you can enter the following to run the allservers.sh script:
+
+ '''allservers.sh''' 
+
+We will make the above process of calling &amp; running the script very much easier, so please read-on.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Make the allservers.sh Script Executable: ==
+
+
+The allservers.sh script must be made executable or it will not run. To do this, type the following into the Terminal: 
+
+
+ chmod +x &lt;path/to&gt;/allservers.sh
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Call sudo su allservers.sh with just two letters: ==
+
+
+To streamline the use of the allservers.sh script, I spent some time investigating running '''sudo su''' inside of the allservers.sh script. I discovered that it is difficult to do &amp; is also considered to be bad practice. 
+
+I eventually came up with a very simple solution that works really well via the use of a '''~/.bashrc''' alias:
+
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+
+''So now the way it works is you just have to enter '''as''' in the Terminal which brings a request to enter my password, then the script runs correctly doing all it was asked.'' 
+
+When it is finished you will have an /etc/pacman.d/mirrorlist with the three fastest mirrors listed &amp; your pacman database will be in sync with these mirrors. If you have chosen to add the previously mentioned edit to the script, then you will also have a completely updated system including those files from AUR (again if that was your choice).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==How to Edit Your ~/.bashrc:==
+
+To add the alias into your '''/home/&lt;user name&gt;/.bashrc''' you will need to open '''.bashrc''' in your favourite text editor. 
+
+Because the file we want is a ''hidden'' file, as can be seen by the ''&lt;.dot&gt;'' at the beginning of its name, it will generally be invisible in the File Requester that is called from using your editors File menu -&gt; Open option.
+
+This is how we find '''.bashrc''' in ''gedit'', most other GUI type text editors will function very similarly:
+
+Select the '''Open''' button in the top left of the ''gedit'' tool bar, then choose your user name in the left hand '''Places''' column, now in the '''Location:''' field up near the top of the file requester type '''.bashrc''' &amp; hit the '''Open''' button down at the bottom right of the file requester, this will open the '''.bashrc''' file in gedit.
+
+Once .bashrc is open we can add the alias to it by highlight the following text - triple left mouse button click on it, or drag the cursor with the left mouse button held down along the full length of the line:
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+Once you have highlighted the above line, select it with your right mouse button, this will cause a drop down menu to appear, from which you select the '''Copy''' option. Then go to your text editor with your '''.bashrc''' open in it &amp; make some space with the enter key, or paste it on the bottom of the file if you like. 
+
+It doesn't matter where it goes it will still work just as well (don't put it in the middle of something that is already there though), don't be scared of the .bashrc , if you are concerned that you might break your .bashrc , you can make a copy of it before you modify it. ''(This is always a good safe policy to follow when editing configuration files.)''
+
+An easy way to do this, is once you have opened '''.bashrc''' in your text editor, choose '''Save As''' from the '''File''' menu &amp; save '''.bashrc''' with a new name like so '''.bashrc_BAK''' . 
+
+This will make a new file in your '''/home/&lt;user name&gt;''' directory sitting right beside the old '''.bashrc''' . This gives you the ability to recover from a mistake by opening '''.bashrc_BAK''' , renaming it &amp; saving it back to its original name of '''.bashrc''' .
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Modifying the System's Search Path: ==
+
+On an associated note, I have my scripts stored in ''~/data/scripts'' which when calling a script located there would cause an unknown command or some such error because that path is not in the default system search paths.
+
+To remedy this I've added the path to both the ''root'' search path (for this script) &amp; my single user's too (which is where the path will be used for other scripts).
+
+The following methods described here can be used for as many directories that you need or desire to be in your default search path. Usually this is done in the user account &amp; rarely for the ''root'' (administrative) account.
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the Root Search Path: ===
+
+To edit files for ''root'' you will need to use your favourite text editor as ''root'' user. This is done in various ways depending on the type of editor. Console-based editors (those that operate in the Terminal without a Graphic User interface - GUI) are best called with the path to the file &amp; its name, whether you are opening an existing file or looking to create a new one, it is done like so, using nano as the example here: 
+
+For nano:
+
+ sudo nano &lt;path/to/file-name&gt;
+
+gedit &amp; the other desktop GUI-based editors will happily use the same method as those editors that are console-based, though for these desktop GUI-based text editors you can use their built in menu to open files. 
+
+The following example opens ''gedit'' for the ''root'' (administrative) user:
+
+ sudo gedit
+
+Adding '''/home/handy/data/scripts''' to my search path saves me having to type in that path to any of my scripts when they are called. To do this for '''root''' , I modified '''/etc/profile''' , adding my path to the end of the '''PATH=''' line, &amp; that is all there is to it:
+
+
+ # Set our default path
+ PATH=&quot;/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/handy/data/scripts&quot;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the User Search Path: ===
+
+It is far more common for someone to want to modify the path for a single user account (in my case that's handy) which is done via that user's '''~/.bash_profile''' by adding the following to the file:
+
+
+ PATH=$PATH:&lt;/your/path&gt;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Recapitulation: == 
+
+After all that (not too hard really); typing '''''as''''' in the Terminal gives us the fastest three mirrors of the moment &amp; syncs our pacman database with the servers. 
+
+By taking advantage of the incorporated ''menu'', you can choose to upgrade your system by choosing '''S''' or '''s''' from the ''menu'' which calls the '''pacman -Syu''' command, ''OR'' you can choose to upgrade your system &amp; any packages from the ''AUR'' by choosing '''A''' or '''a''' from the ''menu'' which calls the '''yaourt -Syu --aur''' command. &lt;smile&gt;
+
+If at the time your only requirements were to ''upgrade your mirror list &amp; sync your package databases'' then you can safely exit the script by hitting the ''Return/Enter'' key on your keyboard; as by the time you see the ''menu'' those two tasks have already been completed.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>abrv8maeatkuqkpkbb4udfblbh0cv0y</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3660</id>
+      <parentid>3654</parentid>
+      <timestamp>2012-12-30T12:24:25Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Le Script Allservers.sh : */</comment>
+      <text xml:space="preserve" bytes="13258">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Le Script Allservers.sh : =
+
+Voici une liste de ce que le contenu de cette page tente de faire.
+
+Tout d'abord le script allservers.sh effectue les opérations suivantes pour vous :
+
+'''1'''. Télécharge la liste la plus récente des miroirs Manjaro dans /etc/pacman.d/allservers ;
+
+'''2'''. Met en forme /etc/pacman.d/allservers ;
+
+'''3'''. Rankmirrors les teste et met à jour /etc/pacman.d/mirrorlist
+
+'''4'''. Synchronise les miroirs avec votre machine ;
+
+'''5'''. Ensuite affiche un menu vous offrant deux options de mise à jour : La première va mettre à jour votre système via la commande '''pacman -Syu'''. La seconde va mettre à jour votre système y compris les paquets venant de AUR via la commande '''pacman -Syu --aur'''. Vous pouver aussi quitter ce menu dès son affichage en appuyant sur la clé ''Entrée''.
+
+
+''The following additions are to make using this script as easy as possible:''
+
+'''6'''. I've also shown how to add a ''~/.bashrc'' alias that will enable you to call this script by typing just two letters into the terminal.
+
+'''7'''. And lastly, how to modify the default search paths for both ''root'' &amp; ''user'' accounts, so the system will automatically find your script(s) no matter where it or they are stored. This information is of course useful for any personalised storage directory where one may prefer access without having to enter the full path, for whatever reason.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Historically:==
+
+Phil told us what he does to make the new mirrorlist, so I've put that into a script, adding '''rankmirrors''' to find the three fastest mirrors of the moment &amp; '''pacman -Syy''' to sync the databases.
+
+Then Phil added his touch to my simple script making it look good &amp; to inform us somewhat of its progress when run. 
+
+Since then I've added a menu (&amp; made it more pleasing to the eye) that enables the upgrading of the system via either the '''pacman -Syu''' or '''yaourt -Syu --aur''' commands.
+
+Plus come up with a command line - '''sudo su -c allservers.sh''' - that will happily run via the input of two letters into the Terminal via a ''.bashrc alias'', &amp; done a couple of other things ''(see further down)'' to make it as easy &amp; convenient as possible to use the ''allservers.sh'' script.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== The Script Itself:==
+
+ #!/bin/bash
+ 
+ # allservers.sh - inspired by Manjaro's Carl &amp; Phil, initially hung together 
+ # by handy, the script's display prettied up &amp; progress information added by Phil, 
+ # the menu &amp; wiki page added by handy: 
+ # http://wiki.manjaro.org/index.php/Allservers.sh_Script:-_Rankmirrors,_Synchronise_Pacman_Database
+ 
+ # allservers.menu.sh MUST be run as root = after sudo su
+ # 1. Downloads the most recent Manjaro mirror list to /etc/pacman.d/allservers
+ # 2. Formats it to /etc/pacman.d/allservers
+ # 3. Rankmirrors tests then updates /etc/pacman.d/mirrorlist with the 3 fastest
+ # 4. Syncs the mirrors with your machine
+ # 5. Menu then appears asking you how you want to upgrade your system.
+ #    Choice 1. type s or S to call pacman -Syu
+ #    Choice 2. type a or A to call yaourt -Syu --aur
+ #    Hit Return to exit the script.
+ ###########################################################
+ 
+ err() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     RED=&quot;${BOLD}\e[1;31m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${RED}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ msg() {
+     ALL_OFF=&quot;\e[1;0m&quot;
+     BOLD=&quot;\e[1;1m&quot;
+     GREEN=&quot;${BOLD}\e[1;32m&quot;
+ 	local mesg=$1; shift
+ 	printf &quot;${GREEN}==&gt;${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n&quot; &quot;$@&quot; &gt;&amp;2
+ }
+ 
+ 
+ if &lt;nowiki&gt;[[ `whoami` != &quot;root&quot; ]];&lt;/nowiki&gt;
+ then
+   err &quot;Must use 'sudo su' before you run this script.&quot;
+   exit
+ fi
+ 
+ echo
+ msg &quot;Downloading latest mirrorlist&quot;
+ wget http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist -O /etc/pacman.d/allservers &gt;&amp; /dev/null
+ msg &quot;Editing allservers file&quot;
+ sed -ie s'/# Server/Server/'g /etc/pacman.d/allservers
+ msg &quot;Running rankmirrors&quot;
+ rankmirrors -n 3 /etc/pacman.d/allservers &gt; /etc/pacman.d/mirrorlist
+ msg &quot;Updating your pacman databases&quot;
+ echo
+ pacman -Syy
+ 
+ 
+ # menu options to upgrade system &amp; upgrade system plus AUR:
+ 
+ clear # Clear the screen.
+ 
+ echo
+ echo -e &quot;\033[1m                 allservers.sh \033[0m&quot;
+ echo
+ echo -e &quot;\e[1;32m    Choose how you want to upgrade Manjaro?&quot;
+ echo  &quot;    Choose the S/s or A/a key - or --&gt;&quot; 
+ echo  &quot;    Hit the Return/Enter key to Exit the script.&quot;
+ echo
+ echo
+ echo  &quot;    [S]ystem Only --&gt; pacman -Syu&quot;
+ echo
+ echo -e &quot;    [A]UR &amp; System --&gt; yaourt -Syu --aur  \e[1;0m&quot;
+ echo
+ echo
+ 
+ read option
+ 
+ case &quot;$option&quot; in
+ # Note variable is quoted.
+ 
+   &quot;S&quot; | &quot;s&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System:&quot;
+   echo
+   pacman -Syu
+   echo
+   msg &quot;System update complete.&quot;
+   ;;
+ # Note double semicolon to terminate each option.
+ 
+   &quot;A&quot; | &quot;a&quot; )
+   # Accept upper or lowercase input.
+   echo
+   msg &quot;Upgrading System &amp; AUR:&quot;
+   echo
+   yaourt -Syu --aur
+   echo
+   msg &quot;System including AUR packages are up to date.&quot;
+   ;;
+ 
+ esac
+ 
+ echo
+ 
+ exit 0
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Installation &amp; Execution:==
+
+To install this script on your computer, you will need to copy the text of the script off of this page &amp; into a '''New''' file in your favourite text editor.
+
+If you are using gedit, then when you first open it, you are given a blank page that is for creating a new file, which is exactly what we want. 
+
+Firstly use your mouse to highlight all of the ''allservers.sh'' script in the text box above. Then select the highlighted text with your right mouse button &amp; choose the '''Copy''' option from the drop down menu; then '''Paste''' it into the new blank gedit page by either using the right mouse button menu over the blank editor page or use the editor's '''Edit''' menu &amp; choose the '''Paste''' option.
+
+When you have the allservers.sh text in your text editor save it into your /home/&lt;user.name&gt; directory with the name '''allservers.sh''' like so: 
+
+ '''/home/&lt;user.name&gt;/allservers.sh''' . 
+
+After so doing you still won't be able to run the script as it needs to be made executable first ''(information on this to follow)''.
+
+Once the allservers.sh script has been made executable it will run by typing the following in the Terminal:
+
+ '''sudo su''' 
+
+Then after you have given your password for the above command you can enter the following to run the allservers.sh script:
+
+ '''allservers.sh''' 
+
+We will make the above process of calling &amp; running the script very much easier, so please read-on.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Make the allservers.sh Script Executable: ==
+
+
+The allservers.sh script must be made executable or it will not run. To do this, type the following into the Terminal: 
+
+
+ chmod +x &lt;path/to&gt;/allservers.sh
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Call sudo su allservers.sh with just two letters: ==
+
+
+To streamline the use of the allservers.sh script, I spent some time investigating running '''sudo su''' inside of the allservers.sh script. I discovered that it is difficult to do &amp; is also considered to be bad practice. 
+
+I eventually came up with a very simple solution that works really well via the use of a '''~/.bashrc''' alias:
+
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+
+''So now the way it works is you just have to enter '''as''' in the Terminal which brings a request to enter my password, then the script runs correctly doing all it was asked.'' 
+
+When it is finished you will have an /etc/pacman.d/mirrorlist with the three fastest mirrors listed &amp; your pacman database will be in sync with these mirrors. If you have chosen to add the previously mentioned edit to the script, then you will also have a completely updated system including those files from AUR (again if that was your choice).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==How to Edit Your ~/.bashrc:==
+
+To add the alias into your '''/home/&lt;user name&gt;/.bashrc''' you will need to open '''.bashrc''' in your favourite text editor. 
+
+Because the file we want is a ''hidden'' file, as can be seen by the ''&lt;.dot&gt;'' at the beginning of its name, it will generally be invisible in the File Requester that is called from using your editors File menu -&gt; Open option.
+
+This is how we find '''.bashrc''' in ''gedit'', most other GUI type text editors will function very similarly:
+
+Select the '''Open''' button in the top left of the ''gedit'' tool bar, then choose your user name in the left hand '''Places''' column, now in the '''Location:''' field up near the top of the file requester type '''.bashrc''' &amp; hit the '''Open''' button down at the bottom right of the file requester, this will open the '''.bashrc''' file in gedit.
+
+Once .bashrc is open we can add the alias to it by highlight the following text - triple left mouse button click on it, or drag the cursor with the left mouse button held down along the full length of the line:
+
+ alias as=&quot;sudo su -c allservers.sh&quot;
+
+Once you have highlighted the above line, select it with your right mouse button, this will cause a drop down menu to appear, from which you select the '''Copy''' option. Then go to your text editor with your '''.bashrc''' open in it &amp; make some space with the enter key, or paste it on the bottom of the file if you like. 
+
+It doesn't matter where it goes it will still work just as well (don't put it in the middle of something that is already there though), don't be scared of the .bashrc , if you are concerned that you might break your .bashrc , you can make a copy of it before you modify it. ''(This is always a good safe policy to follow when editing configuration files.)''
+
+An easy way to do this, is once you have opened '''.bashrc''' in your text editor, choose '''Save As''' from the '''File''' menu &amp; save '''.bashrc''' with a new name like so '''.bashrc_BAK''' . 
+
+This will make a new file in your '''/home/&lt;user name&gt;''' directory sitting right beside the old '''.bashrc''' . This gives you the ability to recover from a mistake by opening '''.bashrc_BAK''' , renaming it &amp; saving it back to its original name of '''.bashrc''' .
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Modifying the System's Search Path: ==
+
+On an associated note, I have my scripts stored in ''~/data/scripts'' which when calling a script located there would cause an unknown command or some such error because that path is not in the default system search paths.
+
+To remedy this I've added the path to both the ''root'' search path (for this script) &amp; my single user's too (which is where the path will be used for other scripts).
+
+The following methods described here can be used for as many directories that you need or desire to be in your default search path. Usually this is done in the user account &amp; rarely for the ''root'' (administrative) account.
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the Root Search Path: ===
+
+To edit files for ''root'' you will need to use your favourite text editor as ''root'' user. This is done in various ways depending on the type of editor. Console-based editors (those that operate in the Terminal without a Graphic User interface - GUI) are best called with the path to the file &amp; its name, whether you are opening an existing file or looking to create a new one, it is done like so, using nano as the example here: 
+
+For nano:
+
+ sudo nano &lt;path/to/file-name&gt;
+
+gedit &amp; the other desktop GUI-based editors will happily use the same method as those editors that are console-based, though for these desktop GUI-based text editors you can use their built in menu to open files. 
+
+The following example opens ''gedit'' for the ''root'' (administrative) user:
+
+ sudo gedit
+
+Adding '''/home/handy/data/scripts''' to my search path saves me having to type in that path to any of my scripts when they are called. To do this for '''root''' , I modified '''/etc/profile''' , adding my path to the end of the '''PATH=''' line, &amp; that is all there is to it:
+
+
+ # Set our default path
+ PATH=&quot;/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/handy/data/scripts&quot;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+=== Changing the User Search Path: ===
+
+It is far more common for someone to want to modify the path for a single user account (in my case that's handy) which is done via that user's '''~/.bash_profile''' by adding the following to the file:
+
+
+ PATH=$PATH:&lt;/your/path&gt;
+ export PATH
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Recapitulation: == 
+
+After all that (not too hard really); typing '''''as''''' in the Terminal gives us the fastest three mirrors of the moment &amp; syncs our pacman database with the servers. 
+
+By taking advantage of the incorporated ''menu'', you can choose to upgrade your system by choosing '''S''' or '''s''' from the ''menu'' which calls the '''pacman -Syu''' command, ''OR'' you can choose to upgrade your system &amp; any packages from the ''AUR'' by choosing '''A''' or '''a''' from the ''menu'' which calls the '''yaourt -Syu --aur''' command. &lt;smile&gt;
+
+If at the time your only requirements were to ''upgrade your mirror list &amp; sync your package databases'' then you can safely exit the script by hitting the ''Return/Enter'' key on your keyboard; as by the time you see the ''menu'' those two tasks have already been completed.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>adgjizejp2x1gt0u0w390yp4jmlzxud</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

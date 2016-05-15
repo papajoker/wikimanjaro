@@ -1,0 +1,592 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Volume bloqué sur Muet (bureau XFCE)</title>
+    <ns>0</ns>
+    <id>661</id>
+    <revision>
+      <id>4222</id>
+      <timestamp>2013-01-06T01:35:50Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =  The inability to toggle the volume mute particulary affects users of the XFCE desktop environment. This is due to an incompatability between ''xfce4-volumed'' - ...&quot;</comment>
+      <text xml:space="preserve" bytes="3767">= Overview =
+
+The inability to toggle the volume mute particulary affects users of the XFCE desktop environment. This is due to an incompatability between ''xfce4-volumed'' - the volume daemon used by this desktop environment- and ''PulseAudio'', which is responsible for recording and playback. The result is that once muted, the volume cannot be restored by un-checking the mute button; it is instead necessary to open the ''Volume Control Settings'' to do so.
+
+The are two solutions available. The first is to remove ''PulseAudio'' completely, allowing for the ''Alsa'' sound server to take over instead. The second is to create a sound configuration file. '''New users may find the first solution easier to implement'''.
+
+
+= Solution 1: Removing PulseAudio =
+
+The first step is to remove all PulseAudio packages by entering the following command in the terminal:
+
+ sudo pacman -R pavucontrol pulseaudio pulseaudio-alsa
+
+
+Once completed, the second step is to install ''xfce4-mixer'', which is a volume control applet specifically designed for the XFCE desktop environment. The command below has also listed ''xfce4-volumed'' for re-installation:
+
+ sudo pacman -S xfce4-mixer xfce4-volumed
+
+
+Once installed, close the terminal and reboot your system for the changes to take effect. ''Alsa'' will automatically take over from the now-deleted ''PulseAudio.''
+
+
+= Solution 2: Creating a Sound Configuration File = 
+
+An alternative solution is to create a configuration file - '''asound.conf''' - to act as a workaround by altering the default sound configuration settings. In order to work, it is absolutely essential that this file be created within the '''etc''' folder, which itself also contains a number of other system configuration files.
+
+
+== Create the Sound Configuration File ==
+
+The syntax of the command to create a sound configuration file within the ''etc'' folder is:
+
+ sudo [text editor] /etc/asound.conf
+
+For example, if you wish to create and edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/asound.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/asound.conf
+
+
+== Edit the Sound Configuration File ==
+
+Once created, a blank screen or document should be presented. Enter (or copy and paste) the following code into this file, '''exactly''' as it is shown below:
+
+ pcm.pulse {
+    type pulse
+ }
+ ctl.pulse {
+    type pulse
+ }
+ pcm.!default {
+    type pulse
+ }
+ ctl.!default {
+    type pulse
+ }
+
+
+Once you have completed the code, save and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Prior to rebooting for the changes to take effect, it is also possible to optionally add a keyboard shortcut to toggle volume muting.
+
+
+== Optional: Add a Keyboard Shortcut to Toggle Volume Muting ==
+
+[[File:soundshortcut.png|thumb|left|375px]]
+
+
+To set a keyboard shortcut:
+
+'''1.''' Open the Menu, select ''Settings'', and then ''Keyboard''
+
+'''2.''' Select the ''Application Shortcuts'' tab
+
+'''3.''' Select the ''+ Add'' Button
+
+'''4.''' Enter the following command, and then select ''OK''
+
+ amixer set Master toggle
+
+'''5.''' When prompted, press the appropriate key or key combination desired to toggle muting
+
+Once complete, close the ''Keyboard Settings'' window, and reboot the system for the changes to take effect.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>nxw8o1t1uegv95vsret2e9irhri97op</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4223</id>
+      <parentid>4222</parentid>
+      <timestamp>2013-01-06T01:37:17Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3885">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+The inability to toggle the volume mute particulary affects users of the XFCE desktop environment. This is due to an incompatability between ''xfce4-volumed'' - the volume daemon used by this desktop environment- and ''PulseAudio'', which is responsible for recording and playback. The result is that once muted, the volume cannot be restored by un-checking the mute button; it is instead necessary to open the ''Volume Control Settings'' to do so.
+
+The are two solutions available. The first is to remove ''PulseAudio'' completely, allowing for the ''Alsa'' sound server to take over instead. The second is to create a sound configuration file. '''New users may find the first solution easier to implement'''.
+
+
+= Solution 1: Removing PulseAudio =
+
+The first step is to remove all PulseAudio packages by entering the following command in the terminal:
+
+ sudo pacman -R pavucontrol pulseaudio pulseaudio-alsa
+
+
+Once completed, the second step is to install ''xfce4-mixer'', which is a volume control applet specifically designed for the XFCE desktop environment. The command below has also listed ''xfce4-volumed'' for re-installation:
+
+ sudo pacman -S xfce4-mixer xfce4-volumed
+
+
+Once installed, close the terminal and reboot your system for the changes to take effect. ''Alsa'' will automatically take over from the now-deleted ''PulseAudio.''
+
+
+= Solution 2: Creating a Sound Configuration File = 
+
+An alternative solution is to create a configuration file - '''asound.conf''' - to act as a workaround by altering the default sound configuration settings. In order to work, it is absolutely essential that this file be created within the '''etc''' folder, which itself also contains a number of other system configuration files.
+
+
+== Create the Sound Configuration File ==
+
+The syntax of the command to create a sound configuration file within the ''etc'' folder is:
+
+ sudo [text editor] /etc/asound.conf
+
+For example, if you wish to create and edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/asound.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/asound.conf
+
+
+== Edit the Sound Configuration File ==
+
+Once created, a blank screen or document should be presented. Enter (or copy and paste) the following code into this file, '''exactly''' as it is shown below:
+
+ pcm.pulse {
+    type pulse
+ }
+ ctl.pulse {
+    type pulse
+ }
+ pcm.!default {
+    type pulse
+ }
+ ctl.!default {
+    type pulse
+ }
+
+
+Once you have completed the code, save and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Prior to rebooting for the changes to take effect, it is also possible to optionally add a keyboard shortcut to toggle volume muting.
+
+
+== Optional: Add a Keyboard Shortcut to Toggle Volume Muting ==
+
+[[File:soundshortcut.png|thumb|left|375px]]
+
+
+To set a keyboard shortcut:
+
+'''1.''' Open the Menu, select ''Settings'', and then ''Keyboard''
+
+'''2.''' Select the ''Application Shortcuts'' tab
+
+'''3.''' Select the ''+ Add'' Button
+
+'''4.''' Enter the following command, and then select ''OK''
+
+ amixer set Master toggle
+
+'''5.''' When prompted, press the appropriate key or key combination desired to toggle muting
+
+Once complete, close the ''Keyboard Settings'' window, and reboot the system for the changes to take effect.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>12llyiqgyxvm3ar00ic5e5ktutcjsj2</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4231</id>
+      <parentid>4223</parentid>
+      <timestamp>2013-01-06T12:22:18Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="4279">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+L'impossibilité de quitter la position Muet affecte plus spécialement les utilisateurs de l'environnement de bureau XFCE. Cela est dû à une incompatibilité entre xfce4-volumed - le démon de volume utilisé par cet environnement de bureau et PulseAudio, qui est responsable de l'enregistrement et de la lecture. Le résultat est que, une fois coupé, le volume ne peut pas être restauré en décochant le bouton Lute. il est nécessaire à la place d'ouvrir les Paramètres de contrôle du volume pour le faire.
+
+Il existe deux solutions possibles. La première consiste à supprimer complètement ''PulseAudio'', ce qui permet au serveur de son ALSA de reprendre le contrôle. La seconde est de créer un fichier de configuration du son. '''Les nouveaux utilisateurs peuvent trouver la première solution facile à mettre en œuvre.'''
+
+
+The are two solutions available. The first is to remove ''PulseAudio'' completely, allowing for the ''Alsa'' sound server to take over instead. The second is to create a sound configuration file. '''New users may find the first solution easier to implement'''.
+
+= Solution 1: Removing PulseAudio =
+
+The first step is to remove all PulseAudio packages by entering the following command in the terminal:
+
+ sudo pacman -R pavucontrol pulseaudio pulseaudio-alsa
+
+
+Once completed, the second step is to install ''xfce4-mixer'', which is a volume control applet specifically designed for the XFCE desktop environment. The command below has also listed ''xfce4-volumed'' for re-installation:
+
+ sudo pacman -S xfce4-mixer xfce4-volumed
+
+
+Once installed, close the terminal and reboot your system for the changes to take effect. ''Alsa'' will automatically take over from the now-deleted ''PulseAudio.''
+
+
+= Solution 2: Creating a Sound Configuration File = 
+
+An alternative solution is to create a configuration file - '''asound.conf''' - to act as a workaround by altering the default sound configuration settings. In order to work, it is absolutely essential that this file be created within the '''etc''' folder, which itself also contains a number of other system configuration files.
+
+
+== Create the Sound Configuration File ==
+
+The syntax of the command to create a sound configuration file within the ''etc'' folder is:
+
+ sudo [text editor] /etc/asound.conf
+
+For example, if you wish to create and edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/asound.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/asound.conf
+
+
+== Edit the Sound Configuration File ==
+
+Once created, a blank screen or document should be presented. Enter (or copy and paste) the following code into this file, '''exactly''' as it is shown below:
+
+ pcm.pulse {
+    type pulse
+ }
+ ctl.pulse {
+    type pulse
+ }
+ pcm.!default {
+    type pulse
+ }
+ ctl.!default {
+    type pulse
+ }
+
+
+Once you have completed the code, save and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Prior to rebooting for the changes to take effect, it is also possible to optionally add a keyboard shortcut to toggle volume muting.
+
+
+== Optional: Add a Keyboard Shortcut to Toggle Volume Muting ==
+
+[[File:soundshortcut.png|thumb|left|375px]]
+
+
+To set a keyboard shortcut:
+
+'''1.''' Open the Menu, select ''Settings'', and then ''Keyboard''
+
+'''2.''' Select the ''Application Shortcuts'' tab
+
+'''3.''' Select the ''+ Add'' Button
+
+'''4.''' Enter the following command, and then select ''OK''
+
+ amixer set Master toggle
+
+'''5.''' When prompted, press the appropriate key or key combination desired to toggle muting
+
+Once complete, close the ''Keyboard Settings'' window, and reboot the system for the changes to take effect.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>drt0q8plr9er5um4l54958x7n2afwng</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4232</id>
+      <parentid>4231</parentid>
+      <timestamp>2013-01-06T12:22:40Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="4016">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+L'impossibilité de quitter la position Muet affecte plus spécialement les utilisateurs de l'environnement de bureau XFCE. Cela est dû à une incompatibilité entre xfce4-volumed - le démon de volume utilisé par cet environnement de bureau et PulseAudio, qui est responsable de l'enregistrement et de la lecture. Le résultat est que, une fois coupé, le volume ne peut pas être restauré en décochant le bouton Mute. il est nécessaire à la place d'ouvrir les Paramètres de contrôle du volume pour le faire.
+
+Il existe deux solutions possibles. La première consiste à supprimer complètement ''PulseAudio'', ce qui permet au serveur de son ALSA de reprendre le contrôle. La seconde est de créer un fichier de configuration du son. '''Les nouveaux utilisateurs peuvent trouver la première solution facile à mettre en œuvre.'''
+
+= Solution 1: Removing PulseAudio =
+
+The first step is to remove all PulseAudio packages by entering the following command in the terminal:
+
+ sudo pacman -R pavucontrol pulseaudio pulseaudio-alsa
+
+
+Once completed, the second step is to install ''xfce4-mixer'', which is a volume control applet specifically designed for the XFCE desktop environment. The command below has also listed ''xfce4-volumed'' for re-installation:
+
+ sudo pacman -S xfce4-mixer xfce4-volumed
+
+
+Once installed, close the terminal and reboot your system for the changes to take effect. ''Alsa'' will automatically take over from the now-deleted ''PulseAudio.''
+
+
+= Solution 2: Creating a Sound Configuration File = 
+
+An alternative solution is to create a configuration file - '''asound.conf''' - to act as a workaround by altering the default sound configuration settings. In order to work, it is absolutely essential that this file be created within the '''etc''' folder, which itself also contains a number of other system configuration files.
+
+
+== Create the Sound Configuration File ==
+
+The syntax of the command to create a sound configuration file within the ''etc'' folder is:
+
+ sudo [text editor] /etc/asound.conf
+
+For example, if you wish to create and edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/asound.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/asound.conf
+
+
+== Edit the Sound Configuration File ==
+
+Once created, a blank screen or document should be presented. Enter (or copy and paste) the following code into this file, '''exactly''' as it is shown below:
+
+ pcm.pulse {
+    type pulse
+ }
+ ctl.pulse {
+    type pulse
+ }
+ pcm.!default {
+    type pulse
+ }
+ ctl.!default {
+    type pulse
+ }
+
+
+Once you have completed the code, save and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Prior to rebooting for the changes to take effect, it is also possible to optionally add a keyboard shortcut to toggle volume muting.
+
+
+== Optional: Add a Keyboard Shortcut to Toggle Volume Muting ==
+
+[[File:soundshortcut.png|thumb|left|375px]]
+
+
+To set a keyboard shortcut:
+
+'''1.''' Open the Menu, select ''Settings'', and then ''Keyboard''
+
+'''2.''' Select the ''Application Shortcuts'' tab
+
+'''3.''' Select the ''+ Add'' Button
+
+'''4.''' Enter the following command, and then select ''OK''
+
+ amixer set Master toggle
+
+'''5.''' When prompted, press the appropriate key or key combination desired to toggle muting
+
+Once complete, close the ''Keyboard Settings'' window, and reboot the system for the changes to take effect.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>0mfdfprg7llnzfxvdkg78lzjhxpoqp9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4233</id>
+      <parentid>4232</parentid>
+      <timestamp>2013-01-06T12:28:23Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Solution 1: Removing PulseAudio */</comment>
+      <text xml:space="preserve" bytes="4120">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+L'impossibilité de quitter la position Muet affecte plus spécialement les utilisateurs de l'environnement de bureau XFCE. Cela est dû à une incompatibilité entre xfce4-volumed - le démon de volume utilisé par cet environnement de bureau et PulseAudio, qui est responsable de l'enregistrement et de la lecture. Le résultat est que, une fois coupé, le volume ne peut pas être restauré en décochant le bouton Mute. il est nécessaire à la place d'ouvrir les Paramètres de contrôle du volume pour le faire.
+
+Il existe deux solutions possibles. La première consiste à supprimer complètement ''PulseAudio'', ce qui permet au serveur de son ALSA de reprendre le contrôle. La seconde est de créer un fichier de configuration du son. '''Les nouveaux utilisateurs peuvent trouver la première solution facile à mettre en œuvre.'''
+
+= Solution 1: Suppression de PulseAudio =
+
+La première étape consiste à supprimer tous les paquets PulseAudio en entrant la commande suivante dans un terminal :
+
+ sudo pacman -R pavucontrol pulseaudio pulseaudio-alsa
+
+
+A la fin, la seconde étape est d'installer ''xfce4-mixer'', un applet de contrôle de volume spécifiquement conaçu par l'environnement de bureau XFCE. La commande ci-dessous inclut aussi le paquet ''xfce4-volumed'' afin de le réinstaller :
+
+ sudo pacman -S xfce4-mixer xfce4-volumed
+
+Une fois l'installation faite, fermez le terminal et redémarrez votre systèle pour faire prendre en compte les modifications. ''Alsa'' va maintenant avoir pris le contrôle à la place de ''Pulseaudio'', maintenant supprimé.
+
+= Solution 2: Creating a Sound Configuration File = 
+
+An alternative solution is to create a configuration file - '''asound.conf''' - to act as a workaround by altering the default sound configuration settings. In order to work, it is absolutely essential that this file be created within the '''etc''' folder, which itself also contains a number of other system configuration files.
+
+
+== Create the Sound Configuration File ==
+
+The syntax of the command to create a sound configuration file within the ''etc'' folder is:
+
+ sudo [text editor] /etc/asound.conf
+
+For example, if you wish to create and edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/asound.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/asound.conf
+
+
+== Edit the Sound Configuration File ==
+
+Once created, a blank screen or document should be presented. Enter (or copy and paste) the following code into this file, '''exactly''' as it is shown below:
+
+ pcm.pulse {
+    type pulse
+ }
+ ctl.pulse {
+    type pulse
+ }
+ pcm.!default {
+    type pulse
+ }
+ ctl.!default {
+    type pulse
+ }
+
+
+Once you have completed the code, save and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Prior to rebooting for the changes to take effect, it is also possible to optionally add a keyboard shortcut to toggle volume muting.
+
+
+== Optional: Add a Keyboard Shortcut to Toggle Volume Muting ==
+
+[[File:soundshortcut.png|thumb|left|375px]]
+
+
+To set a keyboard shortcut:
+
+'''1.''' Open the Menu, select ''Settings'', and then ''Keyboard''
+
+'''2.''' Select the ''Application Shortcuts'' tab
+
+'''3.''' Select the ''+ Add'' Button
+
+'''4.''' Enter the following command, and then select ''OK''
+
+ amixer set Master toggle
+
+'''5.''' When prompted, press the appropriate key or key combination desired to toggle muting
+
+Once complete, close the ''Keyboard Settings'' window, and reboot the system for the changes to take effect.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>as4yfz8fud3wywi3lqs0yaegpp607pa</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

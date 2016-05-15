@@ -1,0 +1,228 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Installation LXQt minimale</title>
+    <ns>0</ns>
+    <id>1545</id>
+    <revision>
+      <id>10301</id>
+      <timestamp>2014-11-21T13:59:32Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  Cette installation est faite après l'installation de manjaro-net-edition en utilisant principalement les outils QT5 et gtk2. E...&quot;</comment>
+      <text xml:space="preserve" bytes="6250">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+Cette installation est faite après l'installation de manjaro-net-edition en utilisant principalement les outils QT5 et gtk2. En outre, openbox est utilisé comme gestionnaire de fenêtres.
+
+Garder à l'esprit, qu'il vous faut un peu de temps.
+
+
+=Conditions préalables=
+
+
+==Manjaro Net Edition==
+
+
+Veuillez télécharger la dernière édition Manjaro net-edition [http://manjaro.org/get-manjaro/ ici].
+
+Installer en utilisant [https://wiki.manjaro.org/index.php?title=Guide_d%27installation_de_manjaro_0.8.4_D%C3%A9butant#D.C3.A9marrage_du_programme_d.27installation_stable] ce guide. A la fin, redémarrez votre ordinateur :
+
+ reboot
+
+
+==Mises à jour==
+
+Connectez-vous et mettez votre système à jour :
+
+ sudo pacman -Syu
+
+
+==Yaourt==
+
+Certains paquets doivent être téléchargés et compilés à partir de AUR.
+
+Installez ces paquets pour un téléchargement facile mais relativement lourd :
+
+ sudo pacman -S base-devel yaourt
+
+Utilisez cette commande pour une installation plus légère :
+
+ sudo pacman -S autoconf automake binutils bison fakeroot flex gcc libconfig libtool m4 make patch subversion yaourt
+
+
+Si vous faites confiance aux créateurs de PKGBUILD, utilisez l'option ''--noconfirm'' sur toutes les commandes '' yaourt '' suivantes.
+
+
+=Installation minimale du système=
+
+
+==LXQT==
+
+Installez la dernière version stable de LXQt, ''openbox'' comme gestionnaire de fenêtres léger, ainsi qu'un terminal :
+
+ sudo pacman -S openbox
+
+ yaourt -S lxqt qterminal
+
+Si vous voulez un terminal très léger, installez ''lxterminal'' à la place de ''qterminal''.
+
+
+{{note| ''lxqt'' contient tous les paquets '''stables''' LXQt (à l'exclusion de ''lxqt-admin''). Si vous voulez installer les versions les plus récentes de développement de paquets LXQt, utilisez la commande :
+
+ yaourt -S lxqt-dektop-git
+
+Attention: Cette commande est susceptible de nécessiter votre attention au cours du processus de construction. Néanmoins vous pouvez essayer d'utiliser l'option ''--noconfirm''. Dans certains cas, le processus de génération échoue complètement.}}
+
+
+==Gestionnaire de connexion==
+
+Le gestionnaire de connexion recommandé pour LXQt est ''sddm'' :
+
+ sudo pacman -S sddm
+
+
+Maintenant il faut activer ''sddm'' avec la commande suivante :
+
+ sudo systemctl enable sddm
+
+Redémarrez votre ordinateur.
+
+Vous pouvez maintenant vous connecter à l'aide du gestionnaire de connexion graphique. Assurez-vous que &lt;code&gt;LXQt-Desktop &lt;/code&gt; est la session sélectionnée.
+
+
+=Paquets de base=
+
+Malheureusement, il n'y a pas de fenêtre de réglage unique dans LXQt capable de changer tous les paramètres disponibles. Par conséquent, plusieurs gestionnaires de paramètres sont nécessaires :
+
+ sudo pacman -S lxappearance obconf manjaro-settings-manager oxygen-icons gvfs gvfs-afc
+
+ yaourt -S lxqt-admin notepadqq
+
+* ''lxappearance'' est un commutateur de thème développé pour LXDE. Un joli thème sombre par exemple est le ''vertex-themes'' de l'AUR.
+* ''obconf'' est le centre de configuration d'openbox et contient tous les paramètres spécifiques du gestionnaire de fenêtres. Il y a un port Qt (développement) disponible dans AUR appelé ''obconf-qt-git''.
+* ''manjaro-settings-manager'' offre tous les paramètres spécifiques Manjaro.
+* ''oxygen-icons'' est le pack d'icônes par défaut de LXQt. Le téléchargement n'est pas spécialementléger, mais il est assez complet. Vous pouvez utiliser d'autres packd d'icônes si vous le souhaitez.
+* ''gvfs'' vous permet de monter d'autres systèmes de fichiers.
+* ''gvfs-afc'' active le support de médias amovibles (clés USB).
+* ''lxqt-admin'' offre des paramètres supplémentaires : &quot;Date et Heure&quot; et &quot;Utilisateurs et groupes&quot;.
+* ''notepadqq'' est un éditeur de texte moderne. Si vous préférez un éditeur de texte léger, installez ''leafpad'' à la place.
+
+
+=Quelques paquets supplémentaires=
+
+ sudo pacman -S gksu octopi octopi-notifier gvfs-smb qupzilla flashplugin
+
+* ''gksu'' est une interface graphique pour la commande &quot;su&quot;.
+* ''octopi'' est le gestionnaire graphique de paquets de Manjaro basé sur Qt.
+* ''octopi-notifier'' est l'icône d'état d'octopi, qui informe sur les mises à jour disponibles.
+* ''gvfs-smb'' offre le support Samba.
+* ''qupzilla'' est un navigateur web léger basé sur Qt.
+* ''flashplugin'' active le support flash pour ''qupzilla''
+
+
+==Gestionnaire de connexion=
+
+Une interface à base Qt à un gestionnaire de connexion appelé ''connman'' :
+
+ yaourt -S cmst 
+
+Vous devez activer le service de gestionnaire de connexion avant ''cmst'' pour être utilisé :
+
+ sudo systemctl enable connman
+
+Maintenant, vous pouvez supprimer en toute sécurité le NetworkManager basé sur GTK pré-installé :
+
+sudo pacman -Rc networkmanager
+
+
+=Encore plus de paquets=
+
+ sudo pacman -S qpdfview speedcrunch file-roller
+
+ yaourt -S qtfind
+
+* ''qpdfview'' est un lecteur pdf basé sur Qt
+* ''speedcrunch'' est une calculatrice basée sur Qt
+* ''file-roller'' est un outil d'archivage convivial basé sur '''Gtk3''' toolkit.
+* ''qtfind'' est un utilitaire basé Qt pour la recherche pour le gestionnaire de fichiers de LXQt.
+
+
+==Support d'impression==
+
+Pour activer le support d'impression, veuillez consulter le wiki [[Activation de l'impression]]
+
+
+==Lecteur multimedia==
+
+Un lecteur multimedia léger :
+
+ sudo pacman -S mpv
+
+Alternativement, un lecteur multimédia bien connu peut être installé : 
+
+ sudo pacman -S vlc
+
+
+==Lecteur audio==
+
+Un lecteur audio léger :
+
+ sudo pacman -S qmmp
+
+Alternativement, un lecteur audio avec beaucoup plus de fonctionnalités peut être installé : 
+
+ sudo pacman -S cantata
+
+
+==Pulseaudio==
+
+Un service de son est disponible avec la commande suivante :
+
+ sudo pacman -S manjaro-pulse pavucontrol
+
+''Pulseaudio'' offre une configuration du son facile pour de multiples configurations avec plusieurs haut-parleurs et/ou des microphones.
+
+
+=Trouver plus de programmes Qt=
+
+Il y a une longue liste de programmes basés sur Qt disponible [https://github.com/Razor-qt/razor-qt/wiki/3rd-party-applications ici].
+
+
+[[Minimal LXQt installation|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>fbvuiqxfwz6xvwb2omgibo8fg8e39i9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

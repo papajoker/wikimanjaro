@@ -1,0 +1,1229 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>PowerTOP pour optimiser la consommation d'énergie de votre portable</title>
+    <ns>0</ns>
+    <id>643</id>
+    <revision>
+      <id>3937</id>
+      <timestamp>2013-01-02T22:56:17Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =  Laptop battery life may potentially be extended further through the use of '''[https://01.org/powertop/community PowerTOP]''', a diagnostic tool used to identify...&quot;</comment>
+      <text xml:space="preserve" bytes="11561">= Overview =
+
+Laptop battery life may potentially be extended further through the use of '''[https://01.org/powertop/community PowerTOP]''', a diagnostic tool used to identify and report issues with power consumption and management. How PowerTOP may be used to optimise power consumption and management on a '''permanent basis''' - and consequently extend battery life - will depend on the kernel version and chipset being used.
+
+
+= Installing PowerTOP =
+
+The command to install PowerTOP is as follows:
+
+ sudo pacman -S powertop 
+
+
+It will also be necessary to download Ethtool - a utility to control network drivers and hardware - as this may be used in the optimisation process. To do so, enter the command:
+
+ sudo pacman -S ethtool
+
+
+= Identify the Existing Kernel Being Used =
+
+[[File:Kernel_ID2.png|left]]
+
+
+If the existing Kernel being run in Manjaro is not immediately apparent, then it can be shown by opening the terminal and then entering the following command:
+
+ uname -r
+
+As seen in the above example, Manjaro is running kernel 3.6.0-1-MANJARO. The information given here is not arbitrary; each part means something about the kernel:
+
+3 indicates the version; 6 indicates the major revision; 0 indicates the minor revision; 1 indicates bug fixing; and MANJARO indicates the specific distribution it is used for.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using PowerTop to Diagnose Power Consumption =
+
+{{tip|When first using PowerTOP, it is worthwhile making a note of the information provided in the '''Summary''' and '''Tuning''' tabs, as these may be used later for comparison purposes to verify the success of permanently optimising your system. Where generating an HTML file, save it to another location of your choice for safekeeping, as otherwise it may be overwritten when generating another HTML diagnostic.}}
+
+
+Irrespective of the kernel version being used, to simply produce a diagnostic of existing power consumption, enter the following command in the terminal:
+
+ sudo powertop
+
+
+The output will be divided into several tabs within the terminal, which can be selected by pressing the right or left arrow keys, as appropriate. Of particular interest will be the last tab called 'Tunables', which will list the options available to reduce power consumption. To close and exit from the diagnostic at any time, simply press the &lt;esc&gt; key. 
+
+
+'''Alternatively PowerTOP can also be used to create an HTML file containing its diagnosis and suggested optimisation methods'''. When generated, this file will be automatically saved in your ''Home Folder'', which also contains folders such as ''Documents'', ''Music'', and ''Downloads''. To create the HTML file, enter the following command into the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, the HTML file may be opened using your desired internet browser. Again, the file will comprise of several summary tabs.
+
+
+= Permanent Optimisation Method Using Kernel 3.4 =
+
+The simple (if somewhat time-consuming) process provided below should make permanent optimisation changes to laptops using Kernel 3.4, particularly if they are running '''Intel chipsets'''. Otherwise, those using kernel version 3.5 or above - and/or running any chipset other than Intel (e.g. AMD) - may be required to follow the second more involved (though faster) optimisation method. However, for those using kernel 3.4 and using an Intel chipset:
+
+1. Fully charge your laptop
+
+2. Unplug the laptop
+
+3. Open the terminal, and start PowerTOP by entering the following command:
+
+ sudo powertop
+
+
+4. Let the laptop stand idle for '''at least 60 minutes'''
+
+5. Close the terminal and reboot the laptop
+
+6. Compare current power management and usage to the previous results by running PowerTOP once again.
+
+
+= Permanent Optimisation Method Using Kernel 3.5 and Above =
+
+{{note|The following error message may be displayed when creating the PowerTOP HTML file: '''Cannot load from file /var/cache/powertop/saved_parameters.powertop'''. This can be safely ignored, as it will not affect the process in any way.}}
+
+
+Currently, PowerTOP does not automatically enable permanent changes when using Kernel version 3.5 and above. In addition, it may not work for laptops using chipsets other than those provided by Intel. However, it is still possible to create a startup script containing the appropriate optimisation commands to be automatically executed upon booting up.
+
+
+== Create the PowerTOP HTML File and Startup Script ==
+
+The PowerTOP HTML file generated will contain the necessary optimisation commands to use in the startup script. To create the HTML file, enter the following command in the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, it will then be necessary to create the actual startup script to be used, called '''startup.sh'''.  The syntax of the command to create the startup script is:
+
+ sudo [text editor] /usr/local/bin/startup.sh
+
+
+For example, if you wish to create and edit the script within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /usr/local/bin/startup.sh
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the script as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /usr/local/bin/startup.sh
+
+
+Once complete, leave both the terminal and empty startup script open.
+
+
+== Edit the Startup Script ==
+
+{{warning|Ensure that only the commands are transferred from the PowerTOP HTML file, and not their preceding explanations.}}
+
+
+The next step is to transfer the optimisation commands listed in the PowerTOP HTML file into the startup script:
+
+1. Using your File Manager, locate the PowerTOP '''tml.html''' file in your ''Home Folder'', and then open it using your choice of web-browser
+
+2. Once the file has been opened in your web-browser, click on the '''Tuning''' tab to display it. An example of what this may look like has been provided below:
+
+[[file:powerTOPb.png]]
+
+
+3. As illustrated, the Tuning tab comprises of two columns. Each line in the first (left) column provides a suggestion of what can be done to optimise power usage. Each line of the second (right) column provides the actual command that can be used in the startup script to put that suggestion into practice. As such, it will be necessary to copy and paste each individual command from the &lt;u&gt;'''second column only'''&lt;/u&gt; into the empty startup script. As an example, a completed autostart script has been listed below, based upon the PowerTOP Tuning Tab illustration: 
+
+
+{{warning|The commands provided here are particular to the laptop used by the author, and are shown purely for illustrative purposes. They should not just be copied and pasted into your own startup script.}}
+
+
+ iw dev wlan0 set power_save off
+ echo 'min_power' &gt; '/sys/class/scsi_host/host0/link_power_management_policy';
+ echo '0' &gt; '/proc/sys/kernel/nmi_watchdog';
+ echo '1500' &gt; '/proc/sys/vm/dirty_writeback_centisecs';
+ echo '1' &gt; '/sys/module/snd_hda_intel/parameters/power_save';
+ echo 'auto' &gt; '/sys/bus/usb/devices/2-6/power/control';
+ echo 'auto' &gt; '/sys/bus/usb/devices/5-1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.3/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:02.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.7/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1b.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:02:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.4/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.7/power/control';
+ ethtool -s eth0 wol d;
+
+
+Once all of the optimisation commands have been copied, pasted, and checked, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+== Make the Startup Script Executable ==
+
+In order for the optimisation commands to be executed, it is necessary to make the startup script itself ''executable''. That way, it will be run like any of the other programs called when booting up. To make the startup script executable, enter the following command in the terminal:
+
+ sudo chmod +x /usr/local/bin/startup.sh
+
+
+If desired it is possible to execute the startup script immediately in the terminal. Doing so has the advantage of identifying any commands that may not work (e.g. due to an incorrect location being specified, or due to a necessary utility such as ethtool not having been downloaded). To do so, enter the following command:
+
+ sudo /usr/local/bin/startup.sh
+
+
+On occasion, it may be necessary to re-edit the startup script to alter or remove any incorrect commands, and/or to download any utilities specified. However where, this is undertaken, then it won't be necessary to make the script executable again.
+
+
+== Execute the Starup Script Upon Booting Up ==
+
+All that is necessary is to place the executable startup script in the '''rc.local''' file, which is itself automatically called when booting up.
+
+
+===Open the rc.local File===
+
+The syntax of the command to open the ''rc.local'' file is:
+
+ sudo [text editor] /etc/rc.local
+
+
+For example, if you wish to open the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/rc.local
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will again open the file as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/rc.local
+
+
+===Edit the rc.local File===
+
+Once open, copy and paste the following commands at the end of the file:
+
+ /usr/local/bin/startup.sh
+ exit
+
+
+In the following example, the ''rc.local'' file has been amended with the commands necessary to call the executable startup script which will optimise power usage. The commands themselves have been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ #!/bin/bash
+ #
+ # /etc/rc.local: Local multi-user startup script.
+ #
+ &lt;font color=&quot;green&quot;&gt;'''/usr/local/bin/startup.sh'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''exit'''&lt;/font color&gt;
+
+
+Once the ''rc.local'' file has been amended, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect. Upon rebooting, compare current power management and usage to the previous results by running PowerTOP once again, and checking the '''Summary''' and '''Tuning''' tabs.
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>nvjs433p6jsjua2qsesm1bnhyi3o6fe</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3938</id>
+      <parentid>3937</parentid>
+      <timestamp>2013-01-02T22:56:37Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="11566">= Vue d'ensemble =
+
+Laptop battery life may potentially be extended further through the use of '''[https://01.org/powertop/community PowerTOP]''', a diagnostic tool used to identify and report issues with power consumption and management. How PowerTOP may be used to optimise power consumption and management on a '''permanent basis''' - and consequently extend battery life - will depend on the kernel version and chipset being used.
+
+= Installing PowerTOP =
+
+The command to install PowerTOP is as follows:
+
+ sudo pacman -S powertop 
+
+
+It will also be necessary to download Ethtool - a utility to control network drivers and hardware - as this may be used in the optimisation process. To do so, enter the command:
+
+ sudo pacman -S ethtool
+
+
+= Identify the Existing Kernel Being Used =
+
+[[File:Kernel_ID2.png|left]]
+
+
+If the existing Kernel being run in Manjaro is not immediately apparent, then it can be shown by opening the terminal and then entering the following command:
+
+ uname -r
+
+As seen in the above example, Manjaro is running kernel 3.6.0-1-MANJARO. The information given here is not arbitrary; each part means something about the kernel:
+
+3 indicates the version; 6 indicates the major revision; 0 indicates the minor revision; 1 indicates bug fixing; and MANJARO indicates the specific distribution it is used for.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using PowerTop to Diagnose Power Consumption =
+
+{{tip|When first using PowerTOP, it is worthwhile making a note of the information provided in the '''Summary''' and '''Tuning''' tabs, as these may be used later for comparison purposes to verify the success of permanently optimising your system. Where generating an HTML file, save it to another location of your choice for safekeeping, as otherwise it may be overwritten when generating another HTML diagnostic.}}
+
+
+Irrespective of the kernel version being used, to simply produce a diagnostic of existing power consumption, enter the following command in the terminal:
+
+ sudo powertop
+
+
+The output will be divided into several tabs within the terminal, which can be selected by pressing the right or left arrow keys, as appropriate. Of particular interest will be the last tab called 'Tunables', which will list the options available to reduce power consumption. To close and exit from the diagnostic at any time, simply press the &lt;esc&gt; key. 
+
+
+'''Alternatively PowerTOP can also be used to create an HTML file containing its diagnosis and suggested optimisation methods'''. When generated, this file will be automatically saved in your ''Home Folder'', which also contains folders such as ''Documents'', ''Music'', and ''Downloads''. To create the HTML file, enter the following command into the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, the HTML file may be opened using your desired internet browser. Again, the file will comprise of several summary tabs.
+
+
+= Permanent Optimisation Method Using Kernel 3.4 =
+
+The simple (if somewhat time-consuming) process provided below should make permanent optimisation changes to laptops using Kernel 3.4, particularly if they are running '''Intel chipsets'''. Otherwise, those using kernel version 3.5 or above - and/or running any chipset other than Intel (e.g. AMD) - may be required to follow the second more involved (though faster) optimisation method. However, for those using kernel 3.4 and using an Intel chipset:
+
+1. Fully charge your laptop
+
+2. Unplug the laptop
+
+3. Open the terminal, and start PowerTOP by entering the following command:
+
+ sudo powertop
+
+
+4. Let the laptop stand idle for '''at least 60 minutes'''
+
+5. Close the terminal and reboot the laptop
+
+6. Compare current power management and usage to the previous results by running PowerTOP once again.
+
+
+= Permanent Optimisation Method Using Kernel 3.5 and Above =
+
+{{note|The following error message may be displayed when creating the PowerTOP HTML file: '''Cannot load from file /var/cache/powertop/saved_parameters.powertop'''. This can be safely ignored, as it will not affect the process in any way.}}
+
+
+Currently, PowerTOP does not automatically enable permanent changes when using Kernel version 3.5 and above. In addition, it may not work for laptops using chipsets other than those provided by Intel. However, it is still possible to create a startup script containing the appropriate optimisation commands to be automatically executed upon booting up.
+
+
+== Create the PowerTOP HTML File and Startup Script ==
+
+The PowerTOP HTML file generated will contain the necessary optimisation commands to use in the startup script. To create the HTML file, enter the following command in the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, it will then be necessary to create the actual startup script to be used, called '''startup.sh'''.  The syntax of the command to create the startup script is:
+
+ sudo [text editor] /usr/local/bin/startup.sh
+
+
+For example, if you wish to create and edit the script within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /usr/local/bin/startup.sh
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the script as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /usr/local/bin/startup.sh
+
+
+Once complete, leave both the terminal and empty startup script open.
+
+
+== Edit the Startup Script ==
+
+{{warning|Ensure that only the commands are transferred from the PowerTOP HTML file, and not their preceding explanations.}}
+
+
+The next step is to transfer the optimisation commands listed in the PowerTOP HTML file into the startup script:
+
+1. Using your File Manager, locate the PowerTOP '''tml.html''' file in your ''Home Folder'', and then open it using your choice of web-browser
+
+2. Once the file has been opened in your web-browser, click on the '''Tuning''' tab to display it. An example of what this may look like has been provided below:
+
+[[file:powerTOPb.png]]
+
+
+3. As illustrated, the Tuning tab comprises of two columns. Each line in the first (left) column provides a suggestion of what can be done to optimise power usage. Each line of the second (right) column provides the actual command that can be used in the startup script to put that suggestion into practice. As such, it will be necessary to copy and paste each individual command from the &lt;u&gt;'''second column only'''&lt;/u&gt; into the empty startup script. As an example, a completed autostart script has been listed below, based upon the PowerTOP Tuning Tab illustration: 
+
+
+{{warning|The commands provided here are particular to the laptop used by the author, and are shown purely for illustrative purposes. They should not just be copied and pasted into your own startup script.}}
+
+
+ iw dev wlan0 set power_save off
+ echo 'min_power' &gt; '/sys/class/scsi_host/host0/link_power_management_policy';
+ echo '0' &gt; '/proc/sys/kernel/nmi_watchdog';
+ echo '1500' &gt; '/proc/sys/vm/dirty_writeback_centisecs';
+ echo '1' &gt; '/sys/module/snd_hda_intel/parameters/power_save';
+ echo 'auto' &gt; '/sys/bus/usb/devices/2-6/power/control';
+ echo 'auto' &gt; '/sys/bus/usb/devices/5-1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.3/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:02.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.7/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1b.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:02:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.4/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.7/power/control';
+ ethtool -s eth0 wol d;
+
+
+Once all of the optimisation commands have been copied, pasted, and checked, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+== Make the Startup Script Executable ==
+
+In order for the optimisation commands to be executed, it is necessary to make the startup script itself ''executable''. That way, it will be run like any of the other programs called when booting up. To make the startup script executable, enter the following command in the terminal:
+
+ sudo chmod +x /usr/local/bin/startup.sh
+
+
+If desired it is possible to execute the startup script immediately in the terminal. Doing so has the advantage of identifying any commands that may not work (e.g. due to an incorrect location being specified, or due to a necessary utility such as ethtool not having been downloaded). To do so, enter the following command:
+
+ sudo /usr/local/bin/startup.sh
+
+
+On occasion, it may be necessary to re-edit the startup script to alter or remove any incorrect commands, and/or to download any utilities specified. However where, this is undertaken, then it won't be necessary to make the script executable again.
+
+
+== Execute the Starup Script Upon Booting Up ==
+
+All that is necessary is to place the executable startup script in the '''rc.local''' file, which is itself automatically called when booting up.
+
+
+===Open the rc.local File===
+
+The syntax of the command to open the ''rc.local'' file is:
+
+ sudo [text editor] /etc/rc.local
+
+
+For example, if you wish to open the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/rc.local
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will again open the file as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/rc.local
+
+
+===Edit the rc.local File===
+
+Once open, copy and paste the following commands at the end of the file:
+
+ /usr/local/bin/startup.sh
+ exit
+
+
+In the following example, the ''rc.local'' file has been amended with the commands necessary to call the executable startup script which will optimise power usage. The commands themselves have been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ #!/bin/bash
+ #
+ # /etc/rc.local: Local multi-user startup script.
+ #
+ &lt;font color=&quot;green&quot;&gt;'''/usr/local/bin/startup.sh'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''exit'''&lt;/font color&gt;
+
+
+Once the ''rc.local'' file has been amended, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect. Upon rebooting, compare current power management and usage to the previous results by running PowerTOP once again, and checking the '''Summary''' and '''Tuning''' tabs.
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>mmgukrr7t6fzsj7djqpotp6ii5tfazd</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3939</id>
+      <parentid>3938</parentid>
+      <timestamp>2013-01-02T22:57:51Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="11662">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Laptop battery life may potentially be extended further through the use of '''[https://01.org/powertop/community PowerTOP]''', a diagnostic tool used to identify and report issues with power consumption and management. How PowerTOP may be used to optimise power consumption and management on a '''permanent basis''' - and consequently extend battery life - will depend on the kernel version and chipset being used.
+
+= Installing PowerTOP =
+
+The command to install PowerTOP is as follows:
+
+ sudo pacman -S powertop 
+
+
+It will also be necessary to download Ethtool - a utility to control network drivers and hardware - as this may be used in the optimisation process. To do so, enter the command:
+
+ sudo pacman -S ethtool
+
+
+= Identify the Existing Kernel Being Used =
+
+[[File:Kernel_ID2.png|left]]
+
+
+If the existing Kernel being run in Manjaro is not immediately apparent, then it can be shown by opening the terminal and then entering the following command:
+
+ uname -r
+
+As seen in the above example, Manjaro is running kernel 3.6.0-1-MANJARO. The information given here is not arbitrary; each part means something about the kernel:
+
+3 indicates the version; 6 indicates the major revision; 0 indicates the minor revision; 1 indicates bug fixing; and MANJARO indicates the specific distribution it is used for.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using PowerTop to Diagnose Power Consumption =
+
+{{tip|When first using PowerTOP, it is worthwhile making a note of the information provided in the '''Summary''' and '''Tuning''' tabs, as these may be used later for comparison purposes to verify the success of permanently optimising your system. Where generating an HTML file, save it to another location of your choice for safekeeping, as otherwise it may be overwritten when generating another HTML diagnostic.}}
+
+
+Irrespective of the kernel version being used, to simply produce a diagnostic of existing power consumption, enter the following command in the terminal:
+
+ sudo powertop
+
+
+The output will be divided into several tabs within the terminal, which can be selected by pressing the right or left arrow keys, as appropriate. Of particular interest will be the last tab called 'Tunables', which will list the options available to reduce power consumption. To close and exit from the diagnostic at any time, simply press the &lt;esc&gt; key. 
+
+
+'''Alternatively PowerTOP can also be used to create an HTML file containing its diagnosis and suggested optimisation methods'''. When generated, this file will be automatically saved in your ''Home Folder'', which also contains folders such as ''Documents'', ''Music'', and ''Downloads''. To create the HTML file, enter the following command into the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, the HTML file may be opened using your desired internet browser. Again, the file will comprise of several summary tabs.
+
+
+= Permanent Optimisation Method Using Kernel 3.4 =
+
+The simple (if somewhat time-consuming) process provided below should make permanent optimisation changes to laptops using Kernel 3.4, particularly if they are running '''Intel chipsets'''. Otherwise, those using kernel version 3.5 or above - and/or running any chipset other than Intel (e.g. AMD) - may be required to follow the second more involved (though faster) optimisation method. However, for those using kernel 3.4 and using an Intel chipset:
+
+1. Fully charge your laptop
+
+2. Unplug the laptop
+
+3. Open the terminal, and start PowerTOP by entering the following command:
+
+ sudo powertop
+
+
+4. Let the laptop stand idle for '''at least 60 minutes'''
+
+5. Close the terminal and reboot the laptop
+
+6. Compare current power management and usage to the previous results by running PowerTOP once again.
+
+
+= Permanent Optimisation Method Using Kernel 3.5 and Above =
+
+{{note|The following error message may be displayed when creating the PowerTOP HTML file: '''Cannot load from file /var/cache/powertop/saved_parameters.powertop'''. This can be safely ignored, as it will not affect the process in any way.}}
+
+
+Currently, PowerTOP does not automatically enable permanent changes when using Kernel version 3.5 and above. In addition, it may not work for laptops using chipsets other than those provided by Intel. However, it is still possible to create a startup script containing the appropriate optimisation commands to be automatically executed upon booting up.
+
+
+== Create the PowerTOP HTML File and Startup Script ==
+
+The PowerTOP HTML file generated will contain the necessary optimisation commands to use in the startup script. To create the HTML file, enter the following command in the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, it will then be necessary to create the actual startup script to be used, called '''startup.sh'''.  The syntax of the command to create the startup script is:
+
+ sudo [text editor] /usr/local/bin/startup.sh
+
+
+For example, if you wish to create and edit the script within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /usr/local/bin/startup.sh
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the script as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /usr/local/bin/startup.sh
+
+
+Once complete, leave both the terminal and empty startup script open.
+
+
+== Edit the Startup Script ==
+
+{{warning|Ensure that only the commands are transferred from the PowerTOP HTML file, and not their preceding explanations.}}
+
+
+The next step is to transfer the optimisation commands listed in the PowerTOP HTML file into the startup script:
+
+1. Using your File Manager, locate the PowerTOP '''tml.html''' file in your ''Home Folder'', and then open it using your choice of web-browser
+
+2. Once the file has been opened in your web-browser, click on the '''Tuning''' tab to display it. An example of what this may look like has been provided below:
+
+[[file:powerTOPb.png]]
+
+
+3. As illustrated, the Tuning tab comprises of two columns. Each line in the first (left) column provides a suggestion of what can be done to optimise power usage. Each line of the second (right) column provides the actual command that can be used in the startup script to put that suggestion into practice. As such, it will be necessary to copy and paste each individual command from the &lt;u&gt;'''second column only'''&lt;/u&gt; into the empty startup script. As an example, a completed autostart script has been listed below, based upon the PowerTOP Tuning Tab illustration: 
+
+
+{{warning|The commands provided here are particular to the laptop used by the author, and are shown purely for illustrative purposes. They should not just be copied and pasted into your own startup script.}}
+
+
+ iw dev wlan0 set power_save off
+ echo 'min_power' &gt; '/sys/class/scsi_host/host0/link_power_management_policy';
+ echo '0' &gt; '/proc/sys/kernel/nmi_watchdog';
+ echo '1500' &gt; '/proc/sys/vm/dirty_writeback_centisecs';
+ echo '1' &gt; '/sys/module/snd_hda_intel/parameters/power_save';
+ echo 'auto' &gt; '/sys/bus/usb/devices/2-6/power/control';
+ echo 'auto' &gt; '/sys/bus/usb/devices/5-1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.3/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:02.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.7/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1b.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:02:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.4/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.7/power/control';
+ ethtool -s eth0 wol d;
+
+
+Once all of the optimisation commands have been copied, pasted, and checked, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+== Make the Startup Script Executable ==
+
+In order for the optimisation commands to be executed, it is necessary to make the startup script itself ''executable''. That way, it will be run like any of the other programs called when booting up. To make the startup script executable, enter the following command in the terminal:
+
+ sudo chmod +x /usr/local/bin/startup.sh
+
+
+If desired it is possible to execute the startup script immediately in the terminal. Doing so has the advantage of identifying any commands that may not work (e.g. due to an incorrect location being specified, or due to a necessary utility such as ethtool not having been downloaded). To do so, enter the following command:
+
+ sudo /usr/local/bin/startup.sh
+
+
+On occasion, it may be necessary to re-edit the startup script to alter or remove any incorrect commands, and/or to download any utilities specified. However where, this is undertaken, then it won't be necessary to make the script executable again.
+
+
+== Execute the Starup Script Upon Booting Up ==
+
+All that is necessary is to place the executable startup script in the '''rc.local''' file, which is itself automatically called when booting up.
+
+
+===Open the rc.local File===
+
+The syntax of the command to open the ''rc.local'' file is:
+
+ sudo [text editor] /etc/rc.local
+
+
+For example, if you wish to open the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/rc.local
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will again open the file as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/rc.local
+
+
+===Edit the rc.local File===
+
+Once open, copy and paste the following commands at the end of the file:
+
+ /usr/local/bin/startup.sh
+ exit
+
+
+In the following example, the ''rc.local'' file has been amended with the commands necessary to call the executable startup script which will optimise power usage. The commands themselves have been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ #!/bin/bash
+ #
+ # /etc/rc.local: Local multi-user startup script.
+ #
+ &lt;font color=&quot;green&quot;&gt;'''/usr/local/bin/startup.sh'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''exit'''&lt;/font color&gt;
+
+
+Once the ''rc.local'' file has been amended, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect. Upon rebooting, compare current power management and usage to the previous results by running PowerTOP once again, and checking the '''Summary''' and '''Tuning''' tabs.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>fh7sfa6zg1byuqtztmejyyz0i4d6dam</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3940</id>
+      <parentid>3939</parentid>
+      <timestamp>2013-01-02T23:05:55Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="11770">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+La durée de vie de la batterie d'un portable peut éventuellement être prolongée par l'utilisation de '''[https://01.org/powertop/community PowerTOP]''', un outil de diagnostic utilisé pour identifier et signaler les problèmes avec la consommation d'énergie et la gestion de celle-ci. La façon dont PowerTOP peut être utilisé pour optimiser la consommation d'énergie et sa gestion de '''façon permanente''' - et par conséquent prolonger l'autonomie - va dépendre de la version du noyau et du chipset utilisé.
+
+= Installing PowerTOP =
+
+The command to install PowerTOP is as follows:
+
+ sudo pacman -S powertop 
+
+
+It will also be necessary to download Ethtool - a utility to control network drivers and hardware - as this may be used in the optimisation process. To do so, enter the command:
+
+ sudo pacman -S ethtool
+
+
+= Identify the Existing Kernel Being Used =
+
+[[File:Kernel_ID2.png|left]]
+
+
+If the existing Kernel being run in Manjaro is not immediately apparent, then it can be shown by opening the terminal and then entering the following command:
+
+ uname -r
+
+As seen in the above example, Manjaro is running kernel 3.6.0-1-MANJARO. The information given here is not arbitrary; each part means something about the kernel:
+
+3 indicates the version; 6 indicates the major revision; 0 indicates the minor revision; 1 indicates bug fixing; and MANJARO indicates the specific distribution it is used for.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using PowerTop to Diagnose Power Consumption =
+
+{{tip|When first using PowerTOP, it is worthwhile making a note of the information provided in the '''Summary''' and '''Tuning''' tabs, as these may be used later for comparison purposes to verify the success of permanently optimising your system. Where generating an HTML file, save it to another location of your choice for safekeeping, as otherwise it may be overwritten when generating another HTML diagnostic.}}
+
+
+Irrespective of the kernel version being used, to simply produce a diagnostic of existing power consumption, enter the following command in the terminal:
+
+ sudo powertop
+
+
+The output will be divided into several tabs within the terminal, which can be selected by pressing the right or left arrow keys, as appropriate. Of particular interest will be the last tab called 'Tunables', which will list the options available to reduce power consumption. To close and exit from the diagnostic at any time, simply press the &lt;esc&gt; key. 
+
+
+'''Alternatively PowerTOP can also be used to create an HTML file containing its diagnosis and suggested optimisation methods'''. When generated, this file will be automatically saved in your ''Home Folder'', which also contains folders such as ''Documents'', ''Music'', and ''Downloads''. To create the HTML file, enter the following command into the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, the HTML file may be opened using your desired internet browser. Again, the file will comprise of several summary tabs.
+
+
+= Permanent Optimisation Method Using Kernel 3.4 =
+
+The simple (if somewhat time-consuming) process provided below should make permanent optimisation changes to laptops using Kernel 3.4, particularly if they are running '''Intel chipsets'''. Otherwise, those using kernel version 3.5 or above - and/or running any chipset other than Intel (e.g. AMD) - may be required to follow the second more involved (though faster) optimisation method. However, for those using kernel 3.4 and using an Intel chipset:
+
+1. Fully charge your laptop
+
+2. Unplug the laptop
+
+3. Open the terminal, and start PowerTOP by entering the following command:
+
+ sudo powertop
+
+
+4. Let the laptop stand idle for '''at least 60 minutes'''
+
+5. Close the terminal and reboot the laptop
+
+6. Compare current power management and usage to the previous results by running PowerTOP once again.
+
+
+= Permanent Optimisation Method Using Kernel 3.5 and Above =
+
+{{note|The following error message may be displayed when creating the PowerTOP HTML file: '''Cannot load from file /var/cache/powertop/saved_parameters.powertop'''. This can be safely ignored, as it will not affect the process in any way.}}
+
+
+Currently, PowerTOP does not automatically enable permanent changes when using Kernel version 3.5 and above. In addition, it may not work for laptops using chipsets other than those provided by Intel. However, it is still possible to create a startup script containing the appropriate optimisation commands to be automatically executed upon booting up.
+
+
+== Create the PowerTOP HTML File and Startup Script ==
+
+The PowerTOP HTML file generated will contain the necessary optimisation commands to use in the startup script. To create the HTML file, enter the following command in the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, it will then be necessary to create the actual startup script to be used, called '''startup.sh'''.  The syntax of the command to create the startup script is:
+
+ sudo [text editor] /usr/local/bin/startup.sh
+
+
+For example, if you wish to create and edit the script within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /usr/local/bin/startup.sh
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the script as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /usr/local/bin/startup.sh
+
+
+Once complete, leave both the terminal and empty startup script open.
+
+
+== Edit the Startup Script ==
+
+{{warning|Ensure that only the commands are transferred from the PowerTOP HTML file, and not their preceding explanations.}}
+
+
+The next step is to transfer the optimisation commands listed in the PowerTOP HTML file into the startup script:
+
+1. Using your File Manager, locate the PowerTOP '''tml.html''' file in your ''Home Folder'', and then open it using your choice of web-browser
+
+2. Once the file has been opened in your web-browser, click on the '''Tuning''' tab to display it. An example of what this may look like has been provided below:
+
+[[file:powerTOPb.png]]
+
+
+3. As illustrated, the Tuning tab comprises of two columns. Each line in the first (left) column provides a suggestion of what can be done to optimise power usage. Each line of the second (right) column provides the actual command that can be used in the startup script to put that suggestion into practice. As such, it will be necessary to copy and paste each individual command from the &lt;u&gt;'''second column only'''&lt;/u&gt; into the empty startup script. As an example, a completed autostart script has been listed below, based upon the PowerTOP Tuning Tab illustration: 
+
+
+{{warning|The commands provided here are particular to the laptop used by the author, and are shown purely for illustrative purposes. They should not just be copied and pasted into your own startup script.}}
+
+
+ iw dev wlan0 set power_save off
+ echo 'min_power' &gt; '/sys/class/scsi_host/host0/link_power_management_policy';
+ echo '0' &gt; '/proc/sys/kernel/nmi_watchdog';
+ echo '1500' &gt; '/proc/sys/vm/dirty_writeback_centisecs';
+ echo '1' &gt; '/sys/module/snd_hda_intel/parameters/power_save';
+ echo 'auto' &gt; '/sys/bus/usb/devices/2-6/power/control';
+ echo 'auto' &gt; '/sys/bus/usb/devices/5-1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.3/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:02.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.7/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1b.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:02:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.4/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.7/power/control';
+ ethtool -s eth0 wol d;
+
+
+Once all of the optimisation commands have been copied, pasted, and checked, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+== Make the Startup Script Executable ==
+
+In order for the optimisation commands to be executed, it is necessary to make the startup script itself ''executable''. That way, it will be run like any of the other programs called when booting up. To make the startup script executable, enter the following command in the terminal:
+
+ sudo chmod +x /usr/local/bin/startup.sh
+
+
+If desired it is possible to execute the startup script immediately in the terminal. Doing so has the advantage of identifying any commands that may not work (e.g. due to an incorrect location being specified, or due to a necessary utility such as ethtool not having been downloaded). To do so, enter the following command:
+
+ sudo /usr/local/bin/startup.sh
+
+
+On occasion, it may be necessary to re-edit the startup script to alter or remove any incorrect commands, and/or to download any utilities specified. However where, this is undertaken, then it won't be necessary to make the script executable again.
+
+
+== Execute the Starup Script Upon Booting Up ==
+
+All that is necessary is to place the executable startup script in the '''rc.local''' file, which is itself automatically called when booting up.
+
+
+===Open the rc.local File===
+
+The syntax of the command to open the ''rc.local'' file is:
+
+ sudo [text editor] /etc/rc.local
+
+
+For example, if you wish to open the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/rc.local
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will again open the file as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/rc.local
+
+
+===Edit the rc.local File===
+
+Once open, copy and paste the following commands at the end of the file:
+
+ /usr/local/bin/startup.sh
+ exit
+
+
+In the following example, the ''rc.local'' file has been amended with the commands necessary to call the executable startup script which will optimise power usage. The commands themselves have been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ #!/bin/bash
+ #
+ # /etc/rc.local: Local multi-user startup script.
+ #
+ &lt;font color=&quot;green&quot;&gt;'''/usr/local/bin/startup.sh'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''exit'''&lt;/font color&gt;
+
+
+Once the ''rc.local'' file has been amended, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect. Upon rebooting, compare current power management and usage to the previous results by running PowerTOP once again, and checking the '''Summary''' and '''Tuning''' tabs.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>78nkwqgde1xsqq8dpmoiecfkjs90gcs</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3941</id>
+      <parentid>3940</parentid>
+      <timestamp>2013-01-02T23:06:29Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="11774">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+La durée de vie de la batterie d'un portable peut éventuellement être prolongée par l'utilisation de '''[https://01.org/powertop/community PowerTOP]''', un outil de diagnostic utilisé pour identifier et signaler les problèmes liés à la consommation d'énergie et la gestion de celle-ci. La façon dont PowerTOP peut être utilisé pour optimiser la consommation d'énergie et sa gestion de '''façon permanente''' - et par conséquent prolonger l'autonomie - va dépendre de la version du noyau et du chipset utilisé.
+
+= Installing PowerTOP =
+
+The command to install PowerTOP is as follows:
+
+ sudo pacman -S powertop 
+
+
+It will also be necessary to download Ethtool - a utility to control network drivers and hardware - as this may be used in the optimisation process. To do so, enter the command:
+
+ sudo pacman -S ethtool
+
+
+= Identify the Existing Kernel Being Used =
+
+[[File:Kernel_ID2.png|left]]
+
+
+If the existing Kernel being run in Manjaro is not immediately apparent, then it can be shown by opening the terminal and then entering the following command:
+
+ uname -r
+
+As seen in the above example, Manjaro is running kernel 3.6.0-1-MANJARO. The information given here is not arbitrary; each part means something about the kernel:
+
+3 indicates the version; 6 indicates the major revision; 0 indicates the minor revision; 1 indicates bug fixing; and MANJARO indicates the specific distribution it is used for.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using PowerTop to Diagnose Power Consumption =
+
+{{tip|When first using PowerTOP, it is worthwhile making a note of the information provided in the '''Summary''' and '''Tuning''' tabs, as these may be used later for comparison purposes to verify the success of permanently optimising your system. Where generating an HTML file, save it to another location of your choice for safekeeping, as otherwise it may be overwritten when generating another HTML diagnostic.}}
+
+
+Irrespective of the kernel version being used, to simply produce a diagnostic of existing power consumption, enter the following command in the terminal:
+
+ sudo powertop
+
+
+The output will be divided into several tabs within the terminal, which can be selected by pressing the right or left arrow keys, as appropriate. Of particular interest will be the last tab called 'Tunables', which will list the options available to reduce power consumption. To close and exit from the diagnostic at any time, simply press the &lt;esc&gt; key. 
+
+
+'''Alternatively PowerTOP can also be used to create an HTML file containing its diagnosis and suggested optimisation methods'''. When generated, this file will be automatically saved in your ''Home Folder'', which also contains folders such as ''Documents'', ''Music'', and ''Downloads''. To create the HTML file, enter the following command into the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, the HTML file may be opened using your desired internet browser. Again, the file will comprise of several summary tabs.
+
+
+= Permanent Optimisation Method Using Kernel 3.4 =
+
+The simple (if somewhat time-consuming) process provided below should make permanent optimisation changes to laptops using Kernel 3.4, particularly if they are running '''Intel chipsets'''. Otherwise, those using kernel version 3.5 or above - and/or running any chipset other than Intel (e.g. AMD) - may be required to follow the second more involved (though faster) optimisation method. However, for those using kernel 3.4 and using an Intel chipset:
+
+1. Fully charge your laptop
+
+2. Unplug the laptop
+
+3. Open the terminal, and start PowerTOP by entering the following command:
+
+ sudo powertop
+
+
+4. Let the laptop stand idle for '''at least 60 minutes'''
+
+5. Close the terminal and reboot the laptop
+
+6. Compare current power management and usage to the previous results by running PowerTOP once again.
+
+
+= Permanent Optimisation Method Using Kernel 3.5 and Above =
+
+{{note|The following error message may be displayed when creating the PowerTOP HTML file: '''Cannot load from file /var/cache/powertop/saved_parameters.powertop'''. This can be safely ignored, as it will not affect the process in any way.}}
+
+
+Currently, PowerTOP does not automatically enable permanent changes when using Kernel version 3.5 and above. In addition, it may not work for laptops using chipsets other than those provided by Intel. However, it is still possible to create a startup script containing the appropriate optimisation commands to be automatically executed upon booting up.
+
+
+== Create the PowerTOP HTML File and Startup Script ==
+
+The PowerTOP HTML file generated will contain the necessary optimisation commands to use in the startup script. To create the HTML file, enter the following command in the terminal:
+
+ sudo powertop -html
+
+
+The process may take a few moments. Once complete, it will then be necessary to create the actual startup script to be used, called '''startup.sh'''.  The syntax of the command to create the startup script is:
+
+ sudo [text editor] /usr/local/bin/startup.sh
+
+
+For example, if you wish to create and edit the script within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /usr/local/bin/startup.sh
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will create and open the script as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /usr/local/bin/startup.sh
+
+
+Once complete, leave both the terminal and empty startup script open.
+
+
+== Edit the Startup Script ==
+
+{{warning|Ensure that only the commands are transferred from the PowerTOP HTML file, and not their preceding explanations.}}
+
+
+The next step is to transfer the optimisation commands listed in the PowerTOP HTML file into the startup script:
+
+1. Using your File Manager, locate the PowerTOP '''tml.html''' file in your ''Home Folder'', and then open it using your choice of web-browser
+
+2. Once the file has been opened in your web-browser, click on the '''Tuning''' tab to display it. An example of what this may look like has been provided below:
+
+[[file:powerTOPb.png]]
+
+
+3. As illustrated, the Tuning tab comprises of two columns. Each line in the first (left) column provides a suggestion of what can be done to optimise power usage. Each line of the second (right) column provides the actual command that can be used in the startup script to put that suggestion into practice. As such, it will be necessary to copy and paste each individual command from the &lt;u&gt;'''second column only'''&lt;/u&gt; into the empty startup script. As an example, a completed autostart script has been listed below, based upon the PowerTOP Tuning Tab illustration: 
+
+
+{{warning|The commands provided here are particular to the laptop used by the author, and are shown purely for illustrative purposes. They should not just be copied and pasted into your own startup script.}}
+
+
+ iw dev wlan0 set power_save off
+ echo 'min_power' &gt; '/sys/class/scsi_host/host0/link_power_management_policy';
+ echo '0' &gt; '/proc/sys/kernel/nmi_watchdog';
+ echo '1500' &gt; '/proc/sys/vm/dirty_writeback_centisecs';
+ echo '1' &gt; '/sys/module/snd_hda_intel/parameters/power_save';
+ echo 'auto' &gt; '/sys/bus/usb/devices/2-6/power/control';
+ echo 'auto' &gt; '/sys/bus/usb/devices/5-1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.3/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:02.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.7/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1b.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:02:00.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.1/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.4/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.0/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.2/power/control';
+ echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.7/power/control';
+ ethtool -s eth0 wol d;
+
+
+Once all of the optimisation commands have been copied, pasted, and checked, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+== Make the Startup Script Executable ==
+
+In order for the optimisation commands to be executed, it is necessary to make the startup script itself ''executable''. That way, it will be run like any of the other programs called when booting up. To make the startup script executable, enter the following command in the terminal:
+
+ sudo chmod +x /usr/local/bin/startup.sh
+
+
+If desired it is possible to execute the startup script immediately in the terminal. Doing so has the advantage of identifying any commands that may not work (e.g. due to an incorrect location being specified, or due to a necessary utility such as ethtool not having been downloaded). To do so, enter the following command:
+
+ sudo /usr/local/bin/startup.sh
+
+
+On occasion, it may be necessary to re-edit the startup script to alter or remove any incorrect commands, and/or to download any utilities specified. However where, this is undertaken, then it won't be necessary to make the script executable again.
+
+
+== Execute the Starup Script Upon Booting Up ==
+
+All that is necessary is to place the executable startup script in the '''rc.local''' file, which is itself automatically called when booting up.
+
+
+===Open the rc.local File===
+
+The syntax of the command to open the ''rc.local'' file is:
+
+ sudo [text editor] /etc/rc.local
+
+
+For example, if you wish to open the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/rc.local
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will again open the file as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/rc.local
+
+
+===Edit the rc.local File===
+
+Once open, copy and paste the following commands at the end of the file:
+
+ /usr/local/bin/startup.sh
+ exit
+
+
+In the following example, the ''rc.local'' file has been amended with the commands necessary to call the executable startup script which will optimise power usage. The commands themselves have been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ #!/bin/bash
+ #
+ # /etc/rc.local: Local multi-user startup script.
+ #
+ &lt;font color=&quot;green&quot;&gt;'''/usr/local/bin/startup.sh'''&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;'''exit'''&lt;/font color&gt;
+
+
+Once the ''rc.local'' file has been amended, save the changes and close the file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or 
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect. Upon rebooting, compare current power management and usage to the previous results by running PowerTOP once again, and checking the '''Summary''' and '''Tuning''' tabs.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>qcmsfhvmgjtkmj02jogljmq59ng41ci</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

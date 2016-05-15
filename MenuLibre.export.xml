@@ -1,0 +1,375 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>MenuLibre</title>
+    <ns>0</ns>
+    <id>736</id>
+    <revision>
+      <id>4871</id>
+      <timestamp>2013-02-04T16:31:11Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Vue d'ensemble =  [[File:BigManjaroIcon.png|left|90px]]      MenuLibre est un éditeur de menu fonctionnant aussi bien pour G...&quot;</comment>
+      <text xml:space="preserve" bytes="1869">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+
+
+
+
+MenuLibre est un éditeur de menu fonctionnant aussi bien pour Gnome, XFCE et LXDE. Son interface basée sur GTK+ propose d’intéressantes fonctionnalités.
+
+MenuLibre permet, entre autres, de créer et modifier des lanceurs, les changer de catégories, réorganiser et modifier les quicklists, modifier des commandes, etc.
+
+L’ interface simple et intuitive de MenuLibre va vous permettre d’effectuer facilement des actions telles que la création &amp; la modification / réorganisation :
+* de lanceurs,
+* de catégories,
+* des quicklists des applications,
+* du menu des applications utilisateur,
+* des commandes associées aux lanceurs,
+* et pas mal de choses encore ...
+
+
+= Installation de MenuLibre =
+
+ yaourt -S menulibre
+
+Pour le lancer (dans Xfce), allez dans Paramètres ou Système : Editeur de menus
+
+
+[[File: menulibre1.png|thumb|left|375px]]
+
+
+Fenêtre principale.
+
+
+
+[[File: menulibre2.png|thumb|left|375px]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ajouter un nouveau lanceur.
+
+
+
+[[File: menulibre3.png|thumb|left|375px]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Remplir la commande, les options et la catégorie.
+
+
+
+[[File: menulibre4.png|thumb|left|375px]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Par exemple, pour ne plus voir dans le menu la calculatrice, cliquez sur Accessoires.
+
+
+
+[[File: menulibre5.png|thumb|left|375px]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cliquez sur Galculator.
+
+
+
+[[File: menulibre6.png|thumb|left|375px]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Masquer depuis menus.
+
+
+
+[[File: menulibre7.png|thumb|left|375px]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Enregistrer toutes les modifications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>j82rvhhjv77asmyc6awque52bc5cp4j</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,1090 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Suppression des paquets orphelins</title>
+    <ns>0</ns>
+    <id>993</id>
+    <revision>
+      <id>6546</id>
+      <timestamp>2013-07-23T15:31:59Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  =EN COURS DE TRADUCTION=  =Introducing the Orphans=  As the months turn into years since the initial install of our Arch based ...&quot;</comment>
+      <text xml:space="preserve" bytes="11261">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+=Introducing the Orphans=
+
+As the months turn into years since the initial install of our Arch based installations, (isn't the rolling release system wonderful) we tend to accumulate orphan packages that are basically just useless clutter on our HDDs.
+
+Some ways of dealing with this problem follow:
+
+ pacman -Qdt  
+
+will give you a list of packages installed as dependency for another package that are no longer required, i.e. orphans.
+
+You can automatically remove them, along with their dependencies, with something like:
+
+ pacman -Rs $(pacman -Qqdt)
+
+Though I prefer to manually highlight, copy &amp; paste them (with a space between them) onto a command line after the following:
+
+ sudo pacman -Rsn
+
+I call the above command with my ''~/.bashrc alias pdelete'' . Which means I just have to enter '''pdelete''' at the user prompt &amp; add whatever I want deleted after that word.
+
+The alias follows, but first you'll need to open ''~/.bashrc'' in your favourite text editor. Which is not so simple as it is a hidden file, as can be seen by the ''&lt;.dot&gt;'' at the start of its name. 
+
+An easy way to open it is to type the following into your Terminal replacing ''&lt;text.editor.name&gt;'' with the name of your text editor, such as ''gedit''. There is no need to use ''sudo'' as this file is from your ''user'' account not that of the ''root'':
+
+ &lt;text.editor.name&gt; .bashrc
+
+OK, back to the ''alias''; if you like it, you can just copy ''(highlight the text by triple left mouse button clicking on it &amp; then from the right mouse button menu choose copy)'' &amp; paste ''(right mouse button menu again)'' it into your ''~/.bashrc'' file:
+
+ alias pdelete=&quot;sudo pacman -Rsn&quot;
+
+
+===Manipulate orphan list===
+
+Sometimes a package that pacman detects as an orphan may be a program that you still use. This is because that program originally came as a dependency of another package, but you removed the latter. When running the above command to automatically remove orphans, you may accidentally remove such packages. To prevent this from happening you can solve this  by tricking pacman that it is an explicitely installed package:
+ pacman -D --asexplicit &lt;packagename&gt;
+
+For example: Some users reported that gnome-shell showed up in their list of orphans, while they actually were still using it. After using the command below everything should be fine.
+ pacman -D --asexplicit gnome-shell
+
+&lt;br clear=&quot;all&quot; /&gt;
+===A practical example:===
+
+I just cleaned out my system, which was initially a Manjaro Gnome/Cinnamon install (for a brief period), before I deleted Gnome/Cinnamon &amp; installed Openbox &amp; customised my system to suit the way I like it to be.
+
+Even though I have already manually deleted quite a bit of stuff, I just removed the following (not all of that was Gnome/Cinnamon leftovers but they were '''ALL''' orphans):
+
+ Targets (22): intltool-debian-0.35.0-2  mysql-clients-5.5.29-1  bluez-hcidump-2.4-1  boost-1.50.0-3
+              bzr-2.5.1-2  cmake-2.8.10.2-1  consolekit-0.4.6-4  dos2unix-6.0.2-1  dpkg-1.16.9-1
+              dri2proto-2.8-1  glproto-1.4.16-1  html2text-1.3.2a-9  imake-1.0.5-1
+              lib32-mesa-9.0.1-1  mhwd-catalyst-legacy-12.6-2  mysql-5.5.29-1
+              perl-io-string-1.08-8  perl-timedate-1.20-3  po-debconf-1.0.16-2  po4a-0.42-1
+              python2-distribute-0.6.32-1  rrdtool-1.4.7-3
+ 
+ Total Removed Size:     338.79 MiB
+
+
+So now I have 338.79 MB more space on my drive &amp; that much less clutter.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Handling the pacman .pac* files:==
+
+''For anyone unfamiliar with the .pac* files here is the best place to find out about them: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]''
+
+
+In order to keep your Manjaro system clean &amp; functioning properly, we need to firstly locate these '''.pac*''' files ''(which are built into pacman in an effort to maintain stability - please read the info' in the supplied link re. these files?)'' so that we can have a look at them &amp; decide if they are of any value or not. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Finding the .pac* Files===
+
+They can be found in a variety of ways: I like the use of the '''locate''' command, as it is very quick &amp; very slick:
+
+ locate -e --regex &quot;\.pac(new|save|orig)$&quot;
+
+For anyone who doesn't have '''locate''' on their machine they need to install '''mlocate''' which is done from the command line with the following command:
+
+ sudo pacman -S mlocate
+
+Though I do the same thing by typing in the following which uses an alias from my ''~/.bashrc'' :  
+
+ pS mlocate
+
+&amp; then run ''updatedb'' as ''root'' like so:
+
+ sudo updatedb
+
+This command will very quickly make a database of all of the files on your system &amp; as a bonus, when you install ''mlocate'' it installs a script that sets up a daily ''cron'' job with the purpose of updating the database every day for you. Though you can of course do it manually by issuing the above command any time you want. 
+
+If you were going to issue the ''updatedb'' command often, you may like to make an alias for it. From what you have seen of my aliases you should be able to put one together without much trouble.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Is the .pac* file useful?===
+
+You need to look at the contents of the .pac* files with your text editor. Due to them being files owned by ''root'' , you will need to at least use ''sudo'' to call your editor if you need to modify your original configuration file with changes bought in by the .pacnew file. ''(I expect that this is usually going to be taken care of by the Manjaro dev' team. I'll verify that &amp; modify the text here accordingly.)'' 
+
+If once checked we find that the .pac* files are of no value, we delete them, most of them are of no value, but we should look before we delete as sometimes, particularly '''.pacnew''' files can carry critically important new configuration file changes.
+
+So there are three types of files that we need to deal with:
+
+ *.pacnew , *.pacsave &amp; *.pacorig
+
+For information on these files the best place to look is on this page in the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Other ways to do it:===
+
+There are other options to be found in the AUR that have been made for dealing with the ''.pac*'' files, here is a list from the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files#Managing_.pacnew_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+==A .pac* file Summation:==
+
+I think the thing that those new to the Arch rolling release system need to keep in mind, is that these ''.pac*'' files are seldom a cause for problems. Most Arch users don't even bother looking at them or for them &amp; perhaps once in a while have a clean out.
+
+So don't stress over these things. If there is something important that has to happen involving one or more of them, I'm sure it will be made '''very''' obvious in the Manjaro forum &amp; blog. Though more likely it will be done for you by the dev' team.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Removing leftover &lt;.dot&gt; configuration files from the /home directory:==
+
+Mundus is a tool with a GUI that can make this job easy. Especially for people that are unfamiliar with their system's hidden &lt;.dot&gt; configuration files.
+
+The following is from this page: [http://www.ubuntugeek.com/mundus-home-folder-cleaner.html]
+
+''Mundus is a small utility that can help you keep your /home folder clean. It keeps an internal database of known applications and folders, and automagically detects those apps that where uninstalled but left configuration files. Each supported application is also called a module, and each folder it describes is called a submodule.''
+
+'''''Backups'''''
+
+''There are two options to make backups before cleaning a directory.''
+
+'''''Automatic'''''
+
+''If the directory to clean is below the size limit, a backup will be automatically executed before the clean begins.''
+
+'''''Manual'''''
+
+''The alternative, just click the Backup button when selecting a submodule.''
+
+
+Mundus can be installed in Manjaro with the following command:
+
+ yaourt -S mundus
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The /var/log Directory:==
+
+In keeping with the topic of this thread, I'll mention that it's also a good idea to keep an eye on the '''/var/log''' directory, in case some logs are growing too large - ''(in fact log files growing large in a short period of time can mean you have problems in your system)''. During my Arch days, I'd trim my log files down from time to time, usually I'd keep just the last 30 days.
+
+You must have root privileges to edit the log files, so you need to open your favourite text editor in root mode. An example follows:
+
+ sudo gedit
+
+
+== A method to easily remove any number of orphan or just unwanted programs ==
+
+
+=== Quickly make a list of all of the pacman installed programs on your system ===
+
+You can use the following command to get a list of all of the packages installed on your machine via pacman (this command doesn't list packages installed from the AUR):
+
+ $ pacman -Qqen &gt; pkglist.txt 
+
+If you open the Terminal &amp; just copy &amp; paste the above command (without the '''$''' terminal prompt - which is here to tell you that we can do this with '''user''' privilege, no need for '''#''' root privileges) into the command line &amp; hit enter, the list will be saved in your '''/home/&lt;user.name&gt;''' folder (so quickly you will think that the command failed).
+
+
+=== Easily view your new pkglist.txt ===
+
+Type the following to see the list (you can of course open it with your favourite text editor too):
+
+ $ more pkglist.txt
+
+When you use '''more''' , you hit the space bar to move to the next page, you can scroll back through it using your mouse, &amp; hitting '''q''' quits '''more''' &amp; instantly returns you to the command prompt.
+
+
+=== So what do you do with this pkglist.txt? ===
+
+The reason I'm telling you about this, is that it gives you the actual names of the packages that you need to use when you delete them (you can do other things with this list too, see here: [https://wiki.archlinux.org/index.php/Pacman_Tips#Backing_up_and_retrieving_a_list_of_installed_packages] ). 
+
+Doing it this way is much easier than searching through your /var/cache/pacman/pkg directory, you can highlight the files that you want to delete &amp; then move to another tab in your Terminal where you paste them to the command line that you use do delete them (the delete command is next).
+
+
+=== How do I delete these unwanted programmes? ===
+
+Deleting what you want to is as easy as adding the files that you don't want separated by a space to the following command, I'll add some files in the example below:
+
+ $ sudo pacman -Rsn leafpad vlc terminator geany mplayer gufw
+
+Sometimes when you put a lot of files in a list to operate on, the system will complain about some of them for whatever reasons. If this happens you just hit the up arrow button to bring your original command line with the packages in it that you want to delete &amp; using your left &amp; right arrow (cursor control) keys, you navigate the command line &amp; remove the troublesome file(s) from the list you want to delete.
+
+[[Orphan Package Removal|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Système]] 
+[[Category:Français]</text>
+      <sha1>0xf6mj0wiuhizqqw37mkghwb1ynv5hz</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6547</id>
+      <parentid>6546</parentid>
+      <timestamp>2013-07-23T15:34:15Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* How do I delete these unwanted programmes? */</comment>
+      <text xml:space="preserve" bytes="11260">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+=Introducing the Orphans=
+
+As the months turn into years since the initial install of our Arch based installations, (isn't the rolling release system wonderful) we tend to accumulate orphan packages that are basically just useless clutter on our HDDs.
+
+Some ways of dealing with this problem follow:
+
+ pacman -Qdt  
+
+will give you a list of packages installed as dependency for another package that are no longer required, i.e. orphans.
+
+You can automatically remove them, along with their dependencies, with something like:
+
+ pacman -Rs $(pacman -Qqdt)
+
+Though I prefer to manually highlight, copy &amp; paste them (with a space between them) onto a command line after the following:
+
+ sudo pacman -Rsn
+
+I call the above command with my ''~/.bashrc alias pdelete'' . Which means I just have to enter '''pdelete''' at the user prompt &amp; add whatever I want deleted after that word.
+
+The alias follows, but first you'll need to open ''~/.bashrc'' in your favourite text editor. Which is not so simple as it is a hidden file, as can be seen by the ''&lt;.dot&gt;'' at the start of its name. 
+
+An easy way to open it is to type the following into your Terminal replacing ''&lt;text.editor.name&gt;'' with the name of your text editor, such as ''gedit''. There is no need to use ''sudo'' as this file is from your ''user'' account not that of the ''root'':
+
+ &lt;text.editor.name&gt; .bashrc
+
+OK, back to the ''alias''; if you like it, you can just copy ''(highlight the text by triple left mouse button clicking on it &amp; then from the right mouse button menu choose copy)'' &amp; paste ''(right mouse button menu again)'' it into your ''~/.bashrc'' file:
+
+ alias pdelete=&quot;sudo pacman -Rsn&quot;
+
+
+===Manipulate orphan list===
+
+Sometimes a package that pacman detects as an orphan may be a program that you still use. This is because that program originally came as a dependency of another package, but you removed the latter. When running the above command to automatically remove orphans, you may accidentally remove such packages. To prevent this from happening you can solve this  by tricking pacman that it is an explicitely installed package:
+ pacman -D --asexplicit &lt;packagename&gt;
+
+For example: Some users reported that gnome-shell showed up in their list of orphans, while they actually were still using it. After using the command below everything should be fine.
+ pacman -D --asexplicit gnome-shell
+
+&lt;br clear=&quot;all&quot; /&gt;
+===A practical example:===
+
+I just cleaned out my system, which was initially a Manjaro Gnome/Cinnamon install (for a brief period), before I deleted Gnome/Cinnamon &amp; installed Openbox &amp; customised my system to suit the way I like it to be.
+
+Even though I have already manually deleted quite a bit of stuff, I just removed the following (not all of that was Gnome/Cinnamon leftovers but they were '''ALL''' orphans):
+
+ Targets (22): intltool-debian-0.35.0-2  mysql-clients-5.5.29-1  bluez-hcidump-2.4-1  boost-1.50.0-3
+              bzr-2.5.1-2  cmake-2.8.10.2-1  consolekit-0.4.6-4  dos2unix-6.0.2-1  dpkg-1.16.9-1
+              dri2proto-2.8-1  glproto-1.4.16-1  html2text-1.3.2a-9  imake-1.0.5-1
+              lib32-mesa-9.0.1-1  mhwd-catalyst-legacy-12.6-2  mysql-5.5.29-1
+              perl-io-string-1.08-8  perl-timedate-1.20-3  po-debconf-1.0.16-2  po4a-0.42-1
+              python2-distribute-0.6.32-1  rrdtool-1.4.7-3
+ 
+ Total Removed Size:     338.79 MiB
+
+
+So now I have 338.79 MB more space on my drive &amp; that much less clutter.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Handling the pacman .pac* files:==
+
+''For anyone unfamiliar with the .pac* files here is the best place to find out about them: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]''
+
+
+In order to keep your Manjaro system clean &amp; functioning properly, we need to firstly locate these '''.pac*''' files ''(which are built into pacman in an effort to maintain stability - please read the info' in the supplied link re. these files?)'' so that we can have a look at them &amp; decide if they are of any value or not. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Finding the .pac* Files===
+
+They can be found in a variety of ways: I like the use of the '''locate''' command, as it is very quick &amp; very slick:
+
+ locate -e --regex &quot;\.pac(new|save|orig)$&quot;
+
+For anyone who doesn't have '''locate''' on their machine they need to install '''mlocate''' which is done from the command line with the following command:
+
+ sudo pacman -S mlocate
+
+Though I do the same thing by typing in the following which uses an alias from my ''~/.bashrc'' :  
+
+ pS mlocate
+
+&amp; then run ''updatedb'' as ''root'' like so:
+
+ sudo updatedb
+
+This command will very quickly make a database of all of the files on your system &amp; as a bonus, when you install ''mlocate'' it installs a script that sets up a daily ''cron'' job with the purpose of updating the database every day for you. Though you can of course do it manually by issuing the above command any time you want. 
+
+If you were going to issue the ''updatedb'' command often, you may like to make an alias for it. From what you have seen of my aliases you should be able to put one together without much trouble.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Is the .pac* file useful?===
+
+You need to look at the contents of the .pac* files with your text editor. Due to them being files owned by ''root'' , you will need to at least use ''sudo'' to call your editor if you need to modify your original configuration file with changes bought in by the .pacnew file. ''(I expect that this is usually going to be taken care of by the Manjaro dev' team. I'll verify that &amp; modify the text here accordingly.)'' 
+
+If once checked we find that the .pac* files are of no value, we delete them, most of them are of no value, but we should look before we delete as sometimes, particularly '''.pacnew''' files can carry critically important new configuration file changes.
+
+So there are three types of files that we need to deal with:
+
+ *.pacnew , *.pacsave &amp; *.pacorig
+
+For information on these files the best place to look is on this page in the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Other ways to do it:===
+
+There are other options to be found in the AUR that have been made for dealing with the ''.pac*'' files, here is a list from the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files#Managing_.pacnew_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+==A .pac* file Summation:==
+
+I think the thing that those new to the Arch rolling release system need to keep in mind, is that these ''.pac*'' files are seldom a cause for problems. Most Arch users don't even bother looking at them or for them &amp; perhaps once in a while have a clean out.
+
+So don't stress over these things. If there is something important that has to happen involving one or more of them, I'm sure it will be made '''very''' obvious in the Manjaro forum &amp; blog. Though more likely it will be done for you by the dev' team.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Removing leftover &lt;.dot&gt; configuration files from the /home directory:==
+
+Mundus is a tool with a GUI that can make this job easy. Especially for people that are unfamiliar with their system's hidden &lt;.dot&gt; configuration files.
+
+The following is from this page: [http://www.ubuntugeek.com/mundus-home-folder-cleaner.html]
+
+''Mundus is a small utility that can help you keep your /home folder clean. It keeps an internal database of known applications and folders, and automagically detects those apps that where uninstalled but left configuration files. Each supported application is also called a module, and each folder it describes is called a submodule.''
+
+'''''Backups'''''
+
+''There are two options to make backups before cleaning a directory.''
+
+'''''Automatic'''''
+
+''If the directory to clean is below the size limit, a backup will be automatically executed before the clean begins.''
+
+'''''Manual'''''
+
+''The alternative, just click the Backup button when selecting a submodule.''
+
+
+Mundus can be installed in Manjaro with the following command:
+
+ yaourt -S mundus
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The /var/log Directory:==
+
+In keeping with the topic of this thread, I'll mention that it's also a good idea to keep an eye on the '''/var/log''' directory, in case some logs are growing too large - ''(in fact log files growing large in a short period of time can mean you have problems in your system)''. During my Arch days, I'd trim my log files down from time to time, usually I'd keep just the last 30 days.
+
+You must have root privileges to edit the log files, so you need to open your favourite text editor in root mode. An example follows:
+
+ sudo gedit
+
+
+== A method to easily remove any number of orphan or just unwanted programs ==
+
+
+=== Quickly make a list of all of the pacman installed programs on your system ===
+
+You can use the following command to get a list of all of the packages installed on your machine via pacman (this command doesn't list packages installed from the AUR):
+
+ $ pacman -Qqen &gt; pkglist.txt 
+
+If you open the Terminal &amp; just copy &amp; paste the above command (without the '''$''' terminal prompt - which is here to tell you that we can do this with '''user''' privilege, no need for '''#''' root privileges) into the command line &amp; hit enter, the list will be saved in your '''/home/&lt;user.name&gt;''' folder (so quickly you will think that the command failed).
+
+
+=== Easily view your new pkglist.txt ===
+
+Type the following to see the list (you can of course open it with your favourite text editor too):
+
+ $ more pkglist.txt
+
+When you use '''more''' , you hit the space bar to move to the next page, you can scroll back through it using your mouse, &amp; hitting '''q''' quits '''more''' &amp; instantly returns you to the command prompt.
+
+
+=== So what do you do with this pkglist.txt? ===
+
+The reason I'm telling you about this, is that it gives you the actual names of the packages that you need to use when you delete them (you can do other things with this list too, see here: [https://wiki.archlinux.org/index.php/Pacman_Tips#Backing_up_and_retrieving_a_list_of_installed_packages] ). 
+
+Doing it this way is much easier than searching through your /var/cache/pacman/pkg directory, you can highlight the files that you want to delete &amp; then move to another tab in your Terminal where you paste them to the command line that you use do delete them (the delete command is next).
+
+
+=== How do I delete these unwanted programmes? ===
+
+Deleting what you want to is as easy as adding the files that you don't want separated by a space to the following command, I'll add some files in the example below:
+
+ $ sudo pacman -Rsn leafpad vlc terminator geany mplayer gufw
+
+Sometimes when you put a lot of files in a list to operate on, the system will complain about some of them for whatever reasons. If this happens you just hit the up arrow button to bring your original command line with the packages in it that you want to delete &amp; using your left &amp; right arrow (cursor control) keys, you navigate the command line &amp; remove the troublesome file(s) from the list you want to delete.
+
+[[Orphan Package Removal|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Système]]
+[[Category:Français]]</text>
+      <sha1>c3upb60ju9kresrqv6lt78pw0aoz3g9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6548</id>
+      <parentid>6547</parentid>
+      <timestamp>2013-07-23T16:15:00Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* Introducing the Orphans */</comment>
+      <text xml:space="preserve" bytes="11642">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+=Les Orphelins=
+
+Les mois devenant rapidement des années depuis l'installation de notre distribution basée sur Arch (n'est ce pas merveilleux un système en rolling-release !!) nous avons tendance à accumuler des paquets orphelins qui tout simplement occupent inutilement des secteurs sur nos disques.
+
+Avoir la liste des orphelins : 
+
+ pacman -Qdt  
+
+vous donne une liste de tous les paquets installés qui ne dépendent plus d'aucun autre paquet, c'est à dire des '''orphelins'''.
+
+Vous pouvez tous les supprimer automatiquement, ainsi que leurs dépendances, avec la commande :
+
+ pacman -Rs $(pacman -Qqdt)
+
+Personnellement, je préfère les sélectionner manuellement, les copiez et les collez (avec un espace entre eux) sur la ligne de commande suivante :
+
+ sudo pacman -Rsn &lt;noms paquets à coller avec un espace entre eux&gt;
+
+'''Un Alias pour plus de commdité'''&lt;br&gt;
+Je créée un alias de la commande ci-dessus. Ce qui veut dire que j'ai juste à taper '''pdelete''' dans un terminal et d'ajouter le ou les paquet(s) ce que je veux supprimer à la suite de ce mot.
+
+Pour créer cet alias il faut tout d'abord ouvrir le fichier ''~/.bashrc'' dans votre éditeur de texte. Ce n'est pas si simple car c'est un fichier caché, comme on peut le voir avec le ''&lt;.point&gt;'' comme première lettre du nom.
+
+La façon la plus simple d'ouvrir ce type de fichier est de taper dans le terminal, en remplaçant ''&lt;nom.editeur.de.texte&gt;'' par le nom de votre éditeur comme ''gedit'' ou ''kate''. Il n'est pas nécessaire d'utiliser sudo car il s'agit d'un fichier de votre compte ''utilisateur'' et nom de l'administrateur ''root''.
+
+ &lt;nom.editeur.de.texte&gt; .bashrc
+
+Un fois le fichier ouvert dans l'éditeur de texte il suffit de copier l'expression ci-dessous et de la coller dans le fichier ouvert ''~/.bashrc''. Il ne reste plus qu'à sauvegarder la modification et fermer l'éditeur.
+
+ alias pdelete=&quot;sudo pacman -Rsn&quot;
+
+
+===Manipuler la liste des orphelins===
+
+Parfois un paquet détecté comme orphelin par pacman est tout simplement un programme que vous utilisez. détectés par pacman en automatique. C'est parce-qu'originellement ce paquet a été installé en tant que dépendance d'un autre paquet qui a été supprimé entre temps.Quand vous exécutez la commande automatique vu précédemment vous pouvez supprimer accidentellement de tels paquets.&lt;br&gt; 
+Pour éviter ça il est possible de tromper pacman pour qu'il considère le paquet explicitement installé :
+ pacman -D --asexplicit &lt;packagename&gt;
+
+Par exemple : certains utilisateurs rapportent que gnome-shell est dans leur liste d'orphelins alors qu'ils continuent toujours à l'utiliser. Après avoir utilisé la commande ci-dessous tout sera OK :
+ pacman -D --asexplicit gnome-shell
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Un exemple pratique :===
+
+I just cleaned out my system, which was initially a Manjaro Gnome/Cinnamon install (for a brief period), before I deleted Gnome/Cinnamon &amp; installed Openbox &amp; customised my system to suit the way I like it to be.
+
+Even though I have already manually deleted quite a bit of stuff, I just removed the following (not all of that was Gnome/Cinnamon leftovers but they were '''ALL''' orphans):
+
+ Targets (22): intltool-debian-0.35.0-2  mysql-clients-5.5.29-1  bluez-hcidump-2.4-1  boost-1.50.0-3
+              bzr-2.5.1-2  cmake-2.8.10.2-1  consolekit-0.4.6-4  dos2unix-6.0.2-1  dpkg-1.16.9-1
+              dri2proto-2.8-1  glproto-1.4.16-1  html2text-1.3.2a-9  imake-1.0.5-1
+              lib32-mesa-9.0.1-1  mhwd-catalyst-legacy-12.6-2  mysql-5.5.29-1
+              perl-io-string-1.08-8  perl-timedate-1.20-3  po-debconf-1.0.16-2  po4a-0.42-1
+              python2-distribute-0.6.32-1  rrdtool-1.4.7-3
+ 
+ Total Removed Size:     338.79 MiB
+
+
+So now I have 338.79 MB more space on my drive &amp; that much less clutter.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Handling the pacman .pac* files:==
+
+''For anyone unfamiliar with the .pac* files here is the best place to find out about them: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]''
+
+
+In order to keep your Manjaro system clean &amp; functioning properly, we need to firstly locate these '''.pac*''' files ''(which are built into pacman in an effort to maintain stability - please read the info' in the supplied link re. these files?)'' so that we can have a look at them &amp; decide if they are of any value or not. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Finding the .pac* Files===
+
+They can be found in a variety of ways: I like the use of the '''locate''' command, as it is very quick &amp; very slick:
+
+ locate -e --regex &quot;\.pac(new|save|orig)$&quot;
+
+For anyone who doesn't have '''locate''' on their machine they need to install '''mlocate''' which is done from the command line with the following command:
+
+ sudo pacman -S mlocate
+
+Though I do the same thing by typing in the following which uses an alias from my ''~/.bashrc'' :  
+
+ pS mlocate
+
+&amp; then run ''updatedb'' as ''root'' like so:
+
+ sudo updatedb
+
+This command will very quickly make a database of all of the files on your system &amp; as a bonus, when you install ''mlocate'' it installs a script that sets up a daily ''cron'' job with the purpose of updating the database every day for you. Though you can of course do it manually by issuing the above command any time you want. 
+
+If you were going to issue the ''updatedb'' command often, you may like to make an alias for it. From what you have seen of my aliases you should be able to put one together without much trouble.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Is the .pac* file useful?===
+
+You need to look at the contents of the .pac* files with your text editor. Due to them being files owned by ''root'' , you will need to at least use ''sudo'' to call your editor if you need to modify your original configuration file with changes bought in by the .pacnew file. ''(I expect that this is usually going to be taken care of by the Manjaro dev' team. I'll verify that &amp; modify the text here accordingly.)'' 
+
+If once checked we find that the .pac* files are of no value, we delete them, most of them are of no value, but we should look before we delete as sometimes, particularly '''.pacnew''' files can carry critically important new configuration file changes.
+
+So there are three types of files that we need to deal with:
+
+ *.pacnew , *.pacsave &amp; *.pacorig
+
+For information on these files the best place to look is on this page in the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Other ways to do it:===
+
+There are other options to be found in the AUR that have been made for dealing with the ''.pac*'' files, here is a list from the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files#Managing_.pacnew_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+==A .pac* file Summation:==
+
+I think the thing that those new to the Arch rolling release system need to keep in mind, is that these ''.pac*'' files are seldom a cause for problems. Most Arch users don't even bother looking at them or for them &amp; perhaps once in a while have a clean out.
+
+So don't stress over these things. If there is something important that has to happen involving one or more of them, I'm sure it will be made '''very''' obvious in the Manjaro forum &amp; blog. Though more likely it will be done for you by the dev' team.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Removing leftover &lt;.dot&gt; configuration files from the /home directory:==
+
+Mundus is a tool with a GUI that can make this job easy. Especially for people that are unfamiliar with their system's hidden &lt;.dot&gt; configuration files.
+
+The following is from this page: [http://www.ubuntugeek.com/mundus-home-folder-cleaner.html]
+
+''Mundus is a small utility that can help you keep your /home folder clean. It keeps an internal database of known applications and folders, and automagically detects those apps that where uninstalled but left configuration files. Each supported application is also called a module, and each folder it describes is called a submodule.''
+
+'''''Backups'''''
+
+''There are two options to make backups before cleaning a directory.''
+
+'''''Automatic'''''
+
+''If the directory to clean is below the size limit, a backup will be automatically executed before the clean begins.''
+
+'''''Manual'''''
+
+''The alternative, just click the Backup button when selecting a submodule.''
+
+
+Mundus can be installed in Manjaro with the following command:
+
+ yaourt -S mundus
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The /var/log Directory:==
+
+In keeping with the topic of this thread, I'll mention that it's also a good idea to keep an eye on the '''/var/log''' directory, in case some logs are growing too large - ''(in fact log files growing large in a short period of time can mean you have problems in your system)''. During my Arch days, I'd trim my log files down from time to time, usually I'd keep just the last 30 days.
+
+You must have root privileges to edit the log files, so you need to open your favourite text editor in root mode. An example follows:
+
+ sudo gedit
+
+
+== A method to easily remove any number of orphan or just unwanted programs ==
+
+
+=== Quickly make a list of all of the pacman installed programs on your system ===
+
+You can use the following command to get a list of all of the packages installed on your machine via pacman (this command doesn't list packages installed from the AUR):
+
+ $ pacman -Qqen &gt; pkglist.txt 
+
+If you open the Terminal &amp; just copy &amp; paste the above command (without the '''$''' terminal prompt - which is here to tell you that we can do this with '''user''' privilege, no need for '''#''' root privileges) into the command line &amp; hit enter, the list will be saved in your '''/home/&lt;user.name&gt;''' folder (so quickly you will think that the command failed).
+
+
+=== Easily view your new pkglist.txt ===
+
+Type the following to see the list (you can of course open it with your favourite text editor too):
+
+ $ more pkglist.txt
+
+When you use '''more''' , you hit the space bar to move to the next page, you can scroll back through it using your mouse, &amp; hitting '''q''' quits '''more''' &amp; instantly returns you to the command prompt.
+
+
+=== So what do you do with this pkglist.txt? ===
+
+The reason I'm telling you about this, is that it gives you the actual names of the packages that you need to use when you delete them (you can do other things with this list too, see here: [https://wiki.archlinux.org/index.php/Pacman_Tips#Backing_up_and_retrieving_a_list_of_installed_packages] ). 
+
+Doing it this way is much easier than searching through your /var/cache/pacman/pkg directory, you can highlight the files that you want to delete &amp; then move to another tab in your Terminal where you paste them to the command line that you use do delete them (the delete command is next).
+
+
+=== How do I delete these unwanted programmes? ===
+
+Deleting what you want to is as easy as adding the files that you don't want separated by a space to the following command, I'll add some files in the example below:
+
+ $ sudo pacman -Rsn leafpad vlc terminator geany mplayer gufw
+
+Sometimes when you put a lot of files in a list to operate on, the system will complain about some of them for whatever reasons. If this happens you just hit the up arrow button to bring your original command line with the packages in it that you want to delete &amp; using your left &amp; right arrow (cursor control) keys, you navigate the command line &amp; remove the troublesome file(s) from the list you want to delete.
+
+[[Orphan Package Removal|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Système]]
+[[Category:Français]]</text>
+      <sha1>a4wknc0xoei3h4r0kw1wcdmq3m9w6vl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6549</id>
+      <parentid>6548</parentid>
+      <timestamp>2013-07-23T16:15:44Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* Les Orphelins */</comment>
+      <text xml:space="preserve" bytes="11646">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+=Les Orphelins=
+
+Les mois devenant rapidement des années depuis l'installation de notre distribution basée sur Arch (n'est ce pas merveilleux un système en rolling-release !!) que nous avons tendance à accumuler des paquets orphelins qui tout simplement occupent inutilement des secteurs sur nos disques.
+
+Avoir la liste des orphelins : 
+
+ pacman -Qdt  
+
+vous donne une liste de tous les paquets installés qui ne dépendent plus d'aucun autre paquet, c'est à dire des '''orphelins'''.
+
+Vous pouvez tous les supprimer automatiquement, ainsi que leurs dépendances, avec la commande :
+
+ pacman -Rs $(pacman -Qqdt)
+
+Personnellement, je préfère les sélectionner manuellement, les copiez et les collez (avec un espace entre eux) sur la ligne de commande suivante :
+
+ sudo pacman -Rsn &lt;noms paquets à coller avec un espace entre eux&gt;
+
+'''Un Alias pour plus de commdité'''&lt;br&gt;
+Je créée un alias de la commande ci-dessus. Ce qui veut dire que j'ai juste à taper '''pdelete''' dans un terminal et d'ajouter le ou les paquet(s) ce que je veux supprimer à la suite de ce mot.
+
+Pour créer cet alias il faut tout d'abord ouvrir le fichier ''~/.bashrc'' dans votre éditeur de texte. Ce n'est pas si simple car c'est un fichier caché, comme on peut le voir avec le ''&lt;.point&gt;'' comme première lettre du nom.
+
+La façon la plus simple d'ouvrir ce type de fichier est de taper dans le terminal, en remplaçant ''&lt;nom.editeur.de.texte&gt;'' par le nom de votre éditeur comme ''gedit'' ou ''kate''. Il n'est pas nécessaire d'utiliser sudo car il s'agit d'un fichier de votre compte ''utilisateur'' et nom de l'administrateur ''root''.
+
+ &lt;nom.editeur.de.texte&gt; .bashrc
+
+Un fois le fichier ouvert dans l'éditeur de texte il suffit de copier l'expression ci-dessous et de la coller dans le fichier ouvert ''~/.bashrc''. Il ne reste plus qu'à sauvegarder la modification et fermer l'éditeur.
+
+ alias pdelete=&quot;sudo pacman -Rsn&quot;
+
+
+===Manipuler la liste des orphelins===
+
+Parfois un paquet détecté comme orphelin par pacman est tout simplement un programme que vous utilisez. détectés par pacman en automatique. C'est parce-qu'originellement ce paquet a été installé en tant que dépendance d'un autre paquet qui a été supprimé entre temps.Quand vous exécutez la commande automatique vu précédemment vous pouvez supprimer accidentellement de tels paquets.&lt;br&gt; 
+Pour éviter ça il est possible de tromper pacman pour qu'il considère le paquet explicitement installé :
+ pacman -D --asexplicit &lt;packagename&gt;
+
+Par exemple : certains utilisateurs rapportent que gnome-shell est dans leur liste d'orphelins alors qu'ils continuent toujours à l'utiliser. Après avoir utilisé la commande ci-dessous tout sera OK :
+ pacman -D --asexplicit gnome-shell
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Un exemple pratique :===
+
+I just cleaned out my system, which was initially a Manjaro Gnome/Cinnamon install (for a brief period), before I deleted Gnome/Cinnamon &amp; installed Openbox &amp; customised my system to suit the way I like it to be.
+
+Even though I have already manually deleted quite a bit of stuff, I just removed the following (not all of that was Gnome/Cinnamon leftovers but they were '''ALL''' orphans):
+
+ Targets (22): intltool-debian-0.35.0-2  mysql-clients-5.5.29-1  bluez-hcidump-2.4-1  boost-1.50.0-3
+              bzr-2.5.1-2  cmake-2.8.10.2-1  consolekit-0.4.6-4  dos2unix-6.0.2-1  dpkg-1.16.9-1
+              dri2proto-2.8-1  glproto-1.4.16-1  html2text-1.3.2a-9  imake-1.0.5-1
+              lib32-mesa-9.0.1-1  mhwd-catalyst-legacy-12.6-2  mysql-5.5.29-1
+              perl-io-string-1.08-8  perl-timedate-1.20-3  po-debconf-1.0.16-2  po4a-0.42-1
+              python2-distribute-0.6.32-1  rrdtool-1.4.7-3
+ 
+ Total Removed Size:     338.79 MiB
+
+
+So now I have 338.79 MB more space on my drive &amp; that much less clutter.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Handling the pacman .pac* files:==
+
+''For anyone unfamiliar with the .pac* files here is the best place to find out about them: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]''
+
+
+In order to keep your Manjaro system clean &amp; functioning properly, we need to firstly locate these '''.pac*''' files ''(which are built into pacman in an effort to maintain stability - please read the info' in the supplied link re. these files?)'' so that we can have a look at them &amp; decide if they are of any value or not. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Finding the .pac* Files===
+
+They can be found in a variety of ways: I like the use of the '''locate''' command, as it is very quick &amp; very slick:
+
+ locate -e --regex &quot;\.pac(new|save|orig)$&quot;
+
+For anyone who doesn't have '''locate''' on their machine they need to install '''mlocate''' which is done from the command line with the following command:
+
+ sudo pacman -S mlocate
+
+Though I do the same thing by typing in the following which uses an alias from my ''~/.bashrc'' :  
+
+ pS mlocate
+
+&amp; then run ''updatedb'' as ''root'' like so:
+
+ sudo updatedb
+
+This command will very quickly make a database of all of the files on your system &amp; as a bonus, when you install ''mlocate'' it installs a script that sets up a daily ''cron'' job with the purpose of updating the database every day for you. Though you can of course do it manually by issuing the above command any time you want. 
+
+If you were going to issue the ''updatedb'' command often, you may like to make an alias for it. From what you have seen of my aliases you should be able to put one together without much trouble.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Is the .pac* file useful?===
+
+You need to look at the contents of the .pac* files with your text editor. Due to them being files owned by ''root'' , you will need to at least use ''sudo'' to call your editor if you need to modify your original configuration file with changes bought in by the .pacnew file. ''(I expect that this is usually going to be taken care of by the Manjaro dev' team. I'll verify that &amp; modify the text here accordingly.)'' 
+
+If once checked we find that the .pac* files are of no value, we delete them, most of them are of no value, but we should look before we delete as sometimes, particularly '''.pacnew''' files can carry critically important new configuration file changes.
+
+So there are three types of files that we need to deal with:
+
+ *.pacnew , *.pacsave &amp; *.pacorig
+
+For information on these files the best place to look is on this page in the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Other ways to do it:===
+
+There are other options to be found in the AUR that have been made for dealing with the ''.pac*'' files, here is a list from the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files#Managing_.pacnew_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+==A .pac* file Summation:==
+
+I think the thing that those new to the Arch rolling release system need to keep in mind, is that these ''.pac*'' files are seldom a cause for problems. Most Arch users don't even bother looking at them or for them &amp; perhaps once in a while have a clean out.
+
+So don't stress over these things. If there is something important that has to happen involving one or more of them, I'm sure it will be made '''very''' obvious in the Manjaro forum &amp; blog. Though more likely it will be done for you by the dev' team.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Removing leftover &lt;.dot&gt; configuration files from the /home directory:==
+
+Mundus is a tool with a GUI that can make this job easy. Especially for people that are unfamiliar with their system's hidden &lt;.dot&gt; configuration files.
+
+The following is from this page: [http://www.ubuntugeek.com/mundus-home-folder-cleaner.html]
+
+''Mundus is a small utility that can help you keep your /home folder clean. It keeps an internal database of known applications and folders, and automagically detects those apps that where uninstalled but left configuration files. Each supported application is also called a module, and each folder it describes is called a submodule.''
+
+'''''Backups'''''
+
+''There are two options to make backups before cleaning a directory.''
+
+'''''Automatic'''''
+
+''If the directory to clean is below the size limit, a backup will be automatically executed before the clean begins.''
+
+'''''Manual'''''
+
+''The alternative, just click the Backup button when selecting a submodule.''
+
+
+Mundus can be installed in Manjaro with the following command:
+
+ yaourt -S mundus
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The /var/log Directory:==
+
+In keeping with the topic of this thread, I'll mention that it's also a good idea to keep an eye on the '''/var/log''' directory, in case some logs are growing too large - ''(in fact log files growing large in a short period of time can mean you have problems in your system)''. During my Arch days, I'd trim my log files down from time to time, usually I'd keep just the last 30 days.
+
+You must have root privileges to edit the log files, so you need to open your favourite text editor in root mode. An example follows:
+
+ sudo gedit
+
+
+== A method to easily remove any number of orphan or just unwanted programs ==
+
+
+=== Quickly make a list of all of the pacman installed programs on your system ===
+
+You can use the following command to get a list of all of the packages installed on your machine via pacman (this command doesn't list packages installed from the AUR):
+
+ $ pacman -Qqen &gt; pkglist.txt 
+
+If you open the Terminal &amp; just copy &amp; paste the above command (without the '''$''' terminal prompt - which is here to tell you that we can do this with '''user''' privilege, no need for '''#''' root privileges) into the command line &amp; hit enter, the list will be saved in your '''/home/&lt;user.name&gt;''' folder (so quickly you will think that the command failed).
+
+
+=== Easily view your new pkglist.txt ===
+
+Type the following to see the list (you can of course open it with your favourite text editor too):
+
+ $ more pkglist.txt
+
+When you use '''more''' , you hit the space bar to move to the next page, you can scroll back through it using your mouse, &amp; hitting '''q''' quits '''more''' &amp; instantly returns you to the command prompt.
+
+
+=== So what do you do with this pkglist.txt? ===
+
+The reason I'm telling you about this, is that it gives you the actual names of the packages that you need to use when you delete them (you can do other things with this list too, see here: [https://wiki.archlinux.org/index.php/Pacman_Tips#Backing_up_and_retrieving_a_list_of_installed_packages] ). 
+
+Doing it this way is much easier than searching through your /var/cache/pacman/pkg directory, you can highlight the files that you want to delete &amp; then move to another tab in your Terminal where you paste them to the command line that you use do delete them (the delete command is next).
+
+
+=== How do I delete these unwanted programmes? ===
+
+Deleting what you want to is as easy as adding the files that you don't want separated by a space to the following command, I'll add some files in the example below:
+
+ $ sudo pacman -Rsn leafpad vlc terminator geany mplayer gufw
+
+Sometimes when you put a lot of files in a list to operate on, the system will complain about some of them for whatever reasons. If this happens you just hit the up arrow button to bring your original command line with the packages in it that you want to delete &amp; using your left &amp; right arrow (cursor control) keys, you navigate the command line &amp; remove the troublesome file(s) from the list you want to delete.
+
+[[Orphan Package Removal|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Système]]
+[[Category:Français]]</text>
+      <sha1>6rbx37vlje93dpvsvmpl16c9zu9pcfj</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6550</id>
+      <parentid>6549</parentid>
+      <timestamp>2013-07-23T16:26:28Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* Un exemple pratique : */</comment>
+      <text xml:space="preserve" bytes="11679">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+=Les Orphelins=
+
+Les mois devenant rapidement des années depuis l'installation de notre distribution basée sur Arch (n'est ce pas merveilleux un système en rolling-release !!) que nous avons tendance à accumuler des paquets orphelins qui tout simplement occupent inutilement des secteurs sur nos disques.
+
+Avoir la liste des orphelins : 
+
+ pacman -Qdt  
+
+vous donne une liste de tous les paquets installés qui ne dépendent plus d'aucun autre paquet, c'est à dire des '''orphelins'''.
+
+Vous pouvez tous les supprimer automatiquement, ainsi que leurs dépendances, avec la commande :
+
+ pacman -Rs $(pacman -Qqdt)
+
+Personnellement, je préfère les sélectionner manuellement, les copiez et les collez (avec un espace entre eux) sur la ligne de commande suivante :
+
+ sudo pacman -Rsn &lt;noms paquets à coller avec un espace entre eux&gt;
+
+'''Un Alias pour plus de commdité'''&lt;br&gt;
+Je créée un alias de la commande ci-dessus. Ce qui veut dire que j'ai juste à taper '''pdelete''' dans un terminal et d'ajouter le ou les paquet(s) ce que je veux supprimer à la suite de ce mot.
+
+Pour créer cet alias il faut tout d'abord ouvrir le fichier ''~/.bashrc'' dans votre éditeur de texte. Ce n'est pas si simple car c'est un fichier caché, comme on peut le voir avec le ''&lt;.point&gt;'' comme première lettre du nom.
+
+La façon la plus simple d'ouvrir ce type de fichier est de taper dans le terminal, en remplaçant ''&lt;nom.editeur.de.texte&gt;'' par le nom de votre éditeur comme ''gedit'' ou ''kate''. Il n'est pas nécessaire d'utiliser sudo car il s'agit d'un fichier de votre compte ''utilisateur'' et nom de l'administrateur ''root''.
+
+ &lt;nom.editeur.de.texte&gt; .bashrc
+
+Un fois le fichier ouvert dans l'éditeur de texte il suffit de copier l'expression ci-dessous et de la coller dans le fichier ouvert ''~/.bashrc''. Il ne reste plus qu'à sauvegarder la modification et fermer l'éditeur.
+
+ alias pdelete=&quot;sudo pacman -Rsn&quot;
+
+
+===Manipuler la liste des orphelins===
+
+Parfois un paquet détecté comme orphelin par pacman est tout simplement un programme que vous utilisez. détectés par pacman en automatique. C'est parce-qu'originellement ce paquet a été installé en tant que dépendance d'un autre paquet qui a été supprimé entre temps.Quand vous exécutez la commande automatique vu précédemment vous pouvez supprimer accidentellement de tels paquets.&lt;br&gt; 
+Pour éviter ça il est possible de tromper pacman pour qu'il considère le paquet explicitement installé :
+ pacman -D --asexplicit &lt;packagename&gt;
+
+Par exemple : certains utilisateurs rapportent que gnome-shell est dans leur liste d'orphelins alors qu'ils continuent toujours à l'utiliser. Après avoir utilisé la commande ci-dessous tout sera OK :
+ pacman -D --asexplicit gnome-shell
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Un exemple pratique :===
+
+Après avoir nettoyé manuellement mon système, qui était à la base une installation Manjaro Gnome/Cinamon, que j'ai supprimé Gnome/Cinamon pour remplacer par Openbox et que je règle le système à mes besoins.
+
+Bien que j'ai supprimé manuellement beaucoup de chose, il restait encore la liste suivante de paquets à nettoyer (tous ne sont pas des restes de Gnome/Cinamom, mais ce sont TOUS des orphelins):
+
+ Targets (22): intltool-debian-0.35.0-2  mysql-clients-5.5.29-1  bluez-hcidump-2.4-1  boost-1.50.0-3
+              bzr-2.5.1-2  cmake-2.8.10.2-1  consolekit-0.4.6-4  dos2unix-6.0.2-1  dpkg-1.16.9-1
+              dri2proto-2.8-1  glproto-1.4.16-1  html2text-1.3.2a-9  imake-1.0.5-1
+              lib32-mesa-9.0.1-1  mhwd-catalyst-legacy-12.6-2  mysql-5.5.29-1
+              perl-io-string-1.08-8  perl-timedate-1.20-3  po-debconf-1.0.16-2  po4a-0.42-1
+              python2-distribute-0.6.32-1  rrdtool-1.4.7-3
+ 
+ Total Removed Size:     338.79 MiB
+
+
+Du coup j'ai gagné 338,79 MB d'espace disque et autant de secteurs disponibles.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Handling the pacman .pac* files:==
+
+''For anyone unfamiliar with the .pac* files here is the best place to find out about them: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]''
+
+
+In order to keep your Manjaro system clean &amp; functioning properly, we need to firstly locate these '''.pac*''' files ''(which are built into pacman in an effort to maintain stability - please read the info' in the supplied link re. these files?)'' so that we can have a look at them &amp; decide if they are of any value or not. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Finding the .pac* Files===
+
+They can be found in a variety of ways: I like the use of the '''locate''' command, as it is very quick &amp; very slick:
+
+ locate -e --regex &quot;\.pac(new|save|orig)$&quot;
+
+For anyone who doesn't have '''locate''' on their machine they need to install '''mlocate''' which is done from the command line with the following command:
+
+ sudo pacman -S mlocate
+
+Though I do the same thing by typing in the following which uses an alias from my ''~/.bashrc'' :  
+
+ pS mlocate
+
+&amp; then run ''updatedb'' as ''root'' like so:
+
+ sudo updatedb
+
+This command will very quickly make a database of all of the files on your system &amp; as a bonus, when you install ''mlocate'' it installs a script that sets up a daily ''cron'' job with the purpose of updating the database every day for you. Though you can of course do it manually by issuing the above command any time you want. 
+
+If you were going to issue the ''updatedb'' command often, you may like to make an alias for it. From what you have seen of my aliases you should be able to put one together without much trouble.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Is the .pac* file useful?===
+
+You need to look at the contents of the .pac* files with your text editor. Due to them being files owned by ''root'' , you will need to at least use ''sudo'' to call your editor if you need to modify your original configuration file with changes bought in by the .pacnew file. ''(I expect that this is usually going to be taken care of by the Manjaro dev' team. I'll verify that &amp; modify the text here accordingly.)'' 
+
+If once checked we find that the .pac* files are of no value, we delete them, most of them are of no value, but we should look before we delete as sometimes, particularly '''.pacnew''' files can carry critically important new configuration file changes.
+
+So there are three types of files that we need to deal with:
+
+ *.pacnew , *.pacsave &amp; *.pacorig
+
+For information on these files the best place to look is on this page in the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Other ways to do it:===
+
+There are other options to be found in the AUR that have been made for dealing with the ''.pac*'' files, here is a list from the Archwiki: [https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files#Managing_.pacnew_Files]
+
+&lt;br clear=&quot;all&quot; /&gt;
+==A .pac* file Summation:==
+
+I think the thing that those new to the Arch rolling release system need to keep in mind, is that these ''.pac*'' files are seldom a cause for problems. Most Arch users don't even bother looking at them or for them &amp; perhaps once in a while have a clean out.
+
+So don't stress over these things. If there is something important that has to happen involving one or more of them, I'm sure it will be made '''very''' obvious in the Manjaro forum &amp; blog. Though more likely it will be done for you by the dev' team.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Removing leftover &lt;.dot&gt; configuration files from the /home directory:==
+
+Mundus is a tool with a GUI that can make this job easy. Especially for people that are unfamiliar with their system's hidden &lt;.dot&gt; configuration files.
+
+The following is from this page: [http://www.ubuntugeek.com/mundus-home-folder-cleaner.html]
+
+''Mundus is a small utility that can help you keep your /home folder clean. It keeps an internal database of known applications and folders, and automagically detects those apps that where uninstalled but left configuration files. Each supported application is also called a module, and each folder it describes is called a submodule.''
+
+'''''Backups'''''
+
+''There are two options to make backups before cleaning a directory.''
+
+'''''Automatic'''''
+
+''If the directory to clean is below the size limit, a backup will be automatically executed before the clean begins.''
+
+'''''Manual'''''
+
+''The alternative, just click the Backup button when selecting a submodule.''
+
+
+Mundus can be installed in Manjaro with the following command:
+
+ yaourt -S mundus
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==The /var/log Directory:==
+
+In keeping with the topic of this thread, I'll mention that it's also a good idea to keep an eye on the '''/var/log''' directory, in case some logs are growing too large - ''(in fact log files growing large in a short period of time can mean you have problems in your system)''. During my Arch days, I'd trim my log files down from time to time, usually I'd keep just the last 30 days.
+
+You must have root privileges to edit the log files, so you need to open your favourite text editor in root mode. An example follows:
+
+ sudo gedit
+
+
+== A method to easily remove any number of orphan or just unwanted programs ==
+
+
+=== Quickly make a list of all of the pacman installed programs on your system ===
+
+You can use the following command to get a list of all of the packages installed on your machine via pacman (this command doesn't list packages installed from the AUR):
+
+ $ pacman -Qqen &gt; pkglist.txt 
+
+If you open the Terminal &amp; just copy &amp; paste the above command (without the '''$''' terminal prompt - which is here to tell you that we can do this with '''user''' privilege, no need for '''#''' root privileges) into the command line &amp; hit enter, the list will be saved in your '''/home/&lt;user.name&gt;''' folder (so quickly you will think that the command failed).
+
+
+=== Easily view your new pkglist.txt ===
+
+Type the following to see the list (you can of course open it with your favourite text editor too):
+
+ $ more pkglist.txt
+
+When you use '''more''' , you hit the space bar to move to the next page, you can scroll back through it using your mouse, &amp; hitting '''q''' quits '''more''' &amp; instantly returns you to the command prompt.
+
+
+=== So what do you do with this pkglist.txt? ===
+
+The reason I'm telling you about this, is that it gives you the actual names of the packages that you need to use when you delete them (you can do other things with this list too, see here: [https://wiki.archlinux.org/index.php/Pacman_Tips#Backing_up_and_retrieving_a_list_of_installed_packages] ). 
+
+Doing it this way is much easier than searching through your /var/cache/pacman/pkg directory, you can highlight the files that you want to delete &amp; then move to another tab in your Terminal where you paste them to the command line that you use do delete them (the delete command is next).
+
+
+=== How do I delete these unwanted programmes? ===
+
+Deleting what you want to is as easy as adding the files that you don't want separated by a space to the following command, I'll add some files in the example below:
+
+ $ sudo pacman -Rsn leafpad vlc terminator geany mplayer gufw
+
+Sometimes when you put a lot of files in a list to operate on, the system will complain about some of them for whatever reasons. If this happens you just hit the up arrow button to bring your original command line with the packages in it that you want to delete &amp; using your left &amp; right arrow (cursor control) keys, you navigate the command line &amp; remove the troublesome file(s) from the list you want to delete.
+
+[[Orphan Package Removal|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Système]]
+[[Category:Français]]</text>
+      <sha1>01rudhz0n32xwl86hifh990r0xm9ozr</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

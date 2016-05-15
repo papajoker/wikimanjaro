@@ -1,0 +1,151 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Configuration de Windows NTP</title>
+    <ns>0</ns>
+    <id>669</id>
+    <revision>
+      <id>4364</id>
+      <timestamp>2013-01-07T13:34:20Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = TRADUCTION EN COURS =  &lt;br clear=&quot;all&quot; /&gt; &lt;br clear=&quot;all&quot; /&gt; =Why a Windows How-To Here?=    So that those people who dual &amp; ...&quot;</comment>
+      <text xml:space="preserve" bytes="2508">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+&lt;br clear=&quot;all&quot; /&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+=Why a Windows How-To Here?=  
+
+So that those people who dual &amp; multi boot with Windows involved can use UTC on the other systems (that are capable at least) that boot off of the same motherboard.
+
+If you are dual/multi booting with Windows you will have to set the other systems to use Local Time like Windows.
+
+If you don't, then each time you boot into Windows it will reset the RTC - Real Time Clock - on your motherboard to Local Time, which doesn't know about daylight saving; looses time; doesn't easily handle moving into different time zones, as UTC does.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Background==
+
+This problem has been bugging me since I bought a machine with Win7 installed on it about a year ago as of this writing. I have tried the registry modifications (multiple times) to get Win7 to use UTC to no avail.
+
+When I took to Manjaro recently I decided to set up my NAS box - ReadyNAS Duo v.1. - as a local NTP - Network Time Protocol server, so it would keep my Linux, Mac &amp; PC-BSD machines' time in sync.
+
+(A slight complication here is that I have no need for my Win7 system to access the NAS, so I'll come back to this.)
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Crux of the Biscuit:==
+
+I stumbled across a wonderful how-to for setting up Windows machines to use NTP, or a local NTP server. It is quick &amp; easy to do &amp; from my experience it just works (unlike the Windows registry modifications to get Win7 to use UTC).
+
+After using the how-to, I can use UTC on all of my systems without having Windows stuff up the time on one of them every time I boot into it (to play a game).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Using Two Diffent NTP servers - a strange case:==
+
+Unusually, (because I don't want Win7 to access my NAS - local NTP server) I have Win7 autonomously using international time servers, though the rest of my systems sync with my NAS - local NTP server, which uses different international time servers.
+
+The inevitable minor time variations that will exist between the international NTP time servers is acceptable to me, &amp; won't last long after booting into the non-Windows system before being corrected by my local NTP server.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Come &amp; Get It:==
+
+[http://www.satsignal.eu/ntp/setup.html Here is the truly great how-to]  Enjoy.
+
+
+[[Setting up Windows NTP|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>2y4xjxx22slndxjrh4ziq2bjri42wok</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4508</id>
+      <parentid>4364</parentid>
+      <timestamp>2013-01-09T09:51:34Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2826">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+&lt;br clear=&quot;all&quot; /&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+=Pourquoi un &quot;tutoriel Windows&quot; ici?=  
+
+Pour que les utilisateurs qui ont un multi-boot avec Windows d'impliqué puissent utiliser l'heure UTC sur les autres systèmes (du moins ceux qui le peuvent) en démarrant avec la même carte-mère.
+
+Si vous êtes en multi-boot avec Windows, vous devrez configurer les autres systèmes pour utiliser l'heure locale comme Windows.
+
+Si vous ne le faites pas, alors chaque fois que vous démarrerez Windows, celui-ci réinitialisera le RTC - ''Real Time Clock'' - sur votre carte-mère en heure locale; le RTC ne connaît pas l'heure d'été, ne sauvegarde pas l'heure, gère difficilement les fuseaux horaires différents à l'inverse de l'UTC.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Background==
+
+Ce problème m'ennuie depuis que j'ai acheté une machine avec Win7 installé. J'ai essayé de faire des modifications de registre (plusieurs fois) pour obtenir que Win7 utilise l'heure UTC. Sans succès.
+
+Lorsque j'ai pris la Manjaro récemment, j'ai décidé de créer ma boîte NAS - ReadyNAS Duo v.1. - en tant que NTP local - serveur Network Time Protocol, pour garder les heures de mes Linux, Mac &amp; PC-BSD synchronisées.
+
+(Une légère complication ici, c'est que je n'ai aucun besoin que mon système Win7 accède au NAS, donc je vais revenir y revenir.)
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Le point crucial:==
+
+Je suis tombé sur un excellent tutoriel pour configurer les machines Windows afin d'utiliser le serveur local NTP ou NTP. C'est rapide et facile à faire et dans mon cas ça fonctionne parfaitement (à la différence des modifications du registre de Windows pour obtenir que Win7 utilise l'UTC).
+
+Après avoir utilisé le mode d'emploi, je peux utiliser l'UTC sur tous mes systèmes sans avoir  à refaire des manipulations chaque fois après avoir démarré sur Windows (pour jouer).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==L'utilisation de deux serveurs NTP différents - une étrange affaire:==
+
+Exceptionnellement (parce que je ne veux pas que Win7 accède à mon NAS - serveur local NTP) j'ai Win7 de manière autonome en utilisant des serveurs de temps international. Mes autres systèmes se synchronisent avec mon NAS - serveur local NTP, qui utilise différents serveurs de temps international.
+
+L'inévitable variation mineure de temps qui existe entre les serveurs de temps international NTP est acceptable pour moi, et ne durera pas longtemps après le démarrage du système non-Windows avant d'être corrigé par mon serveur local NTP.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Venez le chercher:==
+
+[http://www.satsignal.eu/ntp/setup.html Ici l'excellent tutoriel]  Appréciez !
+
+
+[[Setting up Windows NTP|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>obqusm6bnufod2twabmim57dgddh4y0</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,275 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Dépôts et serveurs</title>
+    <ns>0</ns>
+    <id>623</id>
+    <revision>
+      <id>3584</id>
+      <timestamp>2012-12-29T20:06:06Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot; &lt;div style=&quot;float: left; width: 50%&quot;&gt; {| [[File:server.png|left|96px]] | * [[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server...&quot;</comment>
+      <text xml:space="preserve" bytes="1033">
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+{|
+[[File:server.png|left|96px]]
+|
+* [[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]
+: ''Automatically find best servers for the fastest downloads!''
+
+
+* [[allservers.sh Script:- Rankmirrors, Synchronise Pacman Database]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Script to automatically find the fastest server and update your system.''
+
+
+* [[Change to a Different Download Server]]
+: ''Pick a different different official Manjaro repository to download from.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+* [[Access the Testing Repositories]]
+: ''Can't wait to use the latest bleeding-edge software? You don't have to!''
+
+
+* [[Access the Unstable Repositories]]
+: ''Feeling Brave? Then use these repositories to potentially break your system!''
+
+
+* [[Arch User Repository|Access the Arch User Respository (AUR)]]
+: ''Download extra software and applications provided by the Arch community.''
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;</text>
+      <sha1>p7szemyxqzyew7lqhnmagf0i1whu6hf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3585</id>
+      <parentid>3584</parentid>
+      <timestamp>2012-12-29T20:07:57Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1154">
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+{|
+[[File:server.png|left|96px]]
+|
+* [[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]
+: ''Automatically find best servers for the fastest downloads!''
+
+
+* [[allservers.sh Script:- Rankmirrors, Synchronise Pacman Database]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Script to automatically find the fastest server and update your system.''
+
+
+* [[Change to a Different Download Server]]
+: ''Pick a different different official Manjaro repository to download from.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+* [[Access the Testing Repositories]]
+: ''Can't wait to use the latest bleeding-edge software? You don't have to!''
+
+
+* [[Access the Unstable Repositories]]
+: ''Feeling Brave? Then use these repositories to potentially break your system!''
+
+
+* [[Arch User Repository|Access the Arch User Respository (AUR)]]
+: ''Download extra software and applications provided by the Arch community.''
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>i1zdm8hjwrvybak37ti6660tbvf3l4o</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3586</id>
+      <parentid>3585</parentid>
+      <timestamp>2012-12-29T20:08:45Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1201">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+{|
+[[File:server.png|left|96px]]
+|
+* [[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]
+: ''Automatically find best servers for the fastest downloads!''
+
+
+* [[allservers.sh Script:- Rankmirrors, Synchronise Pacman Database]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Script to automatically find the fastest server and update your system.''
+
+
+* [[Change to a Different Download Server]]
+: ''Pick a different different official Manjaro repository to download from.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+* [[Access the Testing Repositories]]
+: ''Can't wait to use the latest bleeding-edge software? You don't have to!''
+
+
+* [[Access the Unstable Repositories]]
+: ''Feeling Brave? Then use these repositories to potentially break your system!''
+
+
+* [[Arch User Repository|Access the Arch User Respository (AUR)]]
+: ''Download extra software and applications provided by the Arch community.''
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>jfixibtchym4bu1pt84eruc62c39i6h</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3587</id>
+      <parentid>3586</parentid>
+      <timestamp>2012-12-29T20:11:58Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1268">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+{|
+[[File:server.png|left|96px]]
+|
+* [[Rankmirrors pour positionner le serveur de téléchargement le plus rapide|Utilisation de Rankmirrors pour positionner le serveur de téléchargement le plus rapide]]
+: ''Automatically find best servers for the fastest downloads!''
+
+
+* [[allservers.sh Script:- Rankmirrors, Synchronise Pacman Database]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Script to automatically find the fastest server and update your system.''
+
+
+* [[Change to a Different Download Server]]
+: ''Pick a different different official Manjaro repository to download from.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+* [[Access the Testing Repositories]]
+: ''Can't wait to use the latest bleeding-edge software? You don't have to!''
+
+
+* [[Access the Unstable Repositories]]
+: ''Feeling Brave? Then use these repositories to potentially break your system!''
+
+
+* [[Arch User Repository|Access the Arch User Respository (AUR)]]
+: ''Download extra software and applications provided by the Arch community.''
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>dk36dp1cflapnr8kf7ub71xxgnvqqi5</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3588</id>
+      <parentid>3587</parentid>
+      <timestamp>2012-12-29T20:15:57Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1263">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+{|
+[[File:server.png|left|96px]]
+|
+* [[Rankmirrors : utiliser le meilleur serveur de téléchargement|Rankmirrors : utiliser le meilleur serveur de téléchargement]]
+: ''Trouver automatiquement les meilleurs serveurs pour les téléchargements les plus rapides !''
+
+
+* [[allservers.sh Script:- Rankmirrors, Synchronise Pacman Database]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Script to automatically find the fastest server and update your system.''
+
+
+* [[Change to a Different Download Server]]
+: ''Pick a different different official Manjaro repository to download from.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+* [[Access the Testing Repositories]]
+: ''Can't wait to use the latest bleeding-edge software? You don't have to!''
+
+
+* [[Access the Unstable Repositories]]
+: ''Feeling Brave? Then use these repositories to potentially break your system!''
+
+
+* [[Arch User Repository|Access the Arch User Respository (AUR)]]
+: ''Download extra software and applications provided by the Arch community.''
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>gqpj0gblzcpyisvbczn84okbw04lw6m</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

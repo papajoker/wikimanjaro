@@ -1,0 +1,1038 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Problèmes avec Pacman</title>
+    <ns>0</ns>
+    <id>565</id>
+    <revision>
+      <id>3064</id>
+      <timestamp>2012-12-25T20:24:43Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>Created page with &quot;= Installation de logiciels =  Des problèmes variés concernant le téléchargement et l'installation de paquets logiciels depuis les dépôts Manjaro sont traités ici.  == ...&quot;</comment>
+      <text xml:space="preserve" bytes="10424">= Installation de logiciels =
+
+Des problèmes variés concernant le téléchargement et l'installation de paquets logiciels depuis les dépôts Manjaro sont traités ici.
+
+== Message &quot;Unable to lock database&quot; ==
+
+Lorsqu'on télécharge et installe des logiciels depuis les dépots, un fichier de blocage de la base de données est créé pour assurer qu'il ne puisse pas y avoir plusieurs processus d'installation fonctionnant simultanément. En effet, essayer d'installer plusieurs fichiers depuis plusieurs sources en même temps pourrait corrompre les fichiers téléchargés, causer des conflits, ou pire, endommager le système. Dès que l'installation est terminées, le fichier de blocage est automatiquement effacé. Si malgré tout cette erreur s'affiche, il y a deux raisons possibles:
+
+* Une autre installation est en cours et ne s'est pas encore terminée, ou 
+* Un précédent essai d'installation ne s'est pas terminé proprement (s'il a par exemple été interrompu accidentellement)
+
+Il faut avant tout s'assurer qu'aucun processus d'installation n'est en cours, ou n'était en cours au moment de l'erreur. Lorsqu'on est sûr que ce n'est pas le cas, le fichier de blocage peut être effacé manuellement. Pour cela, ouvrir le Terminal, et entrer la commande suivante:
+
+ sudo rm /var/lib/pacman/db.lck
+
+Après cela, vous pouvez relancer votre installation.
+
+
+== Message &quot;Failed to commit transaction (invalid or corrupted package)&quot; ==
+
+Nous avons tous notre propre signature, unique, utilisée pour nous authentifier et empêcher toute activité frauduleuse ou malicieuse d'un tiers. C'est aussi le cas des paquets logiciels disponibles dans les dépôts. Ils contiennent tous un code chiffré (signature) unique de leur développeur pour assurer qu'ils sont authentiques et ne contiennent rien de malicieux.
+
+Durant le processus d'installation, une fois que les paquets ont été téléchargés, le système va d'abord vérifier leurs signatures pour s'assurer de leur authenticité avant de les installer. Si une signature ne peut pas être vérifiée, pour une raison ou une autre, le processus d'installation est interrompu. Ce problème se produit généralement quand:
+
+* Une ou plusieurs signatures de la base de données su système sont annulées, modifiées, corrompues, ou obsolètes 
+* Un ou plusieurs paquets n'ont pas été signés correctement quand ils ont été placés dans les dépots
+
+
+Quand un paquet n'a pas été signé correctement avant d'être placé dans le dépôt, c'est au développeur de corriger. Mais si le problème est causé par la vérification des clés de votre système, cela peut être résolu en trois étapes. Ouvrez le Terminal:
+
+
+'''1. Rafraichir et mettre à jour les signatures''' en entrant la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+'''2. Recharger les signatures''' grâce à la commande:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+'''3. Supprimer les paquets téléchargés durant l'installation avortée''' en entrant la commande:
+
+ sudo pacman -Scc
+
+
+Pendant l'opération, il vous sera demandé de confirmer que vous voulez supprimer les fichiers du cache, et les dépôts inutilisés. Entrez '''O''' pour 'oui' pour confirmer à chaque fois, sachant qu'il sera nécessaire de télécharger à nouveau les paquets que vous tentez d'installer, mais que ça rafraichira et rechargera les signatures.
+
+
+
+== Message &quot;Configuration file...not recognized&quot; ==
+
+
+Le gestionnaire de paquets de Manjaro - '''[[pacman]]''' - utilise un fichier nommé ''mirrorlist'' pour stocker les adresses internet des dépôts où il télécharge les mises à jour et les logiciels. Cette erreur se produit quand une ou plusieurs des adresses du fichier mirrorlist n'est pas renseignée correctement, empêchant Pacman de se connecter au serveur. Un autre indice sur la nature du problème serait que cela se produise après:
+
+* L'installation de Manjaro (après avoir édité le mirrorlist pendant l'installation), ou 
+* après avoir édité le mirrorlist pour d'autres raisons.
+
+
+=== Ouvrir le mirrorlist ===
+
+Vous aurez besoin d'ouvrir le Terminal pour (ré)éditer le fichier mirrorlist et corriger le problème. La syntaxe de la commande pour éditer le mirrorlist est:
+
+ sudo [éditeur de texte] /etc/pacman.d/mirrorlist
+
+
+Par exemple, si vous voulez ouvrir le fichier dans le Terminal en utilisant ''nano'' (un éditeur de texte standard pour le Terminal) alors entrez:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Toutefois, si vous avez installé une version complète de Manjaro (c'est à dire pas la NET-Edition) vous pourriez trouver plus simple d'utiliser l'éditeur de texte pré-installé ''gedit'' à la place. Celui-ci ouvrira le fichier mirrorlist comme n'importe quel document, simplifiant sa lecture et sa modification. Pour utiliser gedit, la commande est:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+=== Comprendre le Mirrorlist ===
+
+Une fois ouvert, votre fichier mirrorlist devrait ressembler à celui-ci (le texte a été coloré pour mettre en valeur les différentes parties):
+
+ # Server list generated by rankmirrors on 2012-10-07 ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11 ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch
+
+
+'''Les lignes commençant par le signe dièse '#' seront ignorées par Pacman.''' Le haut du fichier est un tableau qui liste des noms de pays suivis par l'adresse de leur serveur internet, pour votre information. Leur rôle est de vous dire - à vous, pas à Pacman - quels serveurs sont disponibles dans quels pays. Le texte en &lt;font color=&quot;red&quot;&gt;rouge&lt;/font color&gt; à la fin de chaque adresse internet vous donne la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font color&gt; du serveur. C'est la bas du fichier, où les dièses ont été enlevés, qui indique à Pacman l'adresse des serveurs Manjaro auxquels il doit se connecter. Notez que chacune de ces lignes commence par le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. Elles seront utilisées dans l'ordre où elles sont listées.
+
+
+=== Réparer le Mirrorlist ===
+
+Les raisons les plus courantes de l'impossibilité de se connecter aux serveurs Manjaro sont:
+
+* Ne pas avoir enlevé le texte indiquant la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font&gt; du serveur (par exemple '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;'), et/ou 
+* Ne pas avoir mis le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; en début de ligne.
+
+
+Assurez-vous que la vitesse de téléchargement du serveur a bien été enlevée à la fin de chaque ligne sans le dièse - y compris les points ('...') -, sans quoi Pacman pensera que cela fait partie de l'adresse internet. De plus, assurez-vous que chaque ligne utilisée commence par 'Server =', sinon, Pacman ne les identifiera pas comme des adresses de serveur. De plus, si vous avez précedemment copié et collé une ou plusieurs adresses de serveur, ou si vous les avez tapées manuellement, assurez-vous qu'elles soient complètes et correctes. Un seul caractère manquant ou incorrect est suffisant pour causer une erreur.
+
+
+Une fois les corrections faites, sauvegardez vos modifications et fermez le fichier mirrorlist comme suit:
+
+*'''nano''': Appuyez sur CTRL et 'x' pour quitter, 'O' pour sauvegarder, et &lt;entrée&gt; pour finir 
+*'''gedit''': Selectionnez l'option 'enregistrer' et fermez la fenêtre.
+
+
+=== Synchroniser avec les serveurs Manjaro ===
+
+Une fois que les changements ont été faits dans le mirrorlist, il sera nécessaire de synchroniser avec les serveurs Manjaro. Pour ce faire, entrez la commande suivante dans le Terminal:
+
+ sudo pacman -Syy
+
+
+== Message &quot;GPGME error: No data&quot; ==
+
+La cause la plus probable de ce message est qu'une erreur ou une corruption a été détectée par ''pacman'' dans un ou plusieurs paquets téléchargés. Les signatures et les sommes de contrôle des paquets sont utilisées pour vérifier la validité des logiciels téléchargés, et si cela échoue, la tentative d'installation sera stoppée pour protéger le système jusqu'à ce que le problème soit résolu.
+
+
+=== Option 1: Résolution basique ===
+
+Pour résoudre ce problème, suivez d'abord la procédure basique suivante. Si celle-ci ne fonctionne pas, il existe une procédure plus complexe.
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+3. Re-tentez l'installation.
+
+
+=== Option 2: Résolution avancée ===
+
+Si la procédure basique n'a pas suffit, une autre méthode est possible:
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Rafraîchissez et mettez à jour les signatures avec la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+3. Rechargez les signatures en entrant:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+4. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+5. Re-tentez l'installation.
+
+
+Si les erreurs persistent, il est recommandé de '''[[Change to a Different Download Server|se servir de serveurs différents]]'''.
+
+
+= Voir aussi =
+
+* '''[[Change to a Different Download Server]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+[[Category:Troubleshooting]] [[Category:Contents Page]]</text>
+      <sha1>miwf8n8xr7n7289hccqj2xqb67fjy2d</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3065</id>
+      <parentid>3064</parentid>
+      <timestamp>2012-12-25T20:25:48Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* Comprendre le Mirrorlist */</comment>
+      <text xml:space="preserve" bytes="10423">= Installation de logiciels =
+
+Des problèmes variés concernant le téléchargement et l'installation de paquets logiciels depuis les dépôts Manjaro sont traités ici.
+
+== Message &quot;Unable to lock database&quot; ==
+
+Lorsqu'on télécharge et installe des logiciels depuis les dépots, un fichier de blocage de la base de données est créé pour assurer qu'il ne puisse pas y avoir plusieurs processus d'installation fonctionnant simultanément. En effet, essayer d'installer plusieurs fichiers depuis plusieurs sources en même temps pourrait corrompre les fichiers téléchargés, causer des conflits, ou pire, endommager le système. Dès que l'installation est terminées, le fichier de blocage est automatiquement effacé. Si malgré tout cette erreur s'affiche, il y a deux raisons possibles:
+
+* Une autre installation est en cours et ne s'est pas encore terminée, ou 
+* Un précédent essai d'installation ne s'est pas terminé proprement (s'il a par exemple été interrompu accidentellement)
+
+Il faut avant tout s'assurer qu'aucun processus d'installation n'est en cours, ou n'était en cours au moment de l'erreur. Lorsqu'on est sûr que ce n'est pas le cas, le fichier de blocage peut être effacé manuellement. Pour cela, ouvrir le Terminal, et entrer la commande suivante:
+
+ sudo rm /var/lib/pacman/db.lck
+
+Après cela, vous pouvez relancer votre installation.
+
+
+== Message &quot;Failed to commit transaction (invalid or corrupted package)&quot; ==
+
+Nous avons tous notre propre signature, unique, utilisée pour nous authentifier et empêcher toute activité frauduleuse ou malicieuse d'un tiers. C'est aussi le cas des paquets logiciels disponibles dans les dépôts. Ils contiennent tous un code chiffré (signature) unique de leur développeur pour assurer qu'ils sont authentiques et ne contiennent rien de malicieux.
+
+Durant le processus d'installation, une fois que les paquets ont été téléchargés, le système va d'abord vérifier leurs signatures pour s'assurer de leur authenticité avant de les installer. Si une signature ne peut pas être vérifiée, pour une raison ou une autre, le processus d'installation est interrompu. Ce problème se produit généralement quand:
+
+* Une ou plusieurs signatures de la base de données su système sont annulées, modifiées, corrompues, ou obsolètes 
+* Un ou plusieurs paquets n'ont pas été signés correctement quand ils ont été placés dans les dépots
+
+
+Quand un paquet n'a pas été signé correctement avant d'être placé dans le dépôt, c'est au développeur de corriger. Mais si le problème est causé par la vérification des clés de votre système, cela peut être résolu en trois étapes. Ouvrez le Terminal:
+
+
+'''1. Rafraichir et mettre à jour les signatures''' en entrant la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+'''2. Recharger les signatures''' grâce à la commande:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+'''3. Supprimer les paquets téléchargés durant l'installation avortée''' en entrant la commande:
+
+ sudo pacman -Scc
+
+
+Pendant l'opération, il vous sera demandé de confirmer que vous voulez supprimer les fichiers du cache, et les dépôts inutilisés. Entrez '''O''' pour 'oui' pour confirmer à chaque fois, sachant qu'il sera nécessaire de télécharger à nouveau les paquets que vous tentez d'installer, mais que ça rafraichira et rechargera les signatures.
+
+
+
+== Message &quot;Configuration file...not recognized&quot; ==
+
+
+Le gestionnaire de paquets de Manjaro - '''[[pacman]]''' - utilise un fichier nommé ''mirrorlist'' pour stocker les adresses internet des dépôts où il télécharge les mises à jour et les logiciels. Cette erreur se produit quand une ou plusieurs des adresses du fichier mirrorlist n'est pas renseignée correctement, empêchant Pacman de se connecter au serveur. Un autre indice sur la nature du problème serait que cela se produise après:
+
+* L'installation de Manjaro (après avoir édité le mirrorlist pendant l'installation), ou 
+* après avoir édité le mirrorlist pour d'autres raisons.
+
+
+=== Ouvrir le mirrorlist ===
+
+Vous aurez besoin d'ouvrir le Terminal pour (ré)éditer le fichier mirrorlist et corriger le problème. La syntaxe de la commande pour éditer le mirrorlist est:
+
+ sudo [éditeur de texte] /etc/pacman.d/mirrorlist
+
+
+Par exemple, si vous voulez ouvrir le fichier dans le Terminal en utilisant ''nano'' (un éditeur de texte standard pour le Terminal) alors entrez:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Toutefois, si vous avez installé une version complète de Manjaro (c'est à dire pas la NET-Edition) vous pourriez trouver plus simple d'utiliser l'éditeur de texte pré-installé ''gedit'' à la place. Celui-ci ouvrira le fichier mirrorlist comme n'importe quel document, simplifiant sa lecture et sa modification. Pour utiliser gedit, la commande est:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+=== Comprendre le Mirrorlist ===
+
+Une fois ouvert, votre fichier mirrorlist devrait ressembler à celui-ci (le texte a été coloré pour mettre en valeur les différentes parties):
+
+ # Server list generated by rankmirrors on 2012-10-07 ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11 ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch
+
+
+'''Les lignes commençant par le signe dièse '#' seront ignorées par Pacman.''' Le haut du fichier est un tableau qui liste des noms de pays suivis par l'adresse de leur serveur internet, pour votre information. Leur rôle est de vous dire - à vous, pas à Pacman - quels serveurs sont disponibles dans quels pays. Le texte en &lt;font color=&quot;red&quot;&gt;rouge&lt;/font color&gt; à la fin de chaque adresse internet vous donne la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font color&gt; du serveur. C'est le bas du fichier, où les dièses ont été enlevés, qui indique à Pacman l'adresse des serveurs Manjaro auxquels il doit se connecter. Notez que chacune de ces lignes commence par le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. Elles seront utilisées dans l'ordre où elles sont listées.
+
+=== Réparer le Mirrorlist ===
+
+Les raisons les plus courantes de l'impossibilité de se connecter aux serveurs Manjaro sont:
+
+* Ne pas avoir enlevé le texte indiquant la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font&gt; du serveur (par exemple '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;'), et/ou 
+* Ne pas avoir mis le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; en début de ligne.
+
+
+Assurez-vous que la vitesse de téléchargement du serveur a bien été enlevée à la fin de chaque ligne sans le dièse - y compris les points ('...') -, sans quoi Pacman pensera que cela fait partie de l'adresse internet. De plus, assurez-vous que chaque ligne utilisée commence par 'Server =', sinon, Pacman ne les identifiera pas comme des adresses de serveur. De plus, si vous avez précedemment copié et collé une ou plusieurs adresses de serveur, ou si vous les avez tapées manuellement, assurez-vous qu'elles soient complètes et correctes. Un seul caractère manquant ou incorrect est suffisant pour causer une erreur.
+
+
+Une fois les corrections faites, sauvegardez vos modifications et fermez le fichier mirrorlist comme suit:
+
+*'''nano''': Appuyez sur CTRL et 'x' pour quitter, 'O' pour sauvegarder, et &lt;entrée&gt; pour finir 
+*'''gedit''': Selectionnez l'option 'enregistrer' et fermez la fenêtre.
+
+
+=== Synchroniser avec les serveurs Manjaro ===
+
+Une fois que les changements ont été faits dans le mirrorlist, il sera nécessaire de synchroniser avec les serveurs Manjaro. Pour ce faire, entrez la commande suivante dans le Terminal:
+
+ sudo pacman -Syy
+
+
+== Message &quot;GPGME error: No data&quot; ==
+
+La cause la plus probable de ce message est qu'une erreur ou une corruption a été détectée par ''pacman'' dans un ou plusieurs paquets téléchargés. Les signatures et les sommes de contrôle des paquets sont utilisées pour vérifier la validité des logiciels téléchargés, et si cela échoue, la tentative d'installation sera stoppée pour protéger le système jusqu'à ce que le problème soit résolu.
+
+
+=== Option 1: Résolution basique ===
+
+Pour résoudre ce problème, suivez d'abord la procédure basique suivante. Si celle-ci ne fonctionne pas, il existe une procédure plus complexe.
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+3. Re-tentez l'installation.
+
+
+=== Option 2: Résolution avancée ===
+
+Si la procédure basique n'a pas suffit, une autre méthode est possible:
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Rafraîchissez et mettez à jour les signatures avec la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+3. Rechargez les signatures en entrant:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+4. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+5. Re-tentez l'installation.
+
+
+Si les erreurs persistent, il est recommandé de '''[[Change to a Different Download Server|se servir de serveurs différents]]'''.
+
+
+= Voir aussi =
+
+* '''[[Change to a Different Download Server]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+[[Category:Troubleshooting]] [[Category:Contents Page]]</text>
+      <sha1>7s4ftni3gjdbfeoc4pz61fz15qfghu6</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3121</id>
+      <parentid>3065</parentid>
+      <timestamp>2012-12-26T05:18:49Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* Voir aussi */</comment>
+      <text xml:space="preserve" bytes="10423">= Installation de logiciels =
+
+Des problèmes variés concernant le téléchargement et l'installation de paquets logiciels depuis les dépôts Manjaro sont traités ici.
+
+== Message &quot;Unable to lock database&quot; ==
+
+Lorsqu'on télécharge et installe des logiciels depuis les dépots, un fichier de blocage de la base de données est créé pour assurer qu'il ne puisse pas y avoir plusieurs processus d'installation fonctionnant simultanément. En effet, essayer d'installer plusieurs fichiers depuis plusieurs sources en même temps pourrait corrompre les fichiers téléchargés, causer des conflits, ou pire, endommager le système. Dès que l'installation est terminées, le fichier de blocage est automatiquement effacé. Si malgré tout cette erreur s'affiche, il y a deux raisons possibles:
+
+* Une autre installation est en cours et ne s'est pas encore terminée, ou 
+* Un précédent essai d'installation ne s'est pas terminé proprement (s'il a par exemple été interrompu accidentellement)
+
+Il faut avant tout s'assurer qu'aucun processus d'installation n'est en cours, ou n'était en cours au moment de l'erreur. Lorsqu'on est sûr que ce n'est pas le cas, le fichier de blocage peut être effacé manuellement. Pour cela, ouvrir le Terminal, et entrer la commande suivante:
+
+ sudo rm /var/lib/pacman/db.lck
+
+Après cela, vous pouvez relancer votre installation.
+
+
+== Message &quot;Failed to commit transaction (invalid or corrupted package)&quot; ==
+
+Nous avons tous notre propre signature, unique, utilisée pour nous authentifier et empêcher toute activité frauduleuse ou malicieuse d'un tiers. C'est aussi le cas des paquets logiciels disponibles dans les dépôts. Ils contiennent tous un code chiffré (signature) unique de leur développeur pour assurer qu'ils sont authentiques et ne contiennent rien de malicieux.
+
+Durant le processus d'installation, une fois que les paquets ont été téléchargés, le système va d'abord vérifier leurs signatures pour s'assurer de leur authenticité avant de les installer. Si une signature ne peut pas être vérifiée, pour une raison ou une autre, le processus d'installation est interrompu. Ce problème se produit généralement quand:
+
+* Une ou plusieurs signatures de la base de données su système sont annulées, modifiées, corrompues, ou obsolètes 
+* Un ou plusieurs paquets n'ont pas été signés correctement quand ils ont été placés dans les dépots
+
+
+Quand un paquet n'a pas été signé correctement avant d'être placé dans le dépôt, c'est au développeur de corriger. Mais si le problème est causé par la vérification des clés de votre système, cela peut être résolu en trois étapes. Ouvrez le Terminal:
+
+
+'''1. Rafraichir et mettre à jour les signatures''' en entrant la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+'''2. Recharger les signatures''' grâce à la commande:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+'''3. Supprimer les paquets téléchargés durant l'installation avortée''' en entrant la commande:
+
+ sudo pacman -Scc
+
+
+Pendant l'opération, il vous sera demandé de confirmer que vous voulez supprimer les fichiers du cache, et les dépôts inutilisés. Entrez '''O''' pour 'oui' pour confirmer à chaque fois, sachant qu'il sera nécessaire de télécharger à nouveau les paquets que vous tentez d'installer, mais que ça rafraichira et rechargera les signatures.
+
+
+
+== Message &quot;Configuration file...not recognized&quot; ==
+
+
+Le gestionnaire de paquets de Manjaro - '''[[pacman]]''' - utilise un fichier nommé ''mirrorlist'' pour stocker les adresses internet des dépôts où il télécharge les mises à jour et les logiciels. Cette erreur se produit quand une ou plusieurs des adresses du fichier mirrorlist n'est pas renseignée correctement, empêchant Pacman de se connecter au serveur. Un autre indice sur la nature du problème serait que cela se produise après:
+
+* L'installation de Manjaro (après avoir édité le mirrorlist pendant l'installation), ou 
+* après avoir édité le mirrorlist pour d'autres raisons.
+
+
+=== Ouvrir le mirrorlist ===
+
+Vous aurez besoin d'ouvrir le Terminal pour (ré)éditer le fichier mirrorlist et corriger le problème. La syntaxe de la commande pour éditer le mirrorlist est:
+
+ sudo [éditeur de texte] /etc/pacman.d/mirrorlist
+
+
+Par exemple, si vous voulez ouvrir le fichier dans le Terminal en utilisant ''nano'' (un éditeur de texte standard pour le Terminal) alors entrez:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Toutefois, si vous avez installé une version complète de Manjaro (c'est à dire pas la NET-Edition) vous pourriez trouver plus simple d'utiliser l'éditeur de texte pré-installé ''gedit'' à la place. Celui-ci ouvrira le fichier mirrorlist comme n'importe quel document, simplifiant sa lecture et sa modification. Pour utiliser gedit, la commande est:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+=== Comprendre le Mirrorlist ===
+
+Une fois ouvert, votre fichier mirrorlist devrait ressembler à celui-ci (le texte a été coloré pour mettre en valeur les différentes parties):
+
+ # Server list generated by rankmirrors on 2012-10-07 ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11 ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch
+
+
+'''Les lignes commençant par le signe dièse '#' seront ignorées par Pacman.''' Le haut du fichier est un tableau qui liste des noms de pays suivis par l'adresse de leur serveur internet, pour votre information. Leur rôle est de vous dire - à vous, pas à Pacman - quels serveurs sont disponibles dans quels pays. Le texte en &lt;font color=&quot;red&quot;&gt;rouge&lt;/font color&gt; à la fin de chaque adresse internet vous donne la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font color&gt; du serveur. C'est le bas du fichier, où les dièses ont été enlevés, qui indique à Pacman l'adresse des serveurs Manjaro auxquels il doit se connecter. Notez que chacune de ces lignes commence par le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. Elles seront utilisées dans l'ordre où elles sont listées.
+
+=== Réparer le Mirrorlist ===
+
+Les raisons les plus courantes de l'impossibilité de se connecter aux serveurs Manjaro sont:
+
+* Ne pas avoir enlevé le texte indiquant la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font&gt; du serveur (par exemple '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;'), et/ou 
+* Ne pas avoir mis le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; en début de ligne.
+
+
+Assurez-vous que la vitesse de téléchargement du serveur a bien été enlevée à la fin de chaque ligne sans le dièse - y compris les points ('...') -, sans quoi Pacman pensera que cela fait partie de l'adresse internet. De plus, assurez-vous que chaque ligne utilisée commence par 'Server =', sinon, Pacman ne les identifiera pas comme des adresses de serveur. De plus, si vous avez précedemment copié et collé une ou plusieurs adresses de serveur, ou si vous les avez tapées manuellement, assurez-vous qu'elles soient complètes et correctes. Un seul caractère manquant ou incorrect est suffisant pour causer une erreur.
+
+
+Une fois les corrections faites, sauvegardez vos modifications et fermez le fichier mirrorlist comme suit:
+
+*'''nano''': Appuyez sur CTRL et 'x' pour quitter, 'O' pour sauvegarder, et &lt;entrée&gt; pour finir 
+*'''gedit''': Selectionnez l'option 'enregistrer' et fermez la fenêtre.
+
+
+=== Synchroniser avec les serveurs Manjaro ===
+
+Une fois que les changements ont été faits dans le mirrorlist, il sera nécessaire de synchroniser avec les serveurs Manjaro. Pour ce faire, entrez la commande suivante dans le Terminal:
+
+ sudo pacman -Syy
+
+
+== Message &quot;GPGME error: No data&quot; ==
+
+La cause la plus probable de ce message est qu'une erreur ou une corruption a été détectée par ''pacman'' dans un ou plusieurs paquets téléchargés. Les signatures et les sommes de contrôle des paquets sont utilisées pour vérifier la validité des logiciels téléchargés, et si cela échoue, la tentative d'installation sera stoppée pour protéger le système jusqu'à ce que le problème soit résolu.
+
+
+=== Option 1: Résolution basique ===
+
+Pour résoudre ce problème, suivez d'abord la procédure basique suivante. Si celle-ci ne fonctionne pas, il existe une procédure plus complexe.
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+3. Re-tentez l'installation.
+
+
+=== Option 2: Résolution avancée ===
+
+Si la procédure basique n'a pas suffit, une autre méthode est possible:
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Rafraîchissez et mettez à jour les signatures avec la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+3. Rechargez les signatures en entrant:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+4. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+5. Re-tentez l'installation.
+
+
+Si les erreurs persistent, il est recommandé de '''[[Change to a Different Download Server|se servir de serveurs différents]]'''.
+
+
+= Voir aussi =
+
+* '''[[Change to a Different Download Server]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+[[Category:Troubleshooting]] [[Category:Présentation]]</text>
+      <sha1>iv6e1judq2wbrh777lh6ujnrsldiyth</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3701</id>
+      <parentid>3121</parentid>
+      <timestamp>2012-12-30T16:02:07Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10543">= Installation de logiciels =
+
+Des problèmes variés concernant le téléchargement et l'installation de paquets logiciels depuis les dépôts Manjaro sont traités ici.
+
+== Message &quot;Unable to lock database&quot; ==
+
+Lorsqu'on télécharge et installe des logiciels depuis les dépots, un fichier de blocage de la base de données est créé pour assurer qu'il ne puisse pas y avoir plusieurs processus d'installation fonctionnant simultanément. En effet, essayer d'installer plusieurs fichiers depuis plusieurs sources en même temps pourrait corrompre les fichiers téléchargés, causer des conflits, ou pire, endommager le système. Dès que l'installation est terminées, le fichier de blocage est automatiquement effacé. Si malgré tout cette erreur s'affiche, il y a deux raisons possibles:
+
+* Une autre installation est en cours et ne s'est pas encore terminée, ou 
+* Un précédent essai d'installation ne s'est pas terminé proprement (s'il a par exemple été interrompu accidentellement)
+
+Il faut avant tout s'assurer qu'aucun processus d'installation n'est en cours, ou n'était en cours au moment de l'erreur. Lorsqu'on est sûr que ce n'est pas le cas, le fichier de blocage peut être effacé manuellement. Pour cela, ouvrir le Terminal, et entrer la commande suivante:
+
+ sudo rm /var/lib/pacman/db.lck
+
+Après cela, vous pouvez relancer votre installation.
+
+
+== Message &quot;Failed to commit transaction (invalid or corrupted package)&quot; ==
+
+Nous avons tous notre propre signature, unique, utilisée pour nous authentifier et empêcher toute activité frauduleuse ou malicieuse d'un tiers. C'est aussi le cas des paquets logiciels disponibles dans les dépôts. Ils contiennent tous un code chiffré (signature) unique de leur développeur pour assurer qu'ils sont authentiques et ne contiennent rien de malicieux.
+
+Durant le processus d'installation, une fois que les paquets ont été téléchargés, le système va d'abord vérifier leurs signatures pour s'assurer de leur authenticité avant de les installer. Si une signature ne peut pas être vérifiée, pour une raison ou une autre, le processus d'installation est interrompu. Ce problème se produit généralement quand:
+
+* Une ou plusieurs signatures de la base de données su système sont annulées, modifiées, corrompues, ou obsolètes 
+* Un ou plusieurs paquets n'ont pas été signés correctement quand ils ont été placés dans les dépots
+
+
+Quand un paquet n'a pas été signé correctement avant d'être placé dans le dépôt, c'est au développeur de corriger. Mais si le problème est causé par la vérification des clés de votre système, cela peut être résolu en trois étapes. Ouvrez le Terminal:
+
+
+'''1. Rafraichir et mettre à jour les signatures''' en entrant la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+'''2. Recharger les signatures''' grâce à la commande:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+'''3. Supprimer les paquets téléchargés durant l'installation avortée''' en entrant la commande:
+
+ sudo pacman -Scc
+
+
+Pendant l'opération, il vous sera demandé de confirmer que vous voulez supprimer les fichiers du cache, et les dépôts inutilisés. Entrez '''O''' pour 'oui' pour confirmer à chaque fois, sachant qu'il sera nécessaire de télécharger à nouveau les paquets que vous tentez d'installer, mais que ça rafraichira et rechargera les signatures.
+
+
+
+== Message &quot;Configuration file...not recognized&quot; ==
+
+
+Le gestionnaire de paquets de Manjaro - '''[[pacman]]''' - utilise un fichier nommé ''mirrorlist'' pour stocker les adresses internet des dépôts où il télécharge les mises à jour et les logiciels. Cette erreur se produit quand une ou plusieurs des adresses du fichier mirrorlist n'est pas renseignée correctement, empêchant Pacman de se connecter au serveur. Un autre indice sur la nature du problème serait que cela se produise après:
+
+* L'installation de Manjaro (après avoir édité le mirrorlist pendant l'installation), ou 
+* après avoir édité le mirrorlist pour d'autres raisons.
+
+
+=== Ouvrir le mirrorlist ===
+
+Vous aurez besoin d'ouvrir le Terminal pour (ré)éditer le fichier mirrorlist et corriger le problème. La syntaxe de la commande pour éditer le mirrorlist est:
+
+ sudo [éditeur de texte] /etc/pacman.d/mirrorlist
+
+
+Par exemple, si vous voulez ouvrir le fichier dans le Terminal en utilisant ''nano'' (un éditeur de texte standard pour le Terminal) alors entrez:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Toutefois, si vous avez installé une version complète de Manjaro (c'est à dire pas la NET-Edition) vous pourriez trouver plus simple d'utiliser l'éditeur de texte pré-installé ''gedit'' à la place. Celui-ci ouvrira le fichier mirrorlist comme n'importe quel document, simplifiant sa lecture et sa modification. Pour utiliser gedit, la commande est:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+=== Comprendre le Mirrorlist ===
+
+Une fois ouvert, votre fichier mirrorlist devrait ressembler à celui-ci (le texte a été coloré pour mettre en valeur les différentes parties):
+
+ # Server list generated by rankmirrors on 2012-10-07 ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11 ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch
+
+
+'''Les lignes commençant par le signe dièse '#' seront ignorées par Pacman.''' Le haut du fichier est un tableau qui liste des noms de pays suivis par l'adresse de leur serveur internet, pour votre information. Leur rôle est de vous dire - à vous, pas à Pacman - quels serveurs sont disponibles dans quels pays. Le texte en &lt;font color=&quot;red&quot;&gt;rouge&lt;/font color&gt; à la fin de chaque adresse internet vous donne la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font color&gt; du serveur. C'est le bas du fichier, où les dièses ont été enlevés, qui indique à Pacman l'adresse des serveurs Manjaro auxquels il doit se connecter. Notez que chacune de ces lignes commence par le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. Elles seront utilisées dans l'ordre où elles sont listées.
+
+=== Réparer le Mirrorlist ===
+
+Les raisons les plus courantes de l'impossibilité de se connecter aux serveurs Manjaro sont:
+
+* Ne pas avoir enlevé le texte indiquant la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font&gt; du serveur (par exemple '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;'), et/ou 
+* Ne pas avoir mis le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; en début de ligne.
+
+
+Assurez-vous que la vitesse de téléchargement du serveur a bien été enlevée à la fin de chaque ligne sans le dièse - y compris les points ('...') -, sans quoi Pacman pensera que cela fait partie de l'adresse internet. De plus, assurez-vous que chaque ligne utilisée commence par 'Server =', sinon, Pacman ne les identifiera pas comme des adresses de serveur. De plus, si vous avez précedemment copié et collé une ou plusieurs adresses de serveur, ou si vous les avez tapées manuellement, assurez-vous qu'elles soient complètes et correctes. Un seul caractère manquant ou incorrect est suffisant pour causer une erreur.
+
+
+Une fois les corrections faites, sauvegardez vos modifications et fermez le fichier mirrorlist comme suit:
+
+*'''nano''': Appuyez sur CTRL et 'x' pour quitter, 'O' pour sauvegarder, et &lt;entrée&gt; pour finir 
+*'''gedit''': Selectionnez l'option 'enregistrer' et fermez la fenêtre.
+
+
+=== Synchroniser avec les serveurs Manjaro ===
+
+Une fois que les changements ont été faits dans le mirrorlist, il sera nécessaire de synchroniser avec les serveurs Manjaro. Pour ce faire, entrez la commande suivante dans le Terminal:
+
+ sudo pacman -Syy
+
+
+== Message &quot;GPGME error: No data&quot; ==
+
+La cause la plus probable de ce message est qu'une erreur ou une corruption a été détectée par ''pacman'' dans un ou plusieurs paquets téléchargés. Les signatures et les sommes de contrôle des paquets sont utilisées pour vérifier la validité des logiciels téléchargés, et si cela échoue, la tentative d'installation sera stoppée pour protéger le système jusqu'à ce que le problème soit résolu.
+
+
+=== Option 1: Résolution basique ===
+
+Pour résoudre ce problème, suivez d'abord la procédure basique suivante. Si celle-ci ne fonctionne pas, il existe une procédure plus complexe.
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+3. Re-tentez l'installation.
+
+
+=== Option 2: Résolution avancée ===
+
+Si la procédure basique n'a pas suffit, une autre méthode est possible:
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Rafraîchissez et mettez à jour les signatures avec la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+3. Rechargez les signatures en entrant:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+4. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+5. Re-tentez l'installation.
+
+
+Si les erreurs persistent, il est recommandé de '''[[Change to a Different Download Server|se servir de serveurs différents]]'''.
+
+
+= Voir aussi =
+
+* '''[[Change to a Different Download Server]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+[[Category:Troubleshooting]] [[Category:Présentation]]
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>5r4m342fef876sjd6shai39iyblan92</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3702</id>
+      <parentid>3701</parentid>
+      <timestamp>2012-12-30T16:03:51Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10593">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Installation de logiciels =
+
+Des problèmes variés concernant le téléchargement et l'installation de paquets logiciels depuis les dépôts Manjaro sont traités ici.
+
+== Message &quot;Unable to lock database&quot; ==
+
+Lorsqu'on télécharge et installe des logiciels depuis les dépots, un fichier de blocage de la base de données est créé pour assurer qu'il ne puisse pas y avoir plusieurs processus d'installation fonctionnant simultanément. En effet, essayer d'installer plusieurs fichiers depuis plusieurs sources en même temps pourrait corrompre les fichiers téléchargés, causer des conflits, ou pire, endommager le système. Dès que l'installation est terminées, le fichier de blocage est automatiquement effacé. Si malgré tout cette erreur s'affiche, il y a deux raisons possibles:
+
+* Une autre installation est en cours et ne s'est pas encore terminée, ou 
+* Un précédent essai d'installation ne s'est pas terminé proprement (s'il a par exemple été interrompu accidentellement)
+
+Il faut avant tout s'assurer qu'aucun processus d'installation n'est en cours, ou n'était en cours au moment de l'erreur. Lorsqu'on est sûr que ce n'est pas le cas, le fichier de blocage peut être effacé manuellement. Pour cela, ouvrir le Terminal, et entrer la commande suivante:
+
+ sudo rm /var/lib/pacman/db.lck
+
+Après cela, vous pouvez relancer votre installation.
+
+
+== Message &quot;Failed to commit transaction (invalid or corrupted package)&quot; ==
+
+Nous avons tous notre propre signature, unique, utilisée pour nous authentifier et empêcher toute activité frauduleuse ou malicieuse d'un tiers. C'est aussi le cas des paquets logiciels disponibles dans les dépôts. Ils contiennent tous un code chiffré (signature) unique de leur développeur pour assurer qu'ils sont authentiques et ne contiennent rien de malicieux.
+
+Durant le processus d'installation, une fois que les paquets ont été téléchargés, le système va d'abord vérifier leurs signatures pour s'assurer de leur authenticité avant de les installer. Si une signature ne peut pas être vérifiée, pour une raison ou une autre, le processus d'installation est interrompu. Ce problème se produit généralement quand:
+
+* Une ou plusieurs signatures de la base de données su système sont annulées, modifiées, corrompues, ou obsolètes 
+* Un ou plusieurs paquets n'ont pas été signés correctement quand ils ont été placés dans les dépots
+
+
+Quand un paquet n'a pas été signé correctement avant d'être placé dans le dépôt, c'est au développeur de corriger. Mais si le problème est causé par la vérification des clés de votre système, cela peut être résolu en trois étapes. Ouvrez le Terminal:
+
+
+'''1. Rafraichir et mettre à jour les signatures''' en entrant la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+'''2. Recharger les signatures''' grâce à la commande:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+'''3. Supprimer les paquets téléchargés durant l'installation avortée''' en entrant la commande:
+
+ sudo pacman -Scc
+
+
+Pendant l'opération, il vous sera demandé de confirmer que vous voulez supprimer les fichiers du cache, et les dépôts inutilisés. Entrez '''O''' pour 'oui' pour confirmer à chaque fois, sachant qu'il sera nécessaire de télécharger à nouveau les paquets que vous tentez d'installer, mais que ça rafraichira et rechargera les signatures.
+
+
+
+== Message &quot;Configuration file...not recognized&quot; ==
+
+
+Le gestionnaire de paquets de Manjaro - '''[[pacman]]''' - utilise un fichier nommé ''mirrorlist'' pour stocker les adresses internet des dépôts où il télécharge les mises à jour et les logiciels. Cette erreur se produit quand une ou plusieurs des adresses du fichier mirrorlist n'est pas renseignée correctement, empêchant Pacman de se connecter au serveur. Un autre indice sur la nature du problème serait que cela se produise après:
+
+* L'installation de Manjaro (après avoir édité le mirrorlist pendant l'installation), ou 
+* après avoir édité le mirrorlist pour d'autres raisons.
+
+
+=== Ouvrir le mirrorlist ===
+
+Vous aurez besoin d'ouvrir le Terminal pour (ré)éditer le fichier mirrorlist et corriger le problème. La syntaxe de la commande pour éditer le mirrorlist est:
+
+ sudo [éditeur de texte] /etc/pacman.d/mirrorlist
+
+
+Par exemple, si vous voulez ouvrir le fichier dans le Terminal en utilisant ''nano'' (un éditeur de texte standard pour le Terminal) alors entrez:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Toutefois, si vous avez installé une version complète de Manjaro (c'est à dire pas la NET-Edition) vous pourriez trouver plus simple d'utiliser l'éditeur de texte pré-installé ''gedit'' à la place. Celui-ci ouvrira le fichier mirrorlist comme n'importe quel document, simplifiant sa lecture et sa modification. Pour utiliser gedit, la commande est:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+=== Comprendre le Mirrorlist ===
+
+Une fois ouvert, votre fichier mirrorlist devrait ressembler à celui-ci (le texte a été coloré pour mettre en valeur les différentes parties):
+
+ # Server list generated by rankmirrors on 2012-10-07 ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11 ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch
+ &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch
+
+
+'''Les lignes commençant par le signe dièse '#' seront ignorées par Pacman.''' Le haut du fichier est un tableau qui liste des noms de pays suivis par l'adresse de leur serveur internet, pour votre information. Leur rôle est de vous dire - à vous, pas à Pacman - quels serveurs sont disponibles dans quels pays. Le texte en &lt;font color=&quot;red&quot;&gt;rouge&lt;/font color&gt; à la fin de chaque adresse internet vous donne la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font color&gt; du serveur. C'est le bas du fichier, où les dièses ont été enlevés, qui indique à Pacman l'adresse des serveurs Manjaro auxquels il doit se connecter. Notez que chacune de ces lignes commence par le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. Elles seront utilisées dans l'ordre où elles sont listées.
+
+=== Réparer le Mirrorlist ===
+
+Les raisons les plus courantes de l'impossibilité de se connecter aux serveurs Manjaro sont:
+
+* Ne pas avoir enlevé le texte indiquant la &lt;font color=&quot;red&quot;&gt;vitesse de téléchargement&lt;/font&gt; du serveur (par exemple '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;'), et/ou 
+* Ne pas avoir mis le texte &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; en début de ligne.
+
+
+Assurez-vous que la vitesse de téléchargement du serveur a bien été enlevée à la fin de chaque ligne sans le dièse - y compris les points ('...') -, sans quoi Pacman pensera que cela fait partie de l'adresse internet. De plus, assurez-vous que chaque ligne utilisée commence par 'Server =', sinon, Pacman ne les identifiera pas comme des adresses de serveur. De plus, si vous avez précedemment copié et collé une ou plusieurs adresses de serveur, ou si vous les avez tapées manuellement, assurez-vous qu'elles soient complètes et correctes. Un seul caractère manquant ou incorrect est suffisant pour causer une erreur.
+
+
+Une fois les corrections faites, sauvegardez vos modifications et fermez le fichier mirrorlist comme suit:
+
+*'''nano''': Appuyez sur CTRL et 'x' pour quitter, 'O' pour sauvegarder, et &lt;entrée&gt; pour finir 
+*'''gedit''': Selectionnez l'option 'enregistrer' et fermez la fenêtre.
+
+
+=== Synchroniser avec les serveurs Manjaro ===
+
+Une fois que les changements ont été faits dans le mirrorlist, il sera nécessaire de synchroniser avec les serveurs Manjaro. Pour ce faire, entrez la commande suivante dans le Terminal:
+
+ sudo pacman -Syy
+
+
+== Message &quot;GPGME error: No data&quot; ==
+
+La cause la plus probable de ce message est qu'une erreur ou une corruption a été détectée par ''pacman'' dans un ou plusieurs paquets téléchargés. Les signatures et les sommes de contrôle des paquets sont utilisées pour vérifier la validité des logiciels téléchargés, et si cela échoue, la tentative d'installation sera stoppée pour protéger le système jusqu'à ce que le problème soit résolu.
+
+
+=== Option 1: Résolution basique ===
+
+Pour résoudre ce problème, suivez d'abord la procédure basique suivante. Si celle-ci ne fonctionne pas, il existe une procédure plus complexe.
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+3. Re-tentez l'installation.
+
+
+=== Option 2: Résolution avancée ===
+
+Si la procédure basique n'a pas suffit, une autre méthode est possible:
+
+
+1. Re-synchronisez avec les serveurs Manjaro pour vous assurer que tout est à jour en entrant la commande suivante:
+
+ sudo pacman -Syy
+
+
+2. Rafraîchissez et mettez à jour les signatures avec la commande:
+
+ sudo pacman-key --refresh-keys
+
+
+3. Rechargez les signatures en entrant:
+
+ sudo pacman-key --populate archlinux manjaro
+
+
+4. Supprimez les paquets logiciels téléchargés durant l'installation avortée grâce à la commande:
+
+ sudo pacman -Scc
+
+
+5. Re-tentez l'installation.
+
+
+Si les erreurs persistent, il est recommandé de '''[[Change to a Different Download Server|se servir de serveurs différents]]'''.
+
+
+= Voir aussi =
+
+* '''[[Change to a Different Download Server]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+[[Pacman troubleshooting|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>rinttbbvh6n9uczhib8hxif1w91bj8r</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

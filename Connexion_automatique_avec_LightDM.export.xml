@@ -1,0 +1,435 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Connexion automatique avec LightDM</title>
+    <ns>0</ns>
+    <id>685</id>
+    <revision>
+      <id>4645</id>
+      <timestamp>2013-01-10T20:56:15Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = TRADUCTION EN COURS=  = Overview =  {{Note|LightDM has been replaced by LXDM from Manjaro 0.8.1 onwards. '''This article also...&quot;</comment>
+      <text xml:space="preserve" bytes="2284">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS=
+
+= Overview =
+
+{{Note|LightDM has been replaced by LXDM from Manjaro 0.8.1 onwards. '''This article also requires expansion'''.}}
+
+Manjaro 0.8.0 uses a lightweight display / login manager called LightDM by default. LXDM is responsible for providing the login screen. It also functions as a protective security barrier to prevent unauthorised access to your system. However, some users may prefer to bypass the login screen to boot straight into their desktop environment without entering a password.
+
+
+= Open the LightDM Configuration File =
+
+The syntax the command to edit the LightDM configuration file is:
+
+ sudo [text editor] /etc/lightdm/lightdm.conf
+
+
+To use nano (the default text-based terminal editor) enter the command:
+
+ sudo nano /etc/lightdm/lightdm.conf
+
+
+Otherwise, you may find it easier to read and edit the file by using gedit, which will open the configuration file as if it were a document. To use gedit instead, enter the command:
+
+ sudo gedit /etc/lightdm/lightdm.conf
+
+
+= Set Autologin =
+
+Find the following codes in the configuration file:
+
+ session-wrapper=/etc/lightdm/xsession
+ ............
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ #autologin-user=
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+Delete the '#' from the following line as shown below, and add your username to it:
+
+ session-wrapper=/etc/lightdm/xsession
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ '''autologin-user=''[your username here]''
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+ ''Example:'' A user called yfdogan would chance the line to: '''autologin-user=''yfdogan''
+
+Once your amendments have been completed save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect.
+
+[[LightDM Auto Login|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>gf6cz3y5tpiq0x1wzdyv967mn2i1vul</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4740</id>
+      <parentid>4645</parentid>
+      <timestamp>2013-01-12T15:15:25Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2592">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Note|LightDM a été remplacé par LXDM dans Manjaro 0.8.1 et suivantes.}}
+
+Manjaro 0.8.0 utilise, par défaut, un gestionnaire de connexion léger appelé LightDM. LXDM est chargé de fournir l'écran de connexion. Il fonctionne également comme une barrière de protection pour empêcher l'accès non autorisé à votre système. Cependant, certains utilisateurs préféreront peut-être contourner l'écran de connexion pour démarrer directement dans leur environnement de bureau sans entrer de mot de passe.
+
+
+= Ouvrir le fichier de configuration LightDM =
+
+La syntaxe de la commande pour ouvrir le fichier de configuration LightDM est la suivante:
+
+ sudo [text editor] /etc/lightdm/lightdm.conf
+
+
+Par exemple, si vous souhaitez modifier le fichier dans le terminal en utilisant nano (un éditeur de texte standard), entrez: 
+
+ sudo nano /etc/lightdm/lightdm.conf
+
+
+Sinon, vous trouverez peut-être plus facile d'utiliser à la place l'éditeur de texte pré-installé ''gedit''. Cela vous permettra d'ouvrir le fichier de configuration sous forme d'un document, ce qui le rend plus facile à lire et à modifier. Pour utiliser gedit, entrez:
+
+ sudo gedit /etc/lightdm/lightdm.conf
+
+
+= Activer la connexion automatique =
+
+Trouver les codes suivants dans le fichier de configuration:
+
+ session-wrapper=/etc/lightdm/xsession
+ ............
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ #autologin-user=
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+Enlevez le dièse ('#') de la ligne suivante comme indiqué ci-dessous, et ajoutez votre nom d'utilisateur:
+
+ session-wrapper=/etc/lightdm/xsession
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ '''autologin-user=''[your username here]''
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+ ''Example:'' A user called yfdogan would chance the line to: '''autologin-user=''yfdogan''
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+'''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+'''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+Redémarrez votre système pour que les modifications prennent effet.
+
+[[LightDM Auto Login|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>eoku26g6rth2svvxdxbh3czxr3vfu0h</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4741</id>
+      <parentid>4740</parentid>
+      <timestamp>2013-01-12T15:18:01Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2615">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Note|LightDM a été remplacé par LXDM dans Manjaro 0.8.1 et suivantes.}}
+
+Manjaro 0.8.0 utilise, par défaut, un gestionnaire de connexion léger appelé LightDM. LXDM est chargé de fournir l'écran de connexion. Il fonctionne également comme une barrière de protection pour empêcher l'accès non autorisé à votre système. Cependant, certains utilisateurs préféreront peut-être contourner l'écran de connexion pour démarrer directement dans leur environnement de bureau sans entrer de mot de passe.
+
+
+= Ouvrir le fichier de configuration LightDM =
+
+La syntaxe de la commande pour ouvrir le fichier de configuration LightDM est la suivante:
+
+ sudo [text editor] /etc/lightdm/lightdm.conf
+
+
+Par exemple, si vous souhaitez modifier le fichier dans le terminal en utilisant nano (un éditeur de texte standard), entrez: 
+
+ sudo nano /etc/lightdm/lightdm.conf
+
+
+Sinon, vous trouverez peut-être plus facile d'utiliser à la place l'éditeur de texte pré-installé ''gedit''. Cela vous permettra d'ouvrir le fichier de configuration sous forme d'un document, ce qui le rend plus facile à lire et à modifier. Pour utiliser gedit, entrez:
+
+ sudo gedit /etc/lightdm/lightdm.conf
+
+
+= Activer la connexion automatique =
+
+Trouver les codes suivants dans le fichier de configuration:
+
+ session-wrapper=/etc/lightdm/xsession
+ ............
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ #autologin-user=
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+Enlevez le dièse ('#') de la ligne suivante comme indiqué ci-dessous, et ajoutez votre nom d'utilisateur:
+
+ session-wrapper=/etc/lightdm/xsession
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ '''autologin-user=''[your username here]''
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+ ''Exemple:'' un utilisateur appelé yfdogan devrait renseigner la ligne comme suit: '''autologin-user=''yfdogan''
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+'''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+'''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+Redémarrez votre système pour que les modifications prennent effet.
+
+[[LightDM Auto Login|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>sgli3r68l7gjfyuy0dk9tnpu5k1bqry</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4742</id>
+      <parentid>4741</parentid>
+      <timestamp>2013-01-12T15:18:55Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2610">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Note|LightDM a été remplacé par LXDM dans Manjaro 0.8.1 et suivantes.}}
+
+Manjaro 0.8.0 utilise, par défaut, un gestionnaire de connexion léger appelé LightDM. LXDM est chargé de fournir l'écran de connexion. Il fonctionne également comme une barrière de protection pour empêcher l'accès non autorisé à votre système. Cependant, certains utilisateurs préféreront peut-être contourner l'écran de connexion pour démarrer directement dans leur environnement de bureau sans entrer de mot de passe.
+
+
+= Ouvrir le fichier de configuration LightDM =
+
+La syntaxe de la commande pour ouvrir le fichier de configuration LightDM est la suivante:
+
+ sudo [text editor] /etc/lightdm/lightdm.conf
+
+
+Par exemple, si vous souhaitez modifier le fichier dans le terminal en utilisant nano (un éditeur de texte standard), entrez: 
+
+ sudo nano /etc/lightdm/lightdm.conf
+
+
+Sinon, vous trouverez peut-être plus facile d'utiliser à la place l'éditeur de texte pré-installé ''gedit''. Cela vous permettra d'ouvrir le fichier de configuration sous forme d'un document, ce qui le rend plus facile à lire et à modifier. Pour utiliser gedit, entrez:
+
+ sudo gedit /etc/lightdm/lightdm.conf
+
+
+= Activer la connexion automatique =
+
+Trouver les codes suivants dans le fichier de configuration:
+
+ session-wrapper=/etc/lightdm/xsession
+ ............
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ #autologin-user=
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+Enlevez le dièse ('#') de la ligne suivante comme indiqué ci-dessous, et ajoutez votre nom d'utilisateur:
+
+ session-wrapper=/etc/lightdm/xsession
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ '''autologin-user=''[your username here]''
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+ ''Exemple:'' un utilisateur appelé yfdogan renseignerait la ligne comme suit: '''autologin-user=''yfdogan''
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+'''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+'''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+Redémarrez votre système pour que les modifications prennent effet.
+
+[[LightDM Auto Login|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>pb5vvcrn7eyunitnnx7wzzvih4xlijb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4743</id>
+      <parentid>4742</parentid>
+      <timestamp>2013-01-12T15:21:15Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2614">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Note|LightDM a été remplacé par LXDM dans Manjaro 0.8.1 et suivantes.}}
+
+Manjaro 0.8.0 utilise, par défaut, un gestionnaire de connexion léger appelé LightDM. LXDM est chargé de fournir l'écran de connexion. Il fonctionne également comme une barrière de protection pour empêcher l'accès non autorisé à votre système. Cependant, certains utilisateurs préféreront peut-être contourner l'écran de connexion pour démarrer directement dans leur environnement de bureau sans entrer de mot de passe.
+
+
+= Ouvrir le fichier de configuration LightDM =
+
+La syntaxe de la commande pour ouvrir le fichier de configuration LightDM est la suivante:
+
+ sudo [text editor] /etc/lightdm/lightdm.conf
+
+
+Par exemple, si vous souhaitez modifier le fichier dans le terminal en utilisant nano (un éditeur de texte standard), entrez: 
+
+ sudo nano /etc/lightdm/lightdm.conf
+
+
+Sinon, vous trouverez peut-être plus facile d'utiliser à la place l'éditeur de texte pré-installé ''gedit''. Cela vous permettra d'ouvrir le fichier de configuration sous forme d'un document, ce qui le rend plus facile à lire et à modifier. Pour utiliser gedit, entrez:
+
+ sudo gedit /etc/lightdm/lightdm.conf
+
+
+= Activer la connexion automatique =
+
+Trouver les codes suivants dans le fichier de configuration:
+
+ session-wrapper=/etc/lightdm/xsession
+ ............
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ #autologin-user=
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+Enlevez le dièse ('#') de la ligne suivante comme indiqué ci-dessous, et ajoutez votre nom d'utilisateur:
+
+ session-wrapper=/etc/lightdm/xsession
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=
+ #session-cleanup-script=
+ #autologin-guest=false
+ '''autologin-user=''[your username here]''
+ #autologin-user-timeout=0
+ #autologin-session=UNIMPLEMENTED
+
+ ''Exemple:'' un utilisateur appelé yfdogan renseignerait la ligne comme suit: '''autologin-user=''yfdogan''
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+Redémarrez votre système pour que les modifications prennent effet.
+
+[[LightDM Auto Login|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>pohq7smrtolec9tzxcwnc6ltm7h2ids</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

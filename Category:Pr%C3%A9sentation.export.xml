@@ -1,0 +1,100 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Category:Présentation</title>
+    <ns>14</ns>
+    <id>271</id>
+    <revision>
+      <id>1421</id>
+      <timestamp>2012-10-25T21:24:14Z</timestamp>
+      <contributor>
+        <username>Verityproductions</username>
+        <id>4</id>
+      </contributor>
+      <comment>Created page with &quot;.&quot;</comment>
+      <text xml:space="preserve" bytes="1">.</text>
+      <sha1>6t9fg2gmch401ldtk8m7pyzz632ixbb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>1422</id>
+      <parentid>1421</parentid>
+      <timestamp>2012-10-25T21:24:23Z</timestamp>
+      <contributor>
+        <username>Verityproductions</username>
+        <id>4</id>
+      </contributor>
+      <comment>Blanked the page</comment>
+      <text xml:space="preserve" bytes="0" />
+      <sha1>phoiac9h4m842xq45sp7s6u21eteeq1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3014</id>
+      <parentid>1422</parentid>
+      <timestamp>2012-12-25T11:35:55Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="29">[[Pacman-GUI Gide français]]</text>
+      <sha1>bmp52c7x3lme6kafk4s8imp4ue7qbge</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3015</id>
+      <parentid>3014</parentid>
+      <timestamp>2012-12-25T11:37:02Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="65">[[Pacman-GUI: Guide français]]
+Comprendre et utiliser Pacman-GUI</text>
+      <sha1>phsm19sm6fjx17mpboy24l7ae188d8y</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3018</id>
+      <parentid>3015</parentid>
+      <timestamp>2012-12-25T11:43:06Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="30">[[Documentation en français]]</text>
+      <sha1>j5m78kac4fz2u90c4jkqil3khh6nsvg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,3070 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide d'installation de manjaro 0.8.3 Débutant</title>
+    <ns>0</ns>
+    <id>678</id>
+    <revision>
+      <id>4512</id>
+      <timestamp>2013-01-09T10:06:49Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = EN COURS DE TRADUCTION =  = Overview =  {{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of ke...&quot;</comment>
+      <text xml:space="preserve" bytes="25776">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN COURS DE TRADUCTION =
+
+= Overview =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment.}}
+
+
+This '''Beginners' Guide''' is suitable for those with limited technical knowledge and experience. In this instance, it will not be necessary to manually partition your computer's hard disk or to manually edit various configuration files. '''However, using this guide will result in the complete erasure of your hard disk during the installation process.''' Manjaro will be installed alone. You will also not be able to configure Manjaro to support the use of multiple languages, although this feature can still be enabled after installation, if you wish.
+
+The '''[[Installation Guide for Experienced Users 0.8.3|Installation Guide for Experienced Users]]''' is more suitable for those experienced or at least comfortable with the prospect of manually partitioning their hard disks, and manually editing the necessary configuration files. Using this guide will enable the ability to dual-boot with another operating system, to enable features such as support for multiple languages, and to fine-tune Manjaro to suit personal preference.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the Function (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language by pressing the F2 key.''' The options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''British English'' has been highlighted for the user. 
+
+{{Tip|Not all supported languages may be initially shown on the list. Keep scrolling down past 'Romanian' to see a few extra languages that are supported, including Turkish.}}
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap) by pressing the F3 key.''' Again, the options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''English GB'' (Great Britain) has been highlighted for the user. 
+
+{{Tip|Again, not all supported languages may be initially shown on the list, so keep scrolling down past 'Polish' to again see a few extra keymap layouts.}}
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are now available:
+
+: '''1. Boot Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-083.png|thumb|left|375px]] 
+
+
+As seen here, Manjaro 0.8.3 with the XFCE desktop environment is to be installed. However, irrespective of the Manjaro flavour (i.e. desktop environment) you have chosen to install, the installation process itself will still be the same.
+
+{{tip|If you wish to connect to the internet using a wireless connection, now is the time to do it!}}
+
+To begin the installation process, close the welcome window, and then double-click the &quot;Manjaro CLI Installer&quot; icon.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Starting the Stable Installer =
+
+[[File: clistart-083.png|thumb|left|375px]]
+
+
+The installer will begin by stating that there are two installation versions available: The '''Stable Installer''' and the '''Testing Installer'''. This guide will use the Stable Installer.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-083.png|thumb|left|375px]]
+
+
+'''Select the stable installer.''' This option should already be highlighted. If not, use the arrow keys to highlight it.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: stableconfirm-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear, stating that the Stable installer has begun. It also provides some good advice: &lt;u&gt;'''Follow the steps IN ORDER.&lt;/u&gt;'''
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Setting the Date and Time =
+
+[[File: SetDateTime-083.png|thumb|left|375px]]
+
+
+'''Set Date and Time''' should already be highlighted. If not use your arrow keys to do so. 
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: utc-083.png|thumb|left|375px]]
+
+
+Ensure that '''UTC''' (Co-ordinated Universal Time - the primary time standard by which the world regulates its clocks and times) is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setregion-083.png|thumb|left|375px]]
+
+
+'''Highlight the region you live in'''. In this instance, Europe has been chosen, as this is the region applicable to Great Britain.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settimezone-083.png|thumb|left|375px]]
+
+
+'''Select your time zone'''. This is understaken by highlighting the appropriate capital city. In this instance, London has been chosen, as this is appropriate to the time zone of Great Britain.
+
+{{tip| As there are a lot of cities to chose from, you can skip forwards in the menu by entering the first letter of the appropriate city, which will take you to the first listed city beginning with that letter. For example, to skip closer to London, press 'L', which will highlight Lisbon, the first city in the list to begin with that letter.}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setdate-083.png|thumb|left|375px]]
+
+
+'''Set the date'''. If you are already connected to the internet, then this should already be set for you. Otherwise, use the &lt;tab&gt; key to switch between the day, month, and year elements, and use the up or down arrow keys to change them.
+
+Ensure that '''OK''' is highlighted, and press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settime-083.png|thumb|left|375px]]
+
+
+'''Finally, set the time'''. Again, if you are already connected to the internet, then this should already be set for you. Otherwise, use the &lt;tab&gt; key to switch between the hours, minutes, and seconds elements, and use the up or down arrow keys to change them.
+
+Ensure that '''OK''' is highlighted, and press &lt;enter&gt; to be taken back to the main installation menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Preparing the Hard Disk =
+
+[[File: discprep-083.png|thumb|left|375px]]
+
+
+'''Prepare your computer's hard disk for installation'''. Again, in this tutorial the assisted preparation method will be chosen, which is most suitable for beginners. 
+
+Ensure that '''Disk(s) Preparation''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: APoption-083.png|thumb|left|375px]]
+
+
+Ensure that '''Assisted Preparation (erases the whole disk)''' is highlighted. As the option would suggest, this '''will''' erase your entire hard disk. Make sure you have backed your files up somewhere (e.g. disc, USB flash drive, internet, etc.).
+
+{{note| The space to be set aside on your hard disk for each step of this stage is measured in megabytes (MB). It is also important to keep in mind how much hard disk space you have remaining for each step. In this tutorial, the total hard disk space being used is 40,960MB (40 gigabytes / GB).}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the GRUB''' ('''GR'''and '''U'''nified '''B'''ootloader). This is responsible for booting up Manjaro after your computer is turned on. The default value of 512MB is actually quite generous - far more than sufficient - and is intended to ensure that users can comfortably install and use '''[[Manjaro Kernels|multiple kernels]]''', if desired.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: swapsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the Swap Partition'''. Should your computer run out of memory (RAM) while it is being used, the hard drive can be used to compensate as a form of virtual RAM. This is what the ''Swap Partition'' is for. 
+
+Generally speaking, the size of the Swap Partition should be equal to the amount of memory (RAM) used by your computer. In this example, a value of 2,000MB (2GB) has been allocated to the Swap Partition as the computer system it is being installed on also uses 2,000MB (2GB) of memory.
+
+Once you have set the size of your Swap Partition, Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+ 
+
+[[File: rootsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the Root Partition'''. This is where Manjaro itself will be stored (i.e. all its system files). This is also where your installed applications will be stored. The default value of 6,400MB (6.4GB) is quite small, particularly as a lot of this space will be immediately taken up by Manjaro itself upon installation. This will not leave much room to install any new software.
+
+Where possible - and assuming the hard disk space is available - it is recommended to set the value of the Root Partition to at least 15-20,000MB (15-20GB). Just ensure that this leaves plenty of space for your '''Home Partition''', which which where all your personal files (e.g. documents, videos, images, music, etc.) will be stored. In this example, of the 38,400MB (38GB) available on the hard disk, 15,000MB (15GB) has been allocated to the Root Partition.
+
+Once you have set the size of your Root Partition, press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: homesize-083.png|thumb|left|375px]]
+
+
+'''Confirm the amount of hard disk space for the Home Partition'''. 15GB of the available 38GB hard-disk space has already been allocated to the Root partition, so as confirmed by the installer, the remaining 23,400MB (23GB) has been automatically allocated to the ''Home partition''. Again, the ''Home partition'' is where all your personal files (including Virtual Disk Images, if you use Virtualbox) will be stored.
+
+If you are not happy with the amount of space allocated, highlight '''No''' and press &lt;enter&gt; to go back and re-allocate the amount of space desired for your root partition. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: filesystem-083.png|thumb|left|375px]]
+
+
+'''Set the file system to manage your files'''. Different file systems can handle different file sizes, numbers of files, and so on. If you are unsure which file system to choose, as illustrated, '''it is recommend that you highlight [http://en.wikipedia.org/wiki/Ext4 ext4] as this is one of the latest and perhaps most widely used Linux file systems.'''
+
+Press &lt;enter&gt; to continue
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: fsystemconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirm your selected file system'''. If you wish to review or perhaps change your selection, highlight '''No''' and press &lt;enter&gt; to be taken back to the list of available file systems. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to proceed with the assisted preparation.''' A warning will now appear that proceeding will result in your hard disk (referred to as /dev/sda) being completely erased. If you do not wish to continue, highlight '''No''' and press &lt;enter&gt; to be taken back to the hard disk preparation menu. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepfinished-083.png|thumb|left|375px]]
+
+
+The installer will take a few moments to set up your hard disk (and in the process, completely erase any data that was previously stored on it). Once complete, the illustrated confirmation message will appear.
+
+Press &lt;enter&gt; to confirm and to be taken back to the hard disk preparation menu.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: pewgoback-083.png|thumb|left|375px]]
+
+
+'''Go back to the Main Menu'''. As this step has been completed, highlight '''Main menu''' and press &lt;enter&gt; to be taken back to the installer's main menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Manjaro =
+
+[[File: installoption-083.png|thumb|left|375px]]
+
+
+Ensure that '''Install System''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installprogress-083.png|thumb|left|375px]]
+
+
+The installation process will start automatically. A progress bar will be displayed to chart the progress of the installation itself.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installcomplete-083.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear confirming Manjaro has been successfully installed.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: autoconfigure-083.png|thumb|left|375px]]
+
+
+The installer will now automatically configure your system, detect your hardware, and install the appropriate drivers. It will also find the available Manjaro servers from which you will be able to download updates, software packages, and applications. Please be patient, as this process may take a minute or two.
+
+{{warning|Manjaro will not be able to find the available servers unless you are connected to the internet.}}
+
+Once complete, you will automatically be returned back to the installer's Main menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring Manjaro =
+
+[[File: configureoption-083.png|thumb|left|375px]]
+
+
+'''It will now be necessary to personalise Manjaro by configuring a few key things'''. Don't worry about this as there will be no need for any technical expertise or to manually edit any configuration files. The process will be quick and painless!
+
+Ensure that '''Configure System''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Root Password ===
+
+[[File: rootpassword-083.png|thumb|left|375px]]
+
+
+'''Set the Root password'''. In a nutshell, Root is a standard user account included in Linux distributions by default that has full and unrestricted access to the system. A Root account is necessary to have in order to install, change, and remove system files.
+
+Ensure that '''Change Root Password''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enterroot-083.png|thumb|left|375px]]
+
+
+'''Type in your chosen Root password'''. You can enter just about anything you like.
+
+{{tip| Passwords will be case sensitive. To use the password later on, the upper and lower case letters will have to match exactly. Oh, and use a password you'll be able to remember!}}
+
+Once complete, ensuring that '''OK''' is highlighted, press &lt;enter&gt; to continue. You will then have to re-enter the Root password again to confirm it. Once again, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== User Account ===
+
+[[File: setupuser-083.png|thumb|left|375px]]
+
+
+'''Set up your own personal user account'''. To protect the system, you will not be expected to use the system as a Root user at all times. As such, you should also create your own personal account.
+
+Ensure that '''Setup user account(s)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enteruser-083.png|thumb|left|375px]]
+
+
+Type in your chosen account / login name. The default name is ''manjaro'', which can be changed by deleting it and replacing it with your own. In this instance, the username ''carl'' has been entered.
+
+{{warning| Although you can enter almost anything you like, '''ensure that any and all letters in the name are in lower case'''.}}
+
+When finished, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: usersudo-083.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to get sudo rights'''. Sudo is short for ''''S'''uper '''U'''ser '''Do'''', and means that your own account will be granted the same system privileges as the Root account. That way, you will not have to switch to the Root account to undertake certain tasks, such as adding or removing system files or software applications. However, undertaking such tasks using your personal account will require you to enter your password to continue, which will be set up next.
+
+Ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: sudopass-083.png|thumb|left|375px]]
+
+
+'''Type in your chosen password for your own personal account'''. Again, you can enter just about anything you like.
+
+{{tip| To keep things simple, you can just type the same password used for the Root account.}}
+
+Once complete, ensuring that '''OK''' is highlighted, press &lt;enter&gt; to continue. You will then have to re-enter your password again to confirm it. Once again, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Locale (optional) ===
+
+[[File: setlocale-083.png|thumb|left|375px]]
+
+
+'''Set your preferred language'''.
+
+If you were able to set your preferred language at the beginning, then you can '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)|skip this step]]'''. Otherwise, ensure that '''Change locale (optional)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlocalemenu-083.png|thumb|left|375px]]
+
+
+Confirm that you wish to set your preferred language by ensuring that '''Set Locale''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectlocale-083.png|thumb|left|375px]]
+
+
+A list of codes will be presented that begin with two lower case letters, followed by two UPPER CASE letters. The lower case letters stand for the language, and the upper case letters stand for the country: language_COUNTRY. 
+
+For example, ''en_GB'' stands for '''English, Great Britain''' and en_US stands for '''English, United States'''. If you are not sure what code represents your language and country, a small selection of examples are available [http://www.fincher.org/Utilities/CountryLanguageList.shtml here] (ignore the use of dashes ''''-'''' instead of underscores ''''_''''). 
+
+The UTF-8 and ISO parts of each line represent the character encoding schemes used by the system. Although it is not important to know this part, '''try to pick a code that ends in &lt;u&gt;UTF-8&lt;/u&gt; if possible'''.
+
+Once you have highlighted your desired code, press &lt;enter&gt; to set it and be taken back to the locale menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitlocale-083.png|thumb|left|375px]]
+
+
+Return to the configuration menu my highlighting '''Return to Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Keymap (optional) ===
+
+[[File: setkeymapmenu-083.png|thumb|left|375px]]
+
+
+'''Set your preferred keyboard layout'''.
+
+If you were able to set your preferred keyboard layout at the beginning, then you can '''[[Installation_Guide_for_Beginners_0.8.3#Exit_the_Configuration_Menu|skip this step]]'''. Otherwise, ensure that '''Change vconsole keymap (optional)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymapmenu-083.png|thumb|left|375px]]
+
+
+Confirm that you wish to set your preferred language by ensuring that '''Set Keymap''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymap-083.png|thumb|left|375px]]
+
+
+A list of codes will be presented, representing the various different keyboard layouts available. If you do not know the necessary code for your keyboard layout, then it may be necessary to undertake a Google search to determine this. In this instance, for illustrative purposes, the code '''uk.map.gz''' has been selected, as this is the appropriate code for the keyboard layout used in the United Kingdom / Great Britain.
+
+Once you have highlighted your desired code, press &lt;enter&gt; to set it and be taken back to the keymap menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitkeymap-083.png|thumb|left|375px]]
+
+
+Return to the configuration menu by highlighting '''Return to Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Exit the Configuration Menu ===
+
+[[File: exitconfig-083.png|thumb|left|375px]]
+
+
+With the configuration complete, exit from the configuration menu by highlighting '''Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-083.png|thumb|left|375px]]
+
+
+It will then be necessary to wait a few moments while the Manjaro installation is automatically configured according to your preferences. Once complete, you will automatically be taken back to the Main Menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing the Bootloader =
+
+[[File: bootloaderoption-083.png|thumb|left|375px]]
+
+
+'''Finally, install the GRUB'''. Again, the GRUB ('''GR'''and '''U'''nified '''B'''ootloader) is responsible for booting up (i.e. starting) Manjaro when you turn your computer on.
+
+Ensure that '''Install Bootloader''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installGRUB-083.png|thumb|left|375px]]
+
+
+Ensure that '''Install GRUB2 (needed to boot)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBconfirm-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear, stating the target partition (place on your hard disk) where GRUB2 is to be installed. The default setting is fine.
+
+Press &lt;enter&gt; to start the installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBinstalled-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear after a few seconds, stating that GRUB2 has been successfully installed.
+
+Press &lt;enter&gt; to be taken back to the main installer menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Installation =
+
+[[File: QuitInstaller-083.png|thumb|left|375px]]
+
+
+All done - now highlight '''Quit''' to finish the installation!
+
+Press &lt;enter&gt; to continue. 
+
+The installer will then take a few moments to finalise the installation. A confirmation message will then appear, stating that the installation process has finished. The installer will then automatically close, and you will be returned to the desktop environment.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: restartManjaro-083.png|thumb|left|375px]]
+
+
+You can now reboot your computer to start your newly installed Manjaro operating system! There is no need to remove the installation media just yet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: existingOS-083.png|thumb|left|375px]]
+
+
+Upon rebooting, you may either:
+
+1. manually eject or remove the installation media just as your computer starts, or 
+
+2. simply select the '''Boot an Existing OS''' option and press &lt;enter&gt; to start the new installation. Once booted, you may then safely remove the installation media.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: login-083.png|thumb|left|375px]]
+
+
+{{tip|The UK server will be set by default to provide software applications and updates, so changing the server location or even finding the fastest one is worthwhile, particularly if you reside in another country.}}
+
+Upon rebooting and logging into the freshly installed system, you may wish to undertake the following actions before anything else:
+
+
+'''1. [[Change to a Different Download Server]]''' or '''[[Rankmirrors_to_Set_the_Fastest_Download_Server|Find the Fastest Download Server]]'''
+
+'''2. [[Pacman-GUI#Updating_the_System|Update the System]]'''
+
+'''3. [[Arch User Repository|Enable Access to the Arch User Repositories]]'''
+
+'''4. [[Printer Configuration|Add Printers]]'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for Beginners 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>phcx0dq60xbty9elf32h02hkhnylgmi</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4523</id>
+      <parentid>4512</parentid>
+      <timestamp>2013-01-09T19:16:26Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="26094">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement Rolling Release''. En tant que telle, une installation existante est maintenue à jour et est toujours identique à la dernière version. Plus d'informations peuvent être trouvées dans cet article de notre Blog: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{Astuce|Un guide '''[[Virtualbox]]''' est fourni pour ceux qui souhaitent installer Manjaro dans un environnement de machine virtuelle.}}
+
+
+Ce '''guide pour débutants''' est idéal pour ceux ayant des connaissances techniques et une expérience limitées. Dans ce cas, il ne sera pas nécessaire de partitionner manuellement le disque dur de votre ordinateur ou de modifier manuellement des fichiers de configuration différents. '''Cependant, l'utilisation de ce guide provoquera l'effacement complet de votre disque dur pendant le processus d'installation.''' Manjaro sera installé seul. Vous ne serez pas en mesure de configurer Manjaro pour permettre l'utilisation de plusieurs langues, bien que cette fonctionnalité puisse encore être activée après l'installation, si vous le souhaitez.
+
+Le '''[[Guide_d'installation_de_manjaro_0.8.3_Expert|Guide d'installation de manjaro 0.8.3 Expert]]''' est plus adapté aux personnes ayant de l'expérience ou tout au moins à l'aise avec l'idée de partitionnement manuel de leurs disques durs et de modification manuelle des fichiers de configuration nécessaires. L'utilisation de ce guide offrira la possibilité de dual-boot avec un autre système d'exploitation, l'activation de fonctionnalités telles que le support de plusieurs langues, et le réglage fin de Manjaro selon vos préférences personnelles.
+
+Lorsque cela est possible, '''assurez-vous que vous êtes connecté à Internet''' avant de démarraer à partir du support d'installation (par exemple, CD/DVD, lecteur flash USB, ou même directement depuis un fichier ISO si vous avez démarré dans Oracle Virtualbox). Si vous avez une connexion filaire via un câble Ethernet, Manjaro se connectera automatiquement à Internet sans que vous ayez à faire quoi que ce soit. Sinon, une fois arrivé sur le bureau de Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil.
+
+
+= Pré-installation: configuration de la langue et de la disposition de clavier =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the Function (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language by pressing the F2 key.''' The options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''British English'' has been highlighted for the user. 
+
+{{Tip|Not all supported languages may be initially shown on the list. Keep scrolling down past 'Romanian' to see a few extra languages that are supported, including Turkish.}}
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap) by pressing the F3 key.''' Again, the options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''English GB'' (Great Britain) has been highlighted for the user. 
+
+{{Tip|Again, not all supported languages may be initially shown on the list, so keep scrolling down past 'Polish' to again see a few extra keymap layouts.}}
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are now available:
+
+: '''1. Boot Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-083.png|thumb|left|375px]] 
+
+
+As seen here, Manjaro 0.8.3 with the XFCE desktop environment is to be installed. However, irrespective of the Manjaro flavour (i.e. desktop environment) you have chosen to install, the installation process itself will still be the same.
+
+{{tip|If you wish to connect to the internet using a wireless connection, now is the time to do it!}}
+
+To begin the installation process, close the welcome window, and then double-click the &quot;Manjaro CLI Installer&quot; icon.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Starting the Stable Installer =
+
+[[File: clistart-083.png|thumb|left|375px]]
+
+
+The installer will begin by stating that there are two installation versions available: The '''Stable Installer''' and the '''Testing Installer'''. This guide will use the Stable Installer.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-083.png|thumb|left|375px]]
+
+
+'''Select the stable installer.''' This option should already be highlighted. If not, use the arrow keys to highlight it.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: stableconfirm-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear, stating that the Stable installer has begun. It also provides some good advice: &lt;u&gt;'''Follow the steps IN ORDER.&lt;/u&gt;'''
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Setting the Date and Time =
+
+[[File: SetDateTime-083.png|thumb|left|375px]]
+
+
+'''Set Date and Time''' should already be highlighted. If not use your arrow keys to do so. 
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: utc-083.png|thumb|left|375px]]
+
+
+Ensure that '''UTC''' (Co-ordinated Universal Time - the primary time standard by which the world regulates its clocks and times) is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setregion-083.png|thumb|left|375px]]
+
+
+'''Highlight the region you live in'''. In this instance, Europe has been chosen, as this is the region applicable to Great Britain.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settimezone-083.png|thumb|left|375px]]
+
+
+'''Select your time zone'''. This is understaken by highlighting the appropriate capital city. In this instance, London has been chosen, as this is appropriate to the time zone of Great Britain.
+
+{{tip| As there are a lot of cities to chose from, you can skip forwards in the menu by entering the first letter of the appropriate city, which will take you to the first listed city beginning with that letter. For example, to skip closer to London, press 'L', which will highlight Lisbon, the first city in the list to begin with that letter.}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setdate-083.png|thumb|left|375px]]
+
+
+'''Set the date'''. If you are already connected to the internet, then this should already be set for you. Otherwise, use the &lt;tab&gt; key to switch between the day, month, and year elements, and use the up or down arrow keys to change them.
+
+Ensure that '''OK''' is highlighted, and press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settime-083.png|thumb|left|375px]]
+
+
+'''Finally, set the time'''. Again, if you are already connected to the internet, then this should already be set for you. Otherwise, use the &lt;tab&gt; key to switch between the hours, minutes, and seconds elements, and use the up or down arrow keys to change them.
+
+Ensure that '''OK''' is highlighted, and press &lt;enter&gt; to be taken back to the main installation menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Preparing the Hard Disk =
+
+[[File: discprep-083.png|thumb|left|375px]]
+
+
+'''Prepare your computer's hard disk for installation'''. Again, in this tutorial the assisted preparation method will be chosen, which is most suitable for beginners. 
+
+Ensure that '''Disk(s) Preparation''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: APoption-083.png|thumb|left|375px]]
+
+
+Ensure that '''Assisted Preparation (erases the whole disk)''' is highlighted. As the option would suggest, this '''will''' erase your entire hard disk. Make sure you have backed your files up somewhere (e.g. disc, USB flash drive, internet, etc.).
+
+{{note| The space to be set aside on your hard disk for each step of this stage is measured in megabytes (MB). It is also important to keep in mind how much hard disk space you have remaining for each step. In this tutorial, the total hard disk space being used is 40,960MB (40 gigabytes / GB).}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the GRUB''' ('''GR'''and '''U'''nified '''B'''ootloader). This is responsible for booting up Manjaro after your computer is turned on. The default value of 512MB is actually quite generous - far more than sufficient - and is intended to ensure that users can comfortably install and use '''[[Manjaro Kernels|multiple kernels]]''', if desired.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: swapsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the Swap Partition'''. Should your computer run out of memory (RAM) while it is being used, the hard drive can be used to compensate as a form of virtual RAM. This is what the ''Swap Partition'' is for. 
+
+Generally speaking, the size of the Swap Partition should be equal to the amount of memory (RAM) used by your computer. In this example, a value of 2,000MB (2GB) has been allocated to the Swap Partition as the computer system it is being installed on also uses 2,000MB (2GB) of memory.
+
+Once you have set the size of your Swap Partition, Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+ 
+
+[[File: rootsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the Root Partition'''. This is where Manjaro itself will be stored (i.e. all its system files). This is also where your installed applications will be stored. The default value of 6,400MB (6.4GB) is quite small, particularly as a lot of this space will be immediately taken up by Manjaro itself upon installation. This will not leave much room to install any new software.
+
+Where possible - and assuming the hard disk space is available - it is recommended to set the value of the Root Partition to at least 15-20,000MB (15-20GB). Just ensure that this leaves plenty of space for your '''Home Partition''', which which where all your personal files (e.g. documents, videos, images, music, etc.) will be stored. In this example, of the 38,400MB (38GB) available on the hard disk, 15,000MB (15GB) has been allocated to the Root Partition.
+
+Once you have set the size of your Root Partition, press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: homesize-083.png|thumb|left|375px]]
+
+
+'''Confirm the amount of hard disk space for the Home Partition'''. 15GB of the available 38GB hard-disk space has already been allocated to the Root partition, so as confirmed by the installer, the remaining 23,400MB (23GB) has been automatically allocated to the ''Home partition''. Again, the ''Home partition'' is where all your personal files (including Virtual Disk Images, if you use Virtualbox) will be stored.
+
+If you are not happy with the amount of space allocated, highlight '''No''' and press &lt;enter&gt; to go back and re-allocate the amount of space desired for your root partition. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: filesystem-083.png|thumb|left|375px]]
+
+
+'''Set the file system to manage your files'''. Different file systems can handle different file sizes, numbers of files, and so on. If you are unsure which file system to choose, as illustrated, '''it is recommend that you highlight [http://en.wikipedia.org/wiki/Ext4 ext4] as this is one of the latest and perhaps most widely used Linux file systems.'''
+
+Press &lt;enter&gt; to continue
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: fsystemconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirm your selected file system'''. If you wish to review or perhaps change your selection, highlight '''No''' and press &lt;enter&gt; to be taken back to the list of available file systems. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to proceed with the assisted preparation.''' A warning will now appear that proceeding will result in your hard disk (referred to as /dev/sda) being completely erased. If you do not wish to continue, highlight '''No''' and press &lt;enter&gt; to be taken back to the hard disk preparation menu. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepfinished-083.png|thumb|left|375px]]
+
+
+The installer will take a few moments to set up your hard disk (and in the process, completely erase any data that was previously stored on it). Once complete, the illustrated confirmation message will appear.
+
+Press &lt;enter&gt; to confirm and to be taken back to the hard disk preparation menu.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: pewgoback-083.png|thumb|left|375px]]
+
+
+'''Go back to the Main Menu'''. As this step has been completed, highlight '''Main menu''' and press &lt;enter&gt; to be taken back to the installer's main menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Manjaro =
+
+[[File: installoption-083.png|thumb|left|375px]]
+
+
+Ensure that '''Install System''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installprogress-083.png|thumb|left|375px]]
+
+
+The installation process will start automatically. A progress bar will be displayed to chart the progress of the installation itself.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installcomplete-083.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear confirming Manjaro has been successfully installed.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: autoconfigure-083.png|thumb|left|375px]]
+
+
+The installer will now automatically configure your system, detect your hardware, and install the appropriate drivers. It will also find the available Manjaro servers from which you will be able to download updates, software packages, and applications. Please be patient, as this process may take a minute or two.
+
+{{warning|Manjaro will not be able to find the available servers unless you are connected to the internet.}}
+
+Once complete, you will automatically be returned back to the installer's Main menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring Manjaro =
+
+[[File: configureoption-083.png|thumb|left|375px]]
+
+
+'''It will now be necessary to personalise Manjaro by configuring a few key things'''. Don't worry about this as there will be no need for any technical expertise or to manually edit any configuration files. The process will be quick and painless!
+
+Ensure that '''Configure System''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Root Password ===
+
+[[File: rootpassword-083.png|thumb|left|375px]]
+
+
+'''Set the Root password'''. In a nutshell, Root is a standard user account included in Linux distributions by default that has full and unrestricted access to the system. A Root account is necessary to have in order to install, change, and remove system files.
+
+Ensure that '''Change Root Password''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enterroot-083.png|thumb|left|375px]]
+
+
+'''Type in your chosen Root password'''. You can enter just about anything you like.
+
+{{tip| Passwords will be case sensitive. To use the password later on, the upper and lower case letters will have to match exactly. Oh, and use a password you'll be able to remember!}}
+
+Once complete, ensuring that '''OK''' is highlighted, press &lt;enter&gt; to continue. You will then have to re-enter the Root password again to confirm it. Once again, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== User Account ===
+
+[[File: setupuser-083.png|thumb|left|375px]]
+
+
+'''Set up your own personal user account'''. To protect the system, you will not be expected to use the system as a Root user at all times. As such, you should also create your own personal account.
+
+Ensure that '''Setup user account(s)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enteruser-083.png|thumb|left|375px]]
+
+
+Type in your chosen account / login name. The default name is ''manjaro'', which can be changed by deleting it and replacing it with your own. In this instance, the username ''carl'' has been entered.
+
+{{warning| Although you can enter almost anything you like, '''ensure that any and all letters in the name are in lower case'''.}}
+
+When finished, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: usersudo-083.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to get sudo rights'''. Sudo is short for ''''S'''uper '''U'''ser '''Do'''', and means that your own account will be granted the same system privileges as the Root account. That way, you will not have to switch to the Root account to undertake certain tasks, such as adding or removing system files or software applications. However, undertaking such tasks using your personal account will require you to enter your password to continue, which will be set up next.
+
+Ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: sudopass-083.png|thumb|left|375px]]
+
+
+'''Type in your chosen password for your own personal account'''. Again, you can enter just about anything you like.
+
+{{tip| To keep things simple, you can just type the same password used for the Root account.}}
+
+Once complete, ensuring that '''OK''' is highlighted, press &lt;enter&gt; to continue. You will then have to re-enter your password again to confirm it. Once again, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Locale (optional) ===
+
+[[File: setlocale-083.png|thumb|left|375px]]
+
+
+'''Set your preferred language'''.
+
+If you were able to set your preferred language at the beginning, then you can '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)|skip this step]]'''. Otherwise, ensure that '''Change locale (optional)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlocalemenu-083.png|thumb|left|375px]]
+
+
+Confirm that you wish to set your preferred language by ensuring that '''Set Locale''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectlocale-083.png|thumb|left|375px]]
+
+
+A list of codes will be presented that begin with two lower case letters, followed by two UPPER CASE letters. The lower case letters stand for the language, and the upper case letters stand for the country: language_COUNTRY. 
+
+For example, ''en_GB'' stands for '''English, Great Britain''' and en_US stands for '''English, United States'''. If you are not sure what code represents your language and country, a small selection of examples are available [http://www.fincher.org/Utilities/CountryLanguageList.shtml here] (ignore the use of dashes ''''-'''' instead of underscores ''''_''''). 
+
+The UTF-8 and ISO parts of each line represent the character encoding schemes used by the system. Although it is not important to know this part, '''try to pick a code that ends in &lt;u&gt;UTF-8&lt;/u&gt; if possible'''.
+
+Once you have highlighted your desired code, press &lt;enter&gt; to set it and be taken back to the locale menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitlocale-083.png|thumb|left|375px]]
+
+
+Return to the configuration menu my highlighting '''Return to Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Keymap (optional) ===
+
+[[File: setkeymapmenu-083.png|thumb|left|375px]]
+
+
+'''Set your preferred keyboard layout'''.
+
+If you were able to set your preferred keyboard layout at the beginning, then you can '''[[Installation_Guide_for_Beginners_0.8.3#Exit_the_Configuration_Menu|skip this step]]'''. Otherwise, ensure that '''Change vconsole keymap (optional)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymapmenu-083.png|thumb|left|375px]]
+
+
+Confirm that you wish to set your preferred language by ensuring that '''Set Keymap''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymap-083.png|thumb|left|375px]]
+
+
+A list of codes will be presented, representing the various different keyboard layouts available. If you do not know the necessary code for your keyboard layout, then it may be necessary to undertake a Google search to determine this. In this instance, for illustrative purposes, the code '''uk.map.gz''' has been selected, as this is the appropriate code for the keyboard layout used in the United Kingdom / Great Britain.
+
+Once you have highlighted your desired code, press &lt;enter&gt; to set it and be taken back to the keymap menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitkeymap-083.png|thumb|left|375px]]
+
+
+Return to the configuration menu by highlighting '''Return to Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Exit the Configuration Menu ===
+
+[[File: exitconfig-083.png|thumb|left|375px]]
+
+
+With the configuration complete, exit from the configuration menu by highlighting '''Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-083.png|thumb|left|375px]]
+
+
+It will then be necessary to wait a few moments while the Manjaro installation is automatically configured according to your preferences. Once complete, you will automatically be taken back to the Main Menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing the Bootloader =
+
+[[File: bootloaderoption-083.png|thumb|left|375px]]
+
+
+'''Finally, install the GRUB'''. Again, the GRUB ('''GR'''and '''U'''nified '''B'''ootloader) is responsible for booting up (i.e. starting) Manjaro when you turn your computer on.
+
+Ensure that '''Install Bootloader''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installGRUB-083.png|thumb|left|375px]]
+
+
+Ensure that '''Install GRUB2 (needed to boot)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBconfirm-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear, stating the target partition (place on your hard disk) where GRUB2 is to be installed. The default setting is fine.
+
+Press &lt;enter&gt; to start the installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBinstalled-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear after a few seconds, stating that GRUB2 has been successfully installed.
+
+Press &lt;enter&gt; to be taken back to the main installer menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Installation =
+
+[[File: QuitInstaller-083.png|thumb|left|375px]]
+
+
+All done - now highlight '''Quit''' to finish the installation!
+
+Press &lt;enter&gt; to continue. 
+
+The installer will then take a few moments to finalise the installation. A confirmation message will then appear, stating that the installation process has finished. The installer will then automatically close, and you will be returned to the desktop environment.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: restartManjaro-083.png|thumb|left|375px]]
+
+
+You can now reboot your computer to start your newly installed Manjaro operating system! There is no need to remove the installation media just yet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: existingOS-083.png|thumb|left|375px]]
+
+
+Upon rebooting, you may either:
+
+1. manually eject or remove the installation media just as your computer starts, or 
+
+2. simply select the '''Boot an Existing OS''' option and press &lt;enter&gt; to start the new installation. Once booted, you may then safely remove the installation media.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: login-083.png|thumb|left|375px]]
+
+
+{{tip|The UK server will be set by default to provide software applications and updates, so changing the server location or even finding the fastest one is worthwhile, particularly if you reside in another country.}}
+
+Upon rebooting and logging into the freshly installed system, you may wish to undertake the following actions before anything else:
+
+
+'''1. [[Change to a Different Download Server]]''' or '''[[Rankmirrors_to_Set_the_Fastest_Download_Server|Find the Fastest Download Server]]'''
+
+'''2. [[Pacman-GUI#Updating_the_System|Update the System]]'''
+
+'''3. [[Arch User Repository|Enable Access to the Arch User Repositories]]'''
+
+'''4. [[Printer Configuration|Add Printers]]'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for Beginners 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>b1vm1h9rupdsri17gr1rrkz8ew1p35w</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4524</id>
+      <parentid>4523</parentid>
+      <timestamp>2013-01-09T19:21:42Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="26855">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement Rolling Release''. En tant que telle, une installation existante est maintenue à jour et est toujours identique à la dernière version. Plus d'informations peuvent être trouvées dans cet article de notre Blog: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{Astuce|Un guide '''[[Virtualbox]]''' est fourni pour ceux qui souhaitent installer Manjaro dans un environnement de machine virtuelle.}}
+
+
+Ce '''guide pour débutants''' est idéal pour ceux ayant des connaissances techniques et une expérience limitées. Dans ce cas, il ne sera pas nécessaire de partitionner manuellement le disque dur de votre ordinateur ou de modifier manuellement des fichiers de configuration différents. '''Cependant, l'utilisation de ce guide provoquera l'effacement complet de votre disque dur pendant le processus d'installation.''' Manjaro sera installé seul. Vous ne serez pas en mesure de configurer Manjaro pour permettre l'utilisation de plusieurs langues, bien que cette fonctionnalité puisse encore être activée après l'installation, si vous le souhaitez.
+
+Le '''[[Guide_d'installation_de_manjaro_0.8.3_Expert|Guide d'installation de manjaro 0.8.3 Expert]]''' est plus adapté aux personnes ayant de l'expérience ou tout au moins à l'aise avec l'idée de partitionnement manuel de leurs disques durs et de modification manuelle des fichiers de configuration nécessaires. L'utilisation de ce guide offrira la possibilité de dual-boot avec un autre système d'exploitation, l'activation de fonctionnalités telles que le support de plusieurs langues, et le réglage fin de Manjaro selon vos préférences personnelles.
+
+Lorsque cela est possible, '''assurez-vous que vous êtes connecté à Internet''' avant de démarraer à partir du support d'installation (par exemple, CD/DVD, lecteur flash USB, ou même directement depuis un fichier ISO si vous avez démarré dans Oracle Virtualbox). Si vous avez une connexion filaire via un câble Ethernet, Manjaro se connectera automatiquement à Internet sans que vous ayez à faire quoi que ce soit. Sinon, une fois arrivé sur le bureau de Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil.
+
+
+= Pré-installation: configuration de la langue et de la disposition de clavier =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Une fois Manjaro démarré, vous devriez voir s'afficher l'écran de démarrage Manjaro. Cependant, ne démarrez pas quoi que ce soit, pas encore! D'abord, il sera nécessaire de choisir '''votre langue''' et '''votre clavier'''. Bien que les avantages de l'utilisation de votre langue principale et de votre disposition du clavier pour l'installation elle-même puissent paraître évidents, la définition de ceux-ci vont aussi rendre  beaucoup plus rapide et plus facile la configuration de votre système installé.
+
+Ne vous inquiétez pas si votre langue préférée ou votre clavier ne sont pas disponibles dans la liste, un éventail beaucoup plus large de langues est disponible et permet leur sélection lors de l'installation elle-même, si nécessaire.
+
+{{Astuce|Le réglage de la langue et de la configuration du clavier - comme indiqué ci-dessous - sont effectués en appuyant sur une des touches de fonction (Fx). Comme nombre d'ordinateurs ont de multiples fonctions attribuées à chaque touche de fonction, il peut être nécessaire d'appuyer sur une autre touche avant de les utiliser. Par exemple, sur un ordinateur portable HP G62, pour utiliser les touches de fonction, la touche «Fn» doit d'abord être maintenue enfoncée.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''Choisissez d'abord votre langue en appuyant sur la touche F2'''. Les options disponibles peuvent être mises en surbrillance en vue de sélection grâce aux touches flèches haut et bas de votre clavier. Ici, l'anglais britannique a été mis en surbrillance pour l'utilisateur.
+
+{{Astuce|toutes les langues prises en charge peuvent ne pas être initialement toutes indiqués dans la liste. Continuez le défilement vers le bas après «roumain» pour voir quelques langues supplémentaires prises en charge, y compris le turc.}}
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Ensuite, définissez votre clavier préféré (keymap) en appuyant sur la touche F3'''. Encore une fois, les options disponibles peuvent être mis en évidence pour la sélection en utilisant les touches fléchées haut et bas de votre clavier. Ici, l'''anglais GB'' (Grande-Bretagne) a été mis en surbrillance pour l'utilisateur.
+
+{{Astuce|Encore une fois, toutes les langues prises en charge peuvent ne pas être initialement indiquées dans la liste, donc faites encore défiler après «Polish», de façon à voir d'autres claviers supplémentaires.}}
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+Une fois ces premiers préparatifs terminés, Manjaro peut maintenant être démarré pour commencer le processus d'installation. Deux options principales sont disponibles:
+
+: '''1. Boot Manjaro Linux''' - démarre en utilisant les pilotes graphiques libre / open-source développés par la communauté Linux.
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - démarre en utilisant les pilotes graphiques propriétaires (c.-à-d. développés et propriété des fabricants de cartes graphiques).
+
+{{Astuce|Pour de meilleurs résultats, sélectionnez l'option «Boot Manjaro Linux with non-free graphics drivers». Ça doit correspondre au pilote correct du fabricant de votre carte graphique spécifique.}}
+
+Dans notre cas, Manjaro est démarré en utilisant l'option pilote graphique non libre. Ici encore, utilisez les touches fléchées pour mettre en surbrillance votre choix, puis appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-083.png|thumb|left|375px]] 
+
+
+Comme on le voit ici, Manjaro 0.8.3 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la variante (c-à-d environnement de bureau) Manjaro que vous ayez choisi d'installer, l'installation elle-même sera toujours identique.
+
+{{Astuce|Si vous souhaitez vous connecter à Internet en utilisant une connexion sans fil, c'est maintenant le moment de le faire!}}
+
+Pour commencer le processus d'installation, fermez la fenêtre de bienvenue, puis double-cliquez sur l'icône «Manjaro CLI Installer».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Starting the Stable Installer =
+
+[[File: clistart-083.png|thumb|left|375px]]
+
+
+The installer will begin by stating that there are two installation versions available: The '''Stable Installer''' and the '''Testing Installer'''. This guide will use the Stable Installer.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-083.png|thumb|left|375px]]
+
+
+'''Select the stable installer.''' This option should already be highlighted. If not, use the arrow keys to highlight it.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: stableconfirm-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear, stating that the Stable installer has begun. It also provides some good advice: &lt;u&gt;'''Follow the steps IN ORDER.&lt;/u&gt;'''
+
+Press &lt;enter&gt; to continue. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Setting the Date and Time =
+
+[[File: SetDateTime-083.png|thumb|left|375px]]
+
+
+'''Set Date and Time''' should already be highlighted. If not use your arrow keys to do so. 
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: utc-083.png|thumb|left|375px]]
+
+
+Ensure that '''UTC''' (Co-ordinated Universal Time - the primary time standard by which the world regulates its clocks and times) is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setregion-083.png|thumb|left|375px]]
+
+
+'''Highlight the region you live in'''. In this instance, Europe has been chosen, as this is the region applicable to Great Britain.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settimezone-083.png|thumb|left|375px]]
+
+
+'''Select your time zone'''. This is understaken by highlighting the appropriate capital city. In this instance, London has been chosen, as this is appropriate to the time zone of Great Britain.
+
+{{tip| As there are a lot of cities to chose from, you can skip forwards in the menu by entering the first letter of the appropriate city, which will take you to the first listed city beginning with that letter. For example, to skip closer to London, press 'L', which will highlight Lisbon, the first city in the list to begin with that letter.}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setdate-083.png|thumb|left|375px]]
+
+
+'''Set the date'''. If you are already connected to the internet, then this should already be set for you. Otherwise, use the &lt;tab&gt; key to switch between the day, month, and year elements, and use the up or down arrow keys to change them.
+
+Ensure that '''OK''' is highlighted, and press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settime-083.png|thumb|left|375px]]
+
+
+'''Finally, set the time'''. Again, if you are already connected to the internet, then this should already be set for you. Otherwise, use the &lt;tab&gt; key to switch between the hours, minutes, and seconds elements, and use the up or down arrow keys to change them.
+
+Ensure that '''OK''' is highlighted, and press &lt;enter&gt; to be taken back to the main installation menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Preparing the Hard Disk =
+
+[[File: discprep-083.png|thumb|left|375px]]
+
+
+'''Prepare your computer's hard disk for installation'''. Again, in this tutorial the assisted preparation method will be chosen, which is most suitable for beginners. 
+
+Ensure that '''Disk(s) Preparation''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: APoption-083.png|thumb|left|375px]]
+
+
+Ensure that '''Assisted Preparation (erases the whole disk)''' is highlighted. As the option would suggest, this '''will''' erase your entire hard disk. Make sure you have backed your files up somewhere (e.g. disc, USB flash drive, internet, etc.).
+
+{{note| The space to be set aside on your hard disk for each step of this stage is measured in megabytes (MB). It is also important to keep in mind how much hard disk space you have remaining for each step. In this tutorial, the total hard disk space being used is 40,960MB (40 gigabytes / GB).}}
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the GRUB''' ('''GR'''and '''U'''nified '''B'''ootloader). This is responsible for booting up Manjaro after your computer is turned on. The default value of 512MB is actually quite generous - far more than sufficient - and is intended to ensure that users can comfortably install and use '''[[Manjaro Kernels|multiple kernels]]''', if desired.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: swapsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the Swap Partition'''. Should your computer run out of memory (RAM) while it is being used, the hard drive can be used to compensate as a form of virtual RAM. This is what the ''Swap Partition'' is for. 
+
+Generally speaking, the size of the Swap Partition should be equal to the amount of memory (RAM) used by your computer. In this example, a value of 2,000MB (2GB) has been allocated to the Swap Partition as the computer system it is being installed on also uses 2,000MB (2GB) of memory.
+
+Once you have set the size of your Swap Partition, Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+ 
+
+[[File: rootsize-083.png|thumb|left|375px]]
+
+
+'''Set the amount of hard disk space for the Root Partition'''. This is where Manjaro itself will be stored (i.e. all its system files). This is also where your installed applications will be stored. The default value of 6,400MB (6.4GB) is quite small, particularly as a lot of this space will be immediately taken up by Manjaro itself upon installation. This will not leave much room to install any new software.
+
+Where possible - and assuming the hard disk space is available - it is recommended to set the value of the Root Partition to at least 15-20,000MB (15-20GB). Just ensure that this leaves plenty of space for your '''Home Partition''', which which where all your personal files (e.g. documents, videos, images, music, etc.) will be stored. In this example, of the 38,400MB (38GB) available on the hard disk, 15,000MB (15GB) has been allocated to the Root Partition.
+
+Once you have set the size of your Root Partition, press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: homesize-083.png|thumb|left|375px]]
+
+
+'''Confirm the amount of hard disk space for the Home Partition'''. 15GB of the available 38GB hard-disk space has already been allocated to the Root partition, so as confirmed by the installer, the remaining 23,400MB (23GB) has been automatically allocated to the ''Home partition''. Again, the ''Home partition'' is where all your personal files (including Virtual Disk Images, if you use Virtualbox) will be stored.
+
+If you are not happy with the amount of space allocated, highlight '''No''' and press &lt;enter&gt; to go back and re-allocate the amount of space desired for your root partition. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: filesystem-083.png|thumb|left|375px]]
+
+
+'''Set the file system to manage your files'''. Different file systems can handle different file sizes, numbers of files, and so on. If you are unsure which file system to choose, as illustrated, '''it is recommend that you highlight [http://en.wikipedia.org/wiki/Ext4 ext4] as this is one of the latest and perhaps most widely used Linux file systems.'''
+
+Press &lt;enter&gt; to continue
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: fsystemconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirm your selected file system'''. If you wish to review or perhaps change your selection, highlight '''No''' and press &lt;enter&gt; to be taken back to the list of available file systems. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to proceed with the assisted preparation.''' A warning will now appear that proceeding will result in your hard disk (referred to as /dev/sda) being completely erased. If you do not wish to continue, highlight '''No''' and press &lt;enter&gt; to be taken back to the hard disk preparation menu. Otherwise, ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepfinished-083.png|thumb|left|375px]]
+
+
+The installer will take a few moments to set up your hard disk (and in the process, completely erase any data that was previously stored on it). Once complete, the illustrated confirmation message will appear.
+
+Press &lt;enter&gt; to confirm and to be taken back to the hard disk preparation menu.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: pewgoback-083.png|thumb|left|375px]]
+
+
+'''Go back to the Main Menu'''. As this step has been completed, highlight '''Main menu''' and press &lt;enter&gt; to be taken back to the installer's main menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Manjaro =
+
+[[File: installoption-083.png|thumb|left|375px]]
+
+
+Ensure that '''Install System''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installprogress-083.png|thumb|left|375px]]
+
+
+The installation process will start automatically. A progress bar will be displayed to chart the progress of the installation itself.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installcomplete-083.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear confirming Manjaro has been successfully installed.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: autoconfigure-083.png|thumb|left|375px]]
+
+
+The installer will now automatically configure your system, detect your hardware, and install the appropriate drivers. It will also find the available Manjaro servers from which you will be able to download updates, software packages, and applications. Please be patient, as this process may take a minute or two.
+
+{{warning|Manjaro will not be able to find the available servers unless you are connected to the internet.}}
+
+Once complete, you will automatically be returned back to the installer's Main menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring Manjaro =
+
+[[File: configureoption-083.png|thumb|left|375px]]
+
+
+'''It will now be necessary to personalise Manjaro by configuring a few key things'''. Don't worry about this as there will be no need for any technical expertise or to manually edit any configuration files. The process will be quick and painless!
+
+Ensure that '''Configure System''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Root Password ===
+
+[[File: rootpassword-083.png|thumb|left|375px]]
+
+
+'''Set the Root password'''. In a nutshell, Root is a standard user account included in Linux distributions by default that has full and unrestricted access to the system. A Root account is necessary to have in order to install, change, and remove system files.
+
+Ensure that '''Change Root Password''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enterroot-083.png|thumb|left|375px]]
+
+
+'''Type in your chosen Root password'''. You can enter just about anything you like.
+
+{{tip| Passwords will be case sensitive. To use the password later on, the upper and lower case letters will have to match exactly. Oh, and use a password you'll be able to remember!}}
+
+Once complete, ensuring that '''OK''' is highlighted, press &lt;enter&gt; to continue. You will then have to re-enter the Root password again to confirm it. Once again, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== User Account ===
+
+[[File: setupuser-083.png|thumb|left|375px]]
+
+
+'''Set up your own personal user account'''. To protect the system, you will not be expected to use the system as a Root user at all times. As such, you should also create your own personal account.
+
+Ensure that '''Setup user account(s)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enteruser-083.png|thumb|left|375px]]
+
+
+Type in your chosen account / login name. The default name is ''manjaro'', which can be changed by deleting it and replacing it with your own. In this instance, the username ''carl'' has been entered.
+
+{{warning| Although you can enter almost anything you like, '''ensure that any and all letters in the name are in lower case'''.}}
+
+When finished, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: usersudo-083.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to get sudo rights'''. Sudo is short for ''''S'''uper '''U'''ser '''Do'''', and means that your own account will be granted the same system privileges as the Root account. That way, you will not have to switch to the Root account to undertake certain tasks, such as adding or removing system files or software applications. However, undertaking such tasks using your personal account will require you to enter your password to continue, which will be set up next.
+
+Ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: sudopass-083.png|thumb|left|375px]]
+
+
+'''Type in your chosen password for your own personal account'''. Again, you can enter just about anything you like.
+
+{{tip| To keep things simple, you can just type the same password used for the Root account.}}
+
+Once complete, ensuring that '''OK''' is highlighted, press &lt;enter&gt; to continue. You will then have to re-enter your password again to confirm it. Once again, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Locale (optional) ===
+
+[[File: setlocale-083.png|thumb|left|375px]]
+
+
+'''Set your preferred language'''.
+
+If you were able to set your preferred language at the beginning, then you can '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)|skip this step]]'''. Otherwise, ensure that '''Change locale (optional)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlocalemenu-083.png|thumb|left|375px]]
+
+
+Confirm that you wish to set your preferred language by ensuring that '''Set Locale''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectlocale-083.png|thumb|left|375px]]
+
+
+A list of codes will be presented that begin with two lower case letters, followed by two UPPER CASE letters. The lower case letters stand for the language, and the upper case letters stand for the country: language_COUNTRY. 
+
+For example, ''en_GB'' stands for '''English, Great Britain''' and en_US stands for '''English, United States'''. If you are not sure what code represents your language and country, a small selection of examples are available [http://www.fincher.org/Utilities/CountryLanguageList.shtml here] (ignore the use of dashes ''''-'''' instead of underscores ''''_''''). 
+
+The UTF-8 and ISO parts of each line represent the character encoding schemes used by the system. Although it is not important to know this part, '''try to pick a code that ends in &lt;u&gt;UTF-8&lt;/u&gt; if possible'''.
+
+Once you have highlighted your desired code, press &lt;enter&gt; to set it and be taken back to the locale menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitlocale-083.png|thumb|left|375px]]
+
+
+Return to the configuration menu my highlighting '''Return to Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Keymap (optional) ===
+
+[[File: setkeymapmenu-083.png|thumb|left|375px]]
+
+
+'''Set your preferred keyboard layout'''.
+
+If you were able to set your preferred keyboard layout at the beginning, then you can '''[[Installation_Guide_for_Beginners_0.8.3#Exit_the_Configuration_Menu|skip this step]]'''. Otherwise, ensure that '''Change vconsole keymap (optional)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymapmenu-083.png|thumb|left|375px]]
+
+
+Confirm that you wish to set your preferred language by ensuring that '''Set Keymap''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymap-083.png|thumb|left|375px]]
+
+
+A list of codes will be presented, representing the various different keyboard layouts available. If you do not know the necessary code for your keyboard layout, then it may be necessary to undertake a Google search to determine this. In this instance, for illustrative purposes, the code '''uk.map.gz''' has been selected, as this is the appropriate code for the keyboard layout used in the United Kingdom / Great Britain.
+
+Once you have highlighted your desired code, press &lt;enter&gt; to set it and be taken back to the keymap menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitkeymap-083.png|thumb|left|375px]]
+
+
+Return to the configuration menu by highlighting '''Return to Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Exit the Configuration Menu ===
+
+[[File: exitconfig-083.png|thumb|left|375px]]
+
+
+With the configuration complete, exit from the configuration menu by highlighting '''Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-083.png|thumb|left|375px]]
+
+
+It will then be necessary to wait a few moments while the Manjaro installation is automatically configured according to your preferences. Once complete, you will automatically be taken back to the Main Menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing the Bootloader =
+
+[[File: bootloaderoption-083.png|thumb|left|375px]]
+
+
+'''Finally, install the GRUB'''. Again, the GRUB ('''GR'''and '''U'''nified '''B'''ootloader) is responsible for booting up (i.e. starting) Manjaro when you turn your computer on.
+
+Ensure that '''Install Bootloader''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installGRUB-083.png|thumb|left|375px]]
+
+
+Ensure that '''Install GRUB2 (needed to boot)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBconfirm-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear, stating the target partition (place on your hard disk) where GRUB2 is to be installed. The default setting is fine.
+
+Press &lt;enter&gt; to start the installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBinstalled-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear after a few seconds, stating that GRUB2 has been successfully installed.
+
+Press &lt;enter&gt; to be taken back to the main installer menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Installation =
+
+[[File: QuitInstaller-083.png|thumb|left|375px]]
+
+
+All done - now highlight '''Quit''' to finish the installation!
+
+Press &lt;enter&gt; to continue. 
+
+The installer will then take a few moments to finalise the installation. A confirmation message will then appear, stating that the installation process has finished. The installer will then automatically close, and you will be returned to the desktop environment.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: restartManjaro-083.png|thumb|left|375px]]
+
+
+You can now reboot your computer to start your newly installed Manjaro operating system! There is no need to remove the installation media just yet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: existingOS-083.png|thumb|left|375px]]
+
+
+Upon rebooting, you may either:
+
+1. manually eject or remove the installation media just as your computer starts, or 
+
+2. simply select the '''Boot an Existing OS''' option and press &lt;enter&gt; to start the new installation. Once booted, you may then safely remove the installation media.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: login-083.png|thumb|left|375px]]
+
+
+{{tip|The UK server will be set by default to provide software applications and updates, so changing the server location or even finding the fastest one is worthwhile, particularly if you reside in another country.}}
+
+Upon rebooting and logging into the freshly installed system, you may wish to undertake the following actions before anything else:
+
+
+'''1. [[Change to a Different Download Server]]''' or '''[[Rankmirrors_to_Set_the_Fastest_Download_Server|Find the Fastest Download Server]]'''
+
+'''2. [[Pacman-GUI#Updating_the_System|Update the System]]'''
+
+'''3. [[Arch User Repository|Enable Access to the Arch User Repositories]]'''
+
+'''4. [[Printer Configuration|Add Printers]]'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for Beginners 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>0a22vhfdp8mgml6mrf5oi9cdl5udjsm</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4527</id>
+      <parentid>4524</parentid>
+      <timestamp>2013-01-09T19:29:44Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="27899">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement Rolling Release''. En tant que telle, une installation existante est maintenue à jour et est toujours identique à la dernière version. Plus d'informations peuvent être trouvées dans cet article de notre Blog: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{Astuce|Un guide '''[[Virtualbox]]''' est fourni pour ceux qui souhaitent installer Manjaro dans un environnement de machine virtuelle.}}
+
+
+Ce '''guide pour débutants''' est idéal pour ceux ayant des connaissances techniques et une expérience limitées. Dans ce cas, il ne sera pas nécessaire de partitionner manuellement le disque dur de votre ordinateur ou de modifier manuellement des fichiers de configuration différents. '''Cependant, l'utilisation de ce guide provoquera l'effacement complet de votre disque dur pendant le processus d'installation.''' Manjaro sera installé seul. Vous ne serez pas en mesure de configurer Manjaro pour permettre l'utilisation de plusieurs langues, bien que cette fonctionnalité puisse encore être activée après l'installation, si vous le souhaitez.
+
+Le '''[[Guide_d'installation_de_manjaro_0.8.3_Expert|Guide d'installation de manjaro 0.8.3 Expert]]''' est plus adapté aux personnes ayant de l'expérience ou tout au moins à l'aise avec l'idée de partitionnement manuel de leurs disques durs et de modification manuelle des fichiers de configuration nécessaires. L'utilisation de ce guide offrira la possibilité de dual-boot avec un autre système d'exploitation, l'activation de fonctionnalités telles que le support de plusieurs langues, et le réglage fin de Manjaro selon vos préférences personnelles.
+
+Lorsque cela est possible, '''assurez-vous que vous êtes connecté à Internet''' avant de démarraer à partir du support d'installation (par exemple, CD/DVD, lecteur flash USB, ou même directement depuis un fichier ISO si vous avez démarré dans Oracle Virtualbox). Si vous avez une connexion filaire via un câble Ethernet, Manjaro se connectera automatiquement à Internet sans que vous ayez à faire quoi que ce soit. Sinon, une fois arrivé sur le bureau de Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil.
+
+
+= Pré-installation: configuration de la langue et de la disposition de clavier =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Une fois Manjaro démarré, vous devriez voir s'afficher l'écran de démarrage Manjaro. Cependant, ne démarrez pas quoi que ce soit, pas encore! D'abord, il sera nécessaire de choisir '''votre langue''' et '''votre clavier'''. Bien que les avantages de l'utilisation de votre langue principale et de votre disposition du clavier pour l'installation elle-même puissent paraître évidents, la définition de ceux-ci vont aussi rendre  beaucoup plus rapide et plus facile la configuration de votre système installé.
+
+Ne vous inquiétez pas si votre langue préférée ou votre clavier ne sont pas disponibles dans la liste, un éventail beaucoup plus large de langues est disponible et permet leur sélection lors de l'installation elle-même, si nécessaire.
+
+{{Astuce|Le réglage de la langue et de la configuration du clavier - comme indiqué ci-dessous - sont effectués en appuyant sur une des touches de fonction (Fx). Comme nombre d'ordinateurs ont de multiples fonctions attribuées à chaque touche de fonction, il peut être nécessaire d'appuyer sur une autre touche avant de les utiliser. Par exemple, sur un ordinateur portable HP G62, pour utiliser les touches de fonction, la touche «Fn» doit d'abord être maintenue enfoncée.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''Choisissez d'abord votre langue en appuyant sur la touche F2'''. Les options disponibles peuvent être mises en surbrillance en vue de sélection grâce aux touches flèches haut et bas de votre clavier. Ici, l'anglais britannique a été mis en surbrillance pour l'utilisateur.
+
+{{Astuce|toutes les langues prises en charge peuvent ne pas être initialement toutes indiqués dans la liste. Continuez le défilement vers le bas après «roumain» pour voir quelques langues supplémentaires prises en charge, y compris le turc.}}
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Ensuite, définissez votre clavier préféré (keymap) en appuyant sur la touche F3'''. Encore une fois, les options disponibles peuvent être mis en évidence pour la sélection en utilisant les touches fléchées haut et bas de votre clavier. Ici, l'''anglais GB'' (Grande-Bretagne) a été mis en surbrillance pour l'utilisateur.
+
+{{Astuce|Encore une fois, toutes les langues prises en charge peuvent ne pas être initialement indiquées dans la liste, donc faites encore défiler après «Polish», de façon à voir d'autres claviers supplémentaires.}}
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+Une fois ces premiers préparatifs terminés, Manjaro peut maintenant être démarré pour commencer le processus d'installation. Deux options principales sont disponibles:
+
+: '''1. Boot Manjaro Linux''' - démarre en utilisant les pilotes graphiques libre / open-source développés par la communauté Linux.
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - démarre en utilisant les pilotes graphiques propriétaires (c.-à-d. développés et propriété des fabricants de cartes graphiques).
+
+{{Astuce|Pour de meilleurs résultats, sélectionnez l'option «Boot Manjaro Linux with non-free graphics drivers». Ça doit correspondre au pilote correct du fabricant de votre carte graphique spécifique.}}
+
+Dans notre cas, Manjaro est démarré en utilisant l'option pilote graphique non libre. Ici encore, utilisez les touches fléchées pour mettre en surbrillance votre choix, puis appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-083.png|thumb|left|375px]] 
+
+
+Comme on le voit ici, Manjaro 0.8.3 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la variante (c-à-d environnement de bureau) Manjaro que vous ayez choisi d'installer, l'installation elle-même sera toujours identique.
+
+{{Astuce|Si vous souhaitez vous connecter à Internet en utilisant une connexion sans fil, c'est maintenant le moment de le faire!}}
+
+Pour commencer le processus d'installation, fermez la fenêtre de bienvenue, puis double-cliquez sur l'icône «Manjaro CLI Installer».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Démarrage du programme d'installation stable =
+
+[[File: clistart-083.png|thumb|left|375px]]
+
+
+Le programme d'installation commence par signaler qu'il existe deux versions d'installateur disponibles: '''le programme d'installation stable''' et '''l'installation de test'''. Ce guide utilise le programme d'installation stable.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-083.png|thumb|left|375px]]
+
+
+'''Sélectionnez le programme d'installation stable'''. Cette option devrait déjà être mise en surbrillance. Sinon, utilisez les touches fléchées pour la mettre en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: stableconfirm-083.png|thumb|left|375px]]
+
+
+Un message de confirmation s'affiche, indiquant que le programme d'installation stable a commencé. Il fournit également un bon conseil: '''Suivez les étapes DANS L'ORDRE.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Réglage de la date et de l'heure =
+
+[[File: SetDateTime-083.png|thumb|left|375px]]
+
+
+'''Le réglage de la date et de l'heure''' devrait déjà être mis en surbrillance. Si non, utiliser les touches fléchées pour le faire.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: utc-083.png|thumb|left|375px]]
+
+
+Assurez-vous que l''''UTC''' (Temps universel coordonné - l'heure normale primaire à partir de laquelle le monde règle ses horloges et ses heures) est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setregion-083.png|thumb|left|375px]]
+
+
+'''Sélectionnez la région où vous vivez'''. Dans notre cas, l'Europe a été choisie, car c'est la région correspondant à la France.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settimezone-083.png|thumb|left|375px]]
+
+
+'''Sélectionnez votre fuseau horaire'''. Ceci est réalisé en mettant en surbrillance la capitale appropriée. Pour la France, choisissez Paris.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setdate-083.png|thumb|left|375px]]
+
+
+'''Réglez la date'''. Si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases jour, mois et année, et utilisez les flèches haut ou bas pour les modifier.
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settime-083.png|thumb|left|375px]]
+
+
+'''Enfin, réglez l'heure'''. Encore une fois, si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases heures, minutes et secondes, et utilisez les flèches haut ou vers le bas flèches pour les modifier. 
+
+Assurez-vous que '''OK''' est mise en surbrillance, puis appuyez sur &lt;Entrée&gt; pour être ramené au menu principal d'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Préparation du disque dur =
+
+[[File: discprep-083.png|thumb|left|375px]]
+
+
+'''Préparer le disque dur de votre ordinateur pour l'installation.''' Là encore, dans ce tutoriel, la méthode de préparation assistée sera choisie, qui est la plus appropriée pour les débutants. 
+
+Assurez-vous que '''Disk(s) Preparation''' est mise en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: APoption-083.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Assisted Preparation (erases the whole disk)''' est mise en surbrillance. Comme l'option le suggère, '''ceci va effacer tout votre disque dur.''' Assurez-vous que vous avez sauvegardé vos fichiers quelque part (par exemple sur un disque, un lecteur flash USB, Internet, etc.).
+
+{{note| L'espace réservé sur votre disque dur pour chaque étape de cette phase est mesurée en méga-octets (Mo). Il est également important de garder à l'esprit combien d'espace de disque dur il vous reste à chaque étape. Dans ce tutoriel, l'espace disque total utilisé est 40.960 MB (40 gigaoctets / GB).}}
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootsize-083.png|thumb|left|375px]]
+
+
+'''Réglez la quantité d'espace disque dur pour le GRUB''' ('''GR'''and '''U'''nified '''B'''ootloader). Il est chargé de démarrer Manjaro après la mise sous tension de votre ordinateur. La valeur par défaut de 512 Mo est plus que suffisante - beaucoup plus que suffisante - et vise à faire en sorte que les utilisateurs puissent facilement installer et utiliser plusieurs noyaux, si désiré.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: swapsize-083.png|thumb|left|375px]]
+
+
+'''Réglez la quantité d'espace disque dur pour la partition de swap.''' Si votre ordinateur manque de mémoire vive (RAM) lors de son utilisation, le disque dur peut être utilisé pour y suppléer, comme une forme de mémoire virtuelle. C'est à ça que sert la ''partition de swap''. 
+
+De manière générale, la taille de la partition de swap doit être égale à la quantité de mémoire vive (RAM) utilisée par votre ordinateur. Dans cet exemple, une valeur de 2.000 Mo (2 Go) a été allouée à la partition de swap étant donné que le système informatique en cours d'installation utilise lui aussi 2.000 Mo (2 Go) de mémoire.
+
+Dès que vous avez défini la taille de votre partition de swap, appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+ 
+
+[[File: rootsize-083.png|thumb|left|375px]]
+
+
+'''Réglez la quantité d'espace disque dur pour la partition racine (root).''' C'est là que Manjaro elle-même sera stockée (c.-à-d. tous les fichiers du système). C'est là aussi que vos applications installées seront stockées. La valeur par défaut de 6.400 Mo (6,4 Go) est assez faible, d'autant plus que beaucoup de cet espace sera immédiatement repris par Manjaro lui-même lors de l'installation. Ça ne laissera pas beaucoup de place pour installer un nouveau logiciel.
+
+Lorsque cela est possible - et en supposant que l'espace disque soit disponible - il est recommandé de définir la valeur de la partition racine au moins à 15.000-20.000 MB (15-20 Go). Assurez-vous simplement que cela laisse beaucoup d'espace pour votre '''partition Home''', qui est celle où tous vos fichiers personnels (documents, vidéos, images, musique, etc...) seront stockés. Dans cet exemple, sur les 38.400 Mo (38 Go) disponibles sur le disque dur, 15.000 MB (15 Go) ont  été alloués à la partition racine.
+
+Une fois définie la taille de votre partition racine, appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: homesize-083.png|thumb|left|375px]]
+
+
+'''Confirmez la quantité d'espace disque dur pour la partition Home.''' 15 Go de l'espace disque disponible de 38 Go ont déjà été alloués à la partition racine, de sorte que, comme le confirme l'installateur, les 23.400 restants Mo (23 Go) ont été automatiquement affectés à la ''partition Home'' (partition d'accueil). Encore une fois, la ''partition d'Home'' est l'endroit où tous vos fichiers personnels (y compris les images du disque virtuel, si vous utilisez VirtualBox) seront stockés.
+
+Si vous n'êtes pas satisfait de la quantité d'espace allouée, mettez en surbrillance '''No''' et appuyez sur &lt;Entrée&gt; pour revenir en arrière et ré-allouer la quantité d'espace souhaitée pour votre partition racine. Dans le cas contraire, assurez-vous que '''Yes''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: filesystem-083.png|thumb|left|375px]]
+
+
+'''Choisissez le système de fichiers pour gérer vos fichiers.''' Différents systèmes de fichiers peuvent traiter tous les formats de fichiers différents, le nombre de fichiers, et ainsi de suite. Si vous ne savez pas quel système de fichiers choisir, comme illustré, '''il est recommandé que vous mettiez en surbrillance ext4 car c'est l'un des derniers et peut-être des plus largement utilisés systèmes de fichiers Linux.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: fsystemconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirmez le système de fichiers sélectionné.''' Si vous désirez revoir ou peut-être modifier vos choix, mettez en surbrillance '''No''' et appuyez sur &lt;Entrée&gt; pour revenir à la liste des systèmes de fichiers disponibles. Dans le cas contraire, assurez-vous que '''Yes''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirmez que vous souhaitez procéder à la préparation assistée.''' Un message d'avertissement apparaîtra vous indiquant que  cette procédure entraînera l'effacement complet de votre disque dur (nommé /dev/sda). Si vous ne souhaitez pas continuer, mettez en surbrillance '''No''' et appuyez sur &lt;Entrée&gt; pour revenir au menu de préparation du disque dur. Dans le cas contraire, assurez-vous que '''Yes''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepfinished-083.png|thumb|left|375px]]
+
+
+Le programme d'installation va prendre quelques instants pour configurer votre disque dur (et, dans le processus, effacer complètement toutes les données précédemment stockées sur celui-ci). Une fois terminé, un message de confirmation apparaîtra.
+
+Appuyez sur &lt;Entrée&gt; pour confirmer et être ramené à la préparation du menu du disque dur.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: pewgoback-083.png|thumb|left|375px]]
+
+
+'''Retour à la page du menu principal.''' Comme cette étape est terminée, mettez en surbrillance '''menu principal''' et appuyez sur &lt;Entrée&gt; pour être ramené au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Manjaro =
+
+[[File: installoption-083.png|thumb|left|375px]]
+
+
+Ensure that '''Install System''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installprogress-083.png|thumb|left|375px]]
+
+
+The installation process will start automatically. A progress bar will be displayed to chart the progress of the installation itself.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installcomplete-083.png|thumb|left|375px]]
+
+
+After a few moments, a message will appear confirming Manjaro has been successfully installed.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: autoconfigure-083.png|thumb|left|375px]]
+
+
+The installer will now automatically configure your system, detect your hardware, and install the appropriate drivers. It will also find the available Manjaro servers from which you will be able to download updates, software packages, and applications. Please be patient, as this process may take a minute or two.
+
+{{warning|Manjaro will not be able to find the available servers unless you are connected to the internet.}}
+
+Once complete, you will automatically be returned back to the installer's Main menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring Manjaro =
+
+[[File: configureoption-083.png|thumb|left|375px]]
+
+
+'''It will now be necessary to personalise Manjaro by configuring a few key things'''. Don't worry about this as there will be no need for any technical expertise or to manually edit any configuration files. The process will be quick and painless!
+
+Ensure that '''Configure System''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Root Password ===
+
+[[File: rootpassword-083.png|thumb|left|375px]]
+
+
+'''Set the Root password'''. In a nutshell, Root is a standard user account included in Linux distributions by default that has full and unrestricted access to the system. A Root account is necessary to have in order to install, change, and remove system files.
+
+Ensure that '''Change Root Password''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enterroot-083.png|thumb|left|375px]]
+
+
+'''Type in your chosen Root password'''. You can enter just about anything you like.
+
+{{tip| Passwords will be case sensitive. To use the password later on, the upper and lower case letters will have to match exactly. Oh, and use a password you'll be able to remember!}}
+
+Once complete, ensuring that '''OK''' is highlighted, press &lt;enter&gt; to continue. You will then have to re-enter the Root password again to confirm it. Once again, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== User Account ===
+
+[[File: setupuser-083.png|thumb|left|375px]]
+
+
+'''Set up your own personal user account'''. To protect the system, you will not be expected to use the system as a Root user at all times. As such, you should also create your own personal account.
+
+Ensure that '''Setup user account(s)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enteruser-083.png|thumb|left|375px]]
+
+
+Type in your chosen account / login name. The default name is ''manjaro'', which can be changed by deleting it and replacing it with your own. In this instance, the username ''carl'' has been entered.
+
+{{warning| Although you can enter almost anything you like, '''ensure that any and all letters in the name are in lower case'''.}}
+
+When finished, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: usersudo-083.png|thumb|left|375px]]
+
+
+'''Confirm that you wish to get sudo rights'''. Sudo is short for ''''S'''uper '''U'''ser '''Do'''', and means that your own account will be granted the same system privileges as the Root account. That way, you will not have to switch to the Root account to undertake certain tasks, such as adding or removing system files or software applications. However, undertaking such tasks using your personal account will require you to enter your password to continue, which will be set up next.
+
+Ensure that '''Yes''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: sudopass-083.png|thumb|left|375px]]
+
+
+'''Type in your chosen password for your own personal account'''. Again, you can enter just about anything you like.
+
+{{tip| To keep things simple, you can just type the same password used for the Root account.}}
+
+Once complete, ensuring that '''OK''' is highlighted, press &lt;enter&gt; to continue. You will then have to re-enter your password again to confirm it. Once again, ensure that '''OK''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Locale (optional) ===
+
+[[File: setlocale-083.png|thumb|left|375px]]
+
+
+'''Set your preferred language'''.
+
+If you were able to set your preferred language at the beginning, then you can '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)|skip this step]]'''. Otherwise, ensure that '''Change locale (optional)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlocalemenu-083.png|thumb|left|375px]]
+
+
+Confirm that you wish to set your preferred language by ensuring that '''Set Locale''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectlocale-083.png|thumb|left|375px]]
+
+
+A list of codes will be presented that begin with two lower case letters, followed by two UPPER CASE letters. The lower case letters stand for the language, and the upper case letters stand for the country: language_COUNTRY. 
+
+For example, ''en_GB'' stands for '''English, Great Britain''' and en_US stands for '''English, United States'''. If you are not sure what code represents your language and country, a small selection of examples are available [http://www.fincher.org/Utilities/CountryLanguageList.shtml here] (ignore the use of dashes ''''-'''' instead of underscores ''''_''''). 
+
+The UTF-8 and ISO parts of each line represent the character encoding schemes used by the system. Although it is not important to know this part, '''try to pick a code that ends in &lt;u&gt;UTF-8&lt;/u&gt; if possible'''.
+
+Once you have highlighted your desired code, press &lt;enter&gt; to set it and be taken back to the locale menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitlocale-083.png|thumb|left|375px]]
+
+
+Return to the configuration menu my highlighting '''Return to Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Keymap (optional) ===
+
+[[File: setkeymapmenu-083.png|thumb|left|375px]]
+
+
+'''Set your preferred keyboard layout'''.
+
+If you were able to set your preferred keyboard layout at the beginning, then you can '''[[Installation_Guide_for_Beginners_0.8.3#Exit_the_Configuration_Menu|skip this step]]'''. Otherwise, ensure that '''Change vconsole keymap (optional)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymapmenu-083.png|thumb|left|375px]]
+
+
+Confirm that you wish to set your preferred language by ensuring that '''Set Keymap''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymap-083.png|thumb|left|375px]]
+
+
+A list of codes will be presented, representing the various different keyboard layouts available. If you do not know the necessary code for your keyboard layout, then it may be necessary to undertake a Google search to determine this. In this instance, for illustrative purposes, the code '''uk.map.gz''' has been selected, as this is the appropriate code for the keyboard layout used in the United Kingdom / Great Britain.
+
+Once you have highlighted your desired code, press &lt;enter&gt; to set it and be taken back to the keymap menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitkeymap-083.png|thumb|left|375px]]
+
+
+Return to the configuration menu by highlighting '''Return to Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Exit the Configuration Menu ===
+
+[[File: exitconfig-083.png|thumb|left|375px]]
+
+
+With the configuration complete, exit from the configuration menu by highlighting '''Main Menu'''.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-083.png|thumb|left|375px]]
+
+
+It will then be necessary to wait a few moments while the Manjaro installation is automatically configured according to your preferences. Once complete, you will automatically be taken back to the Main Menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing the Bootloader =
+
+[[File: bootloaderoption-083.png|thumb|left|375px]]
+
+
+'''Finally, install the GRUB'''. Again, the GRUB ('''GR'''and '''U'''nified '''B'''ootloader) is responsible for booting up (i.e. starting) Manjaro when you turn your computer on.
+
+Ensure that '''Install Bootloader''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installGRUB-083.png|thumb|left|375px]]
+
+
+Ensure that '''Install GRUB2 (needed to boot)''' is highlighted.
+
+Press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBconfirm-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear, stating the target partition (place on your hard disk) where GRUB2 is to be installed. The default setting is fine.
+
+Press &lt;enter&gt; to start the installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBinstalled-083.png|thumb|left|375px]]
+
+
+A confirmation message will appear after a few seconds, stating that GRUB2 has been successfully installed.
+
+Press &lt;enter&gt; to be taken back to the main installer menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Installation =
+
+[[File: QuitInstaller-083.png|thumb|left|375px]]
+
+
+All done - now highlight '''Quit''' to finish the installation!
+
+Press &lt;enter&gt; to continue. 
+
+The installer will then take a few moments to finalise the installation. A confirmation message will then appear, stating that the installation process has finished. The installer will then automatically close, and you will be returned to the desktop environment.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: restartManjaro-083.png|thumb|left|375px]]
+
+
+You can now reboot your computer to start your newly installed Manjaro operating system! There is no need to remove the installation media just yet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: existingOS-083.png|thumb|left|375px]]
+
+
+Upon rebooting, you may either:
+
+1. manually eject or remove the installation media just as your computer starts, or 
+
+2. simply select the '''Boot an Existing OS''' option and press &lt;enter&gt; to start the new installation. Once booted, you may then safely remove the installation media.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: login-083.png|thumb|left|375px]]
+
+
+{{tip|The UK server will be set by default to provide software applications and updates, so changing the server location or even finding the fastest one is worthwhile, particularly if you reside in another country.}}
+
+Upon rebooting and logging into the freshly installed system, you may wish to undertake the following actions before anything else:
+
+
+'''1. [[Change to a Different Download Server]]''' or '''[[Rankmirrors_to_Set_the_Fastest_Download_Server|Find the Fastest Download Server]]'''
+
+'''2. [[Pacman-GUI#Updating_the_System|Update the System]]'''
+
+'''3. [[Arch User Repository|Enable Access to the Arch User Repositories]]'''
+
+'''4. [[Printer Configuration|Add Printers]]'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for Beginners 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>50rxb1k6bweks7hlw7cqmreftvhypp9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4530</id>
+      <parentid>4527</parentid>
+      <timestamp>2013-01-09T19:43:51Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="29291">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement Rolling Release''. En tant que telle, une installation existante est maintenue à jour et est toujours identique à la dernière version. Plus d'informations peuvent être trouvées dans cet article de notre Blog: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{Astuce|Un guide '''[[Virtualbox]]''' est fourni pour ceux qui souhaitent installer Manjaro dans un environnement de machine virtuelle.}}
+
+
+Ce '''guide pour débutants''' est idéal pour ceux ayant des connaissances techniques et une expérience limitées. Dans ce cas, il ne sera pas nécessaire de partitionner manuellement le disque dur de votre ordinateur ou de modifier manuellement des fichiers de configuration différents. '''Cependant, l'utilisation de ce guide provoquera l'effacement complet de votre disque dur pendant le processus d'installation.''' Manjaro sera installé seul. Vous ne serez pas en mesure de configurer Manjaro pour permettre l'utilisation de plusieurs langues, bien que cette fonctionnalité puisse encore être activée après l'installation, si vous le souhaitez.
+
+Le '''[[Guide_d'installation_de_manjaro_0.8.3_Expert|Guide d'installation de manjaro 0.8.3 Expert]]''' est plus adapté aux personnes ayant de l'expérience ou tout au moins à l'aise avec l'idée de partitionnement manuel de leurs disques durs et de modification manuelle des fichiers de configuration nécessaires. L'utilisation de ce guide offrira la possibilité de dual-boot avec un autre système d'exploitation, l'activation de fonctionnalités telles que le support de plusieurs langues, et le réglage fin de Manjaro selon vos préférences personnelles.
+
+Lorsque cela est possible, '''assurez-vous que vous êtes connecté à Internet''' avant de démarraer à partir du support d'installation (par exemple, CD/DVD, lecteur flash USB, ou même directement depuis un fichier ISO si vous avez démarré dans Oracle Virtualbox). Si vous avez une connexion filaire via un câble Ethernet, Manjaro se connectera automatiquement à Internet sans que vous ayez à faire quoi que ce soit. Sinon, une fois arrivé sur le bureau de Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil.
+
+
+= Pré-installation: configuration de la langue et de la disposition de clavier =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Une fois Manjaro démarré, vous devriez voir s'afficher l'écran de démarrage Manjaro. Cependant, ne démarrez pas quoi que ce soit, pas encore! D'abord, il sera nécessaire de choisir '''votre langue''' et '''votre clavier'''. Bien que les avantages de l'utilisation de votre langue principale et de votre disposition du clavier pour l'installation elle-même puissent paraître évidents, la définition de ceux-ci vont aussi rendre  beaucoup plus rapide et plus facile la configuration de votre système installé.
+
+Ne vous inquiétez pas si votre langue préférée ou votre clavier ne sont pas disponibles dans la liste, un éventail beaucoup plus large de langues est disponible et permet leur sélection lors de l'installation elle-même, si nécessaire.
+
+{{Astuce|Le réglage de la langue et de la configuration du clavier - comme indiqué ci-dessous - sont effectués en appuyant sur une des touches de fonction (Fx). Comme nombre d'ordinateurs ont de multiples fonctions attribuées à chaque touche de fonction, il peut être nécessaire d'appuyer sur une autre touche avant de les utiliser. Par exemple, sur un ordinateur portable HP G62, pour utiliser les touches de fonction, la touche «Fn» doit d'abord être maintenue enfoncée.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''Choisissez d'abord votre langue en appuyant sur la touche F2'''. Les options disponibles peuvent être mises en surbrillance en vue de sélection grâce aux touches flèches haut et bas de votre clavier. Ici, l'anglais britannique a été mis en surbrillance pour l'utilisateur.
+
+{{Astuce|toutes les langues prises en charge peuvent ne pas être initialement toutes indiqués dans la liste. Continuez le défilement vers le bas après «roumain» pour voir quelques langues supplémentaires prises en charge, y compris le turc.}}
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Ensuite, définissez votre clavier préféré (keymap) en appuyant sur la touche F3'''. Encore une fois, les options disponibles peuvent être mis en évidence pour la sélection en utilisant les touches fléchées haut et bas de votre clavier. Ici, l'''anglais GB'' (Grande-Bretagne) a été mis en surbrillance pour l'utilisateur.
+
+{{Astuce|Encore une fois, toutes les langues prises en charge peuvent ne pas être initialement indiquées dans la liste, donc faites encore défiler après «Polish», de façon à voir d'autres claviers supplémentaires.}}
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+Une fois ces premiers préparatifs terminés, Manjaro peut maintenant être démarré pour commencer le processus d'installation. Deux options principales sont disponibles:
+
+: '''1. Boot Manjaro Linux''' - démarre en utilisant les pilotes graphiques libre / open-source développés par la communauté Linux.
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - démarre en utilisant les pilotes graphiques propriétaires (c.-à-d. développés et propriété des fabricants de cartes graphiques).
+
+{{Astuce|Pour de meilleurs résultats, sélectionnez l'option «Boot Manjaro Linux with non-free graphics drivers». Ça doit correspondre au pilote correct du fabricant de votre carte graphique spécifique.}}
+
+Dans notre cas, Manjaro est démarré en utilisant l'option pilote graphique non libre. Ici encore, utilisez les touches fléchées pour mettre en surbrillance votre choix, puis appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-083.png|thumb|left|375px]] 
+
+
+Comme on le voit ici, Manjaro 0.8.3 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la variante (c-à-d environnement de bureau) Manjaro que vous ayez choisi d'installer, l'installation elle-même sera toujours identique.
+
+{{Astuce|Si vous souhaitez vous connecter à Internet en utilisant une connexion sans fil, c'est maintenant le moment de le faire!}}
+
+Pour commencer le processus d'installation, fermez la fenêtre de bienvenue, puis double-cliquez sur l'icône «Manjaro CLI Installer».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Démarrage du programme d'installation stable =
+
+[[File: clistart-083.png|thumb|left|375px]]
+
+
+Le programme d'installation commence par signaler qu'il existe deux versions d'installateur disponibles: '''le programme d'installation stable''' et '''l'installation de test'''. Ce guide utilise le programme d'installation stable.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectstable-083.png|thumb|left|375px]]
+
+
+'''Sélectionnez le programme d'installation stable'''. Cette option devrait déjà être mise en surbrillance. Sinon, utilisez les touches fléchées pour la mettre en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: stableconfirm-083.png|thumb|left|375px]]
+
+
+Un message de confirmation s'affiche, indiquant que le programme d'installation stable a commencé. Il fournit également un bon conseil: '''Suivez les étapes DANS L'ORDRE.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Réglage de la date et de l'heure =
+
+[[File: SetDateTime-083.png|thumb|left|375px]]
+
+
+'''Le réglage de la date et de l'heure''' devrait déjà être mis en surbrillance. Si non, utiliser les touches fléchées pour le faire.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: utc-083.png|thumb|left|375px]]
+
+
+Assurez-vous que l''''UTC''' (Temps universel coordonné - l'heure normale primaire à partir de laquelle le monde règle ses horloges et ses heures) est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setregion-083.png|thumb|left|375px]]
+
+
+'''Sélectionnez la région où vous vivez'''. Dans notre cas, l'Europe a été choisie, car c'est la région correspondant à la France.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settimezone-083.png|thumb|left|375px]]
+
+
+'''Sélectionnez votre fuseau horaire'''. Ceci est réalisé en mettant en surbrillance la capitale appropriée. Pour la France, choisissez Paris.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: setdate-083.png|thumb|left|375px]]
+
+
+'''Réglez la date'''. Si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases jour, mois et année, et utilisez les flèches haut ou bas pour les modifier.
+
+Assurez-vous que '''OK''' est mis en surbrillance, puis appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: settime-083.png|thumb|left|375px]]
+
+
+'''Enfin, réglez l'heure'''. Encore une fois, si vous êtes déjà connecté à Internet, alors ce devrait déjà être configuré pour vous. Sinon, utilisez la touche de tabulation pour basculer entre les cases heures, minutes et secondes, et utilisez les flèches haut ou vers le bas flèches pour les modifier. 
+
+Assurez-vous que '''OK''' est mise en surbrillance, puis appuyez sur &lt;Entrée&gt; pour être ramené au menu principal d'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Préparation du disque dur =
+
+[[File: discprep-083.png|thumb|left|375px]]
+
+
+'''Préparer le disque dur de votre ordinateur pour l'installation.''' Là encore, dans ce tutoriel, la méthode de préparation assistée sera choisie, qui est la plus appropriée pour les débutants. 
+
+Assurez-vous que '''Disk(s) Preparation''' est mise en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: APoption-083.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Assisted Preparation (erases the whole disk)''' est mise en surbrillance. Comme l'option le suggère, '''ceci va effacer tout votre disque dur.''' Assurez-vous que vous avez sauvegardé vos fichiers quelque part (par exemple sur un disque, un lecteur flash USB, Internet, etc.).
+
+{{note| L'espace réservé sur votre disque dur pour chaque étape de cette phase est mesurée en méga-octets (Mo). Il est également important de garder à l'esprit combien d'espace de disque dur il vous reste à chaque étape. Dans ce tutoriel, l'espace disque total utilisé est 40.960 MB (40 gigaoctets / GB).}}
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootsize-083.png|thumb|left|375px]]
+
+
+'''Réglez la quantité d'espace disque dur pour le GRUB''' ('''GR'''and '''U'''nified '''B'''ootloader). Il est chargé de démarrer Manjaro après la mise sous tension de votre ordinateur. La valeur par défaut de 512 Mo est plus que suffisante - beaucoup plus que suffisante - et vise à faire en sorte que les utilisateurs puissent facilement installer et utiliser plusieurs noyaux, si désiré.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: swapsize-083.png|thumb|left|375px]]
+
+
+'''Réglez la quantité d'espace disque dur pour la partition de swap.''' Si votre ordinateur manque de mémoire vive (RAM) lors de son utilisation, le disque dur peut être utilisé pour y suppléer, comme une forme de mémoire virtuelle. C'est à ça que sert la ''partition de swap''. 
+
+De manière générale, la taille de la partition de swap doit être égale à la quantité de mémoire vive (RAM) utilisée par votre ordinateur. Dans cet exemple, une valeur de 2.000 Mo (2 Go) a été allouée à la partition de swap étant donné que le système informatique en cours d'installation utilise lui aussi 2.000 Mo (2 Go) de mémoire.
+
+Dès que vous avez défini la taille de votre partition de swap, appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+ 
+
+[[File: rootsize-083.png|thumb|left|375px]]
+
+
+'''Réglez la quantité d'espace disque dur pour la partition racine (root).''' C'est là que Manjaro elle-même sera stockée (c.-à-d. tous les fichiers du système). C'est là aussi que vos applications installées seront stockées. La valeur par défaut de 6.400 Mo (6,4 Go) est assez faible, d'autant plus que beaucoup de cet espace sera immédiatement repris par Manjaro lui-même lors de l'installation. Ça ne laissera pas beaucoup de place pour installer un nouveau logiciel.
+
+Lorsque cela est possible - et en supposant que l'espace disque soit disponible - il est recommandé de définir la valeur de la partition racine au moins à 15.000-20.000 MB (15-20 Go). Assurez-vous simplement que cela laisse beaucoup d'espace pour votre '''partition Home''', qui est celle où tous vos fichiers personnels (documents, vidéos, images, musique, etc...) seront stockés. Dans cet exemple, sur les 38.400 Mo (38 Go) disponibles sur le disque dur, 15.000 MB (15 Go) ont  été alloués à la partition racine.
+
+Une fois définie la taille de votre partition racine, appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: homesize-083.png|thumb|left|375px]]
+
+
+'''Confirmez la quantité d'espace disque dur pour la partition Home.''' 15 Go de l'espace disque disponible de 38 Go ont déjà été alloués à la partition racine, de sorte que, comme le confirme l'installateur, les 23.400 restants Mo (23 Go) ont été automatiquement affectés à la ''partition Home'' (partition d'accueil). Encore une fois, la ''partition d'Home'' est l'endroit où tous vos fichiers personnels (y compris les images du disque virtuel, si vous utilisez VirtualBox) seront stockés.
+
+Si vous n'êtes pas satisfait de la quantité d'espace allouée, mettez en surbrillance '''No''' et appuyez sur &lt;Entrée&gt; pour revenir en arrière et ré-allouer la quantité d'espace souhaitée pour votre partition racine. Dans le cas contraire, assurez-vous que '''Yes''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: filesystem-083.png|thumb|left|375px]]
+
+
+'''Choisissez le système de fichiers pour gérer vos fichiers.''' Différents systèmes de fichiers peuvent traiter tous les formats de fichiers différents, le nombre de fichiers, et ainsi de suite. Si vous ne savez pas quel système de fichiers choisir, comme illustré, '''il est recommandé que vous mettiez en surbrillance ext4 car c'est l'un des derniers et peut-être des plus largement utilisés systèmes de fichiers Linux.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: fsystemconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirmez le système de fichiers sélectionné.''' Si vous désirez revoir ou peut-être modifier vos choix, mettez en surbrillance '''No''' et appuyez sur &lt;Entrée&gt; pour revenir à la liste des systèmes de fichiers disponibles. Dans le cas contraire, assurez-vous que '''Yes''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepconfirm-083.png|thumb|left|375px]]
+
+
+'''Confirmez que vous souhaitez procéder à la préparation assistée.''' Un message d'avertissement apparaîtra vous indiquant que  cette procédure entraînera l'effacement complet de votre disque dur (nommé /dev/sda). Si vous ne souhaitez pas continuer, mettez en surbrillance '''No''' et appuyez sur &lt;Entrée&gt; pour revenir au menu de préparation du disque dur. Dans le cas contraire, assurez-vous que '''Yes''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: prepfinished-083.png|thumb|left|375px]]
+
+
+Le programme d'installation va prendre quelques instants pour configurer votre disque dur (et, dans le processus, effacer complètement toutes les données précédemment stockées sur celui-ci). Une fois terminé, un message de confirmation apparaîtra.
+
+Appuyez sur &lt;Entrée&gt; pour confirmer et être ramené à la préparation du menu du disque dur.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: pewgoback-083.png|thumb|left|375px]]
+
+
+'''Retour à la page du menu principal.''' Comme cette étape est terminée, mettez en surbrillance '''menu principal''' et appuyez sur &lt;Entrée&gt; pour être ramené au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installation de Manjaro =
+
+[[File: installoption-083.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install System''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installprogress-083.png|thumb|left|375px]]
+
+
+Le processus d'installation démarre automatiquement. Une barre de progression s'affiche pour montrer la progression de l'installation elle-même.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installcomplete-083.png|thumb|left|375px]]
+
+
+Après quelques instants, un message s'affiche pour confirmer que Manjaro a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: autoconfigure-083.png|thumb|left|375px]]
+
+
+Le programme d'installation va automatiquement configurer votre système, détecter votre matériel, et installer les pilotes appropriés. Il permettra également trouver les serveurs disponibles Manjaro à partir desquels vous serez en mesure de télécharger des mises à jour, des logiciels et des applications. S'il vous plaît soyez patient, car ce processus peut prendre une minute ou deux.
+
+{{Attention|Manjaro ne sera pas en mesure de trouver les serveurs disponibles si vous n'êtes pas connecté à Internet.}}
+
+A la fin, vous reviendrez automatiquement au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuration de Manjaro =
+
+[[File: configureoption-083.png|thumb|left|375px]]
+
+
+'''Il va désormais être nécessaire de personnaliser Manjaro en configurant quelques éléments clés.''' Ne vous inquiétez pas à ce sujet car il n'y aura pas besoin d'une expertise technique quelconque ou de modifier manuellement les fichiers de configuration. Le processus sera rapide et indolore !
+
+Veiller à ce que '''Configure System''' soit mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Mot de passe root ===
+
+[[File: rootpassword-083.png|thumb|left|375px]]
+
+
+'''Définir le mot de passe root.''' Pour faire simple, root est un compte d'utilisateur standard inclus par défaut dans les distributions Linux et qui dispose d'un accès complet et sans restriction au système. Un compte root est nécessaire pour installer, modifier et supprimer des fichiers système. 
+
+Assurez-vous que '''Change Root Password''' est mis en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enterroot-083.png|thumb|left|375px]]
+
+
+Tapez le mot de passe root que vous avez choisi. Vous pouvez saisir tout ce que vous voulez.
+
+{{Astuce| Les mots de passe seront sensibles à la casse. Pour utiliser le mot de passe plus tard, les lettres majuscules et minuscules devront correspondre exactement. Oh, et utilisez un mot de passe dont vous serez en mesure de vous souvenir!}}
+
+Une fois terminé, veiller à ce que '''OK''' soit sélectionné, appuyez sur &lt;Entrée&gt; pour continuer. Vous devrez alors entrer de nouveau le mot de passe root pour le confirmer. Encore une fois, assurez-vous que '''OK''' est mise en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Compte utilisateur ===
+
+[[File: setupuser-083.png|thumb|left|375px]]
+
+
+'''Mettre en place votre propre compte utilisateur personnel.''' Pour protéger le système, vous ne serez pas tenus d'utiliser le système en tant qu'utilisateur root à tout moment. Dans ce but, vous devez également créer votre compte personnel. 
+
+Assurez-vous que '''Setup user account(s)''' est mise en surbrillance. 
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: enteruser-083.png|thumb|left|375px]]
+
+
+Tapez le nom de compte/login que vous avez choisi. Le nom par défaut est ''manjaro'', ce qui peut être changé en le supprimant et en le remplaçant par le vôtre. Ici, le nom d'utilisateur ''carl'' a été entré.
+
+{{Attention| Bien que vous puissiez entrer presque tout ce que voulez, '''faire en sorte que toutes les lettres de votre nom soient en minuscules'''.}}
+
+Lorsque vous avez terminé, vérifiez que '''OK''' est sélectionné.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: usersudo-083.png|thumb|left|375px]]
+
+
+'''Confirmez que vous souhaitez obtenir les droits sudo.''' Sudo est l'abréviation de «'''S'''uper '''U'''ser '''Do'''», et cela signifie que votre compte se verra accorder les mêmes privilèges du système que le compte root. De cette façon, vous n'aurez pas à basculer vers le compte root pour effectuer certaines tâches, telles que l'ajout ou la suppression de fichiers système ou d'applications logicielles. Cependant, la réalisation de ces tâches à l'aide de votre compte personnel vous demandera de saisir votre mot de passe pour continuer, mot de passe mis en place dans ce qui suit.
+
+Assurez-vous que l'option '''Yes''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: sudopass-083.png|thumb|left|375px]]
+
+
+'''Tapez le mot de passe choisi pour votre compte personnel.''' Encore une fois, vous pouvez saisir tout ce que vous voulez.
+
+{{Astuce|Pour garder les choses simples, il vous suffit de taper le même mot de passe que celui utilisé pour le compte root.}}
+
+Une fois terminé, veiller à ce que '''OK''' soit sélectionné, appuyez sur &lt;Entrée&gt; pour continuer. Vous devrez alors saisir à nouveau votre mot de passe pour le confirmer. Encore une fois, assurez-vous que '''OK''' soit mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Locale (facultatif) ===
+
+[[File: setlocale-083.png|thumb|left|375px]]
+
+
+'''Définissez votre langue préférée'''.
+
+Si vous avez été en mesure de définir votre langue préférée au début, '''alors vous pouvez sauter cette étape.''' Dans le cas contraire, veillez à ce que '''Change locale (optional)''' soit mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlocalemenu-083.png|thumb|left|375px]]
+
+
+Confirmez que vous souhaitez définir votre langue préférée en veillant à ce que '''Set Locale''' soit mis en évidence.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectlocale-083.png|thumb|left|375px]]
+
+
+Une liste des codes sera présenté qui commencent par deux lettres minuscules, suivi de deux lettres MAJUSCULES. Les lettres minuscules correspondent à la langue et les lettres majuscules au pays : langue_PAYS. 
+
+Par exemple, ''en_GB'' signifie en '''anglais, pour la Grande-Bretagne''' et ''en_US'' en '''anglais, pour les Etats-Unis'''. Si vous n'êtes pas sûr du code correspondant à votre langue et le pays, une petite sélection d'exemples sont disponibles ici [http://www.fincher.org/Utilities/CountryLanguageList.shtml here] (ne pas tenir compte de l'utilisation des tirets ''''-'''' au lieu de soulignement ''''_''''). 
+
+La partie UTF-8 ou ISO de chaque ligne représente le schéma de codage de caractères utilisé par le système. Bien qu'il ne soit pas important de connaître cette partie, '''essayez de choisir un code qui se termine en UTF-8 si possible.'''
+
+Une fois que vous avez sélectionné votre code désiré, appuyez sur &lt;Entrée&gt; pour le valider et retourner dans le menu paramètres régionaux.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitlocale-083.png|thumb|left|375px]]
+
+
+Retournez au menu de configuration en mettant en surbrillance '''Return to Main Menu.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Set Keymap (facultatif) ===
+
+[[File: setkeymapmenu-083.png|thumb|left|375px]]
+
+
+'''Réglez votre clavier préféré.'''
+
+Si vous avez été en mesure de configurer votre clavier préféré au début, '''alors vous pouvez sauter cette étape.''' Dans le cas contraire, veiller à ce que '''Change vconsole keymap (optional)''' soit mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymapmenu-083.png|thumb|left|375px]]
+
+
+Confirmez que vous souhaitez définir votre langue préférée en veillant à ce que '''Set Keymap''' est mis en évidence.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: selectkeymap-083.png|thumb|left|375px]]
+
+
+Une liste des codes seront présentés, représentant les diverses dispositions de clavier différentes disponibles. Si vous ne connaissez pas le code nécessaire à votre disposition du clavier, il peut être nécessaire de procéder à une recherche sur Google pour le déterminer. Ici, à titre d'exemple, le '''uk.map.gz''' code a été choisi, car c'est le code approprié pour le type de clavier utilisé au Royaume-Uni / Grande-Bretagne.
+
+Une fois votre code désiré sélectionné, appuyez sur &lt;Entrée&gt; pour le régler et être ramené au menu keymap.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: exitkeymap-083.png|thumb|left|375px]]
+
+
+Retour au menu de configuration en sélectionnant '''Return to Main Menu.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=== Quittez le menu de configuration ===
+
+[[File: exitconfig-083.png|thumb|left|375px]]
+
+
+La configuration étant terminée, quittez le menu de configuration en sélectionnant '''Main Menu.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: autoconfig-083.png|thumb|left|375px]]
+
+
+Il sera alors nécessaire d'attendre quelques instants pendant que l'installation Manjaro est automatiquement configurée selon vos préférences. Une fois terminé, vous serez automatiquement dirigé vers le menu principal.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installation du chargeur de démarrage =
+
+[[File: bootloaderoption-083.png|thumb|left|375px]]
+
+
+'''Enfin, installez le GRUB.''' Encore une fois, le GRUB ('''GR'''and '''U'''nified '''B'''ootloader) est responsable du démarrage (c'est à dire de départ) de Manjaro lorsque vous allumez votre ordinateur.
+
+Assurez-vous que '''Bootloader Install''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: installGRUB-083.png|thumb|left|375px]]
+
+
+Assurez-vous que '''Install GRUB2 (needed to boot)''' est mis en surbrillance.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBconfirm-083.png|thumb|left|375px]]
+
+
+Un message de confirmation s'affiche, indiquant la partition cible (l'endroit sur votre disque dur) où GRUB2 doit être installé. Le réglage par défaut est très bien.
+
+Appuyez sur &lt;Entrée&gt; pour lancer l'installation.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: GRUBinstalled-083.png|thumb|left|375px]]
+
+
+Un message de confirmation apparaîtra après quelques secondes, indiquant que GRUB2 a été installé avec succès.
+
+Appuyez sur &lt;Entrée&gt; pour revenir au menu principal de l'installateur.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Fin de l'installation =
+
+[[File: QuitInstaller-083.png|thumb|left|375px]]
+
+Tout est fait! Maintenant mettez en surbrillance '''Quit''' pour terminer l'installation!
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+Le programme d'installation va prendre quelques instants pour finaliser l'installation. Un message de confirmation s'affiche alors, indiquant que le processus d'installation est terminé. Le programme d'installation va alors se fermer automatiquement, et vous serez renvoyé à l'environnement de bureau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: restartManjaro-083.png|thumb|left|375px]]
+
+
+Vous pouvez maintenant redémarrer votre ordinateur pour démarrer votre système d'exploitation nouvellement installé Manjaro! Il n'est pas nécessaire de retirer le support d'installation pour l'instant.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: existingOS-083.png|thumb|left|375px]]
+
+
+Au redémarrage, vous pouvez:
+
+1. manually eject or remove the installation media just as your computer starts, or 
+
+2. simply select the '''Boot an Existing OS''' option and press &lt;enter&gt; to start the new installation. Once booted, you may then safely remove the installation media.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: login-083.png|thumb|left|375px]]
+
+
+{{tip|The UK server will be set by default to provide software applications and updates, so changing the server location or even finding the fastest one is worthwhile, particularly if you reside in another country.}}
+
+Upon rebooting and logging into the freshly installed system, you may wish to undertake the following actions before anything else:
+
+
+'''1. [[Change to a Different Download Server]]''' or '''[[Rankmirrors_to_Set_the_Fastest_Download_Server|Find the Fastest Download Server]]'''
+
+'''2. [[Pacman-GUI#Updating_the_System|Update the System]]'''
+
+'''3. [[Arch User Repository|Enable Access to the Arch User Repositories]]'''
+
+'''4. [[Printer Configuration|Add Printers]]'''
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for Beginners 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>j11qpl39j7bq7s9ji9etnmmv6bf94cl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

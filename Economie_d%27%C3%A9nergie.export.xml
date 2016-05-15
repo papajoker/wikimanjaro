@@ -1,0 +1,316 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Economie d'énergie</title>
+    <ns>0</ns>
+    <id>1307</id>
+    <revision>
+      <id>8439</id>
+      <timestamp>2013-12-30T17:14:12Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  =En cours de traduction=   Power Saving Techniques can be used on Laptops to maximize the Battery Life and minimize the heat pr...&quot;</comment>
+      <text xml:space="preserve" bytes="4918">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction=
+
+
+Power Saving Techniques can be used on Laptops to maximize the Battery Life and minimize the heat produced, and conserve energy.
+
+= Power Saving using TLP =
+
+TLP can be used for automatic power management, as explained in the following quote from their website:
+
+&lt;blockquote&gt;'TLP brings you the benefits of advanced power management for Linux without the need to understand every technical detail. '''TLP comes with a default configuration already optimized for battery life''', so you may just install and forget it. Nevertheless TLP is highly customizable to fulfil your specific requirements.
+
+All TLP settings are stored in the config file /etc/default/tlp. As the default configuration already provides for optimized battery saving, in many cases there is no immediate need to change it.
+
+TLP is a pure command line tool with automated background tasks. ''It does not contain a GUI''.'&lt;/blockquote&gt;
+
+
+== How to Install TLP ==
+
+{{warning|TLP can conflict with laptop-mode-tools, so if you have laptop-mode-tools installed and want to install TLP, then uninstall laptop-mode-tools first!}}
+
+
+TLP is available form the '''[[Arch User Repository]]''', and where access has been enabled, can be installed by entering the following command into your terminal:
+
+ yaourt -S tlp
+
+
+After installation, TLP then needs to be configured to be run automatcially when you start up your computer. To do so, enter the following commands into your terminal:
+
+ systemctl enable tlp
+ systemctl enable tlp-sleep.service
+
+
+Now TLP will automatically start every time you boot your computer.
+
+= An Alternative to TLP for Laptop Users =
+
+{{warning|Again, TLP and laptop-mode-tools '''must not''' be installed together!}}
+
+
+From the Arch Wiki:
+
+&lt;blockquote&gt;'Laptop Mode Tools is a laptop power saving package for Linux systems. It is the primary way to enable the Laptop Mode feature of the Linux kernel, which lets your hard drive spin down. In addition, it allows you to tweak a number of other power-related settings using a simple configuration file.'&lt;/blockquote&gt;
+
+
+To install '''laptop-mode-tools''', enter the following command into your terminal:
+
+ sudo pacman -S laptop-mode-tools
+
+
+Once installed, to enable ''laptop-mode-tools'' to start automatically every time you boot your computer, enter the following into your terminal:
+
+ sudo systemctl enable laptop-mode.service
+
+
+''Laptop-mode-tools'' will automatically configures some settings for you in order to optimise your laptop's battery life.
+
+
+== Manually Setting Laptop-Mode-Tools Configuration ==
+
+For user configuration, the file to edit is '''/etc/laptop-mode/laptop-mode.conf''' (primary configuration file)
+
+The individual kernel modules can be configured from the configuration files present in '''/etc/laptop-mode/conf.d/'''
+
+
+= Minimizing Laptop/Desktop temperatures =
+
+== For Intel Machines ==
+
+The intel pstate driver automatically handles CPU frequency scaling according to system load.
+
+Note that the Intel Pstate works only with kernels &gt;= 3.9, and kernel 3.11 is recommended.
+
+Supported processor families are Intel Sandy Bridge, Ivy Leage and up.
+
+The Intel Thermal Daemon (thermald) can be installed to automatically manage the CPU Temperature.
+
+Install it with
+
+ yaourt -S thermald
+
+After installing it needs to be configured to automatically start at boot:
+
+ sudo systemctl enable thermald
+
+==For AMD Machines==
+
+With Linux Kernel 3.11, AMD introduced Dyanamic Power Management (DPM) for the GPU for the free drivers, which can lead to lower power consumption and better operating temperatures.
+
+To enable it, 
+
+ sudo gedit /etc/default/grub
+
+add/change the line
+ '''GRUB_CMDLINE_LINUX=&quot;&quot;''' to
+ '''GRUB_CMDLINE_LINUX=&quot;radeon.dpm=1&quot;'''
+
+and generate grub.cfg
+ grub-mkconfig -o /boot/grub/grub.cfg
+
+= PowerTOP =
+
+PowerTop a diagnostic tool used to identify and report issues with power consumption and management.
+It can be used to check the power consumption.
+
+Install it with-
+
+ sudo pacman -S powertop
+
+Run PowerTop to analyze power consumption
+
+ sudo powertop
+
+To save PowerTops output to a file,
+
+ sudo powertop --html
+
+
+For more details, see [http://wiki.manjaro.org/index.php?title=PowerTOP_to_Optimise_Laptop_Power_Consumption Powertop : Manjaro Wiki]
+
+=Support=
+
+Following is a link to this page's forum counterpart where you can post any related feedback: [http://forum.manjaro.org/index.php?topic=6867.0]
+
+
+Credit goes to LiberteCzech for posting about TLP, and to Arup for posting about Thermald, and to the Arch Wiki for their documentation, especially on Laptop-Mode-Tools
+
+
+'''For some more configuration''', see FadeMind's forum tutuorial [http://forum.manjaro.org/index.php?topic=7373.msg64100#msg64100 '''here''']
+
+
+[[Power Savings|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>29ezjp0hzj30ezg8bmy68kkv5ldn238</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8440</id>
+      <parentid>8439</parentid>
+      <timestamp>2013-12-30T18:02:53Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5243">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+Des techniques d'économie d'énergie peuvent être utilisées sur les ordinateurs portables pour maximiser la vie de la batterie et réduire la chaleur produite, et économiser l'énergie.
+
+= Economie d'énergie en utilisant TLP =
+
+TLP peut être utilisé pour la gestion automatique de l'énergie, comme expliqué dans la citation suivante de leur site web:
+
+&lt;blockquote&gt;'TLP vous apporte les avantages de la gestion avancée de l'alimentation pour Linux sans avoir besoin de comprendre tous les détails techniques. '''TLP est livré avec une configuration par défaut déjà optimisée pour la vie de la batterie,''' ainsi vous pouvez simplement l'installer et l'oublier. Néanmoins TLP est hautement personnalisable pour répondre à vos besoins spécifiques.
+
+Tous les paramètres TLP sont stockés dans le fichier de configuration /etc/default/tlp. Comme la configuration par défaut prévoit déjà des économies optimisées de batterie, dans de nombreux cas, il n'est pas immédiatement nécessaire de les changer.
+
+TLP est un outil en pure ligne de commande avec les tâches de fond automatisées. ''Il ne comporte pas d'interface graphique''.'&lt;/blockquote&gt;
+
+
+== Comment faire pour installer TLP ==
+
+{{Attention|TLP peut entrer en conflit avec laptop-mode-tools, donc si vous avez laptop-mode-tools installé et que vous souhaitez installer TLP, désinstallez d'abord laptop-mode-tools!}}
+
+
+TLP est disponible dans '''[[Dépôt AUR (Arch User Repository)]]''', et peut être installé en entrant la commande suivante dans le terminal:
+
+ yaourt -S tlp
+
+
+Après l'installation, TLP doit ensuite être configuré pour être exécuté automatiquement lorsque vous démarrez votre ordinateur. Pour ce faire, tapez les commandes suivantes dans le terminal:
+
+ systemctl enable tlp
+ systemctl enable tlp-sleep.service
+
+
+Maintenant, TLP démarre automatiquement chaque fois que vous démarrez votre ordinateur.
+
+= Une alternative à TLP pour les utilisateurs de portables =
+
+{{Attention|Encore une fois, TLP et laptop-mode-tools '''ne doivent pas''' être installés en même temps!}}
+
+
+Du wiki Arch:
+
+&lt;blockquote&gt;'Laptop Mode Tools est un paquet pour l'économie d'énergie des portables pour les systèmes Linux. Il est le principal moyen d'activer la fonction Mode Portable du noyau Linux, qui permet à votre disque dur de se mettre en veille. En outre, il vous permet de modifier un certain nombre d'autres paramètres liés à l'alimentation en utilisant un fichier de configuration simple.'&lt;/blockquote&gt;
+
+
+Pour installer '''laptop-mode-tools''', entrez la commande suivante dans le terminal:
+
+ sudo pacman -S laptop-mode-tools
+
+
+Une fois installé, pour permettre à ''laptop-mode-tools'' pour démarrer automatiquement chaque fois que vous démarrez votre ordinateur, entrez la commande suivante dans le terminal:
+
+ sudo systemctl enable laptop-mode.service
+
+
+''Laptop-mode-tools'' configure automatiquement certains paramètres pour vous afin d'optimiser la durée de vie de la batterie de votre ordinateur portable.
+
+
+== Réglage manuel de configuration laptop-mode-tools ==
+
+Pour la configuration de l'utilisateur, le fichier à éditer est '''/etc/laptop-mode/laptop-mode.conf''' (fichier principal de configuration)
+
+Les modules du noyau individuel peuvent être configurés à partir des fichiers de configuration présents dans '''/etc/laptop-mode/conf.d/'''
+
+
+= Minimiser la température sur ordinateur portable/de bureau =
+
+== Pour machines Intel ==
+
+Le pilote Intel gère automatiquement l'ajustement de fréquence CPU selon la charge du système (seulement avec les noyaux depuis la version 3.9, et 3.11 est recommandé).
+
+Les familles de processeurs supportés sont Intel Sandy Bridge, Ivy Leage et plus.
+
+Le Intel Thermal Daemon (thermald) peut être installé pour gérer automatiquement la température CPU.
+
+Installez-le avec
+
+ yaourt -S thermald
+
+Après l'installation, il doit être configuré pour être lancé automatiquement au démarrage:
+
+ sudo systemctl enable thermald
+
+== Pour machines AMD ==
+
+Avec le noyau Linux 3.11, AMD a introduit Dyanamic Power Management (DPM) pour le GPU pour les pilotes libres, qui peuvent conduire à une faible consommation de puissance et de meilleures températures de fonctionnement.
+
+Pour l'activer, 
+
+ sudo gedit /etc/default/grub
+
+ajouter/changer la ligne
+ '''GRUB_CMDLINE_LINUX=&quot;&quot;''' to
+ '''GRUB_CMDLINE_LINUX=&quot;radeon.dpm=1&quot;'''
+
+et générez grub.cfg
+ grub-mkconfig -o /boot/grub/grub.cfg
+
+= PowerTOP =
+
+PowerTOP un outil de diagnostic permettant d'identifier et de signaler les problèmes avec la consommation d'énergie et la gestion. Il peut être utilisé pour vérifier la consommation d'énergie.
+
+Installez-le avec
+
+ sudo pacman -S powertop
+
+Exécutez PowerTOP pour analyser la consommation d'énergie
+
+ sudo powertop
+
+Pour sauvegarder la sortie PowerTops dans un fichier,
+
+ sudo powertop --html
+
+
+Pour plus de détails, voir [http://wiki.manjaro.org/index.php?title=PowerTOP_pour_optimiser_la_consommation_d%27%C3%A9nergie_de_votre_portable Powertop : Wiki Manjaro]
+
+
+[[Power Savings|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>ev0f61dby6k7pk0lbrsxa9sed97ryov</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

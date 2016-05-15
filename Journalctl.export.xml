@@ -1,0 +1,487 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Journalctl</title>
+    <ns>0</ns>
+    <id>1784</id>
+    <revision>
+      <id>13020</id>
+      <timestamp>2015-11-06T20:29:48Z</timestamp>
+      <contributor>
+        <username>Papajoke</username>
+        <id>223</id>
+      </contributor>
+      <comment>utilisation de journalctl</comment>
+      <text xml:space="preserve" bytes="3167">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Visualisation des logs avec systemd =
+
+systemd possède son propre système de logs au format binaire journald, il peut être consulté avec l'utilitaire '''journalctl'''. De nombreuses options passées en paramètre apportent beaucoup de puissance à cet outil.
+
+
+== Rechercher un programme ==
+
+Avec l'option {{ic|-t}} il est possible de rechercher un programme ou uniquement une unité systemd avec {{ic|-u}}
+
+ journalctl -u ntpd.service
+ journalctl -t sudo
+ journalctl /bin/sudo
+
+== Filtre boot ==
+ journalctl -b
+L’option {{ic|-b}} permet de choisir quel boot nous désirons consulter. {{ic|-b}} filtre uniquement les messages de la session  actuelle.
+En passant un numéro, nous pouvons définir quel boot nous désirons voir.
+ journalctl -b 5
+retourne les messages du cinquième boot de notre distribution
+
+ journalctl -b-1
+retourne les messages de notre boot précédent, donc en négatif nous avons un décalage relatif au boot courant.
+
+
+== Filtres sur les dates ==
+Les options {{ic|–since}} ou/et {{ic|–until}} permettent un de définir une plage sur le temps. cette date est au format {{ic|AAAA-MM-JJ} avec éventuellement un horaire.
+ journalctl --since &quot;2015-10-10&quot; --until &quot;2015-10-11&quot;
+ journalctl --since &quot;-2d&quot;
+ journalctl --since &quot;-4d&quot; --until &quot;-3d&quot;
+ journalctl --since &quot;2015-10-06 16:30&quot; --until &quot;2015-10-06 16:40&quot;
+ journalctl --since &quot;-2h&quot; --until &quot;-1h&quot;
+ journalctl --since 09:00 --until &quot;1 hour ago&quot;
+
+
+== Filtre sur les niveaux de gravité==
+Avec l'option {{ic|-p}} nous pouvons appliquer un filtre sur le niveau des messages, nous en avons 7 :
+« emerg » (0), « alert » (1), « crit » (2), « err » (3), « warning » (4), »notice » (5), « info » (6), « debug » (7).
+
+ journalctl -p err
+retour de tous les messages de niveau 0 à 3
+ journalctl  PRIORITY=2
+retour uniquement des erreurs critiques
+
+
+== Filtre système ==
+Il est possible de récupérer les messages du kernel (comme dmesg) en ajoutant l'option {{ic|-k}}
+ journalctl -b-1 -k -n 25
+nous avons les 25 dernières lignes du boot précédent
+
+
+== Recherche par champ ==
+Il est possible de faire une recherche sur chaque champ d’un message. Pour voir la structure interne, utiliser l'option {{ic|-o}}
+ journalctl -o verbose -n1
+Avec cette particularité, nous pouvons faire une recherche sur PID : 
+ journalctl -b _PID=5225
+
+
+== Visualisation temps réel ==
+ journalctl -f
+Cette commande va afficher en temps réel les derniers messages dans journald (vous pouvez ajouter d'autres options comme -k).
+{{note| Cette commande ne vous rend pas la main; donc à ouvrir dans une console ou un terminal dédié (tty2 par exemple)}}
+
+
+== Sauvegarde en texte ==
+journalctl propose dans commandes internes (celles de less), pour accéder à l'aide appuyer sur la touche {{ic|h}}.
+ESC + o va enregistrer automatiquement la sortie dans un fichier dont la position par défaut est le home de l'utilisateur.
+
+Autre technique plus classique est d'utiliser les redirections linux
+ journalctl -b -p err &gt;~/erreurs.log
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>4nkdzuvff2zz7upkp0nzuahexwgl3or</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>13022</id>
+      <parentid>13020</parentid>
+      <timestamp>2015-11-06T20:56:56Z</timestamp>
+      <contributor>
+        <username>Papajoke</username>
+        <id>223</id>
+      </contributor>
+      <comment>pour progs c'est très limité</comment>
+      <text xml:space="preserve" bytes="3215">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Visualisation des logs avec systemd =
+
+systemd possède son propre système de logs au format binaire journald, il peut être consulté avec l'utilitaire '''journalctl'''. De nombreuses options passées en paramètre apportent beaucoup de puissance à cet outil.
+
+
+== Rechercher un programme ==
+
+Avec l'option {{ic|-t}} il est possible de rechercher un programme ou uniquement une unité systemd avec {{ic|-u}}
+
+ journalctl -u ntpd.service
+ journalctl -t sudo
+ journalctl /bin/sudo
+{{note| peu de programmes utilisent journald}}
+
+
+== Filtre boot ==
+ journalctl -b
+L’option {{ic|-b}} permet de choisir quel boot nous désirons consulter. {{ic|-b}} filtre uniquement les messages de la session  actuelle.
+En passant un numéro, nous pouvons définir quel boot nous désirons voir.
+ journalctl -b 5
+retourne les messages du cinquième boot de notre distribution
+
+ journalctl -b-1
+retourne les messages de notre boot précédent, donc en négatif nous avons un décalage relatif au boot courant.
+
+
+== Filtres sur les dates ==
+Les options {{ic|–since}} ou/et {{ic|–until}} permettent un de définir une plage sur le temps. cette date est au format {{ic|AAAA-MM-JJ} avec éventuellement un horaire.
+ journalctl --since &quot;2015-10-10&quot; --until &quot;2015-10-11&quot;
+ journalctl --since &quot;-2d&quot;
+ journalctl --since &quot;-4d&quot; --until &quot;-3d&quot;
+ journalctl --since &quot;2015-10-06 16:30&quot; --until &quot;2015-10-06 16:40&quot;
+ journalctl --since &quot;-2h&quot; --until &quot;-1h&quot;
+ journalctl --since 09:00 --until &quot;1 hour ago&quot;
+
+
+== Filtre sur les niveaux de gravité==
+Avec l'option {{ic|-p}} nous pouvons appliquer un filtre sur le niveau des messages, nous en avons 7 :
+« emerg » (0), « alert » (1), « crit » (2), « err » (3), « warning » (4), »notice » (5), « info » (6), « debug » (7).
+
+ journalctl -p err
+retour de tous les messages de niveau 0 à 3
+ journalctl  PRIORITY=2
+retour uniquement des erreurs critiques
+
+
+== Filtre système ==
+Il est possible de récupérer les messages du kernel (comme dmesg) en ajoutant l'option {{ic|-k}}
+ journalctl -b-1 -k -n 25
+nous avons les 25 dernières lignes du boot précédent
+
+
+== Recherche par champ ==
+Il est possible de faire une recherche sur chaque champ d’un message. Pour voir la structure interne, utiliser l'option {{ic|-o}}
+ journalctl -o verbose -n1
+Avec cette particularité, nous pouvons faire une recherche sur PID : 
+ journalctl -b _PID=5225
+
+
+== Visualisation temps réel ==
+ journalctl -f
+Cette commande va afficher en temps réel les derniers messages dans journald (vous pouvez ajouter d'autres options comme -k).
+{{note| Cette commande ne vous rend pas la main; donc à ouvrir dans une console ou un terminal dédié (tty2 par exemple)}}
+
+
+== Sauvegarde en texte ==
+journalctl propose dans commandes internes (celles de less), pour accéder à l'aide appuyer sur la touche {{ic|h}}.
+ESC + o va enregistrer automatiquement la sortie dans un fichier dont la position par défaut est le home de l'utilisateur.
+
+Autre technique plus classique est d'utiliser les redirections linux
+ journalctl -b -p err &gt;~/erreurs.log
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>nqcf0ri8kvwck3hzabi0zozjf2lxgzk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>13023</id>
+      <parentid>13022</parentid>
+      <timestamp>2015-11-06T20:58:33Z</timestamp>
+      <contributor>
+        <username>Papajoke</username>
+        <id>223</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3252">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Visualisation des logs avec systemd =
+
+systemd possède son propre système de logs au format binaire journald, il peut être consulté avec l'utilitaire '''journalctl'''. De nombreuses options passées en paramètre apportent beaucoup de puissance à cet outil.
+
+
+== Rechercher un programme ==
+
+Avec l'option {{ic|-t}} il est possible de rechercher un programme ou uniquement une unité systemd avec {{ic|-u}}
+
+ journalctl -u ntpd.service
+ journalctl -t sudo
+ journalctl /bin/sudo
+{{note| peu de programmes utilisent journald, penser à regarder aussi /var/log/ }}
+
+
+== Filtre boot ==
+ journalctl -b
+L’option {{ic|-b}} permet de choisir quel boot nous désirons consulter. {{ic|-b}} filtre uniquement les messages de la session  actuelle.
+En passant un numéro, nous pouvons définir quel boot nous désirons voir.
+ journalctl -b 5
+retourne les messages du cinquième boot de notre distribution
+
+ journalctl -b-1
+retourne les messages de notre boot précédent, donc en négatif nous avons un décalage relatif au boot courant.
+
+
+== Filtres sur les dates ==
+Les options {{ic|–since}} ou/et {{ic|–until}} permettent un de définir une plage sur le temps. cette date est au format {{ic|AAAA-MM-JJ} avec éventuellement un horaire.
+ journalctl --since &quot;2015-10-10&quot; --until &quot;2015-10-11&quot;
+ journalctl --since &quot;-2d&quot;
+ journalctl --since &quot;-4d&quot; --until &quot;-3d&quot;
+ journalctl --since &quot;2015-10-06 16:30&quot; --until &quot;2015-10-06 16:40&quot;
+ journalctl --since &quot;-2h&quot; --until &quot;-1h&quot;
+ journalctl --since 09:00 --until &quot;1 hour ago&quot;
+
+
+== Filtre sur les niveaux de gravité==
+Avec l'option {{ic|-p}} nous pouvons appliquer un filtre sur le niveau des messages, nous en avons 7 :
+« emerg » (0), « alert » (1), « crit » (2), « err » (3), « warning » (4), »notice » (5), « info » (6), « debug » (7).
+
+ journalctl -p err
+retour de tous les messages de niveau 0 à 3
+ journalctl  PRIORITY=2
+retour uniquement des erreurs critiques
+
+
+== Filtre système ==
+Il est possible de récupérer les messages du kernel (comme dmesg) en ajoutant l'option {{ic|-k}}
+ journalctl -b-1 -k -n 25
+nous avons les 25 dernières lignes du boot précédent
+
+
+== Recherche par champ ==
+Il est possible de faire une recherche sur chaque champ d’un message. Pour voir la structure interne, utiliser l'option {{ic|-o}}
+ journalctl -o verbose -n1
+Avec cette particularité, nous pouvons faire une recherche sur PID : 
+ journalctl -b _PID=5225
+
+
+== Visualisation temps réel ==
+ journalctl -f
+Cette commande va afficher en temps réel les derniers messages dans journald (vous pouvez ajouter d'autres options comme -k).
+{{note| Cette commande ne vous rend pas la main; donc à ouvrir dans une console ou un terminal dédié (tty2 par exemple)}}
+
+
+== Sauvegarde en texte ==
+journalctl propose dans commandes internes (celles de less), pour accéder à l'aide appuyer sur la touche {{ic|h}}.
+ESC + o va enregistrer automatiquement la sortie dans un fichier dont la position par défaut est le home de l'utilisateur.
+
+Autre technique plus classique est d'utiliser les redirections linux
+ journalctl -b -p err &gt;~/erreurs.log
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>1wh9it4ikdntr56bm0qh8h9n7tclwc6</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>13024</id>
+      <parentid>13023</parentid>
+      <timestamp>2015-11-06T21:44:29Z</timestamp>
+      <contributor>
+        <username>Papajoke</username>
+        <id>223</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3249">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Visualisation des logs avec systemd =
+
+systemd possède son propre système de logs au format binaire journald, il peut être consulté avec l'utilitaire '''journalctl'''. De nombreuses options passées en paramètre apportent beaucoup de puissance à cet outil.
+
+
+== Rechercher un programme ==
+
+Avec l'option {{ic|-t}} il est possible de rechercher un programme ou uniquement une unité systemd avec {{ic|-u}}
+
+ journalctl -u ntpd.service
+ journalctl -t sudo
+ journalctl /bin/sudo
+{{note| peu de programmes utilisent journald, penser à regarder aussi /var/log/ }}
+
+
+== Filtre boot ==
+ journalctl -b
+L’option {{ic|-b}} permet de choisir quel boot nous désirons consulter. {{ic|-b}} filtre uniquement les messages de la session  actuelle.
+En passant un numéro, nous pouvons définir quel boot nous désirons voir.
+ journalctl -b 5
+retourne les messages du cinquième boot de notre distribution
+
+ journalctl -b-1
+retourne les messages de notre boot précédent, donc en négatif nous avons un décalage relatif au boot courant.
+
+
+== Filtres sur les dates ==
+Les options {{ic|–since}} ou/et {{ic|–until}} permettent de définir une plage sur le temps. cette date est au format {{ic|AAAA-MM-JJ} avec éventuellement un horaire.
+ journalctl --since &quot;2015-10-10&quot; --until &quot;2015-10-11&quot;
+ journalctl --since &quot;-2d&quot;
+ journalctl --since &quot;-4d&quot; --until &quot;-3d&quot;
+ journalctl --since &quot;2015-10-06 16:30&quot; --until &quot;2015-10-06 16:40&quot;
+ journalctl --since &quot;-2h&quot; --until &quot;-1h&quot;
+ journalctl --since 09:00 --until &quot;1 hour ago&quot;
+
+
+== Filtre sur les niveaux de gravité==
+Avec l'option {{ic|-p}} nous pouvons appliquer un filtre sur le niveau des messages, nous en avons 7 :
+« emerg » (0), « alert » (1), « crit » (2), « err » (3), « warning » (4), »notice » (5), « info » (6), « debug » (7).
+
+ journalctl -p err
+retour de tous les messages de niveau 0 à 3
+ journalctl  PRIORITY=2
+retour uniquement des erreurs critiques
+
+
+== Filtre système ==
+Il est possible de récupérer les messages du kernel (comme dmesg) en ajoutant l'option {{ic|-k}}
+ journalctl -b-1 -k -n 25
+nous avons les 25 dernières lignes du boot précédent
+
+
+== Recherche par champ ==
+Il est possible de faire une recherche sur chaque champ d’un message. Pour voir la structure interne, utiliser l'option {{ic|-o}}
+ journalctl -o verbose -n1
+Avec cette particularité, nous pouvons faire une recherche sur PID : 
+ journalctl -b _PID=5225
+
+
+== Visualisation temps réel ==
+ journalctl -f
+Cette commande va afficher en temps réel les derniers messages dans journald (vous pouvez ajouter d'autres options comme -k).
+{{note| Cette commande ne vous rend pas la main; donc à ouvrir dans une console ou un terminal dédié (tty2 par exemple)}}
+
+
+== Sauvegarde en texte ==
+journalctl propose dans commandes internes (celles de less), pour accéder à l'aide appuyer sur la touche {{ic|h}}.
+ESC + o va enregistrer automatiquement la sortie dans un fichier dont la position par défaut est le home de l'utilisateur.
+
+Autre technique plus classique est d'utiliser les redirections linux
+ journalctl -b -p err &gt;~/erreurs.log
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>5ad4p5r72kyox56j9s70r3edw34ih8l</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>13025</id>
+      <parentid>13024</parentid>
+      <timestamp>2015-11-06T21:47:19Z</timestamp>
+      <contributor>
+        <username>Papajoke</username>
+        <id>223</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3264">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Visualisation des logs avec systemd =
+
+systemd possède son propre système de logs au format binaire journald, il peut être consulté avec l'utilitaire '''journalctl'''. De nombreuses options passées en paramètre apportent beaucoup de puissance à cet outil.
+
+
+== Rechercher un programme ==
+
+Avec l'option {{ic|-t}} il est possible de rechercher un programme ou uniquement une unité systemd avec {{ic|-u}}
+
+ journalctl -u ntpd.service
+ journalctl -t sudo
+ journalctl /bin/sudo
+{{note| peu de programmes utilisent journald, penser à regarder aussi /var/log/ }}
+
+
+== Filtre boot ==
+ journalctl -b
+L’option {{ic|-b}} permet de choisir quel boot nous désirons consulter. {{ic|-b}} filtre uniquement les messages de la session  actuelle.
+En passant un numéro, nous pouvons définir quel boot nous désirons voir.
+ journalctl -b 5
+retourne les messages du cinquième boot de notre distribution
+
+ journalctl -b-1
+retourne les messages de notre boot précédent, donc en négatif nous avons un décalage relatif au boot courant.
+
+
+== Filtres sur les dates ==
+Les options {{ic|–since}} ou/et {{ic|–until}} permettent de définir une plage sur le temps. cette date est généralement au format {{ic|AAAA-MM-JJ} avec éventuellement un horaire.
+ journalctl --since &quot;2015-10-10&quot; --until &quot;2015-10-11&quot;
+ journalctl --since &quot;-2d&quot;
+ journalctl --since &quot;-4d&quot; --until &quot;-3d&quot;
+ journalctl --since &quot;2015-10-06 16:30&quot; --until &quot;2015-10-06 16:40&quot;
+ journalctl --since &quot;-2h&quot; --until &quot;-1h&quot;
+ journalctl --since 09:00 --until &quot;1 hour ago&quot;
+
+
+== Filtre sur les niveaux de gravité==
+Avec l'option {{ic|-p}} nous pouvons appliquer un filtre sur le niveau des messages, nous en avons 7 :
+« emerg » (0), « alert » (1), « crit » (2), « err » (3), « warning » (4), »notice » (5), « info » (6), « debug » (7).
+
+ journalctl -p err
+retour de tous les messages de niveau 0 à 3
+ journalctl  PRIORITY=2
+retour uniquement des erreurs critiques
+
+
+== Filtre système ==
+Il est possible de récupérer les messages du kernel (comme dmesg) en ajoutant l'option {{ic|-k}}
+ journalctl -b-1 -k -n 25
+nous avons les 25 dernières lignes du boot précédent
+
+
+== Recherche par champ ==
+Il est possible de faire une recherche sur chaque champ d’un message. Pour voir la structure interne, utiliser l'option {{ic|-o}}
+ journalctl -o verbose -n1
+Avec cette particularité, nous pouvons faire une recherche sur PID : 
+ journalctl -b _PID=5225
+
+
+== Visualisation temps réel ==
+ journalctl -f
+Cette commande va afficher en temps réel les derniers messages dans journald (vous pouvez ajouter d'autres options comme -k).
+{{note| Cette commande ne vous rend pas la main; donc à ouvrir dans une console ou un terminal dédié (tty2 par exemple)}}
+
+
+== Sauvegarde en texte ==
+journalctl propose dans commandes internes (celles de less), pour accéder à l'aide appuyer sur la touche {{ic|h}}.
+ESC + o va enregistrer automatiquement la sortie dans un fichier dont la position par défaut est le home de l'utilisateur.
+
+Autre technique plus classique est d'utiliser les redirections linux
+ journalctl -b -p err &gt;~/erreurs.log
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>qnj5vy2031q1dyod4he5kdxona636or</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

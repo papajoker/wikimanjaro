@@ -1,0 +1,689 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Mise en place d'IPCop</title>
+    <ns>0</ns>
+    <id>670</id>
+    <revision>
+      <id>4372</id>
+      <timestamp>2013-01-07T13:47:18Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = TRADUCTION EN COURS =  =IPCop the Standalone Linux Firewall that Runs on Junk Computers:=   This is not a Manjaro specific to...&quot;</comment>
+      <text xml:space="preserve" bytes="4838">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+=IPCop the Standalone Linux Firewall that Runs on Junk Computers:= 
+
+This is not a Manjaro specific topic - though ALL of us ARE using the internet - so the topic is also common to us all. I hope this page inspires someone to pull a pile of old junk computer out of their garage or from under their bed &amp; make it be really, really good to them.
+
+This is not a complete how-to, it is a good introduction to great technology that many no nothing about. It most certainly could be of great help to a first time user, though I have not used wireless &amp; IPCop most certainly can.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==What is IPCop?==
+
+IPCop is a simple to install &amp; setup Linux kernel based firewall/router system: 
+
+[http://sourceforge.net/apps/trac/ipcop/wiki/ IPCop]
+
+Their [http://www.ipcops.com/phpbb3/index.php?sid=1906a90b0c6121c8d02049b764a5fe38/ forum] is also very helpful if you get stuck for some reason, or to use for research (compatible hardware) prior to installation &amp; such.
+
+Some very useful add-ons exist for it at the [http://www.copfilter.org/ CopFilter] site.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==An Example for a Home User:==
+
+There are four desktop machines; 2 x 24&quot; alu' iMac &amp; two multi-purpose boxes, plus a ReadyNAS Duo v1. These five are constantly connected to the LAN, there is also 1 Apple notebooks that is rarely connected to the LAN plus a PS3 that is always plugged into the network switch.
+
+Additionally there is the IPCop box, a $5- Dell Optiplex GX150 from the local garbage dump - PIII 7**Mhz, 256MB RAM 10GB HDD, CD &amp; floppy drives. It uses $53-/year in electricity running 24/7 at 19 cents/kWh.
+
+All machines connect via cat-6 cable into a cheap 1GB eight port switch. The modem/router is a Siemens SpeedStream 4200, single port job.
+
+Apart from the modem/router, IPCop, LJ-5 Printer &amp; the ReadyNAS Duo, all existing boxes have dynamic IP addresses.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Here's a Simple Map of my LAN:==
+
+The account my ISP provides has a dynamic IP address.
+
+Take note, the modem/router (RED) needs to be on a different subnet than the Green, as seen in the IP addresses below, (all of this RED &amp; GREEN stuff makes perfect sense when you have had a look at the IPCop documentation).
+
+
+'''Here is a simple map of my LAN:'''
+
+ |
+ DSL
+ |
+ Modem 192.168.254.254
+ |
+ IPCop (blackbox) 192.168.1.1
+ |
+ Switch
+ |
+ iMac..iMac..PC..PC..ReadyNAS Duo..Powermac..PS3..LJ-5 Printer..
+
+&lt;br clear=&quot;all&quot; /&gt;
+==My current IPCop settings follow:==
+
+ Host Name: blackbox
+ Domain Name: domain.invalid
+ Network Type: GREEN + RED
+ Drivers &amp; Card Assignments:-
+ GREEN: Digital 21x4x Tulip PCI (eth0)
+ RED: Intel i82557/i82558 PCI (eth1)
+ Address Settings:-
+ GREEN interface: 192.168.1.1 &lt;- blackbox
+ Network mask: 255.255.255.0
+ RED interface: PPPoE
+ DNS &amp; Gateway settings: Blank
+ DHCP server configuration:
+ Start address: 192.168.1.2
+ End address: 192.168.1.24
+ Primary DNS: 192.168.1.1 &lt;- blackbox
+ Secondary DNS: Blank
+ Default lease (mins): 2440
+ Max lease (mins): 4880
+ Domain name suffix: domain.invalid
+
+&lt;br clear=&quot;all&quot; /&gt;
+==IPCop Dialup (Broadband) Settings:==
+
+ Profile: internode-1
+ Connection:- PPPoE
+ Idle Timeout: 0
+ Connection on IPCop Restart: ticked
+ Reconnection:-
+ Persistent
+ Hold Off Time: 10
+ In case connection fails, switch to profile:  internode-1
+ Maximum retries: 5
+ Additional PPPoE Settings: unused
+ Authentication:-
+ User Name: my ISP account username
+ Method: PAP or CHAP
+ Password: my ISP account password
+ DNS:-
+ Manual: I chose to enter my ISP's primary &amp; secondary DNS addresses
+ Profile Name: internode-1
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Browser Base GUI Interface:==
+
+Once IPCop has been installed, the '''Dialup Settings''' (just above) are added via the browser based GUI from a client on the LAN. They are all that is needed for IPCop to be up &amp; running.
+
+Depending on the use of the LAN as to whether anything else has to be done, apart from doing a simple upgrade of IPCop from within IPCop.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So Why Do It?==
+
+I've used IPCop for ~3 years &amp; it has been so effective that you never think about it. My internet access speeds are slightly faster, as Linux handles IP better than the windows centric ADSL modem/routers do.
+
+In the past I've lost the 10GB drive so I had to reinstall IPCop on another drive I had laying around ''(20GB this time)''. &amp; have had one of its NIC's fail. So I did another installation. I have also setup my fathers old Athlon 9**Mhz, 512MB RAM, 20GB HDD, CD &amp; floppy drives, box, as a backup for when the old Dell eventually goes to computer heaven...
+
+From What I have read, machines of this ilk can handle networks with as many as 300 bums on seats!
+
+[[Setting up IPCop|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>57ukvnyp5ssfl5jxwo3e492n1occhde</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6522</id>
+      <parentid>4372</parentid>
+      <timestamp>2013-07-23T14:30:25Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* IPCop the Standalone Linux Firewall that Runs on Junk Computers: */</comment>
+      <text xml:space="preserve" bytes="4946">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+=IPCop Le Pare-feu Linuxléger et autonome qui tourne sur de vielles configurations := 
+
+Ce n'est pas un sujet spécifique à Manjaro.
+Comme TOUS nous utilisons internet - ce sujet peut tous nous intéresser.&lt;br&gt;
+Ce sujet pourra en inspirer certains de ressortir leurs vieilles bécanes de dessous le lit ou du garage pour en faire quelque chose de très bien pour eux
+
+Ce n'est pas un mode d'emploi complet mais de bonnes instructions pour une introduction à une belle technologie que la plupart ne connaissent pas. C'est certainement un très bonne aide pour les débutants. Le wifi n'est pas traité alors que IPCop le peut.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Qu'est ce qu'IPCop?==
+
+IPCop est une système Linux de pare-feu/routeur autonome simple à installer et à gérer:&lt;br&gt;
+[http://sourceforge.net/apps/trac/ipcop/wiki/ IPCop]
+
+Leur [http://www.ipcops.com/phpbb3/index.php?sid=1906a90b0c6121c8d02049b764a5fe38/ forum] est également très utile si vous êtres bloqué ou pour faire des recherches de compatibilité de votre matériel avant de commencer l'installation.
+
+Beaucoup d'extensions très utiles sont disponibles sur le site [http://www.copfilter.org/ CopFilter].
+
+&lt;br clear=&quot;all&quot; /&gt;
+==An Example for a Home User:==
+
+There are four desktop machines; 2 x 24&quot; alu' iMac &amp; two multi-purpose boxes, plus a ReadyNAS Duo v1. These five are constantly connected to the LAN, there is also 1 Apple notebooks that is rarely connected to the LAN plus a PS3 that is always plugged into the network switch.
+
+Additionally there is the IPCop box, a $5- Dell Optiplex GX150 from the local garbage dump - PIII 7**Mhz, 256MB RAM 10GB HDD, CD &amp; floppy drives. It uses $53-/year in electricity running 24/7 at 19 cents/kWh.
+
+All machines connect via cat-6 cable into a cheap 1GB eight port switch. The modem/router is a Siemens SpeedStream 4200, single port job.
+
+Apart from the modem/router, IPCop, LJ-5 Printer &amp; the ReadyNAS Duo, all existing boxes have dynamic IP addresses.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Here's a Simple Map of my LAN:==
+
+The account my ISP provides has a dynamic IP address.
+
+Take note, the modem/router (RED) needs to be on a different subnet than the Green, as seen in the IP addresses below, (all of this RED &amp; GREEN stuff makes perfect sense when you have had a look at the IPCop documentation).
+
+
+'''Here is a simple map of my LAN:'''
+
+ |
+ DSL
+ |
+ Modem 192.168.254.254
+ |
+ IPCop (blackbox) 192.168.1.1
+ |
+ Switch
+ |
+ iMac..iMac..PC..PC..ReadyNAS Duo..Powermac..PS3..LJ-5 Printer..
+
+&lt;br clear=&quot;all&quot; /&gt;
+==My current IPCop settings follow:==
+
+ Host Name: blackbox
+ Domain Name: domain.invalid
+ Network Type: GREEN + RED
+ Drivers &amp; Card Assignments:-
+ GREEN: Digital 21x4x Tulip PCI (eth0)
+ RED: Intel i82557/i82558 PCI (eth1)
+ Address Settings:-
+ GREEN interface: 192.168.1.1 &lt;- blackbox
+ Network mask: 255.255.255.0
+ RED interface: PPPoE
+ DNS &amp; Gateway settings: Blank
+ DHCP server configuration:
+ Start address: 192.168.1.2
+ End address: 192.168.1.24
+ Primary DNS: 192.168.1.1 &lt;- blackbox
+ Secondary DNS: Blank
+ Default lease (mins): 2440
+ Max lease (mins): 4880
+ Domain name suffix: domain.invalid
+
+&lt;br clear=&quot;all&quot; /&gt;
+==IPCop Dialup (Broadband) Settings:==
+
+ Profile: internode-1
+ Connection:- PPPoE
+ Idle Timeout: 0
+ Connection on IPCop Restart: ticked
+ Reconnection:-
+ Persistent
+ Hold Off Time: 10
+ In case connection fails, switch to profile:  internode-1
+ Maximum retries: 5
+ Additional PPPoE Settings: unused
+ Authentication:-
+ User Name: my ISP account username
+ Method: PAP or CHAP
+ Password: my ISP account password
+ DNS:-
+ Manual: I chose to enter my ISP's primary &amp; secondary DNS addresses
+ Profile Name: internode-1
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Browser Base GUI Interface:==
+
+Once IPCop has been installed, the '''Dialup Settings''' (just above) are added via the browser based GUI from a client on the LAN. They are all that is needed for IPCop to be up &amp; running.
+
+Depending on the use of the LAN as to whether anything else has to be done, apart from doing a simple upgrade of IPCop from within IPCop.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So Why Do It?==
+
+I've used IPCop for ~3 years &amp; it has been so effective that you never think about it. My internet access speeds are slightly faster, as Linux handles IP better than the windows centric ADSL modem/routers do.
+
+In the past I've lost the 10GB drive so I had to reinstall IPCop on another drive I had laying around ''(20GB this time)''. &amp; have had one of its NIC's fail. So I did another installation. I have also setup my fathers old Athlon 9**Mhz, 512MB RAM, 20GB HDD, CD &amp; floppy drives, box, as a backup for when the old Dell eventually goes to computer heaven...
+
+From What I have read, machines of this ilk can handle networks with as many as 300 bums on seats!
+
+[[Setting up IPCop|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>srzw5fy0xmda3cbtvsxg3xrbrrw8vu1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6523</id>
+      <parentid>6522</parentid>
+      <timestamp>2013-07-23T14:30:50Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* IPCop Le Pare-feu Linuxléger et autonome qui tourne sur de vielles configurations : */</comment>
+      <text xml:space="preserve" bytes="4942">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+=IPCop Le Pare-feu Linux léger et autonome qui tourne sur de vieilles bécanes := 
+
+Ce n'est pas un sujet spécifique à Manjaro.
+Comme TOUS nous utilisons internet - ce sujet peut tous nous intéresser.&lt;br&gt;
+Ce sujet pourra en inspirer certains de ressortir leurs vieilles bécanes de dessous le lit ou du garage pour en faire quelque chose de très bien pour eux
+
+Ce n'est pas un mode d'emploi complet mais de bonnes instructions pour une introduction à une belle technologie que la plupart ne connaissent pas. C'est certainement un très bonne aide pour les débutants. Le wifi n'est pas traité alors que IPCop le peut.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Qu'est ce qu'IPCop?==
+
+IPCop est une système Linux de pare-feu/routeur autonome simple à installer et à gérer:&lt;br&gt;
+[http://sourceforge.net/apps/trac/ipcop/wiki/ IPCop]
+
+Leur [http://www.ipcops.com/phpbb3/index.php?sid=1906a90b0c6121c8d02049b764a5fe38/ forum] est également très utile si vous êtres bloqué ou pour faire des recherches de compatibilité de votre matériel avant de commencer l'installation.
+
+Beaucoup d'extensions très utiles sont disponibles sur le site [http://www.copfilter.org/ CopFilter].
+
+&lt;br clear=&quot;all&quot; /&gt;
+==An Example for a Home User:==
+
+There are four desktop machines; 2 x 24&quot; alu' iMac &amp; two multi-purpose boxes, plus a ReadyNAS Duo v1. These five are constantly connected to the LAN, there is also 1 Apple notebooks that is rarely connected to the LAN plus a PS3 that is always plugged into the network switch.
+
+Additionally there is the IPCop box, a $5- Dell Optiplex GX150 from the local garbage dump - PIII 7**Mhz, 256MB RAM 10GB HDD, CD &amp; floppy drives. It uses $53-/year in electricity running 24/7 at 19 cents/kWh.
+
+All machines connect via cat-6 cable into a cheap 1GB eight port switch. The modem/router is a Siemens SpeedStream 4200, single port job.
+
+Apart from the modem/router, IPCop, LJ-5 Printer &amp; the ReadyNAS Duo, all existing boxes have dynamic IP addresses.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Here's a Simple Map of my LAN:==
+
+The account my ISP provides has a dynamic IP address.
+
+Take note, the modem/router (RED) needs to be on a different subnet than the Green, as seen in the IP addresses below, (all of this RED &amp; GREEN stuff makes perfect sense when you have had a look at the IPCop documentation).
+
+
+'''Here is a simple map of my LAN:'''
+
+ |
+ DSL
+ |
+ Modem 192.168.254.254
+ |
+ IPCop (blackbox) 192.168.1.1
+ |
+ Switch
+ |
+ iMac..iMac..PC..PC..ReadyNAS Duo..Powermac..PS3..LJ-5 Printer..
+
+&lt;br clear=&quot;all&quot; /&gt;
+==My current IPCop settings follow:==
+
+ Host Name: blackbox
+ Domain Name: domain.invalid
+ Network Type: GREEN + RED
+ Drivers &amp; Card Assignments:-
+ GREEN: Digital 21x4x Tulip PCI (eth0)
+ RED: Intel i82557/i82558 PCI (eth1)
+ Address Settings:-
+ GREEN interface: 192.168.1.1 &lt;- blackbox
+ Network mask: 255.255.255.0
+ RED interface: PPPoE
+ DNS &amp; Gateway settings: Blank
+ DHCP server configuration:
+ Start address: 192.168.1.2
+ End address: 192.168.1.24
+ Primary DNS: 192.168.1.1 &lt;- blackbox
+ Secondary DNS: Blank
+ Default lease (mins): 2440
+ Max lease (mins): 4880
+ Domain name suffix: domain.invalid
+
+&lt;br clear=&quot;all&quot; /&gt;
+==IPCop Dialup (Broadband) Settings:==
+
+ Profile: internode-1
+ Connection:- PPPoE
+ Idle Timeout: 0
+ Connection on IPCop Restart: ticked
+ Reconnection:-
+ Persistent
+ Hold Off Time: 10
+ In case connection fails, switch to profile:  internode-1
+ Maximum retries: 5
+ Additional PPPoE Settings: unused
+ Authentication:-
+ User Name: my ISP account username
+ Method: PAP or CHAP
+ Password: my ISP account password
+ DNS:-
+ Manual: I chose to enter my ISP's primary &amp; secondary DNS addresses
+ Profile Name: internode-1
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Browser Base GUI Interface:==
+
+Once IPCop has been installed, the '''Dialup Settings''' (just above) are added via the browser based GUI from a client on the LAN. They are all that is needed for IPCop to be up &amp; running.
+
+Depending on the use of the LAN as to whether anything else has to be done, apart from doing a simple upgrade of IPCop from within IPCop.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So Why Do It?==
+
+I've used IPCop for ~3 years &amp; it has been so effective that you never think about it. My internet access speeds are slightly faster, as Linux handles IP better than the windows centric ADSL modem/routers do.
+
+In the past I've lost the 10GB drive so I had to reinstall IPCop on another drive I had laying around ''(20GB this time)''. &amp; have had one of its NIC's fail. So I did another installation. I have also setup my fathers old Athlon 9**Mhz, 512MB RAM, 20GB HDD, CD &amp; floppy drives, box, as a backup for when the old Dell eventually goes to computer heaven...
+
+From What I have read, machines of this ilk can handle networks with as many as 300 bums on seats!
+
+[[Setting up IPCop|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>49re29ryk40uf4pt8on1pp73r9u22ub</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6524</id>
+      <parentid>6523</parentid>
+      <timestamp>2013-07-23T14:31:23Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* IPCop Le Pare-feu Linux léger et autonome qui tourne sur de vieilles bécanes : */</comment>
+      <text xml:space="preserve" bytes="4945">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+=IPCop Le Pare-feu Linux léger et autonome qui tourne sur de vieilles bécanes := 
+
+Ce n'est pas un sujet spécifique à Manjaro.Nous TOUS nous utilisons internet - ce sujet peut donc tous nous intéresser.&lt;br&gt;
+Ce sujet pourra en inspirer certains de ressortir leurs vieilles bécanes de dessous le lit ou du garage pour en faire quelque chose de très bien pour eux
+
+Ce n'est pas un mode d'emploi complet mais de bonnes instructions pour une introduction à une belle technologie que la plupart ne connaissent pas. C'est certainement un très bonne aide pour les débutants. Le wifi n'est pas traité alors que IPCop le peut.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Qu'est ce qu'IPCop?==
+
+IPCop est une système Linux de pare-feu/routeur autonome simple à installer et à gérer:&lt;br&gt;
+[http://sourceforge.net/apps/trac/ipcop/wiki/ IPCop]
+
+Leur [http://www.ipcops.com/phpbb3/index.php?sid=1906a90b0c6121c8d02049b764a5fe38/ forum] est également très utile si vous êtres bloqué ou pour faire des recherches de compatibilité de votre matériel avant de commencer l'installation.
+
+Beaucoup d'extensions très utiles sont disponibles sur le site [http://www.copfilter.org/ CopFilter].
+
+&lt;br clear=&quot;all&quot; /&gt;
+==An Example for a Home User:==
+
+There are four desktop machines; 2 x 24&quot; alu' iMac &amp; two multi-purpose boxes, plus a ReadyNAS Duo v1. These five are constantly connected to the LAN, there is also 1 Apple notebooks that is rarely connected to the LAN plus a PS3 that is always plugged into the network switch.
+
+Additionally there is the IPCop box, a $5- Dell Optiplex GX150 from the local garbage dump - PIII 7**Mhz, 256MB RAM 10GB HDD, CD &amp; floppy drives. It uses $53-/year in electricity running 24/7 at 19 cents/kWh.
+
+All machines connect via cat-6 cable into a cheap 1GB eight port switch. The modem/router is a Siemens SpeedStream 4200, single port job.
+
+Apart from the modem/router, IPCop, LJ-5 Printer &amp; the ReadyNAS Duo, all existing boxes have dynamic IP addresses.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Here's a Simple Map of my LAN:==
+
+The account my ISP provides has a dynamic IP address.
+
+Take note, the modem/router (RED) needs to be on a different subnet than the Green, as seen in the IP addresses below, (all of this RED &amp; GREEN stuff makes perfect sense when you have had a look at the IPCop documentation).
+
+
+'''Here is a simple map of my LAN:'''
+
+ |
+ DSL
+ |
+ Modem 192.168.254.254
+ |
+ IPCop (blackbox) 192.168.1.1
+ |
+ Switch
+ |
+ iMac..iMac..PC..PC..ReadyNAS Duo..Powermac..PS3..LJ-5 Printer..
+
+&lt;br clear=&quot;all&quot; /&gt;
+==My current IPCop settings follow:==
+
+ Host Name: blackbox
+ Domain Name: domain.invalid
+ Network Type: GREEN + RED
+ Drivers &amp; Card Assignments:-
+ GREEN: Digital 21x4x Tulip PCI (eth0)
+ RED: Intel i82557/i82558 PCI (eth1)
+ Address Settings:-
+ GREEN interface: 192.168.1.1 &lt;- blackbox
+ Network mask: 255.255.255.0
+ RED interface: PPPoE
+ DNS &amp; Gateway settings: Blank
+ DHCP server configuration:
+ Start address: 192.168.1.2
+ End address: 192.168.1.24
+ Primary DNS: 192.168.1.1 &lt;- blackbox
+ Secondary DNS: Blank
+ Default lease (mins): 2440
+ Max lease (mins): 4880
+ Domain name suffix: domain.invalid
+
+&lt;br clear=&quot;all&quot; /&gt;
+==IPCop Dialup (Broadband) Settings:==
+
+ Profile: internode-1
+ Connection:- PPPoE
+ Idle Timeout: 0
+ Connection on IPCop Restart: ticked
+ Reconnection:-
+ Persistent
+ Hold Off Time: 10
+ In case connection fails, switch to profile:  internode-1
+ Maximum retries: 5
+ Additional PPPoE Settings: unused
+ Authentication:-
+ User Name: my ISP account username
+ Method: PAP or CHAP
+ Password: my ISP account password
+ DNS:-
+ Manual: I chose to enter my ISP's primary &amp; secondary DNS addresses
+ Profile Name: internode-1
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Browser Base GUI Interface:==
+
+Once IPCop has been installed, the '''Dialup Settings''' (just above) are added via the browser based GUI from a client on the LAN. They are all that is needed for IPCop to be up &amp; running.
+
+Depending on the use of the LAN as to whether anything else has to be done, apart from doing a simple upgrade of IPCop from within IPCop.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So Why Do It?==
+
+I've used IPCop for ~3 years &amp; it has been so effective that you never think about it. My internet access speeds are slightly faster, as Linux handles IP better than the windows centric ADSL modem/routers do.
+
+In the past I've lost the 10GB drive so I had to reinstall IPCop on another drive I had laying around ''(20GB this time)''. &amp; have had one of its NIC's fail. So I did another installation. I have also setup my fathers old Athlon 9**Mhz, 512MB RAM, 20GB HDD, CD &amp; floppy drives, box, as a backup for when the old Dell eventually goes to computer heaven...
+
+From What I have read, machines of this ilk can handle networks with as many as 300 bums on seats!
+
+[[Setting up IPCop|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>ex7e5d5u0kxq79zgaws77fsr2nt410l</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6525</id>
+      <parentid>6524</parentid>
+      <timestamp>2013-07-23T14:32:06Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* IPCop Le Pare-feu Linux léger et autonome qui tourne sur de vieilles bécanes : */</comment>
+      <text xml:space="preserve" bytes="4964">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+=IPCop Le Pare-feu Linux léger et autonome qui tourne sur de vieilles bécanes := 
+
+Ce n'est pas un sujet spécifique à Manjaro.Nous TOUS nous utilisons internet - ce sujet peut donc tous nous intéresser.&lt;br&gt;
+Ce sujet pourra en inspirer certains de ressortir leurs vieilles bécanes de dessous le lit ou du garage pour en faire quelque chose de très bien pour eux
+
+Ce n'est pas un mode d'emploi complet mais de bonnes instructions pour une introduction à une belle technologie que la plupart ne connaissent pas. C'est certainement un très bonne aide pour les débutants. Ici le wi-fi ne sera pas traité alors que IPCop le gère également.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Qu'est ce qu'IPCop?==
+
+IPCop est une système Linux de pare-feu/routeur autonome simple à installer et à gérer:&lt;br&gt;
+[http://sourceforge.net/apps/trac/ipcop/wiki/ IPCop]
+
+Leur [http://www.ipcops.com/phpbb3/index.php?sid=1906a90b0c6121c8d02049b764a5fe38/ forum] est également très utile si vous êtres bloqué ou pour faire des recherches de compatibilité de votre matériel avant de commencer l'installation.
+
+Beaucoup d'extensions très utiles sont disponibles sur le site [http://www.copfilter.org/ CopFilter].
+
+&lt;br clear=&quot;all&quot; /&gt;
+==An Example for a Home User:==
+
+There are four desktop machines; 2 x 24&quot; alu' iMac &amp; two multi-purpose boxes, plus a ReadyNAS Duo v1. These five are constantly connected to the LAN, there is also 1 Apple notebooks that is rarely connected to the LAN plus a PS3 that is always plugged into the network switch.
+
+Additionally there is the IPCop box, a $5- Dell Optiplex GX150 from the local garbage dump - PIII 7**Mhz, 256MB RAM 10GB HDD, CD &amp; floppy drives. It uses $53-/year in electricity running 24/7 at 19 cents/kWh.
+
+All machines connect via cat-6 cable into a cheap 1GB eight port switch. The modem/router is a Siemens SpeedStream 4200, single port job.
+
+Apart from the modem/router, IPCop, LJ-5 Printer &amp; the ReadyNAS Duo, all existing boxes have dynamic IP addresses.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Here's a Simple Map of my LAN:==
+
+The account my ISP provides has a dynamic IP address.
+
+Take note, the modem/router (RED) needs to be on a different subnet than the Green, as seen in the IP addresses below, (all of this RED &amp; GREEN stuff makes perfect sense when you have had a look at the IPCop documentation).
+
+
+'''Here is a simple map of my LAN:'''
+
+ |
+ DSL
+ |
+ Modem 192.168.254.254
+ |
+ IPCop (blackbox) 192.168.1.1
+ |
+ Switch
+ |
+ iMac..iMac..PC..PC..ReadyNAS Duo..Powermac..PS3..LJ-5 Printer..
+
+&lt;br clear=&quot;all&quot; /&gt;
+==My current IPCop settings follow:==
+
+ Host Name: blackbox
+ Domain Name: domain.invalid
+ Network Type: GREEN + RED
+ Drivers &amp; Card Assignments:-
+ GREEN: Digital 21x4x Tulip PCI (eth0)
+ RED: Intel i82557/i82558 PCI (eth1)
+ Address Settings:-
+ GREEN interface: 192.168.1.1 &lt;- blackbox
+ Network mask: 255.255.255.0
+ RED interface: PPPoE
+ DNS &amp; Gateway settings: Blank
+ DHCP server configuration:
+ Start address: 192.168.1.2
+ End address: 192.168.1.24
+ Primary DNS: 192.168.1.1 &lt;- blackbox
+ Secondary DNS: Blank
+ Default lease (mins): 2440
+ Max lease (mins): 4880
+ Domain name suffix: domain.invalid
+
+&lt;br clear=&quot;all&quot; /&gt;
+==IPCop Dialup (Broadband) Settings:==
+
+ Profile: internode-1
+ Connection:- PPPoE
+ Idle Timeout: 0
+ Connection on IPCop Restart: ticked
+ Reconnection:-
+ Persistent
+ Hold Off Time: 10
+ In case connection fails, switch to profile:  internode-1
+ Maximum retries: 5
+ Additional PPPoE Settings: unused
+ Authentication:-
+ User Name: my ISP account username
+ Method: PAP or CHAP
+ Password: my ISP account password
+ DNS:-
+ Manual: I chose to enter my ISP's primary &amp; secondary DNS addresses
+ Profile Name: internode-1
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Browser Base GUI Interface:==
+
+Once IPCop has been installed, the '''Dialup Settings''' (just above) are added via the browser based GUI from a client on the LAN. They are all that is needed for IPCop to be up &amp; running.
+
+Depending on the use of the LAN as to whether anything else has to be done, apart from doing a simple upgrade of IPCop from within IPCop.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==So Why Do It?==
+
+I've used IPCop for ~3 years &amp; it has been so effective that you never think about it. My internet access speeds are slightly faster, as Linux handles IP better than the windows centric ADSL modem/routers do.
+
+In the past I've lost the 10GB drive so I had to reinstall IPCop on another drive I had laying around ''(20GB this time)''. &amp; have had one of its NIC's fail. So I did another installation. I have also setup my fathers old Athlon 9**Mhz, 512MB RAM, 20GB HDD, CD &amp; floppy drives, box, as a backup for when the old Dell eventually goes to computer heaven...
+
+From What I have read, machines of this ilk can handle networks with as many as 300 bums on seats!
+
+[[Setting up IPCop|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>hvwqx3cvuplfzu311puoi3l3ywn6cla</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

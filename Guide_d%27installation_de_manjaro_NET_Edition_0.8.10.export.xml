@@ -1,0 +1,237 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide d'installation de manjaro NET Edition 0.8.10</title>
+    <ns>0</ns>
+    <id>1533</id>
+    <revision>
+      <id>10088</id>
+      <timestamp>2014-10-09T16:27:42Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;   =Vue d'ensemble=  {{Astuce| '''Si possible, assurez-vous d'être connecté à Internet avant de démarrer sur votre média d'i...&quot;</comment>
+      <text xml:space="preserve" bytes="12895">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+=Vue d'ensemble=
+
+{{Astuce| '''Si possible, assurez-vous d'être connecté à Internet avant de démarrer sur votre média d'installation''' (par exemple un DVD, une clé USB, ou même un fichier ISO directement si vous démarrez dans une machine virtuelle d'Oracle). Si vous avez une liaison directe par câble Ethernet, Manjaro va se connecter automatiquement et vous n'aurez rien à faire. Sinon, dès le démarrage du processus d'installation, vous aurez la possibilité de vous connecter manuellement à votre réseau sans fil.}}
+
+
+La NET Edition de Manjaro fournit une installation de base dépourvue de gestionnaire d'affichage, d'environnement de bureau, et d'applications de bureau. Toutefois, conformément à notre philosophie de convivialité :
+* Les codecs et les logiciels (par exemple Adobe Flash) nécessaires pour lire des fichiers multimédias sont pré-installés ;
+* yaourt est pré-installé pour accéder au dépôt AUR ;
+* Les Additions Invité de VirtualBox sont pré-installés ; 
+* Votre matériel est toujours automatiquement détecté, et
+* Les pilotes appropriés (par exemple pour les cartes graphiques) sont toujours installés pour vous.
+
+Par conséquent, la NET Edition va vous permettre de façonner votre système ''exactement'' comme vous le souhaitez, avec ''exactement'' les applications logicielles que vous voulez, mais sans la perte de temps, la difficulté, l'expertise technique qui seraient sinon nécessaires pour installer les pilotes matériels, les codecs, etc. '''Ceci va rendre l'installation de la NET Edition accessible même aux débutants''', et peut offrir une merveilleuse opportunité de construire votre propre système et d'apprendre durant le processus comment il fonctionne.
+
+Pourquoi ne pas l'essayer ?
+
+= Pré-installation: Paramétrez votre langue et votre disposition clavier =
+
+[[File: boot1-084.png|thumb|left|375px]] 
+
+
+Dès le démarrage de Manjaro, vous allez voir s'afficher l'écran de démarrage. Mais pour l'instant, ne lancez rien ! D'abord, il va être nécessaire de choisir votre '''langue préférée''' et votre '''disposition clavier'''. Bien que les avantages de configurer votre langue principale et votre disposition clavier pour l'installation elle-même puissent ne pas apparaître, ce paramétrage va aussi vous permettre de rendre beaucoup plus facile et aisée la configuration de votre système installé.
+
+Ne vous inquiétez pas si votre langue ou votre disposition clavier n'apparaissent pas dans la liste, un éventail beaucoup plus large de langues peut être utilisé durant le processus d'installation lui-même, si nécessaire. 
+
+{{Astuce| Le réglage de la langue et de la configuration du clavier - comme indiqué ci-dessous - sont effectués en appuyant sur la touche F2. Comme de nombreux ordinateurs ont de multiples fonctions attribuées à chaque touche de fonction, il peut être nécessaire d'appuyer sur une autre touche avant de les utiliser (en particulier pour une installation dans VirtualBox). Par exemple, sur un ordinateur portable HP G62, pour utiliser les touches de fonction, la touche «Fn» doit d'abord être maintenue enfoncée.}}
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-084.png|thumb|left|375px]] 
+
+
+'''Choisissez d'abord votre langue en appuyant sur la touche F2'''. Les options disponibles peuvent être mises en surbrillance en vue de sélection grâce aux touches fléchées de votre clavier. Ici, l'anglais britannique a été mis en surbrillance pour l'utilisateur.
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-084.png|thumb|left|375px]] 
+
+
+'''Ensuite, configurez votre clavier préféré (keymap) en appuyant sur la touche F2''', sélectionnez clavier, puis appuyez sur &lt;Entrée&gt; pour faire apparaître les options. Lorsque vous choisissez votre langue préférée, la disposition du clavier approprié devrait déjà être sélectionnée. Ici, ''anglais GB'' (Grande-Bretagne) a été mis en surbrillance pour l'utilisateur.
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: M09 0003.png|thumb|left|375px]] 
+
+
+'''Ensuite, réglez la résolution adéquate en appuyant sur la touche F3.''' Encore une fois, les options disponibles peuvent être mises en évidence pour la sélection à l'aide des touches fléchées vers le haut ou vers le bas de votre clavier.
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: M09 0004.png|thumb|left|375px]] 
+
+
+'''Ensuite, placez le drapeau facultatif de boot en appuyant sur la touche F4.''' Encore une fois, les options disponibles peuvent être mises en évidence pour la sélection à l'aide des touches fléchées vers le haut ou vers le bas de votre clavier.
+
+Une fois sélectionnée, appuyez sur &lt;Entrée&gt; pour confirmer et être ramené au menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-084.png|thumb|left|375px]] 
+
+Une fois ces premiers préparatifs terminés, Manjaro peut maintenant être démarré pour commencer le processus d'installation. Deux options principales sont disponibles:
+
+: '''1. Start Manjaro Linux''' - démarre en utilisant les pilotes graphiques libre / open-source développés par la communauté Linux.
+: '''2. Start (non-free graphics drivers)''' - démarre en utilisant les pilotes graphiques propriétaires (c.-à-d. développés et propriété des fabricants de cartes graphiques).
+
+{{Astuce| Pour de meilleurs résultats, sélectionnez l'option «Boot Manjaro Linux with non-free graphics drivers». Ça doit correspondre au pilote correct du fabricant de votre carte graphique spécifique.}}
+
+Dans notre cas, Manjaro est démarré en utilisant l'option pilote graphique non libre. Ici encore, utilisez les touches fléchées pour mettre en surbrillance votre choix, puis appuyez sur &lt;Entrée&gt; pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+=Démarrage du programme d'installation=
+
+[[file:netlogin-082.png|thumb|left|375px]]
+
+
+'''Se connecter à Manjaro'''. 
+
+Au début du démarrage en ligne de commande, il va être nécessaire de vous connecter au système pour lancer le processus d'installation. Comme sur l'image, le nom d'utilisateur et le mot de passe sont tous deux ''manjaro''.
+
+Dès la  connexion, vous allez avoir une autre possibilité de changer votre langue préférée et votre mapping de clés (c'est-à-dire la disposition clavier), si vous n'aviez pas pu le faire au début. Ces tâches peuvent également être effectuées durant le processus d'installation lui-même, svp voir le '''[[Guide_d%27installation_de_manjaro_0.8.3_Débutant#Set_Locale_.28facultatif.29| Set Locale (facultatif)]]''' et le '''[[Guide_d%27installation_de_manjaro_0.8.3_Débutant#Set_Keymap_.28facultatif.29| Set keymap (facultatif)]]''' dans le [[Guide_d%27installation_de_manjaro_0.8.4_Débutant|'''Guide d'installation de manjaro 0.8.4 Débutant''']].
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[file:netstartinstall-082.png|thumb|left|375px]]
+
+
+'''Démarrer l'installateur en ligne de commande'''.
+
+Pour lancer le processus d'installation, entrez la commande :
+
+ sudo setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+=Installation du système de base=
+
+[[file:netupdate-082.png|thumb|left|375px]]
+
+
+Le processus d'installation du sytème de base de la NET Edition  est identique à celui des éditions complètes de Manjaro. Donc, sélectionnez le guide qui vous convient :
+
+'''1. [[Guide_d%27installation_de_manjaro_0.8.4_Débutant#D.C3.A9marrage_du_programme_d.27installation_stable|Guide d'installation de manjaro 0.8.4 Débutant]]''' : un guide simple ne nécessitant pas de connaissances ni d'expertise techniques ;
+
+'''2. [[Aperçu de partitionnement et table de partition existante|Aperçu de partitionnement]], [[Cfdisk : scénarios de partitionnement basique|Scénarios de partitionnement basique]]''' et '''[[Guide de configuration manuelle]]''': partitionner manuellement votre disque dur et modifier les fichiers de configuration nécessaires.
+
+Dès que vous avez redémarré et que vous vous êtes connectés à votre système nouvellement installé, mettez-le à jour en entrant la commande :
+ sudo pacman -Syu
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Installation d'un gestionnaire d'affichage =
+
+[[File:login-083.png|thumb|left|375px]]
+
+
+Les gestionnaires d'affichage - également connus sous le nom de ''gestionnaires de connexion'' -  ont pour tâche de fournir un écran de connexion. Ils agissent donc comme une barrière de sécurité interdisant les accès non autorisés à votre système, mais il est possible d'activer la connexion automatique dans de nombreux cas. 
+Ils peuvent également vous permettre de choisir entre plusieurs environnements de bureau que vous avez installés.
+
+Un choix de quatre bons gestionnaires d'affichage- ''GDM'', ''KDM'', ''LXDM'' (présenté sur l'image), et ''SLiM'' - est disponible dans le guide '''[[Gestionnaires_de_connexion:_Guide_français|Gestionnaires de connexion]]'''.
+
+{{note|Si vous décidez d'utiliser SLiM, une configuration supplémentaire sera nécessaire pour le faire fonctionner. Dans le cas contraire, GDM, KDM, and LXDM vont détecter automatiquement pour vous les environnements de bureau installés}}.
+
+Une fois votre gestionnaire d'affichage installé et activé, vous êtes prêt à installer le ou les environnements de bureau de votre choix.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Installation d'environnements de bureau =
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+Notez s'il vous plaît que, contrairement à ceux préinstallés dans les éditions complètes de Manjaro, votre environnement de bureau n'aura aucune configuration spécifique Manjaro ni thèmes déjà installés. Cela va être au contraire une installation basique, &quot;Vanilla&quot;, pour commencer.
+
+Un large choix d'environnements de bureau et de gestionnaires de fenêtres supportés officiellement peut être installé en se référant au guide '''[[Installer_divers_environnements_de_bureau_et_gestionnaires_de_fenêtres|Installer divers environnements de bureau et gestionnaires de fenêtres]]'''. Par ailleurs, l'environnement de bureau ''MATE'' peut aussi être installé en se référant au guide '''[[Installer_le_bureau_MATE_et_le_Menu_Mint|Installer le bureau MATE et le Menu Mint]]''', bien qu'il ne soit pas officiellement supporté.
+
+{{Astuce|Si vous ne le saviez pas déjà, vous pouvez bien sûr installer plusieurs environnements de bureau !}}
+
+Une fois installés le ou les environnements de bureau choisis, redémarrez votre système, et connectez-vous en utilisant votre nouveau gestionnaire de connexion.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Ajout de fonctionnalités d'impression =
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+Bien que facultative, l'ajout de fonctionnalités d'impression est fortement recommandée.
+
+Des instructions complètes sur l'installation des logiciels nécessaires sont fournis dans le guide '''[[Activation_de_l%27impression|Activation de l'impression]]'''. 
+
+Une fois les logiciels nécessaires installés -- et les fonctionnalités d'impression activées - des imprimantes peuvent être ajoutées et configurées en utilisant le guide '''[[Configuration_de_l%27imprimante|Configuration de l'imprimante]]'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+=Accès à Arch User Repository (AUR)=
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+Gérés par la communauté Arch, l'&lt;b&gt;Arch User Repository&lt;/b&gt; est une source optionnelle d'applications logicielles supplémentaires qui pourraient autrement ne pas être disponibles via les dépôts officiels Manjaro.
+
+Le guide '''[[Dépôt_AUR_(Arch_User_Repository)|Dépôt_AUR_(Arch User Repository)]]''' fournit des informations sur la manière d'activer l'accès au dépôt AUR  ainsi que sur la façon d'y rechercher des logiciels à installer depuis ce dépôt.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Pamac =
+
+Développé spécialement pour Manjaro, ''Pamac'' se compose de trois applications : '''Pamac-Tray''' (en option pour exécuter automatiquement dans votre panneau une vérification des mises à jour disponibles), '''Pamac-Updater''' (démarrer la vérification et installer les mises à jour système disponibles), et '''Pamac-Manager''' (rechercher et installer les logiciels désirés et applications). Exceptionnellement convivial, Pamac fournit une interface intuitive pour mettre facilement à jour votre système et gérer vos logiciels. Hautement recommandé !
+
+Pour installer les applications Pamac, entrez la commande suivante dans votre terminal :
+
+
+[[File:pamac-manager-084.png|thumb|left|375px]]
+
+
+ sudo pacman -S pamac
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+
+=Voir aussi=
+
+[[Installation Guide for the NET Edition 0.8.10|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>a417bvatt93738mdo2xo6dtnjmrvbng</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

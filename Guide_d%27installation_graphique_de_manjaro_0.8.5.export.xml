@@ -1,0 +1,1681 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide d'installation graphique de manjaro 0.8.5</title>
+    <ns>0</ns>
+    <id>908</id>
+    <revision>
+      <id>5484</id>
+      <timestamp>2013-04-09T18:37:05Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;EN COURS DE TRADUCTION = Overview =  {{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already...&quot;</comment>
+      <text xml:space="preserve" bytes="15932">EN COURS DE TRADUCTION
+= Overview =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment.}}
+
+
+This '''Beginners' Guide''' is suitable for those with limited technical knowledge and experience. In this instance, it will not be necessary to manually partition your computer's hard disk or to manually edit various configuration files. Provided you know what you are doing or at least confident with the prospect of doing so - it is possible to install Manjaro alongside any other existing operating systems with relative ease.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-084.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the F2 key. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use it (especially where installing in Virtualbox). For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-084.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language''' by pressing the F2 key. The options available can be highlighted for selection by using the arrow keys on your keyboard. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-084.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap)''' by pressing the F2 key, selecting '''keyboard''', and then pressing &lt;enter&gt; to bring up the options. Where selecting your preferred language, the appropriate keyboard layout should already be selected. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-084.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are now available:
+
+: '''1. Start Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Start (non-free drivers)''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-085.png|thumb|left|375px]] 
+
+
+{{note|The Openbox flavour does not use the graphical installer. The Command-Line installation process can be started by right-clicking on the desktop, and then selecting the '''Install Manjaro''' option from the menu.}}
+
+As seen here, Manjaro 0.8.5 with the XFCE desktop environment is to be installed. However, irrespective of the Manjaro flavour (i.e. desktop environment) you have chosen to install, the installation process itself will still be the same.
+
+{{tip|If you wish to connect to the internet using a wireless connection, now is the time to do it!}}
+
+To begin the installation process, close the welcome window, and then double-click the &quot;Install Manjaro&quot; icon.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation: Set Locale and Keymap=
+
+[[File: guilang-085.png|thumb|left|375px]]
+
+
+'''Select your preferred language'''. If you were able to select this before booting, it should already be selected for you.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guitimezone-085.png|thumb|left|375px]]
+
+
+'''Select your time zone'''. This will consist of the region you live in, followed by the closest city. 
+
+It should already be selected for you. Otherwise, click the bar at the bottom of the screen to chose the appropriate zone.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guikeyboardb-085.png|thumb|left|375px]]
+
+
+'''Select your keyboard layout'''. Again, all the parameters should already be detected and selected for you. Otherwise, you may manually select your keyboard type, layout, and - where applicable - variant of that layout.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiuserinfo-085.png|thumb|left|375px]]
+
+
+'''Define you user account details'''. Here, you may select your profile picture, as well as enter your name, password, and host name. The host name is itself the name of the computer, and you may choose anything you wish. Your account name will be automatically generated based on your real name.
+
+Once complete, click '''Forward''' to proceed to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Partitioning=
+
+[[File: guiselecthd-085.png|thumb|left|375px]]
+
+
+'''Select the hard disk that you wish to install Manjaro on'''. Where only one hard disk is present, this will be listed as ''/dev/sda''. A second will be listed as ''/dev/sdb'', and so on.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Automatic Partitioning==
+
+[[File: guiautopartitionask-085.png|thumb|left|375px]]
+
+
+Where installing on a hard disk that does not have any existing partitions on it, you will be asked if you wish for the installer to create them for you. Click ''yes'' to do so, or otherwise ''no'' to create your own partitions manually.
+
+Should you click ''yes'' to automatic partitioning, a simple two-partition table will be created for you. However, it will still be necessary to assign the EXT4 partition to '''Root''' prior to proceeding to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Deleting Partitions==
+
+[[File: guigparted-085.png|thumb|left|375px]]
+
+
+Should it be necessary to delete any existing partitions, this can be done so by clicking the '''Edit Partitions''' button, which will consequently start an application called ''GParted''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddelswap-085.png|thumb|left|375px]]
+
+
+{{note|Where unable to delete a swap partition, first select the '''swapoff''' option from the right-click menu and then try again.}}
+
+To delete partitions simply right-click them and select the '''delete''' option. As this is undertaken, note that these deletions will be listed in the bottom pane as ''Pending Operations''. This is essentially just a safety feature to ensure confirmation is provided to undertake your desired actions; in this instance, the deletion of existing partitions.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedapplydel-085.png|thumb|left|375px]]
+
+
+Once all the desired partitions have been deleted, now right-click in the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to delete them.
+
+A request for confirmation will appear, along with a warning that proceeding will result in data-loss. To proceed, click the '''Apply''' button. The deletion process itself may take some time, depending on the size of the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Creating New Partitions ==
+
+[[File: guigpartednew-085.png|thumb|left|375px]]
+
+
+To create new partitions,  ensure that the '''Edit Partitions''' button has been clicked, which will consequently start the ''GParted'' application to do so.
+
+New partitions can then be added by right-clicking on any unallocated space on the hard drive, and then selecting the '''New''' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewextended-085.png|thumb|left|375px]]
+
+
+{{tip|Should you wish to use logical partitions rather than primary partitions to install Manjaro, then it will first be necessary to assign the desired amount of space to be taken by these partitions as an '''extended partition'''. An extended partition can be thought of as a container for logical partitions. Like any other Linux operating system, it does not matter whether logical, primary or a mixture of both partition types are used. More information can be found in the '''[[Partitioning Overview and Existing Partition Tables]]''' guide.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted1stpart-085.png|thumb|left|375px]]
+
+
+{{note|Although Manjaro may be installed on a little as one partition, in this instance, a three-partition scheme - Root, Home, and Swap - will be used.}}
+
+'''First, create the &lt;u&gt;Root&lt;/u&gt; partition'''. This is where the Manjaro system itself will be stored, along with any downloaded applications. The size of the partition may be defined by using the mouse to drag the bar at the top back or forth. It is recommended to allocate a minimum of 15GB (15,000MB) for the Root Partition. The file system of the Root partition must also be allocated. If you are unsure which to chose, then '''EXT4''' is the recommended choice.
+
+As illustrated, the Root partition in this instance is 15GB in size, and uses the EXT4 file system. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted2ndpart-085.png|thumb|left|375px]]
+
+
+{{tip|Remember to leave enough space for your '''Swap Partition''', which generally should be the same size as the amount of RAM / memory your computer uses.}}
+
+'''Second, create the &lt;u&gt;Home&lt;/u&gt; partition'''. This is where all your personal files (e.g. music, videos, documents, etc) will be stored. Again, the size of the partition may be defined by dragging the bar at the top back and forth. In this instance, just over 23GB (23,700MB) has been allocated, leaving about 2GB of space remaining for the swap partition. This is equal to the amount of memory the computer has.
+
+As with the Root partition, the file system of the Home partition must then allocated where '''EXT4''' is the recommended choice. Once complete, click '''Add''' to set the partition.
+ 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedswap-085.png|thumb|left|375px]]
+
+
+'''Finally, create the &lt;u&gt;swap&lt;/u&gt; partition'''. This is a special partition that can by used by your computer as a form of extra memory. As such, it can be used (particularly for older computers) to compensate should your computer run out of memory. However, even for newer systems with large amounts of RAM, it may also be used where ''Hibernating''. In essence, this is where powering the computer off, but wishing to boot up again at a later time exactly where you left off. 
+
+In this instance, the remaining 2GB of space has been allocated for the swap partition, which is again equal to the amount of RAM used by this particular computer. '''The file system in this instance must be set as &lt;u&gt;linux-swap&lt;/u&gt;. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewpartsapply-085.png|thumb|left|375px]]
+
+
+Once all the partitions have been set, right-click the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to create them.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewcomplete-085.png|thumb|left|375px]]
+
+
+After a few moments - how long depends on how big the partitions are - a window will appear to confirm the successful creation of the partitions. Click '''Close''' once shown.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddone-085.png|thumb|left|375px]]
+
+
+Partitioning complete, click the '''x''' located on the top-right border of the Gparted application window to close the application and return back to the installer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallernewtable-085.png|thumb|left|375px]]
+
+
+Having returned back to the installer, click the '''Refresh''' button to show the newly created partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Assigning Root and Home Partitions =
+
+[[File: guiinstallerassignroot-085.png|thumb|left|375px]]
+
+
+{{tip|Where only a single partition has been created for both Root and Home, it need only be assigned as Root. A Home folder will be created in this automatically.}}
+
+Now the Root partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /'''. In Linux, '/' means 'Root'.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerassigndone-085.png|thumb|left|375px]]
+
+
+Now the Home partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /home'''.
+
+Once complete, click '''Forward''' to be taken to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding the GRUB =
+
+[[File: guiinstallergrub-085.png|thumb|left|375px]]
+
+
+The GRUB - '''GR'''and '''U'''nified '''B'''ootloader must now be installed. This is responsible for booting Manjaro up once the computer has been turned on. Although it is possible to manually specify which particular partition to install the GRUB, in this instance the default setting of '''/dev/sda''' is fine. As such, simply click '''Forward''' to be taken to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerconfirm-085.png|thumb|left|375px]]
+
+
+A confirmation screen will appear, outlining all the settings defined for the installation of Manjaro. Where happy with this, simply click '''Install''' to begin the actual installation process.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Process =
+
+[[File: guiinstallerprocess-085.png|thumb|left|375px]]
+
+
+During the installation process, a number of slides will be shown, outlining the capabilities and features provided by Manjaro. New users in particular may benefit from reading them. The installation process itself may take some time.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallercomplete-085.png|thumb|left|375px]]
+
+
+Once the installation process has completed, a confirmation message will appear. It will also ask if you wish to restart your computer to begin using your newly installed system. To do so, click '''Yes'''. Otherwise, to continue using the Live system, click '''No'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootfromhd-085.png|thumb|left|375px]]
+
+
+Upon rebooting, it is possible to eject the installation media as the computer turns back on. However, it is also possible to boot from the installation media itself by selecting the '''Boot From Hard Disk''' hard disk option before pressing &lt;enter&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: displaymanagerscreen-085.png|thumb|left|375px]]
+
+
+Congratulations - and welcome to your freshly installed Manjaro system!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Installation Guides]]'''</text>
+      <sha1>mw5b9tviwhswdnjedp0sfymk982qc8o</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5485</id>
+      <parentid>5484</parentid>
+      <timestamp>2013-04-10T07:57:19Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16156">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+EN COURS DE TRADUCTION
+= Overview =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment.}}
+
+
+This '''Beginners' Guide''' is suitable for those with limited technical knowledge and experience. In this instance, it will not be necessary to manually partition your computer's hard disk or to manually edit various configuration files. Provided you know what you are doing or at least confident with the prospect of doing so - it is possible to install Manjaro alongside any other existing operating systems with relative ease.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-084.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the F2 key. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use it (especially where installing in Virtualbox). For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-084.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language''' by pressing the F2 key. The options available can be highlighted for selection by using the arrow keys on your keyboard. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-084.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap)''' by pressing the F2 key, selecting '''keyboard''', and then pressing &lt;enter&gt; to bring up the options. Where selecting your preferred language, the appropriate keyboard layout should already be selected. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-084.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are now available:
+
+: '''1. Start Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Start (non-free drivers)''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-085.png|thumb|left|375px]] 
+
+
+{{note|The Openbox flavour does not use the graphical installer. The Command-Line installation process can be started by right-clicking on the desktop, and then selecting the '''Install Manjaro''' option from the menu.}}
+
+As seen here, Manjaro 0.8.5 with the XFCE desktop environment is to be installed. However, irrespective of the Manjaro flavour (i.e. desktop environment) you have chosen to install, the installation process itself will still be the same.
+
+{{tip|If you wish to connect to the internet using a wireless connection, now is the time to do it!}}
+
+To begin the installation process, close the welcome window, and then double-click the &quot;Install Manjaro&quot; icon.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation: Set Locale and Keymap=
+
+[[File: guilang-085.png|thumb|left|375px]]
+
+
+'''Select your preferred language'''. If you were able to select this before booting, it should already be selected for you.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guitimezone-085.png|thumb|left|375px]]
+
+
+'''Select your time zone'''. This will consist of the region you live in, followed by the closest city. 
+
+It should already be selected for you. Otherwise, click the bar at the bottom of the screen to chose the appropriate zone.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guikeyboardb-085.png|thumb|left|375px]]
+
+
+'''Select your keyboard layout'''. Again, all the parameters should already be detected and selected for you. Otherwise, you may manually select your keyboard type, layout, and - where applicable - variant of that layout.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiuserinfo-085.png|thumb|left|375px]]
+
+
+'''Define you user account details'''. Here, you may select your profile picture, as well as enter your name, password, and host name. The host name is itself the name of the computer, and you may choose anything you wish. Your account name will be automatically generated based on your real name.
+
+Once complete, click '''Forward''' to proceed to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Partitioning=
+
+[[File: guiselecthd-085.png|thumb|left|375px]]
+
+
+'''Select the hard disk that you wish to install Manjaro on'''. Where only one hard disk is present, this will be listed as ''/dev/sda''. A second will be listed as ''/dev/sdb'', and so on.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Automatic Partitioning==
+
+[[File: guiautopartitionask-085.png|thumb|left|375px]]
+
+
+Where installing on a hard disk that does not have any existing partitions on it, you will be asked if you wish for the installer to create them for you. Click ''yes'' to do so, or otherwise ''no'' to create your own partitions manually.
+
+Should you click ''yes'' to automatic partitioning, a simple two-partition table will be created for you. However, it will still be necessary to assign the EXT4 partition to '''Root''' prior to proceeding to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Deleting Partitions==
+
+[[File: guigparted-085.png|thumb|left|375px]]
+
+
+Should it be necessary to delete any existing partitions, this can be done so by clicking the '''Edit Partitions''' button, which will consequently start an application called ''GParted''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddelswap-085.png|thumb|left|375px]]
+
+
+{{note|Where unable to delete a swap partition, first select the '''swapoff''' option from the right-click menu and then try again.}}
+
+To delete partitions simply right-click them and select the '''delete''' option. As this is undertaken, note that these deletions will be listed in the bottom pane as ''Pending Operations''. This is essentially just a safety feature to ensure confirmation is provided to undertake your desired actions; in this instance, the deletion of existing partitions.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedapplydel-085.png|thumb|left|375px]]
+
+
+Once all the desired partitions have been deleted, now right-click in the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to delete them.
+
+A request for confirmation will appear, along with a warning that proceeding will result in data-loss. To proceed, click the '''Apply''' button. The deletion process itself may take some time, depending on the size of the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Creating New Partitions ==
+
+[[File: guigpartednew-085.png|thumb|left|375px]]
+
+
+To create new partitions,  ensure that the '''Edit Partitions''' button has been clicked, which will consequently start the ''GParted'' application to do so.
+
+New partitions can then be added by right-clicking on any unallocated space on the hard drive, and then selecting the '''New''' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewextended-085.png|thumb|left|375px]]
+
+
+{{tip|Should you wish to use logical partitions rather than primary partitions to install Manjaro, then it will first be necessary to assign the desired amount of space to be taken by these partitions as an '''extended partition'''. An extended partition can be thought of as a container for logical partitions. Like any other Linux operating system, it does not matter whether logical, primary or a mixture of both partition types are used. More information can be found in the '''[[Partitioning Overview and Existing Partition Tables]]''' guide.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted1stpart-085.png|thumb|left|375px]]
+
+
+{{note|Although Manjaro may be installed on a little as one partition, in this instance, a three-partition scheme - Root, Home, and Swap - will be used.}}
+
+'''First, create the &lt;u&gt;Root&lt;/u&gt; partition'''. This is where the Manjaro system itself will be stored, along with any downloaded applications. The size of the partition may be defined by using the mouse to drag the bar at the top back or forth. It is recommended to allocate a minimum of 15GB (15,000MB) for the Root Partition. The file system of the Root partition must also be allocated. If you are unsure which to chose, then '''EXT4''' is the recommended choice.
+
+As illustrated, the Root partition in this instance is 15GB in size, and uses the EXT4 file system. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted2ndpart-085.png|thumb|left|375px]]
+
+
+{{tip|Remember to leave enough space for your '''Swap Partition''', which generally should be the same size as the amount of RAM / memory your computer uses.}}
+
+'''Second, create the &lt;u&gt;Home&lt;/u&gt; partition'''. This is where all your personal files (e.g. music, videos, documents, etc) will be stored. Again, the size of the partition may be defined by dragging the bar at the top back and forth. In this instance, just over 23GB (23,700MB) has been allocated, leaving about 2GB of space remaining for the swap partition. This is equal to the amount of memory the computer has.
+
+As with the Root partition, the file system of the Home partition must then allocated where '''EXT4''' is the recommended choice. Once complete, click '''Add''' to set the partition.
+ 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedswap-085.png|thumb|left|375px]]
+
+
+'''Finally, create the &lt;u&gt;swap&lt;/u&gt; partition'''. This is a special partition that can by used by your computer as a form of extra memory. As such, it can be used (particularly for older computers) to compensate should your computer run out of memory. However, even for newer systems with large amounts of RAM, it may also be used where ''Hibernating''. In essence, this is where powering the computer off, but wishing to boot up again at a later time exactly where you left off. 
+
+In this instance, the remaining 2GB of space has been allocated for the swap partition, which is again equal to the amount of RAM used by this particular computer. '''The file system in this instance must be set as &lt;u&gt;linux-swap&lt;/u&gt;. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewpartsapply-085.png|thumb|left|375px]]
+
+
+Once all the partitions have been set, right-click the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to create them.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewcomplete-085.png|thumb|left|375px]]
+
+
+After a few moments - how long depends on how big the partitions are - a window will appear to confirm the successful creation of the partitions. Click '''Close''' once shown.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddone-085.png|thumb|left|375px]]
+
+
+Partitioning complete, click the '''x''' located on the top-right border of the Gparted application window to close the application and return back to the installer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallernewtable-085.png|thumb|left|375px]]
+
+
+Having returned back to the installer, click the '''Refresh''' button to show the newly created partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Assigning Root and Home Partitions =
+
+[[File: guiinstallerassignroot-085.png|thumb|left|375px]]
+
+
+{{tip|Where only a single partition has been created for both Root and Home, it need only be assigned as Root. A Home folder will be created in this automatically.}}
+
+Now the Root partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /'''. In Linux, '/' means 'Root'.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerassigndone-085.png|thumb|left|375px]]
+
+
+Now the Home partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /home'''.
+
+Once complete, click '''Forward''' to be taken to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding the GRUB =
+
+[[File: guiinstallergrub-085.png|thumb|left|375px]]
+
+
+The GRUB - '''GR'''and '''U'''nified '''B'''ootloader must now be installed. This is responsible for booting Manjaro up once the computer has been turned on. Although it is possible to manually specify which particular partition to install the GRUB, in this instance the default setting of '''/dev/sda''' is fine. As such, simply click '''Forward''' to be taken to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerconfirm-085.png|thumb|left|375px]]
+
+
+A confirmation screen will appear, outlining all the settings defined for the installation of Manjaro. Where happy with this, simply click '''Install''' to begin the actual installation process.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Process =
+
+[[File: guiinstallerprocess-085.png|thumb|left|375px]]
+
+
+During the installation process, a number of slides will be shown, outlining the capabilities and features provided by Manjaro. New users in particular may benefit from reading them. The installation process itself may take some time.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallercomplete-085.png|thumb|left|375px]]
+
+
+Once the installation process has completed, a confirmation message will appear. It will also ask if you wish to restart your computer to begin using your newly installed system. To do so, click '''Yes'''. Otherwise, to continue using the Live system, click '''No'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootfromhd-085.png|thumb|left|375px]]
+
+
+Upon rebooting, it is possible to eject the installation media as the computer turns back on. However, it is also possible to boot from the installation media itself by selecting the '''Boot From Hard Disk''' hard disk option before pressing &lt;enter&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: displaymanagerscreen-085.png|thumb|left|375px]]
+
+
+Congratulations - and welcome to your freshly installed Manjaro system!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+[[Graphical Installation Guide for Beginners 0.8.5|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>mfcknxxjkn3brspy6f1wy3vlbokewgb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5487</id>
+      <parentid>5485</parentid>
+      <timestamp>2013-04-10T08:00:19Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16162">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+EN COURS DE TRADUCTION
+= Vue d'ensemble =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment.}}
+
+
+This '''Beginners' Guide''' is suitable for those with limited technical knowledge and experience. In this instance, it will not be necessary to manually partition your computer's hard disk or to manually edit various configuration files. Provided you know what you are doing or at least confident with the prospect of doing so - it is possible to install Manjaro alongside any other existing operating systems with relative ease.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-084.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the F2 key. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use it (especially where installing in Virtualbox). For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-084.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language''' by pressing the F2 key. The options available can be highlighted for selection by using the arrow keys on your keyboard. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-084.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap)''' by pressing the F2 key, selecting '''keyboard''', and then pressing &lt;enter&gt; to bring up the options. Where selecting your preferred language, the appropriate keyboard layout should already be selected. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-084.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are now available:
+
+: '''1. Start Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Start (non-free drivers)''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-085.png|thumb|left|375px]] 
+
+
+{{note|The Openbox flavour does not use the graphical installer. The Command-Line installation process can be started by right-clicking on the desktop, and then selecting the '''Install Manjaro''' option from the menu.}}
+
+As seen here, Manjaro 0.8.5 with the XFCE desktop environment is to be installed. However, irrespective of the Manjaro flavour (i.e. desktop environment) you have chosen to install, the installation process itself will still be the same.
+
+{{tip|If you wish to connect to the internet using a wireless connection, now is the time to do it!}}
+
+To begin the installation process, close the welcome window, and then double-click the &quot;Install Manjaro&quot; icon.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation: Set Locale and Keymap=
+
+[[File: guilang-085.png|thumb|left|375px]]
+
+
+'''Select your preferred language'''. If you were able to select this before booting, it should already be selected for you.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guitimezone-085.png|thumb|left|375px]]
+
+
+'''Select your time zone'''. This will consist of the region you live in, followed by the closest city. 
+
+It should already be selected for you. Otherwise, click the bar at the bottom of the screen to chose the appropriate zone.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guikeyboardb-085.png|thumb|left|375px]]
+
+
+'''Select your keyboard layout'''. Again, all the parameters should already be detected and selected for you. Otherwise, you may manually select your keyboard type, layout, and - where applicable - variant of that layout.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiuserinfo-085.png|thumb|left|375px]]
+
+
+'''Define you user account details'''. Here, you may select your profile picture, as well as enter your name, password, and host name. The host name is itself the name of the computer, and you may choose anything you wish. Your account name will be automatically generated based on your real name.
+
+Once complete, click '''Forward''' to proceed to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Partitioning=
+
+[[File: guiselecthd-085.png|thumb|left|375px]]
+
+
+'''Select the hard disk that you wish to install Manjaro on'''. Where only one hard disk is present, this will be listed as ''/dev/sda''. A second will be listed as ''/dev/sdb'', and so on.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Automatic Partitioning==
+
+[[File: guiautopartitionask-085.png|thumb|left|375px]]
+
+
+Where installing on a hard disk that does not have any existing partitions on it, you will be asked if you wish for the installer to create them for you. Click ''yes'' to do so, or otherwise ''no'' to create your own partitions manually.
+
+Should you click ''yes'' to automatic partitioning, a simple two-partition table will be created for you. However, it will still be necessary to assign the EXT4 partition to '''Root''' prior to proceeding to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Deleting Partitions==
+
+[[File: guigparted-085.png|thumb|left|375px]]
+
+
+Should it be necessary to delete any existing partitions, this can be done so by clicking the '''Edit Partitions''' button, which will consequently start an application called ''GParted''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddelswap-085.png|thumb|left|375px]]
+
+
+{{note|Where unable to delete a swap partition, first select the '''swapoff''' option from the right-click menu and then try again.}}
+
+To delete partitions simply right-click them and select the '''delete''' option. As this is undertaken, note that these deletions will be listed in the bottom pane as ''Pending Operations''. This is essentially just a safety feature to ensure confirmation is provided to undertake your desired actions; in this instance, the deletion of existing partitions.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedapplydel-085.png|thumb|left|375px]]
+
+
+Once all the desired partitions have been deleted, now right-click in the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to delete them.
+
+A request for confirmation will appear, along with a warning that proceeding will result in data-loss. To proceed, click the '''Apply''' button. The deletion process itself may take some time, depending on the size of the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Creating New Partitions ==
+
+[[File: guigpartednew-085.png|thumb|left|375px]]
+
+
+To create new partitions,  ensure that the '''Edit Partitions''' button has been clicked, which will consequently start the ''GParted'' application to do so.
+
+New partitions can then be added by right-clicking on any unallocated space on the hard drive, and then selecting the '''New''' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewextended-085.png|thumb|left|375px]]
+
+
+{{tip|Should you wish to use logical partitions rather than primary partitions to install Manjaro, then it will first be necessary to assign the desired amount of space to be taken by these partitions as an '''extended partition'''. An extended partition can be thought of as a container for logical partitions. Like any other Linux operating system, it does not matter whether logical, primary or a mixture of both partition types are used. More information can be found in the '''[[Partitioning Overview and Existing Partition Tables]]''' guide.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted1stpart-085.png|thumb|left|375px]]
+
+
+{{note|Although Manjaro may be installed on a little as one partition, in this instance, a three-partition scheme - Root, Home, and Swap - will be used.}}
+
+'''First, create the &lt;u&gt;Root&lt;/u&gt; partition'''. This is where the Manjaro system itself will be stored, along with any downloaded applications. The size of the partition may be defined by using the mouse to drag the bar at the top back or forth. It is recommended to allocate a minimum of 15GB (15,000MB) for the Root Partition. The file system of the Root partition must also be allocated. If you are unsure which to chose, then '''EXT4''' is the recommended choice.
+
+As illustrated, the Root partition in this instance is 15GB in size, and uses the EXT4 file system. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted2ndpart-085.png|thumb|left|375px]]
+
+
+{{tip|Remember to leave enough space for your '''Swap Partition''', which generally should be the same size as the amount of RAM / memory your computer uses.}}
+
+'''Second, create the &lt;u&gt;Home&lt;/u&gt; partition'''. This is where all your personal files (e.g. music, videos, documents, etc) will be stored. Again, the size of the partition may be defined by dragging the bar at the top back and forth. In this instance, just over 23GB (23,700MB) has been allocated, leaving about 2GB of space remaining for the swap partition. This is equal to the amount of memory the computer has.
+
+As with the Root partition, the file system of the Home partition must then allocated where '''EXT4''' is the recommended choice. Once complete, click '''Add''' to set the partition.
+ 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedswap-085.png|thumb|left|375px]]
+
+
+'''Finally, create the &lt;u&gt;swap&lt;/u&gt; partition'''. This is a special partition that can by used by your computer as a form of extra memory. As such, it can be used (particularly for older computers) to compensate should your computer run out of memory. However, even for newer systems with large amounts of RAM, it may also be used where ''Hibernating''. In essence, this is where powering the computer off, but wishing to boot up again at a later time exactly where you left off. 
+
+In this instance, the remaining 2GB of space has been allocated for the swap partition, which is again equal to the amount of RAM used by this particular computer. '''The file system in this instance must be set as &lt;u&gt;linux-swap&lt;/u&gt;. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewpartsapply-085.png|thumb|left|375px]]
+
+
+Once all the partitions have been set, right-click the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to create them.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewcomplete-085.png|thumb|left|375px]]
+
+
+After a few moments - how long depends on how big the partitions are - a window will appear to confirm the successful creation of the partitions. Click '''Close''' once shown.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddone-085.png|thumb|left|375px]]
+
+
+Partitioning complete, click the '''x''' located on the top-right border of the Gparted application window to close the application and return back to the installer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallernewtable-085.png|thumb|left|375px]]
+
+
+Having returned back to the installer, click the '''Refresh''' button to show the newly created partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Assigning Root and Home Partitions =
+
+[[File: guiinstallerassignroot-085.png|thumb|left|375px]]
+
+
+{{tip|Where only a single partition has been created for both Root and Home, it need only be assigned as Root. A Home folder will be created in this automatically.}}
+
+Now the Root partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /'''. In Linux, '/' means 'Root'.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerassigndone-085.png|thumb|left|375px]]
+
+
+Now the Home partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /home'''.
+
+Once complete, click '''Forward''' to be taken to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding the GRUB =
+
+[[File: guiinstallergrub-085.png|thumb|left|375px]]
+
+
+The GRUB - '''GR'''and '''U'''nified '''B'''ootloader must now be installed. This is responsible for booting Manjaro up once the computer has been turned on. Although it is possible to manually specify which particular partition to install the GRUB, in this instance the default setting of '''/dev/sda''' is fine. As such, simply click '''Forward''' to be taken to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerconfirm-085.png|thumb|left|375px]]
+
+
+A confirmation screen will appear, outlining all the settings defined for the installation of Manjaro. Where happy with this, simply click '''Install''' to begin the actual installation process.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Process =
+
+[[File: guiinstallerprocess-085.png|thumb|left|375px]]
+
+
+During the installation process, a number of slides will be shown, outlining the capabilities and features provided by Manjaro. New users in particular may benefit from reading them. The installation process itself may take some time.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallercomplete-085.png|thumb|left|375px]]
+
+
+Once the installation process has completed, a confirmation message will appear. It will also ask if you wish to restart your computer to begin using your newly installed system. To do so, click '''Yes'''. Otherwise, to continue using the Live system, click '''No'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootfromhd-085.png|thumb|left|375px]]
+
+
+Upon rebooting, it is possible to eject the installation media as the computer turns back on. However, it is also possible to boot from the installation media itself by selecting the '''Boot From Hard Disk''' hard disk option before pressing &lt;enter&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: displaymanagerscreen-085.png|thumb|left|375px]]
+
+
+Congratulations - and welcome to your freshly installed Manjaro system!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+[[Graphical Installation Guide for Beginners 0.8.5|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>fizsllb9uqhgiyp09m1jluunq0sjb2a</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5488</id>
+      <parentid>5487</parentid>
+      <timestamp>2013-04-10T08:11:29Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16159">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+EN COURS DE TRADUCTION
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement rolling release''. En tant que tel, en vertu de maintenir à jour une installation existante, il est déjà la dernière version. Plus d'informations peuvent être trouvées sur l'article de notre blog : '''[http://manjaro-fr-blog.legtux.org// Découvrez Manjaro linux. Le système d’exploitation sûr, rapide et continuellement à jour !]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment.}}
+
+
+This '''Beginners' Guide''' is suitable for those with limited technical knowledge and experience. In this instance, it will not be necessary to manually partition your computer's hard disk or to manually edit various configuration files. Provided you know what you are doing or at least confident with the prospect of doing so - it is possible to install Manjaro alongside any other existing operating systems with relative ease.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-084.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the F2 key. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use it (especially where installing in Virtualbox). For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-084.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language''' by pressing the F2 key. The options available can be highlighted for selection by using the arrow keys on your keyboard. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-084.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap)''' by pressing the F2 key, selecting '''keyboard''', and then pressing &lt;enter&gt; to bring up the options. Where selecting your preferred language, the appropriate keyboard layout should already be selected. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-084.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are now available:
+
+: '''1. Start Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Start (non-free drivers)''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-085.png|thumb|left|375px]] 
+
+
+{{note|The Openbox flavour does not use the graphical installer. The Command-Line installation process can be started by right-clicking on the desktop, and then selecting the '''Install Manjaro''' option from the menu.}}
+
+As seen here, Manjaro 0.8.5 with the XFCE desktop environment is to be installed. However, irrespective of the Manjaro flavour (i.e. desktop environment) you have chosen to install, the installation process itself will still be the same.
+
+{{tip|If you wish to connect to the internet using a wireless connection, now is the time to do it!}}
+
+To begin the installation process, close the welcome window, and then double-click the &quot;Install Manjaro&quot; icon.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation: Set Locale and Keymap=
+
+[[File: guilang-085.png|thumb|left|375px]]
+
+
+'''Select your preferred language'''. If you were able to select this before booting, it should already be selected for you.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guitimezone-085.png|thumb|left|375px]]
+
+
+'''Select your time zone'''. This will consist of the region you live in, followed by the closest city. 
+
+It should already be selected for you. Otherwise, click the bar at the bottom of the screen to chose the appropriate zone.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guikeyboardb-085.png|thumb|left|375px]]
+
+
+'''Select your keyboard layout'''. Again, all the parameters should already be detected and selected for you. Otherwise, you may manually select your keyboard type, layout, and - where applicable - variant of that layout.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiuserinfo-085.png|thumb|left|375px]]
+
+
+'''Define you user account details'''. Here, you may select your profile picture, as well as enter your name, password, and host name. The host name is itself the name of the computer, and you may choose anything you wish. Your account name will be automatically generated based on your real name.
+
+Once complete, click '''Forward''' to proceed to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Partitioning=
+
+[[File: guiselecthd-085.png|thumb|left|375px]]
+
+
+'''Select the hard disk that you wish to install Manjaro on'''. Where only one hard disk is present, this will be listed as ''/dev/sda''. A second will be listed as ''/dev/sdb'', and so on.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Automatic Partitioning==
+
+[[File: guiautopartitionask-085.png|thumb|left|375px]]
+
+
+Where installing on a hard disk that does not have any existing partitions on it, you will be asked if you wish for the installer to create them for you. Click ''yes'' to do so, or otherwise ''no'' to create your own partitions manually.
+
+Should you click ''yes'' to automatic partitioning, a simple two-partition table will be created for you. However, it will still be necessary to assign the EXT4 partition to '''Root''' prior to proceeding to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Deleting Partitions==
+
+[[File: guigparted-085.png|thumb|left|375px]]
+
+
+Should it be necessary to delete any existing partitions, this can be done so by clicking the '''Edit Partitions''' button, which will consequently start an application called ''GParted''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddelswap-085.png|thumb|left|375px]]
+
+
+{{note|Where unable to delete a swap partition, first select the '''swapoff''' option from the right-click menu and then try again.}}
+
+To delete partitions simply right-click them and select the '''delete''' option. As this is undertaken, note that these deletions will be listed in the bottom pane as ''Pending Operations''. This is essentially just a safety feature to ensure confirmation is provided to undertake your desired actions; in this instance, the deletion of existing partitions.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedapplydel-085.png|thumb|left|375px]]
+
+
+Once all the desired partitions have been deleted, now right-click in the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to delete them.
+
+A request for confirmation will appear, along with a warning that proceeding will result in data-loss. To proceed, click the '''Apply''' button. The deletion process itself may take some time, depending on the size of the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Creating New Partitions ==
+
+[[File: guigpartednew-085.png|thumb|left|375px]]
+
+
+To create new partitions,  ensure that the '''Edit Partitions''' button has been clicked, which will consequently start the ''GParted'' application to do so.
+
+New partitions can then be added by right-clicking on any unallocated space on the hard drive, and then selecting the '''New''' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewextended-085.png|thumb|left|375px]]
+
+
+{{tip|Should you wish to use logical partitions rather than primary partitions to install Manjaro, then it will first be necessary to assign the desired amount of space to be taken by these partitions as an '''extended partition'''. An extended partition can be thought of as a container for logical partitions. Like any other Linux operating system, it does not matter whether logical, primary or a mixture of both partition types are used. More information can be found in the '''[[Partitioning Overview and Existing Partition Tables]]''' guide.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted1stpart-085.png|thumb|left|375px]]
+
+
+{{note|Although Manjaro may be installed on a little as one partition, in this instance, a three-partition scheme - Root, Home, and Swap - will be used.}}
+
+'''First, create the &lt;u&gt;Root&lt;/u&gt; partition'''. This is where the Manjaro system itself will be stored, along with any downloaded applications. The size of the partition may be defined by using the mouse to drag the bar at the top back or forth. It is recommended to allocate a minimum of 15GB (15,000MB) for the Root Partition. The file system of the Root partition must also be allocated. If you are unsure which to chose, then '''EXT4''' is the recommended choice.
+
+As illustrated, the Root partition in this instance is 15GB in size, and uses the EXT4 file system. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted2ndpart-085.png|thumb|left|375px]]
+
+
+{{tip|Remember to leave enough space for your '''Swap Partition''', which generally should be the same size as the amount of RAM / memory your computer uses.}}
+
+'''Second, create the &lt;u&gt;Home&lt;/u&gt; partition'''. This is where all your personal files (e.g. music, videos, documents, etc) will be stored. Again, the size of the partition may be defined by dragging the bar at the top back and forth. In this instance, just over 23GB (23,700MB) has been allocated, leaving about 2GB of space remaining for the swap partition. This is equal to the amount of memory the computer has.
+
+As with the Root partition, the file system of the Home partition must then allocated where '''EXT4''' is the recommended choice. Once complete, click '''Add''' to set the partition.
+ 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedswap-085.png|thumb|left|375px]]
+
+
+'''Finally, create the &lt;u&gt;swap&lt;/u&gt; partition'''. This is a special partition that can by used by your computer as a form of extra memory. As such, it can be used (particularly for older computers) to compensate should your computer run out of memory. However, even for newer systems with large amounts of RAM, it may also be used where ''Hibernating''. In essence, this is where powering the computer off, but wishing to boot up again at a later time exactly where you left off. 
+
+In this instance, the remaining 2GB of space has been allocated for the swap partition, which is again equal to the amount of RAM used by this particular computer. '''The file system in this instance must be set as &lt;u&gt;linux-swap&lt;/u&gt;. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewpartsapply-085.png|thumb|left|375px]]
+
+
+Once all the partitions have been set, right-click the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to create them.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewcomplete-085.png|thumb|left|375px]]
+
+
+After a few moments - how long depends on how big the partitions are - a window will appear to confirm the successful creation of the partitions. Click '''Close''' once shown.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddone-085.png|thumb|left|375px]]
+
+
+Partitioning complete, click the '''x''' located on the top-right border of the Gparted application window to close the application and return back to the installer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallernewtable-085.png|thumb|left|375px]]
+
+
+Having returned back to the installer, click the '''Refresh''' button to show the newly created partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Assigning Root and Home Partitions =
+
+[[File: guiinstallerassignroot-085.png|thumb|left|375px]]
+
+
+{{tip|Where only a single partition has been created for both Root and Home, it need only be assigned as Root. A Home folder will be created in this automatically.}}
+
+Now the Root partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /'''. In Linux, '/' means 'Root'.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerassigndone-085.png|thumb|left|375px]]
+
+
+Now the Home partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /home'''.
+
+Once complete, click '''Forward''' to be taken to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding the GRUB =
+
+[[File: guiinstallergrub-085.png|thumb|left|375px]]
+
+
+The GRUB - '''GR'''and '''U'''nified '''B'''ootloader must now be installed. This is responsible for booting Manjaro up once the computer has been turned on. Although it is possible to manually specify which particular partition to install the GRUB, in this instance the default setting of '''/dev/sda''' is fine. As such, simply click '''Forward''' to be taken to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerconfirm-085.png|thumb|left|375px]]
+
+
+A confirmation screen will appear, outlining all the settings defined for the installation of Manjaro. Where happy with this, simply click '''Install''' to begin the actual installation process.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Process =
+
+[[File: guiinstallerprocess-085.png|thumb|left|375px]]
+
+
+During the installation process, a number of slides will be shown, outlining the capabilities and features provided by Manjaro. New users in particular may benefit from reading them. The installation process itself may take some time.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallercomplete-085.png|thumb|left|375px]]
+
+
+Once the installation process has completed, a confirmation message will appear. It will also ask if you wish to restart your computer to begin using your newly installed system. To do so, click '''Yes'''. Otherwise, to continue using the Live system, click '''No'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootfromhd-085.png|thumb|left|375px]]
+
+
+Upon rebooting, it is possible to eject the installation media as the computer turns back on. However, it is also possible to boot from the installation media itself by selecting the '''Boot From Hard Disk''' hard disk option before pressing &lt;enter&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: displaymanagerscreen-085.png|thumb|left|375px]]
+
+
+Congratulations - and welcome to your freshly installed Manjaro system!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+[[Graphical Installation Guide for Beginners 0.8.5|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>hurs5zdotyrewctsa676ed9nywufdjm</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5489</id>
+      <parentid>5488</parentid>
+      <timestamp>2013-04-10T08:14:34Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16202">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+EN COURS DE TRADUCTION
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement rolling release''. En tant que tel, en vertu de maintenir à jour une installation existante, il est déjà la dernière version. Plus d'informations peuvent être trouvées sur l'article de notre blog : '''[http://manjaro-fr-blog.legtux.org// Découvrez Manjaro linux. Le système d’exploitation sûr, rapide et continuellement à jour !]'''}}
+
+{{Astuce|Un guide '''[[Virtualbox - Installation et Utilisation]]''' a été fourni pour ceux qui souhaitent installer Manjaro dans un environnement de machine virtuelle.}}
+
+
+This '''Beginners' Guide''' is suitable for those with limited technical knowledge and experience. In this instance, it will not be necessary to manually partition your computer's hard disk or to manually edit various configuration files. Provided you know what you are doing or at least confident with the prospect of doing so - it is possible to install Manjaro alongside any other existing operating systems with relative ease.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-084.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the F2 key. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use it (especially where installing in Virtualbox). For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-084.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language''' by pressing the F2 key. The options available can be highlighted for selection by using the arrow keys on your keyboard. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-084.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap)''' by pressing the F2 key, selecting '''keyboard''', and then pressing &lt;enter&gt; to bring up the options. Where selecting your preferred language, the appropriate keyboard layout should already be selected. In this instance, ''English (UK)'' has been highlighted for the user. 
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-084.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are now available:
+
+: '''1. Start Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Start (non-free drivers)''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-085.png|thumb|left|375px]] 
+
+
+{{note|The Openbox flavour does not use the graphical installer. The Command-Line installation process can be started by right-clicking on the desktop, and then selecting the '''Install Manjaro''' option from the menu.}}
+
+As seen here, Manjaro 0.8.5 with the XFCE desktop environment is to be installed. However, irrespective of the Manjaro flavour (i.e. desktop environment) you have chosen to install, the installation process itself will still be the same.
+
+{{tip|If you wish to connect to the internet using a wireless connection, now is the time to do it!}}
+
+To begin the installation process, close the welcome window, and then double-click the &quot;Install Manjaro&quot; icon.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation: Set Locale and Keymap=
+
+[[File: guilang-085.png|thumb|left|375px]]
+
+
+'''Select your preferred language'''. If you were able to select this before booting, it should already be selected for you.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guitimezone-085.png|thumb|left|375px]]
+
+
+'''Select your time zone'''. This will consist of the region you live in, followed by the closest city. 
+
+It should already be selected for you. Otherwise, click the bar at the bottom of the screen to chose the appropriate zone.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guikeyboardb-085.png|thumb|left|375px]]
+
+
+'''Select your keyboard layout'''. Again, all the parameters should already be detected and selected for you. Otherwise, you may manually select your keyboard type, layout, and - where applicable - variant of that layout.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiuserinfo-085.png|thumb|left|375px]]
+
+
+'''Define you user account details'''. Here, you may select your profile picture, as well as enter your name, password, and host name. The host name is itself the name of the computer, and you may choose anything you wish. Your account name will be automatically generated based on your real name.
+
+Once complete, click '''Forward''' to proceed to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Partitioning=
+
+[[File: guiselecthd-085.png|thumb|left|375px]]
+
+
+'''Select the hard disk that you wish to install Manjaro on'''. Where only one hard disk is present, this will be listed as ''/dev/sda''. A second will be listed as ''/dev/sdb'', and so on.
+
+Once selected, click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Automatic Partitioning==
+
+[[File: guiautopartitionask-085.png|thumb|left|375px]]
+
+
+Where installing on a hard disk that does not have any existing partitions on it, you will be asked if you wish for the installer to create them for you. Click ''yes'' to do so, or otherwise ''no'' to create your own partitions manually.
+
+Should you click ''yes'' to automatic partitioning, a simple two-partition table will be created for you. However, it will still be necessary to assign the EXT4 partition to '''Root''' prior to proceeding to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Deleting Partitions==
+
+[[File: guigparted-085.png|thumb|left|375px]]
+
+
+Should it be necessary to delete any existing partitions, this can be done so by clicking the '''Edit Partitions''' button, which will consequently start an application called ''GParted''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddelswap-085.png|thumb|left|375px]]
+
+
+{{note|Where unable to delete a swap partition, first select the '''swapoff''' option from the right-click menu and then try again.}}
+
+To delete partitions simply right-click them and select the '''delete''' option. As this is undertaken, note that these deletions will be listed in the bottom pane as ''Pending Operations''. This is essentially just a safety feature to ensure confirmation is provided to undertake your desired actions; in this instance, the deletion of existing partitions.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedapplydel-085.png|thumb|left|375px]]
+
+
+Once all the desired partitions have been deleted, now right-click in the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to delete them.
+
+A request for confirmation will appear, along with a warning that proceeding will result in data-loss. To proceed, click the '''Apply''' button. The deletion process itself may take some time, depending on the size of the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Creating New Partitions ==
+
+[[File: guigpartednew-085.png|thumb|left|375px]]
+
+
+To create new partitions,  ensure that the '''Edit Partitions''' button has been clicked, which will consequently start the ''GParted'' application to do so.
+
+New partitions can then be added by right-clicking on any unallocated space on the hard drive, and then selecting the '''New''' option.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewextended-085.png|thumb|left|375px]]
+
+
+{{tip|Should you wish to use logical partitions rather than primary partitions to install Manjaro, then it will first be necessary to assign the desired amount of space to be taken by these partitions as an '''extended partition'''. An extended partition can be thought of as a container for logical partitions. Like any other Linux operating system, it does not matter whether logical, primary or a mixture of both partition types are used. More information can be found in the '''[[Partitioning Overview and Existing Partition Tables]]''' guide.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted1stpart-085.png|thumb|left|375px]]
+
+
+{{note|Although Manjaro may be installed on a little as one partition, in this instance, a three-partition scheme - Root, Home, and Swap - will be used.}}
+
+'''First, create the &lt;u&gt;Root&lt;/u&gt; partition'''. This is where the Manjaro system itself will be stored, along with any downloaded applications. The size of the partition may be defined by using the mouse to drag the bar at the top back or forth. It is recommended to allocate a minimum of 15GB (15,000MB) for the Root Partition. The file system of the Root partition must also be allocated. If you are unsure which to chose, then '''EXT4''' is the recommended choice.
+
+As illustrated, the Root partition in this instance is 15GB in size, and uses the EXT4 file system. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparted2ndpart-085.png|thumb|left|375px]]
+
+
+{{tip|Remember to leave enough space for your '''Swap Partition''', which generally should be the same size as the amount of RAM / memory your computer uses.}}
+
+'''Second, create the &lt;u&gt;Home&lt;/u&gt; partition'''. This is where all your personal files (e.g. music, videos, documents, etc) will be stored. Again, the size of the partition may be defined by dragging the bar at the top back and forth. In this instance, just over 23GB (23,700MB) has been allocated, leaving about 2GB of space remaining for the swap partition. This is equal to the amount of memory the computer has.
+
+As with the Root partition, the file system of the Home partition must then allocated where '''EXT4''' is the recommended choice. Once complete, click '''Add''' to set the partition.
+ 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartedswap-085.png|thumb|left|375px]]
+
+
+'''Finally, create the &lt;u&gt;swap&lt;/u&gt; partition'''. This is a special partition that can by used by your computer as a form of extra memory. As such, it can be used (particularly for older computers) to compensate should your computer run out of memory. However, even for newer systems with large amounts of RAM, it may also be used where ''Hibernating''. In essence, this is where powering the computer off, but wishing to boot up again at a later time exactly where you left off. 
+
+In this instance, the remaining 2GB of space has been allocated for the swap partition, which is again equal to the amount of RAM used by this particular computer. '''The file system in this instance must be set as &lt;u&gt;linux-swap&lt;/u&gt;. Once complete, click '''Add''' to set the partition.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewpartsapply-085.png|thumb|left|375px]]
+
+
+Once all the partitions have been set, right-click the ''Pending Operations'' pane and select '''Apply All Operations''' to confirm your intention to create them.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigpartednewcomplete-085.png|thumb|left|375px]]
+
+
+After a few moments - how long depends on how big the partitions are - a window will appear to confirm the successful creation of the partitions. Click '''Close''' once shown.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guigparteddone-085.png|thumb|left|375px]]
+
+
+Partitioning complete, click the '''x''' located on the top-right border of the Gparted application window to close the application and return back to the installer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallernewtable-085.png|thumb|left|375px]]
+
+
+Having returned back to the installer, click the '''Refresh''' button to show the newly created partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Assigning Root and Home Partitions =
+
+[[File: guiinstallerassignroot-085.png|thumb|left|375px]]
+
+
+{{tip|Where only a single partition has been created for both Root and Home, it need only be assigned as Root. A Home folder will be created in this automatically.}}
+
+Now the Root partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /'''. In Linux, '/' means 'Root'.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerassigndone-085.png|thumb|left|375px]]
+
+
+Now the Home partition must be assigned formally as such. To do so, right-click the partition and select '''Assign to /home'''.
+
+Once complete, click '''Forward''' to be taken to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding the GRUB =
+
+[[File: guiinstallergrub-085.png|thumb|left|375px]]
+
+
+The GRUB - '''GR'''and '''U'''nified '''B'''ootloader must now be installed. This is responsible for booting Manjaro up once the computer has been turned on. Although it is possible to manually specify which particular partition to install the GRUB, in this instance the default setting of '''/dev/sda''' is fine. As such, simply click '''Forward''' to be taken to the next step.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallerconfirm-085.png|thumb|left|375px]]
+
+
+A confirmation screen will appear, outlining all the settings defined for the installation of Manjaro. Where happy with this, simply click '''Install''' to begin the actual installation process.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Completing the Process =
+
+[[File: guiinstallerprocess-085.png|thumb|left|375px]]
+
+
+During the installation process, a number of slides will be shown, outlining the capabilities and features provided by Manjaro. New users in particular may benefit from reading them. The installation process itself may take some time.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: guiinstallercomplete-085.png|thumb|left|375px]]
+
+
+Once the installation process has completed, a confirmation message will appear. It will also ask if you wish to restart your computer to begin using your newly installed system. To do so, click '''Yes'''. Otherwise, to continue using the Live system, click '''No'''. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: bootfromhd-085.png|thumb|left|375px]]
+
+
+Upon rebooting, it is possible to eject the installation media as the computer turns back on. However, it is also possible to boot from the installation media itself by selecting the '''Boot From Hard Disk''' hard disk option before pressing &lt;enter&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: displaymanagerscreen-085.png|thumb|left|375px]]
+
+
+Congratulations - and welcome to your freshly installed Manjaro system!
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+[[Graphical Installation Guide for Beginners 0.8.5|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>hslke6oi4yrljmuo4u6q5rumodqzydv</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,880 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Package Browser: Guide français</title>
+    <ns>0</ns>
+    <id>632</id>
+    <revision>
+      <id>3712</id>
+      <timestamp>2012-12-30T16:32:57Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = EN COURS DE TRADUCTION =  = Overview =  [[File:pacckagebrowser-082.png|thumb|left|375px]]   '''Package Browser''' is a user-f...&quot;</comment>
+      <text xml:space="preserve" bytes="9322">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN COURS DE TRADUCTION =
+
+= Overview =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' is a user-friendly application that can be used to search for and view information about software packages. This includes those already installed on the system, in addition to those available for installation from both the official Manjaro software repositories, and unofficially from the '''[[Arch_User_Repository|Arch User Repository]]'''. Although ''Package Browser'' cannot itself be used to actually download any software, it does serve many userful purposes, such as identifying:
+
+* What is available for download and installation using the '''[[Pacman-GUI]]'''
+* ''Dependencies'' (e.g. software packages that are necessary for other applications to work properly)
+* ''Orphans'' (i.e. software packagea that are not used by anything, and that serve no purpose), 
+* ''Package Groups'' (e.g. 'kde' is not a single package, but a group of packages that make up the KDE desktop), and
+* Comprehensive and detailed information about installed and installable software packages
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Filtering Browsing or Results =
+
+{{tip|Simply select a filter without specifying anything to search for in order to browse all of the appropriate files. For example, to view all orphaned packages on your system, expand the ''All'' filter and then select ''Orphans''. By default the ''Orphan'' filter will only show orphans installed on your system. In addition, to view all installed software not obtained from the official repositories, expand the ''Foreign'' filter and then select ''Installed''.}}
+
+
+Filters are useful tools that allow for search results to be narrowed down according to personal preference. For example, it is possible to either browse or search through all of the repositories for a software application, or to specify a single repository in particular. In addition, the search results themselves may be filtered still further by:
+ 
+* '''Installed''': Show only software packages that have been installed
+* '''Non-Installed''': Show only software packages that have not been installed
+* '''Orphans''': Show only orphaned software packages
+* '''Updates''': Show only available updates (and downgrades)
+* '''Groups''': Show only package groups
+
+
+It is also worthwhile noting that searches may also be filtered by their '''categories''' (e.g. games, desktop environment, system, and so forth). Again, a filter selected on its own (i.e. without specifying a particular software package to search for) will show all appropriate software packages. Again, this is useful to identify orphaned packages, for example. Otherwise, a filter may be selected prior to starting a search in order to narrow down the results.
+
+{{note|The ''Scope'' option can also be used to narrow down searches (see below).}}
+
+
+= Searching for Packages or Groups =
+
+''Package Browser'' does not restrict searches to just using a full or partial software package name. As outlined in the ''Method'' section below, many other types of searches - direct and indirect - can be used for different types of results. Searches themselves are undertaken by typing in the relevant search criteria into the '''search box''' located directly below the filter window, and then either pressing &lt;enter&gt; or clicking on the ''magnifying glass icon''.
+
+However, prior to undertaking a search, it is worthwhile reviewing the available options that may be used with it.
+
+
+=== Search Method ===
+
+Several different search methods are provided, selectable under the '''Method''' heading:
+
+
+* '''Plain Match''': This is a strict method of searching, where a search term must be matched exactly. For example, entering a partial package name may not yield any results, so the full and exact name must be used. Where searching for something using more than one word (e.g. using a description of a package), then the sentence must also be contained in quotation marks (' ').
+
+
+* '''Wildcard Search''': This is a broad method of searching, where partial matches will be returned by default. For example, entering ''kde'' in a wildcard search will yield all kde-related packages. Wildcards may also be used, specifically '''?''' to stand in for any single character, and '''*''' to stand in for two or more characters in a word. '''The Wildcard Search is perhaps the best search method to use for most users.'''
+
+
+* '''Regular Expression''': This is a special search method appropriate for more experienced users. Searching is undertaken using the same syntax as used for the Python programming language. Searches can match anywhere within a key - unless anchored to the beginning or end of the key by using the special characters &quot;^&quot; or &quot;$&quot;.
+
+
+* '''Case Sensitive''': This is actually an additional option rather than a search method in itself. If this is checked, then the searches will become case sensitive, meaning the use of upper and lower-case letters will be important.
+
+
+=== Keys ===
+
+Again, although it is likely that searches will be undertaken by using the names of software packages, a number of additional options are available as well, though selecting the appropriate check-box(es) underneath the '''Keys''' heading. One or a particular combination of keys may be used for a search. Each key may be used to search and deliver results against:
+
+* '''Names''': The name
+* '''Descriptions:''' The description
+* '''Dependencies:''' The listed dependencies
+* '''Maintainer:''' The listed maintainer (e.g. type in ''Phil'' via a ''Wildcard Search'' to retrieve a list of packages maintained by Manjaro's own Philip Muller)
+* '''Provides''': What a package is listed to provide
+* '''Replaces''': What a package is listed to replace
+* '''Optional''': Where a package is listed as an optional addition to something else, and
+* '''Files''': Search only for a file, rather than package (collection of files).
+
+
+{{tip|For most users, ensuring the ''Names'' and ''descriptions'' are highlighted should be more than sufficient, especially when combined with a ''Wildcard Search''.}}
+
+
+=== Scope ===
+
+Changing (or narrowing) the scope of a search to narrow down the results of a search is similar to using a filter. Individual search scopes are available under the '''Scope''' heading. They are:
+
+* '''All''': Do not narrow down the scope of a search
+* '''Installed''': Apply searches and results only for software packages that have been installed
+* '''Non-Installed''': Apply searches and results only for software packages that have not been installed
+* '''Packages''': Exclude files and groups
+* '''Groups''': Apply searches and results only for package groups (e.g. XFCE and KDE desktop environments, etc)
+* '''Include AUR''':  Apply searches and results to include packages available from the Arch User Repository
+* '''Current List''': Apply searchs and results to an existing search result to narrow it down further
+
+
+= Gaining Further Information =
+
+Once a search has been undertaken and the results delivered, it is possible to obtained a substantial array of information about packages and package groups by clicking on them. In the '''Package Window''' where the results are listed, this will include the package or group:
+
+* Name
+* Version
+* Repository where available
+* Status (e.g. whether installed, a dependency, or an orphan)
+* Date and time of installation, and
+* Size
+
+
+{{tip|It is worthwhile noting that a package will be indicated by a green icon, while a package group will be indicated by a blue icon. A package group can be expanded to provide a list of all the packages contained within it, and then each package can be selected to find out further information about it.}}
+
+
+Far more detailed information can also be obtained below, by using the '''Information Panel'''. This contains several tabs, which will provide:
+
+* '''Details Tab''': A comprehensive overview of a package
+* '''Files Tab''': A list of all the files that make up a package
+* '''Tree Tab''': An illustration of how a package's files all fit together
+* '''Log Tab''': Any information that the author has considered necessary
+* '''Cache Tab''': Information about how the package is stored in the system cache.
+
+
+= Keyboard Shortcuts =
+
+{{tip|If using '''[[Compiz and Emerald]]''' ensure that there are not any conflicts between the keyboard shortcuts to use them both (i.e. the same command is used in both instances.}}
+
+
+'''F1'''  	- View the application manual.
+
+'''F9'''  	- Move focus to the filters panel.
+
+'''F10''' 	- Move focus to the packages panel.
+
+'''F11''' 	- Move focus to the information panel.
+
+'''F12''' 	- Move focus to the search box.
+
+'''F3''' 	- Start or stop the current search.
+
+'''Ctrl+O''' 	- Open the file search dialog.
+
+'''Alt+Left''' 	- Go back in the information history.
+
+'''Alt+Right''' - Go forward in the information history.
+
+'''Ctrl+B''' 	- Bookmark the current package.
+
+'''F7''' 	- Show the bookmarks menu.
+
+'''Ctrl+S''' 	- Show the statistics dialog.
+
+'''Ctrl+L''' 	- Copy the package list.
+
+'''F5''' 	- Refresh after system changes.
+
+'''Ctrl+W'''	- Cancel the current task.
+
+'''Ctrl+Q''' 	- Quit the application.
+
+
+[[Package Browser|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>53ttzpmid7xi6kp1uamf8jva3rd9ya4</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3851</id>
+      <parentid>3712</parentid>
+      <timestamp>2013-01-02T16:26:51Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10259">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vur d'ensemble =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' est une application facile à utiliser qui peut être utilisée pour rechercher et afficher des informations sur les paquetages logiciels. Cela comprend ceux qui sont déjà installés sur le système, ceux disponibles pour l'installation à partir des dépôts officiels de Manjaro, et officieusement du dépôt '''[[Arch_User_Repository|AUR]]'''. Bien que ''Package Browser'' ne puisse lui-même être utilisé pour réellement télécharger tout logiciel, il pourra servir à de nombreuses utilisations, telles que l'identification:
+
+* De ce qui est disponible pour le téléchargement et l'installation en utilisant l' interface graphique [[Pacman-GUI: Guide français]]
+* Des ''dépendances'' (logiciels qui sont, par exemple, nécessaires pour d'autres applications pour fonctionner correctement)
+* Des ''Orphelins'' (c'est-à-dire les paquets logiciels qui ne sont utilisés par quoi que ce soit, et qui ne servent à rien)
+* Des ''groupes de paquets'' (par exemple «kde» n'est pas un simple package, mais un groupe de paquets qui composent le bureau KDE), et
+* D'une information complète et détaillée sur les paquets logiciels installés et installables.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Lecture rapide ou résultats de filtrage =
+
+{{Astuce|Sélectionnez simplement un filtre sans spécifier quoi que ce soit à rechercher afin de passer en revue tous les fichiers appropriés. Par exemple, pour afficher tous les paquets orphelins sur votre système, developpez le filtre ''All'', puis sélectionnez ''Orphans''. Par défaut le filtre ''Orphans'' montrera seulement les orphelins installés sur votre système. En outre, pour regarder tous les logiciels installés non obtenus à partir des dépôts officiels, développez le filtre ''Foreign'', puis sélectionnez ''Installed''.}}
+
+
+Les filtres sont des outils utiles qui tiennent compte de vos préférences personnelles pour que les résultats de recherche soient affinés. Par exemple, il est possible de passer en revue ou rechercher dans tous les dépôts une application logicielle, ou spécifier un dépôt en particulier. En outre, les résultats de la recherche eux-mêmes peuvent être filtrés encore par:
+ 
+* '''Installed:''' Voir seulement les paquets logiciels logiciels qui ont été installés
+* '''Non-Installed:''' Voir seulement les paquets logiciels qui n'ont pas été installés
+* '''Orphans:''' Voir seulement les paquets logiciels orphelins
+* '''Updates:''' Voir seulement les mises à jour disponibles (et ''downgrades'')
+* '''Groups:''' Voir seulement les groupes de paquets.
+
+
+Il est également intéressant de noter que les recherches peuvent également être filtrées par leurs '''catégories''' (par exemple les jeux, l'environnement de bureau, le système, et ainsi de suite). Encore une fois, un filtre sélectionné (c'est à dire sans la spécification d'un logiciel particulier pour rechercher) affiche tous les logiciels appropriés, ce qui est utile pour identifier les paquets orphelins, par exemple. Dans le cas contraire, un filtre peut être sélectionné avant de commencer une recherche pour affiner les résultats.
+
+{{note|L'option ''Scope'' peut également être utilisée pour affiner les recherches (voir ci-dessous).}}
+
+
+= Recherche de paquets ou de groupes =
+
+''Package Browser'' ne se limite pas seulement aux recherches utilisant le nom complet ou partiel d'un paquet. Comme il est indiqué dans la méthode ci-dessous, de nombreux autres types de recherches - directes et indirectes - peuvent être utilisés pour différents types de résultats. Les recherches sont entreprises par l'introduction au clavier des critères de recherches appropriés dans la '''boîte de recherche''' située directement au-dessous de la fenêtre du filtre, puis en appuyant sur &lt;entrée&gt; ou en cliquant sur ​​''l'icône de la loupe''.
+
+Cependant, avant d'entreprendre une recherche, il est utile de revoir les options disponibles qui peuvent être utilisées.
+
+
+=== Méthode de recherche ===
+
+Plusieurs méthodes de recherche différentes sont prévues, sélectionnable sous la rubrique '''Method''':
+
+
+* '''Plain Match:''' Il s'agit d'une méthode rigoureuse de recherche, où un terme de recherche doit correspondre exactement. Par exemple, entrer un nom partiel de paquet ne peut pas donner de résultat, de sorte que le nom complet et exact doit être utilisé. Lorsque la recherche de quelque chose utilise plus d'un mot (par exemple en utilisant la description d'un paquet), la phrase doit être entre guillemets simples (' ').
+
+
+* '''Wildcard Search:''' Il s'agit d'une méthode générale de recherche, où les correspondances partielles seront retournés par défaut. Par exemple, en entrant ''kde'' dans une recherche générique donnera tous les paquets en relation avec kde. Les caractères génériques peuvent également être utilisés, en particulier '''?''' à substituer à n'importe quel caractère unique, et '''*''' à substituer à deux ou plusieurs caractères dans un mot. '''La Wildcard Search est peut-être la meilleure méthode de recherche à utiliser pour la plupart des utilisateurs.'''
+
+
+* '''Regular Expression:''' Il s'agit d'une méthode de recherche spécifique appropriée pour les utilisateurs plus expérimentés. La recherche est effectuée en utilisant la même syntaxe que celle utilisée pour le langage de programmation Python. Les recherches peuvent correspondre n'importe où dans une clé - sauf si ancrée au début ou à la fin de la clé en utilisant les caractères spéciaux &quot;^&quot; ou &quot;$&quot;.
+
+
+* '''Case sensitive:''' C'est en fait une option supplémentaire plutôt qu'une méthode de recherche en soi. Si cette case est cochée, alors les recherches seront sensibles à la casse, ce qui signifie que l'usage de majuscules et minuscules sera important.
+
+
+=== Clés ===
+
+Again, although it is likely that searches will be undertaken by using the names of software packages, a number of additional options are available as well, though selecting the appropriate check-box(es) underneath the '''Keys''' heading. One or a particular combination of keys may be used for a search. Each key may be used to search and deliver results against:
+
+* '''Names''': The name
+* '''Descriptions:''' The description
+* '''Dependencies:''' The listed dependencies
+* '''Maintainer:''' The listed maintainer (e.g. type in ''Phil'' via a ''Wildcard Search'' to retrieve a list of packages maintained by Manjaro's own Philip Muller)
+* '''Provides''': What a package is listed to provide
+* '''Replaces''': What a package is listed to replace
+* '''Optional''': Where a package is listed as an optional addition to something else, and
+* '''Files''': Search only for a file, rather than package (collection of files).
+
+
+{{tip|For most users, ensuring the ''Names'' and ''descriptions'' are highlighted should be more than sufficient, especially when combined with a ''Wildcard Search''.}}
+
+
+=== Scope ===
+
+Changing (or narrowing) the scope of a search to narrow down the results of a search is similar to using a filter. Individual search scopes are available under the '''Scope''' heading. They are:
+
+* '''All''': Do not narrow down the scope of a search
+* '''Installed''': Apply searches and results only for software packages that have been installed
+* '''Non-Installed''': Apply searches and results only for software packages that have not been installed
+* '''Packages''': Exclude files and groups
+* '''Groups''': Apply searches and results only for package groups (e.g. XFCE and KDE desktop environments, etc)
+* '''Include AUR''':  Apply searches and results to include packages available from the Arch User Repository
+* '''Current List''': Apply searchs and results to an existing search result to narrow it down further
+
+
+= Gaining Further Information =
+
+Once a search has been undertaken and the results delivered, it is possible to obtained a substantial array of information about packages and package groups by clicking on them. In the '''Package Window''' where the results are listed, this will include the package or group:
+
+* Name
+* Version
+* Repository where available
+* Status (e.g. whether installed, a dependency, or an orphan)
+* Date and time of installation, and
+* Size
+
+
+{{tip|It is worthwhile noting that a package will be indicated by a green icon, while a package group will be indicated by a blue icon. A package group can be expanded to provide a list of all the packages contained within it, and then each package can be selected to find out further information about it.}}
+
+
+Far more detailed information can also be obtained below, by using the '''Information Panel'''. This contains several tabs, which will provide:
+
+* '''Details Tab''': A comprehensive overview of a package
+* '''Files Tab''': A list of all the files that make up a package
+* '''Tree Tab''': An illustration of how a package's files all fit together
+* '''Log Tab''': Any information that the author has considered necessary
+* '''Cache Tab''': Information about how the package is stored in the system cache.
+
+
+= Keyboard Shortcuts =
+
+{{tip|If using '''[[Compiz and Emerald]]''' ensure that there are not any conflicts between the keyboard shortcuts to use them both (i.e. the same command is used in both instances.}}
+
+
+'''F1'''  	- View the application manual.
+
+'''F9'''  	- Move focus to the filters panel.
+
+'''F10''' 	- Move focus to the packages panel.
+
+'''F11''' 	- Move focus to the information panel.
+
+'''F12''' 	- Move focus to the search box.
+
+'''F3''' 	- Start or stop the current search.
+
+'''Ctrl+O''' 	- Open the file search dialog.
+
+'''Alt+Left''' 	- Go back in the information history.
+
+'''Alt+Right''' - Go forward in the information history.
+
+'''Ctrl+B''' 	- Bookmark the current package.
+
+'''F7''' 	- Show the bookmarks menu.
+
+'''Ctrl+S''' 	- Show the statistics dialog.
+
+'''Ctrl+L''' 	- Copy the package list.
+
+'''F5''' 	- Refresh after system changes.
+
+'''Ctrl+W'''	- Cancel the current task.
+
+'''Ctrl+Q''' 	- Quit the application.
+
+
+[[Package Browser|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>brxrnpduunsvz48s9gfzayueydhneia</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3853</id>
+      <parentid>3851</parentid>
+      <timestamp>2013-01-02T16:32:50Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10740">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vur d'ensemble =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' est une application facile à utiliser qui peut être utilisée pour rechercher et afficher des informations sur les paquetages logiciels. Cela comprend ceux qui sont déjà installés sur le système, ceux disponibles pour l'installation à partir des dépôts officiels de Manjaro, et officieusement du dépôt '''[[Arch_User_Repository|AUR]]'''. Bien que ''Package Browser'' ne puisse lui-même être utilisé pour réellement télécharger tout logiciel, il pourra servir à de nombreuses utilisations, telles que l'identification:
+
+* De ce qui est disponible pour le téléchargement et l'installation en utilisant l' interface graphique [[Pacman-GUI: Guide français]]
+* Des ''dépendances'' (logiciels qui sont, par exemple, nécessaires pour d'autres applications pour fonctionner correctement)
+* Des ''Orphelins'' (c'est-à-dire les paquets logiciels qui ne sont utilisés par quoi que ce soit, et qui ne servent à rien)
+* Des ''groupes de paquets'' (par exemple «kde» n'est pas un simple package, mais un groupe de paquets qui composent le bureau KDE), et
+* D'une information complète et détaillée sur les paquets logiciels installés et installables.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Lecture rapide ou résultats de filtrage =
+
+{{Astuce|Sélectionnez simplement un filtre sans spécifier quoi que ce soit à rechercher afin de passer en revue tous les fichiers appropriés. Par exemple, pour afficher tous les paquets orphelins sur votre système, developpez le filtre ''All'', puis sélectionnez ''Orphans''. Par défaut le filtre ''Orphans'' montrera seulement les orphelins installés sur votre système. En outre, pour regarder tous les logiciels installés non obtenus à partir des dépôts officiels, développez le filtre ''Foreign'', puis sélectionnez ''Installed''.}}
+
+
+Les filtres sont des outils utiles qui tiennent compte de vos préférences personnelles pour que les résultats de recherche soient affinés. Par exemple, il est possible de passer en revue ou rechercher dans tous les dépôts une application logicielle, ou spécifier un dépôt en particulier. En outre, les résultats de la recherche eux-mêmes peuvent être filtrés encore par:
+ 
+* '''Installed:''' Voir seulement les paquets logiciels logiciels qui ont été installés
+* '''Non-Installed:''' Voir seulement les paquets logiciels qui n'ont pas été installés
+* '''Orphans:''' Voir seulement les paquets logiciels orphelins
+* '''Updates:''' Voir seulement les mises à jour disponibles (et ''downgrades'')
+* '''Groups:''' Voir seulement les groupes de paquets.
+
+
+Il est également intéressant de noter que les recherches peuvent également être filtrées par leurs '''catégories''' (par exemple les jeux, l'environnement de bureau, le système, et ainsi de suite). Encore une fois, un filtre sélectionné (c'est à dire sans la spécification d'un logiciel particulier pour rechercher) affiche tous les logiciels appropriés, ce qui est utile pour identifier les paquets orphelins, par exemple. Dans le cas contraire, un filtre peut être sélectionné avant de commencer une recherche pour affiner les résultats.
+
+{{note|L'option ''Scope'' peut également être utilisée pour affiner les recherches (voir ci-dessous).}}
+
+
+= Recherche de paquets ou de groupes =
+
+''Package Browser'' ne se limite pas seulement aux recherches utilisant le nom complet ou partiel d'un paquet. Comme il est indiqué dans la méthode ci-dessous, de nombreux autres types de recherches - directes et indirectes - peuvent être utilisés pour différents types de résultats. Les recherches sont entreprises par l'introduction au clavier des critères de recherches appropriés dans la '''boîte de recherche''' située directement au-dessous de la fenêtre du filtre, puis en appuyant sur &lt;entrée&gt; ou en cliquant sur ​​''l'icône de la loupe''.
+
+Cependant, avant d'entreprendre une recherche, il est utile de revoir les options disponibles qui peuvent être utilisées.
+
+
+=== Méthode de recherche ===
+
+Plusieurs méthodes de recherche différentes sont prévues, sélectionnable sous la rubrique '''Method''':
+
+
+* '''Plain Match:''' Il s'agit d'une méthode rigoureuse de recherche, où un terme de recherche doit correspondre exactement. Par exemple, entrer un nom partiel de paquet ne peut pas donner de résultat, de sorte que le nom complet et exact doit être utilisé. Lorsque la recherche de quelque chose utilise plus d'un mot (par exemple en utilisant la description d'un paquet), la phrase doit être entre guillemets simples (' ').
+
+
+* '''Wildcard Search:''' Il s'agit d'une méthode générale de recherche, où les correspondances partielles seront retournés par défaut. Par exemple, en entrant ''kde'' dans une recherche générique donnera tous les paquets en relation avec kde. Les caractères génériques peuvent également être utilisés, en particulier '''?''' à substituer à n'importe quel caractère unique, et '''*''' à substituer à deux ou plusieurs caractères dans un mot. '''La Wildcard Search est peut-être la meilleure méthode de recherche à utiliser pour la plupart des utilisateurs.'''
+
+
+* '''Regular Expression:''' Il s'agit d'une méthode de recherche spécifique appropriée pour les utilisateurs plus expérimentés. La recherche est effectuée en utilisant la même syntaxe que celle utilisée pour le langage de programmation Python. Les recherches peuvent correspondre n'importe où dans une clé - sauf si ancrée au début ou à la fin de la clé en utilisant les caractères spéciaux &quot;^&quot; ou &quot;$&quot;.
+
+
+* '''Case sensitive:''' C'est en fait une option supplémentaire plutôt qu'une méthode de recherche en soi. Si cette case est cochée, alors les recherches seront sensibles à la casse, ce qui signifie que l'usage de majuscules et minuscules sera important.
+
+
+=== Clés ===
+
+Encore une fois, même s'il est probable que des recherches seront menées en utilisant les noms de logiciels, un certain nombre d'options supplémentaires sont disponibles aussi bien, en sélectionnant les cases à cocher appropriées sous les touches rubrique. Une combinaison de touches particulière peut être utilisée pour effectuer une recherche. Chaque touche peut être utilisée pour rechercher et obtenir des résultats contre:
+
+* '''Names:''' Le nom
+* '''Descriptions:''' La description
+* '''Dependencies:''' L'énumération des dépendances
+* '''Maintainer:''' La liste des mainteneurs (par exemple saisissez ''Phil'' via ''Wildcard Search'' pour rechercher une liste de paquets maintenus par Philip Muller de Manjaro)
+* '''Provides:''' Quel paquet est énuméré pour fournir
+* '''Replaces:''' Quel paquet est énuméré pour remplacer
+* '''Optional:''' Si le paquet est répertorié comme un ajout facultatif à autre chose, et
+* '''Files:''' Recherche seulement pour un fichier, plutôt que de paquet (collection de fichiers).
+
+
+{{Astuce|Pour la plupart des utilisateurs, les ''noms'' et ''descriptions'' sont mis en évidence et devraient être plus que suffisant, surtout lorsqu'il est combiné avec une recherche générique.}}
+
+
+=== Scope ===
+
+Changer (ou rétrécir) l'étendue d'une recherche pour affiner les résultats d'une recherche est similaire à l'utilisation d'un filtre. Les différentes portées de recherche sont disponibles sous le titre '''Scope'''. Ce sont :
+
+* '''All:''' Ne pas restreindre la portée d'une recherche
+* '''Installed:''' Appliquer les recherches et résultats uniquement pour les logiciels qui ont été installés
+* '''Non-Installed:''' Appliquer les recherches et résultats uniquement pour les logiciels qui n'ont pas été installés
+* '''Packages:''' Exclure les fichiers et les groupes
+* '''Groups:''' Appliquer les recherches et résultats uniquement pour les groupes de paquets (par exemple, les environnements de bureau XFCE et KDE, etc)
+* '''Include AUR:''' Appliquer les recherches e résultats en incluant les paquets disponibles à partir du dépôt AUR
+* '''Current List:''' Appliquer les recherches et résultats à un résultat de recherche existant pour le réduire davantage.
+
+
+= Recueillir des informations additionnelles =
+
+Une fois qu'une recherche a été menée et les résultats livrés, il est possible d'obtenir de substantielles informations sur les paquets et groupes de paquets en cliquant sur ​​eux. Dans la '''Package Window''' où les résultats sont présentés, il s'agira de l'ensemble ou d'un groupe:
+
+* Nom
+* Version
+* Dépôt où disponible
+* Statut (par exemple, installé, dépendance, ou orphelin)
+* Date et heure de l'installation, et
+* Taille
+
+
+{{Astuce|Il est intéressant de noter qu'un paquet sera indiqué par une icône verte, tandis qu'un groupe de paquets sera indiqué par une icône bleue. Un groupe de paquets peut être étendu pour fournir une liste de tous les paquets contenus dans ce groupe, et ensuite chaque paquet peut être sélectionné pour découvrir de plus amples informations à son sujet.}}
+
+
+Des informations beaucoup plus détaillées peuvent également être obtenues ci-dessous, en utilisant le '''Information Panel'''. Celui-ci contient plusieurs onglets, qui fourniront:
+
+* '''Details Tab:''' Une vue d'ensemble d'un paquet
+* '''Files Tab:''' Une liste de tous les fichiers qui composent un paquet
+* '''Tree Tab:''' Une illustration de comment s'assemblent les fichiers d'un paquet
+* '''Log Tab:''' Toutes les informations que l'auteur a jugé nécessaire
+* '''Cache Tab:''' Information sur la façon dont le paquet est stocké dans le cache du système.
+
+
+= Raccourcis clavier =
+
+{{Astuce|If using '''[[Compiz and Emerald]]''' ensure that there are not any conflicts between the keyboard shortcuts to use them both (i.e. the same command is used in both instances.}}
+
+
+'''F1'''  	- View the application manual.
+
+'''F9'''  	- Move focus to the filters panel.
+
+'''F10''' 	- Move focus to the packages panel.
+
+'''F11''' 	- Move focus to the information panel.
+
+'''F12''' 	- Move focus to the search box.
+
+'''F3''' 	- Start or stop the current search.
+
+'''Ctrl+O''' 	- Open the file search dialog.
+
+'''Alt+Left''' 	- Go back in the information history.
+
+'''Alt+Right''' - Go forward in the information history.
+
+'''Ctrl+B''' 	- Bookmark the current package.
+
+'''F7''' 	- Show the bookmarks menu.
+
+'''Ctrl+S''' 	- Show the statistics dialog.
+
+'''Ctrl+L''' 	- Copy the package list.
+
+'''F5''' 	- Refresh after system changes.
+
+'''Ctrl+W'''	- Cancel the current task.
+
+'''Ctrl+Q''' 	- Quit the application.
+
+
+[[Package Browser|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>1wtw2908d1apv4fp7oj33zw3b7v3jno</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3855</id>
+      <parentid>3853</parentid>
+      <timestamp>2013-01-02T16:40:58Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10916">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vur d'ensemble =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' est une application facile à utiliser qui peut être utilisée pour rechercher et afficher des informations sur les paquetages logiciels. Cela comprend ceux qui sont déjà installés sur le système, ceux disponibles pour l'installation à partir des dépôts officiels de Manjaro, et officieusement du dépôt '''[[Arch_User_Repository|AUR]]'''. Bien que ''Package Browser'' ne puisse lui-même être utilisé pour réellement télécharger tout logiciel, il pourra servir à de nombreuses utilisations, telles que l'identification:
+
+* De ce qui est disponible pour le téléchargement et l'installation en utilisant l' interface graphique [[Pacman-GUI: Guide français]]
+* Des ''dépendances'' (logiciels qui sont, par exemple, nécessaires pour d'autres applications pour fonctionner correctement)
+* Des ''Orphelins'' (c'est-à-dire les paquets logiciels qui ne sont utilisés par quoi que ce soit, et qui ne servent à rien)
+* Des ''groupes de paquets'' (par exemple «kde» n'est pas un simple package, mais un groupe de paquets qui composent le bureau KDE), et
+* D'une information complète et détaillée sur les paquets logiciels installés et installables.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Lecture rapide ou résultats de filtrage =
+
+{{Astuce|Sélectionnez simplement un filtre sans spécifier quoi que ce soit à rechercher afin de passer en revue tous les fichiers appropriés. Par exemple, pour afficher tous les paquets orphelins sur votre système, developpez le filtre ''All'', puis sélectionnez ''Orphans''. Par défaut le filtre ''Orphans'' montrera seulement les orphelins installés sur votre système. En outre, pour regarder tous les logiciels installés non obtenus à partir des dépôts officiels, développez le filtre ''Foreign'', puis sélectionnez ''Installed''.}}
+
+
+Les filtres sont des outils utiles qui tiennent compte de vos préférences personnelles pour que les résultats de recherche soient affinés. Par exemple, il est possible de passer en revue ou rechercher dans tous les dépôts une application logicielle, ou spécifier un dépôt en particulier. En outre, les résultats de la recherche eux-mêmes peuvent être filtrés encore par:
+ 
+* '''Installed:''' Voir seulement les paquets logiciels logiciels qui ont été installés
+* '''Non-Installed:''' Voir seulement les paquets logiciels qui n'ont pas été installés
+* '''Orphans:''' Voir seulement les paquets logiciels orphelins
+* '''Updates:''' Voir seulement les mises à jour disponibles (et ''downgrades'')
+* '''Groups:''' Voir seulement les groupes de paquets.
+
+
+Il est également intéressant de noter que les recherches peuvent également être filtrées par leurs '''catégories''' (par exemple les jeux, l'environnement de bureau, le système, et ainsi de suite). Encore une fois, un filtre sélectionné (c'est à dire sans la spécification d'un logiciel particulier pour rechercher) affiche tous les logiciels appropriés, ce qui est utile pour identifier les paquets orphelins, par exemple. Dans le cas contraire, un filtre peut être sélectionné avant de commencer une recherche pour affiner les résultats.
+
+{{note|L'option ''Scope'' peut également être utilisée pour affiner les recherches (voir ci-dessous).}}
+
+
+= Recherche de paquets ou de groupes =
+
+''Package Browser'' ne se limite pas seulement aux recherches utilisant le nom complet ou partiel d'un paquet. Comme il est indiqué dans la méthode ci-dessous, de nombreux autres types de recherches - directes et indirectes - peuvent être utilisés pour différents types de résultats. Les recherches sont entreprises par l'introduction au clavier des critères de recherches appropriés dans la '''boîte de recherche''' située directement au-dessous de la fenêtre du filtre, puis en appuyant sur &lt;entrée&gt; ou en cliquant sur ​​''l'icône de la loupe''.
+
+Cependant, avant d'entreprendre une recherche, il est utile de revoir les options disponibles qui peuvent être utilisées.
+
+
+=== Méthode de recherche ===
+
+Plusieurs méthodes de recherche différentes sont prévues, sélectionnable sous la rubrique '''Method''':
+
+
+* '''Plain Match:''' Il s'agit d'une méthode rigoureuse de recherche, où un terme de recherche doit correspondre exactement. Par exemple, entrer un nom partiel de paquet ne peut pas donner de résultat, de sorte que le nom complet et exact doit être utilisé. Lorsque la recherche de quelque chose utilise plus d'un mot (par exemple en utilisant la description d'un paquet), la phrase doit être entre guillemets simples (' ').
+
+
+* '''Wildcard Search:''' Il s'agit d'une méthode générale de recherche, où les correspondances partielles seront retournés par défaut. Par exemple, en entrant ''kde'' dans une recherche générique donnera tous les paquets en relation avec kde. Les caractères génériques peuvent également être utilisés, en particulier '''?''' à substituer à n'importe quel caractère unique, et '''*''' à substituer à deux ou plusieurs caractères dans un mot. '''La Wildcard Search est peut-être la meilleure méthode de recherche à utiliser pour la plupart des utilisateurs.'''
+
+
+* '''Regular Expression:''' Il s'agit d'une méthode de recherche spécifique appropriée pour les utilisateurs plus expérimentés. La recherche est effectuée en utilisant la même syntaxe que celle utilisée pour le langage de programmation Python. Les recherches peuvent correspondre n'importe où dans une clé - sauf si ancrée au début ou à la fin de la clé en utilisant les caractères spéciaux &quot;^&quot; ou &quot;$&quot;.
+
+
+* '''Case sensitive:''' C'est en fait une option supplémentaire plutôt qu'une méthode de recherche en soi. Si cette case est cochée, alors les recherches seront sensibles à la casse, ce qui signifie que l'usage de majuscules et minuscules sera important.
+
+
+=== Clés ===
+
+Encore une fois, même s'il est probable que des recherches seront menées en utilisant les noms de logiciels, un certain nombre d'options supplémentaires sont disponibles aussi bien, en sélectionnant les cases à cocher appropriées sous les touches rubrique. Une combinaison de touches particulière peut être utilisée pour effectuer une recherche. Chaque touche peut être utilisée pour rechercher et obtenir des résultats contre:
+
+* '''Names:''' Le nom
+* '''Descriptions:''' La description
+* '''Dependencies:''' L'énumération des dépendances
+* '''Maintainer:''' La liste des mainteneurs (par exemple saisissez ''Phil'' via ''Wildcard Search'' pour rechercher une liste de paquets maintenus par Philip Muller de Manjaro)
+* '''Provides:''' Quel paquet est énuméré pour fournir
+* '''Replaces:''' Quel paquet est énuméré pour remplacer
+* '''Optional:''' Si le paquet est répertorié comme un ajout facultatif à autre chose, et
+* '''Files:''' Recherche seulement pour un fichier, plutôt que de paquet (collection de fichiers).
+
+
+{{Astuce|Pour la plupart des utilisateurs, les ''noms'' et ''descriptions'' sont mis en évidence et devraient être plus que suffisant, surtout lorsqu'il est combiné avec une recherche générique.}}
+
+
+=== Scope ===
+
+Changer (ou rétrécir) l'étendue d'une recherche pour affiner les résultats d'une recherche est similaire à l'utilisation d'un filtre. Les différentes portées de recherche sont disponibles sous le titre '''Scope'''. Ce sont :
+
+* '''All:''' Ne pas restreindre la portée d'une recherche
+* '''Installed:''' Appliquer les recherches et résultats uniquement pour les logiciels qui ont été installés
+* '''Non-Installed:''' Appliquer les recherches et résultats uniquement pour les logiciels qui n'ont pas été installés
+* '''Packages:''' Exclure les fichiers et les groupes
+* '''Groups:''' Appliquer les recherches et résultats uniquement pour les groupes de paquets (par exemple, les environnements de bureau XFCE et KDE, etc)
+* '''Include AUR:''' Appliquer les recherches e résultats en incluant les paquets disponibles à partir du dépôt AUR
+* '''Current List:''' Appliquer les recherches et résultats à un résultat de recherche existant pour le réduire davantage.
+
+
+= Recueillir des informations additionnelles =
+
+Une fois qu'une recherche a été menée et les résultats livrés, il est possible d'obtenir de substantielles informations sur les paquets et groupes de paquets en cliquant sur ​​eux. Dans la '''Package Window''' où les résultats sont présentés, il s'agira de l'ensemble ou d'un groupe:
+
+* Nom
+* Version
+* Dépôt où disponible
+* Statut (par exemple, installé, dépendance, ou orphelin)
+* Date et heure de l'installation, et
+* Taille
+
+
+{{Astuce|Il est intéressant de noter qu'un paquet sera indiqué par une icône verte, tandis qu'un groupe de paquets sera indiqué par une icône bleue. Un groupe de paquets peut être étendu pour fournir une liste de tous les paquets contenus dans ce groupe, et ensuite chaque paquet peut être sélectionné pour découvrir de plus amples informations à son sujet.}}
+
+
+Des informations beaucoup plus détaillées peuvent également être obtenues ci-dessous, en utilisant le '''Information Panel'''. Celui-ci contient plusieurs onglets, qui fourniront:
+
+* '''Details Tab:''' Une vue d'ensemble d'un paquet
+* '''Files Tab:''' Une liste de tous les fichiers qui composent un paquet
+* '''Tree Tab:''' Une illustration de comment s'assemblent les fichiers d'un paquet
+* '''Log Tab:''' Toutes les informations que l'auteur a jugé nécessaire
+* '''Cache Tab:''' Information sur la façon dont le paquet est stocké dans le cache du système.
+
+
+= Raccourcis clavier =
+
+{{Astuce|Si vous utilisez '''[[Compiz et Emerald]]''' faites en sorte qu'il n'y ait pas de conflits entre les raccourcis clavier utilisés (c'est-à-dire la même commande utilisée dans les deux cas).}}
+
+
+'''F1'''  	- Voir le manuel de l'application.
+
+'''F9'''  	- Déplacer le focus vers le panneau des filtres.
+
+'''F10''' 	- Déplacer le focus vers le panneau de paquets.
+
+'''F11''' 	- Déplacer le focus sur le panneau d'information.
+
+'''F12''' 	- Déplacer le focus à la zone de recherche.
+
+'''F3''' 	- Démarrer ou arrêter la recherche en cours.
+
+'''Ctrl+O''' 	- Ouvrir la boîte de dialogue de recherche de fichiers.
+
+'''Alt+Gauche''' 	- Retour dans l'historique de l'information.
+
+'''Alt+Droit''' - Aller plus avant dans l'historique de l'information.
+
+'''Ctrl+B''' 	- Signet sur ce paquet actuel.
+
+'''F7''' 	- Afficher le menu des signets.
+
+'''Ctrl+S''' 	- Afficher le dialogue des statistiques.
+
+'''Ctrl+L''' 	- Copiez la liste des paquets.
+
+'''F5''' 	- Rafraîchir après modifications du système.
+
+'''Ctrl+W'''	- Annuler la tâche en cours.
+
+'''Ctrl+Q''' 	- Quitter l'application.
+
+
+[[Package Browser|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>dudz6b3evtn4jr42dnwb095ddyc8cix</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3856</id>
+      <parentid>3855</parentid>
+      <timestamp>2013-01-02T16:41:50Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="10917">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vur d'ensemble =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' est une application facile à utiliser qui peut être utilisée pour rechercher et afficher des informations sur les paquetages logiciels. Cela comprend ceux qui sont déjà installés sur le système, ceux disponibles pour l'installation à partir des dépôts officiels de Manjaro, et officieusement du dépôt '''[[Arch_User_Repository|AUR]]'''. Bien que ''Package Browser'' ne puisse lui-même être utilisé pour réellement télécharger tout logiciel, il pourra servir à de nombreuses utilisations, telles que l'identification:
+
+* De ce qui est disponible pour le téléchargement et l'installation en utilisant l' interface graphique [[Pacman-GUI: Guide français]]
+* Des ''dépendances'' (logiciels qui sont, par exemple, nécessaires pour d'autres applications pour fonctionner correctement)
+* Des ''Orphelins'' (c'est-à-dire les paquets logiciels qui ne sont utilisés par quoi que ce soit, et qui ne servent à rien)
+* Des ''groupes de paquets'' (par exemple «kde» n'est pas un simple package, mais un groupe de paquets qui composent le bureau KDE), et
+* D'une information complète et détaillée sur les paquets logiciels installés et installables.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Lecture rapide ou résultats de filtrage =
+
+{{Astuce|Sélectionnez simplement un filtre sans spécifier quoi que ce soit à rechercher afin de passer en revue tous les fichiers appropriés. Par exemple, pour afficher tous les paquets orphelins sur votre système, developpez le filtre ''All'', puis sélectionnez ''Orphans''. Par défaut le filtre ''Orphans'' montrera seulement les orphelins installés sur votre système. En outre, pour regarder tous les logiciels installés non obtenus à partir des dépôts officiels, développez le filtre ''Foreign'', puis sélectionnez ''Installed''.}}
+
+
+Les filtres sont des outils utiles qui tiennent compte de vos préférences personnelles pour que les résultats de recherche soient affinés. Par exemple, il est possible de passer en revue ou rechercher dans tous les dépôts une application logicielle, ou spécifier un dépôt en particulier. En outre, les résultats de la recherche eux-mêmes peuvent être filtrés encore par:
+ 
+* '''Installed:''' Voir seulement les paquets logiciels logiciels qui ont été installés
+* '''Non-Installed:''' Voir seulement les paquets logiciels qui n'ont pas été installés
+* '''Orphans:''' Voir seulement les paquets logiciels orphelins
+* '''Updates:''' Voir seulement les mises à jour disponibles (et ''downgrades'')
+* '''Groups:''' Voir seulement les groupes de paquets.
+
+
+Il est également intéressant de noter que les recherches peuvent également être filtrées par leurs '''catégories''' (par exemple les jeux, l'environnement de bureau, le système, et ainsi de suite). Encore une fois, un filtre sélectionné (c'est à dire sans la spécification d'un logiciel particulier pour rechercher) affiche tous les logiciels appropriés, ce qui est utile pour identifier les paquets orphelins, par exemple. Dans le cas contraire, un filtre peut être sélectionné avant de commencer une recherche pour affiner les résultats.
+
+{{note|L'option ''Scope'' peut également être utilisée pour affiner les recherches (voir ci-dessous).}}
+
+
+= Recherche de paquets ou de groupes =
+
+''Package Browser'' ne se limite pas seulement aux recherches utilisant le nom complet ou partiel d'un paquet. Comme il est indiqué dans la méthode ci-dessous, de nombreux autres types de recherches - directes et indirectes - peuvent être utilisés pour différents types de résultats. Les recherches sont entreprises par l'introduction au clavier des critères de recherches appropriés dans la '''boîte de recherche''' située directement au-dessous de la fenêtre du filtre, puis en appuyant sur &lt;entrée&gt; ou en cliquant sur ​​''l'icône de la loupe''.
+
+Cependant, avant d'entreprendre une recherche, il est utile de revoir les options disponibles qui peuvent être utilisées.
+
+
+=== Méthode de recherche ===
+
+Plusieurs méthodes de recherche différentes sont prévues, sélectionnable sous la rubrique '''Method''':
+
+
+* '''Plain Match:''' Il s'agit d'une méthode rigoureuse de recherche, où un terme de recherche doit correspondre exactement. Par exemple, entrer un nom partiel de paquet ne peut pas donner de résultat, de sorte que le nom complet et exact doit être utilisé. Lorsque la recherche de quelque chose utilise plus d'un mot (par exemple en utilisant la description d'un paquet), la phrase doit être entre guillemets simples (' ').
+
+
+* '''Wildcard Search:''' Il s'agit d'une méthode générale de recherche, où les correspondances partielles seront retournés par défaut. Par exemple, en entrant ''kde'' dans une recherche générique donnera tous les paquets en relation avec kde. Les caractères génériques peuvent également être utilisés, en particulier '''?''' à substituer à n'importe quel caractère unique, et '''*''' à substituer à deux ou plusieurs caractères dans un mot. '''La Wildcard Search est peut-être la meilleure méthode de recherche à utiliser pour la plupart des utilisateurs.'''
+
+
+* '''Regular Expression:''' Il s'agit d'une méthode de recherche spécifique appropriée pour les utilisateurs plus expérimentés. La recherche est effectuée en utilisant la même syntaxe que celle utilisée pour le langage de programmation Python. Les recherches peuvent correspondre n'importe où dans une clé - sauf si ancrée au début ou à la fin de la clé en utilisant les caractères spéciaux &quot;^&quot; ou &quot;$&quot;.
+
+
+* '''Case sensitive:''' C'est en fait une option supplémentaire plutôt qu'une méthode de recherche en soi. Si cette case est cochée, alors les recherches seront sensibles à la casse, ce qui signifie que l'usage de majuscules et minuscules sera important.
+
+
+=== Clés ===
+
+Encore une fois, même s'il est probable que des recherches seront menées en utilisant les noms de logiciels, un certain nombre d'options supplémentaires sont disponibles aussi bien, en sélectionnant les cases à cocher appropriées sous les touches rubrique. Une combinaison de touches particulière peut être utilisée pour effectuer une recherche. Chaque touche peut être utilisée pour rechercher et obtenir des résultats contre:
+
+* '''Names:''' Le nom
+* '''Descriptions:''' La description
+* '''Dependencies:''' L'énumération des dépendances
+* '''Maintainer:''' La liste des mainteneurs (par exemple saisissez ''Phil'' via ''Wildcard Search'' pour rechercher une liste de paquets maintenus par Philip Muller de Manjaro)
+* '''Provides:''' Quel paquet est énuméré pour fournir
+* '''Replaces:''' Quel paquet est énuméré pour remplacer
+* '''Optional:''' Si le paquet est répertorié comme un ajout facultatif à autre chose, et
+* '''Files:''' Recherche seulement pour un fichier, plutôt que de paquet (collection de fichiers).
+
+
+{{Astuce|Pour la plupart des utilisateurs, les ''noms'' et ''descriptions'' sont mis en évidence et devraient être plus que suffisant, surtout lorsqu'il est combiné avec une recherche générique.}}
+
+
+=== Scope ===
+
+Changer (ou rétrécir) l'étendue d'une recherche pour affiner les résultats d'une recherche est similaire à l'utilisation d'un filtre. Les différentes portées de recherche sont disponibles sous le titre '''Scope'''. Ce sont :
+
+* '''All:''' Ne pas restreindre la portée d'une recherche
+* '''Installed:''' Appliquer les recherches et résultats uniquement pour les logiciels qui ont été installés
+* '''Non-Installed:''' Appliquer les recherches et résultats uniquement pour les logiciels qui n'ont pas été installés
+* '''Packages:''' Exclure les fichiers et les groupes
+* '''Groups:''' Appliquer les recherches et résultats uniquement pour les groupes de paquets (par exemple, les environnements de bureau XFCE et KDE, etc)
+* '''Include AUR:''' Appliquer les recherches e résultats en incluant les paquets disponibles à partir du dépôt AUR
+* '''Current List:''' Appliquer les recherches et résultats à un résultat de recherche existant pour le réduire davantage.
+
+
+= Recueillir des informations additionnelles =
+
+Une fois qu'une recherche a été menée et les résultats livrés, il est possible d'obtenir de substantielles informations sur les paquets et groupes de paquets en cliquant sur ​​eux. Dans la '''Package Window''' où les résultats sont présentés, il s'agira de l'ensemble ou d'un groupe:
+
+* Nom
+* Version
+* Dépôt où disponible
+* Statut (par exemple, installé, dépendance, ou orphelin)
+* Date et heure de l'installation, et
+* Taille
+
+
+{{Astuce|Il est intéressant de noter qu'un paquet sera indiqué par une icône verte, tandis qu'un groupe de paquets sera indiqué par une icône bleue. Un groupe de paquets peut être étendu pour fournir une liste de tous les paquets contenus dans ce groupe, et ensuite chaque paquet peut être sélectionné pour découvrir de plus amples informations à son sujet.}}
+
+
+Des informations beaucoup plus détaillées peuvent également être obtenues ci-dessous, en utilisant le '''Information Panel'''. Celui-ci contient plusieurs onglets, qui fourniront:
+
+* '''Details Tab:''' Une vue d'ensemble d'un paquet
+* '''Files Tab:''' Une liste de tous les fichiers qui composent un paquet
+* '''Tree Tab:''' Une illustration de comment s'assemblent les fichiers d'un paquet
+* '''Log Tab:''' Toutes les informations que l'auteur a jugé nécessaire
+* '''Cache Tab:''' Information sur la façon dont le paquet est stocké dans le cache du système.
+
+
+= Raccourcis clavier =
+
+{{Astuce|Si vous utilisez '''[[Compiz and Emerald]]''' faites en sorte qu'il n'y ait pas de conflits entre les raccourcis clavier utilisés (c'est-à-dire la même commande utilisée dans les deux cas).}}
+
+
+'''F1'''  	- Voir le manuel de l'application.
+
+'''F9'''  	- Déplacer le focus vers le panneau des filtres.
+
+'''F10''' 	- Déplacer le focus vers le panneau de paquets.
+
+'''F11''' 	- Déplacer le focus sur le panneau d'information.
+
+'''F12''' 	- Déplacer le focus à la zone de recherche.
+
+'''F3''' 	- Démarrer ou arrêter la recherche en cours.
+
+'''Ctrl+O''' 	- Ouvrir la boîte de dialogue de recherche de fichiers.
+
+'''Alt+Gauche''' 	- Retour dans l'historique de l'information.
+
+'''Alt+Droit''' - Aller plus avant dans l'historique de l'information.
+
+'''Ctrl+B''' 	- Signet sur ce paquet actuel.
+
+'''F7''' 	- Afficher le menu des signets.
+
+'''Ctrl+S''' 	- Afficher le dialogue des statistiques.
+
+'''Ctrl+L''' 	- Copiez la liste des paquets.
+
+'''F5''' 	- Rafraîchir après modifications du système.
+
+'''Ctrl+W'''	- Annuler la tâche en cours.
+
+'''Ctrl+Q''' 	- Quitter l'application.
+
+
+[[Package Browser|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>g0yqcqrh35d34awvxiazea8ihb68cjn</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

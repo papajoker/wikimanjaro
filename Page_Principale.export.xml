@@ -1,0 +1,1438 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Page Principale</title>
+    <ns>0</ns>
+    <id>573</id>
+    <revision>
+      <id>3167</id>
+      <timestamp>2012-12-26T17:16:22Z</timestamp>
+      <contributor>
+        <username>Verityproductions</username>
+        <id>4</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;center&gt;[[File:skin2.png]]&lt;/center&gt; &lt;center&gt;&lt;font size=&quot;4&quot;&gt;'''Welcome to the Manjaro Wiki!'''&lt;/font size&gt;&lt;/center&gt;   &lt;center&gt;{{Contents|'''[[:Category:Contents_Page|English]] ...&quot;</comment>
+      <text xml:space="preserve" bytes="8892">&lt;center&gt;[[File:skin2.png]]&lt;/center&gt;
+&lt;center&gt;&lt;font size=&quot;4&quot;&gt;'''Welcome to the Manjaro Wiki!'''&lt;/font size&gt;&lt;/center&gt;
+
+
+&lt;center&gt;{{Contents|'''[[:Category:Contents_Page|English]] - [[:Category:Obsah|Čeština]] - [[:Category:Inhalt_Seite|Deutsch]] - [[:Category:Présentation|Français]] - [[:Category:İçerik_Sayfası|Türkçe]]'''}}&lt;/center&gt;
+
+
+= Getting Started =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Overview''' &lt;/font size&gt;
+{|
+[[File:Manjaro-FAQ.png|left|96px]]
+|
+* [[About Manjaro]]
+:  ''Learn about this fast, powerful, and user-friendly Linux distribution. ''
+
+* [[Manjaro FAQ]] 
+:  ''Frequently Asked Questions about Linux and Manjaro. ''
+
+* [[The Rolling Release Development Model]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Why you will never need to re-install Manjaro.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: Right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''On-Line''' &lt;/font size&gt;
+{|
+[[File:Manjaro.png|left|96px]]
+|
+* [http://blog.manjaro.org/ The Manjaro Blog]
+: ''Keep up with the latest news and developments. ''
+
+* '''[[Manjaro Forums]]''' 
+:  ''Brazilian, English, French, and Turkish forums to visit!''
+
+* [http://www.redpipe.net/?page=ostester&amp;module=oslist&amp;submodule=details&amp;id=3 Try Manjaro On-Line in Your Web-Browser] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''Explore Manjaro without downloading or installing it! Java 6 or 7 must be installed. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt; &lt;!-- thanks Archwiki! :-) --&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Installation ''' &lt;/font size&gt;
+{|
+[[File:Software.png|left]]
+|
+* [[Download Manjaro]]
+: ''Where to find the latest and greatest 32 and 64 bit releases.''
+
+* [[Check a Downloaded ISO Image For Errors]]
+: ''Check your Manjaro download for errors in Linux and Windows.''
+
+* [[Burn an ISO File]]
+: ''Burn Manjaro to CD/DVD or USB Stick in Linux and Windows.''
+
+* '''[[Installation Guides|Install Manjaro]] &lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Installation and partitioning guides for beginners and experienced users. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Beginners' Section''' &lt;/font size&gt;
+{|
+[[File:Computer.png|left]]
+|
+* [[Using Manjaro for Beginners|Using Manjaro]]
+: ''New to Manjaro? Start here for an overview! ''
+
+* [[Package Browser|Search for Software]]
+: ''Use Package-Browser to find software easily! ''
+
+* [[pacman-GUI|Update, Remove, and Install Software]]
+: ''Manage your system and software at the click of a button! ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Customisation and Configuration =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Grub-Customizer]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+* '''[[Display Managers / Login Screens]]'''
+: ''How to install and configure LXDM, SLiM, KDM, and GDM.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[Install Desktop Environments|Install New Desktop Environments]]
+: ''Desktop Environments and Window Managers available from the Manjaro repositories. ''
+
+* [[MATE Desktop Environment|Install the MATE Desktop Environment]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A desktop not officially supported or provided by the Manjaro Repositories. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+
+* '''[[Manjaro Hardware Detection]]'''
+: ''Configure graphics cards, manage kernels, and identify hardware''.
+
+* [[Printing Enablement]]
+: ''Install the necessary software and enable printing. ''
+
+* [[Printer Configuration]]
+: ''Add and configure printer(s). ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Network / Internet ''' &lt;/font size&gt;
+{|
+[[File:Internet.png|left]]
+|
+* [[Synergy - Mouse &amp; k/board Sharing|Synergy - Mouse &amp; Keyboard Sharing]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Use a mouse and keyboard across multiple machines &amp; operating systems.''
+
+* [[Firefox Customisation]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Various security settings &amp; strategies as well as user customisation.''
+
+* [[Setting up Windows NTP]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Solve the Windows using Local Time Problem ''.
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Management ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+*'''[[Repositories and Servers]] ''' '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Articles on changing repositories, servers, and accessessing the AUR. ''
+
+* [[Pacman]]
+: ''Use the Terminal to update your system, install, and remove software. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Applications ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[Virtualbox|Installing and Using Virtualbox]] '''&lt;font color=&quot;green&quot;&gt;(Revised and updated!)&lt;/font&gt; '''
+: ''Use Virtualbox in Manjaro, and Manjaro in Virtualbox. ''
+
+* [[Compiz_and_Emerald|Install Compiz Fusion and Emerald!]]
+: ''Transform your XFCE or KDE with fancy special effects!''
+
+* [[Using HandBrakeCLI]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A quick &amp; dirty how-to for ripping many formats of movies. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''System ''' &lt;/font size&gt;
+{|
+[[File:Control.png|left]]
+|
+* [[Enable Touchpad Horizontal and Vertical Scrolling|Enable Touchpad vertical and horizontal scrolling]]
+: ''Activate click on tap, and vertical and horizontal scrolling on your touchpad. ''
+
+* [[Progress Bar as Pacman Eating Power Pills]]
+: ''Makes life just that little bit more interesting... ''
+
+* [[PowerTOP to Optimise Laptop Power Consumption|Optimise Laptop Power Consumption]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Extend the battery life of your laptop with the PowerTOP diagnosis tool. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Troubleshooting =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Restore the GRUB Bootloader|Restore the GRUB Bootloader]]
+:  ''Can't boot Manjaro? You may be able to repair rather than reinstall! ''
+
+* [[Kernel Fails to Load (pata_acpi error)|Kernel Fails to Load / &quot;Unable to Find Device&quot; Error]]
+: ''The solution for a problem that affects certain computers that use JMicron chips. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[PCManFM File Manager Fixes|LXDE / PCManFM File Manager does not Work Properly]]
+: ''Solutions for partitions not being displayed, and inability to open folders as Root. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+* [[Volume Stuck on Mute (XFCE Desktop)]]
+: ''Two possible solutions for an issue that affects some users of the XFCE desktop environment.''
+* [[Reactivating the Backlight|Screen Brightness is too Dark or Dim]]
+: ''The solution for an issue that particularly affects some makes of laptops''.
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Managment ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[pacman troubleshooting#&quot;Unable to lock database&quot; Error|Installation: &quot;Unable to lock database&quot; Error]]
+: ''A relatively common problem explained and easily solved. ''
+
+* [[pacman_troubleshooting#&quot;Configuration_file...not recognized&quot; Error|Installation: &quot;Configuration file...not recognized&quot; Error]]
+:  ''An explanation and solution for a problem encountered by some newcomers. ''
+
+* [[pacman troubleshooting#&quot;Failed to commit transaction (invalid or corrupted package)&quot; Error|Installation: &quot;Invalid or corrupted package&quot; Error]] 
+: ''An explanation and solution for this software authentication issue. ''
+
+* [[pacman troubleshooting#&quot;GPGME_error:_No_data&quot; Error|Installation: &quot;GPGME_error:_No_data&quot; Error]]
+: ''An explanation and solution for this rare issue. ''
+
+* [[Conflicting Files When Updating (Manjaro 0.8.0)]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''A solution to solve updating issues for installations of Manjaro 0.8.0. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Wiki Editing =
+{|
+[[File:spanner.png|left|96px]]
+|
+* [[Basic Submission Rules]]  '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''How to create an account, and the dos and do-nots for Wiki contributors.''
+
+* [//meta.wikimedia.org/wiki/Help:Contents User's Guide]
+: ''Full user guide on every aspect of Wiki authorship and maintenance.'' 
+
+* [[Wiki tweak page|Create Notification Boxes]]
+: ''A simple overview where the existing boxes aren't sufficient.''
+|}
+&lt;br clear=&quot;all&quot; /&gt;</text>
+      <sha1>03g7faw796pxlif6zf24ovle2feo2z8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3244</id>
+      <parentid>3167</parentid>
+      <timestamp>2012-12-26T21:16:17Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="8927">&lt;center&gt;[[File:skin2.png]]&lt;/center&gt;
+&lt;center&gt;&lt;font size=&quot;4&quot;&gt;'''Welcome to the Manjaro Wiki!'''&lt;/font size&gt;&lt;/center&gt;
+
+
+&lt;center&gt;{{Contents|'''[[:Category:Contents_Page|English]] - [[:Category:Obsah|Čeština]] - [[:Category:Inhalt_Seite|Deutsch]] - [[:Category:Présentation|Français]] - [[:Category:İçerik_Sayfası|Türkçe]]'''}}&lt;/center&gt;
+
+
+= Getting Started =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Overview''' &lt;/font size&gt;
+{|
+[[File:Manjaro-FAQ.png|left|96px]]
+|
+* [[About Manjaro]]
+:  ''Learn about this fast, powerful, and user-friendly Linux distribution. ''
+
+* [[Manjaro FAQ]] 
+:  ''Frequently Asked Questions about Linux and Manjaro. ''
+
+* [[The Rolling Release Development Model]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Why you will never need to re-install Manjaro.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: Right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''On-Line''' &lt;/font size&gt;
+{|
+[[File:Manjaro.png|left|96px]]
+|
+* [http://blog.manjaro.org/ The Manjaro Blog]
+: ''Keep up with the latest news and developments. ''
+
+* '''[[Manjaro Forums]]''' 
+:  ''Brazilian, English, French, and Turkish forums to visit!''
+
+* [http://www.redpipe.net/?page=ostester&amp;module=oslist&amp;submodule=details&amp;id=3 Try Manjaro On-Line in Your Web-Browser] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''Explore Manjaro without downloading or installing it! Java 6 or 7 must be installed. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt; &lt;!-- thanks Archwiki! :-) --&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Installation ''' &lt;/font size&gt;
+{|
+[[File:Software.png|left]]
+|
+* [[Download Manjaro]]
+: ''Where to find the latest and greatest 32 and 64 bit releases.''
+
+* [[Vérifier l'intégrité d'une image ISO téléchargée]]
+: ''Vérifiez l'intégrité de votre téléchargement Manjaro sous Linux et Windows.''
+
+* [[Burn an ISO File]]
+: ''Burn Manjaro to CD/DVD or USB Stick in Linux and Windows.''
+
+* '''[[Installation Guides|Install Manjaro]] &lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Installation and partitioning guides for beginners and experienced users. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Beginners' Section''' &lt;/font size&gt;
+{|
+[[File:Computer.png|left]]
+|
+* [[Using Manjaro for Beginners|Using Manjaro]]
+: ''New to Manjaro? Start here for an overview! ''
+
+* [[Package Browser|Search for Software]]
+: ''Use Package-Browser to find software easily! ''
+
+* [[pacman-GUI|Update, Remove, and Install Software]]
+: ''Manage your system and software at the click of a button! ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Customisation and Configuration =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Grub-Customizer]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+* '''[[Display Managers / Login Screens]]'''
+: ''How to install and configure LXDM, SLiM, KDM, and GDM.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[Install Desktop Environments|Install New Desktop Environments]]
+: ''Desktop Environments and Window Managers available from the Manjaro repositories. ''
+
+* [[MATE Desktop Environment|Install the MATE Desktop Environment]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A desktop not officially supported or provided by the Manjaro Repositories. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+
+* '''[[Manjaro Hardware Detection]]'''
+: ''Configure graphics cards, manage kernels, and identify hardware''.
+
+* [[Printing Enablement]]
+: ''Install the necessary software and enable printing. ''
+
+* [[Printer Configuration]]
+: ''Add and configure printer(s). ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Network / Internet ''' &lt;/font size&gt;
+{|
+[[File:Internet.png|left]]
+|
+* [[Synergy - Mouse &amp; k/board Sharing|Synergy - Mouse &amp; Keyboard Sharing]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Use a mouse and keyboard across multiple machines &amp; operating systems.''
+
+* [[Firefox Customisation]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Various security settings &amp; strategies as well as user customisation.''
+
+* [[Setting up Windows NTP]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Solve the Windows using Local Time Problem ''.
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Management ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+*'''[[Repositories and Servers]] ''' '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Articles on changing repositories, servers, and accessessing the AUR. ''
+
+* [[Pacman]]
+: ''Use the Terminal to update your system, install, and remove software. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Applications ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[Virtualbox|Installing and Using Virtualbox]] '''&lt;font color=&quot;green&quot;&gt;(Revised and updated!)&lt;/font&gt; '''
+: ''Use Virtualbox in Manjaro, and Manjaro in Virtualbox. ''
+
+* [[Compiz_and_Emerald|Install Compiz Fusion and Emerald!]]
+: ''Transform your XFCE or KDE with fancy special effects!''
+
+* [[Using HandBrakeCLI]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A quick &amp; dirty how-to for ripping many formats of movies. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''System ''' &lt;/font size&gt;
+{|
+[[File:Control.png|left]]
+|
+* [[Enable Touchpad Horizontal and Vertical Scrolling|Enable Touchpad vertical and horizontal scrolling]]
+: ''Activate click on tap, and vertical and horizontal scrolling on your touchpad. ''
+
+* [[Progress Bar as Pacman Eating Power Pills]]
+: ''Makes life just that little bit more interesting... ''
+
+* [[PowerTOP to Optimise Laptop Power Consumption|Optimise Laptop Power Consumption]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Extend the battery life of your laptop with the PowerTOP diagnosis tool. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Troubleshooting =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Restore the GRUB Bootloader|Restore the GRUB Bootloader]]
+:  ''Can't boot Manjaro? You may be able to repair rather than reinstall! ''
+
+* [[Kernel Fails to Load (pata_acpi error)|Kernel Fails to Load / &quot;Unable to Find Device&quot; Error]]
+: ''The solution for a problem that affects certain computers that use JMicron chips. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[PCManFM File Manager Fixes|LXDE / PCManFM File Manager does not Work Properly]]
+: ''Solutions for partitions not being displayed, and inability to open folders as Root. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+* [[Volume Stuck on Mute (XFCE Desktop)]]
+: ''Two possible solutions for an issue that affects some users of the XFCE desktop environment.''
+* [[Reactivating the Backlight|Screen Brightness is too Dark or Dim]]
+: ''The solution for an issue that particularly affects some makes of laptops''.
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Managment ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[pacman troubleshooting#&quot;Unable to lock database&quot; Error|Installation: &quot;Unable to lock database&quot; Error]]
+: ''A relatively common problem explained and easily solved. ''
+
+* [[pacman_troubleshooting#&quot;Configuration_file...not recognized&quot; Error|Installation: &quot;Configuration file...not recognized&quot; Error]]
+:  ''An explanation and solution for a problem encountered by some newcomers. ''
+
+* [[pacman troubleshooting#&quot;Failed to commit transaction (invalid or corrupted package)&quot; Error|Installation: &quot;Invalid or corrupted package&quot; Error]] 
+: ''An explanation and solution for this software authentication issue. ''
+
+* [[pacman troubleshooting#&quot;GPGME_error:_No_data&quot; Error|Installation: &quot;GPGME_error:_No_data&quot; Error]]
+: ''An explanation and solution for this rare issue. ''
+
+* [[Conflicting Files When Updating (Manjaro 0.8.0)]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''A solution to solve updating issues for installations of Manjaro 0.8.0. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Wiki Editing =
+{|
+[[File:spanner.png|left|96px]]
+|
+* [[Basic Submission Rules]]  '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''How to create an account, and the dos and do-nots for Wiki contributors.''
+
+* [//meta.wikimedia.org/wiki/Help:Contents User's Guide]
+: ''Full user guide on every aspect of Wiki authorship and maintenance.'' 
+
+* [[Wiki tweak page|Create Notification Boxes]]
+: ''A simple overview where the existing boxes aren't sufficient.''
+|}
+&lt;br clear=&quot;all&quot; /&gt;</text>
+      <sha1>ebfbppkagyqhxcc67mpqq1u3huoxdyt</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3249</id>
+      <parentid>3244</parentid>
+      <timestamp>2012-12-26T21:23:39Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="8943">&lt;center&gt;[[File:skin2.png]]&lt;/center&gt;
+&lt;center&gt;&lt;font size=&quot;4&quot;&gt;'''Welcome to the Manjaro Wiki!'''&lt;/font size&gt;&lt;/center&gt;
+
+
+&lt;center&gt;{{Contents|'''[[:Category:Contents_Page|English]] - [[:Category:Obsah|Čeština]] - [[:Category:Inhalt_Seite|Deutsch]] - [[:Category:Présentation|Français]] - [[:Category:İçerik_Sayfası|Türkçe]]'''}}&lt;/center&gt;
+
+
+= Getting Started =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Overview''' &lt;/font size&gt;
+{|
+[[File:Manjaro-FAQ.png|left|96px]]
+|
+* [[About Manjaro]]
+:  ''Learn about this fast, powerful, and user-friendly Linux distribution. ''
+
+* [[Manjaro FAQ]] 
+:  ''Frequently Asked Questions about Linux and Manjaro. ''
+
+* [[The Rolling Release Development Model]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Why you will never need to re-install Manjaro.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: Right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''On-Line''' &lt;/font size&gt;
+{|
+[[File:Manjaro.png|left|96px]]
+|
+* [http://blog.manjaro.org/ The Manjaro Blog]
+: ''Keep up with the latest news and developments. ''
+
+* '''[[Manjaro Forums]]''' 
+:  ''Brazilian, English, French, and Turkish forums to visit!''
+
+* [http://www.redpipe.net/?page=ostester&amp;module=oslist&amp;submodule=details&amp;id=3 Try Manjaro On-Line in Your Web-Browser] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''Explore Manjaro without downloading or installing it! Java 6 or 7 must be installed. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt; &lt;!-- thanks Archwiki! :-) --&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Installation ''' &lt;/font size&gt;
+{|
+[[File:Software.png|left]]
+|
+* [[Download Manjaro]]
+: ''Where to find the latest and greatest 32 and 64 bit releases.''
+
+* [[Vérifier l'intégrité d'une image ISO téléchargée]]
+: ''Vérifiez l'intégrité de votre téléchargement Manjaro sous Linux et Windows.''
+
+* [[Burn an ISO File]]
+: ''Burn Manjaro to CD/DVD or USB Stick in Linux and Windows.''
+
+* '''[[Installation Guides|Install Manjaro]] &lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Installation and partitioning guides for beginners and experienced users. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Beginners' Section''' &lt;/font size&gt;
+{|
+[[File:Computer.png|left]]
+|
+* [[Using Manjaro for Beginners|Using Manjaro]]
+: ''New to Manjaro? Start here for an overview! ''
+
+* [[Package Browser|Search for Software]]
+: ''Use Package-Browser to find software easily! ''
+
+* [[pacman-GUI|Mettre à jour, supprimer et installer un logiciel]]
+: ''Gérez votre système et vos logiciels d'un clic de bouton! ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Customisation and Configuration =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Grub-Customizer]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+* '''[[Display Managers / Login Screens]]'''
+: ''How to install and configure LXDM, SLiM, KDM, and GDM.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[Install Desktop Environments|Install New Desktop Environments]]
+: ''Desktop Environments and Window Managers available from the Manjaro repositories. ''
+
+* [[MATE Desktop Environment|Install the MATE Desktop Environment]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A desktop not officially supported or provided by the Manjaro Repositories. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+
+* '''[[Manjaro Hardware Detection]]'''
+: ''Configure graphics cards, manage kernels, and identify hardware''.
+
+* [[Printing Enablement]]
+: ''Install the necessary software and enable printing. ''
+
+* [[Printer Configuration]]
+: ''Add and configure printer(s). ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Network / Internet ''' &lt;/font size&gt;
+{|
+[[File:Internet.png|left]]
+|
+* [[Synergy - Mouse &amp; k/board Sharing|Synergy - Mouse &amp; Keyboard Sharing]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Use a mouse and keyboard across multiple machines &amp; operating systems.''
+
+* [[Firefox Customisation]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Various security settings &amp; strategies as well as user customisation.''
+
+* [[Setting up Windows NTP]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Solve the Windows using Local Time Problem ''.
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Management ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+*'''[[Repositories and Servers]] ''' '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Articles on changing repositories, servers, and accessessing the AUR. ''
+
+* [[Pacman]]
+: ''Use the Terminal to update your system, install, and remove software. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Applications ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[Virtualbox|Installing and Using Virtualbox]] '''&lt;font color=&quot;green&quot;&gt;(Revised and updated!)&lt;/font&gt; '''
+: ''Use Virtualbox in Manjaro, and Manjaro in Virtualbox. ''
+
+* [[Compiz_and_Emerald|Install Compiz Fusion and Emerald!]]
+: ''Transform your XFCE or KDE with fancy special effects!''
+
+* [[Using HandBrakeCLI]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A quick &amp; dirty how-to for ripping many formats of movies. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''System ''' &lt;/font size&gt;
+{|
+[[File:Control.png|left]]
+|
+* [[Enable Touchpad Horizontal and Vertical Scrolling|Enable Touchpad vertical and horizontal scrolling]]
+: ''Activate click on tap, and vertical and horizontal scrolling on your touchpad. ''
+
+* [[Progress Bar as Pacman Eating Power Pills]]
+: ''Makes life just that little bit more interesting... ''
+
+* [[PowerTOP to Optimise Laptop Power Consumption|Optimise Laptop Power Consumption]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Extend the battery life of your laptop with the PowerTOP diagnosis tool. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Troubleshooting =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Restore the GRUB Bootloader|Restore the GRUB Bootloader]]
+:  ''Can't boot Manjaro? You may be able to repair rather than reinstall! ''
+
+* [[Kernel Fails to Load (pata_acpi error)|Kernel Fails to Load / &quot;Unable to Find Device&quot; Error]]
+: ''The solution for a problem that affects certain computers that use JMicron chips. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[PCManFM File Manager Fixes|LXDE / PCManFM File Manager does not Work Properly]]
+: ''Solutions for partitions not being displayed, and inability to open folders as Root. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+* [[Volume Stuck on Mute (XFCE Desktop)]]
+: ''Two possible solutions for an issue that affects some users of the XFCE desktop environment.''
+* [[Reactivating the Backlight|Screen Brightness is too Dark or Dim]]
+: ''The solution for an issue that particularly affects some makes of laptops''.
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Managment ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[pacman troubleshooting#&quot;Unable to lock database&quot; Error|Installation: &quot;Unable to lock database&quot; Error]]
+: ''A relatively common problem explained and easily solved. ''
+
+* [[pacman_troubleshooting#&quot;Configuration_file...not recognized&quot; Error|Installation: &quot;Configuration file...not recognized&quot; Error]]
+:  ''An explanation and solution for a problem encountered by some newcomers. ''
+
+* [[pacman troubleshooting#&quot;Failed to commit transaction (invalid or corrupted package)&quot; Error|Installation: &quot;Invalid or corrupted package&quot; Error]] 
+: ''An explanation and solution for this software authentication issue. ''
+
+* [[pacman troubleshooting#&quot;GPGME_error:_No_data&quot; Error|Installation: &quot;GPGME_error:_No_data&quot; Error]]
+: ''An explanation and solution for this rare issue. ''
+
+* [[Conflicting Files When Updating (Manjaro 0.8.0)]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''A solution to solve updating issues for installations of Manjaro 0.8.0. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Wiki Editing =
+{|
+[[File:spanner.png|left|96px]]
+|
+* [[Basic Submission Rules]]  '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''How to create an account, and the dos and do-nots for Wiki contributors.''
+
+* [//meta.wikimedia.org/wiki/Help:Contents User's Guide]
+: ''Full user guide on every aspect of Wiki authorship and maintenance.'' 
+
+* [[Wiki tweak page|Create Notification Boxes]]
+: ''A simple overview where the existing boxes aren't sufficient.''
+|}
+&lt;br clear=&quot;all&quot; /&gt;</text>
+      <sha1>8eiedv19unq1f79r23dejg422kt21ea</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3250</id>
+      <parentid>3249</parentid>
+      <timestamp>2012-12-26T21:25:03Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="8960">&lt;center&gt;[[File:skin2.png]]&lt;/center&gt;
+&lt;center&gt;&lt;font size=&quot;4&quot;&gt;'''Welcome to the Manjaro Wiki!'''&lt;/font size&gt;&lt;/center&gt;
+
+
+&lt;center&gt;{{Contents|'''[[:Category:Contents_Page|English]] - [[:Category:Obsah|Čeština]] - [[:Category:Inhalt_Seite|Deutsch]] - [[:Category:Présentation|Français]] - [[:Category:İçerik_Sayfası|Türkçe]]'''}}&lt;/center&gt;
+
+
+= Getting Started =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Overview''' &lt;/font size&gt;
+{|
+[[File:Manjaro-FAQ.png|left|96px]]
+|
+* [[About Manjaro]]
+:  ''Learn about this fast, powerful, and user-friendly Linux distribution. ''
+
+* [[Manjaro FAQ]] 
+:  ''Frequently Asked Questions about Linux and Manjaro. ''
+
+* [[The Rolling Release Development Model]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Why you will never need to re-install Manjaro.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: Right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''On-Line''' &lt;/font size&gt;
+{|
+[[File:Manjaro.png|left|96px]]
+|
+* [http://blog.manjaro.org/ The Manjaro Blog]
+: ''Keep up with the latest news and developments. ''
+
+* '''[[Manjaro Forums]]''' 
+:  ''Brazilian, English, French, and Turkish forums to visit!''
+
+* [http://www.redpipe.net/?page=ostester&amp;module=oslist&amp;submodule=details&amp;id=3 Try Manjaro On-Line in Your Web-Browser] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''Explore Manjaro without downloading or installing it! Java 6 or 7 must be installed. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt; &lt;!-- thanks Archwiki! :-) --&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Installation ''' &lt;/font size&gt;
+{|
+[[File:Software.png|left]]
+|
+* [[Download Manjaro]]
+: ''Where to find the latest and greatest 32 and 64 bit releases.''
+
+* [[Vérifier l'intégrité d'une image ISO téléchargée]]
+: ''Vérifiez l'intégrité de votre téléchargement Manjaro sous Linux et Windows.''
+
+* [[Burn an ISO File]]
+: ''Burn Manjaro to CD/DVD or USB Stick in Linux and Windows.''
+
+* '''[[Installation Guides|Install Manjaro]] &lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Installation and partitioning guides for beginners and experienced users. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Beginners' Section''' &lt;/font size&gt;
+{|
+[[File:Computer.png|left]]
+|
+* [[Using Manjaro for Beginners|Using Manjaro]]
+: ''New to Manjaro? Start here for an overview! ''
+
+* [[Package Browser|Search for Software]]
+: ''Use Package-Browser to find software easily! ''
+
+* [[Pacman-GUI: Guide français|Mettre à jour, supprimer et installer un logiciel]]
+: ''Gérez votre système et vos logiciels d'un clic de bouton! ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Customisation and Configuration =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Grub-Customizer]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+* '''[[Display Managers / Login Screens]]'''
+: ''How to install and configure LXDM, SLiM, KDM, and GDM.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[Install Desktop Environments|Install New Desktop Environments]]
+: ''Desktop Environments and Window Managers available from the Manjaro repositories. ''
+
+* [[MATE Desktop Environment|Install the MATE Desktop Environment]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A desktop not officially supported or provided by the Manjaro Repositories. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+
+* '''[[Manjaro Hardware Detection]]'''
+: ''Configure graphics cards, manage kernels, and identify hardware''.
+
+* [[Printing Enablement]]
+: ''Install the necessary software and enable printing. ''
+
+* [[Printer Configuration]]
+: ''Add and configure printer(s). ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Network / Internet ''' &lt;/font size&gt;
+{|
+[[File:Internet.png|left]]
+|
+* [[Synergy - Mouse &amp; k/board Sharing|Synergy - Mouse &amp; Keyboard Sharing]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Use a mouse and keyboard across multiple machines &amp; operating systems.''
+
+* [[Firefox Customisation]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Various security settings &amp; strategies as well as user customisation.''
+
+* [[Setting up Windows NTP]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Solve the Windows using Local Time Problem ''.
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Management ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+*'''[[Repositories and Servers]] ''' '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Articles on changing repositories, servers, and accessessing the AUR. ''
+
+* [[Pacman]]
+: ''Use the Terminal to update your system, install, and remove software. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Applications ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[Virtualbox|Installing and Using Virtualbox]] '''&lt;font color=&quot;green&quot;&gt;(Revised and updated!)&lt;/font&gt; '''
+: ''Use Virtualbox in Manjaro, and Manjaro in Virtualbox. ''
+
+* [[Compiz_and_Emerald|Install Compiz Fusion and Emerald!]]
+: ''Transform your XFCE or KDE with fancy special effects!''
+
+* [[Using HandBrakeCLI]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A quick &amp; dirty how-to for ripping many formats of movies. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''System ''' &lt;/font size&gt;
+{|
+[[File:Control.png|left]]
+|
+* [[Enable Touchpad Horizontal and Vertical Scrolling|Enable Touchpad vertical and horizontal scrolling]]
+: ''Activate click on tap, and vertical and horizontal scrolling on your touchpad. ''
+
+* [[Progress Bar as Pacman Eating Power Pills]]
+: ''Makes life just that little bit more interesting... ''
+
+* [[PowerTOP to Optimise Laptop Power Consumption|Optimise Laptop Power Consumption]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Extend the battery life of your laptop with the PowerTOP diagnosis tool. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Troubleshooting =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Restore the GRUB Bootloader|Restore the GRUB Bootloader]]
+:  ''Can't boot Manjaro? You may be able to repair rather than reinstall! ''
+
+* [[Kernel Fails to Load (pata_acpi error)|Kernel Fails to Load / &quot;Unable to Find Device&quot; Error]]
+: ''The solution for a problem that affects certain computers that use JMicron chips. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[PCManFM File Manager Fixes|LXDE / PCManFM File Manager does not Work Properly]]
+: ''Solutions for partitions not being displayed, and inability to open folders as Root. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+* [[Volume Stuck on Mute (XFCE Desktop)]]
+: ''Two possible solutions for an issue that affects some users of the XFCE desktop environment.''
+* [[Reactivating the Backlight|Screen Brightness is too Dark or Dim]]
+: ''The solution for an issue that particularly affects some makes of laptops''.
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Managment ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[pacman troubleshooting#&quot;Unable to lock database&quot; Error|Installation: &quot;Unable to lock database&quot; Error]]
+: ''A relatively common problem explained and easily solved. ''
+
+* [[pacman_troubleshooting#&quot;Configuration_file...not recognized&quot; Error|Installation: &quot;Configuration file...not recognized&quot; Error]]
+:  ''An explanation and solution for a problem encountered by some newcomers. ''
+
+* [[pacman troubleshooting#&quot;Failed to commit transaction (invalid or corrupted package)&quot; Error|Installation: &quot;Invalid or corrupted package&quot; Error]] 
+: ''An explanation and solution for this software authentication issue. ''
+
+* [[pacman troubleshooting#&quot;GPGME_error:_No_data&quot; Error|Installation: &quot;GPGME_error:_No_data&quot; Error]]
+: ''An explanation and solution for this rare issue. ''
+
+* [[Conflicting Files When Updating (Manjaro 0.8.0)]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''A solution to solve updating issues for installations of Manjaro 0.8.0. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Wiki Editing =
+{|
+[[File:spanner.png|left|96px]]
+|
+* [[Basic Submission Rules]]  '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''How to create an account, and the dos and do-nots for Wiki contributors.''
+
+* [//meta.wikimedia.org/wiki/Help:Contents User's Guide]
+: ''Full user guide on every aspect of Wiki authorship and maintenance.'' 
+
+* [[Wiki tweak page|Create Notification Boxes]]
+: ''A simple overview where the existing boxes aren't sufficient.''
+|}
+&lt;br clear=&quot;all&quot; /&gt;</text>
+      <sha1>o1x2khsau01ecetaxfk02lt2ih6m7bc</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3262</id>
+      <parentid>3250</parentid>
+      <timestamp>2012-12-26T22:03:53Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <text xml:space="preserve" bytes="8972">&lt;center&gt;[[File:skin2.png]]&lt;/center&gt;
+&lt;center&gt;&lt;font size=&quot;4&quot;&gt;'''Bienvenue dans le Wiki Manjaro!'''&lt;/font size&gt;&lt;/center&gt;
+
+
+&lt;center&gt;{{Contents|'''[[:Category:Contents_Page|English]] - [[:Category:Obsah|Čeština]] - [[:Category:Inhalt_Seite|Deutsch]] - [[:Category:Présentation|Français]] - [[:Category:İçerik_Sayfası|Türkçe]]'''}}&lt;/center&gt;
+
+
+= Pour commencer =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Overview''' &lt;/font size&gt;
+{|
+[[File:Manjaro-FAQ.png|left|96px]]
+|
+* [[About Manjaro]]
+:  ''Learn about this fast, powerful, and user-friendly Linux distribution. ''
+
+* [[Manjaro FAQ]] 
+:  ''Frequently Asked Questions about Linux and Manjaro. ''
+
+* [[The Rolling Release Development Model]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Why you will never need to re-install Manjaro.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: Right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''On-Line''' &lt;/font size&gt;
+{|
+[[File:Manjaro.png|left|96px]]
+|
+* [http://blog.manjaro.org/ The Manjaro Blog]
+: ''Keep up with the latest news and developments. ''
+
+* '''[[Manjaro Forums]]''' 
+:  ''Brazilian, English, French, and Turkish forums to visit!''
+
+* [http://www.redpipe.net/?page=ostester&amp;module=oslist&amp;submodule=details&amp;id=3 Try Manjaro On-Line in Your Web-Browser] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''Explore Manjaro without downloading or installing it! Java 6 or 7 must be installed. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt; &lt;!-- thanks Archwiki! :-) --&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Installation ''' &lt;/font size&gt;
+{|
+[[File:Software.png|left]]
+|
+* [[Download Manjaro]]
+: ''Where to find the latest and greatest 32 and 64 bit releases.''
+
+* [[Vérifier l'intégrité d'une image ISO téléchargée]]
+: ''Vérifiez l'intégrité de votre téléchargement Manjaro sous Linux et Windows.''
+
+* [[Burn an ISO File]]
+: ''Burn Manjaro to CD/DVD or USB Stick in Linux and Windows.''
+
+* '''[[Installation Guides|Install Manjaro]] &lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Installation and partitioning guides for beginners and experienced users. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Beginners' Section''' &lt;/font size&gt;
+{|
+[[File:Computer.png|left]]
+|
+* [[Using Manjaro for Beginners|Using Manjaro]]
+: ''New to Manjaro? Start here for an overview! ''
+
+* [[Package Browser|Search for Software]]
+: ''Use Package-Browser to find software easily! ''
+
+* [[Pacman-GUI: Guide français|Mettre à jour, supprimer et installer un logiciel]]
+: ''Gérez votre système et vos logiciels d'un clic de bouton! ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Personnalisation et Configuration =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Grub-Customizer]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt;'''
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+* '''[[Display Managers / Login Screens]]'''
+: ''How to install and configure LXDM, SLiM, KDM, and GDM.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[Install Desktop Environments|Install New Desktop Environments]]
+: ''Desktop Environments and Window Managers available from the Manjaro repositories. ''
+
+* [[MATE Desktop Environment|Install the MATE Desktop Environment]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A desktop not officially supported or provided by the Manjaro Repositories. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+
+* '''[[Manjaro Hardware Detection]]'''
+: ''Configure graphics cards, manage kernels, and identify hardware''.
+
+* [[Printing Enablement]]
+: ''Install the necessary software and enable printing. ''
+
+* [[Printer Configuration]]
+: ''Add and configure printer(s). ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Network / Internet ''' &lt;/font size&gt;
+{|
+[[File:Internet.png|left]]
+|
+* [[Synergy - Mouse &amp; k/board Sharing|Synergy - Mouse &amp; Keyboard Sharing]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Use a mouse and keyboard across multiple machines &amp; operating systems.''
+
+* [[Firefox Customisation]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Various security settings &amp; strategies as well as user customisation.''
+
+* [[Setting up Windows NTP]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Solve the Windows using Local Time Problem ''.
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Management ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+*'''[[Repositories and Servers]] ''' '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Articles on changing repositories, servers, and accessessing the AUR. ''
+
+* [[Pacman]]
+: ''Use the Terminal to update your system, install, and remove software. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Applications ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[Virtualbox|Installing and Using Virtualbox]] '''&lt;font color=&quot;green&quot;&gt;(Revised and updated!)&lt;/font&gt; '''
+: ''Use Virtualbox in Manjaro, and Manjaro in Virtualbox. ''
+
+* [[Compiz_and_Emerald|Install Compiz Fusion and Emerald!]]
+: ''Transform your XFCE or KDE with fancy special effects!''
+
+* [[Using HandBrakeCLI]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''A quick &amp; dirty how-to for ripping many formats of movies. ''
+|}
+&lt;/div&gt;&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''System ''' &lt;/font size&gt;
+{|
+[[File:Control.png|left]]
+|
+* [[Enable Touchpad Horizontal and Vertical Scrolling|Enable Touchpad vertical and horizontal scrolling]]
+: ''Activate click on tap, and vertical and horizontal scrolling on your touchpad. ''
+
+* [[Progress Bar as Pacman Eating Power Pills]]
+: ''Makes life just that little bit more interesting... ''
+
+* [[PowerTOP to Optimise Laptop Power Consumption|Optimise Laptop Power Consumption]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''Extend the battery life of your laptop with the PowerTOP diagnosis tool. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Problèmes et solutions =
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Boot / Startup ''' &lt;/font size&gt;
+{|
+[[File:System.png|left]]
+|
+* [[Restore the GRUB Bootloader|Restore the GRUB Bootloader]]
+:  ''Can't boot Manjaro? You may be able to repair rather than reinstall! ''
+
+* [[Kernel Fails to Load (pata_acpi error)|Kernel Fails to Load / &quot;Unable to Find Device&quot; Error]]
+: ''The solution for a problem that affects certain computers that use JMicron chips. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Desktop ''' &lt;/font size&gt;
+{|
+[[File:Display.png|left]]
+|
+* [[PCManFM File Manager Fixes|LXDE / PCManFM File Manager does not Work Properly]]
+: ''Solutions for partitions not being displayed, and inability to open folders as Root. ''
+|}
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Hardware ''' &lt;/font size&gt;
+{|
+[[File:Hardware.png|left]]
+|
+* [[Volume Stuck on Mute (XFCE Desktop)]]
+: ''Two possible solutions for an issue that affects some users of the XFCE desktop environment.''
+* [[Reactivating the Backlight|Screen Brightness is too Dark or Dim]]
+: ''The solution for an issue that particularly affects some makes of laptops''.
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+&lt;font size=&quot;3&quot;&gt;'''Software Managment ''' &lt;/font size&gt;
+{|
+[[File:Upgrade.png|left]]
+|
+* [[pacman troubleshooting#&quot;Unable to lock database&quot; Error|Installation: &quot;Unable to lock database&quot; Error]]
+: ''A relatively common problem explained and easily solved. ''
+
+* [[pacman_troubleshooting#&quot;Configuration_file...not recognized&quot; Error|Installation: &quot;Configuration file...not recognized&quot; Error]]
+:  ''An explanation and solution for a problem encountered by some newcomers. ''
+
+* [[pacman troubleshooting#&quot;Failed to commit transaction (invalid or corrupted package)&quot; Error|Installation: &quot;Invalid or corrupted package&quot; Error]] 
+: ''An explanation and solution for this software authentication issue. ''
+
+* [[pacman troubleshooting#&quot;GPGME_error:_No_data&quot; Error|Installation: &quot;GPGME_error:_No_data&quot; Error]]
+: ''An explanation and solution for this rare issue. ''
+
+* [[Conflicting Files When Updating (Manjaro 0.8.0)]] '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+:  ''A solution to solve updating issues for installations of Manjaro 0.8.0. ''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+= Wiki Editing =
+{|
+[[File:spanner.png|left|96px]]
+|
+* [[Basic Submission Rules]]  '''&lt;font color=&quot;green&quot;&gt;(NEW!)&lt;/font&gt; '''
+: ''How to create an account, and the dos and do-nots for Wiki contributors.''
+
+* [//meta.wikimedia.org/wiki/Help:Contents User's Guide]
+: ''Full user guide on every aspect of Wiki authorship and maintenance.'' 
+
+* [[Wiki tweak page|Create Notification Boxes]]
+: ''A simple overview where the existing boxes aren't sufficient.''
+|}
+&lt;br clear=&quot;all&quot; /&gt;</text>
+      <sha1>0igkio94cp1bohrmrlng3ukkbxtik7x</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

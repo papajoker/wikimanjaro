@@ -1,0 +1,213 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Aperçu de partitionnement et table de partition existante</title>
+    <ns>0</ns>
+    <id>833</id>
+    <revision>
+      <id>5216</id>
+      <timestamp>2013-03-05T16:37:21Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Vue d'ensemble =  Manjaro utilise un outil en mode texte appelé ''cfdisk.'' Votre choix de partitionnement disque est largem...&quot;</comment>
+      <text xml:space="preserve" bytes="6378">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Manjaro utilise un outil en mode texte appelé ''cfdisk.'' Votre choix de partitionnement disque est largement conditionné par vos préférences personnelles. Cependant, certaines indications ont été fournies, en particulier pour les nouveaux utilisateurs qui souhaitent partitionner manuellement leurs disques durs. Le partitionnement (c'est-à-dire la division) de  votre disque dur lors de l'installation d'un système d'exploitation peut être entrepris pour un certain nombre de raisons différentes. Les exemples les plus courants sont :
+
+* répondre aux exigences de certains systèmes d'exploitation (par exemple Windows nécessite au moins deux partitions: une pour le démarrage, et l'autre pour Windows lui-même)
+* la possibilité d'installer plusieurs systèmes d'exploitation sur un seul disque dur
+* séparer les parties du disque dur pour des fins spécifiques (par exemple une pour le démarrage, pour servir de mémoire virtuelle / Swap), et
+* séparer les parties du disque dur pour y stocker des types de fichiers spécifiques (par exemple pour les fichiers système, les fichiers personnels, etc.)
+
+
+==Partitions principales et lecteurs logiques==
+
+Deux types de partitions peuvent être utilisés pour diviser un disque dur. Les '''partitions principales''' et les '''partitions étendues.''' Les ''partitions principales'' datent du début de l'informatique, et ne permettent de diviser un disque qu'en quatre parties. La notion de ''partition étendue'' et de ''lecteurs logiques'' a été développée pour contourner cette limitation. Elle permet, pour simplifier, de découper une partition primaire. Une partition primaire ainsi découpée est renommée '''partition étendue.'''
+
+Alors que le nombre maximum de partitions principales est de 4, en utilisant les lecteurs logiques il devient possible de diviser un disque IDE en 60 partitions et un disque SCSI en une douzaine. Ci-dessous, une image simple de la manière dont les lecteurs logiques peuvent être utilisés pour diviser un disque dur en huit morceaux:
+
+
+&lt;center&gt;[[file:partitions.png]]&lt;/center&gt;
+&lt;center&gt;(courtesy of [http://www.linuxquestions.org/questions/slackware-14/primary-vs-logical-487883/ LinuxQuestions.org])&lt;/center&gt;
+
+
+==Conventions et Instructions==
+
+* La convention de nommage de disques et des partitions est : sd '''[lettre de disque dur] [numéro de partition]'''. Par exemple, le premier (ou le seul) disque dur connecté à votre système sera nommé sd'''a''', le second sd'''b''', et ainsi de suite. En ce qui concerne les partitions, sda'''1''' va être la première partition du premier disque dur, sda'''2''' la seconde, et ainsi de suite. Les lecteurs logiques commenceront toujours à partir de '5'.
+
+* Contrairement à Windows (qui nécessite une partition principale particulière pour démarrer), les systèmes Linux comme Manjaro n'ont aucune exigence particulière concernant l'utilisation des partitions principales ou logiques.  Par exemple, Manjaro peut être installé en utilisant toutes les partitions primaires, tous les lecteurs logiques, ou un mélange des deux.
+
+* Bien que la méthode de préparation assistée crée des partitions séparées pour le GRUB (boot), la mémoire virtuelle (swap), le système (root), et les fichiers personnels (home), c'est un paramétrage totalement optionnel. Par exemple, les partitions boot, root, et home peuvent être aisément regroupées en une seule. C'est le cas avec d'autres distributions populaires comme Mint.
+
+* Séparer ou regrouper des partitions, c'est là que jouent les préférences personnelles. Chaque disposition a ses avantages et ses inconvénients. Par exemple, séparer les partitions boot, root et home présente l'avantage de faciliter la sauvegarde et/ou de réparer les problèmes de l'une sans affecter les autres. Un inconvénient peut être de déborder de l'espace alloué pour une partition, par exemple pour root, même s'il y a suffisamment d'espace libre sur le reste du disque.
+
+* Bien que l'allocation d'une partition swap soit tout à fait optionnelle, il est '''fortement recommandé''' de le faire, en particulier si vous comptez utiliser les fonctionnalités d''''hibernation''' ou de '''veille''' qui la nécessitent. Manjaro doit donc être installé en utilisant deux partitions au minimum.
+
+* A moins que vous ne sachiez exactement ce que vous faites, la taille de la partition de swap doit être la même que celle de la RAM utilisée par votre système (par exemple, 2 gigaoctets d'espace alloué au swap pour 2 gigaoctets de mémoire).
+
+* Quelle que soit votre décision concernant le partitionnement, n'importe laquelle de ces partitions peut être choisie comme partition de démarrage et contenir le GRUB. L'exception est la partition de swap.
+
+* Deux systèmes d'exploitation Linux installés sur le même ordinateur peuvent partager les mêmes partitions de GRUB et de swap. Ils n'en ont pas besoin d'une chacun.
+
+
+== Utilisation d'une table de partitionnement Linux existante ==
+
+Il est intéressant de noter que l'installateur Manjaro n'écrasera pas un dossier home s'il contient un nom d'utilisateur existant. En conséquence, l'environnement de bureau pré-installé perdra sa configuration Manjaro, et reviendra à ses paramètres fondamentaux («vanilla»). Afin de restaurer les paramètres de configuration Manjaro, après avoir démarré le système fraîchement installé, il sera nécessaire d'entrer la commande suivante dans un terminal:
+
+ cp -a /etc/skel/. /home/'''[username]'''
+
+
+Par exemple, par un compte nommé ''carl'', taper:
+
+ cp -a /etc/skel/. /home/'''carl'''
+
+
+A la fin, de l'installation,  il sera alors nécessaire de s'assurer que vous avez la pleine propriété du dossier home en entrant la commande suivante:
+
+ chown -R '''[username]''' /home/'''[username]'''
+
+
+Par exemple, pour un utilisateur nommé ''carl'':
+
+ chown -R '''carl''' /home/'''carl'''
+
+
+=Voir aussi=
+
+* '''[[Category:Installation]]'''
+* '''[[Cfdisk : scénarios de partitionnement basique|Scénarios de partitionnement basique]]'''
+
+[[Category:Contents Page]]
+
+
+
+=Voir aussi=
+
+[[Partitioning Overview and Existing Partition Tables|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>po7j81xbdkc7b3yzh2gja1wpn2aszev</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5217</id>
+      <parentid>5216</parentid>
+      <timestamp>2013-03-05T16:38:19Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6301">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Manjaro utilise un outil en mode texte appelé ''cfdisk.'' Votre choix de partitionnement disque est largement conditionné par vos préférences personnelles. Cependant, certaines indications ont été fournies, en particulier pour les nouveaux utilisateurs qui souhaitent partitionner manuellement leurs disques durs. Le partitionnement (c'est-à-dire la division) de  votre disque dur lors de l'installation d'un système d'exploitation peut être entrepris pour un certain nombre de raisons différentes. Les exemples les plus courants sont :
+
+* répondre aux exigences de certains systèmes d'exploitation (par exemple Windows nécessite au moins deux partitions: une pour le démarrage, et l'autre pour Windows lui-même)
+* la possibilité d'installer plusieurs systèmes d'exploitation sur un seul disque dur
+* séparer les parties du disque dur pour des fins spécifiques (par exemple une pour le démarrage, pour servir de mémoire virtuelle / Swap), et
+* séparer les parties du disque dur pour y stocker des types de fichiers spécifiques (par exemple pour les fichiers système, les fichiers personnels, etc.)
+
+
+==Partitions principales et lecteurs logiques==
+
+Deux types de partitions peuvent être utilisés pour diviser un disque dur. Les '''partitions principales''' et les '''partitions étendues.''' Les ''partitions principales'' datent du début de l'informatique, et ne permettent de diviser un disque qu'en quatre parties. La notion de ''partition étendue'' et de ''lecteurs logiques'' a été développée pour contourner cette limitation. Elle permet, pour simplifier, de découper une partition primaire. Une partition primaire ainsi découpée est renommée '''partition étendue.'''
+
+Alors que le nombre maximum de partitions principales est de 4, en utilisant les lecteurs logiques il devient possible de diviser un disque IDE en 60 partitions et un disque SCSI en une douzaine. Ci-dessous, une image simple de la manière dont les lecteurs logiques peuvent être utilisés pour diviser un disque dur en huit morceaux:
+
+
+&lt;center&gt;[[file:partitions.png]]&lt;/center&gt;
+&lt;center&gt;(courtesy of [http://www.linuxquestions.org/questions/slackware-14/primary-vs-logical-487883/ LinuxQuestions.org])&lt;/center&gt;
+
+
+==Conventions et Instructions==
+
+* La convention de nommage de disques et des partitions est : sd '''[lettre de disque dur] [numéro de partition]'''. Par exemple, le premier (ou le seul) disque dur connecté à votre système sera nommé sd'''a''', le second sd'''b''', et ainsi de suite. En ce qui concerne les partitions, sda'''1''' va être la première partition du premier disque dur, sda'''2''' la seconde, et ainsi de suite. Les lecteurs logiques commenceront toujours à partir de '5'.
+
+* Contrairement à Windows (qui nécessite une partition principale particulière pour démarrer), les systèmes Linux comme Manjaro n'ont aucune exigence particulière concernant l'utilisation des partitions principales ou logiques.  Par exemple, Manjaro peut être installé en utilisant toutes les partitions primaires, tous les lecteurs logiques, ou un mélange des deux.
+
+* Bien que la méthode de préparation assistée crée des partitions séparées pour le GRUB (boot), la mémoire virtuelle (swap), le système (root), et les fichiers personnels (home), c'est un paramétrage totalement optionnel. Par exemple, les partitions boot, root, et home peuvent être aisément regroupées en une seule. C'est le cas avec d'autres distributions populaires comme Mint.
+
+* Séparer ou regrouper des partitions, c'est là que jouent les préférences personnelles. Chaque disposition a ses avantages et ses inconvénients. Par exemple, séparer les partitions boot, root et home présente l'avantage de faciliter la sauvegarde et/ou de réparer les problèmes de l'une sans affecter les autres. Un inconvénient peut être de déborder de l'espace alloué pour une partition, par exemple pour root, même s'il y a suffisamment d'espace libre sur le reste du disque.
+
+* Bien que l'allocation d'une partition swap soit tout à fait optionnelle, il est '''fortement recommandé''' de le faire, en particulier si vous comptez utiliser les fonctionnalités d''''hibernation''' ou de '''veille''' qui la nécessitent. Manjaro doit donc être installé en utilisant deux partitions au minimum.
+
+* A moins que vous ne sachiez exactement ce que vous faites, la taille de la partition de swap doit être la même que celle de la RAM utilisée par votre système (par exemple, 2 gigaoctets d'espace alloué au swap pour 2 gigaoctets de mémoire).
+
+* Quelle que soit votre décision concernant le partitionnement, n'importe laquelle de ces partitions peut être choisie comme partition de démarrage et contenir le GRUB. L'exception est la partition de swap.
+
+* Deux systèmes d'exploitation Linux installés sur le même ordinateur peuvent partager les mêmes partitions de GRUB et de swap. Ils n'en ont pas besoin d'une chacun.
+
+
+== Utilisation d'une table de partitionnement Linux existante ==
+
+Il est intéressant de noter que l'installateur Manjaro n'écrasera pas un dossier home s'il contient un nom d'utilisateur existant. En conséquence, l'environnement de bureau pré-installé perdra sa configuration Manjaro, et reviendra à ses paramètres fondamentaux («vanilla»). Afin de restaurer les paramètres de configuration Manjaro, après avoir démarré le système fraîchement installé, il sera nécessaire d'entrer la commande suivante dans un terminal:
+
+ cp -a /etc/skel/. /home/'''[username]'''
+
+
+Par exemple, par un compte nommé ''carl'', taper:
+
+ cp -a /etc/skel/. /home/'''carl'''
+
+
+A la fin, de l'installation,  il sera alors nécessaire de s'assurer que vous avez la pleine propriété du dossier home en entrant la commande suivante:
+
+ chown -R '''[username]''' /home/'''[username]'''
+
+
+Par exemple, pour un utilisateur nommé ''carl'':
+
+ chown -R '''carl''' /home/'''carl'''
+
+
+=Voir aussi=
+
+* '''[[Cfdisk : scénarios de partitionnement basique|Scénarios de partitionnement basique]]'''
+
+
+[[Partitioning Overview and Existing Partition Tables|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>4y1h1yr8ps5tkpwo59ux0i4itzgw9pw</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

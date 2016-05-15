@@ -1,0 +1,618 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Utilisation de Manjaro</title>
+    <ns>0</ns>
+    <id>620</id>
+    <revision>
+      <id>3566</id>
+      <timestamp>2012-12-29T17:33:21Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;EN COURS DE TRADUCTION  &lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;   = Welcome to Manjaro! =  This guide provides a brief overview of the key points it is necessary to kno...&quot;</comment>
+      <text xml:space="preserve" bytes="6058">EN COURS DE TRADUCTION
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Welcome to Manjaro! =
+
+This guide provides a brief overview of the key points it is necessary to know in order to get the most out of using the Manjaro operating system. 
+
+
+=Automatic Desktop Notifications =
+
+[[File:kalu-083.png|thumb|left|375px]]
+
+
+{{note|This feature will be automatically disabled where Manjaro has been installed in Virtualbox.}}
+
+
+Manjaro will automatically check and notify you of any updates available for your system and installed software applications, in addition to providing the very latest Manjaro-related news. 
+
+Once notified, to install new updates for your system, click on the '''update system''' button in the notification bubble. Otherwise, to see the latest news on your desktop, click on the '''Show News''' notification button in the bubble.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Searching For Software =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' is a user-friendly application that can be used to search for and view information about software packages. This includes those already installed on the system, in addition to those available for installation from both the official Manjaro software repositories, and unofficially from the '''[[Arch_User_Repository|Arch User Repository]]'''.
+
+This application can be selected from the ''System'' section of your desktop menu. A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Updating the System, Installing, and Removing Software =
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+Arch and Arch-based systems traditionally rely on the use of a ''command line terminal'' in order to undertake system-related tasks, such as updating the system and installing new software applications. Although a very powerful and versatile tool, the necessity of learning a plethora of new text-based commands and manually typing them into the terminal for use can be an intimidating prospect for many new users. 
+
+Developed exclusively by the Manjaro Team, the user-friendly '''Pacman-GUI''' (Graphical User Interface) enables users to undertake a range of common tasks with the click of a button. This application can be selected from the ''System'' section of your desktop menu. A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= The Arch User Repository (AUR) =
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to access the AUR.}}
+
+
+Although Manjaro is 100% Arch compatible - being based on Arch itself - it is not possible access the official repositories of the Arch System to download software. Manjaro instead uses its own official repositories in order to ensure that any software packages provided (e.g. system updates and applications) have been fully tested and are completely stable before release.
+
+However, it is still possible to access additional software packages from the Arch User Repository (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. A '''[[Arch_User_Repository|guide on how to Access the AUR]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using the Terminal =
+
+[[file:terminal.png|thumb|left|375px]]
+
+
+In simple terms, a terminal (or console) is an interface that allows for text commands to be entered and displayed. As it is an exceptionally powerful and versatile tool to use, Arch and other Arch-based systems are notable for relying far more heavily on their use than other (user-friendly) distributions such as ''Ubuntu'' or ''Mint'', which have placed a greater focus on the use of Graphical User Interfaces.
+
+While Graphical User Interfaces to undertake common tasks have been provided with Manjaro - particularly to assist new users - just as with other user-friendly distributions, it may on occasion be necessary to use the terminal to get something done. '''Most of the guides contained in the wiki rely on using the terminal, particularly where solving problems and tweaking the system is concerned'''. For those users who wish to learn more about how Manjaro works, and for those who wish to take full advantage of its versatility, it is highly recommended to learn how to use the terminal. Don't worry: it's not that hard or scary, and this wiki can be used to guide you every step of the way.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using Multiple Kernels =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to add or remove kernels.}}
+
+
+A Linux kernel is the core of a Linux operating system, which acts as an interface between your computer's hardware and the applications that run on it. Manjaro not only supports the use of multiple kernels (selectable from the boot screen), but allows easy access to the very latest bleeding edge kernels as well. All available kernels installed on your system will be presented upon booting up, including backup copies of each kernel version installed. 
+
+A '''[[Manjaro_Kernels|guide on how to manage kernels]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+{{tip|All printer software will have been pre-installed in Manjaro releases 0.8.1 to 0.8.2.}}
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide. Links have been provided in both guides to return here.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Using Manjaro for Beginners|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>lmnxbr2phio8t4uopgv7p2ou1o4zcb5</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3571</id>
+      <parentid>3566</parentid>
+      <timestamp>2012-12-29T17:46:51Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6061">EN COURS DE TRADUCTION
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Bienvenue sur Manjaro! =
+
+This guide provides a brief overview of the key points it is necessary to know in order to get the most out of using the Manjaro operating system. 
+
+
+=Automatic Desktop Notifications =
+
+[[File:kalu-083.png|thumb|left|375px]]
+
+
+{{note|This feature will be automatically disabled where Manjaro has been installed in Virtualbox.}}
+
+
+Manjaro will automatically check and notify you of any updates available for your system and installed software applications, in addition to providing the very latest Manjaro-related news. 
+
+Once notified, to install new updates for your system, click on the '''update system''' button in the notification bubble. Otherwise, to see the latest news on your desktop, click on the '''Show News''' notification button in the bubble.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Searching For Software =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' is a user-friendly application that can be used to search for and view information about software packages. This includes those already installed on the system, in addition to those available for installation from both the official Manjaro software repositories, and unofficially from the '''[[Arch_User_Repository|Arch User Repository]]'''.
+
+This application can be selected from the ''System'' section of your desktop menu. A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Updating the System, Installing, and Removing Software =
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+Arch and Arch-based systems traditionally rely on the use of a ''command line terminal'' in order to undertake system-related tasks, such as updating the system and installing new software applications. Although a very powerful and versatile tool, the necessity of learning a plethora of new text-based commands and manually typing them into the terminal for use can be an intimidating prospect for many new users. 
+
+Developed exclusively by the Manjaro Team, the user-friendly '''Pacman-GUI''' (Graphical User Interface) enables users to undertake a range of common tasks with the click of a button. This application can be selected from the ''System'' section of your desktop menu. A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= The Arch User Repository (AUR) =
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to access the AUR.}}
+
+
+Although Manjaro is 100% Arch compatible - being based on Arch itself - it is not possible access the official repositories of the Arch System to download software. Manjaro instead uses its own official repositories in order to ensure that any software packages provided (e.g. system updates and applications) have been fully tested and are completely stable before release.
+
+However, it is still possible to access additional software packages from the Arch User Repository (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. A '''[[Arch_User_Repository|guide on how to Access the AUR]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using the Terminal =
+
+[[file:terminal.png|thumb|left|375px]]
+
+
+In simple terms, a terminal (or console) is an interface that allows for text commands to be entered and displayed. As it is an exceptionally powerful and versatile tool to use, Arch and other Arch-based systems are notable for relying far more heavily on their use than other (user-friendly) distributions such as ''Ubuntu'' or ''Mint'', which have placed a greater focus on the use of Graphical User Interfaces.
+
+While Graphical User Interfaces to undertake common tasks have been provided with Manjaro - particularly to assist new users - just as with other user-friendly distributions, it may on occasion be necessary to use the terminal to get something done. '''Most of the guides contained in the wiki rely on using the terminal, particularly where solving problems and tweaking the system is concerned'''. For those users who wish to learn more about how Manjaro works, and for those who wish to take full advantage of its versatility, it is highly recommended to learn how to use the terminal. Don't worry: it's not that hard or scary, and this wiki can be used to guide you every step of the way.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using Multiple Kernels =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to add or remove kernels.}}
+
+
+A Linux kernel is the core of a Linux operating system, which acts as an interface between your computer's hardware and the applications that run on it. Manjaro not only supports the use of multiple kernels (selectable from the boot screen), but allows easy access to the very latest bleeding edge kernels as well. All available kernels installed on your system will be presented upon booting up, including backup copies of each kernel version installed. 
+
+A '''[[Manjaro_Kernels|guide on how to manage kernels]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+{{tip|All printer software will have been pre-installed in Manjaro releases 0.8.1 to 0.8.2.}}
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide. Links have been provided in both guides to return here.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Using Manjaro for Beginners|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>bo10verntyek7itk8ypdhcdln4qwvbb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3572</id>
+      <parentid>3571</parentid>
+      <timestamp>2012-12-29T17:47:39Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6084">EN COURS DE TRADUCTION
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Bienvenue sur Manjaro! =
+
+Ce guide donne un bref aperçu des points importants qu'il est nécessaire de connaître pour tirer le meilleur parti de l'utilisation du système d'exploitation Manjaro.
+
+
+=Automatic Desktop Notifications =
+
+[[File:kalu-083.png|thumb|left|375px]]
+
+
+{{note|This feature will be automatically disabled where Manjaro has been installed in Virtualbox.}}
+
+
+Manjaro will automatically check and notify you of any updates available for your system and installed software applications, in addition to providing the very latest Manjaro-related news. 
+
+Once notified, to install new updates for your system, click on the '''update system''' button in the notification bubble. Otherwise, to see the latest news on your desktop, click on the '''Show News''' notification button in the bubble.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Searching For Software =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' is a user-friendly application that can be used to search for and view information about software packages. This includes those already installed on the system, in addition to those available for installation from both the official Manjaro software repositories, and unofficially from the '''[[Arch_User_Repository|Arch User Repository]]'''.
+
+This application can be selected from the ''System'' section of your desktop menu. A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Updating the System, Installing, and Removing Software =
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+Arch and Arch-based systems traditionally rely on the use of a ''command line terminal'' in order to undertake system-related tasks, such as updating the system and installing new software applications. Although a very powerful and versatile tool, the necessity of learning a plethora of new text-based commands and manually typing them into the terminal for use can be an intimidating prospect for many new users. 
+
+Developed exclusively by the Manjaro Team, the user-friendly '''Pacman-GUI''' (Graphical User Interface) enables users to undertake a range of common tasks with the click of a button. This application can be selected from the ''System'' section of your desktop menu. A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= The Arch User Repository (AUR) =
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to access the AUR.}}
+
+
+Although Manjaro is 100% Arch compatible - being based on Arch itself - it is not possible access the official repositories of the Arch System to download software. Manjaro instead uses its own official repositories in order to ensure that any software packages provided (e.g. system updates and applications) have been fully tested and are completely stable before release.
+
+However, it is still possible to access additional software packages from the Arch User Repository (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. A '''[[Arch_User_Repository|guide on how to Access the AUR]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using the Terminal =
+
+[[file:terminal.png|thumb|left|375px]]
+
+
+In simple terms, a terminal (or console) is an interface that allows for text commands to be entered and displayed. As it is an exceptionally powerful and versatile tool to use, Arch and other Arch-based systems are notable for relying far more heavily on their use than other (user-friendly) distributions such as ''Ubuntu'' or ''Mint'', which have placed a greater focus on the use of Graphical User Interfaces.
+
+While Graphical User Interfaces to undertake common tasks have been provided with Manjaro - particularly to assist new users - just as with other user-friendly distributions, it may on occasion be necessary to use the terminal to get something done. '''Most of the guides contained in the wiki rely on using the terminal, particularly where solving problems and tweaking the system is concerned'''. For those users who wish to learn more about how Manjaro works, and for those who wish to take full advantage of its versatility, it is highly recommended to learn how to use the terminal. Don't worry: it's not that hard or scary, and this wiki can be used to guide you every step of the way.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using Multiple Kernels =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to add or remove kernels.}}
+
+
+A Linux kernel is the core of a Linux operating system, which acts as an interface between your computer's hardware and the applications that run on it. Manjaro not only supports the use of multiple kernels (selectable from the boot screen), but allows easy access to the very latest bleeding edge kernels as well. All available kernels installed on your system will be presented upon booting up, including backup copies of each kernel version installed. 
+
+A '''[[Manjaro_Kernels|guide on how to manage kernels]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+{{tip|All printer software will have been pre-installed in Manjaro releases 0.8.1 to 0.8.2.}}
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide. Links have been provided in both guides to return here.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Using Manjaro for Beginners|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>tjqma1ypd5oitvo9f0unjgnswzbjo6v</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3573</id>
+      <parentid>3572</parentid>
+      <timestamp>2012-12-29T17:48:31Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6088">= EN COURS DE TRADUCTION =
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Bienvenue sur Manjaro! =
+
+Ce guide donne un bref aperçu des points importants qu'il est nécessaire de connaître pour tirer le meilleur parti de l'utilisation du système d'exploitation Manjaro.
+
+
+=Automatic Desktop Notifications =
+
+[[File:kalu-083.png|thumb|left|375px]]
+
+
+{{note|This feature will be automatically disabled where Manjaro has been installed in Virtualbox.}}
+
+
+Manjaro will automatically check and notify you of any updates available for your system and installed software applications, in addition to providing the very latest Manjaro-related news. 
+
+Once notified, to install new updates for your system, click on the '''update system''' button in the notification bubble. Otherwise, to see the latest news on your desktop, click on the '''Show News''' notification button in the bubble.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Searching For Software =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' is a user-friendly application that can be used to search for and view information about software packages. This includes those already installed on the system, in addition to those available for installation from both the official Manjaro software repositories, and unofficially from the '''[[Arch_User_Repository|Arch User Repository]]'''.
+
+This application can be selected from the ''System'' section of your desktop menu. A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Updating the System, Installing, and Removing Software =
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+Arch and Arch-based systems traditionally rely on the use of a ''command line terminal'' in order to undertake system-related tasks, such as updating the system and installing new software applications. Although a very powerful and versatile tool, the necessity of learning a plethora of new text-based commands and manually typing them into the terminal for use can be an intimidating prospect for many new users. 
+
+Developed exclusively by the Manjaro Team, the user-friendly '''Pacman-GUI''' (Graphical User Interface) enables users to undertake a range of common tasks with the click of a button. This application can be selected from the ''System'' section of your desktop menu. A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= The Arch User Repository (AUR) =
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to access the AUR.}}
+
+
+Although Manjaro is 100% Arch compatible - being based on Arch itself - it is not possible access the official repositories of the Arch System to download software. Manjaro instead uses its own official repositories in order to ensure that any software packages provided (e.g. system updates and applications) have been fully tested and are completely stable before release.
+
+However, it is still possible to access additional software packages from the Arch User Repository (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. A '''[[Arch_User_Repository|guide on how to Access the AUR]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using the Terminal =
+
+[[file:terminal.png|thumb|left|375px]]
+
+
+In simple terms, a terminal (or console) is an interface that allows for text commands to be entered and displayed. As it is an exceptionally powerful and versatile tool to use, Arch and other Arch-based systems are notable for relying far more heavily on their use than other (user-friendly) distributions such as ''Ubuntu'' or ''Mint'', which have placed a greater focus on the use of Graphical User Interfaces.
+
+While Graphical User Interfaces to undertake common tasks have been provided with Manjaro - particularly to assist new users - just as with other user-friendly distributions, it may on occasion be necessary to use the terminal to get something done. '''Most of the guides contained in the wiki rely on using the terminal, particularly where solving problems and tweaking the system is concerned'''. For those users who wish to learn more about how Manjaro works, and for those who wish to take full advantage of its versatility, it is highly recommended to learn how to use the terminal. Don't worry: it's not that hard or scary, and this wiki can be used to guide you every step of the way.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using Multiple Kernels =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to add or remove kernels.}}
+
+
+A Linux kernel is the core of a Linux operating system, which acts as an interface between your computer's hardware and the applications that run on it. Manjaro not only supports the use of multiple kernels (selectable from the boot screen), but allows easy access to the very latest bleeding edge kernels as well. All available kernels installed on your system will be presented upon booting up, including backup copies of each kernel version installed. 
+
+A '''[[Manjaro_Kernels|guide on how to manage kernels]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+{{tip|All printer software will have been pre-installed in Manjaro releases 0.8.1 to 0.8.2.}}
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide. Links have been provided in both guides to return here.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Using Manjaro for Beginners|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>jkpoypgfujermmy67k7ywy9s8c65k65</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3576</id>
+      <parentid>3573</parentid>
+      <timestamp>2012-12-29T19:26:44Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6104">= EN COURS DE TRADUCTION =
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Bienvenue sur Manjaro! =
+
+Ce guide donne un bref aperçu des points importants qu'il est nécessaire de connaître pour tirer le meilleur parti de l'utilisation du système d'exploitation Manjaro.
+
+
+= Notifications automatiques sur le bureau =
+
+[[File:kalu-083.png|thumb|left|375px]]
+
+
+{{note|Cette fonction sera automatiquement désactivée lorsque Manjaro est installée dans VirtualBox.}}
+
+
+Manjaro vérifie automatiquement et vous informe des mises à jour disponibles pour votre système et les applications installées, en plus d'offrir les toutes dernières liées à Manjaro. 
+
+Once notified, to install new updates for your system, click on the '''update system''' button in the notification bubble. Otherwise, to see the latest news on your desktop, click on the '''Show News''' notification button in the bubble.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Searching For Software =
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser''' is a user-friendly application that can be used to search for and view information about software packages. This includes those already installed on the system, in addition to those available for installation from both the official Manjaro software repositories, and unofficially from the '''[[Arch_User_Repository|Arch User Repository]]'''.
+
+This application can be selected from the ''System'' section of your desktop menu. A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Updating the System, Installing, and Removing Software =
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+Arch and Arch-based systems traditionally rely on the use of a ''command line terminal'' in order to undertake system-related tasks, such as updating the system and installing new software applications. Although a very powerful and versatile tool, the necessity of learning a plethora of new text-based commands and manually typing them into the terminal for use can be an intimidating prospect for many new users. 
+
+Developed exclusively by the Manjaro Team, the user-friendly '''Pacman-GUI''' (Graphical User Interface) enables users to undertake a range of common tasks with the click of a button. This application can be selected from the ''System'' section of your desktop menu. A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= The Arch User Repository (AUR) =
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to access the AUR.}}
+
+
+Although Manjaro is 100% Arch compatible - being based on Arch itself - it is not possible access the official repositories of the Arch System to download software. Manjaro instead uses its own official repositories in order to ensure that any software packages provided (e.g. system updates and applications) have been fully tested and are completely stable before release.
+
+However, it is still possible to access additional software packages from the Arch User Repository (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. A '''[[Arch_User_Repository|guide on how to Access the AUR]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using the Terminal =
+
+[[file:terminal.png|thumb|left|375px]]
+
+
+In simple terms, a terminal (or console) is an interface that allows for text commands to be entered and displayed. As it is an exceptionally powerful and versatile tool to use, Arch and other Arch-based systems are notable for relying far more heavily on their use than other (user-friendly) distributions such as ''Ubuntu'' or ''Mint'', which have placed a greater focus on the use of Graphical User Interfaces.
+
+While Graphical User Interfaces to undertake common tasks have been provided with Manjaro - particularly to assist new users - just as with other user-friendly distributions, it may on occasion be necessary to use the terminal to get something done. '''Most of the guides contained in the wiki rely on using the terminal, particularly where solving problems and tweaking the system is concerned'''. For those users who wish to learn more about how Manjaro works, and for those who wish to take full advantage of its versatility, it is highly recommended to learn how to use the terminal. Don't worry: it's not that hard or scary, and this wiki can be used to guide you every step of the way.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Using Multiple Kernels =
+
+[[file:kernel_select.png|thumb|left|375px]]
+
+
+{{note|It will be necessary to use the terminal in order to add or remove kernels.}}
+
+
+A Linux kernel is the core of a Linux operating system, which acts as an interface between your computer's hardware and the applications that run on it. Manjaro not only supports the use of multiple kernels (selectable from the boot screen), but allows easy access to the very latest bleeding edge kernels as well. All available kernels installed on your system will be presented upon booting up, including backup copies of each kernel version installed. 
+
+A '''[[Manjaro_Kernels|guide on how to manage kernels]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+{{tip|All printer software will have been pre-installed in Manjaro releases 0.8.1 to 0.8.2.}}
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide. Links have been provided in both guides to return here.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Using Manjaro for Beginners|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>cw8qcbt3xtz7tzyta4px174xa64xfdq</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

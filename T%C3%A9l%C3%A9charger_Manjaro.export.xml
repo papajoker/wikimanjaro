@@ -1,0 +1,314 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Télécharger Manjaro</title>
+    <ns>0</ns>
+    <id>606</id>
+    <revision>
+      <id>3307</id>
+      <timestamp>2012-12-27T15:11:57Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;A TRADUIRE  = Overview =  [[File:BigManjaroIcon.png|left|90px]]  32 and 64 bit versions of Manjaro are available for download as ISO files. An ISO file is itself a literal cop...&quot;</comment>
+      <text xml:space="preserve" bytes="3842">A TRADUIRE
+
+= Overview =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+32 and 64 bit versions of Manjaro are available for download as ISO files. An ISO file is itself a literal copy of a disc image, although not in the same sense as a copy and paste duplicatation. Rather it is a copy of the raw machine code that makes up the files and folders of that disc. This is why just copying an ISO file to a disc (or USB flashdrive) to begin installing it won't work; you'll need to use a ''disc burning application'' to translate that raw data into the files and folders. Instructions to do so for both Linux and Windows operating systems are provided below. 
+
+
+{{note|There is an exception to this rule. If you intend on installing Manjaro in a virtual machine environment using '''[https://www.virtualbox.org/ Oracle's Virtualbox]''', then there will be no need to burn the image as Virtualbox will be able to read from the ISO file directly as a ''virtual disc''.}}
+
+ISO images available for 32 bit systems will end in '''i686.iso''', while images for 64 bit systems will end in '''x86_64.iso'''. Please try to ensure that you download the appropriate ISO image for your system as:
+
+* a 64 bit ISO won't run on a 32 bit system, and
+* a 32 bit ISO will not be able use the full power or resources of a 64 bit system.
+
+
+= Manjaro Editions =
+
+There are two editions of Manjaro available for download:
+
+'''1. The full edition''': This edition of Manjaro comes complete with everything pre-installed, including a desktop environment, popular software applications, and codecs. This would of course be the most appropriate choice for those who wish to try out Manjaro on a ''Live-CD'' without having to install it first. An ISO image for a full edition of Manjaro will list the pre-installed desktop environment in its name. For example, an ISO image beginning with '''manjaro-xfce''' will have the XFCE desktop environment pre-installed.
+
+'''2. The NET edition''': This edition of Manjaro provides only a base installation, stripped of any and all pre-installed software. Starting from the command line, this is suitable for more experienced users who may wish to build their own Manjaro systems from the ground up. An ISO image for a NET edition will always begin with '''manjaro-net'''.
+
+
+= Downloading an ISO image =
+
+Each stable release and test-build of Manjaro has its own particular folder, which will contain all the 32 and 64 bit versions of both the full and NET editions available. Each folder will also contain the relevant ''checksum'' files which can be used to check the integrity of your downloaded ISO file (i.e. to ensure that it has not been corrupted during download). A link to the guide on doing this has been provided below.
+
+'''Stable Releases''' of Manjaro are intended to be used by the general public. As such, will be the appropriate choice for the majority of users. Each of the stable releases - starting from 0.8.0 - can be downloaded from the '''[http://sourceforge.net/projects/manjarolinux/files/release/ Stable Release section]''' of the ''Sourceforge'' website.
+
+'''Test Builds''' of Manjaro are intended to be used only by developers and testers, in order to identify any bugs or issues to be addressed as their development continues towards the next stable release. '''These are not suitable - or intended - for use as a main operating system by the general public'''. However, should you wish to try out a test build (preferrably in a virtual machine), each current release can be downloaded from the from the '''[http://sourceforge.net/projects/manjarodev/files/testbuild/ Test Build section]''' of the ''Sourceforge'' website.
+
+
+= See Also =
+
+* '''[[Check a Downloaded ISO Image For Errors]]''' 
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]</text>
+      <sha1>lqewhx5rhm4aix0ninvsgr06g404lgu</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3308</id>
+      <parentid>3307</parentid>
+      <timestamp>2012-12-27T15:13:12Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3848">A TRADUIRE
+
+= vUE D'ENSEMBLE =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+32 and 64 bit versions of Manjaro are available for download as ISO files. An ISO file is itself a literal copy of a disc image, although not in the same sense as a copy and paste duplicatation. Rather it is a copy of the raw machine code that makes up the files and folders of that disc. This is why just copying an ISO file to a disc (or USB flashdrive) to begin installing it won't work; you'll need to use a ''disc burning application'' to translate that raw data into the files and folders. Instructions to do so for both Linux and Windows operating systems are provided below. 
+
+
+{{note|There is an exception to this rule. If you intend on installing Manjaro in a virtual machine environment using '''[https://www.virtualbox.org/ Oracle's Virtualbox]''', then there will be no need to burn the image as Virtualbox will be able to read from the ISO file directly as a ''virtual disc''.}}
+
+ISO images available for 32 bit systems will end in '''i686.iso''', while images for 64 bit systems will end in '''x86_64.iso'''. Please try to ensure that you download the appropriate ISO image for your system as:
+
+* a 64 bit ISO won't run on a 32 bit system, and
+* a 32 bit ISO will not be able use the full power or resources of a 64 bit system.
+
+
+= Manjaro Editions =
+
+There are two editions of Manjaro available for download:
+
+'''1. The full edition''': This edition of Manjaro comes complete with everything pre-installed, including a desktop environment, popular software applications, and codecs. This would of course be the most appropriate choice for those who wish to try out Manjaro on a ''Live-CD'' without having to install it first. An ISO image for a full edition of Manjaro will list the pre-installed desktop environment in its name. For example, an ISO image beginning with '''manjaro-xfce''' will have the XFCE desktop environment pre-installed.
+
+'''2. The NET edition''': This edition of Manjaro provides only a base installation, stripped of any and all pre-installed software. Starting from the command line, this is suitable for more experienced users who may wish to build their own Manjaro systems from the ground up. An ISO image for a NET edition will always begin with '''manjaro-net'''.
+
+
+= Downloading an ISO image =
+
+Each stable release and test-build of Manjaro has its own particular folder, which will contain all the 32 and 64 bit versions of both the full and NET editions available. Each folder will also contain the relevant ''checksum'' files which can be used to check the integrity of your downloaded ISO file (i.e. to ensure that it has not been corrupted during download). A link to the guide on doing this has been provided below.
+
+'''Stable Releases''' of Manjaro are intended to be used by the general public. As such, will be the appropriate choice for the majority of users. Each of the stable releases - starting from 0.8.0 - can be downloaded from the '''[http://sourceforge.net/projects/manjarolinux/files/release/ Stable Release section]''' of the ''Sourceforge'' website.
+
+'''Test Builds''' of Manjaro are intended to be used only by developers and testers, in order to identify any bugs or issues to be addressed as their development continues towards the next stable release. '''These are not suitable - or intended - for use as a main operating system by the general public'''. However, should you wish to try out a test build (preferrably in a virtual machine), each current release can be downloaded from the from the '''[http://sourceforge.net/projects/manjarodev/files/testbuild/ Test Build section]''' of the ''Sourceforge'' website.
+
+
+= See Also =
+
+* '''[[Check a Downloaded ISO Image For Errors]]''' 
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]</text>
+      <sha1>767zk0mdy7v0cga2zy7nb5s17z09pfw</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3309</id>
+      <parentid>3308</parentid>
+      <timestamp>2012-12-27T15:13:29Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3848">A TRADUIRE
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+32 and 64 bit versions of Manjaro are available for download as ISO files. An ISO file is itself a literal copy of a disc image, although not in the same sense as a copy and paste duplicatation. Rather it is a copy of the raw machine code that makes up the files and folders of that disc. This is why just copying an ISO file to a disc (or USB flashdrive) to begin installing it won't work; you'll need to use a ''disc burning application'' to translate that raw data into the files and folders. Instructions to do so for both Linux and Windows operating systems are provided below. 
+
+
+{{note|There is an exception to this rule. If you intend on installing Manjaro in a virtual machine environment using '''[https://www.virtualbox.org/ Oracle's Virtualbox]''', then there will be no need to burn the image as Virtualbox will be able to read from the ISO file directly as a ''virtual disc''.}}
+
+ISO images available for 32 bit systems will end in '''i686.iso''', while images for 64 bit systems will end in '''x86_64.iso'''. Please try to ensure that you download the appropriate ISO image for your system as:
+
+* a 64 bit ISO won't run on a 32 bit system, and
+* a 32 bit ISO will not be able use the full power or resources of a 64 bit system.
+
+
+= Manjaro Editions =
+
+There are two editions of Manjaro available for download:
+
+'''1. The full edition''': This edition of Manjaro comes complete with everything pre-installed, including a desktop environment, popular software applications, and codecs. This would of course be the most appropriate choice for those who wish to try out Manjaro on a ''Live-CD'' without having to install it first. An ISO image for a full edition of Manjaro will list the pre-installed desktop environment in its name. For example, an ISO image beginning with '''manjaro-xfce''' will have the XFCE desktop environment pre-installed.
+
+'''2. The NET edition''': This edition of Manjaro provides only a base installation, stripped of any and all pre-installed software. Starting from the command line, this is suitable for more experienced users who may wish to build their own Manjaro systems from the ground up. An ISO image for a NET edition will always begin with '''manjaro-net'''.
+
+
+= Downloading an ISO image =
+
+Each stable release and test-build of Manjaro has its own particular folder, which will contain all the 32 and 64 bit versions of both the full and NET editions available. Each folder will also contain the relevant ''checksum'' files which can be used to check the integrity of your downloaded ISO file (i.e. to ensure that it has not been corrupted during download). A link to the guide on doing this has been provided below.
+
+'''Stable Releases''' of Manjaro are intended to be used by the general public. As such, will be the appropriate choice for the majority of users. Each of the stable releases - starting from 0.8.0 - can be downloaded from the '''[http://sourceforge.net/projects/manjarolinux/files/release/ Stable Release section]''' of the ''Sourceforge'' website.
+
+'''Test Builds''' of Manjaro are intended to be used only by developers and testers, in order to identify any bugs or issues to be addressed as their development continues towards the next stable release. '''These are not suitable - or intended - for use as a main operating system by the general public'''. However, should you wish to try out a test build (preferrably in a virtual machine), each current release can be downloaded from the from the '''[http://sourceforge.net/projects/manjarodev/files/testbuild/ Test Build section]''' of the ''Sourceforge'' website.
+
+
+= See Also =
+
+* '''[[Check a Downloaded ISO Image For Errors]]''' 
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]</text>
+      <sha1>lsghad44pm8yrelud2xxh0or9g2ov3l</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3310</id>
+      <parentid>3309</parentid>
+      <timestamp>2012-12-27T16:14:04Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4263">A TRADUIRE
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Les versions 32 et 64 bits de Manjaro sont disponibles pour téléchargement sous forme de fichier ISO. Une image ISO constitue l'image d'un CD (ou d'un DVD) prête à être gravée. L'image contient toutes les données afin de pouvoir être gravée sans difficulté à l'aide d'un ''logiciel de gravure''. Se contenter de copier un fichier ISO sur un disque (ou lecteur flash USB) pour commencer l'installation ne fonctionnera pas. Des instructions en ce sens, à la fois pour Linux et systèmes d'exploitation Windows, sont fournis ci-dessous.
+
+
+{{note|Il existe une exception à cette règle. Si vous avez l'intention d'installer Manjaro dans un environnement de machine virtuelle en utilisant VirtualBox d'Oracle, alors il n'y aura pas besoin de graver l'image que VirtualBox sera capable de lire à partir du fichier ISO directement comme un ''disque virtuel''.}}
+
+Les images ISO disponibles pour les systèmes 32 bits se terminent en '''i686.iso''', alors que les images pour les systèmes 64 bits se terminent en '''x86_64.iso'''. S'il vous plaît essayez de vous assurer que vous téléchargez l'image ISO appropriée pour votre système:
+
+* un fichier ISO 64 bits ne fonctionnera pas sur un système 32 bits, et
+* un fichier ISO 32 bits ne pourra pas utiliser la pleine puissance ou les ressources d'un système 64 bits.
+
+
+= Editions Manjaro =
+
+Il existe deux éditions Manjaro disponibles pour téléchargement:
+
+'''1. L'édition complète:''' cette édition de Manjaro est complète avec tout de pré-installé, y compris un environnement de bureau, les applications logicielles courantes, et les codecs. Ce serait bien sûr le choix le plus approprié pour ceux qui veulent essayer Manjaro sur un ''Live CD'', sans avoir à l'installer. Une image ISO pour une édition complète de Manjaro listera l'environnement de bureau pré-installé en son nom. Par exemple, une image ISO commençant par '''manjaro-xfce''' aura l'environnement de bureau XFCE pré-installé.
+
+'''2. La 'NET edition':''' cette édition de Manjaro fournit seulement une installation de base, dépouillée de tout et de tous les logiciels pré-installés. A partir de la ligne de commande, c'est une version adaptée aux utilisateurs plus expérimentés qui souhaitent construire leur propre système Manjaro entièrement. Une image ISO pour une 'NET edition' commence toujours par '''manjaro-net'''.
+
+
+= Téléchargement d'une image ISO =
+
+Chaque version stable et de test de Manjaro a son propre dossier, qui contiendra toutes les versions 32 et 64 bits des deux éditions complètes ainsi que la 'NET edition'. Chaque dossier contient également les ''fichiers de contrôle pertinents'' qui peuvent être utilisés pour vérifier l'intégrité de votre fichier ISO téléchargé (par exemple pour s'assurer qu'il n'a pas été endommagé pendant le téléchargement). Un lien vers le guide &quot;Vérifier l'intégrité d'une image ISO téléchargée&quot; a été prévu ci-dessous.
+
+Les '''sorties stable'''s de Manjaro sont destinées à être utilisées par le grand public. Ce sera le bon choix pour la majorité des utilisateurs. Chacune des versions stables - à partir de 0.8.0 - peut être téléchargée depuis la '''[http://sourceforge.net/projects/manjarolinux/files/release/ Stable Release section]''' du site ''Sourceforge''.
+
+Les '''sorties de tests''' de Manjaro sont destinées à être utilisées uniquement par les développeurs et les testeurs, afin d'identifier les éventuels bugs ou problèmes à aborder afin de les solutionner pour la prochaine version stable. '''Ces versions ne sont pas adaptées - ou prévues - pour une utilisation en tant que système d'exploitation principal pour le grand public.''' Toutefois, si vous souhaitez essayer une version de test (de préférence dans une machine virtuelle), chaque version actuelle peut être téléchargée à partir de la '''[http://sourceforge.net/projects/manjarodev/files/testbuild/ Test Build section]''' du site ''Sourceforge''.
+
+
+= Voir aussi =
+
+* '''[[Vérifier l'intégrité d'une image ISO téléchargée]]''' 
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]</text>
+      <sha1>h1464edax79oe39on3wkjj3ruswbgqc</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3312</id>
+      <parentid>3310</parentid>
+      <timestamp>2012-12-27T16:17:17Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4290">A TRADUIRE
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Les versions 32 et 64 bits de Manjaro sont disponibles pour téléchargement sous forme de fichier ISO. Une image ISO constitue l'image d'un CD (ou d'un DVD) prête à être gravée. L'image contient toutes les données afin de pouvoir être gravée sans difficulté à l'aide d'un ''logiciel de gravure''. Se contenter de copier un fichier ISO sur un disque (ou lecteur flash USB) pour commencer l'installation ne fonctionnera pas. Des instructions en ce sens, à la fois pour Linux et systèmes d'exploitation Windows, sont fournis ci-dessous.
+
+
+{{note|Il existe une exception à cette règle. Si vous avez l'intention d'installer Manjaro dans un environnement de machine virtuelle en utilisant VirtualBox d'Oracle, alors il n'y aura pas besoin de graver l'image que VirtualBox sera capable de lire à partir du fichier ISO directement comme un ''disque virtuel''.}}
+
+Les images ISO disponibles pour les systèmes 32 bits se terminent en '''i686.iso''', alors que les images pour les systèmes 64 bits se terminent en '''x86_64.iso'''. S'il vous plaît essayez de vous assurer que vous téléchargez l'image ISO appropriée pour votre système:
+
+* un fichier ISO 64 bits ne fonctionnera pas sur un système 32 bits, et
+* un fichier ISO 32 bits ne pourra pas utiliser la pleine puissance ou les ressources d'un système 64 bits.
+
+
+= Editions Manjaro =
+
+Il existe deux éditions Manjaro disponibles pour téléchargement:
+
+'''1. L'édition complète:''' cette édition de Manjaro est complète avec tout de pré-installé, y compris un environnement de bureau, les applications logicielles courantes, et les codecs. Ce serait bien sûr le choix le plus approprié pour ceux qui veulent essayer Manjaro sur un ''Live CD'', sans avoir à l'installer. Une image ISO pour une édition complète de Manjaro listera l'environnement de bureau pré-installé en son nom. Par exemple, une image ISO commençant par '''manjaro-xfce''' aura l'environnement de bureau XFCE pré-installé.
+
+'''2. La 'NET edition':''' cette édition de Manjaro fournit seulement une installation de base, dépouillée de tout et de tous les logiciels pré-installés. A partir de la ligne de commande, c'est une version adaptée aux utilisateurs plus expérimentés qui souhaitent construire leur propre système Manjaro entièrement. Une image ISO pour une 'NET edition' commence toujours par '''manjaro-net'''.
+
+
+= Téléchargement d'une image ISO =
+
+Chaque version stable et de test de Manjaro a son propre dossier, qui contiendra toutes les versions 32 et 64 bits des deux éditions complètes ainsi que la 'NET edition'. Chaque dossier contient également les ''fichiers de contrôle pertinents'' qui peuvent être utilisés pour vérifier l'intégrité de votre fichier ISO téléchargé (par exemple pour s'assurer qu'il n'a pas été endommagé pendant le téléchargement). Un lien vers le guide &quot;Vérifier l'intégrité d'une image ISO téléchargée&quot; a été prévu ci-dessous.
+
+Les '''sorties stable'''s de Manjaro sont destinées à être utilisées par le grand public. Ce sera le bon choix pour la majorité des utilisateurs. Chacune des versions stables - à partir de 0.8.0 - peut être téléchargée depuis la '''[http://sourceforge.net/projects/manjarolinux/files/release/ Stable Release section]''' du site ''Sourceforge''.
+
+Les '''sorties de tests''' de Manjaro sont destinées à être utilisées uniquement par les développeurs et les testeurs, afin d'identifier les éventuels bugs ou problèmes à aborder afin de les solutionner pour la prochaine version stable. '''Ces versions ne sont pas adaptées - ou prévues - pour une utilisation en tant que système d'exploitation principal pour le grand public.''' Toutefois, si vous souhaitez essayer une version de test (de préférence dans une machine virtuelle), chaque version actuelle peut être téléchargée à partir de la '''[http://sourceforge.net/projects/manjarodev/files/testbuild/ Test Build section]''' du site ''Sourceforge''.
+
+
+= Voir aussi =
+
+* '''[[Vérifier l'intégrité d'une image ISO téléchargée]]''' 
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]
+[[Category:Présentation]]</text>
+      <sha1>fi7a4jmg7eyffgfwmxue4wftm1j97ac</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

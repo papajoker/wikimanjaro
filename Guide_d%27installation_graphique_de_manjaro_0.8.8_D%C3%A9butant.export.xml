@@ -1,0 +1,948 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide d'installation graphique de manjaro 0.8.8 Débutant</title>
+    <ns>0</ns>
+    <id>1334</id>
+    <revision>
+      <id>8522</id>
+      <timestamp>2014-01-15T14:53:15Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Vue d'ensemble =  {{note|Manjaro utilise un ''modèle de développement rolling release''. En tant que tel, en vertu de maint...&quot;</comment>
+      <text xml:space="preserve" bytes="12550">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement rolling release''. En tant que tel, en vertu de maintenir à jour une installation existante, il est déjà la dernière version. Plus d'informations peuvent être trouvées sur l'article de notre blog : '''[http://manjaro-fr-blog.legtux.org// Découvrez Manjaro linux. Le système d’exploitation sûr, rapide et continuellement à jour !]'''}}
+
+{{Astuce|Un guide '''[[Virtualbox - Installation et Utilisation]]''' a été fourni pour ceux qui souhaitent installer Manjaro dans un environnement de machine virtuelle.}}
+
+
+Ce '''guide pour débutants''' est idéal pour ceux ayant des connaissances techniques et une expérience limitées. Avec cette installation 100 % graphique, il ne sera pas nécessaire de partitionner manuellement le disque dur de votre ordinateur ou de modifier manuellement les différents fichiers de configuration.
+
+Lorsque cela est possible, '''assurez-vous que vous êtes connecté à Internet''' avant le démarrage à partir du support d'installation (par exemple, disque, lecteur flash USB, ou même un fichier ISO directement si vous avez démarré dans Oracle Virtualbox). Si vous avez une connexion filaire via un câble Ethernet, Manjaro se connectera automatiquement à Internet sans que vous ayez à faire quoi que ce soit. Sinon, une fois que vous avez démarré dans le bureau Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil.
+
+
+= Facultatif: Définissez votre langue et la disposition du clavier =
+
+[[File: boot1-088.png|thumb|left|375px]] 
+
+
+{{Astuce| Le réglage de la langue et la disposition du clavier - comme indiqué ci-dessous - est effectuée en appuyant sur la touche F2. Comme de nombreux ordinateurs ont de multiples fonctions affectées à chaque touche de fonction, il peut être nécessaire de maintenir une autre touche (en particulier lorsque l'installation se fait dans Virtualbox). Par exemple, sur un ordinateur portable HP G62, pour utiliser les touches de fonction, la touche &quot;Fn&quot; doit d'abord être pressée.}}
+
+
+Après avoir booté sur le support d'installation de Manjaro, vous devriez arriver à l'écran de démarrage de Manjaro. Cependant, cet écran ne fait pas démarrer quoi que ce soit, du moins pas encore ! 
+
+Il est possible à ce stade de choisir facilement la langue et la disposition du clavier avant d'utiliser effectivement Manjaro. Cela signifie que vous serez en mesure d'utiliser et installer Manjaro dans votre langue maternelle tout de suite.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-088.png|thumb|left|375px]] 
+
+
+'''Tout d'abord, choisissez votre langue''' en appuyant sur la touche F2. Les options disponibles peuvent être mises en évidence pour la sélection à l'aide des touches fléchées de votre clavier. Ci-contre, ''English (UK)'' a été mis en évidence par l'utilisateur. 
+
+Une fois sélectionné, appuyez sur &lt;Entrée&gt; pour confirmer et enregistrer dans le menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-088.png|thumb|left|375px]] 
+
+
+'''Ensuite, mettez votre clavier préféré (keymap)''' en appuyant sur la touche F2, sélectionnez le clavier, puis appuyez sur &lt;Entrée&gt; pour faire apparaître les options. Lorsque la langue est choisie, la disposition du clavier appropriée devrait déjà être sélectionnée. Dans ce cas, ''English (UK)'' a été mis en évidence par l'utilisateur.
+
+Une fois sélectionné, appuyez sur &lt;Entrée&gt; pour confirmer et enregistrer dans le menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot1-088.png|thumb|left|375px]] 
+
+
+{{Astuce| Pour obtenir de meilleurs résultats, sélectionnez la ligne 'Boot Manjaro Linux with non-free graphics drivers'. Il doit correspondre au pilote de votre carte graphique.}}
+
+
+Une fois les premiers préparatifs terminés, Manjaro peut maintenant être démarré pour commencer le processus d'installation. Deux options principales sont maintenant disponibles :
+
+: '''1. Démarrer Manjaro Linux''' - démarre en utilisant les pilotes graphiques libres développés par la communauté Linux
+: '''2. Démarrer (avec des pilotes propriétaires)''' - démarre en utilisant les pilotes graphiques propriétaires (développés et propriété des fabricants de cartes graphiques)
+
+
+Ci-contre, Manjaro est démarré en utilisant l'option du pilote graphique libre. Encore une fois, utilisez les touches fléchées pour mettre en surbrillance votre choix et pressez sur &lt;Entrée&gt; pour continuer
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-088.png|thumb|left|375px]] 
+
+
+{{Astuce|Si vous souhaitez vous connecter à Internet en utilisant une connexion sans fil, c'est à faire maintenant !}}
+
+
+Comme on le voit ici, Manjaro 0.8.8 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la saveur (environnement de bureau) Manjaro que vous avez choisie d'installer, le processus d'installation lui-même sera toujours le même.
+
+Pour commencer le processus d'installation, cliquez sur '''install Manjaro''' dans la fenêtre de bienvenue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre langue=
+
+[[File: gui1-088.png|thumb|left|375px]]
+
+
+Si vous étiez en mesure de choisir votre langue préférée avant de démarrer, elle devrait déjà être sélectionnée pour vous.
+
+Une fois sélectionnée, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre emplacement=
+
+[[File: gui2-088.png|thumb|left|375px]]
+
+
+Les emplacements disponibles dépendront de la langue que vous avez sélectionnée à l'étape précédente.
+
+Une fois sélectionné, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Checker votre ordinateur=
+
+[[File: gui3-088.png|thumb|left|375px]]
+
+
+{{Astuce|Il n'est pas nécessaire d'avoir une connexion internet active pour installer Manjaro. Ceci est toutefois recommandé pour de meilleurs résultats.}}
+
+
+Votre ordinateur sera automatiquement checké pour s'assurer que Manjaro peut y être installé en toute sécurité. Il s'agira notamment de veiller à ce que l'espace disque disponible soit suffisant (bien que le ''strict minimum'' autorisé est de 3 gigaoctets, au moins 15 Go d'espace libre sont recommandés).
+
+Une fois acquis que votre système répond aux exigences minimales nécessaires, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre méthode d'installation=
+
+[[File: gui4-088.png|thumb|left|375px]]
+
+
+{{Attention|L'utilisation de la méthode d'installation 'Automatique' entraînera l'effacement complet de toutes les données existantes sur votre disque dur. Vous avez été averti!}}
+
+
+Pour procéder à l'installation 'automatique' (très simple), assurez-vous que l'option '''Effacer le disque et installer Manjaro (automatique)''' a été sélectionnée.
+
+Une fois terminé, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre disque dur=
+
+[[File: gui5-088.png|thumb|left|375px]]
+
+
+{{Astuce|Si comme nous autres, simples mortels, vous avez 'seulement' un disque dur, il sera automatiquement sélectionné pour vous. Sinon, votre premier disque sera listé comme '(/dev/sd'''a''')', le second '(/dev/sd'''b''')', et ainsi de suite.}}
+
+
+'''Si vous avez plus d'un disque dur sur votre ordinateur''', vous pouvez sélectionner ici celui de votre choix pour installer Manjaro.
+
+Une fois sélectionné, cliquez sur '''Installer maintenant!''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Où êtes-vous?=
+
+[[File: gui6c-088.png|thumb|left|375px]]
+
+
+{{Note|Vous aurez également la possibilité '''d'utiliser le Network Time Protocol pour la synchronisation de l'horloge'''. En clair, cela signifie la création de votre horloge système en se connectant à internet. La plupart des utilisateurs devraient le faire, mais d'autres - peut-être ceux qui installent Manjaro à côté de Windows - ne peuvent pas. '''Si vous ne savez pas quoi faire, alors laissez-le.'''}}
+
+
+Il sera désormais nécessaire de confirmer votre emplacement une fois de plus. La '''Zone''' est le continent où vous vivez. La '''région''' est la ville ou la ville la plus proche d'où vous vivez à l'intérieur de cette zone. Si ce n'est déjà fait, vous devez d'abord sélectionner la zone correcte avant de sélectionner ensuite la bonne région.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui6b-zone-088.png|thumb|left|375px]]
+
+
+'''Pour choisir votre zone''', cliquez  simplement sur son menu. Ci-contre, 'Europe' a été sélectionnée par l'utilisateur.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui6v2-region-088.png|thumb|left|375px]]
+
+
+'''Une fois la zone correctement renseignée, alors sélectionnez votre région,''' cliquez simplement de nouveau sur le menu. Ci-contre, 'Londres' a été sélectionnée par l'utilisateur.
+
+
+Une fois ces informations correctes, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Choisissez votre clavier =
+
+[[File: gui7-088.png|thumb|left|375px]]
+
+
+{{Astuce|La disposition appropriée du clavier doit déjà être renseignée ; il est alors nécessaire de confirmer si l'information est correcte.}}
+
+
+Juste parce que vous vivez dans un certain endroit, cela ne signifie pas nécessairement que vous souhaitiez en utiliser la disposition de clavier. Vous avez maintenant la possibilité de confirmer ou choisir votre clavier préféré. Cela peut comporter des variantes, telles que 'Dovorak' quand ça concerne la disposition du clavier du Royaume-Uni.
+
+Pour choisir la configuration désirée, il suffit de cliquer sur votre choix pour le mettre en évidence. Des variantes seront générées automatiquement en fonction du pays choisi.
+
+Une fois ces informations correctes, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Qui êtes-vous?=
+
+[[File: gui8-088.png|thumb|left|375px]]
+
+
+{{Astuce|Utilisez tous les caractères minuscules pour votre nom d'utilisateur. '''Rappelez-vous que les mots de passe sont sensibles à la casse.''' Et il est fortement recommandé d'exiger votre mot de passe pour vous connecter - sécurité de votre système oblige !}}
+
+
+Maintenant il est temps de ''personnaliser'' votre installation ! Entrez votre vrai nom, le nom de votre ordinateur (il suffit d'entrer 'manjaro ' - moins les guillemets - si vous n'êtes pas sûr de ce que cela signifie), et votre nom d'utilisateur. Votre nom d'utilisateur sera le nom de votre compte personnel dans Manjaro.
+
+Vous devrez également saisir votre mot de passe à deux reprises. Encore une fois, s'il vous plaît rappelez-vous que les mots de passe sont sensibles à la casse (par exemple 'abc123' n'est pas la même chose que 'ABC123').
+
+Tout est fait ! Une fois ces informations correctes, cliquez sur '''Suivant''' pour installer Manjaro.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation=
+
+[[File: gui9-088.png|thumb|left|375px]]
+
+
+Le processus d'installation automatique va maintenant commencer. Au cours de ce processus des informations utiles sur Manjaro et sa communauté seront affichées.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui10-088.png|thumb|left|375px]]
+
+
+Une fois terminé, il vous sera demandé si vous voulez redémarrer votre système. Sélectionnez '''Oui''' pour redémarrer immédiatement, ou '''Non''' pour fermer le programme d'installation et continuer à utiliser le support d'installation Manjaro.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui11-088.png|thumb|left|375px]]
+
+
+Après le redémarrage, il est possible d'éjecter le média d'installation avant que l'ordinateur se rallume. Cependant, il est également possible de démarrer à partir du support d'installation lui-même en sélectionnant l'option '''Boot From Hard Disk''' et puis en appuyant sur &lt;Entrée&gt;.
+
+Si vous utilisez l'option ''Boot From Hard Disk'' vous pouvez alors supprimer en toute sécurité ou éjecter le média d'installation à votre guise et démarrer sur votre Manjaro fraîchement installée.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Connexion =
+
+[[File: displaymanagerscreen-088.png|thumb|left|375px]]
+
+
+{{Astuce|'''Vous aimez Manjaro ?''' Alors pourquoi ne pas envisager de faire partie de notre communauté ? Vous serez la(le) bienvenu(e) sur notre forum francophone !}}
+
+
+Félicitations - et bienvenue dans votre nouveau système Manjaro fraîchement installé !
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+[[Graphical Installation Guide for Beginners 0.8.8|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>g79a3nw5f9d6yri4grni327m8g029k9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8556</id>
+      <parentid>8522</parentid>
+      <timestamp>2014-01-19T10:30:41Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="15031">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement rolling release''. En tant que tel, en vertu de maintenir à jour une installation existante, il est déjà la dernière version. Plus d'informations peuvent être trouvées sur l'article de notre blog : '''[http://manjaro-fr-blog.legtux.org// Découvrez Manjaro linux. Le système d’exploitation sûr, rapide et continuellement à jour !]'''}}
+
+{{Astuce|Un guide '''[[Virtualbox - Installation et Utilisation]]''' a été fourni pour ceux qui souhaitent installer Manjaro dans un environnement de machine virtuelle.}}
+
+
+Ce '''guide pour débutants''' est idéal pour ceux ayant des connaissances techniques et une expérience limitées. Avec cette installation 100 % graphique, il ne sera pas nécessaire de partitionner manuellement le disque dur de votre ordinateur ou de modifier manuellement les différents fichiers de configuration.
+
+Lorsque cela est possible, '''assurez-vous que vous êtes connecté à Internet''' avant le démarrage à partir du support d'installation (par exemple, disque, lecteur flash USB, ou même un fichier ISO directement si vous avez démarré dans Oracle Virtualbox). Si vous avez une connexion filaire via un câble Ethernet, Manjaro se connectera automatiquement à Internet sans que vous ayez à faire quoi que ce soit. Sinon, une fois que vous avez démarré dans le bureau Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil.
+
+
+= Facultatif: Définissez votre langue et la disposition du clavier =
+
+[[File: boot1-088.png|thumb|left|375px]] 
+
+
+{{Astuce| Le réglage de la langue et la disposition du clavier - comme indiqué ci-dessous - est effectuée en appuyant sur la touche F2. Comme de nombreux ordinateurs ont de multiples fonctions affectées à chaque touche de fonction, il peut être nécessaire de maintenir une autre touche (en particulier lorsque l'installation se fait dans Virtualbox). Par exemple, sur un ordinateur portable HP G62, pour utiliser les touches de fonction, la touche &quot;Fn&quot; doit d'abord être pressée.}}
+
+
+Après avoir booté sur le support d'installation de Manjaro, vous devriez arriver à l'écran de démarrage de Manjaro. Cependant, cet écran ne fait pas démarrer quoi que ce soit, du moins pas encore ! 
+
+Il est possible à ce stade de choisir facilement la langue et la disposition du clavier avant d'utiliser effectivement Manjaro. Cela signifie que vous serez en mesure d'utiliser et installer Manjaro dans votre langue maternelle tout de suite.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-088.png|thumb|left|375px]] 
+
+
+'''Tout d'abord, choisissez votre langue''' en appuyant sur la touche F2. Les options disponibles peuvent être mises en évidence pour la sélection à l'aide des touches fléchées de votre clavier. Ci-contre, ''English (UK)'' a été mis en évidence par l'utilisateur. 
+
+Une fois sélectionné, appuyez sur &lt;Entrée&gt; pour confirmer et enregistrer dans le menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-088.png|thumb|left|375px]] 
+
+
+'''Ensuite, mettez votre clavier préféré (keymap)''' en appuyant sur la touche F2, sélectionnez le clavier, puis appuyez sur &lt;Entrée&gt; pour faire apparaître les options. Lorsque la langue est choisie, la disposition du clavier appropriée devrait déjà être sélectionnée. Dans ce cas, ''English (UK)'' a été mis en évidence par l'utilisateur.
+
+Une fois sélectionné, appuyez sur &lt;Entrée&gt; pour confirmer et enregistrer dans le menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot1-088.png|thumb|left|375px]] 
+
+
+{{Astuce| Pour obtenir de meilleurs résultats, sélectionnez la ligne 'Boot Manjaro Linux with non-free graphics drivers'. Il doit correspondre au pilote de votre carte graphique.}}
+
+
+Une fois les premiers préparatifs terminés, Manjaro peut maintenant être démarré pour commencer le processus d'installation. Deux options principales sont maintenant disponibles :
+
+: '''1. Démarrer Manjaro Linux''' - démarre en utilisant les pilotes graphiques libres développés par la communauté Linux
+: '''2. Démarrer (avec des pilotes propriétaires)''' - démarre en utilisant les pilotes graphiques propriétaires (développés et propriété des fabricants de cartes graphiques)
+
+
+Ci-contre, Manjaro est démarré en utilisant l'option du pilote graphique libre. Encore une fois, utilisez les touches fléchées pour mettre en surbrillance votre choix et pressez sur &lt;Entrée&gt; pour continuer
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-088.png|thumb|left|375px]] 
+
+
+{{Astuce|Si vous souhaitez vous connecter à Internet en utilisant une connexion sans fil, c'est à faire maintenant !}}
+
+
+Comme on le voit ici, Manjaro 0.8.8 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la saveur (environnement de bureau) Manjaro que vous avez choisie d'installer, le processus d'installation lui-même sera toujours le même.
+
+Pour commencer le processus d'installation, cliquez sur '''install Manjaro''' dans la fenêtre de bienvenue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre langue=
+
+[[File: gui1-088.png|thumb|left|375px]]
+
+
+Si vous étiez en mesure de choisir votre langue préférée avant de démarrer, elle devrait déjà être sélectionnée pour vous.
+
+Une fois sélectionnée, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre emplacement=
+
+[[File: gui2-088.png|thumb|left|375px]]
+
+
+Les emplacements disponibles dépendront de la langue que vous avez sélectionnée à l'étape précédente.
+
+Une fois sélectionné, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Checker votre ordinateur=
+
+[[File: gui2-088-french.png|thumb|left|375px]]
+
+
+{{Astuce|Il n'est pas nécessaire d'avoir une connexion internet active pour installer Manjaro. Ceci est toutefois recommandé pour de meilleurs résultats.}}
+
+
+Votre ordinateur sera automatiquement checké pour s'assurer que Manjaro peut y être installé en toute sécurité. Il s'agira notamment de veiller à ce que l'espace disque disponible soit suffisant (bien que le ''strict minimum'' autorisé est de 3 gigaoctets, au moins 15 Go d'espace libre sont recommandés).
+
+Une fois acquis que votre système répond aux exigences minimales nécessaires, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre méthode d'installation - Méthode automatique=
+
+[[File: gui4-088-french.png|thumb|left|375px]]
+
+
+{{Attention|L'utilisation de la méthode d'installation 'Automatique' entraînera l'effacement complet de toutes les données existantes sur votre disque dur. Vous avez été averti!}}
+
+
+Pour procéder à l'installation 'automatique' (très simple), assurez-vous que l'option '''Effacer le disque et installer Manjaro (automatique)''' a été sélectionnée.
+
+Une fois terminé, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre disque dur (méthode automatique)=
+
+[[File: gui5-088.png|thumb|left|375px]]
+
+
+{{Astuce|Si comme nous autres, simples mortels, vous avez 'seulement' un disque dur, il sera automatiquement sélectionné pour vous. Sinon, votre premier disque sera listé comme '(/dev/sd'''a''')', le second '(/dev/sd'''b''')', et ainsi de suite.}}
+
+
+'''Si vous avez plus d'un disque dur sur votre ordinateur''', vous pouvez sélectionner ici celui de votre choix pour installer Manjaro.
+
+Une fois sélectionné, cliquez sur '''Installer maintenant!''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre méthode d'installation - Méthode manuelle (avancé)=
+
+[[File: gui4b-088-french.png|thumb|left|375px]]
+
+
+Pour procéder à l'installation 'manuelle' (avancé), assurez-vous que l'option '''Gérez vos partitions et choisissez où installer Manjaro (avancé)''' a été sélectionnée.
+
+Une fois terminé, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre disque dur (méthode manuelle)=
+
+Les 7 illustrations suivantes concernent uniquement l'installation en mode avancé (manuelle). Elles vous montrent comment choisir les partitions, renseigner le type de fichiers, le point de montage et pour finir comment choisir le périphérique qui recevra le chargeur de démarrage (sur notre exemple, /dev/sd'''a''' a été choisi).
+
+[[File: gui5b-088-french.png|thumb|left|375px]]
+
+
+Ici sont listés tous les disques durs et toutes les partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5c-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, la partition /dev/sd'''a1''' a été mise en surbrillance ; nous voulons choisir cette partition pour le système. Cliquez sur &lt;Changer ...&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5d-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, renseignez le type de fichiers (ext4 conseillé), le point de montage (/) et cochez la case 'Formater'. Cliquez sur &lt;Valider&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5e-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, répétez les mêmes opérations pour la partition /dev/sd'''a2''' choisie pour le home. Cliquez sur &lt;Valider&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5f-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, répétez les mêmes opérations pour la partition /dev/sd'''a3''' choisie pour le swap. Cliquez sur &lt;Valider&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5g-088-french.png|thumb|left|375px]]
+
+
+Ci-contre (en bas de la fenêtre principale), veillez à bien renseigner la partie '''Périphérique d'installation du chargeur de démarrage'''.
+
+Une fois toutes ces opérations terminées, cliquez sur '''Installer maintenant!''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5h-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, le récapitulatif des précédentes opérations. Il n'est pas inutile de les visionner ; en cas d'erreur il est possible de revenir en arrière en cliquant sur ''Annuler''. Si tout est bon, cliquez sur '''Valider'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Où êtes-vous?=
+
+[[File: gui6c-088-french.png|thumb|left|375px]]
+
+
+{{Note|Vous aurez également la possibilité '''d'utiliser le Network Time Protocol pour la synchronisation de l'horloge'''. En clair, cela signifie la création de votre horloge système en se connectant à internet. La plupart des utilisateurs devraient le faire, mais d'autres - peut-être ceux qui installent Manjaro à côté de Windows - ne peuvent pas. '''Si vous ne savez pas quoi faire, alors laissez-le.'''}}
+
+
+Il sera désormais nécessaire de confirmer votre emplacement une fois de plus. La '''Zone''' est le continent où vous vivez. La '''région''' est la ville ou la ville la plus proche d'où vous vivez à l'intérieur de cette zone. Si ce n'est déjà fait, vous devez d'abord sélectionner la zone correcte avant de sélectionner ensuite la bonne région.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui6b-zone-088-french.png|thumb|left|375px]]
+
+
+'''Pour choisir votre zone''', cliquez  simplement sur son menu. Ci-contre, 'Europe' a été sélectionnée par l'utilisateur.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui6v2-region-088.png|thumb|left|375px]]
+
+
+'''Une fois la zone correctement renseignée, alors sélectionnez votre région,''' cliquez simplement de nouveau sur le menu. Ci-contre, 'Londres' a été sélectionnée par l'utilisateur.
+
+
+Une fois ces informations correctes, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Choisissez votre clavier =
+
+[[File: gui7-088.png|thumb|left|375px]]
+
+
+{{Astuce|La disposition appropriée du clavier doit déjà être renseignée ; il est alors nécessaire de confirmer si l'information est correcte.}}
+
+
+Juste parce que vous vivez dans un certain endroit, cela ne signifie pas nécessairement que vous souhaitiez en utiliser la disposition de clavier. Vous avez maintenant la possibilité de confirmer ou choisir votre clavier préféré. Cela peut comporter des variantes, telles que 'Dovorak' quand ça concerne la disposition du clavier du Royaume-Uni.
+
+Pour choisir la configuration désirée, il suffit de cliquer sur votre choix pour le mettre en évidence. Des variantes seront générées automatiquement en fonction du pays choisi.
+
+Une fois ces informations correctes, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Qui êtes-vous?=
+
+[[File: gui8-088-french.png|thumb|left|375px]]
+
+
+{{Astuce|Utilisez tous les caractères minuscules pour votre nom d'utilisateur. '''Rappelez-vous que les mots de passe sont sensibles à la casse.''' Et il est fortement recommandé d'exiger votre mot de passe pour vous connecter - sécurité de votre système oblige !}}
+
+
+Maintenant il est temps de ''personnaliser'' votre installation ! Entrez votre vrai nom, le nom de votre ordinateur (il suffit d'entrer 'manjaro ' - moins les guillemets - si vous n'êtes pas sûr de ce que cela signifie), et votre nom d'utilisateur. Votre nom d'utilisateur sera le nom de votre compte personnel dans Manjaro.
+
+Vous devrez également saisir votre mot de passe à deux reprises. Encore une fois, s'il vous plaît rappelez-vous que les mots de passe sont sensibles à la casse (par exemple 'abc123' n'est pas la même chose que 'ABC123').
+
+Tout est fait ! Une fois ces informations correctes, cliquez sur '''Suivant''' pour installer Manjaro.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation=
+
+[[File: gui9-088-french.png|thumb|left|375px]]
+
+
+Le processus d'installation automatique va maintenant commencer. Au cours de ce processus des informations utiles sur Manjaro et sa communauté seront affichées.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui10-088-french.png|thumb|left|375px]]
+
+
+Une fois terminé, il vous sera demandé si vous voulez redémarrer votre système. Sélectionnez '''Oui''' pour redémarrer immédiatement, ou '''Non''' pour fermer le programme d'installation et continuer à utiliser le support d'installation Manjaro.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui11-088.png|thumb|left|375px]]
+
+
+Après le redémarrage, il est possible d'éjecter le média d'installation avant que l'ordinateur se rallume. Cependant, il est également possible de démarrer à partir du support d'installation lui-même en sélectionnant l'option '''Boot From Hard Disk''' et puis en appuyant sur &lt;Entrée&gt;.
+
+Si vous utilisez l'option ''Boot From Hard Disk'' vous pouvez alors supprimer en toute sécurité ou éjecter le média d'installation à votre guise et démarrer sur votre Manjaro fraîchement installée.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Connexion =
+
+[[File: displaymanagerscreen-088.png|thumb|left|375px]]
+
+
+{{Astuce|'''Vous aimez Manjaro ?''' Alors pourquoi ne pas envisager de faire partie de notre communauté ? Vous serez la(le) bienvenu(e) sur notre forum francophone !}}
+
+
+Félicitations - et bienvenue dans votre nouveau système Manjaro fraîchement installé !
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+[[Graphical Installation Guide for Beginners 0.8.8|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>23311c9y5369768sf9prnemt4fdmba4</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8557</id>
+      <parentid>8556</parentid>
+      <timestamp>2014-01-20T10:55:35Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="15302">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Manjaro utilise un ''modèle de développement rolling release''. En tant que tel, en vertu de maintenir à jour une installation existante, il est déjà la dernière version. Plus d'informations peuvent être trouvées sur l'article de notre blog : '''[http://manjaro-fr-blog.legtux.org// Découvrez Manjaro linux. Le système d’exploitation sûr, rapide et continuellement à jour !]'''}}
+
+Un guide '''[[Virtualbox - Installation et Utilisation]]''' a été fourni pour ceux qui souhaitent installer Manjaro dans un environnement de machine virtuelle.
+
+
+Ce '''guide pour débutants''' est idéal pour ceux ayant des connaissances techniques et une expérience limitées. Avec cette installation 100 % graphique, il ne sera pas nécessaire de partitionner manuellement le disque dur de votre ordinateur ou de modifier manuellement les différents fichiers de configuration.
+
+
+{{Astuce|Malgré cela, si vous êtes comme de nombreux utilisateurs à préférer partitionner votre disque dur avec ''Gparted'' préalablement à l'installation de Manjaro, ce '''[[Guide du partitionnement simplifié pour installer manjaro]]''' vous explique tout en détail.}}
+
+
+Lorsque cela est possible, '''assurez-vous que vous êtes connecté à Internet''' avant le démarrage à partir du support d'installation (par exemple, disque, lecteur flash USB, ou même un fichier ISO directement si vous avez démarré dans Oracle Virtualbox). Si vous avez une connexion filaire via un câble Ethernet, Manjaro se connectera automatiquement à Internet sans que vous ayez à faire quoi que ce soit. Sinon, une fois que vous avez démarré dans le bureau Manjaro, vous devrez sélectionner, puis vous connecter à votre réseau sans fil.
+
+
+= Facultatif: Définissez votre langue et la disposition du clavier =
+
+[[File: boot1-088.png|thumb|left|375px]] 
+
+
+{{Astuce| Le réglage de la langue et la disposition du clavier - comme indiqué ci-dessous - est effectuée en appuyant sur la touche F2. Comme de nombreux ordinateurs ont de multiples fonctions affectées à chaque touche de fonction, il peut être nécessaire de maintenir une autre touche (en particulier lorsque l'installation se fait dans Virtualbox). Par exemple, sur un ordinateur portable HP G62, pour utiliser les touches de fonction, la touche &quot;Fn&quot; doit d'abord être pressée.}}
+
+
+Après avoir booté sur le support d'installation de Manjaro, vous devriez arriver à l'écran de démarrage de Manjaro. Cependant, cet écran ne fait pas démarrer quoi que ce soit, du moins pas encore ! 
+
+Il est possible à ce stade de choisir facilement la langue et la disposition du clavier avant d'utiliser effectivement Manjaro. Cela signifie que vous serez en mesure d'utiliser et installer Manjaro dans votre langue maternelle tout de suite.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-088.png|thumb|left|375px]] 
+
+
+'''Tout d'abord, choisissez votre langue''' en appuyant sur la touche F2. Les options disponibles peuvent être mises en évidence pour la sélection à l'aide des touches fléchées de votre clavier. Ci-contre, ''English (UK)'' a été mis en évidence par l'utilisateur. 
+
+Une fois sélectionné, appuyez sur &lt;Entrée&gt; pour confirmer et enregistrer dans le menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-088.png|thumb|left|375px]] 
+
+
+'''Ensuite, mettez votre clavier préféré (keymap)''' en appuyant sur la touche F2, sélectionnez le clavier, puis appuyez sur &lt;Entrée&gt; pour faire apparaître les options. Lorsque la langue est choisie, la disposition du clavier appropriée devrait déjà être sélectionnée. Dans ce cas, ''English (UK)'' a été mis en évidence par l'utilisateur.
+
+Une fois sélectionné, appuyez sur &lt;Entrée&gt; pour confirmer et enregistrer dans le menu de démarrage.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot1-088.png|thumb|left|375px]] 
+
+
+{{Astuce| Pour obtenir de meilleurs résultats, sélectionnez la ligne 'Boot Manjaro Linux with non-free graphics drivers'. Il doit correspondre au pilote de votre carte graphique.}}
+
+
+Une fois les premiers préparatifs terminés, Manjaro peut maintenant être démarré pour commencer le processus d'installation. Deux options principales sont maintenant disponibles :
+
+: '''1. Démarrer Manjaro Linux''' - démarre en utilisant les pilotes graphiques libres développés par la communauté Linux
+: '''2. Démarrer (avec des pilotes propriétaires)''' - démarre en utilisant les pilotes graphiques propriétaires (développés et propriété des fabricants de cartes graphiques)
+
+
+Ci-contre, Manjaro est démarré en utilisant l'option du pilote graphique libre. Encore une fois, utilisez les touches fléchées pour mettre en surbrillance votre choix et pressez sur &lt;Entrée&gt; pour continuer
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: welcome-088.png|thumb|left|375px]] 
+
+
+{{Astuce|Si vous souhaitez vous connecter à Internet en utilisant une connexion sans fil, c'est à faire maintenant !}}
+
+
+Comme on le voit ici, Manjaro 0.8.8 avec l'environnement de bureau XFCE est installé. Cependant, quelle que soit la saveur (environnement de bureau) Manjaro que vous avez choisie d'installer, le processus d'installation lui-même sera toujours le même.
+
+Pour commencer le processus d'installation, cliquez sur '''install Manjaro''' dans la fenêtre de bienvenue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre langue=
+
+[[File: gui1-088.png|thumb|left|375px]]
+
+
+Si vous étiez en mesure de choisir votre langue préférée avant de démarrer, elle devrait déjà être sélectionnée pour vous.
+
+Une fois sélectionnée, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre emplacement=
+
+[[File: gui2-088.png|thumb|left|375px]]
+
+
+Les emplacements disponibles dépendront de la langue que vous avez sélectionnée à l'étape précédente.
+
+Une fois sélectionné, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Checker votre ordinateur=
+
+[[File: gui2-088-french.png|thumb|left|375px]]
+
+
+{{Astuce|Il n'est pas nécessaire d'avoir une connexion internet active pour installer Manjaro. Ceci est toutefois recommandé pour de meilleurs résultats.}}
+
+
+Votre ordinateur sera automatiquement checké pour s'assurer que Manjaro peut y être installé en toute sécurité. Il s'agira notamment de veiller à ce que l'espace disque disponible soit suffisant (bien que le ''strict minimum'' autorisé est de 3 gigaoctets, au moins 15 Go d'espace libre sont recommandés).
+
+Une fois acquis que votre système répond aux exigences minimales nécessaires, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre méthode d'installation - Méthode automatique=
+
+[[File: gui4-088-french.png|thumb|left|375px]]
+
+
+{{Attention|L'utilisation de la méthode d'installation 'Automatique' entraînera l'effacement complet de toutes les données existantes sur votre disque dur. Vous avez été averti!}}
+
+
+Pour procéder à l'installation 'automatique' (très simple), assurez-vous que l'option '''Effacer le disque et installer Manjaro (automatique)''' a été sélectionnée.
+
+Une fois terminé, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre disque dur (méthode automatique)=
+
+[[File: gui5-088.png|thumb|left|375px]]
+
+
+{{Astuce|Si comme nous autres, simples mortels, vous avez 'seulement' un disque dur, il sera automatiquement sélectionné pour vous. Sinon, votre premier disque sera listé comme '(/dev/sd'''a''')', le second '(/dev/sd'''b''')', et ainsi de suite.}}
+
+
+'''Si vous avez plus d'un disque dur sur votre ordinateur''', vous pouvez sélectionner ici celui de votre choix pour installer Manjaro.
+
+Une fois sélectionné, cliquez sur '''Installer maintenant!''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre méthode d'installation - Méthode manuelle (avancé)=
+
+[[File: gui4b-088-french.png|thumb|left|375px]]
+
+
+Pour procéder à l'installation 'manuelle' (avancé), assurez-vous que l'option '''Gérez vos partitions et choisissez où installer Manjaro (avancé)''' a été sélectionnée.
+
+Une fois terminé, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Choisissez votre disque dur (méthode manuelle)=
+
+Les 7 illustrations suivantes concernent uniquement l'installation en mode avancé (manuelle). Elles vous montrent comment choisir les partitions, renseigner le type de fichiers, le point de montage et pour finir comment choisir le périphérique qui recevra le chargeur de démarrage (sur notre exemple, /dev/sd'''a''' a été choisi).
+
+[[File: gui5b-088-french.png|thumb|left|375px]]
+
+
+Ici sont listés tous les disques durs et toutes les partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5c-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, la partition /dev/sd'''a1''' a été mise en surbrillance ; nous voulons choisir cette partition pour le système. Cliquez sur &lt;Changer ...&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5d-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, renseignez le type de fichiers (ext4 conseillé), le point de montage (/) et cochez la case 'Formater'. Cliquez sur &lt;Valider&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5e-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, répétez les mêmes opérations pour la partition /dev/sd'''a2''' choisie pour le home. Cliquez sur &lt;Valider&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5f-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, répétez les mêmes opérations pour la partition /dev/sd'''a3''' choisie pour le swap. Cliquez sur &lt;Valider&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5g-088-french.png|thumb|left|375px]]
+
+
+Ci-contre (en bas de la fenêtre principale), veillez à bien renseigner la partie '''Périphérique d'installation du chargeur de démarrage'''.
+
+Une fois toutes ces opérations terminées, cliquez sur '''Installer maintenant!''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui5h-088-french.png|thumb|left|375px]]
+
+
+Ci-contre, le récapitulatif des précédentes opérations. Il n'est pas inutile de les visionner ; en cas d'erreur il est possible de revenir en arrière en cliquant sur ''Annuler''. Si tout est bon, cliquez sur '''Valider'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Où êtes-vous?=
+
+[[File: gui6c-088-french.png|thumb|left|375px]]
+
+
+{{Note|Vous aurez également la possibilité '''d'utiliser le Network Time Protocol pour la synchronisation de l'horloge'''. En clair, cela signifie la création de votre horloge système en se connectant à internet. La plupart des utilisateurs devraient le faire, mais d'autres - peut-être ceux qui installent Manjaro à côté de Windows - ne peuvent pas. '''Si vous ne savez pas quoi faire, alors laissez-le.'''}}
+
+
+Il sera désormais nécessaire de confirmer votre emplacement une fois de plus. La '''Zone''' est le continent où vous vivez. La '''région''' est la ville ou la ville la plus proche d'où vous vivez à l'intérieur de cette zone. Si ce n'est déjà fait, vous devez d'abord sélectionner la zone correcte avant de sélectionner ensuite la bonne région.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui6b-zone-088-french.png|thumb|left|375px]]
+
+
+'''Pour choisir votre zone''', cliquez  simplement sur son menu. Ci-contre, 'Europe' a été sélectionnée par l'utilisateur.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui6v2-region-088.png|thumb|left|375px]]
+
+
+'''Une fois la zone correctement renseignée, alors sélectionnez votre région,''' cliquez simplement de nouveau sur le menu. Ci-contre, 'Londres' a été sélectionnée par l'utilisateur.
+
+
+Une fois ces informations correctes, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Choisissez votre clavier =
+
+[[File: gui7-088.png|thumb|left|375px]]
+
+
+{{Astuce|La disposition appropriée du clavier doit déjà être renseignée ; il est alors nécessaire de confirmer si l'information est correcte.}}
+
+
+Juste parce que vous vivez dans un certain endroit, cela ne signifie pas nécessairement que vous souhaitiez en utiliser la disposition de clavier. Vous avez maintenant la possibilité de confirmer ou choisir votre clavier préféré. Cela peut comporter des variantes, telles que 'Dovorak' quand ça concerne la disposition du clavier du Royaume-Uni.
+
+Pour choisir la configuration désirée, il suffit de cliquer sur votre choix pour le mettre en évidence. Des variantes seront générées automatiquement en fonction du pays choisi.
+
+Une fois ces informations correctes, cliquez sur '''Suivant''' pour passer à l'étape suivante.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Qui êtes-vous?=
+
+[[File: gui8-088-french.png|thumb|left|375px]]
+
+
+{{Astuce|Utilisez tous les caractères minuscules pour votre nom d'utilisateur. '''Rappelez-vous que les mots de passe sont sensibles à la casse.''' Et il est fortement recommandé d'exiger votre mot de passe pour vous connecter - sécurité de votre système oblige !}}
+
+
+Maintenant il est temps de ''personnaliser'' votre installation ! Entrez votre vrai nom, le nom de votre ordinateur (il suffit d'entrer 'manjaro ' - moins les guillemets - si vous n'êtes pas sûr de ce que cela signifie), et votre nom d'utilisateur. Votre nom d'utilisateur sera le nom de votre compte personnel dans Manjaro.
+
+Vous devrez également saisir votre mot de passe à deux reprises. Encore une fois, s'il vous plaît rappelez-vous que les mots de passe sont sensibles à la casse (par exemple 'abc123' n'est pas la même chose que 'ABC123').
+
+Tout est fait ! Une fois ces informations correctes, cliquez sur '''Suivant''' pour installer Manjaro.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation=
+
+[[File: gui9-088-french.png|thumb|left|375px]]
+
+
+Le processus d'installation automatique va maintenant commencer. Au cours de ce processus des informations utiles sur Manjaro et sa communauté seront affichées.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui10-088-french.png|thumb|left|375px]]
+
+
+Une fois terminé, il vous sera demandé si vous voulez redémarrer votre système. Sélectionnez '''Oui''' pour redémarrer immédiatement, ou '''Non''' pour fermer le programme d'installation et continuer à utiliser le support d'installation Manjaro.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: gui11-088.png|thumb|left|375px]]
+
+
+Après le redémarrage, il est possible d'éjecter le média d'installation avant que l'ordinateur se rallume. Cependant, il est également possible de démarrer à partir du support d'installation lui-même en sélectionnant l'option '''Boot From Hard Disk''' et puis en appuyant sur &lt;Entrée&gt;.
+
+Si vous utilisez l'option ''Boot From Hard Disk'' vous pouvez alors supprimer en toute sécurité ou éjecter le média d'installation à votre guise et démarrer sur votre Manjaro fraîchement installée.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Connexion =
+
+[[File: displaymanagerscreen-088.png|thumb|left|375px]]
+
+
+{{Astuce|'''Vous aimez Manjaro ?''' Alors pourquoi ne pas envisager de faire partie de notre communauté ? Vous serez la(le) bienvenu(e) sur notre forum francophone !}}
+
+
+Félicitations - et bienvenue dans votre nouveau système Manjaro fraîchement installé !
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+[[Graphical Installation Guide for Beginners 0.8.8|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>ksqa9uiq53y0nts0wlrvx1y5uygnj33</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

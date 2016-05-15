@@ -1,0 +1,279 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Clamav</title>
+    <ns>0</ns>
+    <id>991</id>
+    <revision>
+      <id>6461</id>
+      <timestamp>2013-07-22T06:56:24Z</timestamp>
+      <contributor>
+        <username>Waitnsea</username>
+        <id>117</id>
+      </contributor>
+      <comment>Created page with &quot;''' == CLAMAV Guide Français == '''  CLAMAV est un ensemble d'outils, un moteur, Open Source, à destination des systèmes Unix/Linux, pour détecter et neutraliser les Troja...&quot;</comment>
+      <text xml:space="preserve" bytes="785">'''
+== CLAMAV Guide Français ==
+'''
+
+CLAMAV est un ensemble d'outils, un moteur, Open Source, à destination des systèmes Unix/Linux, pour détecter et neutraliser les Trojans, virus, malwares et autres malveillances.
+
+Les &quot;virus&quot; détectés - il en existe différents types, voir [http://fr.wikipedia.org/wiki/Virus_informatique] Wikipedia - sont essentiellement des virus développés pour infecter des machines sous Windows, bien qu'il existe aussi des virus qui ciblent les systèmes Linux.
+
+La dernière version, datant du 23 Avril 2013, est la 0.97.8
+
+'''Installation'''
+
+Les fichiers sont disponibles au téléchargement sur le site de Clamav: [http://www.clamav.net/], mais, plus simplement, dans les dépôts &quot;extra&quot; et installables par la commande:
+
+$ sudo pacman -S clamav</text>
+      <sha1>k5aq3zf2vz5njjhmt0se044rznga95c</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6462</id>
+      <parentid>6461</parentid>
+      <timestamp>2013-07-22T07:05:48Z</timestamp>
+      <contributor>
+        <username>Waitnsea</username>
+        <id>117</id>
+      </contributor>
+      <comment>/* CLAMAV Guide Français */</comment>
+      <text xml:space="preserve" bytes="1105">'''
+== CLAMAV Guide Français ==
+'''
+
+CLAMAV est un ensemble d'outils, un moteur, Open Source, développé en langage C, à destination des systèmes Unix/Linux, pour détecter et neutraliser les Trojans, virus, malwares et autres malveillances.
+
+Les &quot;virus&quot; détectés - il en existe différents types, voir [http://fr.wikipedia.org/wiki/Virus_informatique] Wikipedia - sont essentiellement des virus développés pour infecter des machines sous Windows, bien qu'il existe aussi des virus qui ciblent les systèmes Linux.
+
+La dernière version, datant du 23 Avril 2013, est la 0.97.8
+
+'''Installation'''
+
+Les fichiers sont disponibles au téléchargement sur le site de Clamav: [http://www.clamav.net/], mais, plus simplement, dans les dépôts &quot;extra&quot; et installables par la commande:
+
+$ sudo pacman -S clamav
+
+Ceci installe le logiciel qui fonctionnera en ligne de commande en console.
+
+Il existe aussi dans le dépôt communautaire AUR le script pour l'interface graphique CLAMTK (développée en perl) installable par:
+
+$ yaourt -S clamtk 
+ainsi qu'une version pour l'interface KDE
+$ yaourt -S klamav</text>
+      <sha1>2tioefj0f56qymru5s6s3dpkjzno94m</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6463</id>
+      <parentid>6462</parentid>
+      <timestamp>2013-07-22T07:21:28Z</timestamp>
+      <contributor>
+        <username>Waitnsea</username>
+        <id>117</id>
+      </contributor>
+      <comment>/* CLAMAV Guide Français */</comment>
+      <text xml:space="preserve" bytes="1816">'''
+== CLAMAV Guide Français ==
+'''
+
+CLAMAV est un ensemble d'outils, un moteur, Open Source, développé en langage C, à destination des systèmes Unix/Linux, pour détecter et neutraliser les Trojans, virus, malwares et autres malveillances.
+
+Les &quot;virus&quot; détectés - il en existe différents types, voir [http://fr.wikipedia.org/wiki/Virus_informatique] Wikipedia - sont essentiellement des virus développés pour infecter des machines sous Windows, bien qu'il existe aussi des virus qui ciblent les systèmes Linux.
+
+La dernière version, datant du 23 Avril 2013, est la 0.97.8
+
+'''Installation'''
+
+Les fichiers sont disponibles au téléchargement sur le site de Clamav: [http://www.clamav.net/], mais, plus simplement, dans les dépôts &quot;extra&quot; et installables par la commande:
+
+$ sudo pacman -S clamav
+
+Ceci installe le logiciel qui fonctionnera en ligne de commande en console.
+
+Il existe aussi dans le dépôt communautaire AUR le script pour l'interface graphique CLAMTK (développée en perl) installable par:
+
+$ yaourt -S clamtk 
+
+(L'installation de la version klamav pour l'interface KDE ne s'est pas compilée correctement)
+
+'''Configuration'''
+
+Avant que d'utiliser le logiciel il faut éditer et modifier (en root) 2 fichiers:
+
+* le fichier /etc/clamav/freshclam.conf, et modifier, comme demandé, les premières lignes
+# Comment or remove the line below.
+Example
+
+ainsi:
+# Comment or remove the line below.
+# Example
+On peut aussi modifier les autres options par défaut, ou les laisser telles qu'elles.
+
+* La même manipulation rendra fonctionnel le 2° fichier de configuration: /etc/clamav/clamd.conf
+
+
+
+
+
+lui faire charger une base de données à jour permettant la détection des virus, leurs signatures:
+en ligne de commande:
+$ sudo freshclam
+
+Cette commande ne fonctionnera qu'après avoir</text>
+      <sha1>rxcj3ady282ljkpuu167zd8gnx3y15b</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6464</id>
+      <parentid>6463</parentid>
+      <timestamp>2013-07-22T07:22:10Z</timestamp>
+      <contributor>
+        <username>Waitnsea</username>
+        <id>117</id>
+      </contributor>
+      <comment>/* CLAMAV Guide Français */</comment>
+      <text xml:space="preserve" bytes="1818">'''
+== CLAMAV Guide Français ==
+'''
+
+CLAMAV est un ensemble d'outils, un moteur, Open Source, développé en langage C, à destination des systèmes Unix/Linux, pour détecter et neutraliser les Trojans, virus, malwares et autres malveillances.
+
+Les &quot;virus&quot; détectés - il en existe différents types, voir [http://fr.wikipedia.org/wiki/Virus_informatique] Wikipedia - sont essentiellement des virus développés pour infecter des machines sous Windows, bien qu'il existe aussi des virus qui ciblent les systèmes Linux.
+
+La dernière version, datant du 23 Avril 2013, est la 0.97.8
+
+'''Installation'''
+
+Les fichiers sont disponibles au téléchargement sur le site de Clamav: [http://www.clamav.net/], mais, plus simplement, dans les dépôts &quot;extra&quot; et installables par la commande:
+
+$ sudo pacman -S clamav
+
+Ceci installe le logiciel qui fonctionnera en ligne de commande en console.
+
+Il existe aussi dans le dépôt communautaire AUR le script pour l'interface graphique CLAMTK (développée en perl) installable par:
+
+$ yaourt -S clamtk 
+
+(L'installation de la version klamav pour l'interface KDE ne s'est pas compilée correctement)
+
+'''Configuration'''
+
+Avant que d'utiliser le logiciel il faut éditer et modifier (en root) 2 fichiers:
+
+* le fichier /etc/clamav/freshclam.conf, et modifier, comme demandé, les premières lignes
+## Comment or remove the line below.
+Example
+
+ainsi:
+## Comment or remove the line below.
+# Example
+On peut aussi modifier les autres options par défaut, ou les laisser telles qu'elles.
+
+* La même manipulation rendra fonctionnel le 2° fichier de configuration: /etc/clamav/clamd.conf
+
+
+
+
+
+lui faire charger une base de données à jour permettant la détection des virus, leurs signatures:
+en ligne de commande:
+$ sudo freshclam
+
+Cette commande ne fonctionnera qu'après avoir</text>
+      <sha1>lauj6o4qhz5fr6ndseam4m6en6oq8l9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6465</id>
+      <parentid>6464</parentid>
+      <timestamp>2013-07-22T07:22:41Z</timestamp>
+      <contributor>
+        <username>Waitnsea</username>
+        <id>117</id>
+      </contributor>
+      <comment>/* CLAMAV Guide Français */</comment>
+      <text xml:space="preserve" bytes="1820">'''
+== CLAMAV Guide Français ==
+'''
+
+CLAMAV est un ensemble d'outils, un moteur, Open Source, développé en langage C, à destination des systèmes Unix/Linux, pour détecter et neutraliser les Trojans, virus, malwares et autres malveillances.
+
+Les &quot;virus&quot; détectés - il en existe différents types, voir [http://fr.wikipedia.org/wiki/Virus_informatique] Wikipedia - sont essentiellement des virus développés pour infecter des machines sous Windows, bien qu'il existe aussi des virus qui ciblent les systèmes Linux.
+
+La dernière version, datant du 23 Avril 2013, est la 0.97.8
+
+'''Installation'''
+
+Les fichiers sont disponibles au téléchargement sur le site de Clamav: [http://www.clamav.net/], mais, plus simplement, dans les dépôts &quot;extra&quot; et installables par la commande:
+
+$ sudo pacman -S clamav
+
+Ceci installe le logiciel qui fonctionnera en ligne de commande en console.
+
+Il existe aussi dans le dépôt communautaire AUR le script pour l'interface graphique CLAMTK (développée en perl) installable par:
+
+$ yaourt -S clamtk 
+
+(L'installation de la version klamav pour l'interface KDE ne s'est pas compilée correctement)
+
+'''Configuration'''
+
+Avant que d'utiliser le logiciel il faut éditer et modifier (en root) 2 fichiers:
+
+* le fichier /etc/clamav/freshclam.conf, et modifier, comme demandé, les premières lignes
+'## Comment or remove the line below.
+Example
+
+ainsi:
+'## Comment or remove the line below.
+# Example
+On peut aussi modifier les autres options par défaut, ou les laisser telles qu'elles.
+
+* La même manipulation rendra fonctionnel le 2° fichier de configuration: /etc/clamav/clamd.conf
+
+
+
+
+
+lui faire charger une base de données à jour permettant la détection des virus, leurs signatures:
+en ligne de commande:
+$ sudo freshclam
+
+Cette commande ne fonctionnera qu'après avoir</text>
+      <sha1>akjcs1kvwnfh8xhkwss3kg8y6t6r1ik</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,1092 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Optimisez vos paramètres d'alimentation</title>
+    <ns>0</ns>
+    <id>1306</id>
+    <revision>
+      <id>8435</id>
+      <timestamp>2013-12-30T17:09:04Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  ==En cours de traduction==   = Take control of the energy consumption in Manjaro = Certain settings need to be done to optimize...&quot;</comment>
+      <text xml:space="preserve" bytes="7068">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+==En cours de traduction==
+
+
+= Take control of the energy consumption in Manjaro =
+Certain settings need to be done to optimize the power savings. Valid entries in the GRUB configuration file activates Intel's advanced energy saving , higher performance and correct operation of ACPI . Anyone who has an Intel processor should install the daemon Thermald. Deamon Thermald dynamically manages CPU cooling. Colder - quieter. After installing the kernel 3.12.x users of AMD Radeon GPUs have access to DPM . Quieter, cooler and more efficiently. TLP replaces laptop-tools . In this way we gain more control over the configuration of power saving.
+
+= Important things =
+* Make sure that you have installed 3.12.x kernel
+* Make sure that you have installed for your CPU Microcode
+* Make sure that you have added the appropriate entries in the GRUB configuration file
+* Make sure you have installed all the updates
+
+= Installing Linux kernel 3.12.x =
+In a terminal, run the following command:
+
+ sudo mhwd-kernel -i linux312
+
+= Installing Intel Microcode =
+In a terminal, run the following command (if Microcode is not installed):
+
+ sudo pacman -Syu intel-ucode
+
+Add module microcode to the list of kernel modules are loaded at boot time:
+
+ su -c 'echo &quot;microcode&quot; &gt;&gt; /etc/modules-load.d/microcode.conf'
+
+= Adding advanced flags to the GRUB configuration file =
+Edit grub file in Your favorite text editor. For this HowTo I used gedit.
+
+ sudo gedit /etc/default/grub
+
+Find line:
+----
+&lt;code&gt;'''GRUB_DEFAULT=saved'''&lt;/code&gt;
+----
+Replace it to:
+----
+&lt;code&gt;'''GRUB_DEFAULT=0'''&lt;/code&gt;
+----
+Find line:
+----
+&lt;code&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/code&gt;
+----
+
+Paste the appropiate flags ''between the quotation marks'' as described below. &lt;br/&gt;
+
+For more information on what these flags do, please read [https://wiki.archlinux.org/index.php/Power_saving The Arch Wiki].&lt;br/&gt;
+
+=== Flags GRUB - for the modern models of laptops (2011-2012-2013 years, with UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - enable DPM for the graphics cards AMD Radeon. Requires Linux kernel version 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* Disable system sleep the USB ports (optional)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+=== Flags GRUB - for older models of laptops (-2010 years, without UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - enable DPM for the graphics cards AMD Radeon. Requires Linux kernel version 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* Disable system sleep the USB ports (optional)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+Save changes to a file. Execute the command in a terminal:
+ sudo update-grub
+
+= Installing TLP =
+In a terminal, run the following command:
+ sudo pacman -S iw smartmontools
+
+ yaourt -S tlp
+
+= Setup TLP =
+Make a backup default tlp file:
+ sudo cp /etc/default/tlp /etc/default/tlp.bak
+Edit tlp file:
+ sudo gedit /etc/default/tlp
+Turn on TLP:
+
+----
+&lt;code&gt;'''TLP_ENABLE=1'''&lt;/code&gt;
+----
+
+Only for Intel CPUs with P-state:
+----
+
+&lt;code&gt;'''CPU_SCALING_GOVERNOR_ON_AC=performance'''&lt;br/&gt;
+'''CPU_SCALING_GOVERNOR_ON_BAT=powersave'''&lt;/code&gt;
+----
+
+Only for Intel CPUs with Turbo Boost (i5/i7 series processors):
+----
+&lt;code&gt;'''CPU_BOOST_ON_AC=1'''&lt;br/&gt;
+'''CPU_BOOST_ON_BAT=0'''&lt;/code&gt;
+----
+
+Save changes to a file. Execute the command in a terminal:
+ su -c &quot;systemctl enable tlp-sleep.service &amp;&amp; systemctl enable tlp &amp;&amp; systemctl start tlp&quot;
+
+'''Note:''' Before edit '''/etc/default/tlp''' file stop daemon tlp by command:
+ systemctl stop tlp
+After save changes in a file start daeamon tlp by command:
+ systemctl start tlp
+
+= Installing Linux Thermal Daemon (only for Intel CPUs) =
+In a terminal, run the following command:
+ yaourt -S thermald
+Execute the command in a terminal:
+ su -c &quot;systemctl enable thermald.service &amp;&amp; systemctl start thermald.service&quot;
+
+= Dynamically changing the scheduler I/O disks =
+The default I/O scheduler is CFQ . Higher read/write performance for the solid state drives have scheduler noop. You can automate the process of change scheduler disk I/O, depending on whether the disk is rotating (HDD) or not (SSD). Create a new file:
+ sudo gedit /etc/udev/rules.d/60-schedulers.rules
+Paste this code into it:
+----
+&lt;code&gt;'''# set deadline scheduler for non-rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;0&quot;, ATTR{queue/scheduler}=&quot;noop&quot;'''&lt;br/&gt;'''# set cfq scheduler for rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, ATTR{queue/scheduler}=&quot;cfq&quot;'''&lt;/code&gt;
+----
+
+Save changes to a file. 
+'''Restart the computer.'''
+
+= Summary =
+Default power settings (based on ''laptop-tools'' give high CPU temperature (52-56 °C idle and 65-70 °C under high usage). 
+After applying the appropriate entries in the GRUB configuration file after installing the TLP and Linux Thermal Daemon (thermald), I got a low power consumption of battery time (around 9 W), low CPU temperature (45-48 °C idle and 56 °C under high usage) and higher performance at work on AC power.
+
+I encourage you to read the documentation TLP. You can customize the service to suit your needs. This topic contains the basic configuration to work properly.
+
+=Support=
+
+Official forum topic: [http://forum.manjaro.org/index.php?topic=7373.msg64100#msg64100]
+
+
+[[Optimized power settings|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>9ivi83v4bwyj93vdq4p5xbiq4fns6k7</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8436</id>
+      <parentid>8435</parentid>
+      <timestamp>2013-12-30T17:09:58Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7116">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction= =En cours de traduction= =En cours de traduction=
+
+
+= Take control of the energy consumption in Manjaro =
+Certain settings need to be done to optimize the power savings. Valid entries in the GRUB configuration file activates Intel's advanced energy saving , higher performance and correct operation of ACPI . Anyone who has an Intel processor should install the daemon Thermald. Deamon Thermald dynamically manages CPU cooling. Colder - quieter. After installing the kernel 3.12.x users of AMD Radeon GPUs have access to DPM . Quieter, cooler and more efficiently. TLP replaces laptop-tools . In this way we gain more control over the configuration of power saving.
+
+= Important things =
+* Make sure that you have installed 3.12.x kernel
+* Make sure that you have installed for your CPU Microcode
+* Make sure that you have added the appropriate entries in the GRUB configuration file
+* Make sure you have installed all the updates
+
+= Installing Linux kernel 3.12.x =
+In a terminal, run the following command:
+
+ sudo mhwd-kernel -i linux312
+
+= Installing Intel Microcode =
+In a terminal, run the following command (if Microcode is not installed):
+
+ sudo pacman -Syu intel-ucode
+
+Add module microcode to the list of kernel modules are loaded at boot time:
+
+ su -c 'echo &quot;microcode&quot; &gt;&gt; /etc/modules-load.d/microcode.conf'
+
+= Adding advanced flags to the GRUB configuration file =
+Edit grub file in Your favorite text editor. For this HowTo I used gedit.
+
+ sudo gedit /etc/default/grub
+
+Find line:
+----
+&lt;code&gt;'''GRUB_DEFAULT=saved'''&lt;/code&gt;
+----
+Replace it to:
+----
+&lt;code&gt;'''GRUB_DEFAULT=0'''&lt;/code&gt;
+----
+Find line:
+----
+&lt;code&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/code&gt;
+----
+
+Paste the appropiate flags ''between the quotation marks'' as described below. &lt;br/&gt;
+
+For more information on what these flags do, please read [https://wiki.archlinux.org/index.php/Power_saving The Arch Wiki].&lt;br/&gt;
+
+=== Flags GRUB - for the modern models of laptops (2011-2012-2013 years, with UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - enable DPM for the graphics cards AMD Radeon. Requires Linux kernel version 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* Disable system sleep the USB ports (optional)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+=== Flags GRUB - for older models of laptops (-2010 years, without UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - enable DPM for the graphics cards AMD Radeon. Requires Linux kernel version 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* Disable system sleep the USB ports (optional)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+Save changes to a file. Execute the command in a terminal:
+ sudo update-grub
+
+= Installing TLP =
+In a terminal, run the following command:
+ sudo pacman -S iw smartmontools
+
+ yaourt -S tlp
+
+= Setup TLP =
+Make a backup default tlp file:
+ sudo cp /etc/default/tlp /etc/default/tlp.bak
+Edit tlp file:
+ sudo gedit /etc/default/tlp
+Turn on TLP:
+
+----
+&lt;code&gt;'''TLP_ENABLE=1'''&lt;/code&gt;
+----
+
+Only for Intel CPUs with P-state:
+----
+
+&lt;code&gt;'''CPU_SCALING_GOVERNOR_ON_AC=performance'''&lt;br/&gt;
+'''CPU_SCALING_GOVERNOR_ON_BAT=powersave'''&lt;/code&gt;
+----
+
+Only for Intel CPUs with Turbo Boost (i5/i7 series processors):
+----
+&lt;code&gt;'''CPU_BOOST_ON_AC=1'''&lt;br/&gt;
+'''CPU_BOOST_ON_BAT=0'''&lt;/code&gt;
+----
+
+Save changes to a file. Execute the command in a terminal:
+ su -c &quot;systemctl enable tlp-sleep.service &amp;&amp; systemctl enable tlp &amp;&amp; systemctl start tlp&quot;
+
+'''Note:''' Before edit '''/etc/default/tlp''' file stop daemon tlp by command:
+ systemctl stop tlp
+After save changes in a file start daeamon tlp by command:
+ systemctl start tlp
+
+= Installing Linux Thermal Daemon (only for Intel CPUs) =
+In a terminal, run the following command:
+ yaourt -S thermald
+Execute the command in a terminal:
+ su -c &quot;systemctl enable thermald.service &amp;&amp; systemctl start thermald.service&quot;
+
+= Dynamically changing the scheduler I/O disks =
+The default I/O scheduler is CFQ . Higher read/write performance for the solid state drives have scheduler noop. You can automate the process of change scheduler disk I/O, depending on whether the disk is rotating (HDD) or not (SSD). Create a new file:
+ sudo gedit /etc/udev/rules.d/60-schedulers.rules
+Paste this code into it:
+----
+&lt;code&gt;'''# set deadline scheduler for non-rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;0&quot;, ATTR{queue/scheduler}=&quot;noop&quot;'''&lt;br/&gt;'''# set cfq scheduler for rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, ATTR{queue/scheduler}=&quot;cfq&quot;'''&lt;/code&gt;
+----
+
+Save changes to a file. 
+'''Restart the computer.'''
+
+= Summary =
+Default power settings (based on ''laptop-tools'' give high CPU temperature (52-56 °C idle and 65-70 °C under high usage). 
+After applying the appropriate entries in the GRUB configuration file after installing the TLP and Linux Thermal Daemon (thermald), I got a low power consumption of battery time (around 9 W), low CPU temperature (45-48 °C idle and 56 °C under high usage) and higher performance at work on AC power.
+
+I encourage you to read the documentation TLP. You can customize the service to suit your needs. This topic contains the basic configuration to work properly.
+
+=Support=
+
+Official forum topic: [http://forum.manjaro.org/index.php?topic=7373.msg64100#msg64100]
+
+
+[[Optimized power settings|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>sprpv3f90vo51o0oaxm0yhrpj0y5q3m</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8437</id>
+      <parentid>8436</parentid>
+      <timestamp>2013-12-30T17:10:25Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7064">=En cours de traduction=
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Take control of the energy consumption in Manjaro =
+Certain settings need to be done to optimize the power savings. Valid entries in the GRUB configuration file activates Intel's advanced energy saving , higher performance and correct operation of ACPI . Anyone who has an Intel processor should install the daemon Thermald. Deamon Thermald dynamically manages CPU cooling. Colder - quieter. After installing the kernel 3.12.x users of AMD Radeon GPUs have access to DPM . Quieter, cooler and more efficiently. TLP replaces laptop-tools . In this way we gain more control over the configuration of power saving.
+
+= Important things =
+* Make sure that you have installed 3.12.x kernel
+* Make sure that you have installed for your CPU Microcode
+* Make sure that you have added the appropriate entries in the GRUB configuration file
+* Make sure you have installed all the updates
+
+= Installing Linux kernel 3.12.x =
+In a terminal, run the following command:
+
+ sudo mhwd-kernel -i linux312
+
+= Installing Intel Microcode =
+In a terminal, run the following command (if Microcode is not installed):
+
+ sudo pacman -Syu intel-ucode
+
+Add module microcode to the list of kernel modules are loaded at boot time:
+
+ su -c 'echo &quot;microcode&quot; &gt;&gt; /etc/modules-load.d/microcode.conf'
+
+= Adding advanced flags to the GRUB configuration file =
+Edit grub file in Your favorite text editor. For this HowTo I used gedit.
+
+ sudo gedit /etc/default/grub
+
+Find line:
+----
+&lt;code&gt;'''GRUB_DEFAULT=saved'''&lt;/code&gt;
+----
+Replace it to:
+----
+&lt;code&gt;'''GRUB_DEFAULT=0'''&lt;/code&gt;
+----
+Find line:
+----
+&lt;code&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/code&gt;
+----
+
+Paste the appropiate flags ''between the quotation marks'' as described below. &lt;br/&gt;
+
+For more information on what these flags do, please read [https://wiki.archlinux.org/index.php/Power_saving The Arch Wiki].&lt;br/&gt;
+
+=== Flags GRUB - for the modern models of laptops (2011-2012-2013 years, with UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - enable DPM for the graphics cards AMD Radeon. Requires Linux kernel version 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* Disable system sleep the USB ports (optional)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+=== Flags GRUB - for older models of laptops (-2010 years, without UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - enable DPM for the graphics cards AMD Radeon. Requires Linux kernel version 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* Disable system sleep the USB ports (optional)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+Save changes to a file. Execute the command in a terminal:
+ sudo update-grub
+
+= Installing TLP =
+In a terminal, run the following command:
+ sudo pacman -S iw smartmontools
+
+ yaourt -S tlp
+
+= Setup TLP =
+Make a backup default tlp file:
+ sudo cp /etc/default/tlp /etc/default/tlp.bak
+Edit tlp file:
+ sudo gedit /etc/default/tlp
+Turn on TLP:
+
+----
+&lt;code&gt;'''TLP_ENABLE=1'''&lt;/code&gt;
+----
+
+Only for Intel CPUs with P-state:
+----
+
+&lt;code&gt;'''CPU_SCALING_GOVERNOR_ON_AC=performance'''&lt;br/&gt;
+'''CPU_SCALING_GOVERNOR_ON_BAT=powersave'''&lt;/code&gt;
+----
+
+Only for Intel CPUs with Turbo Boost (i5/i7 series processors):
+----
+&lt;code&gt;'''CPU_BOOST_ON_AC=1'''&lt;br/&gt;
+'''CPU_BOOST_ON_BAT=0'''&lt;/code&gt;
+----
+
+Save changes to a file. Execute the command in a terminal:
+ su -c &quot;systemctl enable tlp-sleep.service &amp;&amp; systemctl enable tlp &amp;&amp; systemctl start tlp&quot;
+
+'''Note:''' Before edit '''/etc/default/tlp''' file stop daemon tlp by command:
+ systemctl stop tlp
+After save changes in a file start daeamon tlp by command:
+ systemctl start tlp
+
+= Installing Linux Thermal Daemon (only for Intel CPUs) =
+In a terminal, run the following command:
+ yaourt -S thermald
+Execute the command in a terminal:
+ su -c &quot;systemctl enable thermald.service &amp;&amp; systemctl start thermald.service&quot;
+
+= Dynamically changing the scheduler I/O disks =
+The default I/O scheduler is CFQ . Higher read/write performance for the solid state drives have scheduler noop. You can automate the process of change scheduler disk I/O, depending on whether the disk is rotating (HDD) or not (SSD). Create a new file:
+ sudo gedit /etc/udev/rules.d/60-schedulers.rules
+Paste this code into it:
+----
+&lt;code&gt;'''# set deadline scheduler for non-rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;0&quot;, ATTR{queue/scheduler}=&quot;noop&quot;'''&lt;br/&gt;'''# set cfq scheduler for rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, ATTR{queue/scheduler}=&quot;cfq&quot;'''&lt;/code&gt;
+----
+
+Save changes to a file. 
+'''Restart the computer.'''
+
+= Summary =
+Default power settings (based on ''laptop-tools'' give high CPU temperature (52-56 °C idle and 65-70 °C under high usage). 
+After applying the appropriate entries in the GRUB configuration file after installing the TLP and Linux Thermal Daemon (thermald), I got a low power consumption of battery time (around 9 W), low CPU temperature (45-48 °C idle and 56 °C under high usage) and higher performance at work on AC power.
+
+I encourage you to read the documentation TLP. You can customize the service to suit your needs. This topic contains the basic configuration to work properly.
+
+=Support=
+
+Official forum topic: [http://forum.manjaro.org/index.php?topic=7373.msg64100#msg64100]
+
+
+[[Optimized power settings|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>9ki64w4xglh8gccftb3svq5opgd4rye</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8438</id>
+      <parentid>8437</parentid>
+      <timestamp>2013-12-30T17:10:53Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7065">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction=
+
+= Take control of the energy consumption in Manjaro =
+Certain settings need to be done to optimize the power savings. Valid entries in the GRUB configuration file activates Intel's advanced energy saving , higher performance and correct operation of ACPI . Anyone who has an Intel processor should install the daemon Thermald. Deamon Thermald dynamically manages CPU cooling. Colder - quieter. After installing the kernel 3.12.x users of AMD Radeon GPUs have access to DPM . Quieter, cooler and more efficiently. TLP replaces laptop-tools . In this way we gain more control over the configuration of power saving.
+
+= Important things =
+* Make sure that you have installed 3.12.x kernel
+* Make sure that you have installed for your CPU Microcode
+* Make sure that you have added the appropriate entries in the GRUB configuration file
+* Make sure you have installed all the updates
+
+= Installing Linux kernel 3.12.x =
+In a terminal, run the following command:
+
+ sudo mhwd-kernel -i linux312
+
+= Installing Intel Microcode =
+In a terminal, run the following command (if Microcode is not installed):
+
+ sudo pacman -Syu intel-ucode
+
+Add module microcode to the list of kernel modules are loaded at boot time:
+
+ su -c 'echo &quot;microcode&quot; &gt;&gt; /etc/modules-load.d/microcode.conf'
+
+= Adding advanced flags to the GRUB configuration file =
+Edit grub file in Your favorite text editor. For this HowTo I used gedit.
+
+ sudo gedit /etc/default/grub
+
+Find line:
+----
+&lt;code&gt;'''GRUB_DEFAULT=saved'''&lt;/code&gt;
+----
+Replace it to:
+----
+&lt;code&gt;'''GRUB_DEFAULT=0'''&lt;/code&gt;
+----
+Find line:
+----
+&lt;code&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/code&gt;
+----
+
+Paste the appropiate flags ''between the quotation marks'' as described below. &lt;br/&gt;
+
+For more information on what these flags do, please read [https://wiki.archlinux.org/index.php/Power_saving The Arch Wiki].&lt;br/&gt;
+
+=== Flags GRUB - for the modern models of laptops (2011-2012-2013 years, with UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - enable DPM for the graphics cards AMD Radeon. Requires Linux kernel version 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* Disable system sleep the USB ports (optional)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+=== Flags GRUB - for older models of laptops (-2010 years, without UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - when not working backlight control function keys
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - enable DPM for the graphics cards AMD Radeon. Requires Linux kernel version 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* Disable system sleep the USB ports (optional)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+Save changes to a file. Execute the command in a terminal:
+ sudo update-grub
+
+= Installing TLP =
+In a terminal, run the following command:
+ sudo pacman -S iw smartmontools
+
+ yaourt -S tlp
+
+= Setup TLP =
+Make a backup default tlp file:
+ sudo cp /etc/default/tlp /etc/default/tlp.bak
+Edit tlp file:
+ sudo gedit /etc/default/tlp
+Turn on TLP:
+
+----
+&lt;code&gt;'''TLP_ENABLE=1'''&lt;/code&gt;
+----
+
+Only for Intel CPUs with P-state:
+----
+
+&lt;code&gt;'''CPU_SCALING_GOVERNOR_ON_AC=performance'''&lt;br/&gt;
+'''CPU_SCALING_GOVERNOR_ON_BAT=powersave'''&lt;/code&gt;
+----
+
+Only for Intel CPUs with Turbo Boost (i5/i7 series processors):
+----
+&lt;code&gt;'''CPU_BOOST_ON_AC=1'''&lt;br/&gt;
+'''CPU_BOOST_ON_BAT=0'''&lt;/code&gt;
+----
+
+Save changes to a file. Execute the command in a terminal:
+ su -c &quot;systemctl enable tlp-sleep.service &amp;&amp; systemctl enable tlp &amp;&amp; systemctl start tlp&quot;
+
+'''Note:''' Before edit '''/etc/default/tlp''' file stop daemon tlp by command:
+ systemctl stop tlp
+After save changes in a file start daeamon tlp by command:
+ systemctl start tlp
+
+= Installing Linux Thermal Daemon (only for Intel CPUs) =
+In a terminal, run the following command:
+ yaourt -S thermald
+Execute the command in a terminal:
+ su -c &quot;systemctl enable thermald.service &amp;&amp; systemctl start thermald.service&quot;
+
+= Dynamically changing the scheduler I/O disks =
+The default I/O scheduler is CFQ . Higher read/write performance for the solid state drives have scheduler noop. You can automate the process of change scheduler disk I/O, depending on whether the disk is rotating (HDD) or not (SSD). Create a new file:
+ sudo gedit /etc/udev/rules.d/60-schedulers.rules
+Paste this code into it:
+----
+&lt;code&gt;'''# set deadline scheduler for non-rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;0&quot;, ATTR{queue/scheduler}=&quot;noop&quot;'''&lt;br/&gt;'''# set cfq scheduler for rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, ATTR{queue/scheduler}=&quot;cfq&quot;'''&lt;/code&gt;
+----
+
+Save changes to a file. 
+'''Restart the computer.'''
+
+= Summary =
+Default power settings (based on ''laptop-tools'' give high CPU temperature (52-56 °C idle and 65-70 °C under high usage). 
+After applying the appropriate entries in the GRUB configuration file after installing the TLP and Linux Thermal Daemon (thermald), I got a low power consumption of battery time (around 9 W), low CPU temperature (45-48 °C idle and 56 °C under high usage) and higher performance at work on AC power.
+
+I encourage you to read the documentation TLP. You can customize the service to suit your needs. This topic contains the basic configuration to work properly.
+
+=Support=
+
+Official forum topic: [http://forum.manjaro.org/index.php?topic=7373.msg64100#msg64100]
+
+
+[[Optimized power settings|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>i0d08983d2hehextrf3x5jc8c1qn3nt</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8448</id>
+      <parentid>8438</parentid>
+      <timestamp>2013-12-31T13:31:13Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="8026">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Prenez le contrôle de la consommation d'énergie de votre Manjaro =
+Certains réglages doivent être effectués afin d'optimiser les économies d'énergie. Les entrées valides dans le fichier de configuration de GRUB active l'économie d'énergie avancée d'Intel, de meilleures performances et le bon fonctionnement de l'ACPI. Toute personne qui dispose d'un processeur Intel doit installer le 'daemon Thermald'. 'Daemon Thermald' gère dynamiquement le refroidissement du CPU. Plus froid - plus calme. Après avoir installé le noyau 3.12.x, les utilisateurs de AMD Radeon GPU ont accès à DPM. Plus silencieux, plus frais et plus efficace. TLP remplace laptop-tools. De cette façon, nous gagnons plus de contrôle sur la configuration de l'économie d'énergie.
+
+= Important =
+* Assurez-vous que vous avez installé le noyau 3.12.x
+* Assurez-vous que vous avez installé Microcode pour votre CPU
+* Assurez-vous que vous avez ajouté les entrées appropriées dans le fichier de configuration de GRUB
+* Assurez-vous que vous avez installé toutes les mises à jour
+
+= Installation du noyau Linux 3.12.x =
+Dans un terminal, exécutez la commande suivante:
+
+ sudo mhwd-kernel -i linux312
+
+= Installion de Intel Microcode =
+Dans un terminal, exécutez la commande suivante (si Microcode n'est pas installé):
+
+ sudo pacman -Syu intel-ucode
+
+Ajouter le module microcode à la liste des modules du noyau chargés au démarrage:
+
+ su -c 'echo &quot;microcode&quot; &gt;&gt; /etc/modules-load.d/microcode.conf'
+
+= Ajout des entrées avancées pour le fichier de configuration de GRUB =
+Editez le fichier de grub avec votre éditeur de texte favori. Pour ce tutoriel j'ai utilisé gedit.
+
+ sudo gedit /etc/default/grub
+
+Trouvez la ligne:
+----
+&lt;code&gt;'''GRUB_DEFAULT=saved'''&lt;/code&gt;
+----
+Remplacez par:
+----
+&lt;code&gt;'''GRUB_DEFAULT=0'''&lt;/code&gt;
+----
+Trouvez la ligne:
+----
+&lt;code&gt;'''GRUB_CMDLINE_LINUX=&quot;&quot;'''&lt;/code&gt;
+----
+
+Collez les drapeaux appropriés ''entre les guillemets'' comme décrits ci-dessous. &lt;br/&gt;
+
+Pour plus d'informations sur ce que ces drapeaux font, s'il-vous-plaît lisez [https://wiki.archlinux.org/index.php/Power_saving le wiki Arch].&lt;br/&gt;
+
+=== Drapeaux GRUB - pour les modèles d'ordinateurs portables modernes (2011-2012-2013, avec UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - quand les touches de fonction de contrôle du rétroéclairage ne fonctionnent pas
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - quand les touches de fonction de contrôle du rétroéclairage ne fonctionnent pas
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - activer DPM pour les cartes graphiques AMD Radeon. Nécessite la version du noyau Linux 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* désactiver le système de désactivation des ports USB (optionnel)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+=== Drapeaux GRUB - pour les modèles d'ordinateurs portables anciens (avant 2010, sans UEFI) ===
+
+
+* INTEL - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1&lt;/code&gt;'''
+----
+
+
+* INTEL - quand les touches de fonction de contrôle du rétroéclairage ne fonctionnent pas
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 drm.vblankoffdelay=1 acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - standard
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax&lt;/code&gt;'''
+----
+
+
+* AMD/NVIDIA - quand les touches de fonction de contrôle du rétroéclairage ne fonctionnent pas
+----
+'''&lt;code&gt;pcie_aspm=force acpi_osi=Linux acpi=force acpi_enforce_resources=lax acpi_backlight=vendor&lt;/code&gt;'''
+----
+
+
+* AMD - activer DPM pour les cartes graphiques AMD Radeon. Nécessite la version du noyau Linux 3.11
+----
+'''&lt;code&gt;radeon.dpm=1&lt;/code&gt;'''
+----
+
+
+* désactiver le système de désactivation des ports USB (optionnel)
+----
+'''&lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt;'''
+----
+
+
+Enregistrez les modifications dans un fichier. Exécutez la commande dans un terminal:
+ sudo update-grub
+
+= Installez TLP =
+Dans un terminal, exécutez la commande suivante:
+ sudo pacman -S iw smartmontools
+
+ yaourt -S tlp
+
+= Configurez TLP =
+Créez un fichier de sauvegarde du fichier tlp par défaut:
+ sudo cp /etc/default/tlp /etc/default/tlp.bak
+Editez le fichier tlp:
+ sudo gedit /etc/default/tlp
+Mettez dans TLP:
+
+----
+&lt;code&gt;'''TLP_ENABLE=1'''&lt;/code&gt;
+----
+
+Seulement pour les processeurs Intel avec l'état-P:
+----
+
+&lt;code&gt;'''CPU_SCALING_GOVERNOR_ON_AC=performance'''&lt;br/&gt;
+'''CPU_SCALING_GOVERNOR_ON_BAT=powersave'''&lt;/code&gt;
+----
+
+Seulement pour les processeurs Intel avec Turbo Boost (processeurs de la série i5/i7):
+----
+&lt;code&gt;'''CPU_BOOST_ON_AC=1'''&lt;br/&gt;
+'''CPU_BOOST_ON_BAT=0'''&lt;/code&gt;
+----
+
+Enregistrez les modifications dans un fichier. Exécutez la commande suivante dans un terminal:
+ su -c &quot;systemctl enable tlp-sleep.service &amp;&amp; systemctl enable tlp &amp;&amp; systemctl start tlp&quot;
+
+'''Remarque:''' Avant de modifier le fichier '''/etc/default/tlp''', arrêtez le démon tlp par la commande suivante:
+ systemctl stop tlp
+Après avoir enregistré les modifications, redémarrez le démon tlp par la commande suivante:
+ systemctl start tlp
+
+= Installez 'Linux Thermal Daemon' (uniquement pour les processeurs Intel) =
+Dans un terminal, exécutez la commande suivante:
+ yaourt -S thermald
+Exécutez la commande suivante dans un terminal:
+ su -c &quot;systemctl enable thermald.service &amp;&amp; systemctl start thermald.service&quot;
+
+= Changez dynamiquement le programmateur 'I/O disks' =
+The default I/O scheduler is CFQ . Le programmateur d'entrée-sortie par défaut est CFQ. De meilleures performances de lecture/écriture pour les disques SSD ont planificateur noop. Vous pouvez automatiser le processus de programmation d'entrée-sortie de disque, selon que le disque tourne (HDD) ou pas (SSD). Créez un nouveau dossier:
+ sudo gedit /etc/udev/rules.d/60-schedulers.rules
+Collez-lui ce code:
+----
+&lt;code&gt;'''# set deadline scheduler for non-rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;0&quot;, ATTR{queue/scheduler}=&quot;noop&quot;'''&lt;br/&gt;'''# set cfq scheduler for rotating disks'''&lt;br/&gt;'''ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/rotational}==&quot;1&quot;, ATTR{queue/scheduler}=&quot;cfq&quot;'''&lt;/code&gt;
+----
+
+Enregistrez les modifications.
+'''Redémarrez l'ordinateur.'''
+
+= Résumé =
+Les paramètres d'alimentation par défaut (basés sur ''laptop-tools'' donnent la température élevée du processeur (52-56 °C au ralenti et 65-70 °C sous utilisation). Après avoir appliqué les entrées appropriées dans le fichier de configuration de GRUB après l'installation de TLP et Linux Thermal Daemon (thermald), j'ai eu une faible consommation d'énergie de temps de batterie (environ 9 W), à basse température du processeur (45-48 °C au ralenti et 56 °C sous forte utilisation) et de meilleures performances au travail sur secteur.
+
+Je vous encourage à lire la documentation de TLP. Vous pouvez personnaliser le service en fonction de vos besoins. Cette rubrique contient la configuration de base qui fonctionne correctement.
+
+
+[[Optimized power settings|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>hm0mp7fjp6pdcl20ua9zfqtfcxdjpe0</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

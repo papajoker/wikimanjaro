@@ -1,0 +1,928 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Configurer LXDM</title>
+    <ns>0</ns>
+    <id>683</id>
+    <revision>
+      <id>4643</id>
+      <timestamp>2013-01-10T20:50:21Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  =EN COURS DE TRADUCTION=  = Overview =  [[file:lxdm082.png|thumb|left|375px]]   With the exception of the NET-edition, Manjaro ...&quot;</comment>
+      <text xml:space="preserve" bytes="13391">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+= Overview =
+
+[[file:lxdm082.png|thumb|left|375px]]
+
+
+With the exception of the NET-edition, Manjaro 0.8.1 onwards uses a lightweight display / login manager called ''LXDM'' by default for the XFCE and LXDE flavours. LXDM is responsible for providing the login screen, where your preferred language and desktop environment may be selected for your personal user account(s). It also functions as a protective security barrier to prevent unauthorised access to your system. 
+
+'''At present theming has not been covered in this guide due to a lack of available themes for LXDM'''. However, other aspects of LXDM can still be easily customised to suit personal taste and preference, including the ability to enable auto-login, change the background image, remove the language menu, and disable the user list. To undertake any or all of these tasks, it will be necessary to first open the ''LXDM configuration file'' (lxdm.conf) using the terminal.
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Open the LXDM Configuration File ==
+
+The syntax of the command to open the LXDM configuration file is:
+ 
+ sudo [text editor] /etc/lxdm/lxdm.conf
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+ 
+ sudo nano /etc/lxdm/lxdm.conf
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use ''gedit'' instead, enter:
+ 
+ sudo gedit /etc/lxdm/lxdm.conf
+
+
+=Enabling Auto-Login=
+
+{{note|Auto-login will only work upon booting up into Manjaro. Otherwise, upon logging out, it will still be necessary to enter your username and password credentials to get back into your desktop environment.}}
+
+
+It is possible to bypass the login screen completely and go straight into your chosen desktop environment upon booting up Manjaro. To do so, two basic steps are required: first, it will be necessary to set the user account to be automatically logged into, and second, it will then be necessary to state the particular desktop environment to be started.
+
+
+==Step 1: Set the User==
+
+The first step is to set your personal account to be automatically logged in. This is undertaken in the following section, located at the top of the LXDM configuration file:
+
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ # &lt;font color =&quot;green&quot;&gt;'''autologin=dgod'''&lt;/font color&gt;
+
+
+'''1.''' remove the hash ('#') from the beginning of '''autologin=''' to activate it
+
+'''2.''' remove any text after '''autologin=''' (e.g. dgod)
+
+'''3.''' add the name of your personal account at the end of it
+
+
+As an example, LXDM has been configured below to enable a personal user account named 'carl' to be logged in automatically:
+ 
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ &lt;font color =&quot;green&quot;&gt;'''autologin=carl'''&lt;/font color&gt;
+
+
+Ensure that there are no spaces between the '''autologin=''' command and the name of your personal user account. Once complete, the second and final step of setting the default desktop environment to be automatically started must be undertaken.
+
+
+==Step 2: Set the Desktop Environment==
+
+It is necessary to ensure what desktop environment is to be booted into, particularly if having installed the NET-edition of Manjaro, and/or if having installed multiple desktop environments. This is set in the following section, located near the top of the configuration file:
+
+ ## default session or desktop used when no systemwide config
+ &lt;font color =&quot;green&quot;&gt;'''session=/usr/bin/startxfce4'''&lt;/font color&gt;
+
+
+In this example, the default desktop environment has already been set to XFCE as this was the Manjaro falvour installed. If you have installed a different flavour (e.g. Gnome/Cinnamon or KDE), then the session listed will be different. Where there is not a hash ('#') at the beginning of '''session=''' (meaning this command won't be ignored), and the desired desktop environment has been listed, then you may save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Otherwise, to set the desired desktop environment:
+
+'''1.''' If present, remove the hash ('#') at the beginning of '''session='''
+
+'''2.''' Remove the existing desktop environment listed (or any other text such as 'lxdm') from '''session=/usr/bin/&lt;font color =&quot;red&quot;&gt;[text to be removed]&lt;/font color&gt;''', and
+
+'''3.''' Add the command to start your chosen / installed desktop envrionment at the end of '''session=/usr/bin/'''. An example for every officially supported desktop environment has been listed below:
+
+
+* '''To start XFCE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;startxfce4&lt;/font color&gt;
+
+
+* '''To start KDE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;startkde&lt;/font color&gt;
+
+
+* '''To start Gnome''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;gnome-session&lt;/font color&gt;
+
+
+* '''To start Cinnamon''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;gnome-session-cinnamon&lt;/font color&gt;
+
+
+* '''To start Razor-QT''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;razor-session&lt;/font color&gt;
+
+
+* '''To start Openbox''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;openbox-session&lt;/font color&gt;
+
+
+* '''To start LXDE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;lxsession&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+Reboot your system for the changes to take effect.
+
+
+==Optional: Enable Timeout Auto-Login==
+
+{{note|The basic auto-login feature itself must also be enabled to enable this feature in turn. In addition, this feature also only works upon first booting up into Manjaro.}}
+
+
+In addition to bypassing the login screen completely, it is also possible to be automatically logged in after waiting a certain period of time as well. In this instance, after booting into the login screen, it will wait for a set period of time before automatically logging you in. This is set in the following section, located near the top of the configuration file:
+
+ ## uncomment and set timeout to enable timeout autologin,
+ ## the value should &gt;=5
+ #&lt;font color =&quot;green&quot;&gt;'''timeout=10'''&lt;/font color&gt;
+
+
+'''1.''' Remove the hash ('#') from the beginning of '''timeout=''' to activate it, and
+
+'''2.''' Set the number of '''seconds''' to wait at the login screen, if different from the default value of 10. As stated above the command, the number of seconds specified must be no less than 5.
+
+
+As an example, LXDM has been configured below to enable timeout auto login after waiting 30 seconds:
+
+ ## uncomment and set timeout to enable timeout autologin,
+ ## the value should &gt;=5
+ &lt;font color =&quot;green&quot;&gt;'''timeout=30'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+Reboot your system for the changes to take effect.
+
+
+== Disable Auto-Login ==
+
+To restore the login screen, edit the LXDM configuration file once again and comment out the lines beginning with '''autologin=''' and '''session='''. An example has provided below.
+
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ '''&lt;font color =&quot;green&quot;&gt;#&lt;/font color&gt;'''session=/usr/bin/startxfce4 
+ 
+ ...
+ 
+ ## default session or desktop used when no systemwide config
+ '''&lt;font color =&quot;green&quot;&gt;#&lt;/font color&gt;'''session=/usr/bin/openbox
+
+
+Once your amendments have been completed save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+=Changing The Background Image=
+
+{{tip|As illustrated below, using the File Manager can make this task much simplier and easier, particularly for new users. Please note that Linux is also case-sensitive so ensure that upper and lower case letters are used correctly.}}
+
+
+Once your chosen desktop environmet has been downloaded (e.g. a ''.png'' or ''.jpg'' image file), it can be set in the following section, located near the top of the configuration file:
+
+ ## background of the greeter
+ # &lt;font color =&quot;green&quot;&gt;'''bg=/usr/share/backgrounds/default.png'''&lt;/font color&gt;
+
+[[file:newpathway.png|thumb|left|375px]]
+
+
+As illustrated, it will be necessary to specify the exact location of the background image to use. Although it is possible to copy the new background images to the existing '''backgrounds''' folder using Root privilages, in this instance a new folder location will be specified:
+
+'''1.''' Open your file manager and locate the folder containing the desired background image. The full location should then be listed in the address bar (e.g. in this instance it is ''/home/carl/Pictures'')
+
+'''2.''' Remove the hash ('#') from the beginning of '''bg=''' to activate it
+
+'''3.''' Remove the existing location and image file specified after the '''bg=''' command (e.g. bg=&lt;font color =&quot;red&quot;&gt;/usr/share/backgrounds/default.png&lt;/font color&gt;)
+
+'''4.''' Enter the new location of the image to use after the '''bg=''' command - by either manually typing it in or copying and pasting it from the address bar of the file manager - and ensure that it ends with a forwards slash (e.g. ''/home/carl/Pictures/'').
+
+'''5.''' After the forwards slash, enter the full name of the image you wish to use, including the file type extension (e.g. ''/home/carl/Pictures/abstractgreen.jpg''). 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file:abgreen.png|thumb|left|375px]]
+
+
+As an example, the author has activated the ability to set backgrounds, and used a background image (''abstractgreen.jpg'') located in their ''Pictures'' folder. Again, note the correct use of capitalisation where required (e.g. &lt;u&gt;P&lt;/u&gt;ictures):
+
+ ## background of the greeter
+ &lt;font color =&quot;green&quot;&gt;'''bg=/home/carl/Pictures/abstractgreen.jpg'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The change will be immediate, and may be viewed by simply logging out.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Removing The Language Menu =
+
+[[file:nolang.png|thumb|left|375px]]
+
+
+By default the drop-down Language Menu is located in the top bar. As this may serve no purpose for many users it can easily be removed. Doing so may also improve the appearance of the login screen by consequently providing a cleaner, less cluttered appearance. This is undertaken in the following section, located at the bottom of the LXDM configuration file:
+
+ ## if show language select control
+ &lt;font color =&quot;green&quot;&gt;'''lang=1'''&lt;/font color&gt;
+
+All that is required to replace the '1' after the '''lang=''' command with a '0':
+
+ ## if show language select control
+ &lt;font color =&quot;green&quot;&gt;'''lang=0'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+The change will be immediate, and may be viewed by simply logging out.
+
+
+
+=Disabling The User List=
+
+[[file:nouser.png|thumb|left|375px]]
+
+
+By default, available username(s) will already be listed for selection on the login screen. For added security - and (at least for some users) to improve the appearance of the login screen - this feature can be disabled. In this instance, it will consequently be necessary to manually enter both the username and password to log on. This is undertaken in the following section, located at the bottom of the LXDM configuration file:
+
+ ## if disable the user list control at greeter
+ &lt;font color =&quot;green&quot;&gt;'''disable=0'''&lt;/font color&gt;
+
+All that is required to replace the '0' after the '''disable=''' command with a '1':
+
+ ## if disable the user list control at greeter
+ &lt;font color =&quot;green&quot;&gt;'''disable=1'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+
+[[LXDM Configuration|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>m6mvretxk6k28sm2haznoaalq9ytkw8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4733</id>
+      <parentid>4643</parentid>
+      <timestamp>2013-01-12T10:08:22Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="13419">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=EN COURS DE TRADUCTION=
+
+= Overview =
+
+[[file:lxdm082.png|thumb|left|375px]]
+
+
+With the exception of the NET-edition, Manjaro 0.8.1 onwards uses a lightweight display / login manager called ''LXDM'' by default for the XFCE and LXDE flavours. LXDM is responsible for providing the login screen, where your preferred language and desktop environment may be selected for your personal user account(s). It also functions as a protective security barrier to prevent unauthorised access to your system. 
+
+'''At present theming has not been covered in this guide due to a lack of available themes for LXDM'''. However, other aspects of LXDM can still be easily customised to suit personal taste and preference, including the ability to enable auto-login, change the background image, remove the language menu, and disable the user list. To undertake any or all of these tasks, it will be necessary to first open the ''LXDM configuration file'' (lxdm.conf) using the terminal.
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Open the LXDM Configuration File ==
+
+The syntax of the command to open the LXDM configuration file is:
+ 
+ sudo [text editor] /etc/lxdm/lxdm.conf
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+ 
+ sudo nano /etc/lxdm/lxdm.conf
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use ''gedit'' instead, enter:
+ 
+ sudo gedit /etc/lxdm/lxdm.conf
+
+
+=Enabling Auto-Login=
+
+{{note|Auto-login will only work upon booting up into Manjaro. Otherwise, upon logging out, it will still be necessary to enter your username and password credentials to get back into your desktop environment.}}
+
+
+It is possible to bypass the login screen completely and go straight into your chosen desktop environment upon booting up Manjaro. To do so, two basic steps are required: first, it will be necessary to set the user account to be automatically logged into, and second, it will then be necessary to state the particular desktop environment to be started.
+
+
+==Step 1: Set the User==
+
+The first step is to set your personal account to be automatically logged in. This is undertaken in the following section, located at the top of the LXDM configuration file:
+
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ # &lt;font color =&quot;green&quot;&gt;'''autologin=dgod'''&lt;/font color&gt;
+
+
+'''1.''' remove the hash ('#') from the beginning of '''autologin=''' to activate it
+
+'''2.''' remove any text after '''autologin=''' (e.g. dgod)
+
+'''3.''' add the name of your personal account at the end of it
+
+
+As an example, LXDM has been configured below to enable a personal user account named 'carl' to be logged in automatically:
+ 
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ &lt;font color =&quot;green&quot;&gt;'''autologin=carl'''&lt;/font color&gt;
+
+
+Ensure that there are no spaces between the '''autologin=''' command and the name of your personal user account. Once complete, the second and final step of setting the default desktop environment to be automatically started must be undertaken.
+
+
+==Step 2: Set the Desktop Environment==
+
+It is necessary to ensure what desktop environment is to be booted into, particularly if having installed the NET-edition of Manjaro, and/or if having installed multiple desktop environments. This is set in the following section, located near the top of the configuration file:
+
+ ## default session or desktop used when no systemwide config
+ &lt;font color =&quot;green&quot;&gt;'''session=/usr/bin/startxfce4'''&lt;/font color&gt;
+
+
+In this example, the default desktop environment has already been set to XFCE as this was the Manjaro falvour installed. If you have installed a different flavour (e.g. Gnome/Cinnamon or KDE), then the session listed will be different. Where there is not a hash ('#') at the beginning of '''session=''' (meaning this command won't be ignored), and the desired desktop environment has been listed, then you may save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Otherwise, to set the desired desktop environment:
+
+'''1.''' If present, remove the hash ('#') at the beginning of '''session='''
+
+'''2.''' Remove the existing desktop environment listed (or any other text such as 'lxdm') from '''session=/usr/bin/&lt;font color =&quot;red&quot;&gt;[text to be removed]&lt;/font color&gt;''', and
+
+'''3.''' Add the command to start your chosen / installed desktop envrionment at the end of '''session=/usr/bin/'''. An example for every officially supported desktop environment has been listed below:
+
+
+* '''To start XFCE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;startxfce4&lt;/font color&gt;
+
+
+* '''To start KDE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;startkde&lt;/font color&gt;
+
+
+* '''To start Gnome''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;gnome-session&lt;/font color&gt;
+
+
+* '''To start Cinnamon''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;gnome-session-cinnamon&lt;/font color&gt;
+
+
+* '''To start Razor-QT''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;razor-session&lt;/font color&gt;
+
+
+* '''To start Openbox''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;openbox-session&lt;/font color&gt;
+
+
+* '''To start LXDE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;lxsession&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+Reboot your system for the changes to take effect.
+
+
+==Optional: Enable Timeout Auto-Login==
+
+{{note|The basic auto-login feature itself must also be enabled to enable this feature in turn. In addition, this feature also only works upon first booting up into Manjaro.}}
+
+
+In addition to bypassing the login screen completely, it is also possible to be automatically logged in after waiting a certain period of time as well. In this instance, after booting into the login screen, it will wait for a set period of time before automatically logging you in. This is set in the following section, located near the top of the configuration file:
+
+ ## uncomment and set timeout to enable timeout autologin,
+ ## the value should &gt;=5
+ #&lt;font color =&quot;green&quot;&gt;'''timeout=10'''&lt;/font color&gt;
+
+
+'''1.''' Remove the hash ('#') from the beginning of '''timeout=''' to activate it, and
+
+'''2.''' Set the number of '''seconds''' to wait at the login screen, if different from the default value of 10. As stated above the command, the number of seconds specified must be no less than 5.
+
+
+As an example, LXDM has been configured below to enable timeout auto login after waiting 30 seconds:
+
+ ## uncomment and set timeout to enable timeout autologin,
+ ## the value should &gt;=5
+ &lt;font color =&quot;green&quot;&gt;'''timeout=30'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+Reboot your system for the changes to take effect.
+
+
+== Disable Auto-Login ==
+
+To restore the login screen, edit the LXDM configuration file once again and comment out the lines beginning with '''autologin=''' and '''session='''. An example has provided below.
+
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ '''&lt;font color =&quot;green&quot;&gt;#&lt;/font color&gt;'''session=/usr/bin/startxfce4 
+ 
+ ...
+ 
+ ## default session or desktop used when no systemwide config
+ '''&lt;font color =&quot;green&quot;&gt;#&lt;/font color&gt;'''session=/usr/bin/openbox
+
+
+Once your amendments have been completed save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+=Changing The Background Image=
+
+{{tip|As illustrated below, using the File Manager can make this task much simplier and easier, particularly for new users. Please note that Linux is also case-sensitive so ensure that upper and lower case letters are used correctly.}}
+
+
+Once your chosen desktop environmet has been downloaded (e.g. a ''.png'' or ''.jpg'' image file), it can be set in the following section, located near the top of the configuration file:
+
+ ## background of the greeter
+ # &lt;font color =&quot;green&quot;&gt;'''bg=/usr/share/backgrounds/default.png'''&lt;/font color&gt;
+
+[[file:newpathway.png|thumb|left|375px]]
+
+
+As illustrated, it will be necessary to specify the exact location of the background image to use. Although it is possible to copy the new background images to the existing '''backgrounds''' folder using Root privilages, in this instance a new folder location will be specified:
+
+'''1.''' Open your file manager and locate the folder containing the desired background image. The full location should then be listed in the address bar (e.g. in this instance it is ''/home/carl/Pictures'')
+
+'''2.''' Remove the hash ('#') from the beginning of '''bg=''' to activate it
+
+'''3.''' Remove the existing location and image file specified after the '''bg=''' command (e.g. bg=&lt;font color =&quot;red&quot;&gt;/usr/share/backgrounds/default.png&lt;/font color&gt;)
+
+'''4.''' Enter the new location of the image to use after the '''bg=''' command - by either manually typing it in or copying and pasting it from the address bar of the file manager - and ensure that it ends with a forwards slash (e.g. ''/home/carl/Pictures/'').
+
+'''5.''' After the forwards slash, enter the full name of the image you wish to use, including the file type extension (e.g. ''/home/carl/Pictures/abstractgreen.jpg''). 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file:abgreen.png|thumb|left|375px]]
+
+
+As an example, the author has activated the ability to set backgrounds, and used a background image (''abstractgreen.jpg'') located in their ''Pictures'' folder. Again, note the correct use of capitalisation where required (e.g. &lt;u&gt;P&lt;/u&gt;ictures):
+
+ ## background of the greeter
+ &lt;font color =&quot;green&quot;&gt;'''bg=/home/carl/Pictures/abstractgreen.jpg'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The change will be immediate, and may be viewed by simply logging out.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Removing The Language Menu =
+
+[[file:nolang.png|thumb|left|375px]]
+
+
+By default the drop-down Language Menu is located in the top bar. As this may serve no purpose for many users it can easily be removed. Doing so may also improve the appearance of the login screen by consequently providing a cleaner, less cluttered appearance. This is undertaken in the following section, located at the bottom of the LXDM configuration file:
+
+ ## if show language select control
+ &lt;font color =&quot;green&quot;&gt;'''lang=1'''&lt;/font color&gt;
+
+All that is required to replace the '1' after the '''lang=''' command with a '0':
+
+ ## if show language select control
+ &lt;font color =&quot;green&quot;&gt;'''lang=0'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+The change will be immediate, and may be viewed by simply logging out.
+
+
+
+=Disabling The User List=
+
+[[file:nouser.png|thumb|left|375px]]
+
+
+By default, available username(s) will already be listed for selection on the login screen. For added security - and (at least for some users) to improve the appearance of the login screen - this feature can be disabled. In this instance, it will consequently be necessary to manually enter both the username and password to log on. This is undertaken in the following section, located at the bottom of the LXDM configuration file:
+
+ ## if disable the user list control at greeter
+ &lt;font color =&quot;green&quot;&gt;'''disable=0'''&lt;/font color&gt;
+
+All that is required to replace the '0' after the '''disable=''' command with a '1':
+
+ ## if disable the user list control at greeter
+ &lt;font color =&quot;green&quot;&gt;'''disable=1'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+
+[[LXDM Configuration|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Environnements]]</text>
+      <sha1>n9ikz4tji5afomf79owm8r38zp46vex</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4739</id>
+      <parentid>4733</parentid>
+      <timestamp>2013-01-12T14:29:18Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="14948">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[file:lxdm082.png|thumb|left|375px]]
+
+
+À l'exception de la NET-Edition, Manjaro utilise par défaut, pour les bureaux XFCE et LXDE à partir de la version 0.8.1, le gestionnaire de connexion ''LXDM''. LXDM est chargé de fournir l'écran de connexion, où la langue et l'environnement de bureau de votre choix peuvent être sélectionnés pour vos comptes d'utilisateurs personnels. Il fonctionne également comme une barrière de sécurité de protection pour empêcher l'accès non autorisé à votre système.
+
+
+'''Les thèmes n'ont pas été abordés dans ce guide en raison d'un manque de thèmes disponibles pour LXDM.''' Cependant, d'autres aspects de LXDM sont facilement personnalisables en fonction de vos goûts et préférences, y compris la possibilité d'activer la connexion automatique, modifier l'image d'arrière-plan, supprimer le menu des langues et désactiver la liste des utilisateurs. Pour effectuer tout ou partie de ces tâches, il faudra tout d'abord ouvrir le ''fichier de configuration LXDM'' (lxdm.conf) à l'aide du terminal.
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Ouvrez le fichier de configuration LXDM ==
+
+La syntaxe de la commande pour ouvrir le fichier de configuration LXDM est la suivante:
+ 
+ sudo [text editor] /etc/lxdm/lxdm.conf
+
+Par exemple, si vous souhaitez modifier le fichier dans le terminal en utilisant nano (un éditeur de texte standard), entrez:
+ 
+ sudo nano /etc/lxdm/lxdm.conf
+
+Dans le cas contraire - si vous avez installé la version complète de Manjaro (et non la NET-Edition) - vous trouverez peut-être plus facile d'utiliser à la place l'éditeur de texte pré-installé ''gedit''. Cela vous permettra d'ouvrir le fichier de configuration sous forme d'un document, ce qui le rend plus facile à lire et à modifier. Pour utiliser ''gedit'', entrez:
+ 
+ sudo gedit /etc/lxdm/lxdm.conf
+
+
+=Activer la connexion automatique=
+
+{{note|La connexion automatique fonctionnera seulement pour démarrer le système en Manjaro. Dans le cas contraire, après une déconnexion, il sera toujours nécessaire d'entrer votre nom d'utilisateur et votre mot de passe pour accéder à votre environnement de bureau.}}
+
+
+Il est possible d'éviter complètement l'écran de connexion et d'accéder directement à l'environnement de bureau choisi lors du démarrage de Manjaro. Pour ce faire, deux étapes de base sont nécessaires: tout d'abord, il sera nécessaire de définir le compte utilisateur qui sera automatiquement connecté, et en second lieu, il sera alors nécessaire de préciser l'environnement de bureau spécifique qui sera démarré.
+
+
+==Etape 1: définir l'utilisateur==
+
+La première étape consiste à configurer votre compte personnel pour être automatiquement connecté. Cela se fait dans la section suivante, située en haut du fichier de configuration LXDM:
+
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ # &lt;font color =&quot;green&quot;&gt;'''autologin=dgod'''&lt;/font color&gt;
+
+
+'''1.''' enlevez le dièse ('#') qui est placé devant '''autologin=''' pour l'activer
+
+'''2.''' supprimez tout le texte après '''autologin=''' (par exemple dgod)
+
+'''3.''' ajoutez l'identifiant de votre compte utilisateur personnel à la fin de celui-ci
+
+
+A titre d'exemple, LXDM a été configuré ci-dessous pour être connecté automatiquement sur le compte utilisateur personnel nommé 'carl':
+ 
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ &lt;font color =&quot;green&quot;&gt;'''autologin=carl'''&lt;/font color&gt;
+
+
+Assurez-vous qu'il n'y a pas d'espace entre la commande '''autologin=''' et l'identifiant de votre compte utilisateur personnel. Une fois terminé, la seconde et dernière étape (préciser l'environnement de bureau spécifique qui sera démarré) doit être entreprise.
+
+
+==Étape 2: définir l'environnement de bureau==
+
+Il est nécessaire de s'assurer quel environnement de bureau doit être démarré, particulièrement après avoir installé la NET-Edition de Manjaro, ou après avoir installé plusieurs environnements de bureau. Ceci est défini dans la section suivante, située en haut du fichier de configuration:
+
+ ## default session or desktop used when no systemwide config
+ &lt;font color =&quot;green&quot;&gt;'''session=/usr/bin/startxfce4'''&lt;/font color&gt;
+
+
+Dans cet exemple, l'environnement de bureau par défaut a déjà été défini à XFCE (car installé avec Manjaro XFCE). Si vous avez installé un autre environnement de bureau (par exemple, Cinnamon/Gnome ou KDE), la session énumérée sera différente. S'il n'y a pas un dièse ('#') au début de '''session=''', la commande sera activée. Une fois que l'environnement de bureau désiré a été défini, vous pouvez enregistrer vos modifications et fermer le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+Sinon, pour définir l'environnement de bureau désiré:
+
+'''1.''' Si présent, retirez le dièse ('#') au début de '''session='''
+
+'''2.''' Retirez l'environnement de bureau existant inscrit (ou tout autre texte tel que «lxdm ') de '''session=/usr/bin/[texte à supprimer]''', et
+
+'''3.''' Ajoutez la commande pour démarrer votre environnement de bureau choisi / installé à la fin de '''session=/usr/bin/'''. Ci-dessous un exemple pour chaque environnement de bureau officiellement pris en charge:
+
+
+* '''Pour démarrer XFCE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;startxfce4&lt;/font color&gt;
+
+
+* '''Pour démarrer KDE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;startkde&lt;/font color&gt;
+
+
+* '''Pour démarrer Gnome''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;gnome-session&lt;/font color&gt;
+
+
+* '''Pour démarrer Cinnamon''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;gnome-session-cinnamon&lt;/font color&gt;
+
+
+* '''Pour démarrer Razor-QT''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;razor-session&lt;/font color&gt;
+
+
+* '''Pour démarrer Openbox''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;openbox-session&lt;/font color&gt;
+
+
+* '''Pour démarrer LXDE''':
+ 
+ ## default session or desktop used when no systemwide config
+ session=/usr/bin/&lt;font color =&quot;green&quot;&gt;lxsession&lt;/font color&gt;
+
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+Redémarrez votre système pour que les modifications prennent effet.
+
+
+==En option : Activer le délai de connexion automatique==
+
+{{note|La fonction de base de connexion automatique elle-même doit être activée pour activer cette fonction à son tour. En outre, cette fonctionnalité aussi ne fonctionne que sur le premier démarrage dans Manjaro.}}
+
+
+En plus d'éviter complètement l'écran de connexion, il est également possible d'être automatiquement connecté après un certain délai. Dans ce cas, après le démarrage de l'écran de connexion, il attendra pendant ce certain délai avant de vous connecter automatiquement. Ce laps de temps sera défini dans la section suivante, située près du début du fichier de configuration:
+
+ ## uncomment and set timeout to enable timeout autologin,
+ ## the value should &gt;=5
+ #&lt;font color =&quot;green&quot;&gt;'''timeout=10'''&lt;/font color&gt;
+
+
+'''1.''' Retirez le dièse ('#') au début de '''timeout=''' pour l'activer, et
+
+'''2.''' Définissez le nombre de '''secondes''' à attendre à l'écran de connexion (la valeur par défaut est 10). Comme indiqué ci-dessus, le nombre de secondes ne doit pas être inférieur à 5.
+
+
+Selon l'exemple ci-dessous, LXDM a été configuré pour activer la connexion automatique après une temporisation de 30 secondes:
+
+ ## uncomment and set timeout to enable timeout autologin,
+ ## the value should &gt;=5
+ &lt;font color =&quot;green&quot;&gt;'''timeout=30'''&lt;/font color&gt;
+
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+Redémarrez votre système pour que les modifications prennent effet.
+
+
+== Désactiver la connexion automatique ==
+
+Pour restaurer l'écran de connexion, modifiez le fichier de configuration LXDM et commentez les lignes commençant par '''autologin=''' et '''session='''. Un exemple est fourni ci-dessous:
+
+ [base]
+ ## uncomment and set autologin username to enable autologin
+ '''&lt;font color =&quot;green&quot;&gt;#&lt;/font color&gt;'''session=/usr/bin/startxfce4 
+ 
+ ...
+ 
+ ## default session or desktop used when no systemwide config
+ '''&lt;font color =&quot;green&quot;&gt;#&lt;/font color&gt;'''session=/usr/bin/openbox
+
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+=Changer l'image d'arrière-plan=
+
+{{Astuce|Comme illustré ci-dessous, utiliser le gestionnaire de fichiers peut rendre cette tâche beaucoup plus simple et facile, en particulier pour les nouveaux utilisateurs. S'il vous plaît notez que Linux est également sensible à la casse. Assurez-vous que les lettres majuscules et minuscules sont utilisées correctement.}}
+
+
+Une fois votre immage d'arrière-plan téléchargée (par exemple un fichier au format ''.png'' ou ''.jpg''), le changement d'image peut être réglé dans la section suivante, situé près du début du fichier de configuration:
+
+ ## background of the greeter
+ # &lt;font color =&quot;green&quot;&gt;'''bg=/usr/share/backgrounds/default.png'''&lt;/font color&gt;
+
+[[file:newpathway.png|thumb|left|375px]]
+
+
+Comme illustré, il sera nécessaire de préciser l'emplacement exact de l'image d'arrière-plan à utiliser. Bien qu'il soit possible de copier les nouvelles images d'arrière-plan dans le dossier des images d'arrière-plan existantes en utilisant les privilèges Root, en l'occurrence un nouvel emplacement de dossier sera précisé:
+
+'''1.''' Ouvrez votre gestionnaire de fichiers et localisez le dossier contenant l'image de fond souhaitée. L'emplacement complet doit alors être répertorié dans la barre d'adresse (par exemple, dans le cas présent il s'agit de ''/home/carl/Pictures'').
+
+'''2.''' Retirez le dièse ('#') au début de '''bg=''' pour l'activer.
+
+'''3.''' Retirez l'emplacement actuel et le fichier image spécifié après la commande '''bg=''' (par exemple, bg=/usr/share/backgrounds/default.png).
+
+'''4.''' Renseignez le nouvel emplacement de l'image à utiliser après la commande '''bg=''' - soit en le tapant manuellement, soit en copiant-collant dans la barre d'adresse du gestionnaire de fichiers - et veiller à ce qu'il se termine par un slash (par exemple ''/home/carl/Pictures/'').
+
+'''5.''' Après le slash, entrez le nom complet de l'image que vous souhaitez utiliser, y compris l'extension du type de fichier (par exemple ''/home/carl/Pictures/abstractgreen.jpg''). 
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file:abgreen.png|thumb|left|375px]]
+
+
+A titre d'exemple, l'auteur a activé la possibilité de définir l'arrière-plan, et a utilisé une image d'arrière-plan (''abstractgreen.jpg'') située dans son dossier ''Pictures''. Encore une fois, notez l'utilisation correcte de la casse (par exemple &lt;u&gt;P&lt;/u&gt;ictures):
+
+ ## background of the greeter
+ &lt;font color =&quot;green&quot;&gt;'''bg=/home/carl/Pictures/abstractgreen.jpg'''&lt;/font color&gt;
+
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+Le changement sera immédiat et pourra être apprécié par une simple déconnexion/connexion.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Supprimer le menu des langues=
+
+[[file:nolang.png|thumb|left|375px]]
+
+
+Par défaut, le menu déroulant des langues se trouve dans la barre du haut. Comme cela peut ne servir à rien pour de nombreux utilisateurs, il peut facilement être enlevé. Cela pourrait également améliorer l'apparence de l'écran de connexion et par conséquent donner un aspect plus propre, moins encombré. Ce sera réalisé dans la section suivante, situé à la fin du fichier de configuration LXDM:
+
+ ## if show language select control
+ &lt;font color =&quot;green&quot;&gt;'''lang=1'''&lt;/font color&gt;
+
+Tout ce qu'il y a à faire est de remplacer le '1' après la commande '''lang=''' par un '0':
+
+ ## if show language select control
+ &lt;font color =&quot;green&quot;&gt;'''lang=0'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+Le changement sera immédiat et pourra être apprécié par une simple déconnexion/connexion.
+
+
+
+=Désactiver la liste des utilisateurs=
+
+[[file:nouser.png|thumb|left|375px]]
+
+
+Par défaut, la liste des utilisateurs disponibles apparaît pour la sélection sur l'écran de connexion. Pour plus de sécurité - et (au moins pour certains utilisateurs) pour améliorer l'apparence de l'écran de connexion - cette fonction peut être désactivée. Dans ce cas, il sera donc nécessaire de saisir manuellement à la fois le nom d'utilisateur et le mot de passe pour vous connecter. Ce sera réalisé dans la section suivante, situé à la fin du fichier de configuration LXDM:
+
+ ## if disable the user list control at greeter
+ &lt;font color =&quot;green&quot;&gt;'''disable=0'''&lt;/font color&gt;
+
+Tout ce qu'il y a à faire est de remplacer le '0' après la commande '''disable=''' par un '1':
+
+ ## if disable the user list control at greeter
+ &lt;font color =&quot;green&quot;&gt;'''disable=1'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+Une fois vos modifications terminées, vous pouvez les enregistrer et fermer le fichier de configuration par:
+
+* '''nano:''' Appuyez sur CTRL et 'x' pour quitter, 'o' pour enregistrer et &lt;Entrée&gt; à la fin, ou
+* '''gedit:''' Sélectionnez l'option 'Enregistrer', puis fermez la fenêtre.
+
+
+
+[[LXDM Configuration|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Environnements]]</text>
+      <sha1>j4t24t4hitfxxc978nomxo0ankaplqp</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,1297 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>OBSOLÈTE Pacman-GUI: Guide français</title>
+    <ns>0</ns>
+    <id>559</id>
+    <revision>
+      <id>3008</id>
+      <timestamp>2012-12-25T11:13:33Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;=Vue d'ensemble=  [[File:pacmangui-083.png|thumb|left|375px]]   {{astuce|Bien que ''pacman-gui'' fournisse des fonc-tions de recherche des paquets installés et dispo-nibles, ...&quot;</comment>
+      <text xml:space="preserve" bytes="16652">=Vue d'ensemble=
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+{{astuce|Bien que ''pacman-gui'' fournisse des fonc-tions de recherche des paquets installés et dispo-nibles, il est recommandé d'utiliser plutôt '''[[Package Browser]]''' pour le faire, quand c'est possible.}}
+
+Les systèmes Arch et basés sur Arch reposent traditionnellement sur la ''ligne de commande'' pour effectuer des tâches liées au système, telles que la mise à jour du système et l'installation de nouvelles applications logicielles. Bien que ce soit un outil très puissant et polyvalent, la nécessité d'apprendre une pléthore de nouvelles commandes et de les taper à la main dans un terminal pour les utiliser peut être une perspective décourageante pour beaucoup de nouveaux utilisateurs. 
+
+Développé exclusivement par l'équipe Manjaro, l'outil convivial '''pacman-gui''' ('''[[Pacman|pacman]]''' Graphical User Interface) permet aux utilisateurs d'effectuer toute une gamme de tâches usuelles d'un clic de souris. Pacman &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager lui-même est un gestionnaire de paquets développé spécialement pour Arch Linux, et utilisé pour installer, mettre à jour, paramétrer et supprimer des logiciels (par exemple, pour gérer les paquets logiciels). Ainsi, sans avoir besoin des connaissances nécessaires pour utiliser pacman dans le terminal, les nouveaux utilisateurs peuvent utiliser ''pacman-gui'' pour facilement:
+
+* Mettre à jour et maintenir le système
+* Ajouter, supprimer, rechercher un logiciel, et
+* Obtenir des informations précieuses sur un logiciel
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Synchronisation de la base de données=
+
+[[File:pcsyncdb2-082.png|thumb|left|375px]]
+
+
+Le système Manjaro contient une base de données de tous les paquets logiciels (par exemple mises à jour logicielles et applications) qui sont disponibles dans les dépôts officiels. Ceci permet d'aider ''pacman'' à trouver et télécharger ces paquets pour installation. Il est donc important de garder à jour cette base de données, sinon ''pacman'' ne sera pas capable de trouver et télécharger un paquet logiciel demandé, même s'il est disponible. Ça peut être réalisé en cliquant sur le bouton '''Sync DB''' ce qui signifie ''Synchronise Database''.
+
+La base de données va être automatiquement actualisée lors de la mise à jour du système (voir ci-dessous). Cependant, la fonction ''Synchronise Database'' est plus complète, car au lieu de seulement la rafraîchir et la mettre à jour, elle va la reconstruire complètement. En utilisant cette fonction, l'utilisateur a aussi la possibilité de mettre à jour la base de données sans avoir besoin d'effectuer une mise à jour du système entier en même temps. Il est recommandé de synchroniser la base de données avec les dépôts Manjaro au moins une fois toutes les deux semaines.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Mise à jour du système=
+
+[[File:pcud2-082.png|thumb|left|375px]]
+
+
+Manjaro utilise un modèle de développement 'rolling release', ce qui signifie qu'il est possible d'avoir le système le plus récent sans avoir à installer une quelconque nouvelle version; il est même possible d'installer une version beaucoup plus ancienne et de la faire évoluer vers la toute dernière. En tant que système basé sur Arch, une autre fonctionnalité est que Manjaro a aussi accès aux logiciels les plus en pointe et flambants neufs. De nouvelles mises à jour pour le système ainsi que pour les applications installées vont pour cette raison être fréquemment proposées. Il est donc important de tirer un plein avantage de ces fonctionnalités en s'assurant que le système est complètement à jour.
+
+Bien que le système de ''notification de mise jour Kalu'' fournisse automatiquement une notification quand de nouvelles mises à jour sont disponibles, il est aussi possible de vérifier les mises à jour et de les installer via le bouton '''Update System'''. L'utilisation de cette fonction entraîne aussi le rafraîchissement et la mise à jour de la base de données par toutes les mises à jour et nouveaux logiciels disponibles dans les dépôts Manjaro, ce qui sera fréquent.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Vidage du cache=
+
+[[File:pccc2b-082.png|thumb|left|375px]]
+
+
+Avant qu'une quelconque mise à jour ou une application logicielle puisse être effectivement installée, elles doit d'abord être téléchargée et stockée dans le ''cache'' du système. Celui-ci peut être vu comme un dossier temporaire utilisé dans cet exemple pour stocker le logiciel téléchargé en attente d'installation. Dès que le logiciel contenu dans le cache système a été installé, il va en être automatiquement supprimé. Toutefois, il est aussi possible de vider le cache système en cliquant sur le bouton '''Clear Cache'''. Au cours du processus, il sera nécessaire de confirmer que le cache et les dépôts non utilisés doivent être supprimés en tapant '''y''' pour 'yes' à l'invite.
+
+L'utilisation de cette fonction peut être à l'occasion intéressante étant donné que le cache système peut ne pas avoir été vidé entièrement, en particulier si un essai précédent d'installation d'une nouvelle mise à jour ou d'une application logicielle a échoué pour une raison ou une autre. Il est recommandé de vider le cache système au moins une fois par mois.
+&lt;br clear=&quot;all&quot; /&gt;
+
+ 
+=Téléchargement et installation d'un nouveau logiciel=
+
+[[File:pcinst2-082.png|thumb|left|375px]]
+
+
+{{note|''pacman-gui'' ne peut être utilisé que pour installer des nouveaux logiciels disponibles dans les dépôts officiels Manjaro. Pour télécharger et installer des logiciels du dépôt '''AUR''' ('''A'''rch '''U'''ser '''R'''epository), il sera nécessaire d'utiliser '''yaourt''' dans un terminal.}}
+
+
+De nouveaux paquets logiciels et des applications peuvent être téléchargés à la demande depuis les dépôts Manjaro officiels en cliquant d'abord sur le bouton '''Install Packages''', puis en tapant le nom du ou des paquets logiciels désirés lors de l'invite. Durant le processus d'installation, il va falloir confirmer l'installation en entrant '''y''' pour 'yes' à l'invite. Plusieurs paquets logiciels différents peuvent aussi être téléchargés en même temps, en séparant les noms par un espace entre chacun. Par exemple, pour télécharger les applications logicielles ''leafpad'', ''abiword'', et ''gnumeric'' en même temps, il faudra entrer lors de l'invite:
+
+ leafpad abiword gnumeric
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Conventions de nommage==
+
+[[File:pcinst3-082.png|thumb|left|375px]]
+
+
+Pour aider pacman à télécharger et installer un paquet logiciel donné, il est &lt;u&gt;absolument essentiel&lt;/u&gt; e taper son nom correctement à l'invite. En conséquence, lorsque vous entrez le nom d'un paquet à installer, assurez-vous que les conventions suivantes sont appliquées:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+Par exemple, pour installer l'application logicielle ''leafpad'', son nom doit être entré comme suit:
+
+ leafpad
+
+
+Si toutefois 'Leafpad' ou 'LEAFPAD' (majuscules), 'leedpaf' (mauvaise orthographe), ou 'leaf' (partie du nom) étaient entrés à la place, alors pacman serait incapable de trouver, télécharger ou installer cette application. Le même principe s'applique à toutes les installations logicielles.
+
+
+{{astuce|l'application Package Browser va toujours vous afficher les noms corrects des logiciels. 
+En ce qui concerne la saisie du nom complet du paquet, il est également intéressant de noter que vous n'aurez jamais à indiquer le numéro de version. Par exemple, bien que ''leafpad 0.8.18.1-3'' puisse être disponible, vous ne devrez entrer que ''leafpad'' seul pour effectuer le téléchargement.}}
+
+
+==Note sur les dépendances==
+
+[[File:pcinst4-082.png|thumb|left|375px]]
+
+
+En particulier lors de l'installation d'un nouveau logiciel, plusieurs autres logiciels peuvent également être installés automatiquement aussi. Ils sont connus en tant que '''dépendances''', car ils sont nécessaires pour que ce qui est installé puisse fonctionner correctement. En d'autres termes, le logiciel en cours de téléchargement en ''dépend''. Par exemple, si le ''VLC Media Player'' devait être installé, plusieurs autres logiciels – lui permettant de jouer différents formats de médias – seraient également téléchargés automatiquement, s'ils ne sont pas déjà installés sur le système. Sans eux, le Media Player ne serait pas en mesure de jouer certains formats de médias, ou peut-être pas en mesure de jouer quoi que ce soit!
+
+
+{{astuce|Vous n'aurez pas besoin de vous inquiéter des dépendances vous-même, car ils seront automatiquement identifiés et téléchargés pour vous lorsque cela sera nécessaire.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation de paquets logiciels locaux=
+
+[[File:pcilp-082.png|thumb|left|375px]]
+
+
+{{attention|cette fonctionnalité n'est pas conseillée aux nouveaux utilisateurs. Elle ne doit être utilisée que pour installer des fichiers ''pkg.tar.xz'' téléchargés.}}
+
+
+Bien qu'il soit recommandé de télécharger et d'installer les logiciels à partir des dépôts officiels Manjaro lorsque cela est possible, il est également possible de télécharger des logiciels ailleurs sur Internet et de les installer localement sur le ''système''. Ceci est effectué en cliquant d'abord sur le bouton '''Install local package''', puis en sélectionnant le fichier '''pkg.tar.gz''' approprié. Ce type de fichier lui-même peut être considéré comme similaire à un fichier compressé ''zip''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Suppression de paquets logiciels installés=
+
+[[File:pcrem2-082.png|thumb|left|375px]]
+
+
+{{attention|soyez prudent et veillez à ne pas supprimer un logiciel indispensable au système.}}
+
+
+Les paquets logiciels et les applications peuvent être supprimés du système en cliquant d'abord sur le bouton '''Remove Package''', puis en entrant le nom du ou des paquets à supprimer lorsque vous y êtes invité. Pendant le processus de suppression, il sera nécessaire de confirmer la suppression en tapant '''y''' pour 'yes' à l'invite. Les conventions de nommage sont les mêmes que lors du téléchargement et de l'installation de nouveaux logiciels:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour supprimer l'application logicielle installée ''xfburn'', entrez son nom comme suit:
+
+ xfburn
+
+
+A nouveau, il est aussi possible se supprimer plusieurs paquets logiciels en même temps, en entrant chaque nom avec un espace entre eux. Par exemple, pour supprimer les applications  ''leafpad'', ''abiword'', et ''gnumeric'' simultanément, il faudra entrer à l'invite:
+
+ leafpad abiword gnumeric
+
+
+{{astuce|La fonction ''Remove Packages'' est également utile pour supprimer les paquets logiciels '''orphelins''' du système. Ce sont les paquets qui ont été une fois – ou au moins été destinés à être – des dépendances d'autre chose, mais qui ne sont pas réellement utilisés par un autre logiciel, et donc ne servent à rien. Bien que les ''orphelins'' ne puissent pas faire de mal par eux-mêmes, il est préférable de garder le système propre de tout encombrement inutile. Les orphelins peuvent aussi être facilement identifiés par l'application ''Package Browser''.}}
+
+
+=Recherche de paquets logiciels=
+
+[[File:pcsearch2-082.png|thumb|left|375px]]
+
+
+Bien qu'il soit recommandé d'utiliser ''Package Browser'' pour rechercher des logiciels – à la fois déjà installés ou disponibles dans les dépôts pour installation – ceci peut être effectué en cliquant d'abord sur le bouton '''Search Packages''', puis en entrant le nom du paquet recherché lors de l'invite. Les conventions de nommage sont les mêmes que lors de l'installation ou de la suppression de logiciels: 
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' use the full name.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour rechercher le navigateur web ''firefox'', entrez ce qui suit à l'invite:
+
+ firefox
+
+
+Les informations fournies vont inclure:
+
+* Tous les autres paquets en relation (par exemple les packs de langue de Firefox)
+* Le nom du dépôt où le paquet est disponible pour téléchargement et installation
+* La version du paquet, et
+* Si le paquet a été installé ou non
+
+
+{{astuce|Des informations plus détaillées sur les paquets logiciels installés peuvent être trouvées en cliquant sur le bouton '''package details''' (voir ci-dessous).}}
+
+
+=Identification du paquet logiciel d'un fichier=
+
+[[File:pcidfile2b-082.png|thumb|left|375px]]
+
+
+{{remarque|Cette fonction peut être utile pour les utilisateurs plus expérimentés, ou du moins ceux qui ont une connaissance suffisante (et la confiance) pour spécifier l'emplacement des fichiers.}}
+
+
+Il n'est pas toujours évident de savoir à quoi un fichier particulier est utilisé, ou, plus précisément, qui l'utilise. Pour identifier quel paquet ou application utilise un fichier particulier, cliquez d'abord sur le bouton '''Search File''', puis indiquez l'emplacement et le nom du fichier approprié. '''Pour utiliser cette fonction, il sera donc nécessaire de savoir comment spécifier l'emplacement complet (c'est-à-dire le répertoire ou le chemin du dossier) où ce fichier est stocké.''' Les conventions de base pour ce faire sont les suivantes:
+
+* les noms de dossiers et de fichiers sont sensibles à la casse
+* les noms de dossiers et de fichiers sont séparés par une barre oblique ('''/''').
+&lt;br clear=&quot;all&quot; /&gt;
+
+A titre d'exemple, la fonction ''Search File'' sera utilisée pour identifier ce qui utilise le fichier '''grub.cfg'''. Dans ce cas, le fichier ''grub.cfg'' est stocké dans le répertoire ''grub'', qui lui-même est stocké dans le répertoire de démarrage (''/boot''). Par conséquent, ce qui suit doit être entré lors de l'invite:
+
+ /boot/grub/grub.cfg
+
+
+{{astuce|Si le fichier souhaité est d'abord trouvé en utilisant le '''gestionnaire de fichiers''', alors le chemin à utiliser sera dans la barre d'adresse de celui-ci.}}
+
+
+Comme illustré, il a été confirmé que le fichier grub.cfg est utilisé (c'est-à-dire propriété) par le GRUB ('''GR'''and '''U'''nified '''B'''ootloader), qui est responsable de démarrer Manjaro lorsque l'ordinateur est allumé.
+
+
+=Obtenir des informations détaillées sur les paquets logiciels installés=
+
+[[File:pcpkinfo2-082.png|thumb|left|375px]]
+
+
+{{astuce|Des informations détaillées similaires sur tout paquet donné de logiciel – installé ou disponible pour l'installation – peuvent également être fournies par l'application ''Package Browser''.}}
+
+
+Bien que les informations de base sur un paquet logiciel puissent être obtenues en utilisant le bouton ''Search Packages'', un compte-rendu beaucoup plus détaillé et complet de &lt;u&gt;logiciels installés&lt;/u&gt; peut être obtenu en cliquant d'abord sur le bouton '''Package Details''', puis en entrant le nom du paquet approprié à l'invite. Encore une fois, comme avec l'installation, la suppression ou l'obtention d'informations de base sur un logiciel:
+
+''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour obtenir des informations détaillées sur ''gedit'', entrez à l'invite:
+
+ gedit
+
+
+L'information fournie va inclure:
+
+* Tous les paquets logiciels qui en sont des dépendances
+* Tous les paquets logiciels qui en dépendent
+* La taille du paquet
+* Quand le paquet a été créé
+* Quand le paquet a été installé, et
+* Si vous avez choisi d'installer ce paquet, ou s'il a été installé automatiquement en tant que dépendance de quelque chose d'autre 
+
+
+=Accéder au blog Manjaro=
+
+Le blog Manjaro peut être consulté directement dans le navigateur Internet par défaut en cliquant sur le bouton '''Manjaro Linux News'''. Combiné avec le '''notificateur Kalu du bureau''', il est facile de se tenir à jour des dernières nouvelles et événements Manjaro!
+
+
+=Lancement de l'application Package Browser=
+
+Bien que le navigateur de paquets (PkgBrowser) puisse être choisi depuis le menu du bureau, il peut également être exécuté directement à partir de pacman-gui en cliquant sur le bouton '''Open PkgBrowser'''. Le guide '''Package Browser''' fournit des informations plus détaillées sur la façon d'utiliser cette application.</text>
+      <sha1>9ifvutnqyx9tw33ew1nmvfzvyugjauk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3009</id>
+      <parentid>3008</parentid>
+      <timestamp>2012-12-25T11:21:20Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16623">=Vue d'ensemble=
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+{{tip|Bien que ''pacman-gui'' fournisse des fonc-tions de recherche des paquets installés et dispo-nibles, il est recommandé d'utiliser plutôt '''[[Package Browser]]''' pour le faire, quand c'est possible.}}
+
+Les systèmes Arch et basés sur Arch reposent traditionnellement sur la ''ligne de commande'' pour effectuer des tâches liées au système, telles que la mise à jour du système et l'installation de nouvelles applications logicielles. Bien que ce soit un outil très puissant et polyvalent, la nécessité d'apprendre une pléthore de nouvelles commandes et de les taper à la main dans un terminal pour les utiliser peut être une perspective décourageante pour beaucoup de nouveaux utilisateurs. 
+
+Développé exclusivement par l'équipe Manjaro, l'outil convivial '''pacman-gui''' ('''[[Pacman|pacman]]''' Graphical User Interface) permet aux utilisateurs d'effectuer toute une gamme de tâches usuelles d'un clic de souris. Pacman &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager lui-même est un gestionnaire de paquets développé spécialement pour Arch Linux, et utilisé pour installer, mettre à jour, paramétrer et supprimer des logiciels (par exemple, pour gérer les paquets logiciels). Ainsi, sans avoir besoin des connaissances nécessaires pour utiliser pacman dans le terminal, les nouveaux utilisateurs peuvent utiliser ''pacman-gui'' pour facilement:
+
+* Mettre à jour et maintenir le système
+* Ajouter, supprimer, rechercher un logiciel, et
+* Obtenir des informations précieuses sur un logiciel
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Synchronisation de la base de données=
+
+[[File:pcsyncdb2-082.png|thumb|left|375px]]
+
+
+Le système Manjaro contient une base de données de tous les paquets logiciels (par exemple mises à jour logicielles et applications) qui sont disponibles dans les dépôts officiels. Ceci permet d'aider ''pacman'' à trouver et télécharger ces paquets pour installation. Il est donc important de garder à jour cette base de données, sinon ''pacman'' ne sera pas capable de trouver et télécharger un paquet logiciel demandé, même s'il est disponible. Ça peut être réalisé en cliquant sur le bouton '''Sync DB''' ce qui signifie ''Synchronise Database''.
+
+La base de données va être automatiquement actualisée lors de la mise à jour du système (voir ci-dessous). Cependant, la fonction ''Synchronise Database'' est plus complète, car au lieu de seulement la rafraîchir et la mettre à jour, elle va la reconstruire complètement. En utilisant cette fonction, l'utilisateur a aussi la possibilité de mettre à jour la base de données sans avoir besoin d'effectuer une mise à jour du système entier en même temps. Il est recommandé de synchroniser la base de données avec les dépôts Manjaro au moins une fois toutes les deux semaines.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Mise à jour du système=
+
+[[File:pcud2-082.png|thumb|left|375px]]
+
+
+Manjaro utilise un modèle de développement 'rolling release', ce qui signifie qu'il est possible d'avoir le système le plus récent sans avoir à installer une quelconque nouvelle version; il est même possible d'installer une version beaucoup plus ancienne et de la faire évoluer vers la toute dernière. En tant que système basé sur Arch, une autre fonctionnalité est que Manjaro a aussi accès aux logiciels les plus en pointe et flambants neufs. De nouvelles mises à jour pour le système ainsi que pour les applications installées vont pour cette raison être fréquemment proposées. Il est donc important de tirer un plein avantage de ces fonctionnalités en s'assurant que le système est complètement à jour.
+
+Bien que le système de ''notification de mise jour Kalu'' fournisse automatiquement une notification quand de nouvelles mises à jour sont disponibles, il est aussi possible de vérifier les mises à jour et de les installer via le bouton '''Update System'''. L'utilisation de cette fonction entraîne aussi le rafraîchissement et la mise à jour de la base de données par toutes les mises à jour et nouveaux logiciels disponibles dans les dépôts Manjaro, ce qui sera fréquent.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Vidage du cache=
+
+[[File:pccc2b-082.png|thumb|left|375px]]
+
+
+Avant qu'une quelconque mise à jour ou une application logicielle puisse être effectivement installée, elles doit d'abord être téléchargée et stockée dans le ''cache'' du système. Celui-ci peut être vu comme un dossier temporaire utilisé dans cet exemple pour stocker le logiciel téléchargé en attente d'installation. Dès que le logiciel contenu dans le cache système a été installé, il va en être automatiquement supprimé. Toutefois, il est aussi possible de vider le cache système en cliquant sur le bouton '''Clear Cache'''. Au cours du processus, il sera nécessaire de confirmer que le cache et les dépôts non utilisés doivent être supprimés en tapant '''y''' pour 'yes' à l'invite.
+
+L'utilisation de cette fonction peut être à l'occasion intéressante étant donné que le cache système peut ne pas avoir été vidé entièrement, en particulier si un essai précédent d'installation d'une nouvelle mise à jour ou d'une application logicielle a échoué pour une raison ou une autre. Il est recommandé de vider le cache système au moins une fois par mois.
+&lt;br clear=&quot;all&quot; /&gt;
+
+ 
+=Téléchargement et installation d'un nouveau logiciel=
+
+[[File:pcinst2-082.png|thumb|left|375px]]
+
+
+{{note|''pacman-gui'' ne peut être utilisé que pour installer des nouveaux logiciels disponibles dans les dépôts officiels Manjaro. Pour télécharger et installer des logiciels du dépôt '''AUR''' ('''A'''rch '''U'''ser '''R'''epository), il sera nécessaire d'utiliser '''yaourt''' dans un terminal.}}
+
+
+De nouveaux paquets logiciels et des applications peuvent être téléchargés à la demande depuis les dépôts Manjaro officiels en cliquant d'abord sur le bouton '''Install Packages''', puis en tapant le nom du ou des paquets logiciels désirés lors de l'invite. Durant le processus d'installation, il va falloir confirmer l'installation en entrant '''y''' pour 'yes' à l'invite. Plusieurs paquets logiciels différents peuvent aussi être téléchargés en même temps, en séparant les noms par un espace entre chacun. Par exemple, pour télécharger les applications logicielles ''leafpad'', ''abiword'', et ''gnumeric'' en même temps, il faudra entrer lors de l'invite:
+
+ leafpad abiword gnumeric
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Conventions de nommage==
+
+[[File:pcinst3-082.png|thumb|left|375px]]
+
+
+Pour aider pacman à télécharger et installer un paquet logiciel donné, il est &lt;u&gt;absolument essentiel&lt;/u&gt; e taper son nom correctement à l'invite. En conséquence, lorsque vous entrez le nom d'un paquet à installer, assurez-vous que les conventions suivantes sont appliquées:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+Par exemple, pour installer l'application logicielle ''leafpad'', son nom doit être entré comme suit:
+
+ leafpad
+
+
+Si toutefois 'Leafpad' ou 'LEAFPAD' (majuscules), 'leedpaf' (mauvaise orthographe), ou 'leaf' (partie du nom) étaient entrés à la place, alors pacman serait incapable de trouver, télécharger ou installer cette application. Le même principe s'applique à toutes les installations logicielles.
+
+
+{{tip|l'application Package Browser va toujours vous afficher les noms corrects des logiciels. 
+En ce qui concerne la saisie du nom complet du paquet, il est également intéressant de noter que vous n'aurez jamais à indiquer le numéro de version. Par exemple, bien que ''leafpad 0.8.18.1-3'' puisse être disponible, vous ne devrez entrer que ''leafpad'' seul pour effectuer le téléchargement.}}
+
+
+==Note sur les dépendances==
+
+[[File:pcinst4-082.png|thumb|left|375px]]
+
+
+En particulier lors de l'installation d'un nouveau logiciel, plusieurs autres logiciels peuvent également être installés automatiquement aussi. Ils sont connus en tant que '''dépendances''', car ils sont nécessaires pour que ce qui est installé puisse fonctionner correctement. En d'autres termes, le logiciel en cours de téléchargement en ''dépend''. Par exemple, si le ''VLC Media Player'' devait être installé, plusieurs autres logiciels – lui permettant de jouer différents formats de médias – seraient également téléchargés automatiquement, s'ils ne sont pas déjà installés sur le système. Sans eux, le Media Player ne serait pas en mesure de jouer certains formats de médias, ou peut-être pas en mesure de jouer quoi que ce soit!
+
+
+{{tip|Vous n'aurez pas besoin de vous inquiéter des dépendances vous-même, car ils seront automatiquement identifiés et téléchargés pour vous lorsque cela sera nécessaire.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation de paquets logiciels locaux=
+
+[[File:pcilp-082.png|thumb|left|375px]]
+
+
+{{warning|cette fonctionnalité n'est pas conseillée aux nouveaux utilisateurs. Elle ne doit être utilisée que pour installer des fichiers ''pkg.tar.xz'' téléchargés.}}
+
+
+Bien qu'il soit recommandé de télécharger et d'installer les logiciels à partir des dépôts officiels Manjaro lorsque cela est possible, il est également possible de télécharger des logiciels ailleurs sur Internet et de les installer localement sur le ''système''. Ceci est effectué en cliquant d'abord sur le bouton '''Install local package''', puis en sélectionnant le fichier '''pkg.tar.gz''' approprié. Ce type de fichier lui-même peut être considéré comme similaire à un fichier compressé ''zip''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Suppression de paquets logiciels installés=
+
+[[File:pcrem2-082.png|thumb|left|375px]]
+
+
+{{warning|soyez prudent et veillez à ne pas supprimer un logiciel indispensable au système.}}
+
+
+Les paquets logiciels et les applications peuvent être supprimés du système en cliquant d'abord sur le bouton '''Remove Package''', puis en entrant le nom du ou des paquets à supprimer lorsque vous y êtes invité. Pendant le processus de suppression, il sera nécessaire de confirmer la suppression en tapant '''y''' pour 'yes' à l'invite. Les conventions de nommage sont les mêmes que lors du téléchargement et de l'installation de nouveaux logiciels:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour supprimer l'application logicielle installée ''xfburn'', entrez son nom comme suit:
+
+ xfburn
+
+
+A nouveau, il est aussi possible se supprimer plusieurs paquets logiciels en même temps, en entrant chaque nom avec un espace entre eux. Par exemple, pour supprimer les applications  ''leafpad'', ''abiword'', et ''gnumeric'' simultanément, il faudra entrer à l'invite:
+
+ leafpad abiword gnumeric
+
+
+{{tip|La fonction ''Remove Packages'' est également utile pour supprimer les paquets logiciels '''orphelins''' du système. Ce sont les paquets qui ont été une fois – ou au moins été destinés à être – des dépendances d'autre chose, mais qui ne sont pas réellement utilisés par un autre logiciel, et donc ne servent à rien. Bien que les ''orphelins'' ne puissent pas faire de mal par eux-mêmes, il est préférable de garder le système propre de tout encombrement inutile. Les orphelins peuvent aussi être facilement identifiés par l'application ''Package Browser''.}}
+
+
+=Recherche de paquets logiciels=
+
+[[File:pcsearch2-082.png|thumb|left|375px]]
+
+
+Bien qu'il soit recommandé d'utiliser ''Package Browser'' pour rechercher des logiciels – à la fois déjà installés ou disponibles dans les dépôts pour installation – ceci peut être effectué en cliquant d'abord sur le bouton '''Search Packages''', puis en entrant le nom du paquet recherché lors de l'invite. Les conventions de nommage sont les mêmes que lors de l'installation ou de la suppression de logiciels: 
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' use the full name.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour rechercher le navigateur web ''firefox'', entrez ce qui suit à l'invite:
+
+ firefox
+
+
+Les informations fournies vont inclure:
+
+* Tous les autres paquets en relation (par exemple les packs de langue de Firefox)
+* Le nom du dépôt où le paquet est disponible pour téléchargement et installation
+* La version du paquet, et
+* Si le paquet a été installé ou non
+
+
+{{tip|Des informations plus détaillées sur les paquets logiciels installés peuvent être trouvées en cliquant sur le bouton '''package details''' (voir ci-dessous).}}
+
+
+=Identification du paquet logiciel d'un fichier=
+
+[[File:pcidfile2b-082.png|thumb|left|375px]]
+
+
+{{note|Cette fonction peut être utile pour les utilisateurs plus expérimentés, ou du moins ceux qui ont une connaissance suffisante (et la confiance) pour spécifier l'emplacement des fichiers.}}
+
+
+Il n'est pas toujours évident de savoir à quoi un fichier particulier est utilisé, ou, plus précisément, qui l'utilise. Pour identifier quel paquet ou application utilise un fichier particulier, cliquez d'abord sur le bouton '''Search File''', puis indiquez l'emplacement et le nom du fichier approprié. '''Pour utiliser cette fonction, il sera donc nécessaire de savoir comment spécifier l'emplacement complet (c'est-à-dire le répertoire ou le chemin du dossier) où ce fichier est stocké.''' Les conventions de base pour ce faire sont les suivantes:
+
+* les noms de dossiers et de fichiers sont sensibles à la casse
+* les noms de dossiers et de fichiers sont séparés par une barre oblique ('''/''').
+&lt;br clear=&quot;all&quot; /&gt;
+
+A titre d'exemple, la fonction ''Search File'' sera utilisée pour identifier ce qui utilise le fichier '''grub.cfg'''. Dans ce cas, le fichier ''grub.cfg'' est stocké dans le répertoire ''grub'', qui lui-même est stocké dans le répertoire de démarrage (''/boot''). Par conséquent, ce qui suit doit être entré lors de l'invite:
+
+ /boot/grub/grub.cfg
+
+
+{{tip|Si le fichier souhaité est d'abord trouvé en utilisant le '''gestionnaire de fichiers''', alors le chemin à utiliser sera dans la barre d'adresse de celui-ci.}}
+
+
+Comme illustré, il a été confirmé que le fichier grub.cfg est utilisé (c'est-à-dire propriété) par le GRUB ('''GR'''and '''U'''nified '''B'''ootloader), qui est responsable de démarrer Manjaro lorsque l'ordinateur est allumé.
+
+
+=Obtenir des informations détaillées sur les paquets logiciels installés=
+
+[[File:pcpkinfo2-082.png|thumb|left|375px]]
+
+
+{{tip|Des informations détaillées similaires sur tout paquet donné de logiciel – installé ou disponible pour l'installation – peuvent également être fournies par l'application ''Package Browser''.}}
+
+
+Bien que les informations de base sur un paquet logiciel puissent être obtenues en utilisant le bouton ''Search Packages'', un compte-rendu beaucoup plus détaillé et complet de &lt;u&gt;logiciels installés&lt;/u&gt; peut être obtenu en cliquant d'abord sur le bouton '''Package Details''', puis en entrant le nom du paquet approprié à l'invite. Encore une fois, comme avec l'installation, la suppression ou l'obtention d'informations de base sur un logiciel:
+
+''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour obtenir des informations détaillées sur ''gedit'', entrez à l'invite:
+
+ gedit
+
+
+L'information fournie va inclure:
+
+* Tous les paquets logiciels qui en sont des dépendances
+* Tous les paquets logiciels qui en dépendent
+* La taille du paquet
+* Quand le paquet a été créé
+* Quand le paquet a été installé, et
+* Si vous avez choisi d'installer ce paquet, ou s'il a été installé automatiquement en tant que dépendance de quelque chose d'autre 
+
+
+=Accéder au blog Manjaro=
+
+Le blog Manjaro peut être consulté directement dans le navigateur Internet par défaut en cliquant sur le bouton '''Manjaro Linux News'''. Combiné avec le '''notificateur Kalu du bureau''', il est facile de se tenir à jour des dernières nouvelles et événements Manjaro!
+
+
+=Lancement de l'application Package Browser=
+
+Bien que le navigateur de paquets (PkgBrowser) puisse être choisi depuis le menu du bureau, il peut également être exécuté directement à partir de pacman-gui en cliquant sur le bouton '''Open PkgBrowser'''. Le guide '''Package Browser''' fournit des informations plus détaillées sur la façon d'utiliser cette application.</text>
+      <sha1>8xcog5rmub31fwk6cvelxe8p3l9zneg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3011</id>
+      <parentid>3009</parentid>
+      <timestamp>2012-12-25T11:23:51Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16622">=Vue d'ensemble=
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+{{tip|Bien que ''pacman-gui'' fournisse des fonctions de recherche des paquets installés et dispo-nibles, il est recommandé d'utiliser plutôt '''[[Package Browser]]''' pour le faire, quand c'est possible.}}
+
+Les systèmes Arch et basés sur Arch reposent traditionnellement sur la ''ligne de commande'' pour effectuer des tâches liées au système, telles que la mise à jour du système et l'installation de nouvelles applications logicielles. Bien que ce soit un outil très puissant et polyvalent, la nécessité d'apprendre une pléthore de nouvelles commandes et de les taper à la main dans un terminal pour les utiliser peut être une perspective décourageante pour beaucoup de nouveaux utilisateurs. 
+
+Développé exclusivement par l'équipe Manjaro, l'outil convivial '''pacman-gui''' ('''[[Pacman|pacman]]''' Graphical User Interface) permet aux utilisateurs d'effectuer toute une gamme de tâches usuelles d'un clic de souris. Pacman &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager lui-même est un gestionnaire de paquets développé spécialement pour Arch Linux, et utilisé pour installer, mettre à jour, paramétrer et supprimer des logiciels (par exemple, pour gérer les paquets logiciels). Ainsi, sans avoir besoin des connaissances nécessaires pour utiliser pacman dans le terminal, les nouveaux utilisateurs peuvent utiliser ''pacman-gui'' pour facilement:
+
+* Mettre à jour et maintenir le système
+* Ajouter, supprimer, rechercher un logiciel, et
+* Obtenir des informations précieuses sur un logiciel
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Synchronisation de la base de données=
+
+[[File:pcsyncdb2-082.png|thumb|left|375px]]
+
+
+Le système Manjaro contient une base de données de tous les paquets logiciels (par exemple mises à jour logicielles et applications) qui sont disponibles dans les dépôts officiels. Ceci permet d'aider ''pacman'' à trouver et télécharger ces paquets pour installation. Il est donc important de garder à jour cette base de données, sinon ''pacman'' ne sera pas capable de trouver et télécharger un paquet logiciel demandé, même s'il est disponible. Ça peut être réalisé en cliquant sur le bouton '''Sync DB''' ce qui signifie ''Synchronise Database''.
+
+La base de données va être automatiquement actualisée lors de la mise à jour du système (voir ci-dessous). Cependant, la fonction ''Synchronise Database'' est plus complète, car au lieu de seulement la rafraîchir et la mettre à jour, elle va la reconstruire complètement. En utilisant cette fonction, l'utilisateur a aussi la possibilité de mettre à jour la base de données sans avoir besoin d'effectuer une mise à jour du système entier en même temps. Il est recommandé de synchroniser la base de données avec les dépôts Manjaro au moins une fois toutes les deux semaines.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Mise à jour du système=
+
+[[File:pcud2-082.png|thumb|left|375px]]
+
+
+Manjaro utilise un modèle de développement 'rolling release', ce qui signifie qu'il est possible d'avoir le système le plus récent sans avoir à installer une quelconque nouvelle version; il est même possible d'installer une version beaucoup plus ancienne et de la faire évoluer vers la toute dernière. En tant que système basé sur Arch, une autre fonctionnalité est que Manjaro a aussi accès aux logiciels les plus en pointe et flambants neufs. De nouvelles mises à jour pour le système ainsi que pour les applications installées vont pour cette raison être fréquemment proposées. Il est donc important de tirer un plein avantage de ces fonctionnalités en s'assurant que le système est complètement à jour.
+
+Bien que le système de ''notification de mise jour Kalu'' fournisse automatiquement une notification quand de nouvelles mises à jour sont disponibles, il est aussi possible de vérifier les mises à jour et de les installer via le bouton '''Update System'''. L'utilisation de cette fonction entraîne aussi le rafraîchissement et la mise à jour de la base de données par toutes les mises à jour et nouveaux logiciels disponibles dans les dépôts Manjaro, ce qui sera fréquent.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Vidage du cache=
+
+[[File:pccc2b-082.png|thumb|left|375px]]
+
+
+Avant qu'une quelconque mise à jour ou une application logicielle puisse être effectivement installée, elles doit d'abord être téléchargée et stockée dans le ''cache'' du système. Celui-ci peut être vu comme un dossier temporaire utilisé dans cet exemple pour stocker le logiciel téléchargé en attente d'installation. Dès que le logiciel contenu dans le cache système a été installé, il va en être automatiquement supprimé. Toutefois, il est aussi possible de vider le cache système en cliquant sur le bouton '''Clear Cache'''. Au cours du processus, il sera nécessaire de confirmer que le cache et les dépôts non utilisés doivent être supprimés en tapant '''y''' pour 'yes' à l'invite.
+
+L'utilisation de cette fonction peut être à l'occasion intéressante étant donné que le cache système peut ne pas avoir été vidé entièrement, en particulier si un essai précédent d'installation d'une nouvelle mise à jour ou d'une application logicielle a échoué pour une raison ou une autre. Il est recommandé de vider le cache système au moins une fois par mois.
+&lt;br clear=&quot;all&quot; /&gt;
+
+ 
+=Téléchargement et installation d'un nouveau logiciel=
+
+[[File:pcinst2-082.png|thumb|left|375px]]
+
+
+{{note|''pacman-gui'' ne peut être utilisé que pour installer des nouveaux logiciels disponibles dans les dépôts officiels Manjaro. Pour télécharger et installer des logiciels du dépôt '''AUR''' ('''A'''rch '''U'''ser '''R'''epository), il sera nécessaire d'utiliser '''yaourt''' dans un terminal.}}
+
+
+De nouveaux paquets logiciels et des applications peuvent être téléchargés à la demande depuis les dépôts Manjaro officiels en cliquant d'abord sur le bouton '''Install Packages''', puis en tapant le nom du ou des paquets logiciels désirés lors de l'invite. Durant le processus d'installation, il va falloir confirmer l'installation en entrant '''y''' pour 'yes' à l'invite. Plusieurs paquets logiciels différents peuvent aussi être téléchargés en même temps, en séparant les noms par un espace entre chacun. Par exemple, pour télécharger les applications logicielles ''leafpad'', ''abiword'', et ''gnumeric'' en même temps, il faudra entrer lors de l'invite:
+
+ leafpad abiword gnumeric
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Conventions de nommage==
+
+[[File:pcinst3-082.png|thumb|left|375px]]
+
+
+Pour aider pacman à télécharger et installer un paquet logiciel donné, il est &lt;u&gt;absolument essentiel&lt;/u&gt; e taper son nom correctement à l'invite. En conséquence, lorsque vous entrez le nom d'un paquet à installer, assurez-vous que les conventions suivantes sont appliquées:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+Par exemple, pour installer l'application logicielle ''leafpad'', son nom doit être entré comme suit:
+
+ leafpad
+
+
+Si toutefois 'Leafpad' ou 'LEAFPAD' (majuscules), 'leedpaf' (mauvaise orthographe), ou 'leaf' (partie du nom) étaient entrés à la place, alors pacman serait incapable de trouver, télécharger ou installer cette application. Le même principe s'applique à toutes les installations logicielles.
+
+
+{{tip|l'application Package Browser va toujours vous afficher les noms corrects des logiciels. 
+En ce qui concerne la saisie du nom complet du paquet, il est également intéressant de noter que vous n'aurez jamais à indiquer le numéro de version. Par exemple, bien que ''leafpad 0.8.18.1-3'' puisse être disponible, vous ne devrez entrer que ''leafpad'' seul pour effectuer le téléchargement.}}
+
+
+==Note sur les dépendances==
+
+[[File:pcinst4-082.png|thumb|left|375px]]
+
+
+En particulier lors de l'installation d'un nouveau logiciel, plusieurs autres logiciels peuvent également être installés automatiquement aussi. Ils sont connus en tant que '''dépendances''', car ils sont nécessaires pour que ce qui est installé puisse fonctionner correctement. En d'autres termes, le logiciel en cours de téléchargement en ''dépend''. Par exemple, si le ''VLC Media Player'' devait être installé, plusieurs autres logiciels – lui permettant de jouer différents formats de médias – seraient également téléchargés automatiquement, s'ils ne sont pas déjà installés sur le système. Sans eux, le Media Player ne serait pas en mesure de jouer certains formats de médias, ou peut-être pas en mesure de jouer quoi que ce soit!
+
+
+{{tip|Vous n'aurez pas besoin de vous inquiéter des dépendances vous-même, car ils seront automatiquement identifiés et téléchargés pour vous lorsque cela sera nécessaire.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation de paquets logiciels locaux=
+
+[[File:pcilp-082.png|thumb|left|375px]]
+
+
+{{warning|cette fonctionnalité n'est pas conseillée aux nouveaux utilisateurs. Elle ne doit être utilisée que pour installer des fichiers ''pkg.tar.xz'' téléchargés.}}
+
+
+Bien qu'il soit recommandé de télécharger et d'installer les logiciels à partir des dépôts officiels Manjaro lorsque cela est possible, il est également possible de télécharger des logiciels ailleurs sur Internet et de les installer localement sur le ''système''. Ceci est effectué en cliquant d'abord sur le bouton '''Install local package''', puis en sélectionnant le fichier '''pkg.tar.gz''' approprié. Ce type de fichier lui-même peut être considéré comme similaire à un fichier compressé ''zip''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Suppression de paquets logiciels installés=
+
+[[File:pcrem2-082.png|thumb|left|375px]]
+
+
+{{warning|soyez prudent et veillez à ne pas supprimer un logiciel indispensable au système.}}
+
+
+Les paquets logiciels et les applications peuvent être supprimés du système en cliquant d'abord sur le bouton '''Remove Package''', puis en entrant le nom du ou des paquets à supprimer lorsque vous y êtes invité. Pendant le processus de suppression, il sera nécessaire de confirmer la suppression en tapant '''y''' pour 'yes' à l'invite. Les conventions de nommage sont les mêmes que lors du téléchargement et de l'installation de nouveaux logiciels:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour supprimer l'application logicielle installée ''xfburn'', entrez son nom comme suit:
+
+ xfburn
+
+
+A nouveau, il est aussi possible se supprimer plusieurs paquets logiciels en même temps, en entrant chaque nom avec un espace entre eux. Par exemple, pour supprimer les applications  ''leafpad'', ''abiword'', et ''gnumeric'' simultanément, il faudra entrer à l'invite:
+
+ leafpad abiword gnumeric
+
+
+{{tip|La fonction ''Remove Packages'' est également utile pour supprimer les paquets logiciels '''orphelins''' du système. Ce sont les paquets qui ont été une fois – ou au moins été destinés à être – des dépendances d'autre chose, mais qui ne sont pas réellement utilisés par un autre logiciel, et donc ne servent à rien. Bien que les ''orphelins'' ne puissent pas faire de mal par eux-mêmes, il est préférable de garder le système propre de tout encombrement inutile. Les orphelins peuvent aussi être facilement identifiés par l'application ''Package Browser''.}}
+
+
+=Recherche de paquets logiciels=
+
+[[File:pcsearch2-082.png|thumb|left|375px]]
+
+
+Bien qu'il soit recommandé d'utiliser ''Package Browser'' pour rechercher des logiciels – à la fois déjà installés ou disponibles dans les dépôts pour installation – ceci peut être effectué en cliquant d'abord sur le bouton '''Search Packages''', puis en entrant le nom du paquet recherché lors de l'invite. Les conventions de nommage sont les mêmes que lors de l'installation ou de la suppression de logiciels: 
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' use the full name.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour rechercher le navigateur web ''firefox'', entrez ce qui suit à l'invite:
+
+ firefox
+
+
+Les informations fournies vont inclure:
+
+* Tous les autres paquets en relation (par exemple les packs de langue de Firefox)
+* Le nom du dépôt où le paquet est disponible pour téléchargement et installation
+* La version du paquet, et
+* Si le paquet a été installé ou non
+
+
+{{tip|Des informations plus détaillées sur les paquets logiciels installés peuvent être trouvées en cliquant sur le bouton '''package details''' (voir ci-dessous).}}
+
+
+=Identification du paquet logiciel d'un fichier=
+
+[[File:pcidfile2b-082.png|thumb|left|375px]]
+
+
+{{note|Cette fonction peut être utile pour les utilisateurs plus expérimentés, ou du moins ceux qui ont une connaissance suffisante (et la confiance) pour spécifier l'emplacement des fichiers.}}
+
+
+Il n'est pas toujours évident de savoir à quoi un fichier particulier est utilisé, ou, plus précisément, qui l'utilise. Pour identifier quel paquet ou application utilise un fichier particulier, cliquez d'abord sur le bouton '''Search File''', puis indiquez l'emplacement et le nom du fichier approprié. '''Pour utiliser cette fonction, il sera donc nécessaire de savoir comment spécifier l'emplacement complet (c'est-à-dire le répertoire ou le chemin du dossier) où ce fichier est stocké.''' Les conventions de base pour ce faire sont les suivantes:
+
+* les noms de dossiers et de fichiers sont sensibles à la casse
+* les noms de dossiers et de fichiers sont séparés par une barre oblique ('''/''').
+&lt;br clear=&quot;all&quot; /&gt;
+
+A titre d'exemple, la fonction ''Search File'' sera utilisée pour identifier ce qui utilise le fichier '''grub.cfg'''. Dans ce cas, le fichier ''grub.cfg'' est stocké dans le répertoire ''grub'', qui lui-même est stocké dans le répertoire de démarrage (''/boot''). Par conséquent, ce qui suit doit être entré lors de l'invite:
+
+ /boot/grub/grub.cfg
+
+
+{{tip|Si le fichier souhaité est d'abord trouvé en utilisant le '''gestionnaire de fichiers''', alors le chemin à utiliser sera dans la barre d'adresse de celui-ci.}}
+
+
+Comme illustré, il a été confirmé que le fichier grub.cfg est utilisé (c'est-à-dire propriété) par le GRUB ('''GR'''and '''U'''nified '''B'''ootloader), qui est responsable de démarrer Manjaro lorsque l'ordinateur est allumé.
+
+
+=Obtenir des informations détaillées sur les paquets logiciels installés=
+
+[[File:pcpkinfo2-082.png|thumb|left|375px]]
+
+
+{{tip|Des informations détaillées similaires sur tout paquet donné de logiciel – installé ou disponible pour l'installation – peuvent également être fournies par l'application ''Package Browser''.}}
+
+
+Bien que les informations de base sur un paquet logiciel puissent être obtenues en utilisant le bouton ''Search Packages'', un compte-rendu beaucoup plus détaillé et complet de &lt;u&gt;logiciels installés&lt;/u&gt; peut être obtenu en cliquant d'abord sur le bouton '''Package Details''', puis en entrant le nom du paquet approprié à l'invite. Encore une fois, comme avec l'installation, la suppression ou l'obtention d'informations de base sur un logiciel:
+
+''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour obtenir des informations détaillées sur ''gedit'', entrez à l'invite:
+
+ gedit
+
+
+L'information fournie va inclure:
+
+* Tous les paquets logiciels qui en sont des dépendances
+* Tous les paquets logiciels qui en dépendent
+* La taille du paquet
+* Quand le paquet a été créé
+* Quand le paquet a été installé, et
+* Si vous avez choisi d'installer ce paquet, ou s'il a été installé automatiquement en tant que dépendance de quelque chose d'autre 
+
+
+=Accéder au blog Manjaro=
+
+Le blog Manjaro peut être consulté directement dans le navigateur Internet par défaut en cliquant sur le bouton '''Manjaro Linux News'''. Combiné avec le '''notificateur Kalu du bureau''', il est facile de se tenir à jour des dernières nouvelles et événements Manjaro!
+
+
+=Lancement de l'application Package Browser=
+
+Bien que le navigateur de paquets (PkgBrowser) puisse être choisi depuis le menu du bureau, il peut également être exécuté directement à partir de pacman-gui en cliquant sur le bouton '''Open PkgBrowser'''. Le guide '''Package Browser''' fournit des informations plus détaillées sur la façon d'utiliser cette application.</text>
+      <sha1>boo9inv4rj5opeum23l5cpx27xqkyi7</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3108</id>
+      <parentid>3011</parentid>
+      <timestamp>2012-12-25T23:03:25Z</timestamp>
+      <contributor>
+        <username>Verityproductions</username>
+        <id>4</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16650">=Vue d'ensemble=
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+{{tip|Bien que ''pacman-gui'' fournisse des fonctions de recherche des paquets installés et dispo-nibles, il est recommandé d'utiliser plutôt '''[[Package Browser]]''' pour le faire, quand c'est possible.}}
+
+Les systèmes Arch et basés sur Arch reposent traditionnellement sur la ''ligne de commande'' pour effectuer des tâches liées au système, telles que la mise à jour du système et l'installation de nouvelles applications logicielles. Bien que ce soit un outil très puissant et polyvalent, la nécessité d'apprendre une pléthore de nouvelles commandes et de les taper à la main dans un terminal pour les utiliser peut être une perspective décourageante pour beaucoup de nouveaux utilisateurs. 
+
+Développé exclusivement par l'équipe Manjaro, l'outil convivial '''pacman-gui''' ('''[[Pacman|pacman]]''' Graphical User Interface) permet aux utilisateurs d'effectuer toute une gamme de tâches usuelles d'un clic de souris. Pacman &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager lui-même est un gestionnaire de paquets développé spécialement pour Arch Linux, et utilisé pour installer, mettre à jour, paramétrer et supprimer des logiciels (par exemple, pour gérer les paquets logiciels). Ainsi, sans avoir besoin des connaissances nécessaires pour utiliser pacman dans le terminal, les nouveaux utilisateurs peuvent utiliser ''pacman-gui'' pour facilement:
+
+* Mettre à jour et maintenir le système
+* Ajouter, supprimer, rechercher un logiciel, et
+* Obtenir des informations précieuses sur un logiciel
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Synchronisation de la base de données=
+
+[[File:pcsyncdb2-082.png|thumb|left|375px]]
+
+
+Le système Manjaro contient une base de données de tous les paquets logiciels (par exemple mises à jour logicielles et applications) qui sont disponibles dans les dépôts officiels. Ceci permet d'aider ''pacman'' à trouver et télécharger ces paquets pour installation. Il est donc important de garder à jour cette base de données, sinon ''pacman'' ne sera pas capable de trouver et télécharger un paquet logiciel demandé, même s'il est disponible. Ça peut être réalisé en cliquant sur le bouton '''Sync DB''' ce qui signifie ''Synchronise Database''.
+
+La base de données va être automatiquement actualisée lors de la mise à jour du système (voir ci-dessous). Cependant, la fonction ''Synchronise Database'' est plus complète, car au lieu de seulement la rafraîchir et la mettre à jour, elle va la reconstruire complètement. En utilisant cette fonction, l'utilisateur a aussi la possibilité de mettre à jour la base de données sans avoir besoin d'effectuer une mise à jour du système entier en même temps. Il est recommandé de synchroniser la base de données avec les dépôts Manjaro au moins une fois toutes les deux semaines.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Mise à jour du système=
+
+[[File:pcud2-082.png|thumb|left|375px]]
+
+
+Manjaro utilise un modèle de développement 'rolling release', ce qui signifie qu'il est possible d'avoir le système le plus récent sans avoir à installer une quelconque nouvelle version; il est même possible d'installer une version beaucoup plus ancienne et de la faire évoluer vers la toute dernière. En tant que système basé sur Arch, une autre fonctionnalité est que Manjaro a aussi accès aux logiciels les plus en pointe et flambants neufs. De nouvelles mises à jour pour le système ainsi que pour les applications installées vont pour cette raison être fréquemment proposées. Il est donc important de tirer un plein avantage de ces fonctionnalités en s'assurant que le système est complètement à jour.
+
+Bien que le système de ''notification de mise jour Kalu'' fournisse automatiquement une notification quand de nouvelles mises à jour sont disponibles, il est aussi possible de vérifier les mises à jour et de les installer via le bouton '''Update System'''. L'utilisation de cette fonction entraîne aussi le rafraîchissement et la mise à jour de la base de données par toutes les mises à jour et nouveaux logiciels disponibles dans les dépôts Manjaro, ce qui sera fréquent.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Vidage du cache=
+
+[[File:pccc2b-082.png|thumb|left|375px]]
+
+
+Avant qu'une quelconque mise à jour ou une application logicielle puisse être effectivement installée, elles doit d'abord être téléchargée et stockée dans le ''cache'' du système. Celui-ci peut être vu comme un dossier temporaire utilisé dans cet exemple pour stocker le logiciel téléchargé en attente d'installation. Dès que le logiciel contenu dans le cache système a été installé, il va en être automatiquement supprimé. Toutefois, il est aussi possible de vider le cache système en cliquant sur le bouton '''Clear Cache'''. Au cours du processus, il sera nécessaire de confirmer que le cache et les dépôts non utilisés doivent être supprimés en tapant '''y''' pour 'yes' à l'invite.
+
+L'utilisation de cette fonction peut être à l'occasion intéressante étant donné que le cache système peut ne pas avoir été vidé entièrement, en particulier si un essai précédent d'installation d'une nouvelle mise à jour ou d'une application logicielle a échoué pour une raison ou une autre. Il est recommandé de vider le cache système au moins une fois par mois.
+&lt;br clear=&quot;all&quot; /&gt;
+
+ 
+=Téléchargement et installation d'un nouveau logiciel=
+
+[[File:pcinst2-082.png|thumb|left|375px]]
+
+
+{{note|''pacman-gui'' ne peut être utilisé que pour installer des nouveaux logiciels disponibles dans les dépôts officiels Manjaro. Pour télécharger et installer des logiciels du dépôt '''AUR''' ('''A'''rch '''U'''ser '''R'''epository), il sera nécessaire d'utiliser '''yaourt''' dans un terminal.}}
+
+
+De nouveaux paquets logiciels et des applications peuvent être téléchargés à la demande depuis les dépôts Manjaro officiels en cliquant d'abord sur le bouton '''Install Packages''', puis en tapant le nom du ou des paquets logiciels désirés lors de l'invite. Durant le processus d'installation, il va falloir confirmer l'installation en entrant '''y''' pour 'yes' à l'invite. Plusieurs paquets logiciels différents peuvent aussi être téléchargés en même temps, en séparant les noms par un espace entre chacun. Par exemple, pour télécharger les applications logicielles ''leafpad'', ''abiword'', et ''gnumeric'' en même temps, il faudra entrer lors de l'invite:
+
+ leafpad abiword gnumeric
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Conventions de nommage==
+
+[[File:pcinst3-082.png|thumb|left|375px]]
+
+
+Pour aider pacman à télécharger et installer un paquet logiciel donné, il est &lt;u&gt;absolument essentiel&lt;/u&gt; e taper son nom correctement à l'invite. En conséquence, lorsque vous entrez le nom d'un paquet à installer, assurez-vous que les conventions suivantes sont appliquées:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+Par exemple, pour installer l'application logicielle ''leafpad'', son nom doit être entré comme suit:
+
+ leafpad
+
+
+Si toutefois 'Leafpad' ou 'LEAFPAD' (majuscules), 'leedpaf' (mauvaise orthographe), ou 'leaf' (partie du nom) étaient entrés à la place, alors pacman serait incapable de trouver, télécharger ou installer cette application. Le même principe s'applique à toutes les installations logicielles.
+
+
+{{tip|l'application Package Browser va toujours vous afficher les noms corrects des logiciels. 
+En ce qui concerne la saisie du nom complet du paquet, il est également intéressant de noter que vous n'aurez jamais à indiquer le numéro de version. Par exemple, bien que ''leafpad 0.8.18.1-3'' puisse être disponible, vous ne devrez entrer que ''leafpad'' seul pour effectuer le téléchargement.}}
+
+
+==Note sur les dépendances==
+
+[[File:pcinst4-082.png|thumb|left|375px]]
+
+
+En particulier lors de l'installation d'un nouveau logiciel, plusieurs autres logiciels peuvent également être installés automatiquement aussi. Ils sont connus en tant que '''dépendances''', car ils sont nécessaires pour que ce qui est installé puisse fonctionner correctement. En d'autres termes, le logiciel en cours de téléchargement en ''dépend''. Par exemple, si le ''VLC Media Player'' devait être installé, plusieurs autres logiciels – lui permettant de jouer différents formats de médias – seraient également téléchargés automatiquement, s'ils ne sont pas déjà installés sur le système. Sans eux, le Media Player ne serait pas en mesure de jouer certains formats de médias, ou peut-être pas en mesure de jouer quoi que ce soit!
+
+
+{{tip|Vous n'aurez pas besoin de vous inquiéter des dépendances vous-même, car ils seront automatiquement identifiés et téléchargés pour vous lorsque cela sera nécessaire.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation de paquets logiciels locaux=
+
+[[File:pcilp-082.png|thumb|left|375px]]
+
+
+{{warning|cette fonctionnalité n'est pas conseillée aux nouveaux utilisateurs. Elle ne doit être utilisée que pour installer des fichiers ''pkg.tar.xz'' téléchargés.}}
+
+
+Bien qu'il soit recommandé de télécharger et d'installer les logiciels à partir des dépôts officiels Manjaro lorsque cela est possible, il est également possible de télécharger des logiciels ailleurs sur Internet et de les installer localement sur le ''système''. Ceci est effectué en cliquant d'abord sur le bouton '''Install local package''', puis en sélectionnant le fichier '''pkg.tar.gz''' approprié. Ce type de fichier lui-même peut être considéré comme similaire à un fichier compressé ''zip''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Suppression de paquets logiciels installés=
+
+[[File:pcrem2-082.png|thumb|left|375px]]
+
+
+{{warning|soyez prudent et veillez à ne pas supprimer un logiciel indispensable au système.}}
+
+
+Les paquets logiciels et les applications peuvent être supprimés du système en cliquant d'abord sur le bouton '''Remove Package''', puis en entrant le nom du ou des paquets à supprimer lorsque vous y êtes invité. Pendant le processus de suppression, il sera nécessaire de confirmer la suppression en tapant '''y''' pour 'yes' à l'invite. Les conventions de nommage sont les mêmes que lors du téléchargement et de l'installation de nouveaux logiciels:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour supprimer l'application logicielle installée ''xfburn'', entrez son nom comme suit:
+
+ xfburn
+
+
+A nouveau, il est aussi possible se supprimer plusieurs paquets logiciels en même temps, en entrant chaque nom avec un espace entre eux. Par exemple, pour supprimer les applications  ''leafpad'', ''abiword'', et ''gnumeric'' simultanément, il faudra entrer à l'invite:
+
+ leafpad abiword gnumeric
+
+
+{{tip|La fonction ''Remove Packages'' est également utile pour supprimer les paquets logiciels '''orphelins''' du système. Ce sont les paquets qui ont été une fois – ou au moins été destinés à être – des dépendances d'autre chose, mais qui ne sont pas réellement utilisés par un autre logiciel, et donc ne servent à rien. Bien que les ''orphelins'' ne puissent pas faire de mal par eux-mêmes, il est préférable de garder le système propre de tout encombrement inutile. Les orphelins peuvent aussi être facilement identifiés par l'application ''Package Browser''.}}
+
+
+=Recherche de paquets logiciels=
+
+[[File:pcsearch2-082.png|thumb|left|375px]]
+
+
+Bien qu'il soit recommandé d'utiliser ''Package Browser'' pour rechercher des logiciels – à la fois déjà installés ou disponibles dans les dépôts pour installation – ceci peut être effectué en cliquant d'abord sur le bouton '''Search Packages''', puis en entrant le nom du paquet recherché lors de l'invite. Les conventions de nommage sont les mêmes que lors de l'installation ou de la suppression de logiciels: 
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' use the full name.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour rechercher le navigateur web ''firefox'', entrez ce qui suit à l'invite:
+
+ firefox
+
+
+Les informations fournies vont inclure:
+
+* Tous les autres paquets en relation (par exemple les packs de langue de Firefox)
+* Le nom du dépôt où le paquet est disponible pour téléchargement et installation
+* La version du paquet, et
+* Si le paquet a été installé ou non
+
+
+{{tip|Des informations plus détaillées sur les paquets logiciels installés peuvent être trouvées en cliquant sur le bouton '''package details''' (voir ci-dessous).}}
+
+
+=Identification du paquet logiciel d'un fichier=
+
+[[File:pcidfile2b-082.png|thumb|left|375px]]
+
+
+{{note|Cette fonction peut être utile pour les utilisateurs plus expérimentés, ou du moins ceux qui ont une connaissance suffisante (et la confiance) pour spécifier l'emplacement des fichiers.}}
+
+
+Il n'est pas toujours évident de savoir à quoi un fichier particulier est utilisé, ou, plus précisément, qui l'utilise. Pour identifier quel paquet ou application utilise un fichier particulier, cliquez d'abord sur le bouton '''Search File''', puis indiquez l'emplacement et le nom du fichier approprié. '''Pour utiliser cette fonction, il sera donc nécessaire de savoir comment spécifier l'emplacement complet (c'est-à-dire le répertoire ou le chemin du dossier) où ce fichier est stocké.''' Les conventions de base pour ce faire sont les suivantes:
+
+* les noms de dossiers et de fichiers sont sensibles à la casse
+* les noms de dossiers et de fichiers sont séparés par une barre oblique ('''/''').
+&lt;br clear=&quot;all&quot; /&gt;
+
+A titre d'exemple, la fonction ''Search File'' sera utilisée pour identifier ce qui utilise le fichier '''grub.cfg'''. Dans ce cas, le fichier ''grub.cfg'' est stocké dans le répertoire ''grub'', qui lui-même est stocké dans le répertoire de démarrage (''/boot''). Par conséquent, ce qui suit doit être entré lors de l'invite:
+
+ /boot/grub/grub.cfg
+
+
+{{tip|Si le fichier souhaité est d'abord trouvé en utilisant le '''gestionnaire de fichiers''', alors le chemin à utiliser sera dans la barre d'adresse de celui-ci.}}
+
+
+Comme illustré, il a été confirmé que le fichier grub.cfg est utilisé (c'est-à-dire propriété) par le GRUB ('''GR'''and '''U'''nified '''B'''ootloader), qui est responsable de démarrer Manjaro lorsque l'ordinateur est allumé.
+
+
+=Obtenir des informations détaillées sur les paquets logiciels installés=
+
+[[File:pcpkinfo2-082.png|thumb|left|375px]]
+
+
+{{tip|Des informations détaillées similaires sur tout paquet donné de logiciel – installé ou disponible pour l'installation – peuvent également être fournies par l'application ''Package Browser''.}}
+
+
+Bien que les informations de base sur un paquet logiciel puissent être obtenues en utilisant le bouton ''Search Packages'', un compte-rendu beaucoup plus détaillé et complet de &lt;u&gt;logiciels installés&lt;/u&gt; peut être obtenu en cliquant d'abord sur le bouton '''Package Details''', puis en entrant le nom du paquet approprié à l'invite. Encore une fois, comme avec l'installation, la suppression ou l'obtention d'informations de base sur un logiciel:
+
+''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour obtenir des informations détaillées sur ''gedit'', entrez à l'invite:
+
+ gedit
+
+
+L'information fournie va inclure:
+
+* Tous les paquets logiciels qui en sont des dépendances
+* Tous les paquets logiciels qui en dépendent
+* La taille du paquet
+* Quand le paquet a été créé
+* Quand le paquet a été installé, et
+* Si vous avez choisi d'installer ce paquet, ou s'il a été installé automatiquement en tant que dépendance de quelque chose d'autre 
+
+
+=Accéder au blog Manjaro=
+
+Le blog Manjaro peut être consulté directement dans le navigateur Internet par défaut en cliquant sur le bouton '''Manjaro Linux News'''. Combiné avec le '''notificateur Kalu du bureau''', il est facile de se tenir à jour des dernières nouvelles et événements Manjaro!
+
+
+=Lancement de l'application Package Browser=
+
+Bien que le navigateur de paquets (PkgBrowser) puisse être choisi depuis le menu du bureau, il peut également être exécuté directement à partir de pacman-gui en cliquant sur le bouton '''Open PkgBrowser'''. Le guide '''Package Browser''' fournit des informations plus détaillées sur la façon d'utiliser cette application.
+
+[[Category:Présentation]]</text>
+      <sha1>ssw9vbd4lmtro25vqzx9k5oumld9eas</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3177</id>
+      <parentid>3108</parentid>
+      <timestamp>2012-12-26T17:42:13Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="16675">=Vue d'ensemble=
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+{{Astuce|Bien que ''pacman-gui'' fournisse des fonctions de recherche des paquets installés et dispo-nibles, il est recommandé d'utiliser plutôt '''[[Package Browser]]''' pour le faire, quand c'est possible.}}
+
+Les systèmes Arch et basés sur Arch reposent traditionnellement sur la ''ligne de commande'' pour effectuer des tâches liées au système, telles que la mise à jour du système et l'installation de nouvelles applications logicielles. Bien que ce soit un outil très puissant et polyvalent, la nécessité d'apprendre une pléthore de nouvelles commandes et de les taper à la main dans un terminal pour les utiliser peut être une perspective décourageante pour beaucoup de nouveaux utilisateurs. 
+
+Développé exclusivement par l'équipe Manjaro, l'outil convivial '''pacman-gui''' ('''[[Pacman|pacman]]''' Graphical User Interface) permet aux utilisateurs d'effectuer toute une gamme de tâches usuelles d'un clic de souris. Pacman &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager lui-même est un gestionnaire de paquets développé spécialement pour Arch Linux, et utilisé pour installer, mettre à jour, paramétrer et supprimer des logiciels (par exemple, pour gérer les paquets logiciels). Ainsi, sans avoir besoin des connaissances nécessaires pour utiliser pacman dans le terminal, les nouveaux utilisateurs peuvent utiliser ''pacman-gui'' pour facilement:
+
+* Mettre à jour et maintenir le système
+* Ajouter, supprimer, rechercher un logiciel, et
+* Obtenir des informations précieuses sur un logiciel
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Synchronisation de la base de données=
+
+[[File:pcsyncdb2-082.png|thumb|left|375px]]
+
+
+Le système Manjaro contient une base de données de tous les paquets logiciels (par exemple mises à jour logicielles et applications) qui sont disponibles dans les dépôts officiels. Ceci permet d'aider ''pacman'' à trouver et télécharger ces paquets pour installation. Il est donc important de garder à jour cette base de données, sinon ''pacman'' ne sera pas capable de trouver et télécharger un paquet logiciel demandé, même s'il est disponible. Ça peut être réalisé en cliquant sur le bouton '''Sync DB''' ce qui signifie ''Synchronise Database''.
+
+La base de données va être automatiquement actualisée lors de la mise à jour du système (voir ci-dessous). Cependant, la fonction ''Synchronise Database'' est plus complète, car au lieu de seulement la rafraîchir et la mettre à jour, elle va la reconstruire complètement. En utilisant cette fonction, l'utilisateur a aussi la possibilité de mettre à jour la base de données sans avoir besoin d'effectuer une mise à jour du système entier en même temps. Il est recommandé de synchroniser la base de données avec les dépôts Manjaro au moins une fois toutes les deux semaines.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Mise à jour du système=
+
+[[File:pcud2-082.png|thumb|left|375px]]
+
+
+Manjaro utilise un modèle de développement 'rolling release', ce qui signifie qu'il est possible d'avoir le système le plus récent sans avoir à installer une quelconque nouvelle version; il est même possible d'installer une version beaucoup plus ancienne et de la faire évoluer vers la toute dernière. En tant que système basé sur Arch, une autre fonctionnalité est que Manjaro a aussi accès aux logiciels les plus en pointe et flambants neufs. De nouvelles mises à jour pour le système ainsi que pour les applications installées vont pour cette raison être fréquemment proposées. Il est donc important de tirer un plein avantage de ces fonctionnalités en s'assurant que le système est complètement à jour.
+
+Bien que le système de ''notification de mise jour Kalu'' fournisse automatiquement une notification quand de nouvelles mises à jour sont disponibles, il est aussi possible de vérifier les mises à jour et de les installer via le bouton '''Update System'''. L'utilisation de cette fonction entraîne aussi le rafraîchissement et la mise à jour de la base de données par toutes les mises à jour et nouveaux logiciels disponibles dans les dépôts Manjaro, ce qui sera fréquent.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Vidage du cache=
+
+[[File:pccc2b-082.png|thumb|left|375px]]
+
+
+Avant qu'une quelconque mise à jour ou une application logicielle puisse être effectivement installée, elles doit d'abord être téléchargée et stockée dans le ''cache'' du système. Celui-ci peut être vu comme un dossier temporaire utilisé dans cet exemple pour stocker le logiciel téléchargé en attente d'installation. Dès que le logiciel contenu dans le cache système a été installé, il va en être automatiquement supprimé. Toutefois, il est aussi possible de vider le cache système en cliquant sur le bouton '''Clear Cache'''. Au cours du processus, il sera nécessaire de confirmer que le cache et les dépôts non utilisés doivent être supprimés en tapant '''y''' pour 'yes' à l'invite.
+
+L'utilisation de cette fonction peut être à l'occasion intéressante étant donné que le cache système peut ne pas avoir été vidé entièrement, en particulier si un essai précédent d'installation d'une nouvelle mise à jour ou d'une application logicielle a échoué pour une raison ou une autre. Il est recommandé de vider le cache système au moins une fois par mois.
+&lt;br clear=&quot;all&quot; /&gt;
+
+ 
+=Téléchargement et installation d'un nouveau logiciel=
+
+[[File:pcinst2-082.png|thumb|left|375px]]
+
+
+{{note|''pacman-gui'' ne peut être utilisé que pour installer des nouveaux logiciels disponibles dans les dépôts officiels Manjaro. Pour télécharger et installer des logiciels du dépôt '''AUR''' ('''A'''rch '''U'''ser '''R'''epository), il sera nécessaire d'utiliser '''yaourt''' dans un terminal.}}
+
+
+De nouveaux paquets logiciels et des applications peuvent être téléchargés à la demande depuis les dépôts Manjaro officiels en cliquant d'abord sur le bouton '''Install Packages''', puis en tapant le nom du ou des paquets logiciels désirés lors de l'invite. Durant le processus d'installation, il va falloir confirmer l'installation en entrant '''y''' pour 'yes' à l'invite. Plusieurs paquets logiciels différents peuvent aussi être téléchargés en même temps, en séparant les noms par un espace entre chacun. Par exemple, pour télécharger les applications logicielles ''leafpad'', ''abiword'', et ''gnumeric'' en même temps, il faudra entrer lors de l'invite:
+
+ leafpad abiword gnumeric
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Conventions de nommage==
+
+[[File:pcinst3-082.png|thumb|left|375px]]
+
+
+Pour aider pacman à télécharger et installer un paquet logiciel donné, il est &lt;u&gt;absolument essentiel&lt;/u&gt; e taper son nom correctement à l'invite. En conséquence, lorsque vous entrez le nom d'un paquet à installer, assurez-vous que les conventions suivantes sont appliquées:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+Par exemple, pour installer l'application logicielle ''leafpad'', son nom doit être entré comme suit:
+
+ leafpad
+
+
+Si toutefois 'Leafpad' ou 'LEAFPAD' (majuscules), 'leedpaf' (mauvaise orthographe), ou 'leaf' (partie du nom) étaient entrés à la place, alors pacman serait incapable de trouver, télécharger ou installer cette application. Le même principe s'applique à toutes les installations logicielles.
+
+
+{{Astuce|l'application Package Browser va toujours vous afficher les noms corrects des logiciels. 
+En ce qui concerne la saisie du nom complet du paquet, il est également intéressant de noter que vous n'aurez jamais à indiquer le numéro de version. Par exemple, bien que ''leafpad 0.8.18.1-3'' puisse être disponible, vous ne devrez entrer que ''leafpad'' seul pour effectuer le téléchargement.}}
+
+
+==Note sur les dépendances==
+
+[[File:pcinst4-082.png|thumb|left|375px]]
+
+
+En particulier lors de l'installation d'un nouveau logiciel, plusieurs autres logiciels peuvent également être installés automatiquement aussi. Ils sont connus en tant que '''dépendances''', car ils sont nécessaires pour que ce qui est installé puisse fonctionner correctement. En d'autres termes, le logiciel en cours de téléchargement en ''dépend''. Par exemple, si le ''VLC Media Player'' devait être installé, plusieurs autres logiciels – lui permettant de jouer différents formats de médias – seraient également téléchargés automatiquement, s'ils ne sont pas déjà installés sur le système. Sans eux, le Media Player ne serait pas en mesure de jouer certains formats de médias, ou peut-être pas en mesure de jouer quoi que ce soit!
+
+
+{{Astuce|Vous n'aurez pas besoin de vous inquiéter des dépendances vous-même, car ils seront automatiquement identifiés et téléchargés pour vous lorsque cela sera nécessaire.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installation de paquets logiciels locaux=
+
+[[File:pcilp-082.png|thumb|left|375px]]
+
+
+{{Attention|cette fonctionnalité n'est pas conseillée aux nouveaux utilisateurs. Elle ne doit être utilisée que pour installer des fichiers ''pkg.tar.xz'' téléchargés.}}
+
+
+Bien qu'il soit recommandé de télécharger et d'installer les logiciels à partir des dépôts officiels Manjaro lorsque cela est possible, il est également possible de télécharger des logiciels ailleurs sur Internet et de les installer localement sur le ''système''. Ceci est effectué en cliquant d'abord sur le bouton '''Install local package''', puis en sélectionnant le fichier '''pkg.tar.gz''' approprié. Ce type de fichier lui-même peut être considéré comme similaire à un fichier compressé ''zip''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Suppression de paquets logiciels installés=
+
+[[File:pcrem2-082.png|thumb|left|375px]]
+
+
+{{Attention|soyez prudent et veillez à ne pas supprimer un logiciel indispensable au système.}}
+
+
+Les paquets logiciels et les applications peuvent être supprimés du système en cliquant d'abord sur le bouton '''Remove Package''', puis en entrant le nom du ou des paquets à supprimer lorsque vous y êtes invité. Pendant le processus de suppression, il sera nécessaire de confirmer la suppression en tapant '''y''' pour 'yes' à l'invite. Les conventions de nommage sont les mêmes que lors du téléchargement et de l'installation de nouveaux logiciels:
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour supprimer l'application logicielle installée ''xfburn'', entrez son nom comme suit:
+
+ xfburn
+
+
+A nouveau, il est aussi possible se supprimer plusieurs paquets logiciels en même temps, en entrant chaque nom avec un espace entre eux. Par exemple, pour supprimer les applications  ''leafpad'', ''abiword'', et ''gnumeric'' simultanément, il faudra entrer à l'invite:
+
+ leafpad abiword gnumeric
+
+
+{{Astuce|La fonction ''Remove Packages'' est également utile pour supprimer les paquets logiciels '''orphelins''' du système. Ce sont les paquets qui ont été une fois – ou au moins été destinés à être – des dépendances d'autre chose, mais qui ne sont pas réellement utilisés par un autre logiciel, et donc ne servent à rien. Bien que les ''orphelins'' ne puissent pas faire de mal par eux-mêmes, il est préférable de garder le système propre de tout encombrement inutile. Les orphelins peuvent aussi être facilement identifiés par l'application ''Package Browser''.}}
+
+
+=Recherche de paquets logiciels=
+
+[[File:pcsearch2-082.png|thumb|left|375px]]
+
+
+Bien qu'il soit recommandé d'utiliser ''Package Browser'' pour rechercher des logiciels – à la fois déjà installés ou disponibles dans les dépôts pour installation – ceci peut être effectué en cliquant d'abord sur le bouton '''Search Packages''', puis en entrant le nom du paquet recherché lors de l'invite. Les conventions de nommage sont les mêmes que lors de l'installation ou de la suppression de logiciels: 
+
+'''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' use the full name.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour rechercher le navigateur web ''firefox'', entrez ce qui suit à l'invite:
+
+ firefox
+
+
+Les informations fournies vont inclure:
+
+* Tous les autres paquets en relation (par exemple les packs de langue de Firefox)
+* Le nom du dépôt où le paquet est disponible pour téléchargement et installation
+* La version du paquet, et
+* Si le paquet a été installé ou non
+
+
+{{Astuce|Des informations plus détaillées sur les paquets logiciels installés peuvent être trouvées en cliquant sur le bouton '''package details''' (voir ci-dessous).}}
+
+
+=Identification du paquet logiciel d'un fichier=
+
+[[File:pcidfile2b-082.png|thumb|left|375px]]
+
+
+{{note|Cette fonction peut être utile pour les utilisateurs plus expérimentés, ou du moins ceux qui ont une connaissance suffisante (et la confiance) pour spécifier l'emplacement des fichiers.}}
+
+
+Il n'est pas toujours évident de savoir à quoi un fichier particulier est utilisé, ou, plus précisément, qui l'utilise. Pour identifier quel paquet ou application utilise un fichier particulier, cliquez d'abord sur le bouton '''Search File''', puis indiquez l'emplacement et le nom du fichier approprié. '''Pour utiliser cette fonction, il sera donc nécessaire de savoir comment spécifier l'emplacement complet (c'est-à-dire le répertoire ou le chemin du dossier) où ce fichier est stocké.''' Les conventions de base pour ce faire sont les suivantes:
+
+* les noms de dossiers et de fichiers sont sensibles à la casse
+* les noms de dossiers et de fichiers sont séparés par une barre oblique ('''/''').
+&lt;br clear=&quot;all&quot; /&gt;
+
+A titre d'exemple, la fonction ''Search File'' sera utilisée pour identifier ce qui utilise le fichier '''grub.cfg'''. Dans ce cas, le fichier ''grub.cfg'' est stocké dans le répertoire ''grub'', qui lui-même est stocké dans le répertoire de démarrage (''/boot''). Par conséquent, ce qui suit doit être entré lors de l'invite:
+
+ /boot/grub/grub.cfg
+
+
+{{Astuce|Si le fichier souhaité est d'abord trouvé en utilisant le '''gestionnaire de fichiers''', alors le chemin à utiliser sera dans la barre d'adresse de celui-ci.}}
+
+
+Comme illustré, il a été confirmé que le fichier grub.cfg est utilisé (c'est-à-dire propriété) par le GRUB ('''GR'''and '''U'''nified '''B'''ootloader), qui est responsable de démarrer Manjaro lorsque l'ordinateur est allumé.
+
+
+=Obtenir des informations détaillées sur les paquets logiciels installés=
+
+[[File:pcpkinfo2-082.png|thumb|left|375px]]
+
+
+{{Astuce|Des informations détaillées similaires sur tout paquet donné de logiciel – installé ou disponible pour l'installation – peuvent également être fournies par l'application ''Package Browser''.}}
+
+
+Bien que les informations de base sur un paquet logiciel puissent être obtenues en utilisant le bouton ''Search Packages'', un compte-rendu beaucoup plus détaillé et complet de &lt;u&gt;logiciels installés&lt;/u&gt; peut être obtenu en cliquant d'abord sur le bouton '''Package Details''', puis en entrant le nom du paquet approprié à l'invite. Encore une fois, comme avec l'installation, la suppression ou l'obtention d'informations de base sur un logiciel:
+
+''1.''' utilisation de lettres minuscules (pas de majuscules)
+
+'''2.''' orthographe correcte, et
+
+'''3.''' utilisation du nom complet.
+&lt;br clear=&quot;all&quot; /&gt;
+
+Par exemple, pour obtenir des informations détaillées sur ''gedit'', entrez à l'invite:
+
+ gedit
+
+
+L'information fournie va inclure:
+
+* Tous les paquets logiciels qui en sont des dépendances
+* Tous les paquets logiciels qui en dépendent
+* La taille du paquet
+* Quand le paquet a été créé
+* Quand le paquet a été installé, et
+* Si vous avez choisi d'installer ce paquet, ou s'il a été installé automatiquement en tant que dépendance de quelque chose d'autre 
+
+
+=Accéder au blog Manjaro=
+
+Le blog Manjaro peut être consulté directement dans le navigateur Internet par défaut en cliquant sur le bouton '''Manjaro Linux News'''. Combiné avec le '''notificateur Kalu du bureau''', il est facile de se tenir à jour des dernières nouvelles et événements Manjaro!
+
+
+=Lancement de l'application Package Browser=
+
+Bien que le navigateur de paquets (PkgBrowser) puisse être choisi depuis le menu du bureau, il peut également être exécuté directement à partir de pacman-gui en cliquant sur le bouton '''Open PkgBrowser'''. Le guide '''Package Browser''' fournit des informations plus détaillées sur la façon d'utiliser cette application.
+
+[[Category:Présentation]]</text>
+      <sha1>irolquycjz2y2nuc19fhwn6lopzqdwn</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,381 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Barre de progression Pacman mangeant des pilules de puissance</title>
+    <ns>0</ns>
+    <id>642</id>
+    <revision>
+      <id>3926</id>
+      <timestamp>2013-01-02T22:18:31Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =  If you are bored of simply watching lines of hashes while downloading software packages in the terminal, then why not amaze your friends and show off the true po...&quot;</comment>
+      <text xml:space="preserve" bytes="2053">= Overview =
+
+If you are bored of simply watching lines of hashes while downloading software packages in the terminal, then why not amaze your friends and show off the true power of an Arch-based system by changing the progress bar to Pacman eating power pills instead? To do so, it will be necessary to amend the ''pacman configuration file'' (pacman.conf) using the terminal.
+
+
+= Opening the Pacman Configuration File =
+
+The syntax to open the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+= Adding the ILoveCandy Command =
+
+{{tip|Ensure that the command is input '''exactly''' as illustrated, including the correct use of capitalisation.}}
+
+
+[[file:pacmaneat.png|thumb|left|375px]]
+
+
+Once the pacman configuration file has been opened, it will be necessary to add the command &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt; to the '''#Misc options''' section, located near the middle of the file. An example has been provided below where this section has been amended accordingly:
+
+ '''# Misc options'''
+ #UseSyslog
+ #UseDelta
+ #TotalDownload
+ CheckSpace
+ #VerbosePkgLists
+ &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Saving the Pacman Configuration File =
+
+Once the amendment has been completed, save and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The change will take place with immediate effect!
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>hm2ct582zqdeew2n85g3lhitwnlqakk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3927</id>
+      <parentid>3926</parentid>
+      <timestamp>2013-01-02T22:20:20Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Saving the Pacman Configuration File */</comment>
+      <text xml:space="preserve" bytes="2101">= Overview =
+
+If you are bored of simply watching lines of hashes while downloading software packages in the terminal, then why not amaze your friends and show off the true power of an Arch-based system by changing the progress bar to Pacman eating power pills instead? To do so, it will be necessary to amend the ''pacman configuration file'' (pacman.conf) using the terminal.
+
+
+= Opening the Pacman Configuration File =
+
+The syntax to open the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+= Adding the ILoveCandy Command =
+
+{{tip|Ensure that the command is input '''exactly''' as illustrated, including the correct use of capitalisation.}}
+
+
+[[file:pacmaneat.png|thumb|left|375px]]
+
+
+Once the pacman configuration file has been opened, it will be necessary to add the command &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt; to the '''#Misc options''' section, located near the middle of the file. An example has been provided below where this section has been amended accordingly:
+
+ '''# Misc options'''
+ #UseSyslog
+ #UseDelta
+ #TotalDownload
+ CheckSpace
+ #VerbosePkgLists
+ &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Saving the Pacman Configuration File =
+
+Once the amendment has been completed, save and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The change will take place with immediate effect!
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>68s3iurmthar2g1issfzf9q0isc9rsd</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3928</id>
+      <parentid>3927</parentid>
+      <timestamp>2013-01-02T22:20:55Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2155">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+If you are bored of simply watching lines of hashes while downloading software packages in the terminal, then why not amaze your friends and show off the true power of an Arch-based system by changing the progress bar to Pacman eating power pills instead? To do so, it will be necessary to amend the ''pacman configuration file'' (pacman.conf) using the terminal.
+
+
+= Opening the Pacman Configuration File =
+
+The syntax to open the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+= Adding the ILoveCandy Command =
+
+{{tip|Ensure that the command is input '''exactly''' as illustrated, including the correct use of capitalisation.}}
+
+
+[[file:pacmaneat.png|thumb|left|375px]]
+
+
+Once the pacman configuration file has been opened, it will be necessary to add the command &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt; to the '''#Misc options''' section, located near the middle of the file. An example has been provided below where this section has been amended accordingly:
+
+ '''# Misc options'''
+ #UseSyslog
+ #UseDelta
+ #TotalDownload
+ CheckSpace
+ #VerbosePkgLists
+ &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Saving the Pacman Configuration File =
+
+Once the amendment has been completed, save and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The change will take place with immediate effect!
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>cgf6mhw1pyhon12k1oofvkosc0v5o0z</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3929</id>
+      <parentid>3928</parentid>
+      <timestamp>2013-01-02T22:28:37Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="2230">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Si vous trouvez ennuyeux de vous contenter de regarder dans le terminal des lignes de # lors de téléchargement de logiciels, alors pourquoi ne pas étonner vos amis et montrer la vraie puissance d'un système basé sur Arch en changeant la barre de progression pour Pacman en train de manger des pilules de puissance ? Pour ce faire, il sera nécessaire de modifier le fichier de configuration pacman (pacman.conf) à l'aide du terminal.
+
+= Opening the Pacman Configuration File =
+
+The syntax to open the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+
+= Adding the ILoveCandy Command =
+
+{{tip|Ensure that the command is input '''exactly''' as illustrated, including the correct use of capitalisation.}}
+
+
+[[file:pacmaneat.png|thumb|left|375px]]
+
+
+Once the pacman configuration file has been opened, it will be necessary to add the command &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt; to the '''#Misc options''' section, located near the middle of the file. An example has been provided below where this section has been amended accordingly:
+
+ '''# Misc options'''
+ #UseSyslog
+ #UseDelta
+ #TotalDownload
+ CheckSpace
+ #VerbosePkgLists
+ &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Saving the Pacman Configuration File =
+
+Once the amendment has been completed, save and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The change will take place with immediate effect!
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>qjtn5231g8wutj32zdkqza4srgqdc6y</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3930</id>
+      <parentid>3929</parentid>
+      <timestamp>2013-01-02T22:29:12Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Opening the Pacman Configuration File */</comment>
+      <text xml:space="preserve" bytes="2239">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Si vous trouvez ennuyeux de vous contenter de regarder dans le terminal des lignes de # lors de téléchargement de logiciels, alors pourquoi ne pas étonner vos amis et montrer la vraie puissance d'un système basé sur Arch en changeant la barre de progression pour Pacman en train de manger des pilules de puissance ? Pour ce faire, il sera nécessaire de modifier le fichier de configuration pacman (pacman.conf) à l'aide du terminal.
+
+= Ouverture du fichier de configuration de pacman =
+
+The syntax to open the pacman configuration file is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.conf
+
+= Adding the ILoveCandy Command =
+
+{{tip|Ensure that the command is input '''exactly''' as illustrated, including the correct use of capitalisation.}}
+
+
+[[file:pacmaneat.png|thumb|left|375px]]
+
+
+Once the pacman configuration file has been opened, it will be necessary to add the command &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt; to the '''#Misc options''' section, located near the middle of the file. An example has been provided below where this section has been amended accordingly:
+
+ '''# Misc options'''
+ #UseSyslog
+ #UseDelta
+ #TotalDownload
+ CheckSpace
+ #VerbosePkgLists
+ &lt;font color=&quot;green&quot;&gt;'''ILoveCandy'''&lt;/font color&gt;
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Saving the Pacman Configuration File =
+
+Once the amendment has been completed, save and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The change will take place with immediate effect!
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>6j2spvfx1hhym088u3blbb13afcp2ff</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

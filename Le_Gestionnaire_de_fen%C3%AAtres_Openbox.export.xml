@@ -1,0 +1,1098 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Le Gestionnaire de fenêtres Openbox</title>
+    <ns>0</ns>
+    <id>656</id>
+    <revision>
+      <id>4110</id>
+      <timestamp>2013-01-05T12:14:42Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = TRADUCTION EN COURS =  =How do I make up for what Tint2 gives me?=  [[File: minimalistde.png|thumb|left|375px]]    I realised...&quot;</comment>
+      <text xml:space="preserve" bytes="5520">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+=How do I make up for what Tint2 gives me?=
+
+[[File: minimalistde.png|thumb|left|375px]] 
+
+
+I realised that I probably don't need to be running the Tint2 panel in my Openbox setup, so I thought I'll test out an alternative, where I just have a date &amp; time clock &amp; a system tray to permanently hold the tray icon of '''Volti''', my sound mixer of choice. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Switching Desktops/Workspaces:==
+
+I have a 1 pixel sized border around all but the top edge of the Openbox desktop, this enables me to position my mouse against those edges of the screen &amp; scroll the mouse wheel through my six desktop workspaces or call the Openbox menu. So in combination with the keyboard commands that do the same job (you can map them in '''~/.config/openbox/rc.xml''' mine are the default settings of '''ctrl''', '''alt''' &amp; the '''left''' &amp; '''right arrow keys''' to move me through the desktops) - so there goes the need for a desktop switcher.
+
+
+==Graphical Display of Desktop Contents:==  
+
+If I want to go directly to an app' that I have open on one of my desktops - rather than scrolling to it through the desktops - I can use the middle mouse button menu to go straight there. This also gives me a graphical view of what is open &amp; on which desktop.
+
+
+==I Want a Day/Date/Clock &amp; I Want a System Tray:==
+
+The '''day/date/clock''' must be visible on all desktops, &amp; I wanted access to the mini '''Tray''' icon for '''Volti''' the audio volume manager/mixer as sometimes I find it to be convenient. 
+
+VLC (my movie player of choice) works fine with the mouse scroll wheel, but on rare occasions when using some other app' I want to hit volti directly with a mouse &amp; not use the keyboard audio control keys. Or, I just want to see what the volume level is set to via mousing over the volti tray icon.
+
+I also wanted other tray icons to sit in beside volti, expanding when added in the right (left actually) direction &amp; not moving over the clock.
+
+
+==Finding the Clock was Easy:== 
+
+I found that using the Openbox dock - position &amp; anything else related to the Ob dock is controlled via the '''Openbox Configuration Manager''' which is found in the Openbox System Menu - allowed me to use the very light, simple &amp; good looking clock called '''Lal''', which is in the Manjaro repos. It was quite easy to setup as it has only a small configuration file that resides in the ~/.Xdefaults file, create this file if you don't already have one.
+
+
+==The contents of my ~/.Xdefaults file:==
+
+ ! lal clock --------------------------------------------------------- ---------
+ 
+ lal*font:       Mono
+ lal*fontsize:   29
+ lal*bold:       true
+ lal*color:      #cccccc      # I used GColor2 to match a
+ # colour on my desktop &amp; give me its hex name
+ lal*width:      350          # Here you set the width to
+ # suit your style of clock
+ lal*format:     %a %d %b %T  # This is where you
+ # configure your clock type
+
+
+''(This file is not a bash executable, so if you use the contents as a start for your own ~/.Xdefaults file it is probably a good idea to remove the comments as they were added specifically for this wiki page only.)''
+
+The '''man lal''' command gives you enough to get going with. I used a little trial &amp; error on the '''lal*format:''' (above) to get what I wanted. There is more information if required on the web.
+
+
+==The Search for a Suitable System Tray:==
+
+[[File: trayclockworker.png|thumb|left|375px]] 
+
+
+Finding a suitable clock was the easy bit. The hard (time consuming) part was finding a tray that I could position BESIDE my new clock. NOT under or over it, which was what the first 3 out of four trays I tested would do. They were all easier to configure, the first two in the list below were very easy, but that was really also their main problem. As they just didn't provide enough options regarding the positioning of the tray.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==This is what I found:==
+
+'''Docker:''' Nice &amp; easy to setup; no way to position the tray with the clock; so it always put the tray icons above or below the clock, never beside the clock.
+
+'''Peksystray:''' More options; still no better than Docker re. position control.
+
+'''Stalonetray:''' Plenty more options; perhaps it was possible to position beside the clock, but I couldn't crack in my trial &amp; error way.
+
+'''Trayer:''' Fortunately I found a string that I could use in the ''~/.config/openbox/autostart'' file that with only a couple of changes to suit, now works perfectly for me.
+
+
+==The Trayer ~/.config/openbox/autostart command line:==
+
+
+ (sleep 2s &amp;&amp; trayer --expand true --transparent true  --alpha 185 --edge top --align right --expand true --SetDockType true --widthtype request --margin 510) &amp;
+
+I changed the colour from black to a grey using the '''--alpha 185''' parameter &amp; positioned the '''volti audio tray icon''' up against the left hand side of the clock using the '''--margin 510''' parameter. All other tray icons position themselves to the left of the previous one.
+
+
+==Conclusion:==
+
+After years of running Openbox with a panel, I find this new way of using Openbox to be surprisingly comfortable. The only thing I'm missing is being able to just select a desktop on the Tint2 workspace switcher &amp; go to the app' that is running on it. So really it is looking pretty good.
+
+
+[[Openbox Dock with the Lal Clock &amp; Trayer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>nyqltq64yh218ulhkwkqswf61bw4gq9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4240</id>
+      <parentid>4110</parentid>
+      <timestamp>2013-01-06T15:48:04Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5553">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION A FAIRE PAR QUELQU'UN CONNAISSANT OPENBOX =
+
+=How do I make up for what Tint2 gives me?=
+
+[[File: minimalistde.png|thumb|left|375px]] 
+
+
+I realised that I probably don't need to be running the Tint2 panel in my Openbox setup, so I thought I'll test out an alternative, where I just have a date &amp; time clock &amp; a system tray to permanently hold the tray icon of '''Volti''', my sound mixer of choice. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Switching Desktops/Workspaces:==
+
+I have a 1 pixel sized border around all but the top edge of the Openbox desktop, this enables me to position my mouse against those edges of the screen &amp; scroll the mouse wheel through my six desktop workspaces or call the Openbox menu. So in combination with the keyboard commands that do the same job (you can map them in '''~/.config/openbox/rc.xml''' mine are the default settings of '''ctrl''', '''alt''' &amp; the '''left''' &amp; '''right arrow keys''' to move me through the desktops) - so there goes the need for a desktop switcher.
+
+
+==Graphical Display of Desktop Contents:==  
+
+If I want to go directly to an app' that I have open on one of my desktops - rather than scrolling to it through the desktops - I can use the middle mouse button menu to go straight there. This also gives me a graphical view of what is open &amp; on which desktop.
+
+
+==I Want a Day/Date/Clock &amp; I Want a System Tray:==
+
+The '''day/date/clock''' must be visible on all desktops, &amp; I wanted access to the mini '''Tray''' icon for '''Volti''' the audio volume manager/mixer as sometimes I find it to be convenient. 
+
+VLC (my movie player of choice) works fine with the mouse scroll wheel, but on rare occasions when using some other app' I want to hit volti directly with a mouse &amp; not use the keyboard audio control keys. Or, I just want to see what the volume level is set to via mousing over the volti tray icon.
+
+I also wanted other tray icons to sit in beside volti, expanding when added in the right (left actually) direction &amp; not moving over the clock.
+
+
+==Finding the Clock was Easy:== 
+
+I found that using the Openbox dock - position &amp; anything else related to the Ob dock is controlled via the '''Openbox Configuration Manager''' which is found in the Openbox System Menu - allowed me to use the very light, simple &amp; good looking clock called '''Lal''', which is in the Manjaro repos. It was quite easy to setup as it has only a small configuration file that resides in the ~/.Xdefaults file, create this file if you don't already have one.
+
+
+==The contents of my ~/.Xdefaults file:==
+
+ ! lal clock --------------------------------------------------------- ---------
+ 
+ lal*font:       Mono
+ lal*fontsize:   29
+ lal*bold:       true
+ lal*color:      #cccccc      # I used GColor2 to match a
+ # colour on my desktop &amp; give me its hex name
+ lal*width:      350          # Here you set the width to
+ # suit your style of clock
+ lal*format:     %a %d %b %T  # This is where you
+ # configure your clock type
+
+
+''(This file is not a bash executable, so if you use the contents as a start for your own ~/.Xdefaults file it is probably a good idea to remove the comments as they were added specifically for this wiki page only.)''
+
+The '''man lal''' command gives you enough to get going with. I used a little trial &amp; error on the '''lal*format:''' (above) to get what I wanted. There is more information if required on the web.
+
+
+==The Search for a Suitable System Tray:==
+
+[[File: trayclockworker.png|thumb|left|375px]] 
+
+
+Finding a suitable clock was the easy bit. The hard (time consuming) part was finding a tray that I could position BESIDE my new clock. NOT under or over it, which was what the first 3 out of four trays I tested would do. They were all easier to configure, the first two in the list below were very easy, but that was really also their main problem. As they just didn't provide enough options regarding the positioning of the tray.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==This is what I found:==
+
+'''Docker:''' Nice &amp; easy to setup; no way to position the tray with the clock; so it always put the tray icons above or below the clock, never beside the clock.
+
+'''Peksystray:''' More options; still no better than Docker re. position control.
+
+'''Stalonetray:''' Plenty more options; perhaps it was possible to position beside the clock, but I couldn't crack in my trial &amp; error way.
+
+'''Trayer:''' Fortunately I found a string that I could use in the ''~/.config/openbox/autostart'' file that with only a couple of changes to suit, now works perfectly for me.
+
+
+==The Trayer ~/.config/openbox/autostart command line:==
+
+
+ (sleep 2s &amp;&amp; trayer --expand true --transparent true  --alpha 185 --edge top --align right --expand true --SetDockType true --widthtype request --margin 510) &amp;
+
+I changed the colour from black to a grey using the '''--alpha 185''' parameter &amp; positioned the '''volti audio tray icon''' up against the left hand side of the clock using the '''--margin 510''' parameter. All other tray icons position themselves to the left of the previous one.
+
+
+==Conclusion:==
+
+After years of running Openbox with a panel, I find this new way of using Openbox to be surprisingly comfortable. The only thing I'm missing is being able to just select a desktop on the Tint2 workspace switcher &amp; go to the app' that is running on it. So really it is looking pretty good.
+
+
+[[Openbox Dock with the Lal Clock &amp; Trayer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>hfkuptxbhp4pj0q8i225dm995rhtspb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4813</id>
+      <parentid>4240</parentid>
+      <timestamp>2013-01-22T19:49:25Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <text xml:space="preserve" bytes="12523">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION ET REECRITURE EN COURS =
+
+== Présentation ==
+
+Openbox est un gestionnaire de fenêtre très léger, qui peut être utilisé en remplacement de celui d'origine dans un environnement de bureau, ou seul.
+
+C'est son utilisation seul qui nous intéresse, car il fait une bonne base pour se créer de toute pièce un environnement très léger qui peut convenir sur une machine un peu ancienne, ou transformer une machine récente en véritable fusée.
+
+Tel quel, il propose un environnement très stable et rapide, qui pourrait presque se suffir à lui-même, bien qu'il lui manque quelques fonctions d'un environnement moderne, mais il suffit de lui ajouter quelques utilitaires pour en faire un environnement complet.
+
+
+== L'installation ==
+
+On pourrait bien sûr se contenter d'Openbox seul, mais on peut lui ajouter quelques utilitaires utiles:
+
+* Obconf: pour configurer Openbox graphiquement.
+* Obkey: pour créer et modifier des raccourcis clavier
+* Obmenu: pour modifier le menu; le paquet contient aussi l'utilitaire pour un menu dynamique
+* Oblogout: un script qui affiche une fenêtre pour l'extinction de la machine
+* Openbox-themes: des thèmes supplémentaires
+* Menumaker: utile pour mettre à jour un menu statique (optionnel)
+
+On peut donc lancer:
+
+ sudo pacman -S openbox openbox-themes obconf obkey oblogout obmenu menumaker
+
+
+== Lancement d'Openbox ==
+
+Si on se sert d'un gestionnaire de connexion (Lxdm, Gdm...), Openbox apparaît maintenant dans la liste des environnements; il faut juste le sélectionner et entrer son mot de passe comme d'habitude.
+
+Si par contre on démarre manuellement Xorg avec «startx», il faudra ajouter la ligne suivante dans le fichier ~/.xinitrc :
+
+ exec openbox-session
+
+
+== Les fichiers de configuration ==
+
+Openbox s'appuie sur 4 fichiers principaux pour sa configuration:
+
+* rc.xml : contient la configuration générale d'Openbox
+* menu.xml : contient toutes les entrées du menu
+* autostart : c'est un script qui permet de lancer des applications au démarrage d'Openbox, mais il est moins utile depuis qu'Openbox supporte le Xdg-autostart (sous réserve d'avoir installé python2-xdg)
+* environnement : contient des variables d'environnement qui seront spécifiques à Openbox et aux applications lancées par son menu; si on laisse vierge, ce sont les variables du système ou de l'utilisateur qui s'appliquent.
+
+La première chose à faire est de copier ces fichiers dans son dossier personnel pour pouvoir les modifier à loisir:
+
+ cp /etc/xdg/openbox/* ~/.config/openbox/
+
+
+== Le menu ==
+
+Au premier lancement d'Openbox, on s'aperçoit que le menu, accessible par un clic-droit sur le bureau, est très incomplet et ne correspond pas avec les applications installées sur la machine : c'est le menu standard d'Openbox. On peut le modifier en éditant ~/.config/openbox/menu.xml, et il ne faudra pas oublier après chaque modification de dire à Openbox de relire les fichiers de configuration:
+
+ openbox --reconfigure
+
+Il existe 2 façons de faire; on peut avoir un menu statique ou un menu dynamique.
+
+Le menu statique est entièrement fait à la main. Il a l'avantage d'être plus léger, mais il faudra l'éditer manuellement à chaque fois qu'on ajoutera une application ou se servir d'un utilitaire qui le fait automatiquement (comme Menu-maker).
+
+Le menu dynamique fait appel à un utilitaire qui liste les fichiers *.desktop dans /usr/share/applications et dans ~/.local/share/applications et met à jour le menu en temps réel; il ne sera donc pas nécessaire d'intervenir pour ajouter une nouvelle application.
+
+Il est possible de panacher les deux méthodes: une partie du menu dynamique, et une partie statique.
+
+
+=== Le menu statique ===
+
+Le fichier ~/.config/openbox/menu.xml est en XML et sa syntaxe est assez simple; en premier lieu, il faut entourer tout le menu avec une balise &lt;openbox_menu&gt;:
+
+ &lt;openbox_menu&gt;
+   ...le reste du menu ici...
+ &lt;/openbox_menu&gt;
+
+Ensuite, le reste du menu est composé comme ceci:
+
+ &lt;menu id=&quot;ID du menu&quot; label=&quot;TITRE&quot;&gt;
+  &lt;!-- voici un élément de menu, un lanceur de programme par ex --&gt;
+  &lt;item label=&quot;LABEL&quot;&gt;
+    ACTIONS
+  &lt;/item&gt;
+ &lt;!-- un séparateur avec titre --&gt;
+  &lt;separator label=&quot;TITRE du séparateur&quot; /&gt;
+ &lt;!-- un lien vers un sous-menu --&gt;
+  &lt;menu id=&quot;ID&quot; /&gt;
+ &lt;!-- un séparateur --&gt;
+  &lt;separator /&gt;
+ &lt;!-- un sous-menu --&gt;
+  &lt;menu id=&quot;ID&quot; label=&quot;TITLE&quot;&gt;
+    &lt;item label=&quot;LABEL&quot;&gt;
+      ACTIONS
+    &lt;/item&gt;
+  &lt;/menu&gt;
+ &lt;separator /&gt;
+  &lt;item label=&quot;LABEL&quot;&gt;
+    ACTIONS
+  &lt;/item&gt;
+ &lt;/menu&gt;
+
+Voici un exemple concret:
+
+ &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;openbox_menu xmlns=&quot;http://openbox.org/3.4/menu&quot;&gt;
+ &lt;menu id=&quot;applications-menu&quot; label=&quot;Applications&quot;&gt;
+   &lt;item label=&quot;Calculator&quot;&gt;
+     &lt;action name=&quot;Execute&quot;&gt;
+       &lt;command&gt;gnome-calculator&lt;/command&gt;
+       &lt;startupnotify&gt;
+         &lt;enabled&gt;yes&lt;/enabled&gt;
+       &lt;/startupnotify&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+   &lt;item label=&quot;Navigateur web&quot;&gt;
+    &lt;action name=&quot;Execute&quot;&gt;
+      &lt;command&gt;firefox&lt;/command&gt;
+       &lt;startupnotify&gt;
+         &lt;enabled&gt;yes&lt;/enabled&gt;
+       &lt;/startupnotify&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+ &lt;/menu&gt;
+ &lt;menu id=&quot;root-menu&quot; label=&quot;Openbox 3&quot;&gt;
+  &lt;separator label=&quot;Applications&quot; /&gt;
+  &lt;menu id=&quot;applications-menu&quot;/&gt;
+  &lt;separator /&gt;
+   &lt;item label=&quot;Log Out&quot;&gt;
+     &lt;action name=&quot;Exit&quot;&gt;
+       &lt;prompt&gt;yes&lt;/prompt&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+  &lt;/menu&gt;
+ &lt;/openbox_menu&gt;
+
+On voit ici que si on inclut des sous-menus, on peut les mettre dans un paragraphe séparé et inclure juste leur indentification dans le principal.
+
+Si on pense ne pas s'en sortir avec cette syntaxe, on peut se servir de l'éditeur Obmenu.
+
+On peut aussi générer un menu statique avec l'utilitaire Menumaker; on commence par l'installer:
+
+ sudo pacman -S menumaker
+
+Puis on le lance par:
+
+ mmaker -v OpenBox3
+
+un fichier menu.xml sera créé; d'autres options sont disponibles:
+
+ mmaker --help
+
+
+=== Le menu dynamique ===
+
+Il existe un certain nombre d'utilitaires qui peuvent servir à générer le menu dynamique, mais le paquet Obmenu contient l'utilitaire Obm-xdg qui convient tout à fait (bien que je n'ai pas trouvé comment faire pour qu'il affiche les icônes des applications.
+
+On peut l'utiliser pour générer le menu entier, et dans ce cas, c'est très simple:
+
+ &lt;openbox_menu&gt;
+  &lt;menu execute=&quot;obm-xdg&quot; id=&quot;root-menu&quot; label=&quot;applications&quot;/&gt;
+ &lt;/openbox_menu&gt;
+
+Le problème c'est qu'on ne pourra plus mettre d'entrées personnalisées (pour des scripts ou autre), à part en créant des fichiers *.desktop qui seront lus par Obm-xdg; donc on peut préférer l'inclure dans un menu statique, en mettant une ligne comme celle-ci dans menu.xml:
+
+ &lt;menu execute=&quot;obm-xdg&quot; id=&quot;xdg-menu&quot; label=&quot;Applications&quot;/&gt;
+
+et en l'incluant comme sous-menus, en ajoutant cette ligne en dessous de &quot;root-menu&quot;:
+
+ &lt;menu id=&quot;xdg-menu&quot;/&gt;
+
+Il existe d'autres utilitaires capables de générer un menu dynamiquement:
+
+* [http://mimasgpc.free.fr/openbox-menu_en.html|Openbox-menu]
+* [http://pkgs.fedoraproject.org/cgit/openbox.git/tree/xdg-menu|Script Python chez Fedora]
+
+
+
+
+
+=How do I make up for what Tint2 gives me?=
+
+[[File: minimalistde.png|thumb|left|375px]] 
+
+
+I realised that I probably don't need to be running the Tint2 panel in my Openbox setup, so I thought I'll test out an alternative, where I just have a date &amp; time clock &amp; a system tray to permanently hold the tray icon of '''Volti''', my sound mixer of choice. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Switching Desktops/Workspaces:==
+
+I have a 1 pixel sized border around all but the top edge of the Openbox desktop, this enables me to position my mouse against those edges of the screen &amp; scroll the mouse wheel through my six desktop workspaces or call the Openbox menu. So in combination with the keyboard commands that do the same job (you can map them in '''~/.config/openbox/rc.xml''' mine are the default settings of '''ctrl''', '''alt''' &amp; the '''left''' &amp; '''right arrow keys''' to move me through the desktops) - so there goes the need for a desktop switcher.
+
+
+==Graphical Display of Desktop Contents:==  
+
+If I want to go directly to an app' that I have open on one of my desktops - rather than scrolling to it through the desktops - I can use the middle mouse button menu to go straight there. This also gives me a graphical view of what is open &amp; on which desktop.
+
+
+==I Want a Day/Date/Clock &amp; I Want a System Tray:==
+
+The '''day/date/clock''' must be visible on all desktops, &amp; I wanted access to the mini '''Tray''' icon for '''Volti''' the audio volume manager/mixer as sometimes I find it to be convenient. 
+
+VLC (my movie player of choice) works fine with the mouse scroll wheel, but on rare occasions when using some other app' I want to hit volti directly with a mouse &amp; not use the keyboard audio control keys. Or, I just want to see what the volume level is set to via mousing over the volti tray icon.
+
+I also wanted other tray icons to sit in beside volti, expanding when added in the right (left actually) direction &amp; not moving over the clock.
+
+
+==Finding the Clock was Easy:== 
+
+I found that using the Openbox dock - position &amp; anything else related to the Ob dock is controlled via the '''Openbox Configuration Manager''' which is found in the Openbox System Menu - allowed me to use the very light, simple &amp; good looking clock called '''Lal''', which is in the Manjaro repos. It was quite easy to setup as it has only a small configuration file that resides in the ~/.Xdefaults file, create this file if you don't already have one.
+
+
+==The contents of my ~/.Xdefaults file:==
+
+ ! lal clock --------------------------------------------------------- ---------
+ 
+ lal*font:       Mono
+ lal*fontsize:   29
+ lal*bold:       true
+ lal*color:      #cccccc      # I used GColor2 to match a
+ # colour on my desktop &amp; give me its hex name
+ lal*width:      350          # Here you set the width to
+ # suit your style of clock
+ lal*format:     %a %d %b %T  # This is where you
+ # configure your clock type
+
+
+''(This file is not a bash executable, so if you use the contents as a start for your own ~/.Xdefaults file it is probably a good idea to remove the comments as they were added specifically for this wiki page only.)''
+
+The '''man lal''' command gives you enough to get going with. I used a little trial &amp; error on the '''lal*format:''' (above) to get what I wanted. There is more information if required on the web.
+
+
+==The Search for a Suitable System Tray:==
+
+[[File: trayclockworker.png|thumb|left|375px]] 
+
+
+Finding a suitable clock was the easy bit. The hard (time consuming) part was finding a tray that I could position BESIDE my new clock. NOT under or over it, which was what the first 3 out of four trays I tested would do. They were all easier to configure, the first two in the list below were very easy, but that was really also their main problem. As they just didn't provide enough options regarding the positioning of the tray.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==This is what I found:==
+
+'''Docker:''' Nice &amp; easy to setup; no way to position the tray with the clock; so it always put the tray icons above or below the clock, never beside the clock.
+
+'''Peksystray:''' More options; still no better than Docker re. position control.
+
+'''Stalonetray:''' Plenty more options; perhaps it was possible to position beside the clock, but I couldn't crack in my trial &amp; error way.
+
+'''Trayer:''' Fortunately I found a string that I could use in the ''~/.config/openbox/autostart'' file that with only a couple of changes to suit, now works perfectly for me.
+
+
+==The Trayer ~/.config/openbox/autostart command line:==
+
+
+ (sleep 2s &amp;&amp; trayer --expand true --transparent true  --alpha 185 --edge top --align right --expand true --SetDockType true --widthtype request --margin 510) &amp;
+
+I changed the colour from black to a grey using the '''--alpha 185''' parameter &amp; positioned the '''volti audio tray icon''' up against the left hand side of the clock using the '''--margin 510''' parameter. All other tray icons position themselves to the left of the previous one.
+
+
+==Conclusion:==
+
+After years of running Openbox with a panel, I find this new way of using Openbox to be surprisingly comfortable. The only thing I'm missing is being able to just select a desktop on the Tint2 workspace switcher &amp; go to the app' that is running on it. So really it is looking pretty good.
+
+
+[[Openbox Dock with the Lal Clock &amp; Trayer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>o9tl3uekmd4t9xaiuxyd1qa41tnpgty</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4814</id>
+      <parentid>4813</parentid>
+      <timestamp>2013-01-22T21:31:09Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* Le menu statique */</comment>
+      <text xml:space="preserve" bytes="12544">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION ET REECRITURE EN COURS =
+
+== Présentation ==
+
+Openbox est un gestionnaire de fenêtre très léger, qui peut être utilisé en remplacement de celui d'origine dans un environnement de bureau, ou seul.
+
+C'est son utilisation seul qui nous intéresse, car il fait une bonne base pour se créer de toute pièce un environnement très léger qui peut convenir sur une machine un peu ancienne, ou transformer une machine récente en véritable fusée.
+
+Tel quel, il propose un environnement très stable et rapide, qui pourrait presque se suffir à lui-même, bien qu'il lui manque quelques fonctions d'un environnement moderne, mais il suffit de lui ajouter quelques utilitaires pour en faire un environnement complet.
+
+
+== L'installation ==
+
+On pourrait bien sûr se contenter d'Openbox seul, mais on peut lui ajouter quelques utilitaires utiles:
+
+* Obconf: pour configurer Openbox graphiquement.
+* Obkey: pour créer et modifier des raccourcis clavier
+* Obmenu: pour modifier le menu; le paquet contient aussi l'utilitaire pour un menu dynamique
+* Oblogout: un script qui affiche une fenêtre pour l'extinction de la machine
+* Openbox-themes: des thèmes supplémentaires
+* Menumaker: utile pour mettre à jour un menu statique (optionnel)
+
+On peut donc lancer:
+
+ sudo pacman -S openbox openbox-themes obconf obkey oblogout obmenu menumaker
+
+
+== Lancement d'Openbox ==
+
+Si on se sert d'un gestionnaire de connexion (Lxdm, Gdm...), Openbox apparaît maintenant dans la liste des environnements; il faut juste le sélectionner et entrer son mot de passe comme d'habitude.
+
+Si par contre on démarre manuellement Xorg avec «startx», il faudra ajouter la ligne suivante dans le fichier ~/.xinitrc :
+
+ exec openbox-session
+
+
+== Les fichiers de configuration ==
+
+Openbox s'appuie sur 4 fichiers principaux pour sa configuration:
+
+* rc.xml : contient la configuration générale d'Openbox
+* menu.xml : contient toutes les entrées du menu
+* autostart : c'est un script qui permet de lancer des applications au démarrage d'Openbox, mais il est moins utile depuis qu'Openbox supporte le Xdg-autostart (sous réserve d'avoir installé python2-xdg)
+* environnement : contient des variables d'environnement qui seront spécifiques à Openbox et aux applications lancées par son menu; si on laisse vierge, ce sont les variables du système ou de l'utilisateur qui s'appliquent.
+
+La première chose à faire est de copier ces fichiers dans son dossier personnel pour pouvoir les modifier à loisir:
+
+ cp /etc/xdg/openbox/* ~/.config/openbox/
+
+
+== Le menu ==
+
+Au premier lancement d'Openbox, on s'aperçoit que le menu, accessible par un clic-droit sur le bureau, est très incomplet et ne correspond pas avec les applications installées sur la machine : c'est le menu standard d'Openbox. On peut le modifier en éditant ~/.config/openbox/menu.xml, et il ne faudra pas oublier après chaque modification de dire à Openbox de relire les fichiers de configuration:
+
+ openbox --reconfigure
+
+Il existe 2 façons de faire; on peut avoir un menu statique ou un menu dynamique.
+
+Le menu statique est entièrement fait à la main. Il a l'avantage d'être plus léger, mais il faudra l'éditer manuellement à chaque fois qu'on ajoutera une application ou se servir d'un utilitaire qui le fait automatiquement (comme Menu-maker).
+
+Le menu dynamique fait appel à un utilitaire qui liste les fichiers *.desktop dans /usr/share/applications et dans ~/.local/share/applications et met à jour le menu en temps réel; il ne sera donc pas nécessaire d'intervenir pour ajouter une nouvelle application.
+
+Il est possible de panacher les deux méthodes: une partie du menu dynamique, et une partie statique.
+
+
+=== Le menu statique ===
+
+Le fichier ~/.config/openbox/menu.xml est en XML et sa syntaxe est assez simple; en premier lieu, il faut entourer tout le menu avec une balise &lt;openbox_menu&gt;:
+
+ &lt;openbox_menu&gt;
+   ...le reste du menu ici...
+ &lt;/openbox_menu&gt;
+
+Ensuite, le reste du menu est composé comme ceci:
+
+ &lt;nowiki&gt; &lt;menu id=&quot;ID du menu&quot; label=&quot;TITRE&quot;&gt;
+
+  &lt;!-- voici un élément de menu, un lanceur de programme par ex --&gt;
+  &lt;item label=&quot;LABEL&quot;&gt;
+    ACTIONS
+  &lt;/item&gt;
+
+ &lt;!-- un séparateur avec titre --&gt;
+  &lt;separator label=&quot;TITRE du séparateur&quot; /&gt;
+
+ &lt;!-- un lien vers un sous-menu --&gt;
+  &lt;menu id=&quot;ID&quot; /&gt;
+
+ &lt;!-- un séparateur --&gt;
+ &lt;separator /&gt;
+
+ &lt;!-- un sous-menu --&gt;
+  &lt;menu id=&quot;ID&quot; label=&quot;TITLE&quot;&gt;
+    &lt;item label=&quot;LABEL&quot;&gt;
+      ACTIONS
+    &lt;/item&gt;
+  &lt;/menu&gt;
+
+ &lt;separator /&gt;
+  &lt;item label=&quot;LABEL&quot;&gt;
+    ACTIONS
+ &lt;/item&gt;
+&lt;/menu&gt; &lt;/nowiki&gt;
+
+Voici un exemple concret:
+
+ &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;openbox_menu xmlns=&quot;http://openbox.org/3.4/menu&quot;&gt;
+ &lt;menu id=&quot;applications-menu&quot; label=&quot;Applications&quot;&gt;
+   &lt;item label=&quot;Calculator&quot;&gt;
+     &lt;action name=&quot;Execute&quot;&gt;
+       &lt;command&gt;gnome-calculator&lt;/command&gt;
+       &lt;startupnotify&gt;
+         &lt;enabled&gt;yes&lt;/enabled&gt;
+       &lt;/startupnotify&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+   &lt;item label=&quot;Navigateur web&quot;&gt;
+    &lt;action name=&quot;Execute&quot;&gt;
+      &lt;command&gt;firefox&lt;/command&gt;
+       &lt;startupnotify&gt;
+         &lt;enabled&gt;yes&lt;/enabled&gt;
+       &lt;/startupnotify&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+ &lt;/menu&gt;
+ &lt;menu id=&quot;root-menu&quot; label=&quot;Openbox 3&quot;&gt;
+  &lt;separator label=&quot;Applications&quot; /&gt;
+  &lt;menu id=&quot;applications-menu&quot;/&gt;
+  &lt;separator /&gt;
+   &lt;item label=&quot;Log Out&quot;&gt;
+     &lt;action name=&quot;Exit&quot;&gt;
+       &lt;prompt&gt;yes&lt;/prompt&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+  &lt;/menu&gt;
+ &lt;/openbox_menu&gt;
+
+On voit ici que si on inclut des sous-menus, on peut les mettre dans un paragraphe séparé et inclure juste leur indentification dans le principal.
+
+Si on pense ne pas s'en sortir avec cette syntaxe, on peut se servir de l'éditeur Obmenu.
+
+On peut aussi générer un menu statique avec l'utilitaire Menumaker; on commence par l'installer:
+
+ sudo pacman -S menumaker
+
+Puis on le lance par:
+
+ mmaker -v OpenBox3
+
+un fichier menu.xml sera créé; d'autres options sont disponibles:
+
+ mmaker --help
+
+=== Le menu dynamique ===
+
+Il existe un certain nombre d'utilitaires qui peuvent servir à générer le menu dynamique, mais le paquet Obmenu contient l'utilitaire Obm-xdg qui convient tout à fait (bien que je n'ai pas trouvé comment faire pour qu'il affiche les icônes des applications.
+
+On peut l'utiliser pour générer le menu entier, et dans ce cas, c'est très simple:
+
+ &lt;openbox_menu&gt;
+  &lt;menu execute=&quot;obm-xdg&quot; id=&quot;root-menu&quot; label=&quot;applications&quot;/&gt;
+ &lt;/openbox_menu&gt;
+
+Le problème c'est qu'on ne pourra plus mettre d'entrées personnalisées (pour des scripts ou autre), à part en créant des fichiers *.desktop qui seront lus par Obm-xdg; donc on peut préférer l'inclure dans un menu statique, en mettant une ligne comme celle-ci dans menu.xml:
+
+ &lt;menu execute=&quot;obm-xdg&quot; id=&quot;xdg-menu&quot; label=&quot;Applications&quot;/&gt;
+
+et en l'incluant comme sous-menus, en ajoutant cette ligne en dessous de &quot;root-menu&quot;:
+
+ &lt;menu id=&quot;xdg-menu&quot;/&gt;
+
+Il existe d'autres utilitaires capables de générer un menu dynamiquement:
+
+* [http://mimasgpc.free.fr/openbox-menu_en.html|Openbox-menu]
+* [http://pkgs.fedoraproject.org/cgit/openbox.git/tree/xdg-menu|Script Python chez Fedora]
+
+
+
+
+
+=How do I make up for what Tint2 gives me?=
+
+[[File: minimalistde.png|thumb|left|375px]] 
+
+
+I realised that I probably don't need to be running the Tint2 panel in my Openbox setup, so I thought I'll test out an alternative, where I just have a date &amp; time clock &amp; a system tray to permanently hold the tray icon of '''Volti''', my sound mixer of choice. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Switching Desktops/Workspaces:==
+
+I have a 1 pixel sized border around all but the top edge of the Openbox desktop, this enables me to position my mouse against those edges of the screen &amp; scroll the mouse wheel through my six desktop workspaces or call the Openbox menu. So in combination with the keyboard commands that do the same job (you can map them in '''~/.config/openbox/rc.xml''' mine are the default settings of '''ctrl''', '''alt''' &amp; the '''left''' &amp; '''right arrow keys''' to move me through the desktops) - so there goes the need for a desktop switcher.
+
+
+==Graphical Display of Desktop Contents:==  
+
+If I want to go directly to an app' that I have open on one of my desktops - rather than scrolling to it through the desktops - I can use the middle mouse button menu to go straight there. This also gives me a graphical view of what is open &amp; on which desktop.
+
+
+==I Want a Day/Date/Clock &amp; I Want a System Tray:==
+
+The '''day/date/clock''' must be visible on all desktops, &amp; I wanted access to the mini '''Tray''' icon for '''Volti''' the audio volume manager/mixer as sometimes I find it to be convenient. 
+
+VLC (my movie player of choice) works fine with the mouse scroll wheel, but on rare occasions when using some other app' I want to hit volti directly with a mouse &amp; not use the keyboard audio control keys. Or, I just want to see what the volume level is set to via mousing over the volti tray icon.
+
+I also wanted other tray icons to sit in beside volti, expanding when added in the right (left actually) direction &amp; not moving over the clock.
+
+
+==Finding the Clock was Easy:== 
+
+I found that using the Openbox dock - position &amp; anything else related to the Ob dock is controlled via the '''Openbox Configuration Manager''' which is found in the Openbox System Menu - allowed me to use the very light, simple &amp; good looking clock called '''Lal''', which is in the Manjaro repos. It was quite easy to setup as it has only a small configuration file that resides in the ~/.Xdefaults file, create this file if you don't already have one.
+
+
+==The contents of my ~/.Xdefaults file:==
+
+ ! lal clock --------------------------------------------------------- ---------
+ 
+ lal*font:       Mono
+ lal*fontsize:   29
+ lal*bold:       true
+ lal*color:      #cccccc      # I used GColor2 to match a
+ # colour on my desktop &amp; give me its hex name
+ lal*width:      350          # Here you set the width to
+ # suit your style of clock
+ lal*format:     %a %d %b %T  # This is where you
+ # configure your clock type
+
+
+''(This file is not a bash executable, so if you use the contents as a start for your own ~/.Xdefaults file it is probably a good idea to remove the comments as they were added specifically for this wiki page only.)''
+
+The '''man lal''' command gives you enough to get going with. I used a little trial &amp; error on the '''lal*format:''' (above) to get what I wanted. There is more information if required on the web.
+
+
+==The Search for a Suitable System Tray:==
+
+[[File: trayclockworker.png|thumb|left|375px]] 
+
+
+Finding a suitable clock was the easy bit. The hard (time consuming) part was finding a tray that I could position BESIDE my new clock. NOT under or over it, which was what the first 3 out of four trays I tested would do. They were all easier to configure, the first two in the list below were very easy, but that was really also their main problem. As they just didn't provide enough options regarding the positioning of the tray.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==This is what I found:==
+
+'''Docker:''' Nice &amp; easy to setup; no way to position the tray with the clock; so it always put the tray icons above or below the clock, never beside the clock.
+
+'''Peksystray:''' More options; still no better than Docker re. position control.
+
+'''Stalonetray:''' Plenty more options; perhaps it was possible to position beside the clock, but I couldn't crack in my trial &amp; error way.
+
+'''Trayer:''' Fortunately I found a string that I could use in the ''~/.config/openbox/autostart'' file that with only a couple of changes to suit, now works perfectly for me.
+
+
+==The Trayer ~/.config/openbox/autostart command line:==
+
+
+ (sleep 2s &amp;&amp; trayer --expand true --transparent true  --alpha 185 --edge top --align right --expand true --SetDockType true --widthtype request --margin 510) &amp;
+
+I changed the colour from black to a grey using the '''--alpha 185''' parameter &amp; positioned the '''volti audio tray icon''' up against the left hand side of the clock using the '''--margin 510''' parameter. All other tray icons position themselves to the left of the previous one.
+
+
+==Conclusion:==
+
+After years of running Openbox with a panel, I find this new way of using Openbox to be surprisingly comfortable. The only thing I'm missing is being able to just select a desktop on the Tint2 workspace switcher &amp; go to the app' that is running on it. So really it is looking pretty good.
+
+
+[[Openbox Dock with the Lal Clock &amp; Trayer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>7j9nxc3hglu7b32l4iwwa2fakvn3fln</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4815</id>
+      <parentid>4814</parentid>
+      <timestamp>2013-01-22T21:37:18Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* Le menu dynamique */</comment>
+      <text xml:space="preserve" bytes="12540">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION ET REECRITURE EN COURS =
+
+== Présentation ==
+
+Openbox est un gestionnaire de fenêtre très léger, qui peut être utilisé en remplacement de celui d'origine dans un environnement de bureau, ou seul.
+
+C'est son utilisation seul qui nous intéresse, car il fait une bonne base pour se créer de toute pièce un environnement très léger qui peut convenir sur une machine un peu ancienne, ou transformer une machine récente en véritable fusée.
+
+Tel quel, il propose un environnement très stable et rapide, qui pourrait presque se suffir à lui-même, bien qu'il lui manque quelques fonctions d'un environnement moderne, mais il suffit de lui ajouter quelques utilitaires pour en faire un environnement complet.
+
+
+== L'installation ==
+
+On pourrait bien sûr se contenter d'Openbox seul, mais on peut lui ajouter quelques utilitaires utiles:
+
+* Obconf: pour configurer Openbox graphiquement.
+* Obkey: pour créer et modifier des raccourcis clavier
+* Obmenu: pour modifier le menu; le paquet contient aussi l'utilitaire pour un menu dynamique
+* Oblogout: un script qui affiche une fenêtre pour l'extinction de la machine
+* Openbox-themes: des thèmes supplémentaires
+* Menumaker: utile pour mettre à jour un menu statique (optionnel)
+
+On peut donc lancer:
+
+ sudo pacman -S openbox openbox-themes obconf obkey oblogout obmenu menumaker
+
+
+== Lancement d'Openbox ==
+
+Si on se sert d'un gestionnaire de connexion (Lxdm, Gdm...), Openbox apparaît maintenant dans la liste des environnements; il faut juste le sélectionner et entrer son mot de passe comme d'habitude.
+
+Si par contre on démarre manuellement Xorg avec «startx», il faudra ajouter la ligne suivante dans le fichier ~/.xinitrc :
+
+ exec openbox-session
+
+
+== Les fichiers de configuration ==
+
+Openbox s'appuie sur 4 fichiers principaux pour sa configuration:
+
+* rc.xml : contient la configuration générale d'Openbox
+* menu.xml : contient toutes les entrées du menu
+* autostart : c'est un script qui permet de lancer des applications au démarrage d'Openbox, mais il est moins utile depuis qu'Openbox supporte le Xdg-autostart (sous réserve d'avoir installé python2-xdg)
+* environnement : contient des variables d'environnement qui seront spécifiques à Openbox et aux applications lancées par son menu; si on laisse vierge, ce sont les variables du système ou de l'utilisateur qui s'appliquent.
+
+La première chose à faire est de copier ces fichiers dans son dossier personnel pour pouvoir les modifier à loisir:
+
+ cp /etc/xdg/openbox/* ~/.config/openbox/
+
+
+== Le menu ==
+
+Au premier lancement d'Openbox, on s'aperçoit que le menu, accessible par un clic-droit sur le bureau, est très incomplet et ne correspond pas avec les applications installées sur la machine : c'est le menu standard d'Openbox. On peut le modifier en éditant ~/.config/openbox/menu.xml, et il ne faudra pas oublier après chaque modification de dire à Openbox de relire les fichiers de configuration:
+
+ openbox --reconfigure
+
+Il existe 2 façons de faire; on peut avoir un menu statique ou un menu dynamique.
+
+Le menu statique est entièrement fait à la main. Il a l'avantage d'être plus léger, mais il faudra l'éditer manuellement à chaque fois qu'on ajoutera une application ou se servir d'un utilitaire qui le fait automatiquement (comme Menu-maker).
+
+Le menu dynamique fait appel à un utilitaire qui liste les fichiers *.desktop dans /usr/share/applications et dans ~/.local/share/applications et met à jour le menu en temps réel; il ne sera donc pas nécessaire d'intervenir pour ajouter une nouvelle application.
+
+Il est possible de panacher les deux méthodes: une partie du menu dynamique, et une partie statique.
+
+
+=== Le menu statique ===
+
+Le fichier ~/.config/openbox/menu.xml est en XML et sa syntaxe est assez simple; en premier lieu, il faut entourer tout le menu avec une balise &lt;openbox_menu&gt;:
+
+ &lt;openbox_menu&gt;
+   ...le reste du menu ici...
+ &lt;/openbox_menu&gt;
+
+Ensuite, le reste du menu est composé comme ceci:
+
+ &lt;nowiki&gt; &lt;menu id=&quot;ID du menu&quot; label=&quot;TITRE&quot;&gt;
+
+  &lt;!-- voici un élément de menu, un lanceur de programme par ex --&gt;
+  &lt;item label=&quot;LABEL&quot;&gt;
+    ACTIONS
+  &lt;/item&gt;
+
+ &lt;!-- un séparateur avec titre --&gt;
+  &lt;separator label=&quot;TITRE du séparateur&quot; /&gt;
+
+ &lt;!-- un lien vers un sous-menu --&gt;
+  &lt;menu id=&quot;ID&quot; /&gt;
+
+ &lt;!-- un séparateur --&gt;
+ &lt;separator /&gt;
+
+ &lt;!-- un sous-menu --&gt;
+  &lt;menu id=&quot;ID&quot; label=&quot;TITLE&quot;&gt;
+    &lt;item label=&quot;LABEL&quot;&gt;
+      ACTIONS
+    &lt;/item&gt;
+  &lt;/menu&gt;
+
+ &lt;separator /&gt;
+  &lt;item label=&quot;LABEL&quot;&gt;
+    ACTIONS
+ &lt;/item&gt;
+&lt;/menu&gt; &lt;/nowiki&gt;
+
+Voici un exemple concret:
+
+ &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;openbox_menu xmlns=&quot;http://openbox.org/3.4/menu&quot;&gt;
+ &lt;menu id=&quot;applications-menu&quot; label=&quot;Applications&quot;&gt;
+   &lt;item label=&quot;Calculator&quot;&gt;
+     &lt;action name=&quot;Execute&quot;&gt;
+       &lt;command&gt;gnome-calculator&lt;/command&gt;
+       &lt;startupnotify&gt;
+         &lt;enabled&gt;yes&lt;/enabled&gt;
+       &lt;/startupnotify&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+   &lt;item label=&quot;Navigateur web&quot;&gt;
+    &lt;action name=&quot;Execute&quot;&gt;
+      &lt;command&gt;firefox&lt;/command&gt;
+       &lt;startupnotify&gt;
+         &lt;enabled&gt;yes&lt;/enabled&gt;
+       &lt;/startupnotify&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+ &lt;/menu&gt;
+ &lt;menu id=&quot;root-menu&quot; label=&quot;Openbox 3&quot;&gt;
+  &lt;separator label=&quot;Applications&quot; /&gt;
+  &lt;menu id=&quot;applications-menu&quot;/&gt;
+  &lt;separator /&gt;
+   &lt;item label=&quot;Log Out&quot;&gt;
+     &lt;action name=&quot;Exit&quot;&gt;
+       &lt;prompt&gt;yes&lt;/prompt&gt;
+     &lt;/action&gt;
+   &lt;/item&gt;
+  &lt;/menu&gt;
+ &lt;/openbox_menu&gt;
+
+On voit ici que si on inclut des sous-menus, on peut les mettre dans un paragraphe séparé et inclure juste leur indentification dans le principal.
+
+Si on pense ne pas s'en sortir avec cette syntaxe, on peut se servir de l'éditeur Obmenu.
+
+On peut aussi générer un menu statique avec l'utilitaire Menumaker; on commence par l'installer:
+
+ sudo pacman -S menumaker
+
+Puis on le lance par:
+
+ mmaker -v OpenBox3
+
+un fichier menu.xml sera créé; d'autres options sont disponibles:
+
+ mmaker --help
+
+=== Le menu dynamique ===
+
+Il existe un certain nombre d'utilitaires qui peuvent servir à générer le menu dynamique, mais le paquet Obmenu contient l'utilitaire Obm-xdg qui convient tout à fait (bien que je n'ai pas trouvé comment faire pour qu'il affiche les icônes des applications.
+
+On peut l'utiliser pour générer le menu entier, et dans ce cas, c'est très simple:
+
+ &lt;openbox_menu&gt;
+  &lt;menu execute=&quot;obm-xdg&quot; id=&quot;root-menu&quot; label=&quot;applications&quot;/&gt;
+ &lt;/openbox_menu&gt;
+
+Le problème c'est qu'on ne pourra plus mettre d'entrées personnalisées (pour des scripts ou autre), à part en créant des fichiers *.desktop qui seront lus par Obm-xdg; donc on peut préférer l'inclure dans un menu statique, en mettant une ligne comme celle-ci dans menu.xml:
+
+ &lt;menu execute=&quot;obm-xdg&quot; id=&quot;xdg-menu&quot; label=&quot;Applications&quot;/&gt;
+
+et en l'incluant comme sous-menus, en ajoutant cette ligne en dessous de &quot;root-menu&quot;:
+
+ &lt;menu id=&quot;xdg-menu&quot;/&gt;
+
+Il existe d'autres utilitaires capables de générer un menu dynamiquement:
+
+* [http://mimasgpc.free.fr/openbox-menu_en.html Openbox-menu]
+* [http://pkgs.fedoraproject.org/cgit/openbox.git/tree/xdg-menu Script Python chez Fedora]
+
+=How do I make up for what Tint2 gives me?=
+
+[[File: minimalistde.png|thumb|left|375px]] 
+
+
+I realised that I probably don't need to be running the Tint2 panel in my Openbox setup, so I thought I'll test out an alternative, where I just have a date &amp; time clock &amp; a system tray to permanently hold the tray icon of '''Volti''', my sound mixer of choice. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==Switching Desktops/Workspaces:==
+
+I have a 1 pixel sized border around all but the top edge of the Openbox desktop, this enables me to position my mouse against those edges of the screen &amp; scroll the mouse wheel through my six desktop workspaces or call the Openbox menu. So in combination with the keyboard commands that do the same job (you can map them in '''~/.config/openbox/rc.xml''' mine are the default settings of '''ctrl''', '''alt''' &amp; the '''left''' &amp; '''right arrow keys''' to move me through the desktops) - so there goes the need for a desktop switcher.
+
+
+==Graphical Display of Desktop Contents:==  
+
+If I want to go directly to an app' that I have open on one of my desktops - rather than scrolling to it through the desktops - I can use the middle mouse button menu to go straight there. This also gives me a graphical view of what is open &amp; on which desktop.
+
+
+==I Want a Day/Date/Clock &amp; I Want a System Tray:==
+
+The '''day/date/clock''' must be visible on all desktops, &amp; I wanted access to the mini '''Tray''' icon for '''Volti''' the audio volume manager/mixer as sometimes I find it to be convenient. 
+
+VLC (my movie player of choice) works fine with the mouse scroll wheel, but on rare occasions when using some other app' I want to hit volti directly with a mouse &amp; not use the keyboard audio control keys. Or, I just want to see what the volume level is set to via mousing over the volti tray icon.
+
+I also wanted other tray icons to sit in beside volti, expanding when added in the right (left actually) direction &amp; not moving over the clock.
+
+
+==Finding the Clock was Easy:== 
+
+I found that using the Openbox dock - position &amp; anything else related to the Ob dock is controlled via the '''Openbox Configuration Manager''' which is found in the Openbox System Menu - allowed me to use the very light, simple &amp; good looking clock called '''Lal''', which is in the Manjaro repos. It was quite easy to setup as it has only a small configuration file that resides in the ~/.Xdefaults file, create this file if you don't already have one.
+
+
+==The contents of my ~/.Xdefaults file:==
+
+ ! lal clock --------------------------------------------------------- ---------
+ 
+ lal*font:       Mono
+ lal*fontsize:   29
+ lal*bold:       true
+ lal*color:      #cccccc      # I used GColor2 to match a
+ # colour on my desktop &amp; give me its hex name
+ lal*width:      350          # Here you set the width to
+ # suit your style of clock
+ lal*format:     %a %d %b %T  # This is where you
+ # configure your clock type
+
+
+''(This file is not a bash executable, so if you use the contents as a start for your own ~/.Xdefaults file it is probably a good idea to remove the comments as they were added specifically for this wiki page only.)''
+
+The '''man lal''' command gives you enough to get going with. I used a little trial &amp; error on the '''lal*format:''' (above) to get what I wanted. There is more information if required on the web.
+
+
+==The Search for a Suitable System Tray:==
+
+[[File: trayclockworker.png|thumb|left|375px]] 
+
+
+Finding a suitable clock was the easy bit. The hard (time consuming) part was finding a tray that I could position BESIDE my new clock. NOT under or over it, which was what the first 3 out of four trays I tested would do. They were all easier to configure, the first two in the list below were very easy, but that was really also their main problem. As they just didn't provide enough options regarding the positioning of the tray.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+==This is what I found:==
+
+'''Docker:''' Nice &amp; easy to setup; no way to position the tray with the clock; so it always put the tray icons above or below the clock, never beside the clock.
+
+'''Peksystray:''' More options; still no better than Docker re. position control.
+
+'''Stalonetray:''' Plenty more options; perhaps it was possible to position beside the clock, but I couldn't crack in my trial &amp; error way.
+
+'''Trayer:''' Fortunately I found a string that I could use in the ''~/.config/openbox/autostart'' file that with only a couple of changes to suit, now works perfectly for me.
+
+
+==The Trayer ~/.config/openbox/autostart command line:==
+
+
+ (sleep 2s &amp;&amp; trayer --expand true --transparent true  --alpha 185 --edge top --align right --expand true --SetDockType true --widthtype request --margin 510) &amp;
+
+I changed the colour from black to a grey using the '''--alpha 185''' parameter &amp; positioned the '''volti audio tray icon''' up against the left hand side of the clock using the '''--margin 510''' parameter. All other tray icons position themselves to the left of the previous one.
+
+
+==Conclusion:==
+
+After years of running Openbox with a panel, I find this new way of using Openbox to be surprisingly comfortable. The only thing I'm missing is being able to just select a desktop on the Tint2 workspace switcher &amp; go to the app' that is running on it. So really it is looking pretty good.
+
+
+[[Openbox Dock with the Lal Clock &amp; Trayer|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>365ecvcltnb883b5zw0tuyzb7ojlcgb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

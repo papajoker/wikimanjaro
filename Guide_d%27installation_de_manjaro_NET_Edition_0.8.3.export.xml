@@ -1,0 +1,1172 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide d'installation de manjaro NET Edition 0.8.3</title>
+    <ns>0</ns>
+    <id>679</id>
+    <revision>
+      <id>4514</id>
+      <timestamp>2013-01-09T10:13:31Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  =A TRADUIRE=  =Overview=  {{tip| '''If possible, ensure that you are connected to the internet''' prior to booting from your in...&quot;</comment>
+      <text xml:space="preserve" bytes="11518">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=A TRADUIRE=
+
+=Overview=
+
+{{tip| '''If possible, ensure that you are connected to the internet''' prior to booting from your installation media(e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have started the installation process, you will be able to manually connect to your wireless network. The Stable Installer section of the '''[[Installation_Guide_for_Experienced_Users_0.8.3#Starting_the_Stable_Installer|User Guide for Experienced Users]]''' provides further information about this.}}
+
+
+The NET edition of Manjaro provides a base installation without a pre-installed display manager, desktop environment, or any desktop software applications. However, in keeping with our user-friendly philosophy:
+
+* The necessary codecs and Software (e.g. Adobe Flash) are pre-installed to play multimedia files
+* Virtualbox Guest Additions are pre-installed 
+* Your hardware will still be automatically detected, and 
+* The appropriate hardware drivers (e.g. for graphics cards) will still be installed for you
+
+As such, the NET edition will allow you to shape your system ''exactly'' the way you want it, with ''exactly'' the software applications you want and need, but without the time, difficulty, or technical expertise otherwise necessary to manually install and configure the appropriate hardware drivers, codecs, and so on. '''This makes installing the NET edition accessable even to beginners''', and can offer a wonderful opportunity to build your own system and learn more about how it works in the process. Why not give it a try!
+
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the Function (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language by pressing the F2 key.''' The options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''British English'' has been highlighted for the user. 
+
+{{Tip|Not all supported languages may be initially shown on the list. Keep scrolling down past 'Romanian' to see a few extra languages that are supported, including Turkish.}}
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap) by pressing the F3 key.''' Again, the options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''English GB'' (Great Britain) has been highlighted for the user. 
+
+{{Tip|Again, not all supported languages may be initially shown on the list.}}
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are available:
+
+: '''1. Boot Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Starting the Installation Process=
+
+[[file:netlogin-082.png|thumb|left|375px]]
+
+
+'''Log into Manjaro'''. 
+
+Upon booting into the command line interface, it will be necessary to log into the system in order to start installation process. As illustrated, both the username and passwords are ''manjaro''.
+
+Upon logging in, you will also be presented with another opportunity to change your preferred language and keymap (i.e. keyboard layout) if you were unable to do so at the beginning. These tasks may also be undertaken during the installation process itself. However, if you wish to take the opportunity to do so prior to starting the installation process, please see '''[[Installation_Guide_for_Beginners_0.8.3#Set Locale (optional)| Set Locale (optional)]]''' and '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)| Set keymap (optional)]]''' in the '''Installation Guide for Beginners'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[file:netstartinstall-082.png|thumb|left|375px]]
+
+
+'''Start the CLI Installer'''.
+
+To start the actual installation process, enter the command:
+
+ sudo setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installing The Base System=
+
+[[file:netupdate-082.png|thumb|left|375px]]
+
+
+The process to install the base system of the NET edition is identical to that for the full editions of Manjaro. As such, please select the installation guide appropriate for you:
+
+
+'''1. [[Installation Guide for Beginners 0.8.3#Starting_the_Stable_Installer|Installation Guide for Beginners]]''': a simple guide where no technical knowledge or expertise is required''.
+
+'''2. [[Installation Guide for Experienced Users 0.8.3#Starting_the_Stable_Installer|Installation Guide for Experienced Users]]''': manually partition your hard disk and edit the necessary configuration files''.
+
+Once you have re-booted and logged into your newly installed system, update it by entering the command:
+
+ sudo pacman -Syu
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing a Display Manager =
+
+[[File:login-083.png|thumb|left|375px]]
+
+
+Display Managers - also known as a ''Login Managers'' - are responsible for proving a login screen. They therefore act as a security barrier to prevent unauthorised access to your system, although it is possible to enable automatic login in many instances. They can also allow you to select from multiple desktop environments, should you have them installed. 
+
+A choice of four good display managers - ''GDM'', ''KDM'', ''LXDM'' (as shown here), and ''SLiM'' - are available in the '''[[Install Display Managers]]''' guide.
+
+{{note|If you decide to use SLiM, additional configuration will be required to get it working. Otherwise, GDM, KDM, and LXDM will detect any installed desktop environments automatically for you.}}
+
+Once your chosen display manager has been installed and enabled, you will then be ready to install your choice of desktop environment(s).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Desktop Environments =
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+Please note that unlike those pre-installed with the full editions on Manjaro, your installed  desktop environment(s) will not have any Manjaro-specific configurations or themes already set up. They will instead be basic, 'vanilla' installations to start off with.
+
+A wide choice of several officially-supported desktop environments and window managers can be installed by referring  to the '''[[Install Desktop Environments]]''' guide. Alternatively, the ''MATE'' desktop environment can also be installed by referring to the '''[[MATE Desktop Environment]]''' guide, although it is not officially supported.
+
+{{tip|If you didn't know already, you can of course install more than one desktop environment!}}
+
+Once your chosen desktop environment(s) have been installed, reboot your system, and log in using your new display manager.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Accessing the Arch User Repository (AUR)=
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+Maintained by the Arch-Community, the '''Arch User Repository''' is an optional source of additional software applications that may not otherwise be available via the official Manjaro repositories. 
+
+The '''[[Arch User Repository|Arch User Repository guide]]''' provides information on how to enable access to the AUR, as well as search for software to install from it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Recommended Software Applications =
+
+While you are of course entirely free to chose the applications you wish to install, a couple of system-related recommendations to make life easier have been provided. To install these programs, you will have to first open up your terminal in order to enter the necessary commands.
+
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+'''Pacman-GUI'''. 
+
+Developed especially for Manjaro, this application allows you to update your system, as well as to install and remove software applications at the click of a button, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pacman-gui
+
+
+A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser'''. 
+
+Intended to be used in conjunction with the the Pacman-GUI, this application allows you to easily search the official Manjaro repositories, the Arch User Repositories (AUR), and even your own system for software, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pkgbrowser
+
+
+A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kalu-083.png|thumb|left|375px]]
+ 
+
+
+'''Kalu'''. 
+ 	
+Once enabled, this application will automatically check and notify you of any updates available for your system, as well as provide Manjaro-related news. To install this application, enter the command:
+ 	
+ sudo pacman -S kalu polkit polkit-gnome
+
+{{warning|'''&lt;u&gt;DO NOT&lt;/u&gt; install or use Kalu if Manjaro has been installed in a virtual machine environment'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for the NET Edition 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>6y8d3xo92ju6jyl4xsbcsjwuvikenxe</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4518</id>
+      <parentid>4514</parentid>
+      <timestamp>2013-01-09T17:35:51Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="11574">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction :-)=
+
+=Vue d'ensemple=
+
+{{Astuce| '''Si possible, assurez-vous d'être connecté à Internet avant de démarrer sur votre média d'installation''' (par exemple un DVD, une clé USB, ou même un fichier ISO directement si vous démarrez dans une machine virtuelle d'Oracle). Si vous avez une liaison directe par c^able Ethernet, Manjaro vas se connecter automatiquement et vous n'aurez rien à faire. Sinon, dès le démarrage du pprocessus d'installation, vous aurez la possibilité de vous connecter manuellement à votre réseau sans fil. The Stable Installer section of the '''[[Installation_Guide_for_Experienced_Users_0.8.3#Starting_the_Stable_Installer|User Guide for Experienced Users]]''' provides further information about this.}}
+
+
+The NET edition of Manjaro provides a base installation without a pre-installed display manager, desktop environment, or any desktop software applications. However, in keeping with our user-friendly philosophy:
+
+* The necessary codecs and Software (e.g. Adobe Flash) are pre-installed to play multimedia files
+* Virtualbox Guest Additions are pre-installed 
+* Your hardware will still be automatically detected, and 
+* The appropriate hardware drivers (e.g. for graphics cards) will still be installed for you
+
+As such, the NET edition will allow you to shape your system ''exactly'' the way you want it, with ''exactly'' the software applications you want and need, but without the time, difficulty, or technical expertise otherwise necessary to manually install and configure the appropriate hardware drivers, codecs, and so on. '''This makes installing the NET edition accessable even to beginners''', and can offer a wonderful opportunity to build your own system and learn more about how it works in the process. Why not give it a try!
+
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the Function (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language by pressing the F2 key.''' The options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''British English'' has been highlighted for the user. 
+
+{{Tip|Not all supported languages may be initially shown on the list. Keep scrolling down past 'Romanian' to see a few extra languages that are supported, including Turkish.}}
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap) by pressing the F3 key.''' Again, the options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''English GB'' (Great Britain) has been highlighted for the user. 
+
+{{Tip|Again, not all supported languages may be initially shown on the list.}}
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are available:
+
+: '''1. Boot Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Starting the Installation Process=
+
+[[file:netlogin-082.png|thumb|left|375px]]
+
+
+'''Log into Manjaro'''. 
+
+Upon booting into the command line interface, it will be necessary to log into the system in order to start installation process. As illustrated, both the username and passwords are ''manjaro''.
+
+Upon logging in, you will also be presented with another opportunity to change your preferred language and keymap (i.e. keyboard layout) if you were unable to do so at the beginning. These tasks may also be undertaken during the installation process itself. However, if you wish to take the opportunity to do so prior to starting the installation process, please see '''[[Installation_Guide_for_Beginners_0.8.3#Set Locale (optional)| Set Locale (optional)]]''' and '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)| Set keymap (optional)]]''' in the '''Installation Guide for Beginners'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[file:netstartinstall-082.png|thumb|left|375px]]
+
+
+'''Start the CLI Installer'''.
+
+To start the actual installation process, enter the command:
+
+ sudo setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installing The Base System=
+
+[[file:netupdate-082.png|thumb|left|375px]]
+
+
+The process to install the base system of the NET edition is identical to that for the full editions of Manjaro. As such, please select the installation guide appropriate for you:
+
+
+'''1. [[Installation Guide for Beginners 0.8.3#Starting_the_Stable_Installer|Installation Guide for Beginners]]''': a simple guide where no technical knowledge or expertise is required''.
+
+'''2. [[Installation Guide for Experienced Users 0.8.3#Starting_the_Stable_Installer|Installation Guide for Experienced Users]]''': manually partition your hard disk and edit the necessary configuration files''.
+
+Once you have re-booted and logged into your newly installed system, update it by entering the command:
+
+ sudo pacman -Syu
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing a Display Manager =
+
+[[File:login-083.png|thumb|left|375px]]
+
+
+Display Managers - also known as a ''Login Managers'' - are responsible for proving a login screen. They therefore act as a security barrier to prevent unauthorised access to your system, although it is possible to enable automatic login in many instances. They can also allow you to select from multiple desktop environments, should you have them installed. 
+
+A choice of four good display managers - ''GDM'', ''KDM'', ''LXDM'' (as shown here), and ''SLiM'' - are available in the '''[[Install Display Managers]]''' guide.
+
+{{note|If you decide to use SLiM, additional configuration will be required to get it working. Otherwise, GDM, KDM, and LXDM will detect any installed desktop environments automatically for you.}}
+
+Once your chosen display manager has been installed and enabled, you will then be ready to install your choice of desktop environment(s).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Desktop Environments =
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+Please note that unlike those pre-installed with the full editions on Manjaro, your installed  desktop environment(s) will not have any Manjaro-specific configurations or themes already set up. They will instead be basic, 'vanilla' installations to start off with.
+
+A wide choice of several officially-supported desktop environments and window managers can be installed by referring  to the '''[[Install Desktop Environments]]''' guide. Alternatively, the ''MATE'' desktop environment can also be installed by referring to the '''[[MATE Desktop Environment]]''' guide, although it is not officially supported.
+
+{{tip|If you didn't know already, you can of course install more than one desktop environment!}}
+
+Once your chosen desktop environment(s) have been installed, reboot your system, and log in using your new display manager.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Accessing the Arch User Repository (AUR)=
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+Maintained by the Arch-Community, the '''Arch User Repository''' is an optional source of additional software applications that may not otherwise be available via the official Manjaro repositories. 
+
+The '''[[Arch User Repository|Arch User Repository guide]]''' provides information on how to enable access to the AUR, as well as search for software to install from it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Recommended Software Applications =
+
+While you are of course entirely free to chose the applications you wish to install, a couple of system-related recommendations to make life easier have been provided. To install these programs, you will have to first open up your terminal in order to enter the necessary commands.
+
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+'''Pacman-GUI'''. 
+
+Developed especially for Manjaro, this application allows you to update your system, as well as to install and remove software applications at the click of a button, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pacman-gui
+
+
+A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser'''. 
+
+Intended to be used in conjunction with the the Pacman-GUI, this application allows you to easily search the official Manjaro repositories, the Arch User Repositories (AUR), and even your own system for software, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pkgbrowser
+
+
+A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kalu-083.png|thumb|left|375px]]
+ 
+
+
+'''Kalu'''. 
+ 	
+Once enabled, this application will automatically check and notify you of any updates available for your system, as well as provide Manjaro-related news. To install this application, enter the command:
+ 	
+ sudo pacman -S kalu polkit polkit-gnome
+
+{{warning|'''&lt;u&gt;DO NOT&lt;/u&gt; install or use Kalu if Manjaro has been installed in a virtual machine environment'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for the NET Edition 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>azlv581quiby28ddjuauk7avzzqqp5x</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4519</id>
+      <parentid>4518</parentid>
+      <timestamp>2013-01-09T17:36:49Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemple */</comment>
+      <text xml:space="preserve" bytes="11572">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction :-)=
+
+=Vue d'ensemple=
+
+{{Astuce| '''Si possible, assurez-vous d'être connecté à Internet avant de démarrer sur votre média d'installation''' (par exemple un DVD, une clé USB, ou même un fichier ISO directement si vous démarrez dans une machine virtuelle d'Oracle). Si vous avez une liaison directe par câble Ethernet, Manjaro vas se connecter automatiquement et vous n'aurez rien à faire. Sinon, dès le démarrage du processus d'installation, vous aurez la possibilité de vous connecter manuellement à votre réseau sans fil. The Stable Installer section of the '''[[Installation_Guide_for_Experienced_Users_0.8.3#Starting_the_Stable_Installer|User Guide for Experienced Users]]''' provides further information about this.}}
+
+
+The NET edition of Manjaro provides a base installation without a pre-installed display manager, desktop environment, or any desktop software applications. However, in keeping with our user-friendly philosophy:
+
+* The necessary codecs and Software (e.g. Adobe Flash) are pre-installed to play multimedia files
+* Virtualbox Guest Additions are pre-installed 
+* Your hardware will still be automatically detected, and 
+* The appropriate hardware drivers (e.g. for graphics cards) will still be installed for you
+
+As such, the NET edition will allow you to shape your system ''exactly'' the way you want it, with ''exactly'' the software applications you want and need, but without the time, difficulty, or technical expertise otherwise necessary to manually install and configure the appropriate hardware drivers, codecs, and so on. '''This makes installing the NET edition accessable even to beginners''', and can offer a wonderful opportunity to build your own system and learn more about how it works in the process. Why not give it a try!
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the Function (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language by pressing the F2 key.''' The options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''British English'' has been highlighted for the user. 
+
+{{Tip|Not all supported languages may be initially shown on the list. Keep scrolling down past 'Romanian' to see a few extra languages that are supported, including Turkish.}}
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap) by pressing the F3 key.''' Again, the options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''English GB'' (Great Britain) has been highlighted for the user. 
+
+{{Tip|Again, not all supported languages may be initially shown on the list.}}
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are available:
+
+: '''1. Boot Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Starting the Installation Process=
+
+[[file:netlogin-082.png|thumb|left|375px]]
+
+
+'''Log into Manjaro'''. 
+
+Upon booting into the command line interface, it will be necessary to log into the system in order to start installation process. As illustrated, both the username and passwords are ''manjaro''.
+
+Upon logging in, you will also be presented with another opportunity to change your preferred language and keymap (i.e. keyboard layout) if you were unable to do so at the beginning. These tasks may also be undertaken during the installation process itself. However, if you wish to take the opportunity to do so prior to starting the installation process, please see '''[[Installation_Guide_for_Beginners_0.8.3#Set Locale (optional)| Set Locale (optional)]]''' and '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)| Set keymap (optional)]]''' in the '''Installation Guide for Beginners'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[file:netstartinstall-082.png|thumb|left|375px]]
+
+
+'''Start the CLI Installer'''.
+
+To start the actual installation process, enter the command:
+
+ sudo setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installing The Base System=
+
+[[file:netupdate-082.png|thumb|left|375px]]
+
+
+The process to install the base system of the NET edition is identical to that for the full editions of Manjaro. As such, please select the installation guide appropriate for you:
+
+
+'''1. [[Installation Guide for Beginners 0.8.3#Starting_the_Stable_Installer|Installation Guide for Beginners]]''': a simple guide where no technical knowledge or expertise is required''.
+
+'''2. [[Installation Guide for Experienced Users 0.8.3#Starting_the_Stable_Installer|Installation Guide for Experienced Users]]''': manually partition your hard disk and edit the necessary configuration files''.
+
+Once you have re-booted and logged into your newly installed system, update it by entering the command:
+
+ sudo pacman -Syu
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing a Display Manager =
+
+[[File:login-083.png|thumb|left|375px]]
+
+
+Display Managers - also known as a ''Login Managers'' - are responsible for proving a login screen. They therefore act as a security barrier to prevent unauthorised access to your system, although it is possible to enable automatic login in many instances. They can also allow you to select from multiple desktop environments, should you have them installed. 
+
+A choice of four good display managers - ''GDM'', ''KDM'', ''LXDM'' (as shown here), and ''SLiM'' - are available in the '''[[Install Display Managers]]''' guide.
+
+{{note|If you decide to use SLiM, additional configuration will be required to get it working. Otherwise, GDM, KDM, and LXDM will detect any installed desktop environments automatically for you.}}
+
+Once your chosen display manager has been installed and enabled, you will then be ready to install your choice of desktop environment(s).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Desktop Environments =
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+Please note that unlike those pre-installed with the full editions on Manjaro, your installed  desktop environment(s) will not have any Manjaro-specific configurations or themes already set up. They will instead be basic, 'vanilla' installations to start off with.
+
+A wide choice of several officially-supported desktop environments and window managers can be installed by referring  to the '''[[Install Desktop Environments]]''' guide. Alternatively, the ''MATE'' desktop environment can also be installed by referring to the '''[[MATE Desktop Environment]]''' guide, although it is not officially supported.
+
+{{tip|If you didn't know already, you can of course install more than one desktop environment!}}
+
+Once your chosen desktop environment(s) have been installed, reboot your system, and log in using your new display manager.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Accessing the Arch User Repository (AUR)=
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+Maintained by the Arch-Community, the '''Arch User Repository''' is an optional source of additional software applications that may not otherwise be available via the official Manjaro repositories. 
+
+The '''[[Arch User Repository|Arch User Repository guide]]''' provides information on how to enable access to the AUR, as well as search for software to install from it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Recommended Software Applications =
+
+While you are of course entirely free to chose the applications you wish to install, a couple of system-related recommendations to make life easier have been provided. To install these programs, you will have to first open up your terminal in order to enter the necessary commands.
+
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+'''Pacman-GUI'''. 
+
+Developed especially for Manjaro, this application allows you to update your system, as well as to install and remove software applications at the click of a button, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pacman-gui
+
+
+A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser'''. 
+
+Intended to be used in conjunction with the the Pacman-GUI, this application allows you to easily search the official Manjaro repositories, the Arch User Repositories (AUR), and even your own system for software, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pkgbrowser
+
+
+A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kalu-083.png|thumb|left|375px]]
+ 
+
+
+'''Kalu'''. 
+ 	
+Once enabled, this application will automatically check and notify you of any updates available for your system, as well as provide Manjaro-related news. To install this application, enter the command:
+ 	
+ sudo pacman -S kalu polkit polkit-gnome
+
+{{warning|'''&lt;u&gt;DO NOT&lt;/u&gt; install or use Kalu if Manjaro has been installed in a virtual machine environment'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for the NET Edition 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>j8wx30m2egdxxv1kbefh44efut96sh3</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4520</id>
+      <parentid>4519</parentid>
+      <timestamp>2013-01-09T17:43:38Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemple */</comment>
+      <text xml:space="preserve" bytes="11605">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction :-)=
+
+=Vue d'ensemple=
+
+{{Astuce| '''Si possible, assurez-vous d'être connecté à Internet avant de démarrer sur votre média d'installation''' (par exemple un DVD, une clé USB, ou même un fichier ISO directement si vous démarrez dans une machine virtuelle d'Oracle). Si vous avez une liaison directe par câble Ethernet, Manjaro vas se connecter automatiquement et vous n'aurez rien à faire. Sinon, dès le démarrage du processus d'installation, vous aurez la possibilité de vous connecter manuellement à votre réseau sans fil. La section 'Démarrage du programme d'installation stable' du  '''[[Installation_Guide_for_Experienced_Users_0.8.3#Starting_the_Stable_Installer|Guide d'installation de manjaro Expert]]''' provides further information about this.}}
+
+
+The NET edition of Manjaro provides a base installation without a pre-installed display manager, desktop environment, or any desktop software applications. However, in keeping with our user-friendly philosophy:
+
+* The necessary codecs and Software (e.g. Adobe Flash) are pre-installed to play multimedia files
+* Virtualbox Guest Additions are pre-installed 
+* Your hardware will still be automatically detected, and 
+* The appropriate hardware drivers (e.g. for graphics cards) will still be installed for you
+
+As such, the NET edition will allow you to shape your system ''exactly'' the way you want it, with ''exactly'' the software applications you want and need, but without the time, difficulty, or technical expertise otherwise necessary to manually install and configure the appropriate hardware drivers, codecs, and so on. '''This makes installing the NET edition accessable even to beginners''', and can offer a wonderful opportunity to build your own system and learn more about how it works in the process. Why not give it a try!
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the Function (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language by pressing the F2 key.''' The options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''British English'' has been highlighted for the user. 
+
+{{Tip|Not all supported languages may be initially shown on the list. Keep scrolling down past 'Romanian' to see a few extra languages that are supported, including Turkish.}}
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap) by pressing the F3 key.''' Again, the options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''English GB'' (Great Britain) has been highlighted for the user. 
+
+{{Tip|Again, not all supported languages may be initially shown on the list.}}
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are available:
+
+: '''1. Boot Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Starting the Installation Process=
+
+[[file:netlogin-082.png|thumb|left|375px]]
+
+
+'''Log into Manjaro'''. 
+
+Upon booting into the command line interface, it will be necessary to log into the system in order to start installation process. As illustrated, both the username and passwords are ''manjaro''.
+
+Upon logging in, you will also be presented with another opportunity to change your preferred language and keymap (i.e. keyboard layout) if you were unable to do so at the beginning. These tasks may also be undertaken during the installation process itself. However, if you wish to take the opportunity to do so prior to starting the installation process, please see '''[[Installation_Guide_for_Beginners_0.8.3#Set Locale (optional)| Set Locale (optional)]]''' and '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)| Set keymap (optional)]]''' in the '''Installation Guide for Beginners'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[file:netstartinstall-082.png|thumb|left|375px]]
+
+
+'''Start the CLI Installer'''.
+
+To start the actual installation process, enter the command:
+
+ sudo setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installing The Base System=
+
+[[file:netupdate-082.png|thumb|left|375px]]
+
+
+The process to install the base system of the NET edition is identical to that for the full editions of Manjaro. As such, please select the installation guide appropriate for you:
+
+
+'''1. [[Installation Guide for Beginners 0.8.3#Starting_the_Stable_Installer|Installation Guide for Beginners]]''': a simple guide where no technical knowledge or expertise is required''.
+
+'''2. [[Installation Guide for Experienced Users 0.8.3#Starting_the_Stable_Installer|Installation Guide for Experienced Users]]''': manually partition your hard disk and edit the necessary configuration files''.
+
+Once you have re-booted and logged into your newly installed system, update it by entering the command:
+
+ sudo pacman -Syu
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing a Display Manager =
+
+[[File:login-083.png|thumb|left|375px]]
+
+
+Display Managers - also known as a ''Login Managers'' - are responsible for proving a login screen. They therefore act as a security barrier to prevent unauthorised access to your system, although it is possible to enable automatic login in many instances. They can also allow you to select from multiple desktop environments, should you have them installed. 
+
+A choice of four good display managers - ''GDM'', ''KDM'', ''LXDM'' (as shown here), and ''SLiM'' - are available in the '''[[Install Display Managers]]''' guide.
+
+{{note|If you decide to use SLiM, additional configuration will be required to get it working. Otherwise, GDM, KDM, and LXDM will detect any installed desktop environments automatically for you.}}
+
+Once your chosen display manager has been installed and enabled, you will then be ready to install your choice of desktop environment(s).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Desktop Environments =
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+Please note that unlike those pre-installed with the full editions on Manjaro, your installed  desktop environment(s) will not have any Manjaro-specific configurations or themes already set up. They will instead be basic, 'vanilla' installations to start off with.
+
+A wide choice of several officially-supported desktop environments and window managers can be installed by referring  to the '''[[Install Desktop Environments]]''' guide. Alternatively, the ''MATE'' desktop environment can also be installed by referring to the '''[[MATE Desktop Environment]]''' guide, although it is not officially supported.
+
+{{tip|If you didn't know already, you can of course install more than one desktop environment!}}
+
+Once your chosen desktop environment(s) have been installed, reboot your system, and log in using your new display manager.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Accessing the Arch User Repository (AUR)=
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+Maintained by the Arch-Community, the '''Arch User Repository''' is an optional source of additional software applications that may not otherwise be available via the official Manjaro repositories. 
+
+The '''[[Arch User Repository|Arch User Repository guide]]''' provides information on how to enable access to the AUR, as well as search for software to install from it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Recommended Software Applications =
+
+While you are of course entirely free to chose the applications you wish to install, a couple of system-related recommendations to make life easier have been provided. To install these programs, you will have to first open up your terminal in order to enter the necessary commands.
+
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+'''Pacman-GUI'''. 
+
+Developed especially for Manjaro, this application allows you to update your system, as well as to install and remove software applications at the click of a button, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pacman-gui
+
+
+A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser'''. 
+
+Intended to be used in conjunction with the the Pacman-GUI, this application allows you to easily search the official Manjaro repositories, the Arch User Repositories (AUR), and even your own system for software, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pkgbrowser
+
+
+A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kalu-083.png|thumb|left|375px]]
+ 
+
+
+'''Kalu'''. 
+ 	
+Once enabled, this application will automatically check and notify you of any updates available for your system, as well as provide Manjaro-related news. To install this application, enter the command:
+ 	
+ sudo pacman -S kalu polkit polkit-gnome
+
+{{warning|'''&lt;u&gt;DO NOT&lt;/u&gt; install or use Kalu if Manjaro has been installed in a virtual machine environment'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for the NET Edition 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>15g2qtfmt6yls1pl51fdy59ho4z9bs8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4521</id>
+      <parentid>4520</parentid>
+      <timestamp>2013-01-09T17:47:41Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemple */</comment>
+      <text xml:space="preserve" bytes="11585">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction :-)=
+
+=Vue d'ensemple=
+
+{{Astuce| '''Si possible, assurez-vous d'être connecté à Internet avant de démarrer sur votre média d'installation''' (par exemple un DVD, une clé USB, ou même un fichier ISO directement si vous démarrez dans une machine virtuelle d'Oracle). Si vous avez une liaison directe par câble Ethernet, Manjaro vas se connecter automatiquement et vous n'aurez rien à faire. Sinon, dès le démarrage du processus d'installation, vous aurez la possibilité de vous connecter manuellement à votre réseau sans fil. La section 'Démarrage du programme d'installation stable' du  '''[[Guide_d%27installation_de_manjaro_0.8.3_Expert|Guide d'installation de Manjaro Expert]]''' fournit des informations détaillées à ce sujet.}}
+
+
+The NET edition of Manjaro provides a base installation without a pre-installed display manager, desktop environment, or any desktop software applications. However, in keeping with our user-friendly philosophy:
+
+* The necessary codecs and Software (e.g. Adobe Flash) are pre-installed to play multimedia files
+* Virtualbox Guest Additions are pre-installed 
+* Your hardware will still be automatically detected, and 
+* The appropriate hardware drivers (e.g. for graphics cards) will still be installed for you
+
+As such, the NET edition will allow you to shape your system ''exactly'' the way you want it, with ''exactly'' the software applications you want and need, but without the time, difficulty, or technical expertise otherwise necessary to manually install and configure the appropriate hardware drivers, codecs, and so on. '''This makes installing the NET edition accessable even to beginners''', and can offer a wonderful opportunity to build your own system and learn more about how it works in the process. Why not give it a try!
+
+= Pre-installation: Setting Your Language and Keyboard Layout =
+
+[[File: boot1-083.png|thumb|left|375px]] 
+
+
+Once Manjaro has booted, you should be presented with the Manjaro boot screen. However, don't actually boot into anything just yet! First it will be necessary to set your '''preferred language''' and '''keyboard layout'''. While the benefits of using your main language and keyboard layout for the installation process itself may be obvious, setting these now will also make configuring your installed system much faster and easier, too.
+
+Don't worry if your preferred language or keyboard layout isn't listed, as a far wider range of languages can be selected during the installation process itself, if necessary.
+
+{{tip| Setting the language and keyboard layout - as shown below - are undertaken through pressing the Function (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setlanguage-083.png|thumb|left|375px]] 
+
+
+'''First, set your preferred language by pressing the F2 key.''' The options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''British English'' has been highlighted for the user. 
+
+{{Tip|Not all supported languages may be initially shown on the list. Keep scrolling down past 'Romanian' to see a few extra languages that are supported, including Turkish.}}
+
+Once selected, press &lt;enter&gt; to confirm and to be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: setkeymap-083.png|thumb|left|375px]] 
+
+
+'''Second, set your preferred keyboard layout (keymap) by pressing the F3 key.''' Again, the options available can be highlighted for selection by using the up or down arrow keys on your keyboard. In this instance, ''English GB'' (Great Britain) has been highlighted for the user. 
+
+{{Tip|Again, not all supported languages may be initially shown on the list.}}
+
+Once selected, press &lt;enter&gt; to confirm and be taken back to the boot menu.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: boot2-083.png|thumb|left|375px]] 
+
+
+With the initial preparations completed, Manjaro can now be booted to begin the installation process. Two primary options are available:
+
+: '''1. Boot Manjaro Linux''' - boots using free / open-source graphics drivers developed by the Linux community
+: '''2. Boot Manjaro Linux with non-free graphics drivers''' - boots using proprietary graphics drivers (i.e. drivers developed and owned by the manufacturers of graphics cards)
+
+{{tip| For the best results, select the 'Boot Manjaro Linux with non-free graphics drivers'. This should match the right manufacturer's driver(s) your particular graphics card(s).}}
+
+In this instance, Manjaro is being booted using the non-free graphics drivers option. Again, use the arrow keys to highlight your choice, and then press &lt;enter&gt; to continue.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Starting the Installation Process=
+
+[[file:netlogin-082.png|thumb|left|375px]]
+
+
+'''Log into Manjaro'''. 
+
+Upon booting into the command line interface, it will be necessary to log into the system in order to start installation process. As illustrated, both the username and passwords are ''manjaro''.
+
+Upon logging in, you will also be presented with another opportunity to change your preferred language and keymap (i.e. keyboard layout) if you were unable to do so at the beginning. These tasks may also be undertaken during the installation process itself. However, if you wish to take the opportunity to do so prior to starting the installation process, please see '''[[Installation_Guide_for_Beginners_0.8.3#Set Locale (optional)| Set Locale (optional)]]''' and '''[[Installation_Guide_for_Beginners_0.8.3#Set Keymap (optional)| Set keymap (optional)]]''' in the '''Installation Guide for Beginners'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[file:netstartinstall-082.png|thumb|left|375px]]
+
+
+'''Start the CLI Installer'''.
+
+To start the actual installation process, enter the command:
+
+ sudo setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Installing The Base System=
+
+[[file:netupdate-082.png|thumb|left|375px]]
+
+
+The process to install the base system of the NET edition is identical to that for the full editions of Manjaro. As such, please select the installation guide appropriate for you:
+
+
+'''1. [[Installation Guide for Beginners 0.8.3#Starting_the_Stable_Installer|Installation Guide for Beginners]]''': a simple guide where no technical knowledge or expertise is required''.
+
+'''2. [[Installation Guide for Experienced Users 0.8.3#Starting_the_Stable_Installer|Installation Guide for Experienced Users]]''': manually partition your hard disk and edit the necessary configuration files''.
+
+Once you have re-booted and logged into your newly installed system, update it by entering the command:
+
+ sudo pacman -Syu
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing a Display Manager =
+
+[[File:login-083.png|thumb|left|375px]]
+
+
+Display Managers - also known as a ''Login Managers'' - are responsible for proving a login screen. They therefore act as a security barrier to prevent unauthorised access to your system, although it is possible to enable automatic login in many instances. They can also allow you to select from multiple desktop environments, should you have them installed. 
+
+A choice of four good display managers - ''GDM'', ''KDM'', ''LXDM'' (as shown here), and ''SLiM'' - are available in the '''[[Install Display Managers]]''' guide.
+
+{{note|If you decide to use SLiM, additional configuration will be required to get it working. Otherwise, GDM, KDM, and LXDM will detect any installed desktop environments automatically for you.}}
+
+Once your chosen display manager has been installed and enabled, you will then be ready to install your choice of desktop environment(s).
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Installing Desktop Environments =
+
+[[File: xfceDE.png|thumb|left|375px]]
+
+
+Please note that unlike those pre-installed with the full editions on Manjaro, your installed  desktop environment(s) will not have any Manjaro-specific configurations or themes already set up. They will instead be basic, 'vanilla' installations to start off with.
+
+A wide choice of several officially-supported desktop environments and window managers can be installed by referring  to the '''[[Install Desktop Environments]]''' guide. Alternatively, the ''MATE'' desktop environment can also be installed by referring to the '''[[MATE Desktop Environment]]''' guide, although it is not officially supported.
+
+{{tip|If you didn't know already, you can of course install more than one desktop environment!}}
+
+Once your chosen desktop environment(s) have been installed, reboot your system, and log in using your new display manager.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Adding Printing Capabilities =
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+While optional, adding printing capabilities is highly recommended. 
+
+Full instructions on installing the necessary software are provided in the '''[[Printing Enablement]]''' guide. 
+
+Once the necessary software has been installed - and printing capabilities have been enabled - printers can be added and configured using the '''[[Printer Configuration]]''' guide.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Accessing the Arch User Repository (AUR)=
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+Maintained by the Arch-Community, the '''Arch User Repository''' is an optional source of additional software applications that may not otherwise be available via the official Manjaro repositories. 
+
+The '''[[Arch User Repository|Arch User Repository guide]]''' provides information on how to enable access to the AUR, as well as search for software to install from it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Recommended Software Applications =
+
+While you are of course entirely free to chose the applications you wish to install, a couple of system-related recommendations to make life easier have been provided. To install these programs, you will have to first open up your terminal in order to enter the necessary commands.
+
+
+[[File:pacmangui-083.png|thumb|left|375px]]
+
+
+'''Pacman-GUI'''. 
+
+Developed especially for Manjaro, this application allows you to update your system, as well as to install and remove software applications at the click of a button, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pacman-gui
+
+
+A '''[[Pacman-GUI|guide on how to use the Pacman-GUI]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:pacckagebrowser-082.png|thumb|left|375px]]
+
+
+'''Package Browser'''. 
+
+Intended to be used in conjunction with the the Pacman-GUI, this application allows you to easily search the official Manjaro repositories, the Arch User Repositories (AUR), and even your own system for software, without having to use the terminal. To install this application, enter the command:
+
+ sudo pacman -S pkgbrowser
+
+
+A '''[[Package Browser|guide on how to use Packager Browser]]''' has been provided.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kalu-083.png|thumb|left|375px]]
+ 
+
+
+'''Kalu'''. 
+ 	
+Once enabled, this application will automatically check and notify you of any updates available for your system, as well as provide Manjaro-related news. To install this application, enter the command:
+ 	
+ sudo pacman -S kalu polkit polkit-gnome
+
+{{warning|'''&lt;u&gt;DO NOT&lt;/u&gt; install or use Kalu if Manjaro has been installed in a virtual machine environment'''.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=See Also=
+
+[[Installation Guide for the NET Edition 0.8.3|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>dv5ljso3ol9crt8wke6njpqwtyly2ug</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

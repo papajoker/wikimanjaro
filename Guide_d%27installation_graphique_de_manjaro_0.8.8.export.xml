@@ -1,0 +1,895 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide d'installation graphique de manjaro 0.8.8</title>
+    <ns>0</ns>
+    <id>1128</id>
+    <revision>
+      <id>7463</id>
+      <timestamp>2013-10-23T18:01:46Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;EN COURS DE TRADUCTION  = Overview =  {{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is alread...&quot;</comment>
+      <text xml:space="preserve" bytes="6975">EN COURS DE TRADUCTION
+
+= Overview =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment. And - of course - the '''Command Line installer''' is still available for those who want to use it.}}
+
+
+This '''Experienced Users' Guide''' is suitable for those with sufficient technical knowledge to manually create their own partitions. As such, this guide focuses on providing an example of how to use the 'Advanced' installation method in general, rather than outlining the entire installation process, or listing all the popular partition schemes that may be used.
+
+If you feel it would be helpful to refresh yourself on various partitioning schemes, then the wiki pages about '''[[Partitioning_Overview_and_Existing_Partition_Tables|Partitioning]]''' and '''[[Cfdisk_Basic_Partitioning_Scenarios|Partitioning Scenarios]]''' should prove to be useful.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an Ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Start The Advanced Installation Method =
+
+[[File: adv1-088.png|thumb|left|375px]] 
+
+
+During the installation process, select '''Manage your partitions and where to install Manjaro (advanced)''' and then click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Hard Disk =
+
+
+[[File: adv2-088.png|thumb|left|375px]]
+
+
+{{tip|If like rest of us mere mortals you 'only' have one hard drive, then this will automatically be selected for you. Otherwise, your first drive will be listed as  '(/dev/sd'''a''')', the second '(/dev/sd'''b''')', and so on.}}
+
+
+'''If you have more than one hard drive on your computer''', then you may select the desired one to install Manjaro here.
+
+Once the desired hard drive has been selected and highlighted as shown, click '''New Partition Table''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Partition Table Type =
+
+[[File: adv3b-088.png|thumb|left|375px]]
+
+
+In this instance, the '''msdos (aka MBR)''' partition table type has been selected, as this the appropriate choice for non-UEFI systems.
+
+Once selected, click '''OK''' to start creating the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= A Two-Partition Scenario =
+
+[[File: adv4-088.png|thumb|left|375px]]
+
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A separate swap partition will also be created in the remaining space (SDA2). Both will be '''Primary Partitions'''.
+
+
+Ensuring that the appropriate free space has been selected and highlighted, click '''+ Add''' to create the first partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 1: Boot, Root, and Home ==
+
+[[File: adv5-088.png|thumb|left|375px]]
+
+
+The first partition is intended to contain Boot, Root, and Home. As such:
+
+* 8,500MB (8.5GB) out of a total of 10,000MB (10GB), has been allocated, leaving approximately 2000MB (2GB) for the swap partition. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+
+
+As illustrated, the popular '''EXT4''' file system has also been selected.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv6-088.png|thumb|left|375px]]
+
+
+{{note|Again, this is just an example of a possible partitioning scenario. You may prefer to create separate partitions for Boot and Home, for example.}}
+
+
+The '''Mount Point''' must now be selected. As illustrated, in this instance, the mount point chosen has been Root ('''/'''). In the absence of separate Boot and Home partitions, these elements will automatically be integrated into this Root partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv7-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set and create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 2: Swap (Optional) ==
+
+[[File: adv8-088.png|thumb|left|375px]]
+
+
+{{tip|The Swap partition is optional, although is still highly recommended, especially for laptops and/or lower-specification computers with low memory. As well as serving as extra (albeit slow) additional memory should your system run out of RAM, it is also used for the suspend and hibernate functions.}}
+
+
+Now select the remaining free space in order to create the '''Swap partition''', and click '''+ Add''' once more to create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv9-088.png|thumb|left|375px]]
+
+
+For the Swap partition:
+
+* The remaining 2000MB (2GB) of space has been allocated. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+* The Swap file system has been selected.
+
+Upon selecting the Swap file system type, note that there will no longer be any need to set the mount point.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv10-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set it and complete the two-partition scenario.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Finalise the Partitioning Process =
+
+[[File: adv11-088.png|thumb|left|375px]]
+
+
+{{tip|There is no need to manually assign a boot flag to any partitions. The installer will automatically assign this flag to your Boot or Root partition. You also have the option not to use the drive at all for booting, where appropriate.}}
+
+
+Prior to finalising the partitioning process, once again take the time to review your scenario. '''Neither your partitions nor your definitions of them are set in stone''', and so may still be removed or changed at this stage.
+
+Where satisfied with the partitioning scenario, click '''Install Now!''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv12-088.png|thumb|left|375px]]
+
+
+A transaction screen will appear, outlining all the necessary actions that are to take place. In some instances, this may include the removal of previous partitions that were deleted in the partitioning process.
+
+Again, the option to '''Cancel''' and return to the partitioning process will still be available. Otherwise, to complete the partitioning process and begin installing Manjaro, click '''OK'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Installation Guides]]'''</text>
+      <sha1>p7c9c1cz2e7e2piut8rpm0bo5fapfe1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>7464</id>
+      <parentid>7463</parentid>
+      <timestamp>2013-10-23T18:05:02Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7180">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+EN COURS DE TRADUCTION
+
+= Overview =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment. And - of course - the '''Command Line installer''' is still available for those who want to use it.}}
+
+
+This '''Experienced Users' Guide''' is suitable for those with sufficient technical knowledge to manually create their own partitions. As such, this guide focuses on providing an example of how to use the 'Advanced' installation method in general, rather than outlining the entire installation process, or listing all the popular partition schemes that may be used.
+
+If you feel it would be helpful to refresh yourself on various partitioning schemes, then the wiki pages about '''[[Partitioning_Overview_and_Existing_Partition_Tables|Partitioning]]''' and '''[[Cfdisk_Basic_Partitioning_Scenarios|Partitioning Scenarios]]''' should prove to be useful.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an Ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Start The Advanced Installation Method =
+
+[[File: adv1-088.png|thumb|left|375px]] 
+
+
+During the installation process, select '''Manage your partitions and where to install Manjaro (advanced)''' and then click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Hard Disk =
+
+
+[[File: adv2-088.png|thumb|left|375px]]
+
+
+{{tip|If like rest of us mere mortals you 'only' have one hard drive, then this will automatically be selected for you. Otherwise, your first drive will be listed as  '(/dev/sd'''a''')', the second '(/dev/sd'''b''')', and so on.}}
+
+
+'''If you have more than one hard drive on your computer''', then you may select the desired one to install Manjaro here.
+
+Once the desired hard drive has been selected and highlighted as shown, click '''New Partition Table''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Partition Table Type =
+
+[[File: adv3b-088.png|thumb|left|375px]]
+
+
+In this instance, the '''msdos (aka MBR)''' partition table type has been selected, as this the appropriate choice for non-UEFI systems.
+
+Once selected, click '''OK''' to start creating the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= A Two-Partition Scenario =
+
+[[File: adv4-088.png|thumb|left|375px]]
+
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A separate swap partition will also be created in the remaining space (SDA2). Both will be '''Primary Partitions'''.
+
+
+Ensuring that the appropriate free space has been selected and highlighted, click '''+ Add''' to create the first partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 1: Boot, Root, and Home ==
+
+[[File: adv5-088.png|thumb|left|375px]]
+
+
+The first partition is intended to contain Boot, Root, and Home. As such:
+
+* 8,500MB (8.5GB) out of a total of 10,000MB (10GB), has been allocated, leaving approximately 2000MB (2GB) for the swap partition. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+
+
+As illustrated, the popular '''EXT4''' file system has also been selected.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv6-088.png|thumb|left|375px]]
+
+
+{{note|Again, this is just an example of a possible partitioning scenario. You may prefer to create separate partitions for Boot and Home, for example.}}
+
+
+The '''Mount Point''' must now be selected. As illustrated, in this instance, the mount point chosen has been Root ('''/'''). In the absence of separate Boot and Home partitions, these elements will automatically be integrated into this Root partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv7-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set and create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 2: Swap (Optional) ==
+
+[[File: adv8-088.png|thumb|left|375px]]
+
+
+{{tip|The Swap partition is optional, although is still highly recommended, especially for laptops and/or lower-specification computers with low memory. As well as serving as extra (albeit slow) additional memory should your system run out of RAM, it is also used for the suspend and hibernate functions.}}
+
+
+Now select the remaining free space in order to create the '''Swap partition''', and click '''+ Add''' once more to create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv9-088.png|thumb|left|375px]]
+
+
+For the Swap partition:
+
+* The remaining 2000MB (2GB) of space has been allocated. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+* The Swap file system has been selected.
+
+Upon selecting the Swap file system type, note that there will no longer be any need to set the mount point.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv10-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set it and complete the two-partition scenario.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Finalise the Partitioning Process =
+
+[[File: adv11-088.png|thumb|left|375px]]
+
+
+{{tip|There is no need to manually assign a boot flag to any partitions. The installer will automatically assign this flag to your Boot or Root partition. You also have the option not to use the drive at all for booting, where appropriate.}}
+
+
+Prior to finalising the partitioning process, once again take the time to review your scenario. '''Neither your partitions nor your definitions of them are set in stone''', and so may still be removed or changed at this stage.
+
+Where satisfied with the partitioning scenario, click '''Install Now!''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv12-088.png|thumb|left|375px]]
+
+
+A transaction screen will appear, outlining all the necessary actions that are to take place. In some instances, this may include the removal of previous partitions that were deleted in the partitioning process.
+
+Again, the option to '''Cancel''' and return to the partitioning process will still be available. Otherwise, to complete the partitioning process and begin installing Manjaro, click '''OK'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+[[Graphical Installation Guide for Experienced Users 0.8.8|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>ofrv5qlz4tmz8jhp19gzrnhu1z2vfdp</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>7465</id>
+      <parentid>7464</parentid>
+      <timestamp>2013-10-23T18:07:42Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7206">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+EN COURS DE TRADUCTION
+
+= Overview =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment. And - of course - the '''Command Line installer''' is still available for those who want to use it.}}
+
+
+This '''Experienced Users' Guide''' is suitable for those with sufficient technical knowledge to manually create their own partitions. As such, this guide focuses on providing an example of how to use the 'Advanced' installation method in general, rather than outlining the entire installation process, or listing all the popular partition schemes that may be used.
+
+If you feel it would be helpful to refresh yourself on various partitioning schemes, then the wiki pages about '''[[Partitioning_Overview_and_Existing_Partition_Tables|Partitioning]]''' and '''[[Cfdisk_Basic_Partitioning_Scenarios|Partitioning Scenarios]]''' should prove to be useful.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an Ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Start The Advanced Installation Method =
+
+[[File: adv1-088.png|thumb|left|375px]] 
+
+
+During the installation process, select '''Manage your partitions and where to install Manjaro (advanced)''' and then click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Hard Disk =
+
+
+[[File: adv2-088.png|thumb|left|375px]]
+
+
+{{tip|If like rest of us mere mortals you 'only' have one hard drive, then this will automatically be selected for you. Otherwise, your first drive will be listed as  '(/dev/sd'''a''')', the second '(/dev/sd'''b''')', and so on.}}
+
+
+'''If you have more than one hard drive on your computer''', then you may select the desired one to install Manjaro here.
+
+Once the desired hard drive has been selected and highlighted as shown, click '''New Partition Table''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Partition Table Type =
+
+[[File: adv3b-088.png|thumb|left|375px]]
+
+
+In this instance, the '''msdos (aka MBR)''' partition table type has been selected, as this the appropriate choice for non-UEFI systems.
+
+Once selected, click '''OK''' to start creating the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= A Two-Partition Scenario =
+
+[[File: adv4-088.png|thumb|left|375px]]
+
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A separate swap partition will also be created in the remaining space (SDA2). Both will be '''Primary Partitions'''.
+
+
+Ensuring that the appropriate free space has been selected and highlighted, click '''+ Add''' to create the first partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 1: Boot, Root, and Home ==
+
+[[File: adv5-088.png|thumb|left|375px]]
+
+
+The first partition is intended to contain Boot, Root, and Home. As such:
+
+* 8,500MB (8.5GB) out of a total of 10,000MB (10GB), has been allocated, leaving approximately 2000MB (2GB) for the swap partition. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+
+
+As illustrated, the popular '''EXT4''' file system has also been selected.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv6-088.png|thumb|left|375px]]
+
+
+{{note|Again, this is just an example of a possible partitioning scenario. You may prefer to create separate partitions for Boot and Home, for example.}}
+
+
+The '''Mount Point''' must now be selected. As illustrated, in this instance, the mount point chosen has been Root ('''/'''). In the absence of separate Boot and Home partitions, these elements will automatically be integrated into this Root partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv7-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set and create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 2: Swap (Optional) ==
+
+[[File: adv8-088.png|thumb|left|375px]]
+
+
+{{tip|The Swap partition is optional, although is still highly recommended, especially for laptops and/or lower-specification computers with low memory. As well as serving as extra (albeit slow) additional memory should your system run out of RAM, it is also used for the suspend and hibernate functions.}}
+
+
+Now select the remaining free space in order to create the '''Swap partition''', and click '''+ Add''' once more to create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv9-088.png|thumb|left|375px]]
+
+
+For the Swap partition:
+
+* The remaining 2000MB (2GB) of space has been allocated. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+* The Swap file system has been selected.
+
+Upon selecting the Swap file system type, note that there will no longer be any need to set the mount point.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv10-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set it and complete the two-partition scenario.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Finalise the Partitioning Process =
+
+[[File: adv11-088.png|thumb|left|375px]]
+
+
+{{tip|There is no need to manually assign a boot flag to any partitions. The installer will automatically assign this flag to your Boot or Root partition. You also have the option not to use the drive at all for booting, where appropriate.}}
+
+
+Prior to finalising the partitioning process, once again take the time to review your scenario. '''Neither your partitions nor your definitions of them are set in stone''', and so may still be removed or changed at this stage.
+
+Where satisfied with the partitioning scenario, click '''Install Now!''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv12-088.png|thumb|left|375px]]
+
+
+A transaction screen will appear, outlining all the necessary actions that are to take place. In some instances, this may include the removal of previous partitions that were deleted in the partitioning process.
+
+Again, the option to '''Cancel''' and return to the partitioning process will still be available. Otherwise, to complete the partitioning process and begin installing Manjaro, click '''OK'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+[[Graphical Installation Guide for Experienced Users 0.8.8|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>sopaylszi27apon9ativ42jn0tozleo</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>7470</id>
+      <parentid>7465</parentid>
+      <timestamp>2013-10-24T11:31:22Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7241">pour utilisateurs expérimentés.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+EN COURS DE TRADUCTION
+
+= Overview =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment. And - of course - the '''Command Line installer''' is still available for those who want to use it.}}
+
+
+This '''Experienced Users' Guide''' is suitable for those with sufficient technical knowledge to manually create their own partitions. As such, this guide focuses on providing an example of how to use the 'Advanced' installation method in general, rather than outlining the entire installation process, or listing all the popular partition schemes that may be used.
+
+If you feel it would be helpful to refresh yourself on various partitioning schemes, then the wiki pages about '''[[Partitioning_Overview_and_Existing_Partition_Tables|Partitioning]]''' and '''[[Cfdisk_Basic_Partitioning_Scenarios|Partitioning Scenarios]]''' should prove to be useful.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an Ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Start The Advanced Installation Method =
+
+[[File: adv1-088.png|thumb|left|375px]] 
+
+
+During the installation process, select '''Manage your partitions and where to install Manjaro (advanced)''' and then click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Hard Disk =
+
+
+[[File: adv2-088.png|thumb|left|375px]]
+
+
+{{tip|If like rest of us mere mortals you 'only' have one hard drive, then this will automatically be selected for you. Otherwise, your first drive will be listed as  '(/dev/sd'''a''')', the second '(/dev/sd'''b''')', and so on.}}
+
+
+'''If you have more than one hard drive on your computer''', then you may select the desired one to install Manjaro here.
+
+Once the desired hard drive has been selected and highlighted as shown, click '''New Partition Table''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Partition Table Type =
+
+[[File: adv3b-088.png|thumb|left|375px]]
+
+
+In this instance, the '''msdos (aka MBR)''' partition table type has been selected, as this the appropriate choice for non-UEFI systems.
+
+Once selected, click '''OK''' to start creating the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= A Two-Partition Scenario =
+
+[[File: adv4-088.png|thumb|left|375px]]
+
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A separate swap partition will also be created in the remaining space (SDA2). Both will be '''Primary Partitions'''.
+
+
+Ensuring that the appropriate free space has been selected and highlighted, click '''+ Add''' to create the first partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 1: Boot, Root, and Home ==
+
+[[File: adv5-088.png|thumb|left|375px]]
+
+
+The first partition is intended to contain Boot, Root, and Home. As such:
+
+* 8,500MB (8.5GB) out of a total of 10,000MB (10GB), has been allocated, leaving approximately 2000MB (2GB) for the swap partition. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+
+
+As illustrated, the popular '''EXT4''' file system has also been selected.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv6-088.png|thumb|left|375px]]
+
+
+{{note|Again, this is just an example of a possible partitioning scenario. You may prefer to create separate partitions for Boot and Home, for example.}}
+
+
+The '''Mount Point''' must now be selected. As illustrated, in this instance, the mount point chosen has been Root ('''/'''). In the absence of separate Boot and Home partitions, these elements will automatically be integrated into this Root partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv7-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set and create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 2: Swap (Optional) ==
+
+[[File: adv8-088.png|thumb|left|375px]]
+
+
+{{tip|The Swap partition is optional, although is still highly recommended, especially for laptops and/or lower-specification computers with low memory. As well as serving as extra (albeit slow) additional memory should your system run out of RAM, it is also used for the suspend and hibernate functions.}}
+
+
+Now select the remaining free space in order to create the '''Swap partition''', and click '''+ Add''' once more to create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv9-088.png|thumb|left|375px]]
+
+
+For the Swap partition:
+
+* The remaining 2000MB (2GB) of space has been allocated. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+* The Swap file system has been selected.
+
+Upon selecting the Swap file system type, note that there will no longer be any need to set the mount point.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv10-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set it and complete the two-partition scenario.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Finalise the Partitioning Process =
+
+[[File: adv11-088.png|thumb|left|375px]]
+
+
+{{tip|There is no need to manually assign a boot flag to any partitions. The installer will automatically assign this flag to your Boot or Root partition. You also have the option not to use the drive at all for booting, where appropriate.}}
+
+
+Prior to finalising the partitioning process, once again take the time to review your scenario. '''Neither your partitions nor your definitions of them are set in stone''', and so may still be removed or changed at this stage.
+
+Where satisfied with the partitioning scenario, click '''Install Now!''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv12-088.png|thumb|left|375px]]
+
+
+A transaction screen will appear, outlining all the necessary actions that are to take place. In some instances, this may include the removal of previous partitions that were deleted in the partitioning process.
+
+Again, the option to '''Cancel''' and return to the partitioning process will still be available. Otherwise, to complete the partitioning process and begin installing Manjaro, click '''OK'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+[[Graphical Installation Guide for Experienced Users 0.8.8|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>h7mqygxioe1bcg8b9l6cg3srm0ks7jt</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>7471</id>
+      <parentid>7470</parentid>
+      <timestamp>2013-10-24T11:31:50Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7247">'''pour utilisateurs expérimentés.'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+EN COURS DE TRADUCTION
+
+= Overview =
+
+{{note|Manjaro uses a ''Rolling Release Development Model''. As such, by virtue of keeping an existing installation updated, it is already the latest release. More information can be found in our Blog article: '''[http://blog.manjaro.org/2012/12/11/manjaro-installation-up-to-date-then-you-already-have-the-latest-release/ Manjaro installation up to date? Then you already have the latest release!]'''}}
+
+{{tip|A '''[[Virtualbox]]''' guide has been provided for those wishing to install Manjaro within a virtual machine environment. And - of course - the '''Command Line installer''' is still available for those who want to use it.}}
+
+
+This '''Experienced Users' Guide''' is suitable for those with sufficient technical knowledge to manually create their own partitions. As such, this guide focuses on providing an example of how to use the 'Advanced' installation method in general, rather than outlining the entire installation process, or listing all the popular partition schemes that may be used.
+
+If you feel it would be helpful to refresh yourself on various partitioning schemes, then the wiki pages about '''[[Partitioning_Overview_and_Existing_Partition_Tables|Partitioning]]''' and '''[[Cfdisk_Basic_Partitioning_Scenarios|Partitioning Scenarios]]''' should prove to be useful.
+
+Where possible, '''ensure that you are connected to the internet''' prior to booting from your installation media (e.g. disc, USB flash drive, or even an ISO file directly if booting in Oracle's Virtualbox). If you have a hard-wired connection via an Ethernet cable, then Manjaro will automatically connect to the internet without you having to do anything. Otherwise, once you have booted into Manjaro's desktop, you will need to select and then connect to your wireless network.
+
+
+= Start The Advanced Installation Method =
+
+[[File: adv1-088.png|thumb|left|375px]] 
+
+
+During the installation process, select '''Manage your partitions and where to install Manjaro (advanced)''' and then click '''Forward''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Hard Disk =
+
+
+[[File: adv2-088.png|thumb|left|375px]]
+
+
+{{tip|If like rest of us mere mortals you 'only' have one hard drive, then this will automatically be selected for you. Otherwise, your first drive will be listed as  '(/dev/sd'''a''')', the second '(/dev/sd'''b''')', and so on.}}
+
+
+'''If you have more than one hard drive on your computer''', then you may select the desired one to install Manjaro here.
+
+Once the desired hard drive has been selected and highlighted as shown, click '''New Partition Table''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Choose Your Partition Table Type =
+
+[[File: adv3b-088.png|thumb|left|375px]]
+
+
+In this instance, the '''msdos (aka MBR)''' partition table type has been selected, as this the appropriate choice for non-UEFI systems.
+
+Once selected, click '''OK''' to start creating the partitions.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= A Two-Partition Scenario =
+
+[[File: adv4-088.png|thumb|left|375px]]
+
+
+In this scenario, Boot, Root, and Home will be combined into a single bootable partition (SDA1). A separate swap partition will also be created in the remaining space (SDA2). Both will be '''Primary Partitions'''.
+
+
+Ensuring that the appropriate free space has been selected and highlighted, click '''+ Add''' to create the first partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 1: Boot, Root, and Home ==
+
+[[File: adv5-088.png|thumb|left|375px]]
+
+
+The first partition is intended to contain Boot, Root, and Home. As such:
+
+* 8,500MB (8.5GB) out of a total of 10,000MB (10GB), has been allocated, leaving approximately 2000MB (2GB) for the swap partition. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+
+
+As illustrated, the popular '''EXT4''' file system has also been selected.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv6-088.png|thumb|left|375px]]
+
+
+{{note|Again, this is just an example of a possible partitioning scenario. You may prefer to create separate partitions for Boot and Home, for example.}}
+
+
+The '''Mount Point''' must now be selected. As illustrated, in this instance, the mount point chosen has been Root ('''/'''). In the absence of separate Boot and Home partitions, these elements will automatically be integrated into this Root partition.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv7-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set and create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Partition 2: Swap (Optional) ==
+
+[[File: adv8-088.png|thumb|left|375px]]
+
+
+{{tip|The Swap partition is optional, although is still highly recommended, especially for laptops and/or lower-specification computers with low memory. As well as serving as extra (albeit slow) additional memory should your system run out of RAM, it is also used for the suspend and hibernate functions.}}
+
+
+Now select the remaining free space in order to create the '''Swap partition''', and click '''+ Add''' once more to create it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv9-088.png|thumb|left|375px]]
+
+
+For the Swap partition:
+
+* The remaining 2000MB (2GB) of space has been allocated. 
+* The Primary Partition type has been selected
+* The Partition itself is to be located (i.e. to start) at the beginning of the available drive space.
+* The Swap file system has been selected.
+
+Upon selecting the Swap file system type, note that there will no longer be any need to set the mount point.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv10-088.png|thumb|left|375px]]
+
+
+Once the partition has been fully defined, review this information before clicking '''OK''' to set it and complete the two-partition scenario.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Finalise the Partitioning Process =
+
+[[File: adv11-088.png|thumb|left|375px]]
+
+
+{{tip|There is no need to manually assign a boot flag to any partitions. The installer will automatically assign this flag to your Boot or Root partition. You also have the option not to use the drive at all for booting, where appropriate.}}
+
+
+Prior to finalising the partitioning process, once again take the time to review your scenario. '''Neither your partitions nor your definitions of them are set in stone''', and so may still be removed or changed at this stage.
+
+Where satisfied with the partitioning scenario, click '''Install Now!''' to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: adv12-088.png|thumb|left|375px]]
+
+
+A transaction screen will appear, outlining all the necessary actions that are to take place. In some instances, this may include the removal of previous partitions that were deleted in the partitioning process.
+
+Again, the option to '''Cancel''' and return to the partitioning process will still be available. Otherwise, to complete the partitioning process and begin installing Manjaro, click '''OK'''.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+[[Graphical Installation Guide for Experienced Users 0.8.8|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Français]]
+[[Category:Installation]]
+[[Category:Présentation]]</text>
+      <sha1>cfh9o6f5u6f75s6xcytxie4au3rq0wj</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

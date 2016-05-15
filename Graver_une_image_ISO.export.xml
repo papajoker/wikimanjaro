@@ -1,0 +1,666 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Graver une image ISO</title>
+    <ns>0</ns>
+    <id>607</id>
+    <revision>
+      <id>3314</id>
+      <timestamp>2012-12-27T16:26:55Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;EN COURS DE TRADUCTION  = Vue d'ensemble =  [[File:BigManjaroIcon.png|left|90px]]  As outlined in the '''[[Download Manjaro| Download Manjaro page]]''', an ISO is not simply a...&quot;</comment>
+      <text xml:space="preserve" bytes="7137">EN COURS DE TRADUCTION
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+As outlined in the '''[[Download Manjaro| Download Manjaro page]]''', an ISO is not simply a 'drag and drop' or 'copy and paste' duplication of Manjaro's installation files. It is in fact a copy of the raw computer code that makes up the files themselves. This is why it is necessary to use a '''software burning application''' to 'burn' an ISO file (i.e. convert its raw code into the files) to a physical medium such as a DVD or USB flashdrive / datastick in order to use it. Once burned / converted, the files on that medium can then be used to run Manjaro directly without having to install it to your system (referred to as ''Live-CD'' mode), and/or install Manjaro on your system. Again however, it will not be necessary to to burn an ISO if you intend on running Manjaro in a virtual machine environment using Oracle's Virtualbox. This is because Virtualbox is able to read ISO files directly as ''virtual disks''.
+
+
+{{note| Manjaro will not have full functionality when run in Live-CD mode. For example, you will not be able to save any changes to the system, or install updates or new applications.}}
+
+
+= Burning to CD/DVD in Linux =
+{{tip|It is strongly recommended to select the slowest speed available when burning to disc in order minimise the possibility of corruption during the burning process.}}
+
+
+Several different software burning applications - if not already installed - should be available for installation from your distribution's Software Center / Software Manager / Package Manager / repositories. Popular burners include ''XFBurn'', ''K3b'', and ''Brasero''. Which one you may choose is entirely down to personal choice.  However, a guide to burning your downloaded Manjaro ISO using Brasero has been provided below:
+
+
+'''1.''' Insert a Blank CD/DVD (use a DVD if burning an ISO for anything other than the NET Edition)
+
+'''2.''' Start the Brasero software burner
+
+'''3.''' Click the '''Burn Image - Burn an existing CD/DVD image to disc''' button to open the ''Image Burning Setup'' window.
+
+'''4.''' Click the button beneath the title '''Select a disc image to write''' to open up your file manager. Locate and double-click the downloaded ISO file to load it. Upon automatically returning to the ''Image Burning Setup'' window, note that the ISO file is now listed as the disc image to write.
+
+'''5.''' Underneath the title '''Select a disc to write to''' the blank CD/DVD inserted should already have been automatically listed. Otherwise, click the button to select it manually.
+
+'''6.''' Click the '''properties''' button to open the ''properties window'', and then click the button beneath the title '''Burning Speed'''. Again, it is strongly recommended to select the slowest speed available. Once selected, click the '''Close''' button.
+
+'''7.''' Click the '''Burn''' button to start the burning process. If necessary, follow any on-screen instructions provided.
+
+
+= Burning to a CD/DVD in Windows =
+
+Several free software burner applications are available for Windows. The most popular examples of these include:
+
+* '''[http://www.imgburn.com/ Imgburn]''' ([http://www.youtube.com/watch?v=XihCQgmeGV4 Youtube video tutorial]) 
+* '''[http://www.burnaware.com/burnaware_free.html Burn Aware free]''' ([http://www.youtube.com/watch?v=aiV9lc7P9nU Youtube video tutorial]), and 
+* '''[http://cdburnerxp.se/en/download CDBurnerXP]''' ([http://www.youtube.com/watch?v=LxYkFdwn1qI Youtube video tutorial]) 
+
+
+An overview of each of these applications is available on the CD/DVD Burning Article on the '''[http://www.techsupportalert.com/best-free-cd-dvd-burning-software.htm TechSupportAlert website]'''.  Additional burners may also be found on the '''[http://download.cnet.com/ Download.com website]''', although you will have to filter the search results to view only the free applications provided. It will also be worthwhile to take the time to read any reviews provided for your choice(s).
+
+
+=Writing to a USB Stick in Linux=
+
+
+==Using the Terminal==
+
+To burn the iso on an usb stick, enter the following command in a terminal :
+
+ dd bs=4M if=/path/to/manjaro.iso of=/dev/sd[drive letter]
+
+Where [drive letter] is the letter of your removable device. Please note that it is the '''device''' (e.g. /dev/sdb), and '''not''' the partition number (e.g. /dev/sdb1).
+
+
+==Using a Burning Application==
+
+''ImageWriter'' should be available for installation from your distribution's Software Center / Software Manager / Package Manager / repositories. Once Imagewriter has been downloaded and installed, ensure that your USB stick is plugged in before starting it.
+
+
+A brief guide to writing the Manjaro .ISO image has been provided:
+
+'''1.''' Click on the centre icon
+
+'''2.''' Navigate to where the ISO image has been saved and select it
+
+'''3.''' Ensure that your USB device has been selected from the drop-down menu
+
+'''4.''' Click on the '''Write''' button
+
+'''5.''' Reboot your system
+
+
+=Writing to a USB Stick in Windows=
+
+{{note|Windows Imagewriter does not automatically detect .ISO files, which is why it is necessary to type '''*.*''' in the filename box, in order to find them.}}
+
+
+It is recommended to use '''[https://launchpad.net/win32-image-writer/ ImageWriter For Windows]''', which is a free application designed to write disc images to USB sticks as well as ''Compact Flash'' (CF) and ''Secure Digital'' (SD) cards. Once Imagewriter has been downloaded and installed, ensure that your USB stick is plugged in before starting it.
+
+If you find that ''ImageWriter'' is unable to start, then it may be necessary to download Microsoft's '''[http://www.microsoft.com/en-us/download/details.aspx?id=16614 .NET 2.0 Runtime Framework]''', which is used by some software programs to run. In addition, if an error message is displayed upon starting the process, then you may wish to open ImageWriter by first right-clicking on the icon, and then selecting the '''Run as Administrator''' option. 
+
+
+A brief guide to writing the Manjaro .ISO image has been provided:
+
+{{tip|Ensure that ''Windows Explorer'' is closed prior to attempting to write the ISO image, otherwise it may block access to the USB stick, resulting in the following error being displayed: '''system.componentModel.Win32Exception:Access is denied'''.}}
+
+
+'''1.''' Click the '''seclect''' button
+
+'''2.''' Type '''*.*''' in the filename box and then select the Manjaro .ISO image
+
+'''3.''' Select your USB Stick
+
+'''4.''' Click the '''Write''' button.
+
+
+Should your attempt to write to a USB stick still be unsuccessful, then use a partition tool to format it as a '''RAW''' partition type, and use ''ImageWriter'' again. 
+
+
+{{warning|Re-partitioning your USB stick as a '''RAW''' data type will result in all data present being destroyed, and will render it unusable for other purposes until reformatted back to its original partition type.}}
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Check a Downloaded ISO Image For Errors]]''' 
+* '''[[Installation Guides]]'''
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]
+[[Category:Présentation]]</text>
+      <sha1>5kt3fjhqoc6zyaiwcuaqkm4mw6ek2ig</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3317</id>
+      <parentid>3314</parentid>
+      <timestamp>2012-12-27T16:45:44Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7151">EN COURS DE TRADUCTION
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Comme indiqué dans la page '''[[Télécharger Manjaro| Télécharger Manjaro]]''', an ISO is not simply a 'drag and drop' or 'copy and paste' duplication of Manjaro's installation files. It is in fact a copy of the raw computer code that makes up the files themselves. This is why it is necessary to use a '''software burning application''' to 'burn' an ISO file (i.e. convert its raw code into the files) to a physical medium such as a DVD or USB flashdrive / datastick in order to use it. Once burned / converted, the files on that medium can then be used to run Manjaro directly without having to install it to your system (referred to as ''Live-CD'' mode), and/or install Manjaro on your system. Again however, it will not be necessary to to burn an ISO if you intend on running Manjaro in a virtual machine environment using Oracle's Virtualbox. This is because Virtualbox is able to read ISO files directly as ''virtual disks''.
+
+
+{{note| Manjaro will not have full functionality when run in Live-CD mode. For example, you will not be able to save any changes to the system, or install updates or new applications.}}
+
+
+= Burning to CD/DVD in Linux =
+{{tip|It is strongly recommended to select the slowest speed available when burning to disc in order minimise the possibility of corruption during the burning process.}}
+
+
+Several different software burning applications - if not already installed - should be available for installation from your distribution's Software Center / Software Manager / Package Manager / repositories. Popular burners include ''XFBurn'', ''K3b'', and ''Brasero''. Which one you may choose is entirely down to personal choice.  However, a guide to burning your downloaded Manjaro ISO using Brasero has been provided below:
+
+
+'''1.''' Insert a Blank CD/DVD (use a DVD if burning an ISO for anything other than the NET Edition)
+
+'''2.''' Start the Brasero software burner
+
+'''3.''' Click the '''Burn Image - Burn an existing CD/DVD image to disc''' button to open the ''Image Burning Setup'' window.
+
+'''4.''' Click the button beneath the title '''Select a disc image to write''' to open up your file manager. Locate and double-click the downloaded ISO file to load it. Upon automatically returning to the ''Image Burning Setup'' window, note that the ISO file is now listed as the disc image to write.
+
+'''5.''' Underneath the title '''Select a disc to write to''' the blank CD/DVD inserted should already have been automatically listed. Otherwise, click the button to select it manually.
+
+'''6.''' Click the '''properties''' button to open the ''properties window'', and then click the button beneath the title '''Burning Speed'''. Again, it is strongly recommended to select the slowest speed available. Once selected, click the '''Close''' button.
+
+'''7.''' Click the '''Burn''' button to start the burning process. If necessary, follow any on-screen instructions provided.
+
+
+= Burning to a CD/DVD in Windows =
+
+Several free software burner applications are available for Windows. The most popular examples of these include:
+
+* '''[http://www.imgburn.com/ Imgburn]''' ([http://www.youtube.com/watch?v=XihCQgmeGV4 Youtube video tutorial]) 
+* '''[http://www.burnaware.com/burnaware_free.html Burn Aware free]''' ([http://www.youtube.com/watch?v=aiV9lc7P9nU Youtube video tutorial]), and 
+* '''[http://cdburnerxp.se/en/download CDBurnerXP]''' ([http://www.youtube.com/watch?v=LxYkFdwn1qI Youtube video tutorial]) 
+
+
+An overview of each of these applications is available on the CD/DVD Burning Article on the '''[http://www.techsupportalert.com/best-free-cd-dvd-burning-software.htm TechSupportAlert website]'''.  Additional burners may also be found on the '''[http://download.cnet.com/ Download.com website]''', although you will have to filter the search results to view only the free applications provided. It will also be worthwhile to take the time to read any reviews provided for your choice(s).
+
+
+=Writing to a USB Stick in Linux=
+
+
+==Using the Terminal==
+
+To burn the iso on an usb stick, enter the following command in a terminal :
+
+ dd bs=4M if=/path/to/manjaro.iso of=/dev/sd[drive letter]
+
+Where [drive letter] is the letter of your removable device. Please note that it is the '''device''' (e.g. /dev/sdb), and '''not''' the partition number (e.g. /dev/sdb1).
+
+
+==Using a Burning Application==
+
+''ImageWriter'' should be available for installation from your distribution's Software Center / Software Manager / Package Manager / repositories. Once Imagewriter has been downloaded and installed, ensure that your USB stick is plugged in before starting it.
+
+
+A brief guide to writing the Manjaro .ISO image has been provided:
+
+'''1.''' Click on the centre icon
+
+'''2.''' Navigate to where the ISO image has been saved and select it
+
+'''3.''' Ensure that your USB device has been selected from the drop-down menu
+
+'''4.''' Click on the '''Write''' button
+
+'''5.''' Reboot your system
+
+
+=Writing to a USB Stick in Windows=
+
+{{note|Windows Imagewriter does not automatically detect .ISO files, which is why it is necessary to type '''*.*''' in the filename box, in order to find them.}}
+
+
+It is recommended to use '''[https://launchpad.net/win32-image-writer/ ImageWriter For Windows]''', which is a free application designed to write disc images to USB sticks as well as ''Compact Flash'' (CF) and ''Secure Digital'' (SD) cards. Once Imagewriter has been downloaded and installed, ensure that your USB stick is plugged in before starting it.
+
+If you find that ''ImageWriter'' is unable to start, then it may be necessary to download Microsoft's '''[http://www.microsoft.com/en-us/download/details.aspx?id=16614 .NET 2.0 Runtime Framework]''', which is used by some software programs to run. In addition, if an error message is displayed upon starting the process, then you may wish to open ImageWriter by first right-clicking on the icon, and then selecting the '''Run as Administrator''' option. 
+
+
+A brief guide to writing the Manjaro .ISO image has been provided:
+
+{{tip|Ensure that ''Windows Explorer'' is closed prior to attempting to write the ISO image, otherwise it may block access to the USB stick, resulting in the following error being displayed: '''system.componentModel.Win32Exception:Access is denied'''.}}
+
+
+'''1.''' Click the '''seclect''' button
+
+'''2.''' Type '''*.*''' in the filename box and then select the Manjaro .ISO image
+
+'''3.''' Select your USB Stick
+
+'''4.''' Click the '''Write''' button.
+
+
+Should your attempt to write to a USB stick still be unsuccessful, then use a partition tool to format it as a '''RAW''' partition type, and use ''ImageWriter'' again. 
+
+
+{{warning|Re-partitioning your USB stick as a '''RAW''' data type will result in all data present being destroyed, and will render it unusable for other purposes until reformatted back to its original partition type.}}
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Check a Downloaded ISO Image For Errors]]''' 
+* '''[[Installation Guides]]'''
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]
+[[Category:Présentation]]</text>
+      <sha1>1p71zn61n00ijoacb5hdh96nle265px</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3318</id>
+      <parentid>3317</parentid>
+      <timestamp>2012-12-27T16:48:02Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7307">EN COURS DE TRADUCTION
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Comme indiqué dans la page '''[[Télécharger Manjaro| Télécharger Manjaro]]''', la duplication des fichiers d'installation de Manjaro ne se fait pas par un simple «drag and drop» ou «copier-coller». Il est nécessaire d'utiliser un '''logiciel de gravure''' pour «brûler» un fichier ISO (à savoir convertir son code brut dans les fichiers) sur un support physique tel qu'un DVD ou lecteur flash USB / DataStick afin de l'utiliser. Une fois brûlés / convertis, les fichiers présents sur ce support peuvent alors être utilisés pour exécuter Manjaro directement sans avoir à l'installer sur votre système (appelé communément ''Live-CD''), et / ou pour installer Manjaro sur votre système. Encore une fois cependant, il ne sera pas nécessaire de graver un ISO si vous avez l'intention d'installer Manjaro dans un environnement de machine virtuelle en utilisant VirtualBox d'Oracle. C'est parce que VirtualBox est capable de lire des fichiers ISO directement en tant que ''disques virtuels''.
+
+
+{{note| Manjaro n'est pas entièrement fonctionnel lorsqu'il est exécuté dans le mode Live-CD. Par exemple, vous ne serez pas en mesure d'enregistrer toutes les modifications apportées au système, ou d'installer les mises à jour ou de nouvelles applications.}}
+
+
+= Burning to CD/DVD in Linux =
+{{tip|It is strongly recommended to select the slowest speed available when burning to disc in order minimise the possibility of corruption during the burning process.}}
+
+
+Several different software burning applications - if not already installed - should be available for installation from your distribution's Software Center / Software Manager / Package Manager / repositories. Popular burners include ''XFBurn'', ''K3b'', and ''Brasero''. Which one you may choose is entirely down to personal choice.  However, a guide to burning your downloaded Manjaro ISO using Brasero has been provided below:
+
+
+'''1.''' Insert a Blank CD/DVD (use a DVD if burning an ISO for anything other than the NET Edition)
+
+'''2.''' Start the Brasero software burner
+
+'''3.''' Click the '''Burn Image - Burn an existing CD/DVD image to disc''' button to open the ''Image Burning Setup'' window.
+
+'''4.''' Click the button beneath the title '''Select a disc image to write''' to open up your file manager. Locate and double-click the downloaded ISO file to load it. Upon automatically returning to the ''Image Burning Setup'' window, note that the ISO file is now listed as the disc image to write.
+
+'''5.''' Underneath the title '''Select a disc to write to''' the blank CD/DVD inserted should already have been automatically listed. Otherwise, click the button to select it manually.
+
+'''6.''' Click the '''properties''' button to open the ''properties window'', and then click the button beneath the title '''Burning Speed'''. Again, it is strongly recommended to select the slowest speed available. Once selected, click the '''Close''' button.
+
+'''7.''' Click the '''Burn''' button to start the burning process. If necessary, follow any on-screen instructions provided.
+
+
+= Burning to a CD/DVD in Windows =
+
+Several free software burner applications are available for Windows. The most popular examples of these include:
+
+* '''[http://www.imgburn.com/ Imgburn]''' ([http://www.youtube.com/watch?v=XihCQgmeGV4 Youtube video tutorial]) 
+* '''[http://www.burnaware.com/burnaware_free.html Burn Aware free]''' ([http://www.youtube.com/watch?v=aiV9lc7P9nU Youtube video tutorial]), and 
+* '''[http://cdburnerxp.se/en/download CDBurnerXP]''' ([http://www.youtube.com/watch?v=LxYkFdwn1qI Youtube video tutorial]) 
+
+
+An overview of each of these applications is available on the CD/DVD Burning Article on the '''[http://www.techsupportalert.com/best-free-cd-dvd-burning-software.htm TechSupportAlert website]'''.  Additional burners may also be found on the '''[http://download.cnet.com/ Download.com website]''', although you will have to filter the search results to view only the free applications provided. It will also be worthwhile to take the time to read any reviews provided for your choice(s).
+
+
+=Writing to a USB Stick in Linux=
+
+
+==Using the Terminal==
+
+To burn the iso on an usb stick, enter the following command in a terminal :
+
+ dd bs=4M if=/path/to/manjaro.iso of=/dev/sd[drive letter]
+
+Where [drive letter] is the letter of your removable device. Please note that it is the '''device''' (e.g. /dev/sdb), and '''not''' the partition number (e.g. /dev/sdb1).
+
+
+==Using a Burning Application==
+
+''ImageWriter'' should be available for installation from your distribution's Software Center / Software Manager / Package Manager / repositories. Once Imagewriter has been downloaded and installed, ensure that your USB stick is plugged in before starting it.
+
+
+A brief guide to writing the Manjaro .ISO image has been provided:
+
+'''1.''' Click on the centre icon
+
+'''2.''' Navigate to where the ISO image has been saved and select it
+
+'''3.''' Ensure that your USB device has been selected from the drop-down menu
+
+'''4.''' Click on the '''Write''' button
+
+'''5.''' Reboot your system
+
+
+=Writing to a USB Stick in Windows=
+
+{{note|Windows Imagewriter does not automatically detect .ISO files, which is why it is necessary to type '''*.*''' in the filename box, in order to find them.}}
+
+
+It is recommended to use '''[https://launchpad.net/win32-image-writer/ ImageWriter For Windows]''', which is a free application designed to write disc images to USB sticks as well as ''Compact Flash'' (CF) and ''Secure Digital'' (SD) cards. Once Imagewriter has been downloaded and installed, ensure that your USB stick is plugged in before starting it.
+
+If you find that ''ImageWriter'' is unable to start, then it may be necessary to download Microsoft's '''[http://www.microsoft.com/en-us/download/details.aspx?id=16614 .NET 2.0 Runtime Framework]''', which is used by some software programs to run. In addition, if an error message is displayed upon starting the process, then you may wish to open ImageWriter by first right-clicking on the icon, and then selecting the '''Run as Administrator''' option. 
+
+
+A brief guide to writing the Manjaro .ISO image has been provided:
+
+{{tip|Ensure that ''Windows Explorer'' is closed prior to attempting to write the ISO image, otherwise it may block access to the USB stick, resulting in the following error being displayed: '''system.componentModel.Win32Exception:Access is denied'''.}}
+
+
+'''1.''' Click the '''seclect''' button
+
+'''2.''' Type '''*.*''' in the filename box and then select the Manjaro .ISO image
+
+'''3.''' Select your USB Stick
+
+'''4.''' Click the '''Write''' button.
+
+
+Should your attempt to write to a USB stick still be unsuccessful, then use a partition tool to format it as a '''RAW''' partition type, and use ''ImageWriter'' again. 
+
+
+{{warning|Re-partitioning your USB stick as a '''RAW''' data type will result in all data present being destroyed, and will render it unusable for other purposes until reformatted back to its original partition type.}}
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Check a Downloaded ISO Image For Errors]]''' 
+* '''[[Installation Guides]]'''
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]
+[[Category:Présentation]]</text>
+      <sha1>j1qw7ty94s3hz3ksctpegumqpaa9z1p</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3319</id>
+      <parentid>3318</parentid>
+      <timestamp>2012-12-27T17:16:58Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7592">EN COURS DE TRADUCTION
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Comme indiqué dans la page '''[[Télécharger Manjaro| Télécharger Manjaro]]''', la duplication des fichiers d'installation de Manjaro ne se fait pas par un simple «drag and drop» ou «copier-coller». Il est nécessaire d'utiliser un '''logiciel de gravure''' pour «brûler» un fichier ISO (à savoir convertir son code brut dans les fichiers) sur un support physique tel qu'un DVD ou lecteur flash USB / DataStick afin de l'utiliser. Une fois brûlés / convertis, les fichiers présents sur ce support peuvent alors être utilisés pour exécuter Manjaro directement sans avoir à l'installer sur votre système (appelé communément ''Live-CD''), et / ou pour installer Manjaro sur votre système. Encore une fois cependant, il ne sera pas nécessaire de graver un ISO si vous avez l'intention d'installer Manjaro dans un environnement de machine virtuelle en utilisant VirtualBox d'Oracle. C'est parce que VirtualBox est capable de lire des fichiers ISO directement en tant que ''disques virtuels''.
+
+
+{{note| Manjaro n'est pas entièrement fonctionnel lorsqu'il est exécuté dans le mode Live-CD. Par exemple, vous ne serez pas en mesure d'enregistrer toutes les modifications apportées au système, ou d'installer les mises à jour ou de nouvelles applications.}}
+
+
+= Graver sur CD / DVD sous Linux =
+{{Astuce|Il est fortement recommandé de choisir la vitesse la plus lente disponible lors de la gravure sur disque afin de limiter les risques de corruption pendant le processus de gravure.}}
+
+
+Plusieurs applications de gravure de logiciels - si elles ne sont pas déjà installées - devraient être disponibles pour l'installation à partir du Centre de logiciels de votre distribution / Software Manager / Gestionnaire de paquets / dépôts. Les logiciels de gravure les plus populaires sont ''xfburn'', ''K3b'' et ''Brasero''. Celui que vous choisirez est entièrement une question de choix personnel. Toutefois, un guide pour la gravure de votre ISO Manjaro téléchargée utilisant Brasero a été fourni ci-dessous:
+
+
+'''1.''' Insérez un CD / DVD vierge (utiliser un DVD si la gravure concerne autre chose que la 'NET Edition').
+
+'''2.''' Démarrez le logiciel de gravure Brasero.
+
+'''3.''' Cliquez sur le bouton '''Burn Image - Burn an existing CD/DVD image to disc''' pour ouvrir la fenêtre de configuration.
+
+'''4.''' Cliquez sur le bouton sous le titre '''Select a disc image to write''' pour ouvrir votre gestionnaire de fichiers. Recherchez et double-cliquez sur le fichier ISO téléchargé pour le charger. Dès le retour automatique à la fenêtre de configuration, notez que le fichier ISO est maintenant répertorié comme l'image du disque à écrire.
+
+'''5.''' Sous le titre '''Select a disc to write to''' le CD / DVD vierge inséré devrait déjà avoir été listé. Dans le cas contraire, cliquez sur le bouton pour le sélectionner manuellement.
+
+'''6.''' Cliquez sur le bouton '''Propriétés''' pour ouvrir ''la fenêtre des propriétés'', puis cliquez sur le bouton sous le titre '''Burning Speed'''. Encore une fois, il est fortement recommandé de choisir la vitesse la plus lente disponible. Une fois sélectionnée, cliquez sur le bouton '''Fermer'''.
+
+'''7.''' Cliquez sur le bouton '''Graver''' pour démarrer le processus de gravure. Si nécessaire, suivez les instructions fournies à l'écran.
+
+
+= Burning to a CD/DVD in Windows =
+
+Several free software burner applications are available for Windows. The most popular examples of these include:
+
+* '''[http://www.imgburn.com/ Imgburn]''' ([http://www.youtube.com/watch?v=XihCQgmeGV4 Youtube video tutorial]) 
+* '''[http://www.burnaware.com/burnaware_free.html Burn Aware free]''' ([http://www.youtube.com/watch?v=aiV9lc7P9nU Youtube video tutorial]), and 
+* '''[http://cdburnerxp.se/en/download CDBurnerXP]''' ([http://www.youtube.com/watch?v=LxYkFdwn1qI Youtube video tutorial]) 
+
+
+An overview of each of these applications is available on the CD/DVD Burning Article on the '''[http://www.techsupportalert.com/best-free-cd-dvd-burning-software.htm TechSupportAlert website]'''.  Additional burners may also be found on the '''[http://download.cnet.com/ Download.com website]''', although you will have to filter the search results to view only the free applications provided. It will also be worthwhile to take the time to read any reviews provided for your choice(s).
+
+
+=Writing to a USB Stick in Linux=
+
+
+==Using the Terminal==
+
+To burn the iso on an usb stick, enter the following command in a terminal :
+
+ dd bs=4M if=/path/to/manjaro.iso of=/dev/sd[drive letter]
+
+Where [drive letter] is the letter of your removable device. Please note that it is the '''device''' (e.g. /dev/sdb), and '''not''' the partition number (e.g. /dev/sdb1).
+
+
+==Using a Burning Application==
+
+''ImageWriter'' should be available for installation from your distribution's Software Center / Software Manager / Package Manager / repositories. Once Imagewriter has been downloaded and installed, ensure that your USB stick is plugged in before starting it.
+
+
+A brief guide to writing the Manjaro .ISO image has been provided:
+
+'''1.''' Click on the centre icon
+
+'''2.''' Navigate to where the ISO image has been saved and select it
+
+'''3.''' Ensure that your USB device has been selected from the drop-down menu
+
+'''4.''' Click on the '''Write''' button
+
+'''5.''' Reboot your system
+
+
+=Writing to a USB Stick in Windows=
+
+{{note|Windows Imagewriter does not automatically detect .ISO files, which is why it is necessary to type '''*.*''' in the filename box, in order to find them.}}
+
+
+It is recommended to use '''[https://launchpad.net/win32-image-writer/ ImageWriter For Windows]''', which is a free application designed to write disc images to USB sticks as well as ''Compact Flash'' (CF) and ''Secure Digital'' (SD) cards. Once Imagewriter has been downloaded and installed, ensure that your USB stick is plugged in before starting it.
+
+If you find that ''ImageWriter'' is unable to start, then it may be necessary to download Microsoft's '''[http://www.microsoft.com/en-us/download/details.aspx?id=16614 .NET 2.0 Runtime Framework]''', which is used by some software programs to run. In addition, if an error message is displayed upon starting the process, then you may wish to open ImageWriter by first right-clicking on the icon, and then selecting the '''Run as Administrator''' option. 
+
+
+A brief guide to writing the Manjaro .ISO image has been provided:
+
+{{tip|Ensure that ''Windows Explorer'' is closed prior to attempting to write the ISO image, otherwise it may block access to the USB stick, resulting in the following error being displayed: '''system.componentModel.Win32Exception:Access is denied'''.}}
+
+
+'''1.''' Click the '''seclect''' button
+
+'''2.''' Type '''*.*''' in the filename box and then select the Manjaro .ISO image
+
+'''3.''' Select your USB Stick
+
+'''4.''' Click the '''Write''' button.
+
+
+Should your attempt to write to a USB stick still be unsuccessful, then use a partition tool to format it as a '''RAW''' partition type, and use ''ImageWriter'' again. 
+
+
+{{warning|Re-partitioning your USB stick as a '''RAW''' data type will result in all data present being destroyed, and will render it unusable for other purposes until reformatted back to its original partition type.}}
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Check a Downloaded ISO Image For Errors]]''' 
+* '''[[Installation Guides]]'''
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]
+[[Category:Présentation]]</text>
+      <sha1>pfa9kttmlw11cwh61vnlp0i98pi8xob</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3399</id>
+      <parentid>3319</parentid>
+      <timestamp>2012-12-28T15:05:14Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7987">= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Comme indiqué dans la page '''[[Télécharger Manjaro| Télécharger Manjaro]]''', la duplication des fichiers d'installation de Manjaro ne se fait pas par un simple «drag and drop» ou «copier-coller». Il est nécessaire d'utiliser un '''logiciel de gravure''' pour «brûler» un fichier ISO (à savoir convertir son code brut dans les fichiers) sur un support physique tel qu'un DVD ou lecteur flash USB / DataStick afin de l'utiliser. Une fois brûlés / convertis, les fichiers présents sur ce support peuvent alors être utilisés pour exécuter Manjaro directement sans avoir à l'installer sur votre système (appelé communément ''Live-CD''), et / ou pour installer Manjaro sur votre système. Encore une fois cependant, il ne sera pas nécessaire de graver un ISO si vous avez l'intention d'installer Manjaro dans un environnement de machine virtuelle en utilisant VirtualBox d'Oracle. C'est parce que VirtualBox est capable de lire des fichiers ISO directement en tant que ''disques virtuels''.
+
+
+{{note| Manjaro n'est pas entièrement fonctionnel lorsqu'il est exécuté dans le mode Live-CD. Par exemple, vous ne serez pas en mesure d'enregistrer toutes les modifications apportées au système, ou d'installer les mises à jour ou de nouvelles applications.}}
+
+
+= Graver sur CD / DVD sous Linux =
+{{Astuce|Il est fortement recommandé de choisir la vitesse la plus lente disponible lors de la gravure sur disque afin de limiter les risques de corruption pendant le processus de gravure.}}
+
+
+Plusieurs applications de gravure de logiciels - si elles ne sont pas déjà installées - devraient être disponibles pour l'installation à partir du Centre de logiciels de votre distribution / Software Manager / Gestionnaire de paquets / dépôts. Les logiciels de gravure les plus populaires sont ''xfburn'', ''K3b'' et ''Brasero''. Celui que vous choisirez est entièrement une question de choix personnel. Toutefois, un guide pour la gravure de votre ISO Manjaro téléchargée utilisant Brasero a été fourni ci-dessous:
+
+
+'''1.''' Insérez un CD / DVD vierge (utiliser un DVD si la gravure concerne autre chose que la 'NET Edition').
+
+'''2.''' Démarrez le logiciel de gravure Brasero.
+
+'''3.''' Cliquez sur le bouton '''Burn Image - Burn an existing CD/DVD image to disc''' pour ouvrir la fenêtre de configuration.
+
+'''4.''' Cliquez sur le bouton sous le titre '''Select a disc image to write''' pour ouvrir votre gestionnaire de fichiers. Recherchez et double-cliquez sur le fichier ISO téléchargé pour le charger. Dès le retour automatique à la fenêtre de configuration, notez que le fichier ISO est maintenant répertorié comme l'image du disque à écrire.
+
+'''5.''' Sous le titre '''Select a disc to write to''' le CD / DVD vierge inséré devrait déjà avoir été listé. Dans le cas contraire, cliquez sur le bouton pour le sélectionner manuellement.
+
+'''6.''' Cliquez sur le bouton '''Propriétés''' pour ouvrir ''la fenêtre des propriétés'', puis cliquez sur le bouton sous le titre '''Burning Speed'''. Encore une fois, il est fortement recommandé de choisir la vitesse la plus lente disponible. Une fois sélectionnée, cliquez sur le bouton '''Fermer'''.
+
+'''7.''' Cliquez sur le bouton '''Graver''' pour démarrer le processus de gravure. Si nécessaire, suivez les instructions fournies à l'écran.
+
+
+= Graver sur un CD / DVD sous Windows =
+
+Plusieurs logiciels gratuits de gravure sont disponibles pour Windows. Les exemples les plus populaires:
+
+* '''[http://www.imgburn.com/ Imgburn]''' ([http://www.youtube.com/watch?v=XihCQgmeGV4 Youtube video tutorial]) 
+* '''[http://www.burnaware.com/burnaware_free.html Burn Aware free]''' ([http://www.youtube.com/watch?v=aiV9lc7P9nU Youtube video tutorial]), and 
+* '''[http://cdburnerxp.se/en/download CDBurnerXP]''' ([http://www.youtube.com/watch?v=LxYkFdwn1qI Youtube video tutorial]) 
+
+
+Une vue d'ensemble de chacune de ces applications est disponible sur l'article Gravure CD / DVD sur le '''[http://www.techsupportalert.com/best-free-cd-dvd-burning-software.htm TechSupportAlert website]'''.  Des logiciels de gravure supplémentaires peuvent également être consultés sur le '''[http://download.cnet.com/ Download.com website]''', mais vous devrez filtrer les résultats de la recherche pour afficher uniquement les applications gratuites. Il sera également intéressant de prendre le temps de lire les commentaires fournis pour votre (vos) choix.
+
+
+=Ecriture sur une clé USB sous Linux=
+
+
+==Avec utilisation du terminal==
+
+Pour graver l'iso sur une clé USB, entrez la commande suivante dans un terminal:
+
+ dd bs=4M if=/path/to/manjaro.iso of=/dev/sd[lettre du lecteur]
+
+Où [lettre du lecteur] est la lettre de votre périphérique amovible. S'il vous plaît notez que c'est '''l'appareil''' (par exemple /dev/sdb), et '''non pas''' le numéro de la partition (par exemple /dev/sdb1).
+
+
+==Avec utilisation d'un logiciel de gravure==
+
+''ImageWriter'' devrait être disponible pour installation à partir du Centre de logiciels de votre distribution / Software Manager / Gestionnaire de paquets / dépôts. Une fois que ImageWriter a été téléchargé et installé, assurez-vous que votre clé USB est branchée avant le démarrage du logiciel.
+
+
+Ci-dessous un bref guide pour l'écriture de l'ISO de manjaro:
+
+'''1.''' Cliquez sur l'icône centrale
+
+'''2.''' Naviguez jusqu'à l'emplacement où l'image ISO a été enregistrée et sélectionnez
+
+'''3.''' Assurez-vous que votre périphérique USB a été sélectionné dans le menu déroulant
+
+'''4.''' Cliquez sur le bouton '''Write'''
+
+'''5.''' Redémarrez votre système.
+
+
+=Ecriture sur une clé USB sous Windows=
+
+{{note|ImageWriter pour Windows ne détecte pas automatiquement les fichiers ISO, ce pourquoi il est nécessaire de taper '''*.*''' dans la zone Nom de fichier, afin de les trouver.}}
+
+
+Il est recommandé d'utiliser '''[https://launchpad.net/win32-image-writer/ ImageWriter For Windows]''', qui est une application gratuite conçue pour écrire des images de disque sur clé USB ainsi que ''Compact Flash'' (CF) et ''Secure Digital'' (SD). Une fois que ImageWriter a été téléchargé et installé, assurez-vous que votre clé USB est branchée avant le démarrage du logiciel.
+
+Si vous trouvez que ''ImageWriter'' est incapable de démarrer, alors il peut être nécessaire de télécharger Microsoft '''[http://www.microsoft.com/en-us/download/details.aspx?id=16614 .NET 2.0 Runtime Framework]''', qui est nécessaire au fonctionnement de certains logiciels. En outre, si un message d'erreur s'affiche lors du démarrage du processus, vous pouvez ouvrir ImageWriter d'abord d'un clic droit sur l'icône, puis sélectionner l'option '''Exécuter en tant qu'administrateur'''.
+
+
+Ci-dessous un bref guide pour l'écriture de l'ISO de manjaro:
+
+{{Astuce|Assurez-vous que ''l'Explorateur de Windows'' est fermé avant d'essayer d'écrire l'image ISO, sinon il pourrait bloquer l'accès à la clé USB, ce qui entraînerait l'affichage de l'erreur suivante: '''System.ComponentModel.Win32Exception:Access is denied'''.}}
+
+
+'''1.''' Cliquez sur le bouton '''select'''
+
+'''2.''' Tapez '''*.*''' dans la zone Nom de fichier, puis sélectionnez l'image ISO de Manjaro
+
+'''3.''' Sélectionnez votre clé USB
+
+'''4.''' Cliquez sur le bouton '''Write'''.
+
+
+Si votre tentative d'écriture sur une clé USB échoue, essayez d'utiliser un outil de partitionnement pour formater votre clé USB au format '''RAW''', et utilisez ''ImageWriter'' à nouveau. 
+
+
+{{Attention|Repartitionner votre clé USB au format '''RAW''' détruira toutes les données présentes. Votre clé sera de nouveau utilisable une fois reformatée à son format original.}}
+
+
+= Voir aussi =
+
+* '''[[Download Manjaro]]'''
+* '''[[Check a Downloaded ISO Image For Errors]]''' 
+* '''[[Installation Guides]]'''
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]
+[[Category:Présentation]]</text>
+      <sha1>9pgmj8hbgbtb1gaox311mqg4ewdmz16</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

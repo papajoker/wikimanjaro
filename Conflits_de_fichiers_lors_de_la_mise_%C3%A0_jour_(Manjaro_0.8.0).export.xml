@@ -1,0 +1,862 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Conflits de fichiers lors de la mise à jour (Manjaro 0.8.0)</title>
+    <ns>0</ns>
+    <id>676</id>
+    <revision>
+      <id>4452</id>
+      <timestamp>2013-01-07T23:20:54Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview = As Manjaro is currently in its beta stage of development, there have been - and will likely continue to be - some significant changes to the underlying system as ...&quot;</comment>
+      <text xml:space="preserve" bytes="7202">= Overview =
+As Manjaro is currently in its beta stage of development, there have been - and will likely continue to be - some significant changes to the underlying system as it evolves towards a stable 1.x release. As such, to accommodate these changes, safeguards have been built in from the release of Manjaro 0.8.1 onwards to ensure that new system updates will continue to be installed smoothly and successfully, nonetheless.
+
+However, as these safeguards had not been enabled in Manjaro 0.8.0, users who installed this release may find that attempts to update the system after a while may be unsuccessful due to conflicting files. Fortunately, although it is recommended that new users install the latest point release of Manjaro (or at least 0.8.1 onwards), it is still possible to quite easily enable this safeguard manually in the 0.8.0 release. This is undertaken by amending the ''pacman configuration file''. '''[[pacman]]''' is itself the &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager used by Manjaro (and other Arch-based systems) to download, install, and remove software packages.
+
+
+= Opening the Pacman Configuration File =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to enable the appropriate safeguard. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+= Enabling the Safeguards =
+
+{{tip|It is possible to copy and paste the examples provided for the HoldPkg and Syncfirst commands, rather than typing them in yourself.}}
+
+
+To enable the safeguards, it will be necessary to amend just two lines of the pacman configuration file. This is in order to ensure that:
+
+'''1.''' The ''pacman'', ''glibc'', and ''manjaro-system'' files are never removed when updating (by enabling the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command), and
+
+'''2.''' the ''pacman'' and ''manjaro-system'' files are '''always''' updated first, before anything else (by enabling the '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command).
+
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, these commands may be enabled by simply removing any hashes present at the beginning of the lines they are listed on. Once done, it will then just be a case of ensuring that all of the correct files are listed for each of enabled commands.
+
+
+== The HoldPkg Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command is located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* remove the hash (if present) from the beginning of it to enable the command, and 
+* ensure that the appropriate files - '''pacman, glibc''' and '''manjaro-system''' - are listed after the command itself.
+
+
+Once complete, the line should look like this:
+
+ HoldPkg = pacman glibc manjaro-system
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ '''&lt;font color=&quot;green&quot;&gt;HoldPkg      = pacman glibc manjaro-system&lt;/font color&gt;'''
+ # If upgrades are available for these packages they will be asked for first
+ SyncFirst    = manjaro-system pacman
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once the amendment has been made, the next command can be enabled.
+
+
+== The SyncFirst Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command is also located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* again, remove the hash (if present) from the beginning of it to enable the command, and
+* ensure that the appropriate files - '''manjaro-system''' and '''pacman''' - are listed after the command itself. 
+
+
+Once complete, the line should look like this:
+
+ SyncFirst = manjaro-system pacman
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;Syncfirst =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg      = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once both the '''HoldPkg = ''' and '''Syncfirst = ''' commands have been properly enabled, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is required to '''update your system'''.
+
+
+= Updating the System =
+
+Once the pacman configuration file has been amended to enable the safeguards, it will be necessary to synchronise and to update your system from the software repositories.
+
+
+'''1. First''', to synchronise with the repositories enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. Second''', to only update the Manjaro system enter the command:
+
+ sudo pacman -S manjaro-system
+
+
+'''3. And third''', to update the entire system enter the command:
+
+ sudo pacman -Su
+
+Once complete, you should henceforth be able to successfully update your system as normal without encountering issues such as conflicting files.
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>tdlmzh6eyx4ob1eah44qkihfev3mnxx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4453</id>
+      <parentid>4452</parentid>
+      <timestamp>2013-01-07T23:21:59Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Updating the System */</comment>
+      <text xml:space="preserve" bytes="7266">= Overview =
+As Manjaro is currently in its beta stage of development, there have been - and will likely continue to be - some significant changes to the underlying system as it evolves towards a stable 1.x release. As such, to accommodate these changes, safeguards have been built in from the release of Manjaro 0.8.1 onwards to ensure that new system updates will continue to be installed smoothly and successfully, nonetheless.
+
+However, as these safeguards had not been enabled in Manjaro 0.8.0, users who installed this release may find that attempts to update the system after a while may be unsuccessful due to conflicting files. Fortunately, although it is recommended that new users install the latest point release of Manjaro (or at least 0.8.1 onwards), it is still possible to quite easily enable this safeguard manually in the 0.8.0 release. This is undertaken by amending the ''pacman configuration file''. '''[[pacman]]''' is itself the &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager used by Manjaro (and other Arch-based systems) to download, install, and remove software packages.
+
+
+= Opening the Pacman Configuration File =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to enable the appropriate safeguard. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+= Enabling the Safeguards =
+
+{{tip|It is possible to copy and paste the examples provided for the HoldPkg and Syncfirst commands, rather than typing them in yourself.}}
+
+
+To enable the safeguards, it will be necessary to amend just two lines of the pacman configuration file. This is in order to ensure that:
+
+'''1.''' The ''pacman'', ''glibc'', and ''manjaro-system'' files are never removed when updating (by enabling the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command), and
+
+'''2.''' the ''pacman'' and ''manjaro-system'' files are '''always''' updated first, before anything else (by enabling the '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command).
+
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, these commands may be enabled by simply removing any hashes present at the beginning of the lines they are listed on. Once done, it will then just be a case of ensuring that all of the correct files are listed for each of enabled commands.
+
+
+== The HoldPkg Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command is located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* remove the hash (if present) from the beginning of it to enable the command, and 
+* ensure that the appropriate files - '''pacman, glibc''' and '''manjaro-system''' - are listed after the command itself.
+
+
+Once complete, the line should look like this:
+
+ HoldPkg = pacman glibc manjaro-system
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ '''&lt;font color=&quot;green&quot;&gt;HoldPkg      = pacman glibc manjaro-system&lt;/font color&gt;'''
+ # If upgrades are available for these packages they will be asked for first
+ SyncFirst    = manjaro-system pacman
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once the amendment has been made, the next command can be enabled.
+
+
+== The SyncFirst Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command is also located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* again, remove the hash (if present) from the beginning of it to enable the command, and
+* ensure that the appropriate files - '''manjaro-system''' and '''pacman''' - are listed after the command itself. 
+
+
+Once complete, the line should look like this:
+
+ SyncFirst = manjaro-system pacman
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;Syncfirst =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg      = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once both the '''HoldPkg = ''' and '''Syncfirst = ''' commands have been properly enabled, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is required to '''update your system'''.
+
+
+= Updating the System =
+
+Once the pacman configuration file has been amended to enable the safeguards, it will be necessary to synchronise and to update your system from the software repositories.
+
+
+'''1. First''', to synchronise with the repositories enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. Second''', to only update the Manjaro system enter the command:
+
+ sudo pacman -S manjaro-system
+
+
+'''3. And third''', to update the entire system enter the command:
+
+ sudo pacman -Su
+
+Once complete, you should henceforth be able to successfully update your system as normal without encountering issues such as conflicting files.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>eup623qpu8nm6iswgeydqqo0tmun8b6</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4454</id>
+      <parentid>4453</parentid>
+      <timestamp>2013-01-07T23:22:38Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="7321">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+As Manjaro is currently in its beta stage of development, there have been - and will likely continue to be - some significant changes to the underlying system as it evolves towards a stable 1.x release. As such, to accommodate these changes, safeguards have been built in from the release of Manjaro 0.8.1 onwards to ensure that new system updates will continue to be installed smoothly and successfully, nonetheless.
+
+However, as these safeguards had not been enabled in Manjaro 0.8.0, users who installed this release may find that attempts to update the system after a while may be unsuccessful due to conflicting files. Fortunately, although it is recommended that new users install the latest point release of Manjaro (or at least 0.8.1 onwards), it is still possible to quite easily enable this safeguard manually in the 0.8.0 release. This is undertaken by amending the ''pacman configuration file''. '''[[pacman]]''' is itself the &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager used by Manjaro (and other Arch-based systems) to download, install, and remove software packages.
+
+
+= Opening the Pacman Configuration File =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to enable the appropriate safeguard. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+= Enabling the Safeguards =
+
+{{tip|It is possible to copy and paste the examples provided for the HoldPkg and Syncfirst commands, rather than typing them in yourself.}}
+
+
+To enable the safeguards, it will be necessary to amend just two lines of the pacman configuration file. This is in order to ensure that:
+
+'''1.''' The ''pacman'', ''glibc'', and ''manjaro-system'' files are never removed when updating (by enabling the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command), and
+
+'''2.''' the ''pacman'' and ''manjaro-system'' files are '''always''' updated first, before anything else (by enabling the '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command).
+
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, these commands may be enabled by simply removing any hashes present at the beginning of the lines they are listed on. Once done, it will then just be a case of ensuring that all of the correct files are listed for each of enabled commands.
+
+
+== The HoldPkg Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command is located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* remove the hash (if present) from the beginning of it to enable the command, and 
+* ensure that the appropriate files - '''pacman, glibc''' and '''manjaro-system''' - are listed after the command itself.
+
+
+Once complete, the line should look like this:
+
+ HoldPkg = pacman glibc manjaro-system
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ '''&lt;font color=&quot;green&quot;&gt;HoldPkg      = pacman glibc manjaro-system&lt;/font color&gt;'''
+ # If upgrades are available for these packages they will be asked for first
+ SyncFirst    = manjaro-system pacman
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once the amendment has been made, the next command can be enabled.
+
+
+== The SyncFirst Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command is also located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* again, remove the hash (if present) from the beginning of it to enable the command, and
+* ensure that the appropriate files - '''manjaro-system''' and '''pacman''' - are listed after the command itself. 
+
+
+Once complete, the line should look like this:
+
+ SyncFirst = manjaro-system pacman
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;Syncfirst =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg      = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once both the '''HoldPkg = ''' and '''Syncfirst = ''' commands have been properly enabled, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is required to '''update your system'''.
+
+
+= Updating the System =
+
+Once the pacman configuration file has been amended to enable the safeguards, it will be necessary to synchronise and to update your system from the software repositories.
+
+
+'''1. First''', to synchronise with the repositories enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. Second''', to only update the Manjaro system enter the command:
+
+ sudo pacman -S manjaro-system
+
+
+'''3. And third''', to update the entire system enter the command:
+
+ sudo pacman -Su
+
+Once complete, you should henceforth be able to successfully update your system as normal without encountering issues such as conflicting files.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>7kh5yzcfr8glto45yxmmz3d6ce8jqiq</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4456</id>
+      <parentid>4454</parentid>
+      <timestamp>2013-01-07T23:43:21Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="7535">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+
+= Vue d'ensemble =
+
+
+Comme Manjaro est actuellement dans une phase bêta de développement, il y a eu - et il continuera probablement d'y avoir - des changements significatifs dans le système sous-jacent à fur et à mesure de son évolution vers une version 1.x stable. Vu la situation et pour s'adapter à ces changements, de sécurités ont été construites, à partir de la version 0.8.1 de Manjaro, pour garantir que les mises à jour du nouveau système continueront malgré tout à être installées sans heurts et avec succès.
+
+Cependant,ces sécurités n'ont pas été activées dans la Manjaro 0.8.0, et les utilisateurs ayant installé cette version peuvent voir leurs tentatives de mise à jour du système échouer à cause de conflits de fichiers. Heureusement, et bien qu'il soit recommandé aux nouveaux utilisateurs d'installer la toute dernière version de Manjaro  (ou au moins la 0.8.1 et les suivantes), il est encore possible de facilement activer ces sécurités manuellement dans la version 0.8.0. C'est réalisé en modifiant le 
+''fichier de configuration de pacman''. '''[[pacman]]''' est lui-même le &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager utilisé par Manjaro (ainsi que par d'autres systèmes basés sur Arch) pour télécharger, installer, et supprimer des paquets logiciels.
+
+= Opening the Pacman Configuration File =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to enable the appropriate safeguard. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+= Enabling the Safeguards =
+
+{{tip|It is possible to copy and paste the examples provided for the HoldPkg and Syncfirst commands, rather than typing them in yourself.}}
+
+
+To enable the safeguards, it will be necessary to amend just two lines of the pacman configuration file. This is in order to ensure that:
+
+'''1.''' The ''pacman'', ''glibc'', and ''manjaro-system'' files are never removed when updating (by enabling the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command), and
+
+'''2.''' the ''pacman'' and ''manjaro-system'' files are '''always''' updated first, before anything else (by enabling the '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command).
+
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, these commands may be enabled by simply removing any hashes present at the beginning of the lines they are listed on. Once done, it will then just be a case of ensuring that all of the correct files are listed for each of enabled commands.
+
+
+== The HoldPkg Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command is located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* remove the hash (if present) from the beginning of it to enable the command, and 
+* ensure that the appropriate files - '''pacman, glibc''' and '''manjaro-system''' - are listed after the command itself.
+
+
+Once complete, the line should look like this:
+
+ HoldPkg = pacman glibc manjaro-system
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ '''&lt;font color=&quot;green&quot;&gt;HoldPkg      = pacman glibc manjaro-system&lt;/font color&gt;'''
+ # If upgrades are available for these packages they will be asked for first
+ SyncFirst    = manjaro-system pacman
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once the amendment has been made, the next command can be enabled.
+
+
+== The SyncFirst Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command is also located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* again, remove the hash (if present) from the beginning of it to enable the command, and
+* ensure that the appropriate files - '''manjaro-system''' and '''pacman''' - are listed after the command itself. 
+
+
+Once complete, the line should look like this:
+
+ SyncFirst = manjaro-system pacman
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;Syncfirst =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg      = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once both the '''HoldPkg = ''' and '''Syncfirst = ''' commands have been properly enabled, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is required to '''update your system'''.
+
+
+= Updating the System =
+
+Once the pacman configuration file has been amended to enable the safeguards, it will be necessary to synchronise and to update your system from the software repositories.
+
+
+'''1. First''', to synchronise with the repositories enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. Second''', to only update the Manjaro system enter the command:
+
+ sudo pacman -S manjaro-system
+
+
+'''3. And third''', to update the entire system enter the command:
+
+ sudo pacman -Su
+
+Once complete, you should henceforth be able to successfully update your system as normal without encountering issues such as conflicting files.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>q5tq3k7rwqxwulrcbbveq5kiz85rhxp</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4457</id>
+      <parentid>4456</parentid>
+      <timestamp>2013-01-07T23:43:56Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="7535">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+
+= Vue d'ensemble =
+
+
+Comme Manjaro est actuellement dans une phase bêta de développement, il y a eu - et il continuera probablement d'y avoir - des changements significatifs dans le système sous-jacent au fur et à mesure de son évolution vers une version 1.x stable. Vu la situation et pour s'adapter à ces changements, de sécurités ont été construites, à partir de la version 0.8.1 de Manjaro, pour garantir que les mises à jour du nouveau système continueront malgré tout à être installées sans heurts et avec succès.
+
+Cependant,ces sécurités n'ont pas été activées dans la Manjaro 0.8.0, et les utilisateurs ayant installé cette version peuvent voir leurs tentatives de mise à jour du système échouer à cause de conflits de fichiers. Heureusement, et bien qu'il soit recommandé aux nouveaux utilisateurs d'installer la toute dernière version de Manjaro  (ou au moins la 0.8.1 et les suivantes), il est encore possible de facilement activer ces sécurités manuellement dans la version 0.8.0. C'est réalisé en modifiant le 
+''fichier de configuration de pacman''. '''[[pacman]]''' est lui-même le &lt;u&gt;'''pac'''&lt;/u&gt;kage &lt;u&gt;'''man'''&lt;/u&gt;ager utilisé par Manjaro (ainsi que par d'autres systèmes basés sur Arch) pour télécharger, installer, et supprimer des paquets logiciels.
+
+= Opening the Pacman Configuration File =
+
+You will need to first open your terminal in order to edit the '''pacman configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/pacman.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter the command:
+
+ sudo gedit /etc/pacman.conf
+
+
+Once the pacman configuration file has been opened, two steps will be required to enable the appropriate safeguard. Don't worry if the contents of this file seem complex and intimidating, as only two elements need to be amended, and the amendments themselves are very simple and straightforward.
+
+
+= Enabling the Safeguards =
+
+{{tip|It is possible to copy and paste the examples provided for the HoldPkg and Syncfirst commands, rather than typing them in yourself.}}
+
+
+To enable the safeguards, it will be necessary to amend just two lines of the pacman configuration file. This is in order to ensure that:
+
+'''1.''' The ''pacman'', ''glibc'', and ''manjaro-system'' files are never removed when updating (by enabling the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command), and
+
+'''2.''' the ''pacman'' and ''manjaro-system'' files are '''always''' updated first, before anything else (by enabling the '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command).
+
+
+'''Lines beginning with a hash '#' will be ignored by Manjaro'''. As such, these commands may be enabled by simply removing any hashes present at the beginning of the lines they are listed on. Once done, it will then just be a case of ensuring that all of the correct files are listed for each of enabled commands.
+
+
+== The HoldPkg Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command is located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* remove the hash (if present) from the beginning of it to enable the command, and 
+* ensure that the appropriate files - '''pacman, glibc''' and '''manjaro-system''' - are listed after the command itself.
+
+
+Once complete, the line should look like this:
+
+ HoldPkg = pacman glibc manjaro-system
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;HoldPkg =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ '''&lt;font color=&quot;green&quot;&gt;HoldPkg      = pacman glibc manjaro-system&lt;/font color&gt;'''
+ # If upgrades are available for these packages they will be asked for first
+ SyncFirst    = manjaro-system pacman
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once the amendment has been made, the next command can be enabled.
+
+
+== The SyncFirst Command ==
+
+The '''&lt;font color=&quot;green&quot;&gt;SyncFirst =&lt;/font color&gt;''' command is also located in the '''GENERAL OPTIONS''' section, near the top of the pacman configuration file. Once the line containing this command has been found:
+
+* again, remove the hash (if present) from the beginning of it to enable the command, and
+* ensure that the appropriate files - '''manjaro-system''' and '''pacman''' - are listed after the command itself. 
+
+
+Once complete, the line should look like this:
+
+ SyncFirst = manjaro-system pacman
+
+
+An example as been provided below where the necessary amendment has been made to the '''&lt;font color=&quot;green&quot;&gt;Syncfirst =&lt;/font color&gt;''' command. This has been '''&lt;font color=&quot;green&quot;&gt;coloured in green&lt;/font&gt;''' for illustrative purposes:
+
+ #
+ # GENERAL OPTIONS
+ #
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+ #RootDir     = /
+ #DBPath      = /var/lib/pacman/
+ #CacheDir    = /var/cache/pacman/pkg/
+ #LogFile     = /var/log/pacman.log
+ #GPGDir      = /etc/pacman.d/gnupg/
+ HoldPkg      = pacman glibc manjaro-system
+ # If upgrades are available for these packages they will be asked for first
+ '''&lt;font color=&quot;green&quot;&gt;SyncFirst   = manjaro-system pacman&lt;/font color&gt;'''
+ #XferCommand = /usr/bin/curl -C - -f %u &gt; %o
+ #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+
+
+Once both the '''HoldPkg = ''' and '''Syncfirst = ''' commands have been properly enabled, save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+Now all that is required to '''update your system'''.
+
+
+= Updating the System =
+
+Once the pacman configuration file has been amended to enable the safeguards, it will be necessary to synchronise and to update your system from the software repositories.
+
+
+'''1. First''', to synchronise with the repositories enter the command:
+
+ sudo pacman -Syy
+
+
+'''2. Second''', to only update the Manjaro system enter the command:
+
+ sudo pacman -S manjaro-system
+
+
+'''3. And third''', to update the entire system enter the command:
+
+ sudo pacman -Su
+
+Once complete, you should henceforth be able to successfully update your system as normal without encountering issues such as conflicting files.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>bemqnebxahs63zrfat9llkpwjotjvhg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

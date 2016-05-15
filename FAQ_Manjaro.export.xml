@@ -1,0 +1,318 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>FAQ Manjaro</title>
+    <ns>0</ns>
+    <id>612</id>
+    <revision>
+      <id>3417</id>
+      <timestamp>2012-12-28T16:08:35Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;EN COURS DE TRADUCTION  = General Linux =  ===What is Linux?=== Linux is an '''[http://opensource.org/osd.html open-source]''' operating system, meaning that it is completely ...&quot;</comment>
+      <text xml:space="preserve" bytes="4834">EN COURS DE TRADUCTION
+
+= General Linux =
+
+===What is Linux?===
+Linux is an '''[http://opensource.org/osd.html open-source]''' operating system, meaning that it is completely free to use and free to distribute. Originally developed in 1991 by Finnish Programmer '''[http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds]''', Linux is an exceptionally robust and reliable system most commonly used for internet servers, mobile phones, and tablets (e.g. Android). However, the use of Linux as an alternative operating system for personal computers has also been growing over the years, with several million users having already discovered the benefits of it.
+
+===What are the benefits of using Linux?===
+There are quite a few. Linux is free, highly efficient, and very fast; The 64 bit version of Manjaro with the XFCE desktop boots up in only a few seconds, and uses only 200MB of memory to run. Linux systems are also very secure, and are not affected by the huge amount of Windows viruses, trojans, worms, or malware out there. Anti-virus software is not required. And as for the tens of thousands of software applications available - including fully compatible equivalents of popular Windows software such as MS Office - these are also completely free. It is also possible to easily run many popular Windows applications on Linux using compatibility software such as ''Wine/PlayonLinux''. The examples given here are ''far'' from comprehensive!
+
+===Why is Linux free? What's the catch?===
+There isn't one. Linux operates on a completely different philosophy than those of for-profit corporations such as Microsoft and Apple. Linux systems and software applications are funded through sponsorship, donations, and of course, the hard work of many, many enthusiasts. Linux has a dedicated and highly enthusiastic fan-base for a very good reason.
+
+===Why are there so many different Linux distributions?===
+Different Linux distributions (i.e. operating systems) have been developed for different types of users, for different purposes, and for different hardware capacities. For example, distributions such as ''Mint'' or ''Zorin'' are specifically designed to apply to newcomers or those without technical expertise. At the other end of the scale, distributions such as ''Arch'' are designed for computer enthusiasts. Manjaro is designed to bridge that gap. Different '''flavours''' of a distribution means it comes with different desktop environments - you're rarely if ever stuck with whatever desktop comes pre-installed.
+
+===What is the difference between cutting edge and bleeding edge technology?===
+Generally speaking, ''cutting edge'' refers to the latest technology that has finished development and has been fully tested. ''Bleeding edge'' technology is that which has not finished development and/or is still undergoing testing. The use of bleeding edge technology therefore carries the risk of being unreliable or unstable.
+
+
+= Manjaro Specific =
+
+=== Is Manjaro just an easy-to-install version of Arch? ===
+No. Manjaro is not like other Arch-based distributions such as ''Archbang'' or ''Bridge Linux'', which are. While there are numerous subtle differences between Manjaro and Arch, the most obvious examples  - including the use of our own dedicated software repositories - are covered in the '''[[About_Manjaro|About Manjaro]]''' page. 
+
+===Can Manjaro use the Arch Software Repositories?===
+No. Manjaro is configured to use its own dedicated software repositories, although you can still access the community-maintained Arch User Repository (AUR) for additional software, if you wish. In addition, if you want to access the very latest ''bleeding-edge'' software, Manjaro's own testing and unstable repositories are also available.
+
+===Can Manjaro be converted into a full Arch system?===
+Yes, although only Manjaro versions 0.8.0 and 0.8.1. This course of action is not recommended, and the Manjaro team cannot offer support for a converted system. Still, a conversion script to test out in VirtualBox is available on our forum '''[http://forum.manjaro.org/index.php?topic=245 here]'''
+
+===What is the Manjaro Forum like?===
+Very friendly! Both newcomers and experienced users are more than welcome to participate, ask questions, and just talk to other members of the Manjaro community, as well as the developers themselves. You don't even have to register to post on the forum. Even though Manjaro is a new distribution, there are already many dedicated Manjaro Community members who will be more than happy to answer your questions and help you out.
+
+===How is 'Manjaro' Pronounced?===
+It's pronounced 'Manjaro'! As in ''Mount Kilimanjaro'', which was the inspiration for the name. Man-ja-ro.
+
+
+=See Also=
+
+* '''[[About Manjaro]]'''
+
+[[Category:Présentation]]
+[[Category:Overview]]
+[[Category:Contents Page]]</text>
+      <sha1>rbxz2xot2h3jzp3swnhki7gvget4tbg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3490</id>
+      <parentid>3417</parentid>
+      <timestamp>2012-12-29T09:19:33Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4973">EN COURS DE TRADUCTION
+
+= Géréralités sur Linux =
+
+===Qu'est-ce que Linux?===
+Linux est un système d'exploitation '''[http://opensource.org/osd.html open-source]''', ce qui signifie qu'il est tout à fait libre d'être utilisé et de distribué gratuitement. Développé à l'origine en 1991 par '''[http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds]''', programmeur finlandais, Linux est un système extrêmement robuste et fiable. Linux est le plus couramment utilisé pour les serveurs Internet, les téléphones portables et tablettes Android (par exemple). De plus en plus, au fil des années, Linux est utilisé comme système d'exploitation alternatif pour les ordinateurs personnels avec plusieurs millions d'utilisateurs ayant découvert les avantages de celui-ci.
+
+===Quels sont les avantages de l'utilisation de Linux?===
+There are quite a few. Linux is free, highly efficient, and very fast; The 64 bit version of Manjaro with the XFCE desktop boots up in only a few seconds, and uses only 200MB of memory to run. Linux systems are also very secure, and are not affected by the huge amount of Windows viruses, trojans, worms, or malware out there. Anti-virus software is not required. And as for the tens of thousands of software applications available - including fully compatible equivalents of popular Windows software such as MS Office - these are also completely free. It is also possible to easily run many popular Windows applications on Linux using compatibility software such as ''Wine/PlayonLinux''. The examples given here are ''far'' from comprehensive!
+
+===Why is Linux free? What's the catch?===
+There isn't one. Linux operates on a completely different philosophy than those of for-profit corporations such as Microsoft and Apple. Linux systems and software applications are funded through sponsorship, donations, and of course, the hard work of many, many enthusiasts. Linux has a dedicated and highly enthusiastic fan-base for a very good reason.
+
+===Why are there so many different Linux distributions?===
+Different Linux distributions (i.e. operating systems) have been developed for different types of users, for different purposes, and for different hardware capacities. For example, distributions such as ''Mint'' or ''Zorin'' are specifically designed to apply to newcomers or those without technical expertise. At the other end of the scale, distributions such as ''Arch'' are designed for computer enthusiasts. Manjaro is designed to bridge that gap. Different '''flavours''' of a distribution means it comes with different desktop environments - you're rarely if ever stuck with whatever desktop comes pre-installed.
+
+===What is the difference between cutting edge and bleeding edge technology?===
+Generally speaking, ''cutting edge'' refers to the latest technology that has finished development and has been fully tested. ''Bleeding edge'' technology is that which has not finished development and/or is still undergoing testing. The use of bleeding edge technology therefore carries the risk of being unreliable or unstable.
+
+
+= Manjaro Specific =
+
+=== Is Manjaro just an easy-to-install version of Arch? ===
+No. Manjaro is not like other Arch-based distributions such as ''Archbang'' or ''Bridge Linux'', which are. While there are numerous subtle differences between Manjaro and Arch, the most obvious examples  - including the use of our own dedicated software repositories - are covered in the '''[[About_Manjaro|About Manjaro]]''' page. 
+
+===Can Manjaro use the Arch Software Repositories?===
+No. Manjaro is configured to use its own dedicated software repositories, although you can still access the community-maintained Arch User Repository (AUR) for additional software, if you wish. In addition, if you want to access the very latest ''bleeding-edge'' software, Manjaro's own testing and unstable repositories are also available.
+
+===Can Manjaro be converted into a full Arch system?===
+Yes, although only Manjaro versions 0.8.0 and 0.8.1. This course of action is not recommended, and the Manjaro team cannot offer support for a converted system. Still, a conversion script to test out in VirtualBox is available on our forum '''[http://forum.manjaro.org/index.php?topic=245 here]'''
+
+===What is the Manjaro Forum like?===
+Very friendly! Both newcomers and experienced users are more than welcome to participate, ask questions, and just talk to other members of the Manjaro community, as well as the developers themselves. You don't even have to register to post on the forum. Even though Manjaro is a new distribution, there are already many dedicated Manjaro Community members who will be more than happy to answer your questions and help you out.
+
+===How is 'Manjaro' Pronounced?===
+It's pronounced 'Manjaro'! As in ''Mount Kilimanjaro'', which was the inspiration for the name. Man-ja-ro.
+
+
+=See Also=
+
+* '''[[About Manjaro]]'''
+
+[[Category:Présentation]]
+[[Category:Overview]]
+[[Category:Contents Page]]</text>
+      <sha1>1hj0jt2zmt5p6yk0u9atbj5lh305jwe</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3491</id>
+      <parentid>3490</parentid>
+      <timestamp>2012-12-29T09:20:22Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4996">EN COURS DE TRADUCTION
+
+= Géréralités sur Linux =
+
+===Qu'est-ce que Linux?===
+Linux est un système d'exploitation '''[http://opensource.org/osd.html open-source]''', ce qui signifie qu'il est tout à fait libre d'être utilisé et de distribué gratuitement. Développé à l'origine en 1991 par '''[http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds]''', programmeur finlandais, Linux est un système extrêmement robuste et fiable. Linux est le plus couramment utilisé pour les serveurs Internet, les téléphones portables et tablettes Android (par exemple). De plus en plus, au fil des années, Linux est utilisé comme système d'exploitation alternatif pour les ordinateurs personnels avec plusieurs millions d'utilisateurs ayant découvert les avantages de celui-ci.
+
+===Quels sont les avantages de l'utilisation de Linux?===
+There are quite a few. Linux is free, highly efficient, and very fast; The 64 bit version of Manjaro with the XFCE desktop boots up in only a few seconds, and uses only 200MB of memory to run. Linux systems are also very secure, and are not affected by the huge amount of Windows viruses, trojans, worms, or malware out there. Anti-virus software is not required. And as for the tens of thousands of software applications available - including fully compatible equivalents of popular Windows software such as MS Office - these are also completely free. It is also possible to easily run many popular Windows applications on Linux using compatibility software such as ''Wine/PlayonLinux''. The examples given here are ''far'' from comprehensive!
+
+===Why is Linux free? What's the catch?===
+There isn't one. Linux operates on a completely different philosophy than those of for-profit corporations such as Microsoft and Apple. Linux systems and software applications are funded through sponsorship, donations, and of course, the hard work of many, many enthusiasts. Linux has a dedicated and highly enthusiastic fan-base for a very good reason.
+
+===Why are there so many different Linux distributions?===
+Different Linux distributions (i.e. operating systems) have been developed for different types of users, for different purposes, and for different hardware capacities. For example, distributions such as ''Mint'' or ''Zorin'' are specifically designed to apply to newcomers or those without technical expertise. At the other end of the scale, distributions such as ''Arch'' are designed for computer enthusiasts. Manjaro is designed to bridge that gap. Different '''flavours''' of a distribution means it comes with different desktop environments - you're rarely if ever stuck with whatever desktop comes pre-installed.
+
+===What is the difference between cutting edge and bleeding edge technology?===
+Generally speaking, ''cutting edge'' refers to the latest technology that has finished development and has been fully tested. ''Bleeding edge'' technology is that which has not finished development and/or is still undergoing testing. The use of bleeding edge technology therefore carries the risk of being unreliable or unstable.
+
+
+= Manjaro Specific =
+
+=== Is Manjaro just an easy-to-install version of Arch? ===
+No. Manjaro is not like other Arch-based distributions such as ''Archbang'' or ''Bridge Linux'', which are. While there are numerous subtle differences between Manjaro and Arch, the most obvious examples  - including the use of our own dedicated software repositories - are covered in the '''[[About_Manjaro|About Manjaro]]''' page. 
+
+===Can Manjaro use the Arch Software Repositories?===
+No. Manjaro is configured to use its own dedicated software repositories, although you can still access the community-maintained Arch User Repository (AUR) for additional software, if you wish. In addition, if you want to access the very latest ''bleeding-edge'' software, Manjaro's own testing and unstable repositories are also available.
+
+===Can Manjaro be converted into a full Arch system?===
+Yes, although only Manjaro versions 0.8.0 and 0.8.1. This course of action is not recommended, and the Manjaro team cannot offer support for a converted system. Still, a conversion script to test out in VirtualBox is available on our forum '''[http://forum.manjaro.org/index.php?topic=245 here]'''
+
+===What is the Manjaro Forum like?===
+Very friendly! Both newcomers and experienced users are more than welcome to participate, ask questions, and just talk to other members of the Manjaro community, as well as the developers themselves. You don't even have to register to post on the forum. Even though Manjaro is a new distribution, there are already many dedicated Manjaro Community members who will be more than happy to answer your questions and help you out.
+
+===How is 'Manjaro' Pronounced?===
+It's pronounced 'Manjaro'! As in ''Mount Kilimanjaro'', which was the inspiration for the name. Man-ja-ro.
+
+
+=See Also=
+
+* '''[[About Manjaro]]'''
+
+[[Category:Présentation]]
+[[Category:Overview]]
+[[Category:Contents Page]]
+[[Category:Français]]</text>
+      <sha1>5uu788y7zyok51udm3loxe7ktm81agx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3492</id>
+      <parentid>3491</parentid>
+      <timestamp>2012-12-29T09:22:01Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4947">EN COURS DE TRADUCTION
+
+= Géréralités sur Linux =
+
+===Qu'est-ce que Linux?===
+Linux est un système d'exploitation '''[http://opensource.org/osd.html open-source]''', ce qui signifie qu'il est tout à fait libre d'être utilisé et de distribué gratuitement. Développé à l'origine en 1991 par '''[http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds]''', programmeur finlandais, Linux est un système extrêmement robuste et fiable. Linux est le plus couramment utilisé pour les serveurs Internet, les téléphones portables et tablettes Android (par exemple). De plus en plus, au fil des années, Linux est utilisé comme système d'exploitation alternatif pour les ordinateurs personnels avec plusieurs millions d'utilisateurs ayant découvert les avantages de celui-ci.
+
+===Quels sont les avantages de l'utilisation de Linux?===
+There are quite a few. Linux is free, highly efficient, and very fast; The 64 bit version of Manjaro with the XFCE desktop boots up in only a few seconds, and uses only 200MB of memory to run. Linux systems are also very secure, and are not affected by the huge amount of Windows viruses, trojans, worms, or malware out there. Anti-virus software is not required. And as for the tens of thousands of software applications available - including fully compatible equivalents of popular Windows software such as MS Office - these are also completely free. It is also possible to easily run many popular Windows applications on Linux using compatibility software such as ''Wine/PlayonLinux''. The examples given here are ''far'' from comprehensive!
+
+===Why is Linux free? What's the catch?===
+There isn't one. Linux operates on a completely different philosophy than those of for-profit corporations such as Microsoft and Apple. Linux systems and software applications are funded through sponsorship, donations, and of course, the hard work of many, many enthusiasts. Linux has a dedicated and highly enthusiastic fan-base for a very good reason.
+
+===Why are there so many different Linux distributions?===
+Different Linux distributions (i.e. operating systems) have been developed for different types of users, for different purposes, and for different hardware capacities. For example, distributions such as ''Mint'' or ''Zorin'' are specifically designed to apply to newcomers or those without technical expertise. At the other end of the scale, distributions such as ''Arch'' are designed for computer enthusiasts. Manjaro is designed to bridge that gap. Different '''flavours''' of a distribution means it comes with different desktop environments - you're rarely if ever stuck with whatever desktop comes pre-installed.
+
+===What is the difference between cutting edge and bleeding edge technology?===
+Generally speaking, ''cutting edge'' refers to the latest technology that has finished development and has been fully tested. ''Bleeding edge'' technology is that which has not finished development and/or is still undergoing testing. The use of bleeding edge technology therefore carries the risk of being unreliable or unstable.
+
+
+= Manjaro Specific =
+
+=== Is Manjaro just an easy-to-install version of Arch? ===
+No. Manjaro is not like other Arch-based distributions such as ''Archbang'' or ''Bridge Linux'', which are. While there are numerous subtle differences between Manjaro and Arch, the most obvious examples  - including the use of our own dedicated software repositories - are covered in the '''[[About_Manjaro|About Manjaro]]''' page. 
+
+===Can Manjaro use the Arch Software Repositories?===
+No. Manjaro is configured to use its own dedicated software repositories, although you can still access the community-maintained Arch User Repository (AUR) for additional software, if you wish. In addition, if you want to access the very latest ''bleeding-edge'' software, Manjaro's own testing and unstable repositories are also available.
+
+===Can Manjaro be converted into a full Arch system?===
+Yes, although only Manjaro versions 0.8.0 and 0.8.1. This course of action is not recommended, and the Manjaro team cannot offer support for a converted system. Still, a conversion script to test out in VirtualBox is available on our forum '''[http://forum.manjaro.org/index.php?topic=245 here]'''
+
+===What is the Manjaro Forum like?===
+Very friendly! Both newcomers and experienced users are more than welcome to participate, ask questions, and just talk to other members of the Manjaro community, as well as the developers themselves. You don't even have to register to post on the forum. Even though Manjaro is a new distribution, there are already many dedicated Manjaro Community members who will be more than happy to answer your questions and help you out.
+
+===How is 'Manjaro' Pronounced?===
+It's pronounced 'Manjaro'! As in ''Mount Kilimanjaro'', which was the inspiration for the name. Man-ja-ro.
+
+
+=See Also=
+
+* '''[[About Manjaro]]'''
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>b83wozo3kx2h47vynlm5ukptohh85at</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3508</id>
+      <parentid>3492</parentid>
+      <timestamp>2012-12-29T14:08:07Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5144">EN COURS DE TRADUCTION
+
+= Géréralités sur Linux =
+
+===Qu'est-ce que Linux?===
+Linux est un système d'exploitation '''[http://opensource.org/osd.html open-source]''', ce qui signifie qu'il est tout à fait libre d'être utilisé et de distribué gratuitement. Développé à l'origine en 1991 par '''[http://en.wikipedia.org/wiki/Linus_Torvalds Linus Torvalds]''', programmeur finlandais, Linux est un système extrêmement robuste et fiable. Linux est le plus couramment utilisé pour les serveurs Internet, les téléphones portables et tablettes Android (par exemple). De plus en plus, au fil des années, Linux est utilisé comme système d'exploitation alternatif pour les ordinateurs personnels avec plusieurs millions d'utilisateurs ayant découvert les avantages de celui-ci.
+
+===Quels sont les avantages de l'utilisation de Linux?===
+Il y en a un assez grand nombre. Linux est gratuit, très efficace et très rapide; la version 64 bits de Manjaro avec le bureau XFCE s'allume en quelques secondes seulement et n'utilise que 200 Mo de mémoire vive pour fonctionner. Les systèmes Linux sont également très sécurisés et ne sont pas affectés par l'énorme quantité de virus Windows, chevaux de Troie, vers, logiciels malveillants et autres. Un logiciel anti-virus n'est pas nécessaire. Et comme pour les dizaines de milliers d'applications logicielles disponibles - y compris les équivalents entièrement compatibles de Windows logiciels populaires tels que MS Office - ce sont aussi totalement gratuit. Il est également possible d'exécuter facilement nombreuses applications Windows sous Linux en utilisant un logiciel compatible tel que ''Wine/PlayOnLinux''. Les exemples donnés ici ''sont loin'' d'être exhaustifs!
+
+===Why is Linux free? What's the catch?===
+There isn't one. Linux operates on a completely different philosophy than those of for-profit corporations such as Microsoft and Apple. Linux systems and software applications are funded through sponsorship, donations, and of course, the hard work of many, many enthusiasts. Linux has a dedicated and highly enthusiastic fan-base for a very good reason.
+
+===Why are there so many different Linux distributions?===
+Different Linux distributions (i.e. operating systems) have been developed for different types of users, for different purposes, and for different hardware capacities. For example, distributions such as ''Mint'' or ''Zorin'' are specifically designed to apply to newcomers or those without technical expertise. At the other end of the scale, distributions such as ''Arch'' are designed for computer enthusiasts. Manjaro is designed to bridge that gap. Different '''flavours''' of a distribution means it comes with different desktop environments - you're rarely if ever stuck with whatever desktop comes pre-installed.
+
+===What is the difference between cutting edge and bleeding edge technology?===
+Generally speaking, ''cutting edge'' refers to the latest technology that has finished development and has been fully tested. ''Bleeding edge'' technology is that which has not finished development and/or is still undergoing testing. The use of bleeding edge technology therefore carries the risk of being unreliable or unstable.
+
+
+= Manjaro Specific =
+
+=== Is Manjaro just an easy-to-install version of Arch? ===
+No. Manjaro is not like other Arch-based distributions such as ''Archbang'' or ''Bridge Linux'', which are. While there are numerous subtle differences between Manjaro and Arch, the most obvious examples  - including the use of our own dedicated software repositories - are covered in the '''[[About_Manjaro|About Manjaro]]''' page. 
+
+===Can Manjaro use the Arch Software Repositories?===
+No. Manjaro is configured to use its own dedicated software repositories, although you can still access the community-maintained Arch User Repository (AUR) for additional software, if you wish. In addition, if you want to access the very latest ''bleeding-edge'' software, Manjaro's own testing and unstable repositories are also available.
+
+===Can Manjaro be converted into a full Arch system?===
+Yes, although only Manjaro versions 0.8.0 and 0.8.1. This course of action is not recommended, and the Manjaro team cannot offer support for a converted system. Still, a conversion script to test out in VirtualBox is available on our forum '''[http://forum.manjaro.org/index.php?topic=245 here]'''
+
+===What is the Manjaro Forum like?===
+Very friendly! Both newcomers and experienced users are more than welcome to participate, ask questions, and just talk to other members of the Manjaro community, as well as the developers themselves. You don't even have to register to post on the forum. Even though Manjaro is a new distribution, there are already many dedicated Manjaro Community members who will be more than happy to answer your questions and help you out.
+
+===How is 'Manjaro' Pronounced?===
+It's pronounced 'Manjaro'! As in ''Mount Kilimanjaro'', which was the inspiration for the name. Man-ja-ro.
+
+
+=See Also=
+
+* '''[[About Manjaro]]'''
+
+[[Manjaro FAQ|Page originale du wiki anglais]]
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>7j13x4vwl7nojc8mtj68bkv15r5drtu</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

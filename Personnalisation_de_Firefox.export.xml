@@ -1,0 +1,2262 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Personnalisation de Firefox</title>
+    <ns>0</ns>
+    <id>668</id>
+    <revision>
+      <id>4363</id>
+      <timestamp>2013-01-07T13:31:50Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = TRADUCTION EN COURS =  = Firefox Customisation - Security First - User Options Second: =  ==Introduction:==  [[File:firefox.j...&quot;</comment>
+      <text xml:space="preserve" bytes="20268">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= TRADUCTION EN COURS =
+
+= Firefox Customisation - Security First - User Options Second: =
+
+==Introduction:==
+
+[[File:firefox.jpg|thumb|left|200px]]
+
+
+This page is adapted from one I wrote at [http://spiralinear.org/forum/index.php?sid=e137061f8818db599109112757608106/ Spiralinear.org] it has been updated quite recently.
+
+We all have our personal preferences for the way we like to use the internet &amp; how valuable our personal privacy is, so the way one person likes to setup their system/browser for their internet use can be completely different to the way another does it. 
+
+With that in my mind, I've updated this page which now shows my current preferences (&amp; some). Hopefully, if nothing else the reader may find something of use that may help them optimise their own way of using the Web.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==A list of more &amp; less useful internet testing sites:==
+
+[http://browserspy.dk/BrowserSpy.dk/ BrowserSpy.dk] - A Brilliant browser ''Security'' test site.
+
+[https://panopticlick.eff.org/ Panopticlick.eff.org] - A so-so FSF browser test.
+
+[http://www.dnsstuff.com/ DNS Stuff.com] - An Oz site rarely of any use.
+
+[http://www.hackerwatch.org/probe/ HackerWatch.org] - Port Scanner.
+
+[http://www.pcflank.com/scanner1.htm/ PCFlank.com] - Port Scanner.
+
+[http://www.whatsmyip.org/more/ WhatsMyIP.org] - Lots of info' here.
+
+[http://whatismyipaddress.com/ WhatisMyIPaddress.com] - A double check.
+
+[https://shouldichangemypassword.com/ ShouldIChangemyPassword.com] - Can help if a server you deal with has been hacked.
+
+[http://just-ping.com/index.php/ Just-Ping.com] - Ping an IP address.
+
+[http://downforeveryoneorjustme.com/ DownForEveryoneOrJustMe.com] - Check your internet connection.
+
+[http://www.netindex.com/#/ netindex.com] - Check internet speed.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Quest for Web Browser Security:==
+
+I'll put the ixquick created [https://startpage.com/eng/ Startpage Search Engine] in its own category as it seem to be the champion internet search engine with regards to the user's privacy, &amp; it works brilliantly unlike some of the others I have tried because it uses the Google search engine. 
+
+Unfortunately we have lost the Scroogle Google scraper, though I'm sure that the Scroogle guy at least has some comfort in knowing that Startpage (which is run by a wealthier organisation &amp; is therefore a more polished production) is available &amp; becoming increasingly more popular in many parts of the world (Europe in particular it would seem).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Cookies:== 
+
+I have blocked all third-party cookies in Firefox but I accept all of the others having Firefox ask me what I want to do with each new cookie that tries to live on my computer. 
+
+For any who don't know where the option to have Firefox ''&quot;Ask me every time&quot;'' about cookies is;- it is in the ''Preferences -&gt; Privacy tab''. You will find the option in the drop down menu next to ''&quot;keep until:&quot;'' &amp; just under ''&quot;Accept third-party cookies&quot;''.
+
+The Firefox cookie requester that comes up every time a cookie wants to live at my place, gives me, apart from the ''&quot;Use my choice for all cookies on this site&quot;'' option (which I always have checked) three other choices, ''&quot;Deny&quot;'' (which I hit as a reflex action), ''&quot;Allow&quot;'' &amp; ''&quot;Allow for session&quot;''.
+
+Handling cookies this way creates ever growing black &amp; white lists that are not deleted when Firefox deletes all of my histories bar ''&quot;active logins&quot;'' as I have Firefox set to delete all but ''&quot;active logins&quot;'' history every time it is shut down. 
+
+As time goes by, due to the ever growing black/white lists, I only have to choose whether I want a cookie or not from the Firefox requester when I go to a new site that wants me to take a cookie. 
+
+After the initial stages of using this method, there is an ever diminishing number of cookies offered as the black list tells the sites I have been to not to offer &amp; the white list lets those forums, internet banking &amp; other sites that I have white listed, do their cookie thing quickly &amp; quietly.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Manually Using the Firefox Black/White Lists:===
+
+You could also go to your Firefox cookie preferences due to you wanting to delete a cookie from the black or white list. Which is very easily done &amp; can be made even easier if after you have selected the ''&quot;Preferences -&gt; Privacy -&gt; Exceptions&quot;'' button - which takes you to where the black/white list lives, you then select the ''&quot;Status&quot;'' column header which puts them in alphanumeric order inside of their respective status group. Meaning the white &amp; the black separate from each other &amp; hang together in alphanumeric order. 
+
+Separating the black &amp; white listed URL's this way makes it so much easier to work with them. i.e. Finding the URL(s) that you are looking for, which is a common task, as I quite often want to delete a URL from either group. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Here are a couple of reasons for manually editing the black/white list:====
+
+'''1.''' I want to do an online purchase. Which is a sure fire way to get multiple tracking cookies on your machine, especially if you are accepting 3rd party cookies. So I accept the cookies (NEVER 3rd party cookies though), as they are required to be able to make the purchase, once done I go into the Firefox Preferences as detailed above &amp; delete all the cookies associated with the shop.
+
+'''2.''' Conversely, I may want to delete a black listed site so that I can add it to my white list next time that page is loaded or refreshed. I do block first &amp; ask questions later.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Firefox Cookie Handling Add-ons:===
+
+I recently road tested some FF cookie handling add-ons. Meaning I used the following; '''Click&amp;Clean''', '''Cookie Controller''' &amp; '''Cookie Killer''' &amp; also looked at other Cookie add-ons available for FF, picking out those three to actually test. 
+
+Most of these Cookie handling add-ons are very popular, even though in reality they offered no more function than FF has already inbuilt. What these add-ons bring is convenience &amp; a way for the guys that coded the add-ons to make some money.
+
+Be careful if you choose to use one of these methods as they aren't all created equal, so if you go that way, do some research on the web &amp; give them a careful road test before making your choice. 
+
+As a side note, even though I try not to collect add-ons I still as of this writing have 17 of the things running which doesn't make FF any lighter or faster.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===The Web of Cookie Connections:===
+
+A Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/collusion/ '''Collusion''']  shows you in a FF tab, all of the computers that your computer is connected to on the web. 
+
+You can move your mouse pointer over each circle that represents one of these servers &amp; get its url &amp; see more info about it in a column on the left hand side. These computers basically connect to your computer via cookies. 
+
+When I first installed this software (roughly 8 months ago as of this writing) I ran the add-on for days &amp; never had one computer show up on my screen. Even when I turned all my security add-ons off. The reason being I don't have any cookies on my machine unless I chose them. 
+
+
+After having been lulled into a false sense of security by that experience, I've found that my security had been compromised &amp; that it is not so much cookies as [https://developer.mozilla.org/en-US/docs/DOM/Storage/ DOM storage] which is the newish but extremely widely used culprit. (More to come.)
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Firefox Privacy Add-ons:==
+
+The list below has had ''Ghostery'' &amp; ''RequestPolicy'' added to it &amp; ''DoNotTrack+'' removed, as ''DNT+'' no longer works well, I'm sorry to say. Plus I've increased the ''Adblock Plus'' filter protection: 
+
+
+[https://addons.mozilla.org/en-US/firefox/addon/ghostery/ '''Ghostery'''] - added to replace DNT+
+
+[https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/?src=ss/ '''Adblock Plus'''] - (with 4 Filter subscriptions - see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/betterprivacy/?src=search/ '''BetterPrivacy'''] - the essential Super Cookie handler
+
+[https://addons.mozilla.org/en-US/firefox/addon/requestpolicy/?src=search/ '''RequestPolicy'''] - added (see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/noscript/?src=search/'''NoScript'''] - the well known essential protection
+
+These next two aren't essential though they are well worth knowing about, they also work together;- the Finder is an asset to Everywhere.
+
+[https://www.eff.org/https-everywhere/ '''HTTPS-Everywhere''']
+
+[https://addons.mozilla.org/en-US/firefox/addon/https-finder/?src=search/ '''HTTPS Finder''']
+
+
+''DNT+'' is nowhere near as effective as it used to be, so I've removed it &amp; have added ''Ghostery'', plus a great source of protection from 3rd parties - ''RequestPolicy''. On top of that [https://secure.fanboy.co.nz/ I'm now running 4 Filter subscriptions in ''Adblock plus'':] ''EasyList'', ''Fanboy's Adblock List'', ''Fanboy's Tracking List'', ''Fanboy's Annoyance List''.  
+
+Plus I've got DOM storage turned off in Firefox via ''about:config'' ''(see below)'' &amp; some of the other ''about:config'' security options that follow. I've removed ''Beef Taco'', as I've found it to be no longer helpful.
+
+''See the next section on modifying the /hosts file, as it brings another very valuable layer of privacy protection to the table.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Modifying &amp; using the .../hosts file for security purposes:==
+
+For an easy way ''(as it includes &amp; highly regarded hosts file supplement)'' with a Windows how-to read '''[http://winhelp2002.mvps.org/hosts.htm this page]'''. 
+
+Unless you are running Windows, forget the Windows how-to, just download, unzip &amp; paste the supplied ''hosts'' file onto the end of your ''/etc/hosts'' after everything else. 
+
+You will need to open your text editor as ''root'' to do this. Replace the '''&lt;editor-name&gt;''' with the name of your preferred text editor in the following ''Terminal'' command-line:
+
+
+ sudo &lt;editor-name&gt;/etc/hosts
+
+
+You can edit the /etc/hosts file, adding/removing what you want if you so desire. I've been using it in an unchanged state.
+
+Using this file adds another strong layer of security which unfortunately these days we need.
+
+You can update the host file addition when new updates become available. You can also register your email address to be notified when to go &amp; download the new file.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==about:config Edits:==
+
+* '''[http://kb.mozillazine.org/About:config Firefox Configuration about:config Editing]'''
+
+
+* '''[http://kb.mozillazine.org/About:config_entries about:config Entries]'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off DOM Storage:===
+
+''DOM storage has become (conservatively speaking) at least as big a threat to our privacy as cookies &amp; is certainly set to leave cookies in the dust, I strongly advise you to change the default value of this configuration to '''false''' , if you make no other about:config edits, please make this one.''
+
+
+about:config Name: '''dom.storage.enabled'''
+
+Default value: '''true'''
+
+Modified value: '''false'''
+
+
+The following is quoted from [http://wiki.manjaro.org/index.php?title=Firefox_Customisation&amp;action=submit/ w3schools.com] though they have moved it for whatever reason:
+
+''HTML5 web storage, a better local storage than cookies.
+What is HTML5 Web Storage?
+
+With HTML5, web pages can store data locally within the user's browser.
+
+Earlier, this was done with cookies. However, Web Storage is more secure and faster. The data is not included with every server request, but used ONLY when asked for. It is also possible to store large amounts of data, without affecting the website's performance.
+
+The data is stored in key/value pairs, and a web page can only access data stored by itself.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Referrer Control:===
+
+about:config Name: '''network.http.sendRefererHeader'''
+
+Default Value:  '''1'''
+
+Modified Value: '''0'''
+
+
+By setting '''network.http.sendRefererHeader''' in about:config to '''0''', whenever you visit a link from one site, the destination site doesn't know the original site you were referred from.
+
+This in effect makes the Firefox add-on RefControl (&amp; others) redundant.
+ 
+
+'''There is a caveat:'''
+
+If you find that you can't get into a site that you want to use it can be due to this setting. Under such circumstances you would be better off using the likes of [https://addons.mozilla.org/en-US/firefox/addon/refcontrol/ RefControl] as you can use whatever options you choose for your normal surfing &amp; then choose a specific option that works with specific troublesome sites.
+
+I am very rarely blocked from a site (for whatever reason) &amp; under such circumstances I don't want to use the site anyway!
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Prefetch Control:===
+
+about:config Name: '''network.prefetch-next'''
+
+Default Value: '''true'''
+
+Modified Value: '''false'''
+
+
+By setting '''network.prefetch-next''' to '''false''', we are controlling the following:
+
+Link prefetching, is when a web page hints to the browser that certain pages are likely to be visited, so the browser downloads them immediately so they can be displayed immediately when the user requests it. This preference controls whether link prefetching is enabled. 
+
+I'll leave this one up to you as it is a matter of personal choice?  
+Personally, I go for the &quot;false&quot; setting.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===User Agent Strings:===
+
+about:config Name: '''general.useragent.override'''
+
+Default Value: '''as per machine's configuration'''
+
+
+The ability to change the '''useragent string''' via this about:config preferences option -  '''general.useragent.override''' - to a more common string, may prove to be useful for some users, as the following example may show:
+
+
+ Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)
+
+
+(If the required Preference Name is non-existent, creating a new entry requires you to Right Mouse Button click in the about:config page, then by using the RMB menu option -&gt;NEW, a new entry can be created.) 
+
+[http://www.useragentstring.com/pages/useragentstring.php/ Here] is a great useragent string reference page from where you can copy &amp; paste.
+ 
+[http://spiralinear.org/forum/viewtopic.php?f=17&amp;t=183&amp;p=1448#p1448/ Here] is a link to a step by step guide for changing the useragent string.
+
+Changing this setting can be advantageous in certain circumstances;- like being able to access a site that won't let any other browser than I.E. in. Or fooling sites that your computer is a hand-held so that you get a lighter &amp; faster display, for instance.
+
+As far as using it so as not to stand out in the crowd as a Firefox Linux 64bit user with some other uncommon settings &amp; browser additions is concerned;- if you are taking effective privacy precautions that are mentioned in this thread, it really shouldn't make much difference as the trackers don't know you are there anyway. 
+
+
+On the other hand, if you are doing something on a public wireless network where you would prefer to be untraceable then it would certainly be a good idea to modify your useragent string &amp; then modify it back again when you have finished.  
+
+Here is a Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/ '''User Agent Switcher''']  that can make this job much easier &amp; quicker for you. You will most likely have to search out additional strings that you can add strings to its menu, which is a nice touch too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Match Accept Headers to your User Agent String:===
+
+about:config Name: '''network.http.accept.default'''
+
+Default Value: '''as per machine's configuration'''
+
+ 
+If you want you can then change the accept headers to match the default for whichever useragent string you went with. 
+
+[http://www.gethifi.com/blog/browser-rest-http-accept-headers/ This link] is informative. 
+
+You can also use the [https://addons.mozilla.org/en-us/firefox/addon/modify-headers/ '''Modify Headers add-on'''].
+
+
+OR, if you know what you are doing, you can modify the '''network.http.accept.default''' key in about:config.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off default Send Secure Referrer:===
+
+about:config Name: '''network.http.sendSecureXSiteReferrer''' 
+
+Default Value: '''true'''
+
+Modified Value: '''false'''.
+
+
+I found technical info' on [http://kb.mozillazine.org/Network.http.sendSecureXSiteReferrer/ '''sendSecureXSiteReffer'''].
+
+I've been running with this setting for at least 6 months, it gives no trouble on my sytems &amp; I'm running https Everywhere too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Enable Spell Checking In All Text Fields:===
+
+about:config Name: '''layout.spellcheckDefault'''
+
+Default Value: 1 
+
+Possible Values:
+
+    0 - disable spell checker.
+    1 - spell check multi-line text boxes only.
+    2 - enable spell checker for all text boxes.
+
+The default spell checking function only checks for multi-line text boxes. You can get it to spell-check for single line text box as well.
+
+Which is a great find for me as I'm not a perfect speller.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Open Search Box Results In New Tab:===
+
+about:config Name: '''browser.search.openintab'''
+
+Default Value: false
+
+Modified Value: true 
+
+
+When you search using the search box at the top right hand corner of the browser, it will display the search results in the current tab. If you don’t want the search to interfere with your current tab, you can tweak the '''browser.search.openintab''' to make it open in a new tab.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Speed up your Firefox:===
+
+
+
+'''Two tweaks required for this one;-'''
+
+
+about:config Name: '''network.http.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+
+about:config Name: '''network.http.proxy.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+This combination works for me.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Setting your zoom limit:===
+
+If you find that the max/min zoom level is still not sufficient for your viewing, you can change the zoom limit to suit your viewing habits.
+
+
+about:config Name: '''zoom.maxPercent'''
+
+Default Value: 300 (percent)
+
+Modified value: any value higher than 300
+
+
+about:config Name: '''zoom.minPercent'''
+Default Value: 30 (percent)
+Modified Value: any value
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Configure Your Backspace Button:===
+
+about:config Name: '''browser.backspace_action'''
+
+Default Value: 2 (does nothing)
+
+Modified Value:
+
+Options Are:
+
+    0 - go back to previous page
+    1 - page up
+    2 - does nothing
+
+
+In Firefox, you can set your backspace to better use by getting it to either go back to the previous page or act as page up function.
+
+I set this one to 1 , as my mouse gives me previous page.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Disable Delay Time When Installing Add-on:===
+
+about:config Name: '''security.dialog_enable_delay'''
+
+Default: 2000 (in msec)
+
+Modified value:
+
+Options Are:
+    0 – start installation immediately
+    any other value (in msec)
+
+
+Everytime you wanted to install a Firefox add-on, you will have to wait for several seconds before the actual installation starts. If you are tired of waiting, you can turn the function security.dialog_enable_delay off so that the installation will start immediately upon clicking.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===View Source in Your Favorite Editor:===
+
+Two modifications required here:
+
+about:config Name: '''view_source.editor.external'''
+
+Default Value: false
+
+Modified Value: true (enable view source using external text editor)
+
+
+about:config Name: '''view_source.editor.path'''
+
+Default Value: blank
+
+Modified Value: add the path to your editor here
+
+
+This is very useful for developers who are always using the ‘view source‘ function. This tweak allows you to view the source code in your favourite external editor.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off Browser Blink:===
+
+about:config Name: '''browser.blink_allowed'''
+
+Default Value: true
+
+Modified Value: false
+
+
+I love it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Middle Mouse Button Paste:===
+
+about:config Name: '''middlemouse.paste'''
+
+Default Value: true
+
+Modified Value:
+
+
+Turn on/off Middle Mouse Button Paste from Clipboard: &quot;true&quot; or &quot;false&quot; its your choice, so toggle away.
+
+[[Firefox Customisation|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>pt1pm9aa9jqkm6fqjbqjalijl52g84i</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4502</id>
+      <parentid>4363</parentid>
+      <timestamp>2013-01-08T16:46:36Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="20277">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= A TRADUIRE PAR QUI VEUT BIEN =
+
+= Firefox Customisation - Security First - User Options Second: =
+
+==Introduction:==
+
+[[File:firefox.jpg|thumb|left|200px]]
+
+
+This page is adapted from one I wrote at [http://spiralinear.org/forum/index.php?sid=e137061f8818db599109112757608106/ Spiralinear.org] it has been updated quite recently.
+
+We all have our personal preferences for the way we like to use the internet &amp; how valuable our personal privacy is, so the way one person likes to setup their system/browser for their internet use can be completely different to the way another does it. 
+
+With that in my mind, I've updated this page which now shows my current preferences (&amp; some). Hopefully, if nothing else the reader may find something of use that may help them optimise their own way of using the Web.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==A list of more &amp; less useful internet testing sites:==
+
+[http://browserspy.dk/BrowserSpy.dk/ BrowserSpy.dk] - A Brilliant browser ''Security'' test site.
+
+[https://panopticlick.eff.org/ Panopticlick.eff.org] - A so-so FSF browser test.
+
+[http://www.dnsstuff.com/ DNS Stuff.com] - An Oz site rarely of any use.
+
+[http://www.hackerwatch.org/probe/ HackerWatch.org] - Port Scanner.
+
+[http://www.pcflank.com/scanner1.htm/ PCFlank.com] - Port Scanner.
+
+[http://www.whatsmyip.org/more/ WhatsMyIP.org] - Lots of info' here.
+
+[http://whatismyipaddress.com/ WhatisMyIPaddress.com] - A double check.
+
+[https://shouldichangemypassword.com/ ShouldIChangemyPassword.com] - Can help if a server you deal with has been hacked.
+
+[http://just-ping.com/index.php/ Just-Ping.com] - Ping an IP address.
+
+[http://downforeveryoneorjustme.com/ DownForEveryoneOrJustMe.com] - Check your internet connection.
+
+[http://www.netindex.com/#/ netindex.com] - Check internet speed.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Quest for Web Browser Security:==
+
+I'll put the ixquick created [https://startpage.com/eng/ Startpage Search Engine] in its own category as it seem to be the champion internet search engine with regards to the user's privacy, &amp; it works brilliantly unlike some of the others I have tried because it uses the Google search engine. 
+
+Unfortunately we have lost the Scroogle Google scraper, though I'm sure that the Scroogle guy at least has some comfort in knowing that Startpage (which is run by a wealthier organisation &amp; is therefore a more polished production) is available &amp; becoming increasingly more popular in many parts of the world (Europe in particular it would seem).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Cookies:== 
+
+I have blocked all third-party cookies in Firefox but I accept all of the others having Firefox ask me what I want to do with each new cookie that tries to live on my computer. 
+
+For any who don't know where the option to have Firefox ''&quot;Ask me every time&quot;'' about cookies is;- it is in the ''Preferences -&gt; Privacy tab''. You will find the option in the drop down menu next to ''&quot;keep until:&quot;'' &amp; just under ''&quot;Accept third-party cookies&quot;''.
+
+The Firefox cookie requester that comes up every time a cookie wants to live at my place, gives me, apart from the ''&quot;Use my choice for all cookies on this site&quot;'' option (which I always have checked) three other choices, ''&quot;Deny&quot;'' (which I hit as a reflex action), ''&quot;Allow&quot;'' &amp; ''&quot;Allow for session&quot;''.
+
+Handling cookies this way creates ever growing black &amp; white lists that are not deleted when Firefox deletes all of my histories bar ''&quot;active logins&quot;'' as I have Firefox set to delete all but ''&quot;active logins&quot;'' history every time it is shut down. 
+
+As time goes by, due to the ever growing black/white lists, I only have to choose whether I want a cookie or not from the Firefox requester when I go to a new site that wants me to take a cookie. 
+
+After the initial stages of using this method, there is an ever diminishing number of cookies offered as the black list tells the sites I have been to not to offer &amp; the white list lets those forums, internet banking &amp; other sites that I have white listed, do their cookie thing quickly &amp; quietly.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Manually Using the Firefox Black/White Lists:===
+
+You could also go to your Firefox cookie preferences due to you wanting to delete a cookie from the black or white list. Which is very easily done &amp; can be made even easier if after you have selected the ''&quot;Preferences -&gt; Privacy -&gt; Exceptions&quot;'' button - which takes you to where the black/white list lives, you then select the ''&quot;Status&quot;'' column header which puts them in alphanumeric order inside of their respective status group. Meaning the white &amp; the black separate from each other &amp; hang together in alphanumeric order. 
+
+Separating the black &amp; white listed URL's this way makes it so much easier to work with them. i.e. Finding the URL(s) that you are looking for, which is a common task, as I quite often want to delete a URL from either group. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Here are a couple of reasons for manually editing the black/white list:====
+
+'''1.''' I want to do an online purchase. Which is a sure fire way to get multiple tracking cookies on your machine, especially if you are accepting 3rd party cookies. So I accept the cookies (NEVER 3rd party cookies though), as they are required to be able to make the purchase, once done I go into the Firefox Preferences as detailed above &amp; delete all the cookies associated with the shop.
+
+'''2.''' Conversely, I may want to delete a black listed site so that I can add it to my white list next time that page is loaded or refreshed. I do block first &amp; ask questions later.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Firefox Cookie Handling Add-ons:===
+
+I recently road tested some FF cookie handling add-ons. Meaning I used the following; '''Click&amp;Clean''', '''Cookie Controller''' &amp; '''Cookie Killer''' &amp; also looked at other Cookie add-ons available for FF, picking out those three to actually test. 
+
+Most of these Cookie handling add-ons are very popular, even though in reality they offered no more function than FF has already inbuilt. What these add-ons bring is convenience &amp; a way for the guys that coded the add-ons to make some money.
+
+Be careful if you choose to use one of these methods as they aren't all created equal, so if you go that way, do some research on the web &amp; give them a careful road test before making your choice. 
+
+As a side note, even though I try not to collect add-ons I still as of this writing have 17 of the things running which doesn't make FF any lighter or faster.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===The Web of Cookie Connections:===
+
+A Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/collusion/ '''Collusion''']  shows you in a FF tab, all of the computers that your computer is connected to on the web. 
+
+You can move your mouse pointer over each circle that represents one of these servers &amp; get its url &amp; see more info about it in a column on the left hand side. These computers basically connect to your computer via cookies. 
+
+When I first installed this software (roughly 8 months ago as of this writing) I ran the add-on for days &amp; never had one computer show up on my screen. Even when I turned all my security add-ons off. The reason being I don't have any cookies on my machine unless I chose them. 
+
+
+After having been lulled into a false sense of security by that experience, I've found that my security had been compromised &amp; that it is not so much cookies as [https://developer.mozilla.org/en-US/docs/DOM/Storage/ DOM storage] which is the newish but extremely widely used culprit. (More to come.)
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Firefox Privacy Add-ons:==
+
+The list below has had ''Ghostery'' &amp; ''RequestPolicy'' added to it &amp; ''DoNotTrack+'' removed, as ''DNT+'' no longer works well, I'm sorry to say. Plus I've increased the ''Adblock Plus'' filter protection: 
+
+
+[https://addons.mozilla.org/en-US/firefox/addon/ghostery/ '''Ghostery'''] - added to replace DNT+
+
+[https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/?src=ss/ '''Adblock Plus'''] - (with 4 Filter subscriptions - see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/betterprivacy/?src=search/ '''BetterPrivacy'''] - the essential Super Cookie handler
+
+[https://addons.mozilla.org/en-US/firefox/addon/requestpolicy/?src=search/ '''RequestPolicy'''] - added (see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/noscript/?src=search/'''NoScript'''] - the well known essential protection
+
+These next two aren't essential though they are well worth knowing about, they also work together;- the Finder is an asset to Everywhere.
+
+[https://www.eff.org/https-everywhere/ '''HTTPS-Everywhere''']
+
+[https://addons.mozilla.org/en-US/firefox/addon/https-finder/?src=search/ '''HTTPS Finder''']
+
+
+''DNT+'' is nowhere near as effective as it used to be, so I've removed it &amp; have added ''Ghostery'', plus a great source of protection from 3rd parties - ''RequestPolicy''. On top of that [https://secure.fanboy.co.nz/ I'm now running 4 Filter subscriptions in ''Adblock plus'':] ''EasyList'', ''Fanboy's Adblock List'', ''Fanboy's Tracking List'', ''Fanboy's Annoyance List''.  
+
+Plus I've got DOM storage turned off in Firefox via ''about:config'' ''(see below)'' &amp; some of the other ''about:config'' security options that follow. I've removed ''Beef Taco'', as I've found it to be no longer helpful.
+
+''See the next section on modifying the /hosts file, as it brings another very valuable layer of privacy protection to the table.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Modifying &amp; using the .../hosts file for security purposes:==
+
+For an easy way ''(as it includes &amp; highly regarded hosts file supplement)'' with a Windows how-to read '''[http://winhelp2002.mvps.org/hosts.htm this page]'''. 
+
+Unless you are running Windows, forget the Windows how-to, just download, unzip &amp; paste the supplied ''hosts'' file onto the end of your ''/etc/hosts'' after everything else. 
+
+You will need to open your text editor as ''root'' to do this. Replace the '''&lt;editor-name&gt;''' with the name of your preferred text editor in the following ''Terminal'' command-line:
+
+
+ sudo &lt;editor-name&gt;/etc/hosts
+
+
+You can edit the /etc/hosts file, adding/removing what you want if you so desire. I've been using it in an unchanged state.
+
+Using this file adds another strong layer of security which unfortunately these days we need.
+
+You can update the host file addition when new updates become available. You can also register your email address to be notified when to go &amp; download the new file.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==about:config Edits:==
+
+* '''[http://kb.mozillazine.org/About:config Firefox Configuration about:config Editing]'''
+
+
+* '''[http://kb.mozillazine.org/About:config_entries about:config Entries]'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off DOM Storage:===
+
+''DOM storage has become (conservatively speaking) at least as big a threat to our privacy as cookies &amp; is certainly set to leave cookies in the dust, I strongly advise you to change the default value of this configuration to '''false''' , if you make no other about:config edits, please make this one.''
+
+
+about:config Name: '''dom.storage.enabled'''
+
+Default value: '''true'''
+
+Modified value: '''false'''
+
+
+The following is quoted from [http://wiki.manjaro.org/index.php?title=Firefox_Customisation&amp;action=submit/ w3schools.com] though they have moved it for whatever reason:
+
+''HTML5 web storage, a better local storage than cookies.
+What is HTML5 Web Storage?
+
+With HTML5, web pages can store data locally within the user's browser.
+
+Earlier, this was done with cookies. However, Web Storage is more secure and faster. The data is not included with every server request, but used ONLY when asked for. It is also possible to store large amounts of data, without affecting the website's performance.
+
+The data is stored in key/value pairs, and a web page can only access data stored by itself.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Referrer Control:===
+
+about:config Name: '''network.http.sendRefererHeader'''
+
+Default Value:  '''1'''
+
+Modified Value: '''0'''
+
+
+By setting '''network.http.sendRefererHeader''' in about:config to '''0''', whenever you visit a link from one site, the destination site doesn't know the original site you were referred from.
+
+This in effect makes the Firefox add-on RefControl (&amp; others) redundant.
+ 
+
+'''There is a caveat:'''
+
+If you find that you can't get into a site that you want to use it can be due to this setting. Under such circumstances you would be better off using the likes of [https://addons.mozilla.org/en-US/firefox/addon/refcontrol/ RefControl] as you can use whatever options you choose for your normal surfing &amp; then choose a specific option that works with specific troublesome sites.
+
+I am very rarely blocked from a site (for whatever reason) &amp; under such circumstances I don't want to use the site anyway!
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Prefetch Control:===
+
+about:config Name: '''network.prefetch-next'''
+
+Default Value: '''true'''
+
+Modified Value: '''false'''
+
+
+By setting '''network.prefetch-next''' to '''false''', we are controlling the following:
+
+Link prefetching, is when a web page hints to the browser that certain pages are likely to be visited, so the browser downloads them immediately so they can be displayed immediately when the user requests it. This preference controls whether link prefetching is enabled. 
+
+I'll leave this one up to you as it is a matter of personal choice?  
+Personally, I go for the &quot;false&quot; setting.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===User Agent Strings:===
+
+about:config Name: '''general.useragent.override'''
+
+Default Value: '''as per machine's configuration'''
+
+
+The ability to change the '''useragent string''' via this about:config preferences option -  '''general.useragent.override''' - to a more common string, may prove to be useful for some users, as the following example may show:
+
+
+ Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)
+
+
+(If the required Preference Name is non-existent, creating a new entry requires you to Right Mouse Button click in the about:config page, then by using the RMB menu option -&gt;NEW, a new entry can be created.) 
+
+[http://www.useragentstring.com/pages/useragentstring.php/ Here] is a great useragent string reference page from where you can copy &amp; paste.
+ 
+[http://spiralinear.org/forum/viewtopic.php?f=17&amp;t=183&amp;p=1448#p1448/ Here] is a link to a step by step guide for changing the useragent string.
+
+Changing this setting can be advantageous in certain circumstances;- like being able to access a site that won't let any other browser than I.E. in. Or fooling sites that your computer is a hand-held so that you get a lighter &amp; faster display, for instance.
+
+As far as using it so as not to stand out in the crowd as a Firefox Linux 64bit user with some other uncommon settings &amp; browser additions is concerned;- if you are taking effective privacy precautions that are mentioned in this thread, it really shouldn't make much difference as the trackers don't know you are there anyway. 
+
+
+On the other hand, if you are doing something on a public wireless network where you would prefer to be untraceable then it would certainly be a good idea to modify your useragent string &amp; then modify it back again when you have finished.  
+
+Here is a Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/ '''User Agent Switcher''']  that can make this job much easier &amp; quicker for you. You will most likely have to search out additional strings that you can add strings to its menu, which is a nice touch too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Match Accept Headers to your User Agent String:===
+
+about:config Name: '''network.http.accept.default'''
+
+Default Value: '''as per machine's configuration'''
+
+ 
+If you want you can then change the accept headers to match the default for whichever useragent string you went with. 
+
+[http://www.gethifi.com/blog/browser-rest-http-accept-headers/ This link] is informative. 
+
+You can also use the [https://addons.mozilla.org/en-us/firefox/addon/modify-headers/ '''Modify Headers add-on'''].
+
+
+OR, if you know what you are doing, you can modify the '''network.http.accept.default''' key in about:config.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off default Send Secure Referrer:===
+
+about:config Name: '''network.http.sendSecureXSiteReferrer''' 
+
+Default Value: '''true'''
+
+Modified Value: '''false'''.
+
+
+I found technical info' on [http://kb.mozillazine.org/Network.http.sendSecureXSiteReferrer/ '''sendSecureXSiteReffer'''].
+
+I've been running with this setting for at least 6 months, it gives no trouble on my sytems &amp; I'm running https Everywhere too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Enable Spell Checking In All Text Fields:===
+
+about:config Name: '''layout.spellcheckDefault'''
+
+Default Value: 1 
+
+Possible Values:
+
+    0 - disable spell checker.
+    1 - spell check multi-line text boxes only.
+    2 - enable spell checker for all text boxes.
+
+The default spell checking function only checks for multi-line text boxes. You can get it to spell-check for single line text box as well.
+
+Which is a great find for me as I'm not a perfect speller.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Open Search Box Results In New Tab:===
+
+about:config Name: '''browser.search.openintab'''
+
+Default Value: false
+
+Modified Value: true 
+
+
+When you search using the search box at the top right hand corner of the browser, it will display the search results in the current tab. If you don’t want the search to interfere with your current tab, you can tweak the '''browser.search.openintab''' to make it open in a new tab.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Speed up your Firefox:===
+
+
+
+'''Two tweaks required for this one;-'''
+
+
+about:config Name: '''network.http.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+
+about:config Name: '''network.http.proxy.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+This combination works for me.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Setting your zoom limit:===
+
+If you find that the max/min zoom level is still not sufficient for your viewing, you can change the zoom limit to suit your viewing habits.
+
+
+about:config Name: '''zoom.maxPercent'''
+
+Default Value: 300 (percent)
+
+Modified value: any value higher than 300
+
+
+about:config Name: '''zoom.minPercent'''
+Default Value: 30 (percent)
+Modified Value: any value
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Configure Your Backspace Button:===
+
+about:config Name: '''browser.backspace_action'''
+
+Default Value: 2 (does nothing)
+
+Modified Value:
+
+Options Are:
+
+    0 - go back to previous page
+    1 - page up
+    2 - does nothing
+
+
+In Firefox, you can set your backspace to better use by getting it to either go back to the previous page or act as page up function.
+
+I set this one to 1 , as my mouse gives me previous page.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Disable Delay Time When Installing Add-on:===
+
+about:config Name: '''security.dialog_enable_delay'''
+
+Default: 2000 (in msec)
+
+Modified value:
+
+Options Are:
+    0 – start installation immediately
+    any other value (in msec)
+
+
+Everytime you wanted to install a Firefox add-on, you will have to wait for several seconds before the actual installation starts. If you are tired of waiting, you can turn the function security.dialog_enable_delay off so that the installation will start immediately upon clicking.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===View Source in Your Favorite Editor:===
+
+Two modifications required here:
+
+about:config Name: '''view_source.editor.external'''
+
+Default Value: false
+
+Modified Value: true (enable view source using external text editor)
+
+
+about:config Name: '''view_source.editor.path'''
+
+Default Value: blank
+
+Modified Value: add the path to your editor here
+
+
+This is very useful for developers who are always using the ‘view source‘ function. This tweak allows you to view the source code in your favourite external editor.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off Browser Blink:===
+
+about:config Name: '''browser.blink_allowed'''
+
+Default Value: true
+
+Modified Value: false
+
+
+I love it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Middle Mouse Button Paste:===
+
+about:config Name: '''middlemouse.paste'''
+
+Default Value: true
+
+Modified Value:
+
+
+Turn on/off Middle Mouse Button Paste from Clipboard: &quot;true&quot; or &quot;false&quot; its your choice, so toggle away.
+
+[[Firefox Customisation|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>hg259sw9jn9llwy4ez8hj1lb0cwl2oq</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6415</id>
+      <parentid>4502</parentid>
+      <timestamp>2013-07-20T09:30:11Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <text xml:space="preserve" bytes="20141">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN-COURS DE TRADUCTION =
+
+= Personnalisation de Firefox - La sécurité d'abord, puis les options utilisateurs: =
+
+==Introduction:==
+
+[[File:firefox.jpg|thumb|left|200px]]
+
+ Cette traduction est basée sur la page du Wiki Anglais [http://wiki.manjaro.org/index.php?title=Firefox_Customisation Firefox Customisation]
+
+Cette page est adaptée de celle que j'ai écrite sur Spiralinear.org, elle a été mise à jour récemment.
+Nous avons tous nos préférences dans la façon d'utiliser internet et comment nous considérons notre vie privée. La façon dont on règle notre système et notre navigateur pour notre usage d'internet diffèrent complètement d'un utilisateur à un autre.
+C'est avec cette pensée en tête que j'ai mis à jour cette page qui vous montre mes préférences actuelles. En espérant que même si le lecteur n'y trouve pas son compte, cela l'aidera à optimiser sa façon d'utiliser le Web.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Une liste de sites de test :==
+
+[http://browserspy.dk/BrowserSpy.dk/ BrowserSpy.dk] - Test de sécurité de votre navigateur Web.
+
+[https://panopticlick.eff.org/ Panopticlick.eff.org] - Test de sécurité de votre navigateur Web.
+
+[http://www.dnsstuff.com/ DNS Stuff.com] - Tests pour le Web.
+
+[http://www.hackerwatch.org/probe/ HackerWatch.org] - Scanner de ports.
+
+[http://www.pcflank.com/scanner1.htm/ PCFlank.com] - Scanner de ports.
+
+[http://www.whatsmyip.org/more/ WhatsMyIP.org] - Beaucoup d'infos.
+
+[http://whatismyipaddress.com/ WhatisMyIPaddress.com] - Double check.
+
+[https://shouldichangemypassword.com/ ShouldIChangemyPassword.com] - Test si vous devez changer vos mots de passe.
+
+[http://just-ping.com/index.php/ Just-Ping.com] - Ping une adresse IP.
+
+[http://downforeveryoneorjustme.com/ DownForEveryoneOrJustMe.com] - Test de votre connexion internet.
+
+[http://www.netindex.com/#/ netindex.com] - Vérifie la vitesse d'internet.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==La quête de la sécurité du Navigateur Web:==
+
+Le moteur de recherche [https://startpage.com/ Startpage], créé par Ixquick semble être le champion des moteurs de recherche protégeant la vie privée. Il travaille brillament, parce-qu'il utilise le moteur de recherche Google, à l'inverse de certains autres que j'ai pu tester. 
+Il devient de plus en plus populaire dans de nombreuses régions du monde et particulièrement en Europe.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Cookies:== 
+
+I have blocked all third-party cookies in Firefox but I accept all of the others having Firefox ask me what I want to do with each new cookie that tries to live on my computer. 
+
+For any who don't know where the option to have Firefox ''&quot;Ask me every time&quot;'' about cookies is;- it is in the ''Preferences -&gt; Privacy tab''. You will find the option in the drop down menu next to ''&quot;keep until:&quot;'' &amp; just under ''&quot;Accept third-party cookies&quot;''.
+
+The Firefox cookie requester that comes up every time a cookie wants to live at my place, gives me, apart from the ''&quot;Use my choice for all cookies on this site&quot;'' option (which I always have checked) three other choices, ''&quot;Deny&quot;'' (which I hit as a reflex action), ''&quot;Allow&quot;'' &amp; ''&quot;Allow for session&quot;''.
+
+Handling cookies this way creates ever growing black &amp; white lists that are not deleted when Firefox deletes all of my histories bar ''&quot;active logins&quot;'' as I have Firefox set to delete all but ''&quot;active logins&quot;'' history every time it is shut down. 
+
+As time goes by, due to the ever growing black/white lists, I only have to choose whether I want a cookie or not from the Firefox requester when I go to a new site that wants me to take a cookie. 
+
+After the initial stages of using this method, there is an ever diminishing number of cookies offered as the black list tells the sites I have been to not to offer &amp; the white list lets those forums, internet banking &amp; other sites that I have white listed, do their cookie thing quickly &amp; quietly.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Manually Using the Firefox Black/White Lists:===
+
+You could also go to your Firefox cookie preferences due to you wanting to delete a cookie from the black or white list. Which is very easily done &amp; can be made even easier if after you have selected the ''&quot;Preferences -&gt; Privacy -&gt; Exceptions&quot;'' button - which takes you to where the black/white list lives, you then select the ''&quot;Status&quot;'' column header which puts them in alphanumeric order inside of their respective status group. Meaning the white &amp; the black separate from each other &amp; hang together in alphanumeric order. 
+
+Separating the black &amp; white listed URL's this way makes it so much easier to work with them. i.e. Finding the URL(s) that you are looking for, which is a common task, as I quite often want to delete a URL from either group. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Here are a couple of reasons for manually editing the black/white list:====
+
+'''1.''' I want to do an online purchase. Which is a sure fire way to get multiple tracking cookies on your machine, especially if you are accepting 3rd party cookies. So I accept the cookies (NEVER 3rd party cookies though), as they are required to be able to make the purchase, once done I go into the Firefox Preferences as detailed above &amp; delete all the cookies associated with the shop.
+
+'''2.''' Conversely, I may want to delete a black listed site so that I can add it to my white list next time that page is loaded or refreshed. I do block first &amp; ask questions later.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Firefox Cookie Handling Add-ons:===
+
+I recently road tested some FF cookie handling add-ons. Meaning I used the following; '''Click&amp;Clean''', '''Cookie Controller''' &amp; '''Cookie Killer''' &amp; also looked at other Cookie add-ons available for FF, picking out those three to actually test. 
+
+Most of these Cookie handling add-ons are very popular, even though in reality they offered no more function than FF has already inbuilt. What these add-ons bring is convenience &amp; a way for the guys that coded the add-ons to make some money.
+
+Be careful if you choose to use one of these methods as they aren't all created equal, so if you go that way, do some research on the web &amp; give them a careful road test before making your choice. 
+
+As a side note, even though I try not to collect add-ons I still as of this writing have 17 of the things running which doesn't make FF any lighter or faster.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===The Web of Cookie Connections:===
+
+A Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/collusion/ '''Collusion''']  shows you in a FF tab, all of the computers that your computer is connected to on the web. 
+
+You can move your mouse pointer over each circle that represents one of these servers &amp; get its url &amp; see more info about it in a column on the left hand side. These computers basically connect to your computer via cookies. 
+
+When I first installed this software (roughly 8 months ago as of this writing) I ran the add-on for days &amp; never had one computer show up on my screen. Even when I turned all my security add-ons off. The reason being I don't have any cookies on my machine unless I chose them. 
+
+
+After having been lulled into a false sense of security by that experience, I've found that my security had been compromised &amp; that it is not so much cookies as [https://developer.mozilla.org/en-US/docs/DOM/Storage/ DOM storage] which is the newish but extremely widely used culprit. (More to come.)
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Firefox Privacy Add-ons:==
+
+The list below has had ''Ghostery'' &amp; ''RequestPolicy'' added to it &amp; ''DoNotTrack+'' removed, as ''DNT+'' no longer works well, I'm sorry to say. Plus I've increased the ''Adblock Plus'' filter protection: 
+
+
+[https://addons.mozilla.org/en-US/firefox/addon/ghostery/ '''Ghostery'''] - added to replace DNT+
+
+[https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/?src=ss/ '''Adblock Plus'''] - (with 4 Filter subscriptions - see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/betterprivacy/?src=search/ '''BetterPrivacy'''] - the essential Super Cookie handler
+
+[https://addons.mozilla.org/en-US/firefox/addon/requestpolicy/?src=search/ '''RequestPolicy'''] - added (see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/noscript/?src=search/'''NoScript'''] - the well known essential protection
+
+These next two aren't essential though they are well worth knowing about, they also work together;- the Finder is an asset to Everywhere.
+
+[https://www.eff.org/https-everywhere/ '''HTTPS-Everywhere''']
+
+[https://addons.mozilla.org/en-US/firefox/addon/https-finder/?src=search/ '''HTTPS Finder''']
+
+
+''DNT+'' is nowhere near as effective as it used to be, so I've removed it &amp; have added ''Ghostery'', plus a great source of protection from 3rd parties - ''RequestPolicy''. On top of that [https://secure.fanboy.co.nz/ I'm now running 4 Filter subscriptions in ''Adblock plus'':] ''EasyList'', ''Fanboy's Adblock List'', ''Fanboy's Tracking List'', ''Fanboy's Annoyance List''.  
+
+Plus I've got DOM storage turned off in Firefox via ''about:config'' ''(see below)'' &amp; some of the other ''about:config'' security options that follow. I've removed ''Beef Taco'', as I've found it to be no longer helpful.
+
+''See the next section on modifying the /hosts file, as it brings another very valuable layer of privacy protection to the table.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Modifying &amp; using the .../hosts file for security purposes:==
+
+For an easy way ''(as it includes &amp; highly regarded hosts file supplement)'' with a Windows how-to read '''[http://winhelp2002.mvps.org/hosts.htm this page]'''. 
+
+Unless you are running Windows, forget the Windows how-to, just download, unzip &amp; paste the supplied ''hosts'' file onto the end of your ''/etc/hosts'' after everything else. 
+
+You will need to open your text editor as ''root'' to do this. Replace the '''&lt;editor-name&gt;''' with the name of your preferred text editor in the following ''Terminal'' command-line:
+
+
+ sudo &lt;editor-name&gt;/etc/hosts
+
+
+You can edit the /etc/hosts file, adding/removing what you want if you so desire. I've been using it in an unchanged state.
+
+Using this file adds another strong layer of security which unfortunately these days we need.
+
+You can update the host file addition when new updates become available. You can also register your email address to be notified when to go &amp; download the new file.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==about:config Edits:==
+
+* '''[http://kb.mozillazine.org/About:config Firefox Configuration about:config Editing]'''
+
+
+* '''[http://kb.mozillazine.org/About:config_entries about:config Entries]'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off DOM Storage:===
+
+''DOM storage has become (conservatively speaking) at least as big a threat to our privacy as cookies &amp; is certainly set to leave cookies in the dust, I strongly advise you to change the default value of this configuration to '''false''' , if you make no other about:config edits, please make this one.''
+
+
+about:config Name: '''dom.storage.enabled'''
+
+Default value: '''true'''
+
+Modified value: '''false'''
+
+
+The following is quoted from [http://wiki.manjaro.org/index.php?title=Firefox_Customisation&amp;action=submit/ w3schools.com] though they have moved it for whatever reason:
+
+''HTML5 web storage, a better local storage than cookies.
+What is HTML5 Web Storage?
+
+With HTML5, web pages can store data locally within the user's browser.
+
+Earlier, this was done with cookies. However, Web Storage is more secure and faster. The data is not included with every server request, but used ONLY when asked for. It is also possible to store large amounts of data, without affecting the website's performance.
+
+The data is stored in key/value pairs, and a web page can only access data stored by itself.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Referrer Control:===
+
+about:config Name: '''network.http.sendRefererHeader'''
+
+Default Value:  '''1'''
+
+Modified Value: '''0'''
+
+
+By setting '''network.http.sendRefererHeader''' in about:config to '''0''', whenever you visit a link from one site, the destination site doesn't know the original site you were referred from.
+
+This in effect makes the Firefox add-on RefControl (&amp; others) redundant.
+ 
+
+'''There is a caveat:'''
+
+If you find that you can't get into a site that you want to use it can be due to this setting. Under such circumstances you would be better off using the likes of [https://addons.mozilla.org/en-US/firefox/addon/refcontrol/ RefControl] as you can use whatever options you choose for your normal surfing &amp; then choose a specific option that works with specific troublesome sites.
+
+I am very rarely blocked from a site (for whatever reason) &amp; under such circumstances I don't want to use the site anyway!
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Prefetch Control:===
+
+about:config Name: '''network.prefetch-next'''
+
+Default Value: '''true'''
+
+Modified Value: '''false'''
+
+
+By setting '''network.prefetch-next''' to '''false''', we are controlling the following:
+
+Link prefetching, is when a web page hints to the browser that certain pages are likely to be visited, so the browser downloads them immediately so they can be displayed immediately when the user requests it. This preference controls whether link prefetching is enabled. 
+
+I'll leave this one up to you as it is a matter of personal choice?  
+Personally, I go for the &quot;false&quot; setting.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===User Agent Strings:===
+
+about:config Name: '''general.useragent.override'''
+
+Default Value: '''as per machine's configuration'''
+
+
+The ability to change the '''useragent string''' via this about:config preferences option -  '''general.useragent.override''' - to a more common string, may prove to be useful for some users, as the following example may show:
+
+
+ Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)
+
+
+(If the required Preference Name is non-existent, creating a new entry requires you to Right Mouse Button click in the about:config page, then by using the RMB menu option -&gt;NEW, a new entry can be created.) 
+
+[http://www.useragentstring.com/pages/useragentstring.php/ Here] is a great useragent string reference page from where you can copy &amp; paste.
+ 
+[http://spiralinear.org/forum/viewtopic.php?f=17&amp;t=183&amp;p=1448#p1448/ Here] is a link to a step by step guide for changing the useragent string.
+
+Changing this setting can be advantageous in certain circumstances;- like being able to access a site that won't let any other browser than I.E. in. Or fooling sites that your computer is a hand-held so that you get a lighter &amp; faster display, for instance.
+
+As far as using it so as not to stand out in the crowd as a Firefox Linux 64bit user with some other uncommon settings &amp; browser additions is concerned;- if you are taking effective privacy precautions that are mentioned in this thread, it really shouldn't make much difference as the trackers don't know you are there anyway. 
+
+
+On the other hand, if you are doing something on a public wireless network where you would prefer to be untraceable then it would certainly be a good idea to modify your useragent string &amp; then modify it back again when you have finished.  
+
+Here is a Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/ '''User Agent Switcher''']  that can make this job much easier &amp; quicker for you. You will most likely have to search out additional strings that you can add strings to its menu, which is a nice touch too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Match Accept Headers to your User Agent String:===
+
+about:config Name: '''network.http.accept.default'''
+
+Default Value: '''as per machine's configuration'''
+
+ 
+If you want you can then change the accept headers to match the default for whichever useragent string you went with. 
+
+[http://www.gethifi.com/blog/browser-rest-http-accept-headers/ This link] is informative. 
+
+You can also use the [https://addons.mozilla.org/en-us/firefox/addon/modify-headers/ '''Modify Headers add-on'''].
+
+
+OR, if you know what you are doing, you can modify the '''network.http.accept.default''' key in about:config.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off default Send Secure Referrer:===
+
+about:config Name: '''network.http.sendSecureXSiteReferrer''' 
+
+Default Value: '''true'''
+
+Modified Value: '''false'''.
+
+
+I found technical info' on [http://kb.mozillazine.org/Network.http.sendSecureXSiteReferrer/ '''sendSecureXSiteReffer'''].
+
+I've been running with this setting for at least 6 months, it gives no trouble on my sytems &amp; I'm running https Everywhere too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Enable Spell Checking In All Text Fields:===
+
+about:config Name: '''layout.spellcheckDefault'''
+
+Default Value: 1 
+
+Possible Values:
+
+    0 - disable spell checker.
+    1 - spell check multi-line text boxes only.
+    2 - enable spell checker for all text boxes.
+
+The default spell checking function only checks for multi-line text boxes. You can get it to spell-check for single line text box as well.
+
+Which is a great find for me as I'm not a perfect speller.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Open Search Box Results In New Tab:===
+
+about:config Name: '''browser.search.openintab'''
+
+Default Value: false
+
+Modified Value: true 
+
+
+When you search using the search box at the top right hand corner of the browser, it will display the search results in the current tab. If you don’t want the search to interfere with your current tab, you can tweak the '''browser.search.openintab''' to make it open in a new tab.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Speed up your Firefox:===
+
+
+
+'''Two tweaks required for this one;-'''
+
+
+about:config Name: '''network.http.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+
+about:config Name: '''network.http.proxy.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+This combination works for me.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Setting your zoom limit:===
+
+If you find that the max/min zoom level is still not sufficient for your viewing, you can change the zoom limit to suit your viewing habits.
+
+
+about:config Name: '''zoom.maxPercent'''
+
+Default Value: 300 (percent)
+
+Modified value: any value higher than 300
+
+
+about:config Name: '''zoom.minPercent'''
+Default Value: 30 (percent)
+Modified Value: any value
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Configure Your Backspace Button:===
+
+about:config Name: '''browser.backspace_action'''
+
+Default Value: 2 (does nothing)
+
+Modified Value:
+
+Options Are:
+
+    0 - go back to previous page
+    1 - page up
+    2 - does nothing
+
+
+In Firefox, you can set your backspace to better use by getting it to either go back to the previous page or act as page up function.
+
+I set this one to 1 , as my mouse gives me previous page.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Disable Delay Time When Installing Add-on:===
+
+about:config Name: '''security.dialog_enable_delay'''
+
+Default: 2000 (in msec)
+
+Modified value:
+
+Options Are:
+    0 – start installation immediately
+    any other value (in msec)
+
+
+Everytime you wanted to install a Firefox add-on, you will have to wait for several seconds before the actual installation starts. If you are tired of waiting, you can turn the function security.dialog_enable_delay off so that the installation will start immediately upon clicking.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===View Source in Your Favorite Editor:===
+
+Two modifications required here:
+
+about:config Name: '''view_source.editor.external'''
+
+Default Value: false
+
+Modified Value: true (enable view source using external text editor)
+
+
+about:config Name: '''view_source.editor.path'''
+
+Default Value: blank
+
+Modified Value: add the path to your editor here
+
+
+This is very useful for developers who are always using the ‘view source‘ function. This tweak allows you to view the source code in your favourite external editor.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off Browser Blink:===
+
+about:config Name: '''browser.blink_allowed'''
+
+Default Value: true
+
+Modified Value: false
+
+
+I love it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Middle Mouse Button Paste:===
+
+about:config Name: '''middlemouse.paste'''
+
+Default Value: true
+
+Modified Value:
+
+
+Turn on/off Middle Mouse Button Paste from Clipboard: &quot;true&quot; or &quot;false&quot; its your choice, so toggle away.
+
+[[Firefox Customisation|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>cwc51bnlr56wr9tyz8ejvmaknxkfq7a</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6416</id>
+      <parentid>6415</parentid>
+      <timestamp>2013-07-20T09:31:42Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* Introduction: */</comment>
+      <text xml:space="preserve" bytes="20221">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN-COURS DE TRADUCTION =
+
+= Personnalisation de Firefox - La sécurité d'abord, puis les options utilisateurs: =
+
+==Introduction:==
+
+[[File:firefox.jpg|thumb|left|200px]]
+
+ Cette traduction est basée sur la page du Wiki Anglais [http://wiki.manjaro.org/index.php?title=Firefox_Customisation Firefox Customisation]
+
+Cette page est adaptée de celle que j'ai écrite sur [http://spiralinear.org/forum/index.php?sid=e137061f8818db599109112757608106/ Spiralinear.org], elle a été mise à jour récemment.
+Nous avons tous nos préférences dans la façon d'utiliser internet et comment nous considérons notre vie privée. La façon dont on règle notre système et notre navigateur pour notre usage d'internet diffèrent complètement d'un utilisateur à un autre.
+C'est avec cette pensée en tête que j'ai mis à jour cette page qui vous montre mes préférences actuelles. En espérant que même si le lecteur n'y trouve pas son compte, cela l'aidera à optimiser sa façon d'utiliser le Web.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Une liste de sites de test :==
+
+[http://browserspy.dk/BrowserSpy.dk/ BrowserSpy.dk] - Test de sécurité de votre navigateur Web.
+
+[https://panopticlick.eff.org/ Panopticlick.eff.org] - Test de sécurité de votre navigateur Web.
+
+[http://www.dnsstuff.com/ DNS Stuff.com] - Tests pour le Web.
+
+[http://www.hackerwatch.org/probe/ HackerWatch.org] - Scanner de ports.
+
+[http://www.pcflank.com/scanner1.htm/ PCFlank.com] - Scanner de ports.
+
+[http://www.whatsmyip.org/more/ WhatsMyIP.org] - Beaucoup d'infos.
+
+[http://whatismyipaddress.com/ WhatisMyIPaddress.com] - Double check.
+
+[https://shouldichangemypassword.com/ ShouldIChangemyPassword.com] - Test si vous devez changer vos mots de passe.
+
+[http://just-ping.com/index.php/ Just-Ping.com] - Ping une adresse IP.
+
+[http://downforeveryoneorjustme.com/ DownForEveryoneOrJustMe.com] - Test de votre connexion internet.
+
+[http://www.netindex.com/#/ netindex.com] - Vérifie la vitesse d'internet.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==La quête de la sécurité du Navigateur Web:==
+
+Le moteur de recherche [https://startpage.com/ Startpage], créé par Ixquick semble être le champion des moteurs de recherche protégeant la vie privée. Il travaille brillament, parce-qu'il utilise le moteur de recherche Google, à l'inverse de certains autres que j'ai pu tester. 
+Il devient de plus en plus populaire dans de nombreuses régions du monde et particulièrement en Europe.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Cookies:== 
+
+I have blocked all third-party cookies in Firefox but I accept all of the others having Firefox ask me what I want to do with each new cookie that tries to live on my computer. 
+
+For any who don't know where the option to have Firefox ''&quot;Ask me every time&quot;'' about cookies is;- it is in the ''Preferences -&gt; Privacy tab''. You will find the option in the drop down menu next to ''&quot;keep until:&quot;'' &amp; just under ''&quot;Accept third-party cookies&quot;''.
+
+The Firefox cookie requester that comes up every time a cookie wants to live at my place, gives me, apart from the ''&quot;Use my choice for all cookies on this site&quot;'' option (which I always have checked) three other choices, ''&quot;Deny&quot;'' (which I hit as a reflex action), ''&quot;Allow&quot;'' &amp; ''&quot;Allow for session&quot;''.
+
+Handling cookies this way creates ever growing black &amp; white lists that are not deleted when Firefox deletes all of my histories bar ''&quot;active logins&quot;'' as I have Firefox set to delete all but ''&quot;active logins&quot;'' history every time it is shut down. 
+
+As time goes by, due to the ever growing black/white lists, I only have to choose whether I want a cookie or not from the Firefox requester when I go to a new site that wants me to take a cookie. 
+
+After the initial stages of using this method, there is an ever diminishing number of cookies offered as the black list tells the sites I have been to not to offer &amp; the white list lets those forums, internet banking &amp; other sites that I have white listed, do their cookie thing quickly &amp; quietly.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Manually Using the Firefox Black/White Lists:===
+
+You could also go to your Firefox cookie preferences due to you wanting to delete a cookie from the black or white list. Which is very easily done &amp; can be made even easier if after you have selected the ''&quot;Preferences -&gt; Privacy -&gt; Exceptions&quot;'' button - which takes you to where the black/white list lives, you then select the ''&quot;Status&quot;'' column header which puts them in alphanumeric order inside of their respective status group. Meaning the white &amp; the black separate from each other &amp; hang together in alphanumeric order. 
+
+Separating the black &amp; white listed URL's this way makes it so much easier to work with them. i.e. Finding the URL(s) that you are looking for, which is a common task, as I quite often want to delete a URL from either group. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Here are a couple of reasons for manually editing the black/white list:====
+
+'''1.''' I want to do an online purchase. Which is a sure fire way to get multiple tracking cookies on your machine, especially if you are accepting 3rd party cookies. So I accept the cookies (NEVER 3rd party cookies though), as they are required to be able to make the purchase, once done I go into the Firefox Preferences as detailed above &amp; delete all the cookies associated with the shop.
+
+'''2.''' Conversely, I may want to delete a black listed site so that I can add it to my white list next time that page is loaded or refreshed. I do block first &amp; ask questions later.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Firefox Cookie Handling Add-ons:===
+
+I recently road tested some FF cookie handling add-ons. Meaning I used the following; '''Click&amp;Clean''', '''Cookie Controller''' &amp; '''Cookie Killer''' &amp; also looked at other Cookie add-ons available for FF, picking out those three to actually test. 
+
+Most of these Cookie handling add-ons are very popular, even though in reality they offered no more function than FF has already inbuilt. What these add-ons bring is convenience &amp; a way for the guys that coded the add-ons to make some money.
+
+Be careful if you choose to use one of these methods as they aren't all created equal, so if you go that way, do some research on the web &amp; give them a careful road test before making your choice. 
+
+As a side note, even though I try not to collect add-ons I still as of this writing have 17 of the things running which doesn't make FF any lighter or faster.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===The Web of Cookie Connections:===
+
+A Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/collusion/ '''Collusion''']  shows you in a FF tab, all of the computers that your computer is connected to on the web. 
+
+You can move your mouse pointer over each circle that represents one of these servers &amp; get its url &amp; see more info about it in a column on the left hand side. These computers basically connect to your computer via cookies. 
+
+When I first installed this software (roughly 8 months ago as of this writing) I ran the add-on for days &amp; never had one computer show up on my screen. Even when I turned all my security add-ons off. The reason being I don't have any cookies on my machine unless I chose them. 
+
+
+After having been lulled into a false sense of security by that experience, I've found that my security had been compromised &amp; that it is not so much cookies as [https://developer.mozilla.org/en-US/docs/DOM/Storage/ DOM storage] which is the newish but extremely widely used culprit. (More to come.)
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Firefox Privacy Add-ons:==
+
+The list below has had ''Ghostery'' &amp; ''RequestPolicy'' added to it &amp; ''DoNotTrack+'' removed, as ''DNT+'' no longer works well, I'm sorry to say. Plus I've increased the ''Adblock Plus'' filter protection: 
+
+
+[https://addons.mozilla.org/en-US/firefox/addon/ghostery/ '''Ghostery'''] - added to replace DNT+
+
+[https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/?src=ss/ '''Adblock Plus'''] - (with 4 Filter subscriptions - see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/betterprivacy/?src=search/ '''BetterPrivacy'''] - the essential Super Cookie handler
+
+[https://addons.mozilla.org/en-US/firefox/addon/requestpolicy/?src=search/ '''RequestPolicy'''] - added (see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/noscript/?src=search/'''NoScript'''] - the well known essential protection
+
+These next two aren't essential though they are well worth knowing about, they also work together;- the Finder is an asset to Everywhere.
+
+[https://www.eff.org/https-everywhere/ '''HTTPS-Everywhere''']
+
+[https://addons.mozilla.org/en-US/firefox/addon/https-finder/?src=search/ '''HTTPS Finder''']
+
+
+''DNT+'' is nowhere near as effective as it used to be, so I've removed it &amp; have added ''Ghostery'', plus a great source of protection from 3rd parties - ''RequestPolicy''. On top of that [https://secure.fanboy.co.nz/ I'm now running 4 Filter subscriptions in ''Adblock plus'':] ''EasyList'', ''Fanboy's Adblock List'', ''Fanboy's Tracking List'', ''Fanboy's Annoyance List''.  
+
+Plus I've got DOM storage turned off in Firefox via ''about:config'' ''(see below)'' &amp; some of the other ''about:config'' security options that follow. I've removed ''Beef Taco'', as I've found it to be no longer helpful.
+
+''See the next section on modifying the /hosts file, as it brings another very valuable layer of privacy protection to the table.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Modifying &amp; using the .../hosts file for security purposes:==
+
+For an easy way ''(as it includes &amp; highly regarded hosts file supplement)'' with a Windows how-to read '''[http://winhelp2002.mvps.org/hosts.htm this page]'''. 
+
+Unless you are running Windows, forget the Windows how-to, just download, unzip &amp; paste the supplied ''hosts'' file onto the end of your ''/etc/hosts'' after everything else. 
+
+You will need to open your text editor as ''root'' to do this. Replace the '''&lt;editor-name&gt;''' with the name of your preferred text editor in the following ''Terminal'' command-line:
+
+
+ sudo &lt;editor-name&gt;/etc/hosts
+
+
+You can edit the /etc/hosts file, adding/removing what you want if you so desire. I've been using it in an unchanged state.
+
+Using this file adds another strong layer of security which unfortunately these days we need.
+
+You can update the host file addition when new updates become available. You can also register your email address to be notified when to go &amp; download the new file.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==about:config Edits:==
+
+* '''[http://kb.mozillazine.org/About:config Firefox Configuration about:config Editing]'''
+
+
+* '''[http://kb.mozillazine.org/About:config_entries about:config Entries]'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off DOM Storage:===
+
+''DOM storage has become (conservatively speaking) at least as big a threat to our privacy as cookies &amp; is certainly set to leave cookies in the dust, I strongly advise you to change the default value of this configuration to '''false''' , if you make no other about:config edits, please make this one.''
+
+
+about:config Name: '''dom.storage.enabled'''
+
+Default value: '''true'''
+
+Modified value: '''false'''
+
+
+The following is quoted from [http://wiki.manjaro.org/index.php?title=Firefox_Customisation&amp;action=submit/ w3schools.com] though they have moved it for whatever reason:
+
+''HTML5 web storage, a better local storage than cookies.
+What is HTML5 Web Storage?
+
+With HTML5, web pages can store data locally within the user's browser.
+
+Earlier, this was done with cookies. However, Web Storage is more secure and faster. The data is not included with every server request, but used ONLY when asked for. It is also possible to store large amounts of data, without affecting the website's performance.
+
+The data is stored in key/value pairs, and a web page can only access data stored by itself.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Referrer Control:===
+
+about:config Name: '''network.http.sendRefererHeader'''
+
+Default Value:  '''1'''
+
+Modified Value: '''0'''
+
+
+By setting '''network.http.sendRefererHeader''' in about:config to '''0''', whenever you visit a link from one site, the destination site doesn't know the original site you were referred from.
+
+This in effect makes the Firefox add-on RefControl (&amp; others) redundant.
+ 
+
+'''There is a caveat:'''
+
+If you find that you can't get into a site that you want to use it can be due to this setting. Under such circumstances you would be better off using the likes of [https://addons.mozilla.org/en-US/firefox/addon/refcontrol/ RefControl] as you can use whatever options you choose for your normal surfing &amp; then choose a specific option that works with specific troublesome sites.
+
+I am very rarely blocked from a site (for whatever reason) &amp; under such circumstances I don't want to use the site anyway!
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Prefetch Control:===
+
+about:config Name: '''network.prefetch-next'''
+
+Default Value: '''true'''
+
+Modified Value: '''false'''
+
+
+By setting '''network.prefetch-next''' to '''false''', we are controlling the following:
+
+Link prefetching, is when a web page hints to the browser that certain pages are likely to be visited, so the browser downloads them immediately so they can be displayed immediately when the user requests it. This preference controls whether link prefetching is enabled. 
+
+I'll leave this one up to you as it is a matter of personal choice?  
+Personally, I go for the &quot;false&quot; setting.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===User Agent Strings:===
+
+about:config Name: '''general.useragent.override'''
+
+Default Value: '''as per machine's configuration'''
+
+
+The ability to change the '''useragent string''' via this about:config preferences option -  '''general.useragent.override''' - to a more common string, may prove to be useful for some users, as the following example may show:
+
+
+ Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)
+
+
+(If the required Preference Name is non-existent, creating a new entry requires you to Right Mouse Button click in the about:config page, then by using the RMB menu option -&gt;NEW, a new entry can be created.) 
+
+[http://www.useragentstring.com/pages/useragentstring.php/ Here] is a great useragent string reference page from where you can copy &amp; paste.
+ 
+[http://spiralinear.org/forum/viewtopic.php?f=17&amp;t=183&amp;p=1448#p1448/ Here] is a link to a step by step guide for changing the useragent string.
+
+Changing this setting can be advantageous in certain circumstances;- like being able to access a site that won't let any other browser than I.E. in. Or fooling sites that your computer is a hand-held so that you get a lighter &amp; faster display, for instance.
+
+As far as using it so as not to stand out in the crowd as a Firefox Linux 64bit user with some other uncommon settings &amp; browser additions is concerned;- if you are taking effective privacy precautions that are mentioned in this thread, it really shouldn't make much difference as the trackers don't know you are there anyway. 
+
+
+On the other hand, if you are doing something on a public wireless network where you would prefer to be untraceable then it would certainly be a good idea to modify your useragent string &amp; then modify it back again when you have finished.  
+
+Here is a Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/ '''User Agent Switcher''']  that can make this job much easier &amp; quicker for you. You will most likely have to search out additional strings that you can add strings to its menu, which is a nice touch too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Match Accept Headers to your User Agent String:===
+
+about:config Name: '''network.http.accept.default'''
+
+Default Value: '''as per machine's configuration'''
+
+ 
+If you want you can then change the accept headers to match the default for whichever useragent string you went with. 
+
+[http://www.gethifi.com/blog/browser-rest-http-accept-headers/ This link] is informative. 
+
+You can also use the [https://addons.mozilla.org/en-us/firefox/addon/modify-headers/ '''Modify Headers add-on'''].
+
+
+OR, if you know what you are doing, you can modify the '''network.http.accept.default''' key in about:config.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off default Send Secure Referrer:===
+
+about:config Name: '''network.http.sendSecureXSiteReferrer''' 
+
+Default Value: '''true'''
+
+Modified Value: '''false'''.
+
+
+I found technical info' on [http://kb.mozillazine.org/Network.http.sendSecureXSiteReferrer/ '''sendSecureXSiteReffer'''].
+
+I've been running with this setting for at least 6 months, it gives no trouble on my sytems &amp; I'm running https Everywhere too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Enable Spell Checking In All Text Fields:===
+
+about:config Name: '''layout.spellcheckDefault'''
+
+Default Value: 1 
+
+Possible Values:
+
+    0 - disable spell checker.
+    1 - spell check multi-line text boxes only.
+    2 - enable spell checker for all text boxes.
+
+The default spell checking function only checks for multi-line text boxes. You can get it to spell-check for single line text box as well.
+
+Which is a great find for me as I'm not a perfect speller.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Open Search Box Results In New Tab:===
+
+about:config Name: '''browser.search.openintab'''
+
+Default Value: false
+
+Modified Value: true 
+
+
+When you search using the search box at the top right hand corner of the browser, it will display the search results in the current tab. If you don’t want the search to interfere with your current tab, you can tweak the '''browser.search.openintab''' to make it open in a new tab.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Speed up your Firefox:===
+
+
+
+'''Two tweaks required for this one;-'''
+
+
+about:config Name: '''network.http.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+
+about:config Name: '''network.http.proxy.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+This combination works for me.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Setting your zoom limit:===
+
+If you find that the max/min zoom level is still not sufficient for your viewing, you can change the zoom limit to suit your viewing habits.
+
+
+about:config Name: '''zoom.maxPercent'''
+
+Default Value: 300 (percent)
+
+Modified value: any value higher than 300
+
+
+about:config Name: '''zoom.minPercent'''
+Default Value: 30 (percent)
+Modified Value: any value
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Configure Your Backspace Button:===
+
+about:config Name: '''browser.backspace_action'''
+
+Default Value: 2 (does nothing)
+
+Modified Value:
+
+Options Are:
+
+    0 - go back to previous page
+    1 - page up
+    2 - does nothing
+
+
+In Firefox, you can set your backspace to better use by getting it to either go back to the previous page or act as page up function.
+
+I set this one to 1 , as my mouse gives me previous page.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Disable Delay Time When Installing Add-on:===
+
+about:config Name: '''security.dialog_enable_delay'''
+
+Default: 2000 (in msec)
+
+Modified value:
+
+Options Are:
+    0 – start installation immediately
+    any other value (in msec)
+
+
+Everytime you wanted to install a Firefox add-on, you will have to wait for several seconds before the actual installation starts. If you are tired of waiting, you can turn the function security.dialog_enable_delay off so that the installation will start immediately upon clicking.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===View Source in Your Favorite Editor:===
+
+Two modifications required here:
+
+about:config Name: '''view_source.editor.external'''
+
+Default Value: false
+
+Modified Value: true (enable view source using external text editor)
+
+
+about:config Name: '''view_source.editor.path'''
+
+Default Value: blank
+
+Modified Value: add the path to your editor here
+
+
+This is very useful for developers who are always using the ‘view source‘ function. This tweak allows you to view the source code in your favourite external editor.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off Browser Blink:===
+
+about:config Name: '''browser.blink_allowed'''
+
+Default Value: true
+
+Modified Value: false
+
+
+I love it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Middle Mouse Button Paste:===
+
+about:config Name: '''middlemouse.paste'''
+
+Default Value: true
+
+Modified Value:
+
+
+Turn on/off Middle Mouse Button Paste from Clipboard: &quot;true&quot; or &quot;false&quot; its your choice, so toggle away.
+
+[[Firefox Customisation|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>0203jgelwszlxlenc4z1xzfzt2egphf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6417</id>
+      <parentid>6416</parentid>
+      <timestamp>2013-07-20T09:32:23Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* Introduction: */</comment>
+      <text xml:space="preserve" bytes="20222">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN-COURS DE TRADUCTION =
+
+= Personnalisation de Firefox - La sécurité d'abord, puis les options utilisateurs: =
+
+==Introduction:==
+
+[[File:firefox.jpg|thumb|left|200px]]
+
+ Cette traduction est basée sur la page du Wiki Anglais [http://wiki.manjaro.org/index.php?title=Firefox_Customisation Firefox Customisation]
+
+Cette page est adaptée de celle que j'ai écrite sur [http://spiralinear.org/forum/index.php?sid=e137061f8818db599109112757608106/ Spiralinear.org], elle a été mise à jour récemment.
+
+Nous avons tous nos préférences dans la façon d'utiliser internet et comment nous considérons notre vie privée. La façon dont on règle notre système et notre navigateur pour notre usage d'internet diffèrent complètement d'un utilisateur à un autre.
+C'est avec cette pensée en tête que j'ai mis à jour cette page qui vous montre mes préférences actuelles. En espérant que même si le lecteur n'y trouve pas son compte, cela l'aidera à optimiser sa façon d'utiliser le Web.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Une liste de sites de test :==
+
+[http://browserspy.dk/BrowserSpy.dk/ BrowserSpy.dk] - Test de sécurité de votre navigateur Web.
+
+[https://panopticlick.eff.org/ Panopticlick.eff.org] - Test de sécurité de votre navigateur Web.
+
+[http://www.dnsstuff.com/ DNS Stuff.com] - Tests pour le Web.
+
+[http://www.hackerwatch.org/probe/ HackerWatch.org] - Scanner de ports.
+
+[http://www.pcflank.com/scanner1.htm/ PCFlank.com] - Scanner de ports.
+
+[http://www.whatsmyip.org/more/ WhatsMyIP.org] - Beaucoup d'infos.
+
+[http://whatismyipaddress.com/ WhatisMyIPaddress.com] - Double check.
+
+[https://shouldichangemypassword.com/ ShouldIChangemyPassword.com] - Test si vous devez changer vos mots de passe.
+
+[http://just-ping.com/index.php/ Just-Ping.com] - Ping une adresse IP.
+
+[http://downforeveryoneorjustme.com/ DownForEveryoneOrJustMe.com] - Test de votre connexion internet.
+
+[http://www.netindex.com/#/ netindex.com] - Vérifie la vitesse d'internet.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==La quête de la sécurité du Navigateur Web:==
+
+Le moteur de recherche [https://startpage.com/ Startpage], créé par Ixquick semble être le champion des moteurs de recherche protégeant la vie privée. Il travaille brillament, parce-qu'il utilise le moteur de recherche Google, à l'inverse de certains autres que j'ai pu tester. 
+Il devient de plus en plus populaire dans de nombreuses régions du monde et particulièrement en Europe.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Cookies:== 
+
+I have blocked all third-party cookies in Firefox but I accept all of the others having Firefox ask me what I want to do with each new cookie that tries to live on my computer. 
+
+For any who don't know where the option to have Firefox ''&quot;Ask me every time&quot;'' about cookies is;- it is in the ''Preferences -&gt; Privacy tab''. You will find the option in the drop down menu next to ''&quot;keep until:&quot;'' &amp; just under ''&quot;Accept third-party cookies&quot;''.
+
+The Firefox cookie requester that comes up every time a cookie wants to live at my place, gives me, apart from the ''&quot;Use my choice for all cookies on this site&quot;'' option (which I always have checked) three other choices, ''&quot;Deny&quot;'' (which I hit as a reflex action), ''&quot;Allow&quot;'' &amp; ''&quot;Allow for session&quot;''.
+
+Handling cookies this way creates ever growing black &amp; white lists that are not deleted when Firefox deletes all of my histories bar ''&quot;active logins&quot;'' as I have Firefox set to delete all but ''&quot;active logins&quot;'' history every time it is shut down. 
+
+As time goes by, due to the ever growing black/white lists, I only have to choose whether I want a cookie or not from the Firefox requester when I go to a new site that wants me to take a cookie. 
+
+After the initial stages of using this method, there is an ever diminishing number of cookies offered as the black list tells the sites I have been to not to offer &amp; the white list lets those forums, internet banking &amp; other sites that I have white listed, do their cookie thing quickly &amp; quietly.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Manually Using the Firefox Black/White Lists:===
+
+You could also go to your Firefox cookie preferences due to you wanting to delete a cookie from the black or white list. Which is very easily done &amp; can be made even easier if after you have selected the ''&quot;Preferences -&gt; Privacy -&gt; Exceptions&quot;'' button - which takes you to where the black/white list lives, you then select the ''&quot;Status&quot;'' column header which puts them in alphanumeric order inside of their respective status group. Meaning the white &amp; the black separate from each other &amp; hang together in alphanumeric order. 
+
+Separating the black &amp; white listed URL's this way makes it so much easier to work with them. i.e. Finding the URL(s) that you are looking for, which is a common task, as I quite often want to delete a URL from either group. 
+
+&lt;br clear=&quot;all&quot; /&gt;
+====Here are a couple of reasons for manually editing the black/white list:====
+
+'''1.''' I want to do an online purchase. Which is a sure fire way to get multiple tracking cookies on your machine, especially if you are accepting 3rd party cookies. So I accept the cookies (NEVER 3rd party cookies though), as they are required to be able to make the purchase, once done I go into the Firefox Preferences as detailed above &amp; delete all the cookies associated with the shop.
+
+'''2.''' Conversely, I may want to delete a black listed site so that I can add it to my white list next time that page is loaded or refreshed. I do block first &amp; ask questions later.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Firefox Cookie Handling Add-ons:===
+
+I recently road tested some FF cookie handling add-ons. Meaning I used the following; '''Click&amp;Clean''', '''Cookie Controller''' &amp; '''Cookie Killer''' &amp; also looked at other Cookie add-ons available for FF, picking out those three to actually test. 
+
+Most of these Cookie handling add-ons are very popular, even though in reality they offered no more function than FF has already inbuilt. What these add-ons bring is convenience &amp; a way for the guys that coded the add-ons to make some money.
+
+Be careful if you choose to use one of these methods as they aren't all created equal, so if you go that way, do some research on the web &amp; give them a careful road test before making your choice. 
+
+As a side note, even though I try not to collect add-ons I still as of this writing have 17 of the things running which doesn't make FF any lighter or faster.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===The Web of Cookie Connections:===
+
+A Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/collusion/ '''Collusion''']  shows you in a FF tab, all of the computers that your computer is connected to on the web. 
+
+You can move your mouse pointer over each circle that represents one of these servers &amp; get its url &amp; see more info about it in a column on the left hand side. These computers basically connect to your computer via cookies. 
+
+When I first installed this software (roughly 8 months ago as of this writing) I ran the add-on for days &amp; never had one computer show up on my screen. Even when I turned all my security add-ons off. The reason being I don't have any cookies on my machine unless I chose them. 
+
+
+After having been lulled into a false sense of security by that experience, I've found that my security had been compromised &amp; that it is not so much cookies as [https://developer.mozilla.org/en-US/docs/DOM/Storage/ DOM storage] which is the newish but extremely widely used culprit. (More to come.)
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Firefox Privacy Add-ons:==
+
+The list below has had ''Ghostery'' &amp; ''RequestPolicy'' added to it &amp; ''DoNotTrack+'' removed, as ''DNT+'' no longer works well, I'm sorry to say. Plus I've increased the ''Adblock Plus'' filter protection: 
+
+
+[https://addons.mozilla.org/en-US/firefox/addon/ghostery/ '''Ghostery'''] - added to replace DNT+
+
+[https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/?src=ss/ '''Adblock Plus'''] - (with 4 Filter subscriptions - see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/betterprivacy/?src=search/ '''BetterPrivacy'''] - the essential Super Cookie handler
+
+[https://addons.mozilla.org/en-US/firefox/addon/requestpolicy/?src=search/ '''RequestPolicy'''] - added (see below)
+
+[https://addons.mozilla.org/en-US/firefox/addon/noscript/?src=search/'''NoScript'''] - the well known essential protection
+
+These next two aren't essential though they are well worth knowing about, they also work together;- the Finder is an asset to Everywhere.
+
+[https://www.eff.org/https-everywhere/ '''HTTPS-Everywhere''']
+
+[https://addons.mozilla.org/en-US/firefox/addon/https-finder/?src=search/ '''HTTPS Finder''']
+
+
+''DNT+'' is nowhere near as effective as it used to be, so I've removed it &amp; have added ''Ghostery'', plus a great source of protection from 3rd parties - ''RequestPolicy''. On top of that [https://secure.fanboy.co.nz/ I'm now running 4 Filter subscriptions in ''Adblock plus'':] ''EasyList'', ''Fanboy's Adblock List'', ''Fanboy's Tracking List'', ''Fanboy's Annoyance List''.  
+
+Plus I've got DOM storage turned off in Firefox via ''about:config'' ''(see below)'' &amp; some of the other ''about:config'' security options that follow. I've removed ''Beef Taco'', as I've found it to be no longer helpful.
+
+''See the next section on modifying the /hosts file, as it brings another very valuable layer of privacy protection to the table.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Modifying &amp; using the .../hosts file for security purposes:==
+
+For an easy way ''(as it includes &amp; highly regarded hosts file supplement)'' with a Windows how-to read '''[http://winhelp2002.mvps.org/hosts.htm this page]'''. 
+
+Unless you are running Windows, forget the Windows how-to, just download, unzip &amp; paste the supplied ''hosts'' file onto the end of your ''/etc/hosts'' after everything else. 
+
+You will need to open your text editor as ''root'' to do this. Replace the '''&lt;editor-name&gt;''' with the name of your preferred text editor in the following ''Terminal'' command-line:
+
+
+ sudo &lt;editor-name&gt;/etc/hosts
+
+
+You can edit the /etc/hosts file, adding/removing what you want if you so desire. I've been using it in an unchanged state.
+
+Using this file adds another strong layer of security which unfortunately these days we need.
+
+You can update the host file addition when new updates become available. You can also register your email address to be notified when to go &amp; download the new file.
+
+&lt;br clear=&quot;all&quot; /&gt;
+==about:config Edits:==
+
+* '''[http://kb.mozillazine.org/About:config Firefox Configuration about:config Editing]'''
+
+
+* '''[http://kb.mozillazine.org/About:config_entries about:config Entries]'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off DOM Storage:===
+
+''DOM storage has become (conservatively speaking) at least as big a threat to our privacy as cookies &amp; is certainly set to leave cookies in the dust, I strongly advise you to change the default value of this configuration to '''false''' , if you make no other about:config edits, please make this one.''
+
+
+about:config Name: '''dom.storage.enabled'''
+
+Default value: '''true'''
+
+Modified value: '''false'''
+
+
+The following is quoted from [http://wiki.manjaro.org/index.php?title=Firefox_Customisation&amp;action=submit/ w3schools.com] though they have moved it for whatever reason:
+
+''HTML5 web storage, a better local storage than cookies.
+What is HTML5 Web Storage?
+
+With HTML5, web pages can store data locally within the user's browser.
+
+Earlier, this was done with cookies. However, Web Storage is more secure and faster. The data is not included with every server request, but used ONLY when asked for. It is also possible to store large amounts of data, without affecting the website's performance.
+
+The data is stored in key/value pairs, and a web page can only access data stored by itself.''
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Referrer Control:===
+
+about:config Name: '''network.http.sendRefererHeader'''
+
+Default Value:  '''1'''
+
+Modified Value: '''0'''
+
+
+By setting '''network.http.sendRefererHeader''' in about:config to '''0''', whenever you visit a link from one site, the destination site doesn't know the original site you were referred from.
+
+This in effect makes the Firefox add-on RefControl (&amp; others) redundant.
+ 
+
+'''There is a caveat:'''
+
+If you find that you can't get into a site that you want to use it can be due to this setting. Under such circumstances you would be better off using the likes of [https://addons.mozilla.org/en-US/firefox/addon/refcontrol/ RefControl] as you can use whatever options you choose for your normal surfing &amp; then choose a specific option that works with specific troublesome sites.
+
+I am very rarely blocked from a site (for whatever reason) &amp; under such circumstances I don't want to use the site anyway!
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Prefetch Control:===
+
+about:config Name: '''network.prefetch-next'''
+
+Default Value: '''true'''
+
+Modified Value: '''false'''
+
+
+By setting '''network.prefetch-next''' to '''false''', we are controlling the following:
+
+Link prefetching, is when a web page hints to the browser that certain pages are likely to be visited, so the browser downloads them immediately so they can be displayed immediately when the user requests it. This preference controls whether link prefetching is enabled. 
+
+I'll leave this one up to you as it is a matter of personal choice?  
+Personally, I go for the &quot;false&quot; setting.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===User Agent Strings:===
+
+about:config Name: '''general.useragent.override'''
+
+Default Value: '''as per machine's configuration'''
+
+
+The ability to change the '''useragent string''' via this about:config preferences option -  '''general.useragent.override''' - to a more common string, may prove to be useful for some users, as the following example may show:
+
+
+ Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)
+
+
+(If the required Preference Name is non-existent, creating a new entry requires you to Right Mouse Button click in the about:config page, then by using the RMB menu option -&gt;NEW, a new entry can be created.) 
+
+[http://www.useragentstring.com/pages/useragentstring.php/ Here] is a great useragent string reference page from where you can copy &amp; paste.
+ 
+[http://spiralinear.org/forum/viewtopic.php?f=17&amp;t=183&amp;p=1448#p1448/ Here] is a link to a step by step guide for changing the useragent string.
+
+Changing this setting can be advantageous in certain circumstances;- like being able to access a site that won't let any other browser than I.E. in. Or fooling sites that your computer is a hand-held so that you get a lighter &amp; faster display, for instance.
+
+As far as using it so as not to stand out in the crowd as a Firefox Linux 64bit user with some other uncommon settings &amp; browser additions is concerned;- if you are taking effective privacy precautions that are mentioned in this thread, it really shouldn't make much difference as the trackers don't know you are there anyway. 
+
+
+On the other hand, if you are doing something on a public wireless network where you would prefer to be untraceable then it would certainly be a good idea to modify your useragent string &amp; then modify it back again when you have finished.  
+
+Here is a Firefox add-on called [https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/ '''User Agent Switcher''']  that can make this job much easier &amp; quicker for you. You will most likely have to search out additional strings that you can add strings to its menu, which is a nice touch too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Match Accept Headers to your User Agent String:===
+
+about:config Name: '''network.http.accept.default'''
+
+Default Value: '''as per machine's configuration'''
+
+ 
+If you want you can then change the accept headers to match the default for whichever useragent string you went with. 
+
+[http://www.gethifi.com/blog/browser-rest-http-accept-headers/ This link] is informative. 
+
+You can also use the [https://addons.mozilla.org/en-us/firefox/addon/modify-headers/ '''Modify Headers add-on'''].
+
+
+OR, if you know what you are doing, you can modify the '''network.http.accept.default''' key in about:config.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off default Send Secure Referrer:===
+
+about:config Name: '''network.http.sendSecureXSiteReferrer''' 
+
+Default Value: '''true'''
+
+Modified Value: '''false'''.
+
+
+I found technical info' on [http://kb.mozillazine.org/Network.http.sendSecureXSiteReferrer/ '''sendSecureXSiteReffer'''].
+
+I've been running with this setting for at least 6 months, it gives no trouble on my sytems &amp; I'm running https Everywhere too.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Enable Spell Checking In All Text Fields:===
+
+about:config Name: '''layout.spellcheckDefault'''
+
+Default Value: 1 
+
+Possible Values:
+
+    0 - disable spell checker.
+    1 - spell check multi-line text boxes only.
+    2 - enable spell checker for all text boxes.
+
+The default spell checking function only checks for multi-line text boxes. You can get it to spell-check for single line text box as well.
+
+Which is a great find for me as I'm not a perfect speller.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Open Search Box Results In New Tab:===
+
+about:config Name: '''browser.search.openintab'''
+
+Default Value: false
+
+Modified Value: true 
+
+
+When you search using the search box at the top right hand corner of the browser, it will display the search results in the current tab. If you don’t want the search to interfere with your current tab, you can tweak the '''browser.search.openintab''' to make it open in a new tab.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Speed up your Firefox:===
+
+
+
+'''Two tweaks required for this one;-'''
+
+
+about:config Name: '''network.http.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+
+about:config Name: '''network.http.proxy.pipelining'''
+
+Default Value: false
+
+Modified Value: true
+
+This combination works for me.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Setting your zoom limit:===
+
+If you find that the max/min zoom level is still not sufficient for your viewing, you can change the zoom limit to suit your viewing habits.
+
+
+about:config Name: '''zoom.maxPercent'''
+
+Default Value: 300 (percent)
+
+Modified value: any value higher than 300
+
+
+about:config Name: '''zoom.minPercent'''
+Default Value: 30 (percent)
+Modified Value: any value
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Configure Your Backspace Button:===
+
+about:config Name: '''browser.backspace_action'''
+
+Default Value: 2 (does nothing)
+
+Modified Value:
+
+Options Are:
+
+    0 - go back to previous page
+    1 - page up
+    2 - does nothing
+
+
+In Firefox, you can set your backspace to better use by getting it to either go back to the previous page or act as page up function.
+
+I set this one to 1 , as my mouse gives me previous page.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Disable Delay Time When Installing Add-on:===
+
+about:config Name: '''security.dialog_enable_delay'''
+
+Default: 2000 (in msec)
+
+Modified value:
+
+Options Are:
+    0 – start installation immediately
+    any other value (in msec)
+
+
+Everytime you wanted to install a Firefox add-on, you will have to wait for several seconds before the actual installation starts. If you are tired of waiting, you can turn the function security.dialog_enable_delay off so that the installation will start immediately upon clicking.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===View Source in Your Favorite Editor:===
+
+Two modifications required here:
+
+about:config Name: '''view_source.editor.external'''
+
+Default Value: false
+
+Modified Value: true (enable view source using external text editor)
+
+
+about:config Name: '''view_source.editor.path'''
+
+Default Value: blank
+
+Modified Value: add the path to your editor here
+
+
+This is very useful for developers who are always using the ‘view source‘ function. This tweak allows you to view the source code in your favourite external editor.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Turn off Browser Blink:===
+
+about:config Name: '''browser.blink_allowed'''
+
+Default Value: true
+
+Modified Value: false
+
+
+I love it.
+
+&lt;br clear=&quot;all&quot; /&gt;
+===Middle Mouse Button Paste:===
+
+about:config Name: '''middlemouse.paste'''
+
+Default Value: true
+
+Modified Value:
+
+
+Turn on/off Middle Mouse Button Paste from Clipboard: &quot;true&quot; or &quot;false&quot; its your choice, so toggle away.
+
+[[Firefox Customisation|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>580zp6d4hegg7v40p3susriiub0fw9p</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

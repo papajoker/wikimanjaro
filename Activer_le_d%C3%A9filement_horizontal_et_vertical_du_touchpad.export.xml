@@ -1,0 +1,272 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Activer le défilement horizontal et vertical du touchpad</title>
+    <ns>0</ns>
+    <id>641</id>
+    <revision>
+      <id>3911</id>
+      <timestamp>2013-01-02T21:49:57Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;In order to enable the ''click on tap'' and ''vertical and horizonal scrolling'' functions for your touchpad, it will be necessary first open your terminal in order to open an...&quot;</comment>
+      <text xml:space="preserve" bytes="1373">In order to enable the ''click on tap'' and ''vertical and horizonal scrolling'' functions for your touchpad, it will be necessary first open your terminal in order to open and then edit the '''synaptics configuration file'''.
+
+= Open the Synaptics Configuration File =
+
+The syntax the command to edit the synaptic configuration file is:
+
+ sudo [text editor] /etc/X11/xorg.conf.d/10-synaptics.conf
+
+
+To use nano (the default text-based terminal editor) enter the command:
+
+ sudo nano /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+Otherwise, you may find it easier to read and edit the file by using gedit, which will open the configuration file as if it were a document. To use gedit instead, enter the command:
+
+ sudo gedit /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+= Enable Click on Tap, Veritcal and Horizontal Scrolling =
+
+Once the synaptic configuration file has been opened, replace the content of this file with the following:
+
+ Section &quot;InputClass&quot;
+ 	Identifier &quot;touchpad catchall&quot;
+ 	Driver &quot;synaptics&quot;
+ 	MatchIsTouchpad &quot;on&quot;
+ 	Option &quot;TapButton1&quot; &quot;1&quot;
+ 	Option &quot;VertEdgeScroll&quot; &quot;1&quot;
+ 	Option &quot;HorizEdgeScroll&quot; &quot;1&quot;
+ EndSection
+
+
+Once your amendments have been completed save your changes and close the configuration file by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.</text>
+      <sha1>8yz6mcb8f3kxscsx25xyvvkmqts5uxd</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3912</id>
+      <parentid>3911</parentid>
+      <timestamp>2013-01-02T21:52:05Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Enable Click on Tap, Veritcal and Horizontal Scrolling */</comment>
+      <text xml:space="preserve" bytes="1416">In order to enable the ''click on tap'' and ''vertical and horizonal scrolling'' functions for your touchpad, it will be necessary first open your terminal in order to open and then edit the '''synaptics configuration file'''.
+
+= Open the Synaptics Configuration File =
+
+The syntax the command to edit the synaptic configuration file is:
+
+ sudo [text editor] /etc/X11/xorg.conf.d/10-synaptics.conf
+
+
+To use nano (the default text-based terminal editor) enter the command:
+
+ sudo nano /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+Otherwise, you may find it easier to read and edit the file by using gedit, which will open the configuration file as if it were a document. To use gedit instead, enter the command:
+
+ sudo gedit /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+= Enable Click on Tap, Veritcal and Horizontal Scrolling =
+
+Once the synaptic configuration file has been opened, replace the content of this file with the following:
+
+ Section &quot;InputClass&quot;
+ 	Identifier &quot;touchpad catchall&quot;
+ 	Driver &quot;synaptics&quot;
+ 	MatchIsTouchpad &quot;on&quot;
+ 	Option &quot;TapButton1&quot; &quot;1&quot;
+ 	Option &quot;VertEdgeScroll&quot; &quot;1&quot;
+ 	Option &quot;HorizEdgeScroll&quot; &quot;1&quot;
+ EndSection
+
+
+Une fois terminées vos modifications, sauvez vos changements et fermez le fichier de configuration par :
+
+*'''nano''' : appuyez sur CTRL et 'x' pour sortir, 'y' pour sauver, et &lt;Entrée&gt; pour finir, ou
+*'''gedit''' : sélectionnez l'option 'Enregistrer' et fermez ensuite la fenêtre.</text>
+      <sha1>4e9486antgnk8iakz1j3pmsv5hxglqx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3913</id>
+      <parentid>3912</parentid>
+      <timestamp>2013-01-02T22:00:22Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1608">Afin d'activer les fonctions de ''tapping'' et de ''défilement vertical et horizonal'' functions de votre touchpad, vous devez d'abord ouvrir votre terminal afin d'éditer le '''fichier de configuration de synaptics'''. La syntaxe de la commande pour ce faire est :
+
+ sudo [text editor] /etc/X11/xorg.conf.d/10-synaptics.conf
+
+
+Par exemple, si vous souhaitez éditer ce fichier à l'intérieur du terminal en utilisant nano (un éditeur de texte standard basé sur le terminal), alors entrez :
+
+ sudo nano /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+Autrement, si vous avez installé la version complète de Manjaro (pas la Net-Edition), vous pouvez trouver plus simple d'utiliser à  la place l'éditeur de texte pré-installé gedit. Il va ouvrir le fichier de configuration comme un document, le rendant plus facile à lire et à éditer. Pour utiliser gedit à la place, la commande est :
+
+ sudo gedit /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+= Activer le tapping et le défilement horizontal et vertical =
+
+Une fois ouvert le fichier de configuration de synaptic, remplacez le contenu de ce fichier par ce qui suit :
+
+ Section &quot;InputClass&quot;
+ 	Identifier &quot;touchpad catchall&quot;
+ 	Driver &quot;synaptics&quot;
+ 	MatchIsTouchpad &quot;on&quot;
+ 	Option &quot;TapButton1&quot; &quot;1&quot;
+ 	Option &quot;VertEdgeScroll&quot; &quot;1&quot;
+ 	Option &quot;HorizEdgeScroll&quot; &quot;1&quot;
+ EndSection
+
+
+Une fois terminées vos modifications, sauvez vos changements et fermez le fichier de configuration par :
+
+*'''nano''' : appuyez sur CTRL et 'x' pour sortir, 'y' pour sauver, et &lt;Entrée&gt; pour finir, ou
+*'''gedit''' : sélectionnez l'option 'Enregistrer' et fermez ensuite la fenêtre.</text>
+      <sha1>t5xegfwiy22ri6ngfhb7rgrratgk048</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3914</id>
+      <parentid>3913</parentid>
+      <timestamp>2013-01-02T22:00:48Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1598">Afin d'activer les fonctions de ''tapping'' et de ''défilement vertical et horizonal'' de votre touchpad, vous devez d'abord ouvrir votre terminal afin d'éditer le '''fichier de configuration de synaptics'''. La syntaxe de la commande pour ce faire est :
+
+ sudo [text editor] /etc/X11/xorg.conf.d/10-synaptics.conf
+
+
+Par exemple, si vous souhaitez éditer ce fichier à l'intérieur du terminal en utilisant nano (un éditeur de texte standard basé sur le terminal), alors entrez :
+
+ sudo nano /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+Autrement, si vous avez installé la version complète de Manjaro (pas la Net-Edition), vous pouvez trouver plus simple d'utiliser à  la place l'éditeur de texte pré-installé gedit. Il va ouvrir le fichier de configuration comme un document, le rendant plus facile à lire et à éditer. Pour utiliser gedit à la place, la commande est :
+
+ sudo gedit /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+= Activer le tapping et le défilement horizontal et vertical =
+
+Une fois ouvert le fichier de configuration de synaptic, remplacez le contenu de ce fichier par ce qui suit :
+
+ Section &quot;InputClass&quot;
+ 	Identifier &quot;touchpad catchall&quot;
+ 	Driver &quot;synaptics&quot;
+ 	MatchIsTouchpad &quot;on&quot;
+ 	Option &quot;TapButton1&quot; &quot;1&quot;
+ 	Option &quot;VertEdgeScroll&quot; &quot;1&quot;
+ 	Option &quot;HorizEdgeScroll&quot; &quot;1&quot;
+ EndSection
+
+
+Une fois terminées vos modifications, sauvez vos changements et fermez le fichier de configuration par :
+
+*'''nano''' : appuyez sur CTRL et 'x' pour sortir, 'y' pour sauver, et &lt;Entrée&gt; pour finir, ou
+*'''gedit''' : sélectionnez l'option 'Enregistrer' et fermez ensuite la fenêtre.</text>
+      <sha1>eauga5l7guj2ioz5ndavjm7zw4w9ydb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3915</id>
+      <parentid>3914</parentid>
+      <timestamp>2013-01-02T22:03:18Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Activer le tapping et le défilement horizontal et vertical */</comment>
+      <text xml:space="preserve" bytes="1671">Afin d'activer les fonctions de ''tapping'' et de ''défilement vertical et horizonal'' de votre touchpad, vous devez d'abord ouvrir votre terminal afin d'éditer le '''fichier de configuration de synaptics'''. La syntaxe de la commande pour ce faire est :
+
+ sudo [text editor] /etc/X11/xorg.conf.d/10-synaptics.conf
+
+
+Par exemple, si vous souhaitez éditer ce fichier à l'intérieur du terminal en utilisant nano (un éditeur de texte standard basé sur le terminal), alors entrez :
+
+ sudo nano /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+Autrement, si vous avez installé la version complète de Manjaro (pas la Net-Edition), vous pouvez trouver plus simple d'utiliser à  la place l'éditeur de texte pré-installé gedit. Il va ouvrir le fichier de configuration comme un document, le rendant plus facile à lire et à éditer. Pour utiliser gedit à la place, la commande est :
+
+ sudo gedit /etc/X11/xorg.conf.d/10-synaptics.conf 
+
+
+= Activer le tapping et le défilement horizontal et vertical =
+
+Une fois ouvert le fichier de configuration de synaptic, remplacez le contenu de ce fichier par ce qui suit :
+
+ Section &quot;InputClass&quot;
+ 	Identifier &quot;touchpad catchall&quot;
+ 	Driver &quot;synaptics&quot;
+ 	MatchIsTouchpad &quot;on&quot;
+ 	Option &quot;TapButton1&quot; &quot;1&quot;
+ 	Option &quot;VertEdgeScroll&quot; &quot;1&quot;
+ 	Option &quot;HorizEdgeScroll&quot; &quot;1&quot;
+ EndSection
+
+
+Une fois terminées vos modifications, sauvez vos changements et fermez le fichier de configuration par :
+
+*'''nano''' : appuyez sur CTRL et 'x' pour sortir, 'y' pour sauver, et &lt;Entrée&gt; pour finir, ou
+*'''gedit''' : sélectionnez l'option 'Enregistrer' et fermez ensuite la fenêtre.
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>g7som2xzbr0ki1z89h13ucmfsdwfial</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

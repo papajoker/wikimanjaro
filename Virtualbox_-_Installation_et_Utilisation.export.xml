@@ -1,0 +1,887 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Virtualbox - Installation et Utilisation</title>
+    <ns>0</ns>
+    <id>571</id>
+    <revision>
+      <id>3138</id>
+      <timestamp>2012-12-26T14:04:39Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;Ton texte    [[Category:Présentation]]&quot;</comment>
+      <text xml:space="preserve" bytes="39">Ton texte
+
+
+
+[[Category:Présentation]]</text>
+      <sha1>dw7kx1zu0ouv63mmasp5ywj9riwvvgs</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3139</id>
+      <parentid>3138</parentid>
+      <timestamp>2012-12-26T14:12:33Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="12068">= Vue d'ensemble =
+
+[[file:vbox.png|left]]
+
+{{tip|virtualisation is not the same as emulation. Whereas emulation makes your computer think that it is something else (such as an arcade machine or games console), virtualisation instead creates one or more virtual versions of your computer.}}
+
+
+Developed by the Oracle Corporation, '''[https://www.virtualbox.org/ VirtualBox]''' is a popular application that allows for other operating systems (known as ''Guests'') to be installed and run within an existing operating system (known as the ''Host''). This is undertaken through the process of ''virtualisation'', whereby virtual versions of your computer (also referred to as ''virtual machines'' or ''VMs'') are created within and draw resources directly from the host system. As such, how fast or powerful a virtual machine may be will depend entirely on the resources available - and allocated - for it to use. The benefits of virtualisation include:
+&lt;br clear=&quot;all&quot; /&gt;
+
+* The fast and easy installation of other operating systems without affecting your existing system (e.g. no need for dual booting and/or preparation in the form of hard disk partitioning or re-sizing)
+
+* Completely safe learning and experimentation with operating systems, as nothing that occurs within a Guest will affect the Host (e.g. the Host operating system can also be installed as a Guest in a virtual machine as a risk-free means of trying out new things), and
+
+* An almost unlimited capacity to install as many additional operating systems as desired...provided space is available on your hard drive to store them!
+
+
+= Enabling Virtualisation =
+
+[[file:vt.png|thumb|left|375px]]
+
+
+{{warning|Unless you know exactly what you are doing, please DO NOT alter or amend any other BIOS settings!}}
+
+
+Before even ''thinking'' about installing Virtualbox, it is &lt;u&gt;'''absolutely essential'''&lt;/U&gt; to first ensure that '''virtualisation''' has been enabled on your computer. Otherwise - if virtualisation has not been enabled - then assuming Virtualbox can even be run at all, its features and capabilities will be severely limited. For example, where Virtualbox has been installed on a 64-bit system, it will only be able to run 32-bit operating systems as Guests. As virtualisation is usually disabled by default, it will therefore be necessary to go into your computer's BIOS settings in order to activate it. 
+
+Below is an example of enabling virtualisation for a HP G62 Laptop using an Intel chip-set (it may be a slightly different process for your own computer):
+&lt;br clear=&quot;all&quot; /&gt;
+
+1. Reboot the computer
+
+2. As it restarts, press the F10 key to enter into the BIOS Menu
+
+3. Use the arrow keys to scroll across to the '''System Configuration''' tab
+
+4. Use the arrow keys to highlight the '''Virtualisation Technology''' option, and press &lt;enter&gt;
+
+5. Select the '''Enabled''' option, and press &lt;enter&gt;
+
+6. Use the arrow keys to scroll across to the '''Exit''' tab
+
+7. Ensure that the '''Exit Saving Changes''' option is highlighted and press &lt;enter&gt;
+
+
+= Installing Virtualbox and its Extension Pack =
+
+Although a basic Virtualbox Installation may suffice for some users, it is also recommended to download and install the optional '''Extension Pack''' for it. This provides several new features, including the ability to use USB devices such as data sticks and printers in virtual machine environments.
+
+
+==Install Virtualbox==
+
+To install Virtualbox, enter the following command in the terminal:
+
+ sudo pacman -S virtualbox
+
+
+Once complete, it will then be necessary to add the '''Virtualbox Module''' to your kernel. Rather like installing a driver, doing so will ensure that Virtualbox is able to run properly. To add the Virtualbox kernel module, enter the following command:
+
+ sudo modprobe vboxdrv
+
+
+== Where Using Multiple Kernels ==
+
+'''Should a new kernel be installed at a later time''', there will be no need to add the Virtualbox module again to it. This is because the '''[[Manjaro_Kernels|Manjaro Hardware Detection tool for Kernels]]''' (mwhd-kernel) will automatically update new kernels with all existing modules being used during the installation process.
+
+
+'''However, should multiple kernels already be installed''' - and the intention is to use Virtualbox with them as well - then it will be necessary to add the Virtualbox module to them in addition. In order to add the Virtualbox module to another existing kernel:
+
+1. Select the appropriate kernel at the bootup screen
+
+2. Download the '''Virtualbox Host Utilities''' for that particular kernel, as this provides the necessary ''vboxdrv'' Virtualbox module to add. The syntax of the command to do so is:
+
+ sudo pacman -S [kernel version]-virtualbox-host-modules
+
+
+When listing the kernel version currently being used in the command, it is not necessary to write the entire version number. Any version of Kernel 3.5 can be listed simply as 'linux35', and any version of Kernel 3.6 can be listed as 'linux36', and so on. As an example, the following command will install  the ''Virtualbox Host Utilities'' specifically for kernel version 3.5:
+
+ sudo pacman -S linux35-virtualbox-host-modules
+
+
+3. Once the ''Virtualbox Host Utilities'' have been downloaded, enter the following command to add the virtualbox module to the kernel:
+
+ sudo modprobe vboxdrv
+
+
+==Install the Extension Pack==
+
+[[file:vxextpackb.png|thumb|left|375px]]
+
+
+This must be obtained directly from the '''[http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html Virtualbox Downloads Section of Oracle's website]''', as it is not available from the Manjaro repositories. Again, the Extension pack provides a number of additional and advanced features not otherwise available. Even if there is no immediate intention to use the features provided, it is still worthwhile installing in order to have a complete installation. Once at the downloads section of Oracle's website, to obtain the Virtualbox Extension Pack:
+&lt;br clear=&quot;all&quot; /&gt;
+
+1. Scroll down towards the bottom of the page to find the '''Oracle VM Virtualbox Extension Pack''' section
+
+2. Click on the appropriate link for the Virtualbox version installed to download the Extension Pack
+
+3. After the Extension Pack has downloaded, start the Virtualbox application
+
+4. Once Virtualbox has started, select '''File''' from the top menu, and then '''Preferences'''
+
+5. Select the '''Extensions''' tab to view that section, and then click a icon called '''Add Package''' located on the far right
+
+7. Locate the downloaded Extension Pack, ensure it is highlighted, and then click the '''Open''' button to begin the installation process
+
+8. Confirm that you wish to install the Extension Pack, and then confirm that you agree to the license terms (it will at least be necessary to scroll down to the bottom of the terms to activate the '''I Agree''' button)
+
+9. The Extension Pack should install within a few seconds, and a confirmation message will appear.
+
+
+The final step is to now add your personal user account to the '''vbox User Group'''. This is necessary in order to fully access the features provided by Virtualbox, including the ability to use USB devices in a Guest operating system.
+
+
+= Adding Your Account to the vbox User Group =
+
+The syntax of the command to add your user-name to the vbox user group is:
+
+ sudo gpasswd -a [username] vboxusers
+
+
+As an example, the command listed below will add the personal user account named 'carl' to the vbox user group:
+
+ sudo gpasswd -a &lt;font color=&quot;green&quot;&gt;'''carl'''&lt;/font color&gt; vboxusers
+
+
+Now reboot your system for the change to take effect.
+
+
+= Advice, Tips, and Tricks =
+
+{{tip|The '''[http://www.virtualbox.org/manual/ Virtualbox Manual]''' will be of immense use to new users.}}
+
+
+Advice on using Virtualbox effectively, as well as some tips and tricks learned along the way, have been provided for the benefit of new users.
+
+
+==Running Manjaro in Virtualbox==
+
+For those intending to use Virtualbox in Ubuntu or an Ubuntu-based distribution (e.g. Mint, Zorin, Kubuntu, etc) - in order to run Manjaro in it, of course! - the author has provided a comprehensive YouTube Virtualbox video guide:
+
+* Part 1: '''[http://www.youtube.com/watch?v=a9PusQjgzPU Virtualbox Introduction]'''
+* Part 2: '''[http://www.youtube.com/watch?v=Wh9-WtRb6LQV BIOS Settings and Installation]'''
+* Part 3: '''[http://www.youtube.com/watch?v=3TGNfmhoSts Virtual Machine Setup and vbox User Group]'''
+* Part 4: '''[http://www.youtube.com/watch?v=syWEboy5KoM ISO installation, Internet Connection, and Guest Additions]'''
+
+
+Existing Manjaro users may still find Part 3 of particular interest if they are unfamiliar with using virtualbox. '''However, please note that the Guest Additions section in the fourth video does not apply to Manjaro or &lt;u&gt;any&lt;/u&gt; Arch-based distribution'''. In respect to Manjaro, this is because Guest Additions - special software designed to enhance and improve Virtualbox installations - will already have been pre-installed for you. More importantly, using the method shown to install Guest Additions in Manjaro (or any Arch-based distribution) will break the system permanently, rendering it unusable.
+
+
+==Guest Installation==
+
+* Virtualbox can run installation files (ISOs) directly as ''virtual discs'', so there is no need to burn them to an installation medium such as a disc or USB data stick.
+
+* The process to install any Guest operating system - '''[[Installation_Guides|including Manjaro]]''' - is exactly the same as if actually installing for real on your compuer.
+
+
+==Guest Additions==
+
+{{note|'''Manjaro will already have Guest Additions pre-installed, so there is no need to add it yourself'''.}}
+
+Guest Additions are special software packages designed to improve the performance and usability of guest operating systems. They are installed '''within''' the Guest operating system itself, and most notably result in enhancing the display resolution, as well as enabling much better control over the mouse. As such, two tell-tale signs that Guest Additions have not been installed in a Guest are that the display will not scale to the size of the display window (i.e. it will be necessary to scroll around to see the whole screen), and the mouse may be quite hard to control.
+
+
+==Guest Display==
+
+* It will be necessary to activate the '''Enable 3D acceleration''' box in order to allow for some desktop effects (such as transparency) to be shown. This can be undertaken by going into the settings menu, and then selecting the '''Display''' section.
+
+
+==Guest Internet Connection==
+
+Some users have encountered problems when attempting to connect their virtual machine to the internet using the default Virtualbox settings. Where this is the case, try the following solution (covered in the fourth Virtualbox YouTube Tutorial from the 4:28 mark):
+
+1. Click the '''Settings Button''' and then select the '''Network''' tab
+
+2. Next to the '''Attached to''' heading is a button that states '''NAT'''. Click it to reveal a drop down menu and select '''Bridged Adaptor''' instead.
+
+3. Next to the '''Name''' heading is a button whereby you may select how you are currently connected to the internet (e.g. ''Wlan'' means Wireless, and ''Eth0'' means Ethernet). Select the appropriate connection type you are currently using.
+
+4. Click the '''OK''' button to confirm.
+
+
+==General==
+
+* A virtualbox installation may not automatically detect when USB device has been connected. As such, it may therefore be necessary to click the USB icon located at the bottom of the Virtualbox window in order to select and activate it.
+
+* It is possible to enable the (very useful) ability to copy and paste text between the Guest and Host systems. This is undertaken by clicking '''Settings''' button and then going to the '''General''' Section.
+
+* Don't be afraid to take risks, to experiment, and to have fun with Guest operating systems. The worst that can happen is that they will have to be re-installed!
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]
+
+
+
+
+[[Category:Présentation]]</text>
+      <sha1>14yujo7hg76a4cbeqtuckbkt6jpwbwh</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3140</id>
+      <parentid>3139</parentid>
+      <timestamp>2012-12-26T14:25:04Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="12182">= Vue d'ensemble =
+
+[[file:vbox.png|left]]
+
+{{tip|La virtualisation n'est pas la même chose que l'émulation. Alors que l'émulation explique à votre ordinateur que c'est quelque chose d'autre (comme une machine d'arcade ou une console de jeux), la virtualisation crée à la place une ou plusieurs versions virtuelles de votre ordinateur.}}
+
+
+Développée par Oracle Corporation, '''[https://www.virtualbox.org/ VirtualBox]''', c'est une application populaire qui permet à d'autres systèmes d'exploitations (connus sous le nom d\'''Invité'') d'être installé et de fonctionner au sein d'un système d'exploitation existant (connu sous le nom d'''Hôte''). This is undertaken through the process of ''virtualisation'', whereby virtual versions of your computer (also referred to as ''virtual machines'' or ''VMs'') are created within and draw resources directly from the host system. As such, how fast or powerful a virtual machine may be will depend entirely on the resources available - and allocated - for it to use. The benefits of virtualisation include:
+&lt;br clear=&quot;all&quot; /&gt;
+
+* The fast and easy installation of other operating systems without affecting your existing system (e.g. no need for dual booting and/or preparation in the form of hard disk partitioning or re-sizing)
+
+* Completely safe learning and experimentation with operating systems, as nothing that occurs within a Guest will affect the Host (e.g. the Host operating system can also be installed as a Guest in a virtual machine as a risk-free means of trying out new things), and
+
+* An almost unlimited capacity to install as many additional operating systems as desired...provided space is available on your hard drive to store them!
+
+
+= Enabling Virtualisation =
+
+[[file:vt.png|thumb|left|375px]]
+
+
+{{warning|Unless you know exactly what you are doing, please DO NOT alter or amend any other BIOS settings!}}
+
+
+Before even ''thinking'' about installing Virtualbox, it is &lt;u&gt;'''absolutely essential'''&lt;/U&gt; to first ensure that '''virtualisation''' has been enabled on your computer. Otherwise - if virtualisation has not been enabled - then assuming Virtualbox can even be run at all, its features and capabilities will be severely limited. For example, where Virtualbox has been installed on a 64-bit system, it will only be able to run 32-bit operating systems as Guests. As virtualisation is usually disabled by default, it will therefore be necessary to go into your computer's BIOS settings in order to activate it. 
+
+Below is an example of enabling virtualisation for a HP G62 Laptop using an Intel chip-set (it may be a slightly different process for your own computer):
+&lt;br clear=&quot;all&quot; /&gt;
+
+1. Reboot the computer
+
+2. As it restarts, press the F10 key to enter into the BIOS Menu
+
+3. Use the arrow keys to scroll across to the '''System Configuration''' tab
+
+4. Use the arrow keys to highlight the '''Virtualisation Technology''' option, and press &lt;enter&gt;
+
+5. Select the '''Enabled''' option, and press &lt;enter&gt;
+
+6. Use the arrow keys to scroll across to the '''Exit''' tab
+
+7. Ensure that the '''Exit Saving Changes''' option is highlighted and press &lt;enter&gt;
+
+
+= Installing Virtualbox and its Extension Pack =
+
+Although a basic Virtualbox Installation may suffice for some users, it is also recommended to download and install the optional '''Extension Pack''' for it. This provides several new features, including the ability to use USB devices such as data sticks and printers in virtual machine environments.
+
+
+==Install Virtualbox==
+
+To install Virtualbox, enter the following command in the terminal:
+
+ sudo pacman -S virtualbox
+
+
+Once complete, it will then be necessary to add the '''Virtualbox Module''' to your kernel. Rather like installing a driver, doing so will ensure that Virtualbox is able to run properly. To add the Virtualbox kernel module, enter the following command:
+
+ sudo modprobe vboxdrv
+
+
+== Where Using Multiple Kernels ==
+
+'''Should a new kernel be installed at a later time''', there will be no need to add the Virtualbox module again to it. This is because the '''[[Manjaro_Kernels|Manjaro Hardware Detection tool for Kernels]]''' (mwhd-kernel) will automatically update new kernels with all existing modules being used during the installation process.
+
+
+'''However, should multiple kernels already be installed''' - and the intention is to use Virtualbox with them as well - then it will be necessary to add the Virtualbox module to them in addition. In order to add the Virtualbox module to another existing kernel:
+
+1. Select the appropriate kernel at the bootup screen
+
+2. Download the '''Virtualbox Host Utilities''' for that particular kernel, as this provides the necessary ''vboxdrv'' Virtualbox module to add. The syntax of the command to do so is:
+
+ sudo pacman -S [kernel version]-virtualbox-host-modules
+
+
+When listing the kernel version currently being used in the command, it is not necessary to write the entire version number. Any version of Kernel 3.5 can be listed simply as 'linux35', and any version of Kernel 3.6 can be listed as 'linux36', and so on. As an example, the following command will install  the ''Virtualbox Host Utilities'' specifically for kernel version 3.5:
+
+ sudo pacman -S linux35-virtualbox-host-modules
+
+
+3. Once the ''Virtualbox Host Utilities'' have been downloaded, enter the following command to add the virtualbox module to the kernel:
+
+ sudo modprobe vboxdrv
+
+
+==Install the Extension Pack==
+
+[[file:vxextpackb.png|thumb|left|375px]]
+
+
+This must be obtained directly from the '''[http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html Virtualbox Downloads Section of Oracle's website]''', as it is not available from the Manjaro repositories. Again, the Extension pack provides a number of additional and advanced features not otherwise available. Even if there is no immediate intention to use the features provided, it is still worthwhile installing in order to have a complete installation. Once at the downloads section of Oracle's website, to obtain the Virtualbox Extension Pack:
+&lt;br clear=&quot;all&quot; /&gt;
+
+1. Scroll down towards the bottom of the page to find the '''Oracle VM Virtualbox Extension Pack''' section
+
+2. Click on the appropriate link for the Virtualbox version installed to download the Extension Pack
+
+3. After the Extension Pack has downloaded, start the Virtualbox application
+
+4. Once Virtualbox has started, select '''File''' from the top menu, and then '''Preferences'''
+
+5. Select the '''Extensions''' tab to view that section, and then click a icon called '''Add Package''' located on the far right
+
+7. Locate the downloaded Extension Pack, ensure it is highlighted, and then click the '''Open''' button to begin the installation process
+
+8. Confirm that you wish to install the Extension Pack, and then confirm that you agree to the license terms (it will at least be necessary to scroll down to the bottom of the terms to activate the '''I Agree''' button)
+
+9. The Extension Pack should install within a few seconds, and a confirmation message will appear.
+
+
+The final step is to now add your personal user account to the '''vbox User Group'''. This is necessary in order to fully access the features provided by Virtualbox, including the ability to use USB devices in a Guest operating system.
+
+
+= Adding Your Account to the vbox User Group =
+
+The syntax of the command to add your user-name to the vbox user group is:
+
+ sudo gpasswd -a [username] vboxusers
+
+
+As an example, the command listed below will add the personal user account named 'carl' to the vbox user group:
+
+ sudo gpasswd -a &lt;font color=&quot;green&quot;&gt;'''carl'''&lt;/font color&gt; vboxusers
+
+
+Now reboot your system for the change to take effect.
+
+
+= Advice, Tips, and Tricks =
+
+{{tip|The '''[http://www.virtualbox.org/manual/ Virtualbox Manual]''' will be of immense use to new users.}}
+
+
+Advice on using Virtualbox effectively, as well as some tips and tricks learned along the way, have been provided for the benefit of new users.
+
+
+==Running Manjaro in Virtualbox==
+
+For those intending to use Virtualbox in Ubuntu or an Ubuntu-based distribution (e.g. Mint, Zorin, Kubuntu, etc) - in order to run Manjaro in it, of course! - the author has provided a comprehensive YouTube Virtualbox video guide:
+
+* Part 1: '''[http://www.youtube.com/watch?v=a9PusQjgzPU Virtualbox Introduction]'''
+* Part 2: '''[http://www.youtube.com/watch?v=Wh9-WtRb6LQV BIOS Settings and Installation]'''
+* Part 3: '''[http://www.youtube.com/watch?v=3TGNfmhoSts Virtual Machine Setup and vbox User Group]'''
+* Part 4: '''[http://www.youtube.com/watch?v=syWEboy5KoM ISO installation, Internet Connection, and Guest Additions]'''
+
+
+Existing Manjaro users may still find Part 3 of particular interest if they are unfamiliar with using virtualbox. '''However, please note that the Guest Additions section in the fourth video does not apply to Manjaro or &lt;u&gt;any&lt;/u&gt; Arch-based distribution'''. In respect to Manjaro, this is because Guest Additions - special software designed to enhance and improve Virtualbox installations - will already have been pre-installed for you. More importantly, using the method shown to install Guest Additions in Manjaro (or any Arch-based distribution) will break the system permanently, rendering it unusable.
+
+
+==Guest Installation==
+
+* Virtualbox can run installation files (ISOs) directly as ''virtual discs'', so there is no need to burn them to an installation medium such as a disc or USB data stick.
+
+* The process to install any Guest operating system - '''[[Installation_Guides|including Manjaro]]''' - is exactly the same as if actually installing for real on your compuer.
+
+
+==Guest Additions==
+
+{{note|'''Manjaro will already have Guest Additions pre-installed, so there is no need to add it yourself'''.}}
+
+Guest Additions are special software packages designed to improve the performance and usability of guest operating systems. They are installed '''within''' the Guest operating system itself, and most notably result in enhancing the display resolution, as well as enabling much better control over the mouse. As such, two tell-tale signs that Guest Additions have not been installed in a Guest are that the display will not scale to the size of the display window (i.e. it will be necessary to scroll around to see the whole screen), and the mouse may be quite hard to control.
+
+
+==Guest Display==
+
+* It will be necessary to activate the '''Enable 3D acceleration''' box in order to allow for some desktop effects (such as transparency) to be shown. This can be undertaken by going into the settings menu, and then selecting the '''Display''' section.
+
+
+==Guest Internet Connection==
+
+Some users have encountered problems when attempting to connect their virtual machine to the internet using the default Virtualbox settings. Where this is the case, try the following solution (covered in the fourth Virtualbox YouTube Tutorial from the 4:28 mark):
+
+1. Click the '''Settings Button''' and then select the '''Network''' tab
+
+2. Next to the '''Attached to''' heading is a button that states '''NAT'''. Click it to reveal a drop down menu and select '''Bridged Adaptor''' instead.
+
+3. Next to the '''Name''' heading is a button whereby you may select how you are currently connected to the internet (e.g. ''Wlan'' means Wireless, and ''Eth0'' means Ethernet). Select the appropriate connection type you are currently using.
+
+4. Click the '''OK''' button to confirm.
+
+
+==General==
+
+* A virtualbox installation may not automatically detect when USB device has been connected. As such, it may therefore be necessary to click the USB icon located at the bottom of the Virtualbox window in order to select and activate it.
+
+* It is possible to enable the (very useful) ability to copy and paste text between the Guest and Host systems. This is undertaken by clicking '''Settings''' button and then going to the '''General''' Section.
+
+* Don't be afraid to take risks, to experiment, and to have fun with Guest operating systems. The worst that can happen is that they will have to be re-installed!
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]
+
+
+
+
+[[Category:Présentation]]</text>
+      <sha1>3ek9i6iy36tpd3yah1i5kvbd1g8t5c9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3141</id>
+      <parentid>3140</parentid>
+      <timestamp>2012-12-26T14:37:35Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="12207">= Vue d'ensemble =
+
+[[file:vbox.png|left]]
+
+{{tip|La virtualisation n'est pas la même chose que l'émulation. Alors que l'émulation explique à votre ordinateur que c'est quelque chose d'autre (comme une machine d'arcade ou une console de jeux), la virtualisation crée à la place une ou plusieurs versions virtuelles de votre ordinateur.}}
+
+
+Développée par Oracle Corporation, '''[https://www.virtualbox.org/ VirtualBox]''', c'est une application populaire qui permet à d'autres systèmes d'exploitations (connus sous le nom d'Invité) d'être installé et de fonctionner au sein d'un système d'exploitation existant (connu sous le nom d'Hôte). C'est réalisé par l'intermédiaire du processus de ''virtualisation'', où des versions virtuelles de votre ordinateur (également appelés machines virtuelles ou VM) sont créées à l'intérieur et tirent des ressources directement du système hôte. Ainsi, la vitesse ou puissance d'une machine virtuelle dépendra entièrement des ressources disponibles - et attribués - pour son utilisation. Les avantages de la virtualisation sont les suivantes : 
+
+* The fast and easy installation of other operating systems without affecting your existing system (e.g. no need for dual booting and/or preparation in the form of hard disk partitioning or re-sizing)
+
+* Completely safe learning and experimentation with operating systems, as nothing that occurs within a Guest will affect the Host (e.g. the Host operating system can also be installed as a Guest in a virtual machine as a risk-free means of trying out new things), and
+
+* An almost unlimited capacity to install as many additional operating systems as desired...provided space is available on your hard drive to store them!
+
+= Enabling Virtualisation =
+
+[[file:vt.png|thumb|left|375px]]
+
+
+{{warning|Unless you know exactly what you are doing, please DO NOT alter or amend any other BIOS settings!}}
+
+
+Before even ''thinking'' about installing Virtualbox, it is &lt;u&gt;'''absolutely essential'''&lt;/U&gt; to first ensure that '''virtualisation''' has been enabled on your computer. Otherwise - if virtualisation has not been enabled - then assuming Virtualbox can even be run at all, its features and capabilities will be severely limited. For example, where Virtualbox has been installed on a 64-bit system, it will only be able to run 32-bit operating systems as Guests. As virtualisation is usually disabled by default, it will therefore be necessary to go into your computer's BIOS settings in order to activate it. 
+
+Below is an example of enabling virtualisation for a HP G62 Laptop using an Intel chip-set (it may be a slightly different process for your own computer):
+&lt;br clear=&quot;all&quot; /&gt;
+
+1. Reboot the computer
+
+2. As it restarts, press the F10 key to enter into the BIOS Menu
+
+3. Use the arrow keys to scroll across to the '''System Configuration''' tab
+
+4. Use the arrow keys to highlight the '''Virtualisation Technology''' option, and press &lt;enter&gt;
+
+5. Select the '''Enabled''' option, and press &lt;enter&gt;
+
+6. Use the arrow keys to scroll across to the '''Exit''' tab
+
+7. Ensure that the '''Exit Saving Changes''' option is highlighted and press &lt;enter&gt;
+
+
+= Installing Virtualbox and its Extension Pack =
+
+Although a basic Virtualbox Installation may suffice for some users, it is also recommended to download and install the optional '''Extension Pack''' for it. This provides several new features, including the ability to use USB devices such as data sticks and printers in virtual machine environments.
+
+
+==Install Virtualbox==
+
+To install Virtualbox, enter the following command in the terminal:
+
+ sudo pacman -S virtualbox
+
+
+Once complete, it will then be necessary to add the '''Virtualbox Module''' to your kernel. Rather like installing a driver, doing so will ensure that Virtualbox is able to run properly. To add the Virtualbox kernel module, enter the following command:
+
+ sudo modprobe vboxdrv
+
+
+== Where Using Multiple Kernels ==
+
+'''Should a new kernel be installed at a later time''', there will be no need to add the Virtualbox module again to it. This is because the '''[[Manjaro_Kernels|Manjaro Hardware Detection tool for Kernels]]''' (mwhd-kernel) will automatically update new kernels with all existing modules being used during the installation process.
+
+
+'''However, should multiple kernels already be installed''' - and the intention is to use Virtualbox with them as well - then it will be necessary to add the Virtualbox module to them in addition. In order to add the Virtualbox module to another existing kernel:
+
+1. Select the appropriate kernel at the bootup screen
+
+2. Download the '''Virtualbox Host Utilities''' for that particular kernel, as this provides the necessary ''vboxdrv'' Virtualbox module to add. The syntax of the command to do so is:
+
+ sudo pacman -S [kernel version]-virtualbox-host-modules
+
+
+When listing the kernel version currently being used in the command, it is not necessary to write the entire version number. Any version of Kernel 3.5 can be listed simply as 'linux35', and any version of Kernel 3.6 can be listed as 'linux36', and so on. As an example, the following command will install  the ''Virtualbox Host Utilities'' specifically for kernel version 3.5:
+
+ sudo pacman -S linux35-virtualbox-host-modules
+
+
+3. Once the ''Virtualbox Host Utilities'' have been downloaded, enter the following command to add the virtualbox module to the kernel:
+
+ sudo modprobe vboxdrv
+
+
+==Install the Extension Pack==
+
+[[file:vxextpackb.png|thumb|left|375px]]
+
+
+This must be obtained directly from the '''[http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html Virtualbox Downloads Section of Oracle's website]''', as it is not available from the Manjaro repositories. Again, the Extension pack provides a number of additional and advanced features not otherwise available. Even if there is no immediate intention to use the features provided, it is still worthwhile installing in order to have a complete installation. Once at the downloads section of Oracle's website, to obtain the Virtualbox Extension Pack:
+&lt;br clear=&quot;all&quot; /&gt;
+
+1. Scroll down towards the bottom of the page to find the '''Oracle VM Virtualbox Extension Pack''' section
+
+2. Click on the appropriate link for the Virtualbox version installed to download the Extension Pack
+
+3. After the Extension Pack has downloaded, start the Virtualbox application
+
+4. Once Virtualbox has started, select '''File''' from the top menu, and then '''Preferences'''
+
+5. Select the '''Extensions''' tab to view that section, and then click a icon called '''Add Package''' located on the far right
+
+7. Locate the downloaded Extension Pack, ensure it is highlighted, and then click the '''Open''' button to begin the installation process
+
+8. Confirm that you wish to install the Extension Pack, and then confirm that you agree to the license terms (it will at least be necessary to scroll down to the bottom of the terms to activate the '''I Agree''' button)
+
+9. The Extension Pack should install within a few seconds, and a confirmation message will appear.
+
+
+The final step is to now add your personal user account to the '''vbox User Group'''. This is necessary in order to fully access the features provided by Virtualbox, including the ability to use USB devices in a Guest operating system.
+
+
+= Adding Your Account to the vbox User Group =
+
+The syntax of the command to add your user-name to the vbox user group is:
+
+ sudo gpasswd -a [username] vboxusers
+
+
+As an example, the command listed below will add the personal user account named 'carl' to the vbox user group:
+
+ sudo gpasswd -a &lt;font color=&quot;green&quot;&gt;'''carl'''&lt;/font color&gt; vboxusers
+
+
+Now reboot your system for the change to take effect.
+
+
+= Advice, Tips, and Tricks =
+
+{{tip|The '''[http://www.virtualbox.org/manual/ Virtualbox Manual]''' will be of immense use to new users.}}
+
+
+Advice on using Virtualbox effectively, as well as some tips and tricks learned along the way, have been provided for the benefit of new users.
+
+
+==Running Manjaro in Virtualbox==
+
+For those intending to use Virtualbox in Ubuntu or an Ubuntu-based distribution (e.g. Mint, Zorin, Kubuntu, etc) - in order to run Manjaro in it, of course! - the author has provided a comprehensive YouTube Virtualbox video guide:
+
+* Part 1: '''[http://www.youtube.com/watch?v=a9PusQjgzPU Virtualbox Introduction]'''
+* Part 2: '''[http://www.youtube.com/watch?v=Wh9-WtRb6LQV BIOS Settings and Installation]'''
+* Part 3: '''[http://www.youtube.com/watch?v=3TGNfmhoSts Virtual Machine Setup and vbox User Group]'''
+* Part 4: '''[http://www.youtube.com/watch?v=syWEboy5KoM ISO installation, Internet Connection, and Guest Additions]'''
+
+
+Existing Manjaro users may still find Part 3 of particular interest if they are unfamiliar with using virtualbox. '''However, please note that the Guest Additions section in the fourth video does not apply to Manjaro or &lt;u&gt;any&lt;/u&gt; Arch-based distribution'''. In respect to Manjaro, this is because Guest Additions - special software designed to enhance and improve Virtualbox installations - will already have been pre-installed for you. More importantly, using the method shown to install Guest Additions in Manjaro (or any Arch-based distribution) will break the system permanently, rendering it unusable.
+
+
+==Guest Installation==
+
+* Virtualbox can run installation files (ISOs) directly as ''virtual discs'', so there is no need to burn them to an installation medium such as a disc or USB data stick.
+
+* The process to install any Guest operating system - '''[[Installation_Guides|including Manjaro]]''' - is exactly the same as if actually installing for real on your compuer.
+
+
+==Guest Additions==
+
+{{note|'''Manjaro will already have Guest Additions pre-installed, so there is no need to add it yourself'''.}}
+
+Guest Additions are special software packages designed to improve the performance and usability of guest operating systems. They are installed '''within''' the Guest operating system itself, and most notably result in enhancing the display resolution, as well as enabling much better control over the mouse. As such, two tell-tale signs that Guest Additions have not been installed in a Guest are that the display will not scale to the size of the display window (i.e. it will be necessary to scroll around to see the whole screen), and the mouse may be quite hard to control.
+
+
+==Guest Display==
+
+* It will be necessary to activate the '''Enable 3D acceleration''' box in order to allow for some desktop effects (such as transparency) to be shown. This can be undertaken by going into the settings menu, and then selecting the '''Display''' section.
+
+
+==Guest Internet Connection==
+
+Some users have encountered problems when attempting to connect their virtual machine to the internet using the default Virtualbox settings. Where this is the case, try the following solution (covered in the fourth Virtualbox YouTube Tutorial from the 4:28 mark):
+
+1. Click the '''Settings Button''' and then select the '''Network''' tab
+
+2. Next to the '''Attached to''' heading is a button that states '''NAT'''. Click it to reveal a drop down menu and select '''Bridged Adaptor''' instead.
+
+3. Next to the '''Name''' heading is a button whereby you may select how you are currently connected to the internet (e.g. ''Wlan'' means Wireless, and ''Eth0'' means Ethernet). Select the appropriate connection type you are currently using.
+
+4. Click the '''OK''' button to confirm.
+
+
+==General==
+
+* A virtualbox installation may not automatically detect when USB device has been connected. As such, it may therefore be necessary to click the USB icon located at the bottom of the Virtualbox window in order to select and activate it.
+
+* It is possible to enable the (very useful) ability to copy and paste text between the Guest and Host systems. This is undertaken by clicking '''Settings''' button and then going to the '''General''' Section.
+
+* Don't be afraid to take risks, to experiment, and to have fun with Guest operating systems. The worst that can happen is that they will have to be re-installed!
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]
+
+
+
+
+[[Category:Présentation]]</text>
+      <sha1>nxkud9bbk130fs5mzwil2exfe0dnxdm</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3142</id>
+      <parentid>3141</parentid>
+      <timestamp>2012-12-26T14:40:37Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="12219">= Vue d'ensemble =
+
+[[file:vbox.png|left]]
+
+{{tip|La virtualisation n'est pas la même chose que l'émulation. Alors que l'émulation explique à votre ordinateur que c'est quelque chose d'autre (comme une machine d'arcade ou une console de jeux), la virtualisation crée à la place une ou plusieurs versions virtuelles de votre ordinateur.}}
+
+
+Développée par Oracle Corporation, '''[https://www.virtualbox.org/ VirtualBox]''' est une application populaire qui permet à d'autres systèmes d'exploitations (connus sous le nom d' ''Invités'') d'être installé et de fonctionner au sein d'un système d'exploitation existant (connu sous le nom d' ''Hôte''). C'est réalisé par l'intermédiaire du processus de ''virtualisation'', où des versions virtuelles de votre ordinateur (également appelés ''machines virtuelles ou VM'') sont créées à l'intérieur et tirent des ressources directement du système hôte. Ainsi, la vitesse ou puissance d'une machine virtuelle dépendra entièrement des ressources disponibles - et attribués - pour son utilisation. Les avantages de la virtualisation sont les suivantes : 
+
+* The fast and easy installation of other operating systems without affecting your existing system (e.g. no need for dual booting and/or preparation in the form of hard disk partitioning or re-sizing)
+
+* Completely safe learning and experimentation with operating systems, as nothing that occurs within a Guest will affect the Host (e.g. the Host operating system can also be installed as a Guest in a virtual machine as a risk-free means of trying out new things), and
+
+* An almost unlimited capacity to install as many additional operating systems as desired...provided space is available on your hard drive to store them!
+
+= Enabling Virtualisation =
+
+[[file:vt.png|thumb|left|375px]]
+
+
+{{warning|Unless you know exactly what you are doing, please DO NOT alter or amend any other BIOS settings!}}
+
+
+Before even ''thinking'' about installing Virtualbox, it is &lt;u&gt;'''absolutely essential'''&lt;/U&gt; to first ensure that '''virtualisation''' has been enabled on your computer. Otherwise - if virtualisation has not been enabled - then assuming Virtualbox can even be run at all, its features and capabilities will be severely limited. For example, where Virtualbox has been installed on a 64-bit system, it will only be able to run 32-bit operating systems as Guests. As virtualisation is usually disabled by default, it will therefore be necessary to go into your computer's BIOS settings in order to activate it. 
+
+Below is an example of enabling virtualisation for a HP G62 Laptop using an Intel chip-set (it may be a slightly different process for your own computer):
+&lt;br clear=&quot;all&quot; /&gt;
+
+1. Reboot the computer
+
+2. As it restarts, press the F10 key to enter into the BIOS Menu
+
+3. Use the arrow keys to scroll across to the '''System Configuration''' tab
+
+4. Use the arrow keys to highlight the '''Virtualisation Technology''' option, and press &lt;enter&gt;
+
+5. Select the '''Enabled''' option, and press &lt;enter&gt;
+
+6. Use the arrow keys to scroll across to the '''Exit''' tab
+
+7. Ensure that the '''Exit Saving Changes''' option is highlighted and press &lt;enter&gt;
+
+
+= Installing Virtualbox and its Extension Pack =
+
+Although a basic Virtualbox Installation may suffice for some users, it is also recommended to download and install the optional '''Extension Pack''' for it. This provides several new features, including the ability to use USB devices such as data sticks and printers in virtual machine environments.
+
+
+==Install Virtualbox==
+
+To install Virtualbox, enter the following command in the terminal:
+
+ sudo pacman -S virtualbox
+
+
+Once complete, it will then be necessary to add the '''Virtualbox Module''' to your kernel. Rather like installing a driver, doing so will ensure that Virtualbox is able to run properly. To add the Virtualbox kernel module, enter the following command:
+
+ sudo modprobe vboxdrv
+
+
+== Where Using Multiple Kernels ==
+
+'''Should a new kernel be installed at a later time''', there will be no need to add the Virtualbox module again to it. This is because the '''[[Manjaro_Kernels|Manjaro Hardware Detection tool for Kernels]]''' (mwhd-kernel) will automatically update new kernels with all existing modules being used during the installation process.
+
+
+'''However, should multiple kernels already be installed''' - and the intention is to use Virtualbox with them as well - then it will be necessary to add the Virtualbox module to them in addition. In order to add the Virtualbox module to another existing kernel:
+
+1. Select the appropriate kernel at the bootup screen
+
+2. Download the '''Virtualbox Host Utilities''' for that particular kernel, as this provides the necessary ''vboxdrv'' Virtualbox module to add. The syntax of the command to do so is:
+
+ sudo pacman -S [kernel version]-virtualbox-host-modules
+
+
+When listing the kernel version currently being used in the command, it is not necessary to write the entire version number. Any version of Kernel 3.5 can be listed simply as 'linux35', and any version of Kernel 3.6 can be listed as 'linux36', and so on. As an example, the following command will install  the ''Virtualbox Host Utilities'' specifically for kernel version 3.5:
+
+ sudo pacman -S linux35-virtualbox-host-modules
+
+
+3. Once the ''Virtualbox Host Utilities'' have been downloaded, enter the following command to add the virtualbox module to the kernel:
+
+ sudo modprobe vboxdrv
+
+
+==Install the Extension Pack==
+
+[[file:vxextpackb.png|thumb|left|375px]]
+
+
+This must be obtained directly from the '''[http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html Virtualbox Downloads Section of Oracle's website]''', as it is not available from the Manjaro repositories. Again, the Extension pack provides a number of additional and advanced features not otherwise available. Even if there is no immediate intention to use the features provided, it is still worthwhile installing in order to have a complete installation. Once at the downloads section of Oracle's website, to obtain the Virtualbox Extension Pack:
+&lt;br clear=&quot;all&quot; /&gt;
+
+1. Scroll down towards the bottom of the page to find the '''Oracle VM Virtualbox Extension Pack''' section
+
+2. Click on the appropriate link for the Virtualbox version installed to download the Extension Pack
+
+3. After the Extension Pack has downloaded, start the Virtualbox application
+
+4. Once Virtualbox has started, select '''File''' from the top menu, and then '''Preferences'''
+
+5. Select the '''Extensions''' tab to view that section, and then click a icon called '''Add Package''' located on the far right
+
+7. Locate the downloaded Extension Pack, ensure it is highlighted, and then click the '''Open''' button to begin the installation process
+
+8. Confirm that you wish to install the Extension Pack, and then confirm that you agree to the license terms (it will at least be necessary to scroll down to the bottom of the terms to activate the '''I Agree''' button)
+
+9. The Extension Pack should install within a few seconds, and a confirmation message will appear.
+
+
+The final step is to now add your personal user account to the '''vbox User Group'''. This is necessary in order to fully access the features provided by Virtualbox, including the ability to use USB devices in a Guest operating system.
+
+
+= Adding Your Account to the vbox User Group =
+
+The syntax of the command to add your user-name to the vbox user group is:
+
+ sudo gpasswd -a [username] vboxusers
+
+
+As an example, the command listed below will add the personal user account named 'carl' to the vbox user group:
+
+ sudo gpasswd -a &lt;font color=&quot;green&quot;&gt;'''carl'''&lt;/font color&gt; vboxusers
+
+
+Now reboot your system for the change to take effect.
+
+
+= Advice, Tips, and Tricks =
+
+{{tip|The '''[http://www.virtualbox.org/manual/ Virtualbox Manual]''' will be of immense use to new users.}}
+
+
+Advice on using Virtualbox effectively, as well as some tips and tricks learned along the way, have been provided for the benefit of new users.
+
+
+==Running Manjaro in Virtualbox==
+
+For those intending to use Virtualbox in Ubuntu or an Ubuntu-based distribution (e.g. Mint, Zorin, Kubuntu, etc) - in order to run Manjaro in it, of course! - the author has provided a comprehensive YouTube Virtualbox video guide:
+
+* Part 1: '''[http://www.youtube.com/watch?v=a9PusQjgzPU Virtualbox Introduction]'''
+* Part 2: '''[http://www.youtube.com/watch?v=Wh9-WtRb6LQV BIOS Settings and Installation]'''
+* Part 3: '''[http://www.youtube.com/watch?v=3TGNfmhoSts Virtual Machine Setup and vbox User Group]'''
+* Part 4: '''[http://www.youtube.com/watch?v=syWEboy5KoM ISO installation, Internet Connection, and Guest Additions]'''
+
+
+Existing Manjaro users may still find Part 3 of particular interest if they are unfamiliar with using virtualbox. '''However, please note that the Guest Additions section in the fourth video does not apply to Manjaro or &lt;u&gt;any&lt;/u&gt; Arch-based distribution'''. In respect to Manjaro, this is because Guest Additions - special software designed to enhance and improve Virtualbox installations - will already have been pre-installed for you. More importantly, using the method shown to install Guest Additions in Manjaro (or any Arch-based distribution) will break the system permanently, rendering it unusable.
+
+
+==Guest Installation==
+
+* Virtualbox can run installation files (ISOs) directly as ''virtual discs'', so there is no need to burn them to an installation medium such as a disc or USB data stick.
+
+* The process to install any Guest operating system - '''[[Installation_Guides|including Manjaro]]''' - is exactly the same as if actually installing for real on your compuer.
+
+
+==Guest Additions==
+
+{{note|'''Manjaro will already have Guest Additions pre-installed, so there is no need to add it yourself'''.}}
+
+Guest Additions are special software packages designed to improve the performance and usability of guest operating systems. They are installed '''within''' the Guest operating system itself, and most notably result in enhancing the display resolution, as well as enabling much better control over the mouse. As such, two tell-tale signs that Guest Additions have not been installed in a Guest are that the display will not scale to the size of the display window (i.e. it will be necessary to scroll around to see the whole screen), and the mouse may be quite hard to control.
+
+
+==Guest Display==
+
+* It will be necessary to activate the '''Enable 3D acceleration''' box in order to allow for some desktop effects (such as transparency) to be shown. This can be undertaken by going into the settings menu, and then selecting the '''Display''' section.
+
+
+==Guest Internet Connection==
+
+Some users have encountered problems when attempting to connect their virtual machine to the internet using the default Virtualbox settings. Where this is the case, try the following solution (covered in the fourth Virtualbox YouTube Tutorial from the 4:28 mark):
+
+1. Click the '''Settings Button''' and then select the '''Network''' tab
+
+2. Next to the '''Attached to''' heading is a button that states '''NAT'''. Click it to reveal a drop down menu and select '''Bridged Adaptor''' instead.
+
+3. Next to the '''Name''' heading is a button whereby you may select how you are currently connected to the internet (e.g. ''Wlan'' means Wireless, and ''Eth0'' means Ethernet). Select the appropriate connection type you are currently using.
+
+4. Click the '''OK''' button to confirm.
+
+
+==General==
+
+* A virtualbox installation may not automatically detect when USB device has been connected. As such, it may therefore be necessary to click the USB icon located at the bottom of the Virtualbox window in order to select and activate it.
+
+* It is possible to enable the (very useful) ability to copy and paste text between the Guest and Host systems. This is undertaken by clicking '''Settings''' button and then going to the '''General''' Section.
+
+* Don't be afraid to take risks, to experiment, and to have fun with Guest operating systems. The worst that can happen is that they will have to be re-installed!
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]
+
+
+
+
+[[Category:Présentation]]</text>
+      <sha1>eljeb395sdx355wcsikhwe6p37hwsdg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

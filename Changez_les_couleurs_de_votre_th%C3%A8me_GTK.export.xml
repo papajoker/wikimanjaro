@@ -1,0 +1,125 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Changez les couleurs de votre thème GTK</title>
+    <ns>0</ns>
+    <id>1022</id>
+    <revision>
+      <id>6788</id>
+      <timestamp>2013-08-18T12:03:08Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Introduction =  Peut-être ne le savez-vous pas, mais vous pouvez modifier le '''gtkrc''' relativement facilement (mais pas n...&quot;</comment>
+      <text xml:space="preserve" bytes="4079">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Introduction =
+
+Peut-être ne le savez-vous pas, mais vous pouvez modifier le '''gtkrc''' relativement facilement (mais pas nécessairement rapidement) pour changer les couleurs de la plupart sinon de tous vos thèmes à moteur GTK+.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Où est ce fichier gtkrc ==
+
+Le fichier '''gtkrc''' se trouve à l'intérieur des thèmes GTK+ que vous employez :
+
+ ~/.themes/&lt;theme.directory&gt;/&lt;gtk.version.being.used&gt;/gtkrc
+
+Sur cette machine :
+
+ ~/.themes/Aero/gtk-2.0/gtkrc
+
+Il est assez fréquent de voir plus d'un répertoire GTK+ répertorié à l'intérieur de votre thème. Habituellement gtk et gtk-2.0 :
+
+ gtk
+ gtk-2.0
+ gtk-3.0
+
+gtk-2.0 étant le plus couramment utilisé.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Comment sont  écrites les couleurs dans le gtkrc ? ==
+
+Dans le fichier '''gtkrc''', les couleurs sont identifiées en hexadécimal (hex), comme ceci :
+
+
+  fg[NORMAL]        = &quot;#bcbcbc&quot;       # Couleur du texte du Menu principal
+  fg[PRELIGHT]      = &quot;#b1b1b1&quot;         # légèrement plus foncée que le texte principal   
+  fg[ACTIVE]        = &quot;#d8d8d8&quot;        # plus léger encore que ci-dessus   
+  fg[SELECTED]      = &quot;#000000&quot;        # le noir était blanc - #ffffff
+  fg[INSENSITIVE]   = &quot;#757f90&quot;        # Entrées de menu inactives et inactive mis en évidence)
+   
+  bg[NORMAL]        = &quot;#3E3E3E&quot;           # Couleur de fond du Menu principal - était #424242
+  bg[PRELIGHT]      = &quot;#5058a0&quot;        # actif mis en évidence
+  bg[ACTIVE]        = &quot;#2b2b2b&quot;        # fond sombre secondaire - rarement utilisé - (Firefox barre de défilement)?
+  bg[SELECTED]      = &quot;#5058a0&quot;        # actif mis en évidence - était -&gt; #5058a0
+  bg[INSENSITIVE]   = &quot;#575757&quot;        # un fond mineur plus clair     
+ 
+  text[NORMAL]      = &quot;#ABABAB&quot;        # Texte principal, y compris les champs
+  text[PRELIGHT]    = &quot;#ABABAB&quot;        #   &quot;    &quot;       &quot;       &quot;   
+  text[ACTIVE]      = &quot;#ababab&quot;        #   &quot;    &quot;       &quot;       &quot; 
+  text[SELECTED]    = &quot;#ababab&quot;        #   &quot;    &quot;       &quot;       &quot; 
+  text[INSENSITIVE] = &quot;#757f90&quot;        # inactif mis en évidence - était #6F6F6F
+ 
+  base[NORMAL]      = &quot;#2b2b2b&quot;        # sombre - couleur de fond secondaire
+  base[PRELIGHT]    = &quot;#5058a0&quot;        # actif mis en évidence &amp; entées du menu
+  base[ACTIVE]      = &quot;#757f90&quot;        # inactif mis en évidence
+  base[SELECTED]    = &quot;#5058a0&quot;        # actif mis en évidence
+  base[INSENSITIVE] = &quot;#575757&quot;        # un fond mineur plus clair
+
+Tous les créateurs de thème n'utilise pas le même format, mais vous savez en voyant un nombre hexadécimal dans le format suivant - &quot;# 50f94c&quot; que c'est une couleur.
+
+En outre, ce qui précède est un thème Aero modifié. Les commentaires à droite des couleurs ont été rajoutés de manière à rendre la vie plus facile pour les futures modifications.
+
+&lt;br clear=&quot;all&quot; /&gt;
+== Utilisez Gcolor2 pour gérer facilement les couleurs hex : ==
+
+Si '''gcolor2''' n'est pas installé sur votre machine, l'installer. Gcolor2 rend le travail très facile pour jouer avec les couleurs en hexadécimal. N'importe quelle couleur que vous choisissez à partir de sa roue de couleur est identifiée dans Plus hex, un véritable bonus de sauvetage est que vous pouvez utiliser le curseur de la pipette Gcolor2 pour sélectionner n'importe quelle couleur sur votre bureau et Gcolor2 vous donnera son code. Très cool en effet.
+
+ Remarque : Attendez-vous à trouver de légères variations entre
+ l'identité hex trouvé via Gcolor2 d'une couleur
+ dans votre thème de bureau non modifiée et la même
+ l'identité de couleur écrit dans le fichier gtkrc.
+ C'est probablement causé par des variations dans les
+ réglages de l'écran GPU / affichage et donc la couleur
+ sortie entre ce que nous utilisons et ce que le
+ créateur du thème a utilisé. Nous devons donc
+ contourner cela, ce qui n'est pas trop difficile.
+ 
+ 
+[[Change the colours of your GTK+ themes|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>kt8n1mfc58maypsl712570q4rry5su7</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

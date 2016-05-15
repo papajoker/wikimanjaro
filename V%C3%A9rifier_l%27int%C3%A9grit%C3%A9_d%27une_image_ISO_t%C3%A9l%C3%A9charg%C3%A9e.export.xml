@@ -1,0 +1,449 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Vérifier l'intégrité d'une image ISO téléchargée</title>
+    <ns>0</ns>
+    <id>566</id>
+    <revision>
+      <id>3072</id>
+      <timestamp>2012-12-25T20:59:04Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;= Vue d'ensemble =  [[File:BigManjaroIcon.png|left|90px]]  Avant de graver votre image ISO téléchargée (ou de l'utiliser comme un disque virtuel dans Virtualbox), il vous e...&quot;</comment>
+      <text xml:space="preserve" bytes="4732">= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Avant de graver votre image ISO téléchargée (ou de l'utiliser comme un disque virtuel dans Virtualbox), il vous est fortement recommandé de vérifier d'abord qu'elle n'a pas été endommagée. Les conséquences de ne pas le faire - surtout si vous avez l'intention d'installer Manjaro comme système d'exploitation principal - devrait être évident (c'est-à-dire une image corrompue se traduira par une installation corrompue). 
+
+Pour ce faire, vous devez d'abord télécharger le fichier de contrôle approprié dans le dossier Sourceforge (même site Web que votre image ISO choisie). Le fichier de contrôle aura le même nom que l'image ISO et se termine soit par '''sha1.sum''', soit par '''sha256.sum'''. Par exemple, les fichiers de contrôle appropriés pour le fichier ''manjaro-xfce-0.8.1-x86_64.iso'' (64 bits version 0.8.1 Manjaro avec le bureau XFCE) seraient: 
+
+* manjaro-xfce-0.8.1-x86_64'''-sha1.sum''', et/ou 
+* manjaro-xfce-0.8.1-x86_64'''-sha256.sum'''
+
+
+== SHA1 et SHA256 ==
+
+La partie 'sha' du nom de fichier de contrôle est pour l'algorithme de hachage sécurisé. Cet algorithme est utilisé pour générer un code particulier unique à l'image ISO téléchargée. '''sha1''' et '''sha256''' sont les différentes versions de l'algorithme que vous pouvez utiliser pour ce faire. Alors que sha1 est la version la plus couramment utilisée, sha256 est une version plus récente et plus sûr. Utiliser l'un ou l'autre est entièrement de votre choix. '''Toutefois, si vous n'êtes pas sûr, alors il est recommandé d'utiliser sha256'''.
+
+Le fichier de contrôle lui-même est un simple document texte qui contient un code qui doit correspondre au code généré par l'algorithme sha1 ou sha256. Si les deux codes correspondent, c'est que le fichier ISO est bon. Dans le cas contraire - si les deux codes ne correspondent pas - cela signifie que le fichier ISO est d'une certaine façon corrompu.
+
+Ne vous inquiétez pas si tout cela vous semble un peu compliqué - c'est en fait très simple et facile à utiliser!
+
+
+= Vérification sous Linux =
+
+Pour vérifier l'intégrité de votre fichier téléchargé, il sera nécessaire d'abord d'ouvrir le fichier de contrôle téléchargé en utilisant un éditeur de texte tel que ''Gedit''. Selon que vous avez l'intention d'utiliser sha1 ou sha256, assurez-vous que vous avez téléchargé et ouvert le fichier de contrôle approprié (c'est-à-dire se terminant respectivement par sha1.sum ou sha256.sum) car ils contiennent différents codes. Une fois que le fichier de contrôle a été ouvert - et le code est visible - ouvrez votre terminal et allez dans le répertoire où se trouve votre ISO téléchargée. Par exemple, si votre fichier ISO est situé dans le dossier par défaut ''Téléchargements'', entrez la commande suivante:
+
+ cd Téléchargements
+
+
+La commande pour ensuite effectuer un contrôle utilise la syntaxe suivante:
+
+ [sha1sum ou sha256sum] [ISO Image]
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Par exemple, la commande suivante utilisera sha256 pour générer un code à partir de la 64 bits Manjaro XFCE 0.8.1 ISO. Le code généré peut alors être comparé au code fourni par le fichier de contrôle approprié sha256:
+
+ sha256sum  manjaro-xfce-0.8.1-x86_64.iso
+
+
+Comme illustré dans ce cas, les deux codes correspondent, ce qui confirme que le fichier ISO téléchargé est tout à fait bien. La commande suivante permet d'utiliser sha1 pour entreprendre exactement la même tâche:
+
+ sha1sum manjaro-xfce-0.8.1-x86_64.iso
+
+
+Si les deux codes correspondent, alors il est sûr de graver l'ISO en vue d'installation, ou de l'utiliser immédiatement dans VirtualBox. Dans le cas contraire, il sera nécessaire de supprimer l'image ISO et de la télécharger à nouveau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Vérification sous Windows =
+
+[[File: wincheck.jpg|thumb|left|375px]]
+
+
+Il sera nécessaire de télécharger et d'installer un utilitaire de contrôle. Plusieurs versions libres peuvent être trouvées sur le site '''[http://download.cnet.com/ Download.com website]'''. Un utilitaire de contrôle gratuit que vous pouvez considérer comme étant fiable est le '''[http://raylin.wordpress.com/2009/03/02/md5-sha-1-checksum-utility/ MD5 &amp; SHA-1 Checksum Utility]'''. 
+
+
+{{note|Si vous décidez d'utiliser le ''MD5 &amp; SHA-1 Checksum Utility'', vous ne serez en mesure d'utiliser que le code fourni par le fichier de contrôle '''-sha1''' pour vos ISO. Cet utilitaire ne prend pas en charge sha256.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+
+[[Category:Getting Started]]
+[[Category:Contents Page]]</text>
+      <sha1>k23nzltwf1u2e7k4wqwx5p9pjol3kv3</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3109</id>
+      <parentid>3072</parentid>
+      <timestamp>2012-12-25T23:04:02Z</timestamp>
+      <contributor>
+        <username>Verityproductions</username>
+        <id>4</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4703">= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Avant de graver votre image ISO téléchargée (ou de l'utiliser comme un disque virtuel dans Virtualbox), il vous est fortement recommandé de vérifier d'abord qu'elle n'a pas été endommagée. Les conséquences de ne pas le faire - surtout si vous avez l'intention d'installer Manjaro comme système d'exploitation principal - devrait être évident (c'est-à-dire une image corrompue se traduira par une installation corrompue). 
+
+Pour ce faire, vous devez d'abord télécharger le fichier de contrôle approprié dans le dossier Sourceforge (même site Web que votre image ISO choisie). Le fichier de contrôle aura le même nom que l'image ISO et se termine soit par '''sha1.sum''', soit par '''sha256.sum'''. Par exemple, les fichiers de contrôle appropriés pour le fichier ''manjaro-xfce-0.8.1-x86_64.iso'' (64 bits version 0.8.1 Manjaro avec le bureau XFCE) seraient: 
+
+* manjaro-xfce-0.8.1-x86_64'''-sha1.sum''', et/ou 
+* manjaro-xfce-0.8.1-x86_64'''-sha256.sum'''
+
+
+== SHA1 et SHA256 ==
+
+La partie 'sha' du nom de fichier de contrôle est pour l'algorithme de hachage sécurisé. Cet algorithme est utilisé pour générer un code particulier unique à l'image ISO téléchargée. '''sha1''' et '''sha256''' sont les différentes versions de l'algorithme que vous pouvez utiliser pour ce faire. Alors que sha1 est la version la plus couramment utilisée, sha256 est une version plus récente et plus sûr. Utiliser l'un ou l'autre est entièrement de votre choix. '''Toutefois, si vous n'êtes pas sûr, alors il est recommandé d'utiliser sha256'''.
+
+Le fichier de contrôle lui-même est un simple document texte qui contient un code qui doit correspondre au code généré par l'algorithme sha1 ou sha256. Si les deux codes correspondent, c'est que le fichier ISO est bon. Dans le cas contraire - si les deux codes ne correspondent pas - cela signifie que le fichier ISO est d'une certaine façon corrompu.
+
+Ne vous inquiétez pas si tout cela vous semble un peu compliqué - c'est en fait très simple et facile à utiliser!
+
+
+= Vérification sous Linux =
+
+Pour vérifier l'intégrité de votre fichier téléchargé, il sera nécessaire d'abord d'ouvrir le fichier de contrôle téléchargé en utilisant un éditeur de texte tel que ''Gedit''. Selon que vous avez l'intention d'utiliser sha1 ou sha256, assurez-vous que vous avez téléchargé et ouvert le fichier de contrôle approprié (c'est-à-dire se terminant respectivement par sha1.sum ou sha256.sum) car ils contiennent différents codes. Une fois que le fichier de contrôle a été ouvert - et le code est visible - ouvrez votre terminal et allez dans le répertoire où se trouve votre ISO téléchargée. Par exemple, si votre fichier ISO est situé dans le dossier par défaut ''Téléchargements'', entrez la commande suivante:
+
+ cd Téléchargements
+
+
+La commande pour ensuite effectuer un contrôle utilise la syntaxe suivante:
+
+ [sha1sum ou sha256sum] [ISO Image]
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Par exemple, la commande suivante utilisera sha256 pour générer un code à partir de la 64 bits Manjaro XFCE 0.8.1 ISO. Le code généré peut alors être comparé au code fourni par le fichier de contrôle approprié sha256:
+
+ sha256sum  manjaro-xfce-0.8.1-x86_64.iso
+
+
+Comme illustré dans ce cas, les deux codes correspondent, ce qui confirme que le fichier ISO téléchargé est tout à fait bien. La commande suivante permet d'utiliser sha1 pour entreprendre exactement la même tâche:
+
+ sha1sum manjaro-xfce-0.8.1-x86_64.iso
+
+
+Si les deux codes correspondent, alors il est sûr de graver l'ISO en vue d'installation, ou de l'utiliser immédiatement dans VirtualBox. Dans le cas contraire, il sera nécessaire de supprimer l'image ISO et de la télécharger à nouveau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Vérification sous Windows =
+
+[[File: wincheck.jpg|thumb|left|375px]]
+
+
+Il sera nécessaire de télécharger et d'installer un utilitaire de contrôle. Plusieurs versions libres peuvent être trouvées sur le site '''[http://download.cnet.com/ Download.com website]'''. Un utilitaire de contrôle gratuit que vous pouvez considérer comme étant fiable est le '''[http://raylin.wordpress.com/2009/03/02/md5-sha-1-checksum-utility/ MD5 &amp; SHA-1 Checksum Utility]'''. 
+
+
+{{note|Si vous décidez d'utiliser le ''MD5 &amp; SHA-1 Checksum Utility'', vous ne serez en mesure d'utiliser que le code fourni par le fichier de contrôle '''-sha1''' pour vos ISO. Cet utilitaire ne prend pas en charge sha256.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+
+[[Category:Présentation]]</text>
+      <sha1>8jm5s8c74owyuqybziy07ezl05px75h</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3426</id>
+      <parentid>3109</parentid>
+      <timestamp>2012-12-28T19:18:12Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* See Also */</comment>
+      <text xml:space="preserve" bytes="4726">= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Avant de graver votre image ISO téléchargée (ou de l'utiliser comme un disque virtuel dans Virtualbox), il vous est fortement recommandé de vérifier d'abord qu'elle n'a pas été endommagée. Les conséquences de ne pas le faire - surtout si vous avez l'intention d'installer Manjaro comme système d'exploitation principal - devrait être évident (c'est-à-dire une image corrompue se traduira par une installation corrompue). 
+
+Pour ce faire, vous devez d'abord télécharger le fichier de contrôle approprié dans le dossier Sourceforge (même site Web que votre image ISO choisie). Le fichier de contrôle aura le même nom que l'image ISO et se termine soit par '''sha1.sum''', soit par '''sha256.sum'''. Par exemple, les fichiers de contrôle appropriés pour le fichier ''manjaro-xfce-0.8.1-x86_64.iso'' (64 bits version 0.8.1 Manjaro avec le bureau XFCE) seraient: 
+
+* manjaro-xfce-0.8.1-x86_64'''-sha1.sum''', et/ou 
+* manjaro-xfce-0.8.1-x86_64'''-sha256.sum'''
+
+
+== SHA1 et SHA256 ==
+
+La partie 'sha' du nom de fichier de contrôle est pour l'algorithme de hachage sécurisé. Cet algorithme est utilisé pour générer un code particulier unique à l'image ISO téléchargée. '''sha1''' et '''sha256''' sont les différentes versions de l'algorithme que vous pouvez utiliser pour ce faire. Alors que sha1 est la version la plus couramment utilisée, sha256 est une version plus récente et plus sûr. Utiliser l'un ou l'autre est entièrement de votre choix. '''Toutefois, si vous n'êtes pas sûr, alors il est recommandé d'utiliser sha256'''.
+
+Le fichier de contrôle lui-même est un simple document texte qui contient un code qui doit correspondre au code généré par l'algorithme sha1 ou sha256. Si les deux codes correspondent, c'est que le fichier ISO est bon. Dans le cas contraire - si les deux codes ne correspondent pas - cela signifie que le fichier ISO est d'une certaine façon corrompu.
+
+Ne vous inquiétez pas si tout cela vous semble un peu compliqué - c'est en fait très simple et facile à utiliser!
+
+
+= Vérification sous Linux =
+
+Pour vérifier l'intégrité de votre fichier téléchargé, il sera nécessaire d'abord d'ouvrir le fichier de contrôle téléchargé en utilisant un éditeur de texte tel que ''Gedit''. Selon que vous avez l'intention d'utiliser sha1 ou sha256, assurez-vous que vous avez téléchargé et ouvert le fichier de contrôle approprié (c'est-à-dire se terminant respectivement par sha1.sum ou sha256.sum) car ils contiennent différents codes. Une fois que le fichier de contrôle a été ouvert - et le code est visible - ouvrez votre terminal et allez dans le répertoire où se trouve votre ISO téléchargée. Par exemple, si votre fichier ISO est situé dans le dossier par défaut ''Téléchargements'', entrez la commande suivante:
+
+ cd Téléchargements
+
+
+La commande pour ensuite effectuer un contrôle utilise la syntaxe suivante:
+
+ [sha1sum ou sha256sum] [ISO Image]
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Par exemple, la commande suivante utilisera sha256 pour générer un code à partir de la 64 bits Manjaro XFCE 0.8.1 ISO. Le code généré peut alors être comparé au code fourni par le fichier de contrôle approprié sha256:
+
+ sha256sum  manjaro-xfce-0.8.1-x86_64.iso
+
+
+Comme illustré dans ce cas, les deux codes correspondent, ce qui confirme que le fichier ISO téléchargé est tout à fait bien. La commande suivante permet d'utiliser sha1 pour entreprendre exactement la même tâche:
+
+ sha1sum manjaro-xfce-0.8.1-x86_64.iso
+
+
+Si les deux codes correspondent, alors il est sûr de graver l'ISO en vue d'installation, ou de l'utiliser immédiatement dans VirtualBox. Dans le cas contraire, il sera nécessaire de supprimer l'image ISO et de la télécharger à nouveau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Vérification sous Windows =
+
+[[File: wincheck.jpg|thumb|left|375px]]
+
+
+Il sera nécessaire de télécharger et d'installer un utilitaire de contrôle. Plusieurs versions libres peuvent être trouvées sur le site '''[http://download.cnet.com/ Download.com website]'''. Un utilitaire de contrôle gratuit que vous pouvez considérer comme étant fiable est le '''[http://raylin.wordpress.com/2009/03/02/md5-sha-1-checksum-utility/ MD5 &amp; SHA-1 Checksum Utility]'''. 
+
+
+{{note|Si vous décidez d'utiliser le ''MD5 &amp; SHA-1 Checksum Utility'', vous ne serez en mesure d'utiliser que le code fourni par le fichier de contrôle '''-sha1''' pour vos ISO. Cet utilitaire ne prend pas en charge sha256.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>902i4ncfn824ydxfvvb851edkz0tj5j</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3544</id>
+      <parentid>3426</parentid>
+      <timestamp>2012-12-29T15:35:22Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4820">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Avant de graver votre image ISO téléchargée (ou de l'utiliser comme un disque virtuel dans Virtualbox), il vous est fortement recommandé de vérifier d'abord qu'elle n'a pas été endommagée. Les conséquences de ne pas le faire - surtout si vous avez l'intention d'installer Manjaro comme système d'exploitation principal - devrait être évident (c'est-à-dire une image corrompue se traduira par une installation corrompue). 
+
+Pour ce faire, vous devez d'abord télécharger le fichier de contrôle approprié dans le dossier Sourceforge (même site Web que votre image ISO choisie). Le fichier de contrôle aura le même nom que l'image ISO et se termine soit par '''sha1.sum''', soit par '''sha256.sum'''. Par exemple, les fichiers de contrôle appropriés pour le fichier ''manjaro-xfce-0.8.1-x86_64.iso'' (64 bits version 0.8.1 Manjaro avec le bureau XFCE) seraient: 
+
+* manjaro-xfce-0.8.1-x86_64'''-sha1.sum''', et/ou 
+* manjaro-xfce-0.8.1-x86_64'''-sha256.sum'''
+
+
+== SHA1 et SHA256 ==
+
+La partie 'sha' du nom de fichier de contrôle est pour l'algorithme de hachage sécurisé. Cet algorithme est utilisé pour générer un code particulier unique à l'image ISO téléchargée. '''sha1''' et '''sha256''' sont les différentes versions de l'algorithme que vous pouvez utiliser pour ce faire. Alors que sha1 est la version la plus couramment utilisée, sha256 est une version plus récente et plus sûr. Utiliser l'un ou l'autre est entièrement de votre choix. '''Toutefois, si vous n'êtes pas sûr, alors il est recommandé d'utiliser sha256'''.
+
+Le fichier de contrôle lui-même est un simple document texte qui contient un code qui doit correspondre au code généré par l'algorithme sha1 ou sha256. Si les deux codes correspondent, c'est que le fichier ISO est bon. Dans le cas contraire - si les deux codes ne correspondent pas - cela signifie que le fichier ISO est d'une certaine façon corrompu.
+
+Ne vous inquiétez pas si tout cela vous semble un peu compliqué - c'est en fait très simple et facile à utiliser!
+
+
+= Vérification sous Linux =
+
+Pour vérifier l'intégrité de votre fichier téléchargé, il sera nécessaire d'abord d'ouvrir le fichier de contrôle téléchargé en utilisant un éditeur de texte tel que ''Gedit''. Selon que vous avez l'intention d'utiliser sha1 ou sha256, assurez-vous que vous avez téléchargé et ouvert le fichier de contrôle approprié (c'est-à-dire se terminant respectivement par sha1.sum ou sha256.sum) car ils contiennent différents codes. Une fois que le fichier de contrôle a été ouvert - et le code est visible - ouvrez votre terminal et allez dans le répertoire où se trouve votre ISO téléchargée. Par exemple, si votre fichier ISO est situé dans le dossier par défaut ''Téléchargements'', entrez la commande suivante:
+
+ cd Téléchargements
+
+
+La commande pour ensuite effectuer un contrôle utilise la syntaxe suivante:
+
+ [sha1sum ou sha256sum] [ISO Image]
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Par exemple, la commande suivante utilisera sha256 pour générer un code à partir de la 64 bits Manjaro XFCE 0.8.1 ISO. Le code généré peut alors être comparé au code fourni par le fichier de contrôle approprié sha256:
+
+ sha256sum  manjaro-xfce-0.8.1-x86_64.iso
+
+
+Comme illustré dans ce cas, les deux codes correspondent, ce qui confirme que le fichier ISO téléchargé est tout à fait bien. La commande suivante permet d'utiliser sha1 pour entreprendre exactement la même tâche:
+
+ sha1sum manjaro-xfce-0.8.1-x86_64.iso
+
+
+Si les deux codes correspondent, alors il est sûr de graver l'ISO en vue d'installation, ou de l'utiliser immédiatement dans VirtualBox. Dans le cas contraire, il sera nécessaire de supprimer l'image ISO et de la télécharger à nouveau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Vérification sous Windows =
+
+[[File: wincheck.jpg|thumb|left|375px]]
+
+
+Il sera nécessaire de télécharger et d'installer un utilitaire de contrôle. Plusieurs versions libres peuvent être trouvées sur le site '''[http://download.cnet.com/ Download.com website]'''. Un utilitaire de contrôle gratuit que vous pouvez considérer comme étant fiable est le '''[http://raylin.wordpress.com/2009/03/02/md5-sha-1-checksum-utility/ MD5 &amp; SHA-1 Checksum Utility]'''. 
+
+
+{{note|Si vous décidez d'utiliser le ''MD5 &amp; SHA-1 Checksum Utility'', vous ne serez en mesure d'utiliser que le code fourni par le fichier de contrôle '''-sha1''' pour vos ISO. Cet utilitaire ne prend pas en charge sha256.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>23l4lyeek44ugmc33fl6enz7am7pbx3</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3569</id>
+      <parentid>3544</parentid>
+      <timestamp>2012-12-29T17:42:49Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4896">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+[[File:BigManjaroIcon.png|left|90px]]
+
+Avant de graver votre image ISO téléchargée (ou de l'utiliser comme un disque virtuel dans Virtualbox), il vous est fortement recommandé de vérifier d'abord qu'elle n'a pas été endommagée. Les conséquences de ne pas le faire - surtout si vous avez l'intention d'installer Manjaro comme système d'exploitation principal - devrait être évident (c'est-à-dire une image corrompue se traduira par une installation corrompue). 
+
+Pour ce faire, vous devez d'abord télécharger le fichier de contrôle approprié dans le dossier Sourceforge (même site Web que votre image ISO choisie). Le fichier de contrôle aura le même nom que l'image ISO et se termine soit par '''sha1.sum''', soit par '''sha256.sum'''. Par exemple, les fichiers de contrôle appropriés pour le fichier ''manjaro-xfce-0.8.1-x86_64.iso'' (64 bits version 0.8.1 Manjaro avec le bureau XFCE) seraient: 
+
+* manjaro-xfce-0.8.1-x86_64'''-sha1.sum''', et/ou 
+* manjaro-xfce-0.8.1-x86_64'''-sha256.sum'''
+
+
+== SHA1 et SHA256 ==
+
+La partie 'sha' du nom de fichier de contrôle est pour l'algorithme de hachage sécurisé. Cet algorithme est utilisé pour générer un code particulier unique à l'image ISO téléchargée. '''sha1''' et '''sha256''' sont les différentes versions de l'algorithme que vous pouvez utiliser pour ce faire. Alors que sha1 est la version la plus couramment utilisée, sha256 est une version plus récente et plus sûr. Utiliser l'un ou l'autre est entièrement de votre choix. '''Toutefois, si vous n'êtes pas sûr, alors il est recommandé d'utiliser sha256'''.
+
+Le fichier de contrôle lui-même est un simple document texte qui contient un code qui doit correspondre au code généré par l'algorithme sha1 ou sha256. Si les deux codes correspondent, c'est que le fichier ISO est bon. Dans le cas contraire - si les deux codes ne correspondent pas - cela signifie que le fichier ISO est d'une certaine façon corrompu.
+
+Ne vous inquiétez pas si tout cela vous semble un peu compliqué - c'est en fait très simple et facile à utiliser!
+
+
+= Vérification sous Linux =
+
+Pour vérifier l'intégrité de votre fichier téléchargé, il sera nécessaire d'abord d'ouvrir le fichier de contrôle téléchargé en utilisant un éditeur de texte tel que ''Gedit''. Selon que vous avez l'intention d'utiliser sha1 ou sha256, assurez-vous que vous avez téléchargé et ouvert le fichier de contrôle approprié (c'est-à-dire se terminant respectivement par sha1.sum ou sha256.sum) car ils contiennent différents codes. Une fois que le fichier de contrôle a été ouvert - et le code est visible - ouvrez votre terminal et allez dans le répertoire où se trouve votre ISO téléchargée. Par exemple, si votre fichier ISO est situé dans le dossier par défaut ''Téléchargements'', entrez la commande suivante:
+
+ cd Téléchargements
+
+
+La commande pour ensuite effectuer un contrôle utilise la syntaxe suivante:
+
+ [sha1sum ou sha256sum] [ISO Image]
+
+
+[[File: sha256.png|thumb|left|375px]]
+
+
+Par exemple, la commande suivante utilisera sha256 pour générer un code à partir de la 64 bits Manjaro XFCE 0.8.1 ISO. Le code généré peut alors être comparé au code fourni par le fichier de contrôle approprié sha256:
+
+ sha256sum  manjaro-xfce-0.8.1-x86_64.iso
+
+
+Comme illustré dans ce cas, les deux codes correspondent, ce qui confirme que le fichier ISO téléchargé est tout à fait bien. La commande suivante permet d'utiliser sha1 pour entreprendre exactement la même tâche:
+
+ sha1sum manjaro-xfce-0.8.1-x86_64.iso
+
+
+Si les deux codes correspondent, alors il est sûr de graver l'ISO en vue d'installation, ou de l'utiliser immédiatement dans VirtualBox. Dans le cas contraire, il sera nécessaire de supprimer l'image ISO et de la télécharger à nouveau.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Vérification sous Windows =
+
+[[File: wincheck.jpg|thumb|left|375px]]
+
+
+Il sera nécessaire de télécharger et d'installer un utilitaire de contrôle. Plusieurs versions libres peuvent être trouvées sur le site '''[http://download.cnet.com/ Download.com website]'''. Un utilitaire de contrôle gratuit que vous pouvez considérer comme étant fiable est le '''[http://raylin.wordpress.com/2009/03/02/md5-sha-1-checksum-utility/ MD5 &amp; SHA-1 Checksum Utility]'''. 
+
+
+{{note|Si vous décidez d'utiliser le ''MD5 &amp; SHA-1 Checksum Utility'', vous ne serez en mesure d'utiliser que le code fourni par le fichier de contrôle '''-sha1''' pour vos ISO. Cet utilitaire ne prend pas en charge sha256.}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= See Also =
+
+* '''[[Download Manjaro]]'''
+* '''[[Burn an ISO File]]'''
+* '''[[Installation Guides]]'''
+
+[[Check a Downloaded ISO Image For Errors|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>dv61nmcmm6onywkywopwyr2k2fdeq23</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

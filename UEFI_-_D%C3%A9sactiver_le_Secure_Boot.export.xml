@@ -1,0 +1,622 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>UEFI - Désactiver le Secure Boot</title>
+    <ns>0</ns>
+    <id>1300</id>
+    <revision>
+      <id>8394</id>
+      <timestamp>2013-12-25T17:11:33Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Résumé =  {{Attention|Secure Boot est encore en option pour le moment. Sauf si les utilisateurs se plaignent, alors il est ...&quot;</comment>
+      <text xml:space="preserve" bytes="5104">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Résumé =
+
+{{Attention|Secure Boot est encore en option pour le moment. Sauf si les utilisateurs se plaignent, alors il est possible qu'il devienne permanent à l'avenir.}}
+
+
+Une &quot;option&quot; particulièrement agressive mise en place par Microsoft - en collusion avec divers fabricants de matériel - dans le nouveau système UEFI est l'option '''Secure Boot'''. Cette &quot;option&quot; est activée par défaut. Il s'agit essentiellement de s'assurer que votre ordinateur ne démarre avec des systèmes d'exploitation qui n'ont pas été autorisés et par conséquent qui n'auraient pas la permission de Microsoft pour être utilisé par vous. Les concurrents doivent aussi payer pour cette autorisation.
+
+Heureusement, Secure Boot peut être désactivé pour vous permettre de choisir librement les systèmes d'exploitation que vous voudriez installer et exécuter sur votre propre ordinateur.
+
+
+= Étape 1: Accéder aux paramètres du BIOS =
+
+{{Astuce|Vous n'avez pas besoin de passer par le processus complexe et déroutant fourni par ''Windows 8'' pour accéder à votre BIOS ou UEFI. '''Vous pouvez également cliquer sur les images fournies ci-dessous pour les agrandir'''.}}
+
+
+Le système d'UEFI se repose sur le BIOS de votre ordinateur. En tant que tel, il est nécessaire d'entrer dans les paramètres du BIOS afin de désactiver l'option Secure Boot de l'UEFI à son tour. Ceci est réalisé en appuyant sur la touche de fonction appropriée (F) - '''habituellement &lt;F10&gt;''' - immédiatement après la mise  en route ou le redémarrage de votre système. &lt;F9&gt; permet généralement d'accéder au système UEFI lui-même.
+
+
+[[File: UEFI-1.jpg|thumb|left|375px]] 
+
+
+'''Si vous vous retrouvez accidentellement dans le menu UEFI''', vous pouvez voir un écran qui ressemble à ceci.
+
+
+Comme illustré ci-contre, il devrait cependant toujours être possible d'accéder aux paramètres du BIOS à partir d'ici, en appuyant sur la touche &lt;F10&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: UEFI-2.jpg|thumb|left|375px]] 
+
+
+'''En entrant dans les paramètres du BIOS''', vous devriez voir un écran qui ressemble à ceci.
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Etape 2: Accéder aux paramètres de démarrage (Boot Settings) =
+
+[[File: UEFI-3.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les paramètres du BIOS''', vous devriez être en mesure d'utiliser les touches fléchées &lt;droite&gt; et &lt;gauche&gt; pour naviguer dans les onglets du menu supérieur (en général ''Main'', ''Security'', ''System Configuration'' et ''Exit''). Vous pouvez alors utiliser les touches fléchées &lt;haut&gt; ou &lt;bas&gt; pour sélectionner et choisir les options prévues dans ces onglets.
+
+
+1. Naviguez en utilisant les touches fléchées &lt;gauche&gt; / &lt;droite&gt; pour l'onglet '''System Configuration'''.
+
+2. La section '''Boot Options''' devrait être maintenant visible. Sélectionnez-la en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+3. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Étape 3: Désactiver le Secure Boot =
+
+[[File: UEFI-4.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les options de démarrage''', l'option '''Secure Boot''' doit être visible.
+
+
+1. Mettez en surbrillance l'option '''Secure Boot''' en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+2. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+
+3. Comme illustré, un nouveau menu apparaîtra, où 'Disabled' ou 'Enabled' peut être sélectionné. Mettre en surbrillance '''Disabled''' en utilisant les touches fléchées / &lt;bas&gt; de &lt;haut&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-5.jpg|thumb|left|375px]]
+
+
+Comme illustré, Secure Boot a été désactivé. Maintenant appuyez sur la touche de fonction appropriée pour '''sauvegarder et quitter'''. Dans l'exemple, la touche &lt;F10&gt; doit être pressée.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-6.jpg|thumb|left|375px]]
+
+
+{{note|Vous serez probablement averti et invité à entrer un code affiché à l'écran après la sortie. Il n'est pas nécessaire d'être intimidé par cela.}}
+
+ 
+Un message de confirmation devrait apparaître vous demandant si vous souhaitez '''quitter en enregistrant les modifications''' (Exit Saving Changes).
+
+
+1. Sélectionnez '''Oui''' à l'aide des touches fléchées &lt;gauche&gt; / &lt;droite&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+
+2. Un écran noir doit apparaître, fournissant un avertissement et demandant qu'un code soit écrit pour confirmer votre choix. '''Il suffit de taper le code présenté et d'appuyer sur &lt;Entrée&gt; pour finir entièrement le processus'''.
+
+Votre ordinateur va maintenant commencer à démarrer, et vous serez en mesure d'installer n'importe quel système d'exploitation à partir de maintenant !
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+* '''[[BIOS_and_UEFI|BIOS and UEFI Section]]'''
+* '''[[UEFI - Enable Legacy Mode]]'''
+* '''[[Virtualbox|Enable your Computer to use Virtual Machines]]'''
+
+[[UEFI_-_Disable_Secure_Boot|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>kq68torq44092ec78rwjj5a3ok39luk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8395</id>
+      <parentid>8394</parentid>
+      <timestamp>2013-12-25T17:16:22Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5101">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Résumé =
+
+{{Attention|Secure Boot est encore en option pour le moment. Sauf si les utilisateurs se plaignent, alors il est possible qu'il devienne permanent à l'avenir.}}
+
+
+Une &quot;option&quot; particulièrement agressive mise en place par Microsoft - en collusion avec divers fabricants de matériel - dans le nouveau système UEFI est l'option '''Secure Boot'''. Cette &quot;option&quot; est activée par défaut. Il s'agit essentiellement de s'assurer que votre ordinateur ne démarre avec des systèmes d'exploitation qui n'ont pas été autorisés et par conséquent qui n'auraient pas la permission de Microsoft pour être utilisé par vous. Les concurrents doivent aussi payer pour cette autorisation.
+
+Heureusement, Secure Boot peut être désactivé pour vous permettre de choisir librement les systèmes d'exploitation que vous voudriez installer et exécuter sur votre propre ordinateur.
+
+
+= Étape 1: Accéder aux paramètres du BIOS =
+
+{{Astuce|Vous n'avez pas besoin de passer par le processus complexe et déroutant fourni par ''Windows 8'' pour accéder à votre BIOS ou UEFI. '''Vous pouvez également cliquer sur les images fournies ci-dessous pour les agrandir'''.}}
+
+
+Le système d'UEFI se repose sur le BIOS de votre ordinateur. En tant que tel, il est nécessaire d'entrer dans les paramètres du BIOS afin de désactiver l'option Secure Boot de l'UEFI à son tour. Ceci est réalisé en appuyant sur la touche de fonction appropriée (F) - '''habituellement &lt;F10&gt;''' - immédiatement après la mise  en route ou le redémarrage de votre système. &lt;F9&gt; permet généralement d'accéder au système UEFI lui-même.
+
+
+[[File: UEFI-1.jpg|thumb|left|375px]] 
+
+
+'''Si vous vous retrouvez accidentellement dans le menu UEFI''', vous pouvez voir un écran qui ressemble à ceci.
+
+
+Comme illustré ci-contre, il devrait cependant toujours être possible d'accéder aux paramètres du BIOS à partir d'ici, en appuyant sur la touche &lt;F10&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: UEFI-2.jpg|thumb|left|375px]] 
+
+
+'''En entrant dans les paramètres du BIOS''', vous devriez voir un écran qui ressemble à ceci.
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Etape 2: Accéder aux paramètres de démarrage (Boot Settings) =
+
+[[File: UEFI-3.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les paramètres du BIOS''', vous devriez être en mesure d'utiliser les touches fléchées &lt;droite&gt; et &lt;gauche&gt; pour naviguer dans les onglets du menu supérieur (en général ''Main'', ''Security'', ''System Configuration'' et ''Exit''). Vous pouvez alors utiliser les touches fléchées &lt;haut&gt; ou &lt;bas&gt; pour sélectionner et choisir les options prévues dans ces onglets.
+
+
+1. Naviguez en utilisant les touches fléchées &lt;gauche&gt; / &lt;droite&gt; pour l'onglet '''System Configuration'''.
+
+2. La section '''Boot Options''' devrait être maintenant visible. Sélectionnez-la en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+3. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Étape 3: Désactiver le Secure Boot =
+
+[[File: UEFI-4.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les options de démarrage''', l'option '''Secure Boot''' doit être visible.
+
+
+1. Mettez en surbrillance l'option '''Secure Boot''' en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+2. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+
+3. Comme illustré, un nouveau menu apparaîtra, où 'Disabled' ou 'Enabled' peut être sélectionné. Mettre en surbrillance '''Disabled''' en utilisant les touches fléchées / &lt;bas&gt; de &lt;haut&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-5.jpg|thumb|left|375px]]
+
+
+Comme illustré, Secure Boot a été désactivé. Maintenant appuyez sur la touche de fonction appropriée pour '''sauvegarder et quitter'''. Dans l'exemple, la touche &lt;F10&gt; doit être pressée.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-6.jpg|thumb|left|375px]]
+
+
+{{note|Vous serez probablement averti et invité à entrer un code affiché à l'écran après la sortie. Il n'est pas nécessaire d'être intimidé par cela.}}
+
+ 
+Un message de confirmation devrait apparaître vous demandant si vous souhaitez '''quitter en enregistrant les modifications''' (Exit Saving Changes).
+
+
+1. Sélectionnez '''Oui''' à l'aide des touches fléchées &lt;gauche&gt; / &lt;droite&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+
+2. Un écran noir doit apparaître, fournissant un avertissement et demandant qu'un code soit écrit pour confirmer votre choix. '''Il suffit de taper le code présenté et d'appuyer sur &lt;Entrée&gt; pour finir entièrement le processus'''.
+
+Votre ordinateur va maintenant commencer à démarrer, et vous serez en mesure d'installer n'importe quel système d'exploitation à partir de maintenant !
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+* '''[[BIOS_and_UEFI|BIOS and UEFI Section]]'''
+* '''[[UEFI - Enable Legacy Mode]]'''
+* '''[[Virtualbox|Virtualbox - Installation et Utilisation]]'''
+
+
+[[UEFI_-_Disable_Secure_Boot|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>qnur6ygmhknpgailsvoi1r9pd1sv14k</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8401</id>
+      <parentid>8395</parentid>
+      <timestamp>2013-12-25T17:36:16Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5100">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Résumé =
+
+{{Attention|Secure Boot est encore en option pour le moment. Sauf si les utilisateurs se plaignent, alors il est possible qu'il devienne permanent à l'avenir.}}
+
+
+Une &quot;option&quot; particulièrement agressive mise en place par Microsoft - en collusion avec divers fabricants de matériel - dans le nouveau système UEFI est l'option '''Secure Boot'''. Cette &quot;option&quot; est activée par défaut. Il s'agit essentiellement de s'assurer que votre ordinateur ne démarre avec des systèmes d'exploitation qui n'ont pas été autorisés et par conséquent qui n'auraient pas la permission de Microsoft pour être utilisé par vous. Les concurrents doivent aussi payer pour cette autorisation.
+
+Heureusement, Secure Boot peut être désactivé pour vous permettre de choisir librement les systèmes d'exploitation que vous voudriez installer et exécuter sur votre propre ordinateur.
+
+
+= Étape 1: Accéder aux paramètres du BIOS =
+
+{{Astuce|Vous n'avez pas besoin de passer par le processus complexe et déroutant fourni par ''Windows 8'' pour accéder à votre BIOS ou UEFI. '''Vous pouvez également cliquer sur les images fournies ci-dessous pour les agrandir'''.}}
+
+
+Le système d'UEFI se repose sur le BIOS de votre ordinateur. En tant que tel, il est nécessaire d'entrer dans les paramètres du BIOS afin de désactiver l'option Secure Boot de l'UEFI à son tour. Ceci est réalisé en appuyant sur la touche de fonction appropriée (F) - '''habituellement &lt;F10&gt;''' - immédiatement après la mise  en route ou le redémarrage de votre système. &lt;F9&gt; permet généralement d'accéder au système UEFI lui-même.
+
+
+[[File: UEFI-1.jpg|thumb|left|375px]] 
+
+
+'''Si vous vous retrouvez accidentellement dans le menu UEFI''', vous pouvez voir un écran qui ressemble à ceci.
+
+
+Comme illustré ci-contre, il devrait cependant toujours être possible d'accéder aux paramètres du BIOS à partir d'ici, en appuyant sur la touche &lt;F10&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: UEFI-2.jpg|thumb|left|375px]] 
+
+
+'''En entrant dans les paramètres du BIOS''', vous devriez voir un écran qui ressemble à ceci.
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Etape 2: Accéder aux paramètres de démarrage (Boot Settings) =
+
+[[File: UEFI-3.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les paramètres du BIOS''', vous devriez être en mesure d'utiliser les touches fléchées &lt;droite&gt; et &lt;gauche&gt; pour naviguer dans les onglets du menu supérieur (en général ''Main'', ''Security'', ''System Configuration'' et ''Exit''). Vous pouvez alors utiliser les touches fléchées &lt;haut&gt; ou &lt;bas&gt; pour sélectionner et choisir les options prévues dans ces onglets.
+
+
+1. Naviguez en utilisant les touches fléchées &lt;gauche&gt; / &lt;droite&gt; pour l'onglet '''System Configuration'''.
+
+2. La section '''Boot Options''' devrait être maintenant visible. Sélectionnez-la en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+3. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Étape 3: Désactiver le Secure Boot =
+
+[[File: UEFI-4.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les options de démarrage''', l'option '''Secure Boot''' doit être visible.
+
+
+1. Mettez en surbrillance l'option '''Secure Boot''' en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+2. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+
+3. Comme illustré, un nouveau menu apparaîtra, où 'Disabled' ou 'Enabled' peut être sélectionné. Mettre en surbrillance '''Disabled''' en utilisant les touches fléchées / &lt;bas&gt; de &lt;haut&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-5.jpg|thumb|left|375px]]
+
+
+Comme illustré, Secure Boot a été désactivé. Maintenant appuyez sur la touche de fonction appropriée pour '''sauvegarder et quitter'''. Dans l'exemple, la touche &lt;F10&gt; doit être pressée.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-6.jpg|thumb|left|375px]]
+
+
+{{note|Vous serez probablement averti et invité à entrer un code affiché à l'écran après la sortie. Il n'est pas nécessaire d'être intimidé par cela.}}
+
+ 
+Un message de confirmation devrait apparaître vous demandant si vous souhaitez '''quitter en enregistrant les modifications''' (Exit Saving Changes).
+
+
+1. Sélectionnez '''Oui''' à l'aide des touches fléchées &lt;gauche&gt; / &lt;droite&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+
+2. Un écran noir doit apparaître, fournissant un avertissement et demandant qu'un code soit écrit pour confirmer votre choix. '''Il suffit de taper le code présenté et d'appuyer sur &lt;Entrée&gt; pour finir entièrement le processus'''.
+
+Votre ordinateur va maintenant commencer à démarrer, et vous serez en mesure d'installer n'importe quel système d'exploitation à partir de maintenant !
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+* '''[[BIOS_and_UEFI|Section BIOS et UEFI]]'''
+* '''[[UEFI - Enable Legacy Mode]]'''
+* '''[[Virtualbox|Virtualbox - Installation et Utilisation]]'''
+
+
+[[UEFI_-_Disable_Secure_Boot|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>3jmv7ov1xdzxlg2810l74lljk3yjlgy</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8402</id>
+      <parentid>8401</parentid>
+      <timestamp>2013-12-25T17:37:24Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5099">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Résumé =
+
+{{Attention|Secure Boot est encore en option pour le moment. Sauf si les utilisateurs se plaignent, alors il est possible qu'il devienne permanent à l'avenir.}}
+
+
+Une &quot;option&quot; particulièrement agressive mise en place par Microsoft - en collusion avec divers fabricants de matériel - dans le nouveau système UEFI est l'option '''Secure Boot'''. Cette &quot;option&quot; est activée par défaut. Il s'agit essentiellement de s'assurer que votre ordinateur ne démarre avec des systèmes d'exploitation qui n'ont pas été autorisés et par conséquent qui n'auraient pas la permission de Microsoft pour être utilisé par vous. Les concurrents doivent aussi payer pour cette autorisation.
+
+Heureusement, Secure Boot peut être désactivé pour vous permettre de choisir librement les systèmes d'exploitation que vous voudriez installer et exécuter sur votre propre ordinateur.
+
+
+= Étape 1: Accéder aux paramètres du BIOS =
+
+{{Astuce|Vous n'avez pas besoin de passer par le processus complexe et déroutant fourni par ''Windows 8'' pour accéder à votre BIOS ou UEFI. '''Vous pouvez également cliquer sur les images fournies ci-dessous pour les agrandir'''.}}
+
+
+Le système d'UEFI se repose sur le BIOS de votre ordinateur. En tant que tel, il est nécessaire d'entrer dans les paramètres du BIOS afin de désactiver l'option Secure Boot de l'UEFI à son tour. Ceci est réalisé en appuyant sur la touche de fonction appropriée (F) - '''habituellement &lt;F10&gt;''' - immédiatement après la mise  en route ou le redémarrage de votre système. &lt;F9&gt; permet généralement d'accéder au système UEFI lui-même.
+
+
+[[File: UEFI-1.jpg|thumb|left|375px]] 
+
+
+'''Si vous vous retrouvez accidentellement dans le menu UEFI''', vous pouvez voir un écran qui ressemble à ceci.
+
+
+Comme illustré ci-contre, il devrait cependant toujours être possible d'accéder aux paramètres du BIOS à partir d'ici, en appuyant sur la touche &lt;F10&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: UEFI-2.jpg|thumb|left|375px]] 
+
+
+'''En entrant dans les paramètres du BIOS''', vous devriez voir un écran qui ressemble à ceci.
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Etape 2: Accéder aux paramètres de démarrage (Boot Settings) =
+
+[[File: UEFI-3.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les paramètres du BIOS''', vous devriez être en mesure d'utiliser les touches fléchées &lt;droite&gt; et &lt;gauche&gt; pour naviguer dans les onglets du menu supérieur (en général ''Main'', ''Security'', ''System Configuration'' et ''Exit''). Vous pouvez alors utiliser les touches fléchées &lt;haut&gt; ou &lt;bas&gt; pour sélectionner et choisir les options prévues dans ces onglets.
+
+
+1. Naviguez en utilisant les touches fléchées &lt;gauche&gt; / &lt;droite&gt; pour l'onglet '''System Configuration'''.
+
+2. La section '''Boot Options''' devrait être maintenant visible. Sélectionnez-la en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+3. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Étape 3: Désactiver le Secure Boot =
+
+[[File: UEFI-4.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les options de démarrage''', l'option '''Secure Boot''' doit être visible.
+
+
+1. Mettez en surbrillance l'option '''Secure Boot''' en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+2. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+
+3. Comme illustré, un nouveau menu apparaîtra, où 'Disabled' ou 'Enabled' peut être sélectionné. Mettre en surbrillance '''Disabled''' en utilisant les touches fléchées / &lt;bas&gt; de &lt;haut&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-5.jpg|thumb|left|375px]]
+
+
+Comme illustré, Secure Boot a été désactivé. Maintenant appuyez sur la touche de fonction appropriée pour '''sauvegarder et quitter'''. Dans l'exemple, la touche &lt;F10&gt; doit être pressée.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-6.jpg|thumb|left|375px]]
+
+
+{{note|Vous serez probablement averti et invité à entrer un code affiché à l'écran après la sortie. Il n'est pas nécessaire d'être intimidé par cela.}}
+
+ 
+Un message de confirmation devrait apparaître vous demandant si vous souhaitez '''quitter en enregistrant les modifications''' (Exit Saving Changes).
+
+
+1. Sélectionnez '''Oui''' à l'aide des touches fléchées &lt;gauche&gt; / &lt;droite&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+
+2. Un écran noir doit apparaître, fournissant un avertissement et demandant qu'un code soit écrit pour confirmer votre choix. '''Il suffit de taper le code présenté et d'appuyer sur &lt;Entrée&gt; pour finir entièrement le processus'''.
+
+Votre ordinateur va maintenant commencer à démarrer, et vous serez en mesure d'installer n'importe quel système d'exploitation à partir de maintenant !
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+* '''[[UEFI et BIOS|Section BIOS et UEFI]]'''
+* '''[[UEFI - Enable Legacy Mode]]'''
+* '''[[Virtualbox|Virtualbox - Installation et Utilisation]]'''
+
+
+[[UEFI_-_Disable_Secure_Boot|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>im7eu2tsvucr6nopefchgt6mhoab9v5</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8403</id>
+      <parentid>8402</parentid>
+      <timestamp>2013-12-25T17:38:53Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5105">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Résumé =
+
+{{Attention|Secure Boot est encore en option pour le moment. Sauf si les utilisateurs se plaignent, alors il est possible qu'il devienne permanent à l'avenir.}}
+
+
+Une &quot;option&quot; particulièrement agressive mise en place par Microsoft - en collusion avec divers fabricants de matériel - dans le nouveau système UEFI est l'option '''Secure Boot'''. Cette &quot;option&quot; est activée par défaut. Il s'agit essentiellement de s'assurer que votre ordinateur ne démarre avec des systèmes d'exploitation qui n'ont pas été autorisés et par conséquent qui n'auraient pas la permission de Microsoft pour être utilisé par vous. Les concurrents doivent aussi payer pour cette autorisation.
+
+Heureusement, Secure Boot peut être désactivé pour vous permettre de choisir librement les systèmes d'exploitation que vous voudriez installer et exécuter sur votre propre ordinateur.
+
+
+= Étape 1: Accéder aux paramètres du BIOS =
+
+{{Astuce|Vous n'avez pas besoin de passer par le processus complexe et déroutant fourni par ''Windows 8'' pour accéder à votre BIOS ou UEFI. '''Vous pouvez également cliquer sur les images fournies ci-dessous pour les agrandir'''.}}
+
+
+Le système d'UEFI se repose sur le BIOS de votre ordinateur. En tant que tel, il est nécessaire d'entrer dans les paramètres du BIOS afin de désactiver l'option Secure Boot de l'UEFI à son tour. Ceci est réalisé en appuyant sur la touche de fonction appropriée (F) - '''habituellement &lt;F10&gt;''' - immédiatement après la mise  en route ou le redémarrage de votre système. &lt;F9&gt; permet généralement d'accéder au système UEFI lui-même.
+
+
+[[File: UEFI-1.jpg|thumb|left|375px]] 
+
+
+'''Si vous vous retrouvez accidentellement dans le menu UEFI''', vous pouvez voir un écran qui ressemble à ceci.
+
+
+Comme illustré ci-contre, il devrait cependant toujours être possible d'accéder aux paramètres du BIOS à partir d'ici, en appuyant sur la touche &lt;F10&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: UEFI-2.jpg|thumb|left|375px]] 
+
+
+'''En entrant dans les paramètres du BIOS''', vous devriez voir un écran qui ressemble à ceci.
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Etape 2: Accéder aux paramètres de démarrage (Boot Settings) =
+
+[[File: UEFI-3.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les paramètres du BIOS''', vous devriez être en mesure d'utiliser les touches fléchées &lt;droite&gt; et &lt;gauche&gt; pour naviguer dans les onglets du menu supérieur (en général ''Main'', ''Security'', ''System Configuration'' et ''Exit''). Vous pouvez alors utiliser les touches fléchées &lt;haut&gt; ou &lt;bas&gt; pour sélectionner et choisir les options prévues dans ces onglets.
+
+
+1. Naviguez en utilisant les touches fléchées &lt;gauche&gt; / &lt;droite&gt; pour l'onglet '''System Configuration'''.
+
+2. La section '''Boot Options''' devrait être maintenant visible. Sélectionnez-la en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+3. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Étape 3: Désactiver le Secure Boot =
+
+[[File: UEFI-4.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les options de démarrage''', l'option '''Secure Boot''' doit être visible.
+
+
+1. Mettez en surbrillance l'option '''Secure Boot''' en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+2. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+
+3. Comme illustré, un nouveau menu apparaîtra, où 'Disabled' ou 'Enabled' peut être sélectionné. Mettre en surbrillance '''Disabled''' en utilisant les touches fléchées / &lt;bas&gt; de &lt;haut&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-5.jpg|thumb|left|375px]]
+
+
+Comme illustré, Secure Boot a été désactivé. Maintenant appuyez sur la touche de fonction appropriée pour '''sauvegarder et quitter'''. Dans l'exemple, la touche &lt;F10&gt; doit être pressée.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-6.jpg|thumb|left|375px]]
+
+
+{{note|Vous serez probablement averti et invité à entrer un code affiché à l'écran après la sortie. Il n'est pas nécessaire d'être intimidé par cela.}}
+
+ 
+Un message de confirmation devrait apparaître vous demandant si vous souhaitez '''quitter en enregistrant les modifications''' (Exit Saving Changes).
+
+
+1. Sélectionnez '''Oui''' à l'aide des touches fléchées &lt;gauche&gt; / &lt;droite&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+
+2. Un écran noir doit apparaître, fournissant un avertissement et demandant qu'un code soit écrit pour confirmer votre choix. '''Il suffit de taper le code présenté et d'appuyer sur &lt;Entrée&gt; pour finir entièrement le processus'''.
+
+Votre ordinateur va maintenant commencer à démarrer, et vous serez en mesure d'installer n'importe quel système d'exploitation à partir de maintenant !
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=Voir aussi=
+
+* '''[[UEFI et BIOS|Section BIOS et UEFI]]'''
+* '''[[UEFI - Permettre le mode Legacy]]'''
+* '''[[Virtualbox|Virtualbox - Installation et Utilisation]]'''
+
+
+[[UEFI_-_Disable_Secure_Boot|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>850m42f1yibizr9r7lugjvic856jyqy</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

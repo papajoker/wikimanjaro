@@ -1,0 +1,658 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Le gestionnaire de fichiers PCManFM ne fonctionne pas correctement</title>
+    <ns>0</ns>
+    <id>675</id>
+    <revision>
+      <id>4412</id>
+      <timestamp>2013-01-07T16:35:42Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =  Users that have installed the LXDE Flavour of Manjaro 0.8.2 - or downloaded this desktop environment from the repositories - have found that the default file man...&quot;</comment>
+      <text xml:space="preserve" bytes="5495">= Overview =
+
+Users that have installed the LXDE Flavour of Manjaro 0.8.2 - or downloaded this desktop environment from the repositories - have found that the default file manager provided, PCManFM, does not work properly. More specifically, this includes an inability to open folders as Root, in addition to being unable to see or access other partitions present on the hard-disk. However, both these issues can be fixed with relative ease by following the appropriate instructions provided below.
+
+
+= Unable to Open Folders as Root =
+
+Where attempting to open a folder as ''Root'', an error message may be displayed instead, stating: '''Failed to execute child process &quot;xdg-su&quot; (No such file or directory)'''. This indicates that an incorrect command has been listed in PCManFM to switch to the Root Account. The solution is therefore to simply replace the incorrect command with the correct one. Once PCManFM has been opened:
+
+
+'''1.''' Select '''Edit''' from the menu, then '''Preferences''', and finally '''Advanced'''
+
+
+'''2.''' In the '''Switch User Command''' field, replace the ''xdg-su %s'' command with
+
+ gksu %s
+
+
+'''3.''' Click the '''Close''' button.
+
+
+There will be no need to reboot your system, as the change will take place with immediate effect.
+
+
+= Partitions Not Being Displayed = 
+
+{{tip|Although the necessary software packages can be downloaded and installed from the pacman-gui, in this instance it is best to use the terminal. This is because the terminal will also be used to input some additional commands to complete the process.}}
+
+
+To enable PCManFM to display other partitions, it will be necessary to ensure that the appropriate software packages required have been installed. Furthermore, it will also be necessary to ensure that you have permission to access those partitions, once displayed. Again, this process requires the use of the terminal.
+
+
+The first step is to install the software packages required by PCManFM to display the partitions. To do so, enter the following command:
+
+ sudo pacman -S polkit-gnome gvfs gamin
+
+
+The second step is to create an '''autostart''' directory. This will be used to store and automatically start the '''authentication agent''' upon booting up and logging in, which will provide permission to access the displayed partitions. To create the ''autostart'' directory, enter the following command:
+
+ mkdir -p ~/.config/autostart
+
+
+The third - and final - step is to copy the '''authentication agent''' into the autostart directory. To do so, enter the following command:
+
+ cp /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop ~/.config/autostart
+
+
+Once complete, reboot your system for the changes to take effect.
+
+
+= Trash Operation not Supported (Openbox Only) =
+
+Users have found that attempting to access or use the ''Trash'' function results in an error message stating: '''Operation not supported.''' The solution is to start PCmanFM with the command:
+
+ dbus-launch pcmanfm
+
+
+Rather than just
+
+ pcmanfm
+
+
+As such, this issue can be resolved with relative ease by making a single amendment to the Openbox '''autostart''' file. The ''autostart'' file itself responsible for pre-loading any and all components of the desktop environment, including the panels, as well as other programs that run in the background, such as the ''Kalu'' upgrade notifier.
+
+
+== Open the Openbox Autostart File ==
+
+
+Using the terminal, the syntax of the command to open the auto start file is:
+
+ sudo [text editor] /etc/xdg/openbox/autostart
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/xdg/openbox/autostart
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/xdg/openbox/autostart
+
+
+== Enable PCManFM to use the Trash Function ==
+
+Once the Openbox ''autostart'' file has been opened, the following line must be added in order to use the ''Trash'' function in PCManFM:
+
+ dbus-launch pcmanfm -d &amp;
+
+
+Again, the ''dbus-launch'' part of the line is actually what enables PCManFM to work properly. The '''-d''' option in essence tells PCManFM to run in ''Daemon Mode'', meaning that it will quietly run in the background, rather than popping up on the screen every time you boot up. It also ensures that each and every time PCManFM is run, the ''Trash'' function will work. Without the '''-d''' option, the ''Trash'' function will only work the first time the File Manager opens. The command itself can be added anywhere at the bottom of the ''autostart'' file. As an example, the ''autostart'' file has been amended below to enable use of the ''Trash'' function. The amendment itself has been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # If you want to use XFCE config tools...
+ #
+ #xfce-mcs-manager &amp;
+ 
+ &lt;font color=&quot;green&quot;&gt;'''dbus-launch pcmanfm -d &amp;'''&lt;/font color&gt;
+
+
+Once the amendment has been completed, you can save your changes and close the ''autostart'' file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the change to take effect.
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>stovnoepou6sv3ouxj1rwii9qm0o3rr</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4413</id>
+      <parentid>4412</parentid>
+      <timestamp>2013-01-07T16:43:13Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="5595">= Vue d'ensemble =
+
+Les utilisateurs qui ont installé la variante LXDE de Manjaro 0.8.2 - ou téléchargé cet environnement de bureau depuis les dépôts - ont constaté que le gestionnaire de fichiers fourni par défaut, PCManFM, ne marche pas correctement. Plus précisément, il s'agit de l'impossibilité d'ouvrir des dossiers en tant que Root, ainsi que de l'impossibilité de voir ou d'accéder à d'autres partitions présentes sur le disque dur. Toutefois, ces deux problèmes peuvent être résolus avec une relative facilité en suivant les instructions appropriées fournies ci-dessous.
+
+= Unable to Open Folders as Root =
+
+Where attempting to open a folder as ''Root'', an error message may be displayed instead, stating: '''Failed to execute child process &quot;xdg-su&quot; (No such file or directory)'''. This indicates that an incorrect command has been listed in PCManFM to switch to the Root Account. The solution is therefore to simply replace the incorrect command with the correct one. Once PCManFM has been opened:
+
+
+'''1.''' Select '''Edit''' from the menu, then '''Preferences''', and finally '''Advanced'''
+
+
+'''2.''' In the '''Switch User Command''' field, replace the ''xdg-su %s'' command with
+
+ gksu %s
+
+
+'''3.''' Click the '''Close''' button.
+
+
+There will be no need to reboot your system, as the change will take place with immediate effect.
+
+
+= Partitions Not Being Displayed = 
+
+{{tip|Although the necessary software packages can be downloaded and installed from the pacman-gui, in this instance it is best to use the terminal. This is because the terminal will also be used to input some additional commands to complete the process.}}
+
+
+To enable PCManFM to display other partitions, it will be necessary to ensure that the appropriate software packages required have been installed. Furthermore, it will also be necessary to ensure that you have permission to access those partitions, once displayed. Again, this process requires the use of the terminal.
+
+
+The first step is to install the software packages required by PCManFM to display the partitions. To do so, enter the following command:
+
+ sudo pacman -S polkit-gnome gvfs gamin
+
+
+The second step is to create an '''autostart''' directory. This will be used to store and automatically start the '''authentication agent''' upon booting up and logging in, which will provide permission to access the displayed partitions. To create the ''autostart'' directory, enter the following command:
+
+ mkdir -p ~/.config/autostart
+
+
+The third - and final - step is to copy the '''authentication agent''' into the autostart directory. To do so, enter the following command:
+
+ cp /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop ~/.config/autostart
+
+
+Once complete, reboot your system for the changes to take effect.
+
+
+= Trash Operation not Supported (Openbox Only) =
+
+Users have found that attempting to access or use the ''Trash'' function results in an error message stating: '''Operation not supported.''' The solution is to start PCmanFM with the command:
+
+ dbus-launch pcmanfm
+
+
+Rather than just
+
+ pcmanfm
+
+
+As such, this issue can be resolved with relative ease by making a single amendment to the Openbox '''autostart''' file. The ''autostart'' file itself responsible for pre-loading any and all components of the desktop environment, including the panels, as well as other programs that run in the background, such as the ''Kalu'' upgrade notifier.
+
+
+== Open the Openbox Autostart File ==
+
+
+Using the terminal, the syntax of the command to open the auto start file is:
+
+ sudo [text editor] /etc/xdg/openbox/autostart
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/xdg/openbox/autostart
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/xdg/openbox/autostart
+
+
+== Enable PCManFM to use the Trash Function ==
+
+Once the Openbox ''autostart'' file has been opened, the following line must be added in order to use the ''Trash'' function in PCManFM:
+
+ dbus-launch pcmanfm -d &amp;
+
+
+Again, the ''dbus-launch'' part of the line is actually what enables PCManFM to work properly. The '''-d''' option in essence tells PCManFM to run in ''Daemon Mode'', meaning that it will quietly run in the background, rather than popping up on the screen every time you boot up. It also ensures that each and every time PCManFM is run, the ''Trash'' function will work. Without the '''-d''' option, the ''Trash'' function will only work the first time the File Manager opens. The command itself can be added anywhere at the bottom of the ''autostart'' file. As an example, the ''autostart'' file has been amended below to enable use of the ''Trash'' function. The amendment itself has been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # If you want to use XFCE config tools...
+ #
+ #xfce-mcs-manager &amp;
+ 
+ &lt;font color=&quot;green&quot;&gt;'''dbus-launch pcmanfm -d &amp;'''&lt;/font color&gt;
+
+
+Once the amendment has been completed, you can save your changes and close the ''autostart'' file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the change to take effect.
+
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>3xbz71rauj5duxggsgn5ciezk1t99rc</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4414</id>
+      <parentid>4413</parentid>
+      <timestamp>2013-01-07T16:44:20Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Enable PCManFM to use the Trash Function */</comment>
+      <text xml:space="preserve" bytes="5659">= Vue d'ensemble =
+
+Les utilisateurs qui ont installé la variante LXDE de Manjaro 0.8.2 - ou téléchargé cet environnement de bureau depuis les dépôts - ont constaté que le gestionnaire de fichiers fourni par défaut, PCManFM, ne marche pas correctement. Plus précisément, il s'agit de l'impossibilité d'ouvrir des dossiers en tant que Root, ainsi que de l'impossibilité de voir ou d'accéder à d'autres partitions présentes sur le disque dur. Toutefois, ces deux problèmes peuvent être résolus avec une relative facilité en suivant les instructions appropriées fournies ci-dessous.
+
+= Unable to Open Folders as Root =
+
+Where attempting to open a folder as ''Root'', an error message may be displayed instead, stating: '''Failed to execute child process &quot;xdg-su&quot; (No such file or directory)'''. This indicates that an incorrect command has been listed in PCManFM to switch to the Root Account. The solution is therefore to simply replace the incorrect command with the correct one. Once PCManFM has been opened:
+
+
+'''1.''' Select '''Edit''' from the menu, then '''Preferences''', and finally '''Advanced'''
+
+
+'''2.''' In the '''Switch User Command''' field, replace the ''xdg-su %s'' command with
+
+ gksu %s
+
+
+'''3.''' Click the '''Close''' button.
+
+
+There will be no need to reboot your system, as the change will take place with immediate effect.
+
+
+= Partitions Not Being Displayed = 
+
+{{tip|Although the necessary software packages can be downloaded and installed from the pacman-gui, in this instance it is best to use the terminal. This is because the terminal will also be used to input some additional commands to complete the process.}}
+
+
+To enable PCManFM to display other partitions, it will be necessary to ensure that the appropriate software packages required have been installed. Furthermore, it will also be necessary to ensure that you have permission to access those partitions, once displayed. Again, this process requires the use of the terminal.
+
+
+The first step is to install the software packages required by PCManFM to display the partitions. To do so, enter the following command:
+
+ sudo pacman -S polkit-gnome gvfs gamin
+
+
+The second step is to create an '''autostart''' directory. This will be used to store and automatically start the '''authentication agent''' upon booting up and logging in, which will provide permission to access the displayed partitions. To create the ''autostart'' directory, enter the following command:
+
+ mkdir -p ~/.config/autostart
+
+
+The third - and final - step is to copy the '''authentication agent''' into the autostart directory. To do so, enter the following command:
+
+ cp /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop ~/.config/autostart
+
+
+Once complete, reboot your system for the changes to take effect.
+
+
+= Trash Operation not Supported (Openbox Only) =
+
+Users have found that attempting to access or use the ''Trash'' function results in an error message stating: '''Operation not supported.''' The solution is to start PCmanFM with the command:
+
+ dbus-launch pcmanfm
+
+
+Rather than just
+
+ pcmanfm
+
+
+As such, this issue can be resolved with relative ease by making a single amendment to the Openbox '''autostart''' file. The ''autostart'' file itself responsible for pre-loading any and all components of the desktop environment, including the panels, as well as other programs that run in the background, such as the ''Kalu'' upgrade notifier.
+
+
+== Open the Openbox Autostart File ==
+
+
+Using the terminal, the syntax of the command to open the auto start file is:
+
+ sudo [text editor] /etc/xdg/openbox/autostart
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/xdg/openbox/autostart
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/xdg/openbox/autostart
+
+
+== Enable PCManFM to use the Trash Function ==
+
+Once the Openbox ''autostart'' file has been opened, the following line must be added in order to use the ''Trash'' function in PCManFM:
+
+ dbus-launch pcmanfm -d &amp;
+
+
+Again, the ''dbus-launch'' part of the line is actually what enables PCManFM to work properly. The '''-d''' option in essence tells PCManFM to run in ''Daemon Mode'', meaning that it will quietly run in the background, rather than popping up on the screen every time you boot up. It also ensures that each and every time PCManFM is run, the ''Trash'' function will work. Without the '''-d''' option, the ''Trash'' function will only work the first time the File Manager opens. The command itself can be added anywhere at the bottom of the ''autostart'' file. As an example, the ''autostart'' file has been amended below to enable use of the ''Trash'' function. The amendment itself has been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # If you want to use XFCE config tools...
+ #
+ #xfce-mcs-manager &amp;
+ 
+ &lt;font color=&quot;green&quot;&gt;'''dbus-launch pcmanfm -d &amp;'''&lt;/font color&gt;
+
+
+Once the amendment has been completed, you can save your changes and close the ''autostart'' file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the change to take effect.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>pxmu8lcbh6l76lq45xt3aqud9ccnujl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4415</id>
+      <parentid>4414</parentid>
+      <timestamp>2013-01-07T16:44:45Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="5707">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Les utilisateurs qui ont installé la variante LXDE de Manjaro 0.8.2 - ou téléchargé cet environnement de bureau depuis les dépôts - ont constaté que le gestionnaire de fichiers fourni par défaut, PCManFM, ne marche pas correctement. Plus précisément, il s'agit de l'impossibilité d'ouvrir des dossiers en tant que Root, ainsi que de l'impossibilité de voir ou d'accéder à d'autres partitions présentes sur le disque dur. Toutefois, ces deux problèmes peuvent être résolus avec une relative facilité en suivant les instructions appropriées fournies ci-dessous.
+
+= Unable to Open Folders as Root =
+
+Where attempting to open a folder as ''Root'', an error message may be displayed instead, stating: '''Failed to execute child process &quot;xdg-su&quot; (No such file or directory)'''. This indicates that an incorrect command has been listed in PCManFM to switch to the Root Account. The solution is therefore to simply replace the incorrect command with the correct one. Once PCManFM has been opened:
+
+
+'''1.''' Select '''Edit''' from the menu, then '''Preferences''', and finally '''Advanced'''
+
+
+'''2.''' In the '''Switch User Command''' field, replace the ''xdg-su %s'' command with
+
+ gksu %s
+
+
+'''3.''' Click the '''Close''' button.
+
+
+There will be no need to reboot your system, as the change will take place with immediate effect.
+
+
+= Partitions Not Being Displayed = 
+
+{{tip|Although the necessary software packages can be downloaded and installed from the pacman-gui, in this instance it is best to use the terminal. This is because the terminal will also be used to input some additional commands to complete the process.}}
+
+
+To enable PCManFM to display other partitions, it will be necessary to ensure that the appropriate software packages required have been installed. Furthermore, it will also be necessary to ensure that you have permission to access those partitions, once displayed. Again, this process requires the use of the terminal.
+
+
+The first step is to install the software packages required by PCManFM to display the partitions. To do so, enter the following command:
+
+ sudo pacman -S polkit-gnome gvfs gamin
+
+
+The second step is to create an '''autostart''' directory. This will be used to store and automatically start the '''authentication agent''' upon booting up and logging in, which will provide permission to access the displayed partitions. To create the ''autostart'' directory, enter the following command:
+
+ mkdir -p ~/.config/autostart
+
+
+The third - and final - step is to copy the '''authentication agent''' into the autostart directory. To do so, enter the following command:
+
+ cp /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop ~/.config/autostart
+
+
+Once complete, reboot your system for the changes to take effect.
+
+
+= Trash Operation not Supported (Openbox Only) =
+
+Users have found that attempting to access or use the ''Trash'' function results in an error message stating: '''Operation not supported.''' The solution is to start PCmanFM with the command:
+
+ dbus-launch pcmanfm
+
+
+Rather than just
+
+ pcmanfm
+
+
+As such, this issue can be resolved with relative ease by making a single amendment to the Openbox '''autostart''' file. The ''autostart'' file itself responsible for pre-loading any and all components of the desktop environment, including the panels, as well as other programs that run in the background, such as the ''Kalu'' upgrade notifier.
+
+
+== Open the Openbox Autostart File ==
+
+
+Using the terminal, the syntax of the command to open the auto start file is:
+
+ sudo [text editor] /etc/xdg/openbox/autostart
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/xdg/openbox/autostart
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/xdg/openbox/autostart
+
+
+== Enable PCManFM to use the Trash Function ==
+
+Once the Openbox ''autostart'' file has been opened, the following line must be added in order to use the ''Trash'' function in PCManFM:
+
+ dbus-launch pcmanfm -d &amp;
+
+
+Again, the ''dbus-launch'' part of the line is actually what enables PCManFM to work properly. The '''-d''' option in essence tells PCManFM to run in ''Daemon Mode'', meaning that it will quietly run in the background, rather than popping up on the screen every time you boot up. It also ensures that each and every time PCManFM is run, the ''Trash'' function will work. Without the '''-d''' option, the ''Trash'' function will only work the first time the File Manager opens. The command itself can be added anywhere at the bottom of the ''autostart'' file. As an example, the ''autostart'' file has been amended below to enable use of the ''Trash'' function. The amendment itself has been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # If you want to use XFCE config tools...
+ #
+ #xfce-mcs-manager &amp;
+ 
+ &lt;font color=&quot;green&quot;&gt;'''dbus-launch pcmanfm -d &amp;'''&lt;/font color&gt;
+
+
+Once the amendment has been completed, you can save your changes and close the ''autostart'' file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the change to take effect.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>7av8rgdqn8bvryputn9xq5azqp9t17i</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4416</id>
+      <parentid>4415</parentid>
+      <timestamp>2013-01-07T16:47:41Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Unable to Open Folders as Root */</comment>
+      <text xml:space="preserve" bytes="5757">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Les utilisateurs qui ont installé la variante LXDE de Manjaro 0.8.2 - ou téléchargé cet environnement de bureau depuis les dépôts - ont constaté que le gestionnaire de fichiers fourni par défaut, PCManFM, ne marche pas correctement. Plus précisément, il s'agit de l'impossibilité d'ouvrir des dossiers en tant que Root, ainsi que de l'impossibilité de voir ou d'accéder à d'autres partitions présentes sur le disque dur. Toutefois, ces deux problèmes peuvent être résolus avec une relative facilité en suivant les instructions appropriées fournies ci-dessous.
+
+= Impossibilité d'ouvrir des fichiers en tant que Root =
+
+Si vous essayez d'ouvrir un dossier que ''Root'',  un message d'erreur peut s'affiché à la place, indiquant :  '''Failed to execute child process &quot;xdg-su&quot; (No such file or directory)'''.  Ceci indique This indicates that an incorrect command has been listed in PCManFM to switch to the Root Account. The solution is therefore to simply replace the incorrect command with the correct one. Once PCManFM has been opened:
+
+
+'''1.''' Select '''Edit''' from the menu, then '''Preferences''', and finally '''Advanced'''
+
+
+'''2.''' In the '''Switch User Command''' field, replace the ''xdg-su %s'' command with
+
+ gksu %s
+
+
+'''3.''' Click the '''Close''' button.
+
+
+There will be no need to reboot your system, as the change will take place with immediate effect.
+
+= Partitions Not Being Displayed = 
+
+{{tip|Although the necessary software packages can be downloaded and installed from the pacman-gui, in this instance it is best to use the terminal. This is because the terminal will also be used to input some additional commands to complete the process.}}
+
+
+To enable PCManFM to display other partitions, it will be necessary to ensure that the appropriate software packages required have been installed. Furthermore, it will also be necessary to ensure that you have permission to access those partitions, once displayed. Again, this process requires the use of the terminal.
+
+
+The first step is to install the software packages required by PCManFM to display the partitions. To do so, enter the following command:
+
+ sudo pacman -S polkit-gnome gvfs gamin
+
+
+The second step is to create an '''autostart''' directory. This will be used to store and automatically start the '''authentication agent''' upon booting up and logging in, which will provide permission to access the displayed partitions. To create the ''autostart'' directory, enter the following command:
+
+ mkdir -p ~/.config/autostart
+
+
+The third - and final - step is to copy the '''authentication agent''' into the autostart directory. To do so, enter the following command:
+
+ cp /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop ~/.config/autostart
+
+
+Once complete, reboot your system for the changes to take effect.
+
+
+= Trash Operation not Supported (Openbox Only) =
+
+Users have found that attempting to access or use the ''Trash'' function results in an error message stating: '''Operation not supported.''' The solution is to start PCmanFM with the command:
+
+ dbus-launch pcmanfm
+
+
+Rather than just
+
+ pcmanfm
+
+
+As such, this issue can be resolved with relative ease by making a single amendment to the Openbox '''autostart''' file. The ''autostart'' file itself responsible for pre-loading any and all components of the desktop environment, including the panels, as well as other programs that run in the background, such as the ''Kalu'' upgrade notifier.
+
+
+== Open the Openbox Autostart File ==
+
+
+Using the terminal, the syntax of the command to open the auto start file is:
+
+ sudo [text editor] /etc/xdg/openbox/autostart
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/xdg/openbox/autostart
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, enter:
+
+ sudo gedit /etc/xdg/openbox/autostart
+
+
+== Enable PCManFM to use the Trash Function ==
+
+Once the Openbox ''autostart'' file has been opened, the following line must be added in order to use the ''Trash'' function in PCManFM:
+
+ dbus-launch pcmanfm -d &amp;
+
+
+Again, the ''dbus-launch'' part of the line is actually what enables PCManFM to work properly. The '''-d''' option in essence tells PCManFM to run in ''Daemon Mode'', meaning that it will quietly run in the background, rather than popping up on the screen every time you boot up. It also ensures that each and every time PCManFM is run, the ''Trash'' function will work. Without the '''-d''' option, the ''Trash'' function will only work the first time the File Manager opens. The command itself can be added anywhere at the bottom of the ''autostart'' file. As an example, the ''autostart'' file has been amended below to enable use of the ''Trash'' function. The amendment itself has been &lt;font color=&quot;green&quot;&gt;'''highlighted in green'''&lt;/font color&gt; for illustrative purposes:
+
+ # If you want to use XFCE config tools...
+ #
+ #xfce-mcs-manager &amp;
+ 
+ &lt;font color=&quot;green&quot;&gt;'''dbus-launch pcmanfm -d &amp;'''&lt;/font color&gt;
+
+
+Once the amendment has been completed, you can save your changes and close the ''autostart'' file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the change to take effect.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>nbxk7ja06zi89dcdb5ieiq8jbgdzl5p</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

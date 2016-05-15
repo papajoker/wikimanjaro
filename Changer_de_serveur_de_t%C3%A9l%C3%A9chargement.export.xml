@@ -1,0 +1,1208 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Changer de serveur de téléchargement</title>
+    <ns>0</ns>
+    <id>636</id>
+    <revision>
+      <id>3749</id>
+      <timestamp>2012-12-31T20:13:12Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =   {{tip| Those who installed Manjaro 0.8.0-1 will have had the fastest server automatically selected for them during the installation process, via the use of the ...&quot;</comment>
+      <text xml:space="preserve" bytes="11379">= Overview = 
+
+{{tip| Those who installed Manjaro 0.8.0-1 will have had the fastest server automatically selected for them during the installation process, via the use of the ''Rankmirrors'' command. Those who installed Manjaro 0.8.2 will have had the UK server selected by default.}}
+
+
+The official Manjaro repositories (also known as ''mirrors'') are hosted on ''Software Servers''. Physically located throughout the world, these servers are responsible for receiving requests for software packages via the terminal and/or pacman-gui, and consequently delivering them to your system. There are therefore three primary factors that will determine how fast your downloads are:
+
+* Your internet connection
+* The speed of the server itself, and
+* The proximity of the server to you (i.e. how close or how far away it is)
+
+
+Barring upgrading your internet package or switching providers, it is therefore potentially possible to improve the speed of downloads from the Manjaro repositories by selecting a different server to use. Servers are currently located in the following countries:
+
+* Brazil
+* France
+* Germany
+* Greece
+* United Kingdonm
+* United States
+
+
+Those who installed Manjaro 0.8.2 using the '''[[Installation_Guide_for_Beginners_0.8.2|Installation Guide for Beginners]]''' will have had the United Kingdom server set by default, irrespective of their actual country of residence. As such, users living in the United States may consequently achieve better results by switching to the U.S. server instead, for example. Two methods to switch servers are available. The first is to manually determine the server to use, as is provided in this guide. The second is to use the ''Rankmirrors'' command to automatically determine and set the fastest possible server on your behalf, provided in the '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]''' guide.
+
+
+{{note|The closest server may not always necessarily be the fastest!}}
+
+
+= Step 1: Changing Servers =
+
+{{note|The contents of the mirrorlist will look different depending on when and which version of Manjaro was installed. This is because prior to the release of 0.8.2, Rankmirrors was automatically used to select the fastest server. This feature was removed with the release of 0.8.2, resulting in a cleaner and simplier looking mirrorlist.}}
+
+
+This is undertaken by amending the '''mirrorlist''' file, which is used by Manjaro's package manager - '''[[pacman]]''' - to tell it the internet addresses of the Manjaro servers in order to download updates and software applications from them. 
+
+
+== Open the Mirrorlist ==
+
+{{tip|More than one server can be enabled. However, they will be selected in the order they are listed, and ''pacman'' will only select another server if there is a problem with the one before it.}}
+
+
+You will need to first open your terminal in order to edit the mirrorlist file. The syntax of the command to edit the mirrorlist is:
+
+ sudo [text editor] /etc/pacman.d/mirrorlist
+
+
+For example, if you wish to edit the file within the terminal using ''nano'' (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the mirrorlist file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+== Edit the Mirrorlist (Manjaro 0.8.2 and 0.8.3) ==
+
+'''Lines beginning with a hash '#' will be ignored by pacman'''. In the example below, only the UK server has had the hash removed, and as such, this is the only server that has been enabled for use:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ 
+ ## United States
+ # Server = http://mirror.dacentec.com/manjaro/$repo/$arch
+
+
+The United Kingdom Server can therefore be disabled by simply placing a hash at the beginning of the '''Server=''' line. Another Server can be enabled in turn by removing its hash at the beginning of the appropriate line. In the instance below, the United Kingdom server has been disabled, and the United States Sever has been enabled instead:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ ## United Kingdom
+ '''#''' Server = http://repo.manjaro.org.uk/$repo/$arch
+ 
+ '''## United States'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirror.dacentec.com/manjaro/$repo/$arch'''
+
+
+{{warning|Do not remove hashes from any lines that list the names of the server countries.}}
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+== Edit the Mirrorlist (Manjaro 0.8.0 and 0.8.1) ==
+
+{{tip|If you find the contents too confusing, then you may wish to consider replacing them with the example provided above for Manjaro 0.8.2. You may gain an additional server or two (i.e. Brazil and Germany) in the process. Otherwise, you could add these servers to your existing file; copying and pasting from the above example will work.}}
+
+
+Once opened, the mirrorlist file presented should look similar to this (text has been coloured for illustrative purposes):
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+
+
+'''Lines beginning with a hash '#' will be ignored by pacman.''' As such, the top part of the file is a table that lists the names of countries followed by their server internet addresses purely for your own information. Its purpose is to tell you - not pacman - which servers are available in what countries. The text coloured in &lt;font color=&quot;red&quot;&gt;red&lt;/font color&gt; at the end of each internet address is there to tell you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font color&gt; of the server. It is actually the bottom part of the file that is intended to be used by pacman to connect to the Manjaro servers. Notice that each of these lines does not have a hash, and begins with the command &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. They are also accessed in the order that they are listed.
+
+
+Any of the servers listed at the bottom of the file may therefore be disabled by placing a hash at the beginning of the appropriate line. The order they are used may also be changed by changing the order that they are listed in turn. '''If you wish to use any of the servers listed in the table above instead''':
+
+* start the server address line with the &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; command, and
+* remove the text that tells you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font&gt; of the server (e.g. '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;')
+
+
+In the following example, the servers at the bottom of the file have been disabled, and the United Kingdom Server has been enabled in the above table instead:
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ # Server = http://repo.manjaro.org.uk/$repo/$arch
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+= Step 2: Synchronising with the Newly Enabled Server(s) =
+
+Your Manjaro system has a database of all the software packages that are available from the official repositories. These are used by pacman to locate and download them for installation. Synchronising your database after changing servers will therefore ensure that it is up to date, and avoid any potential problems when subsequently downloading software packages.
+
+To synchronise your database with the Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -Syy
+
+
+Once the Mirrorlist has been amended and the database synchronised, the change will be immediate. There will be no need to reboot your system for the change to take effect.
+
+
+= See Also =
+
+* '''[[Pacman troubleshooting]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>11y70svngw73lwdpgpk93ijhn73w78u</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3750</id>
+      <parentid>3749</parentid>
+      <timestamp>2012-12-31T20:16:18Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="11481">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble = 
+
+{{tip| Those who installed Manjaro 0.8.0-1 will have had the fastest server automatically selected for them during the installation process, via the use of the ''Rankmirrors'' command. Those who installed Manjaro 0.8.2 will have had the UK server selected by default.}}
+
+
+The official Manjaro repositories (also known as ''mirrors'') are hosted on ''Software Servers''. Physically located throughout the world, these servers are responsible for receiving requests for software packages via the terminal and/or pacman-gui, and consequently delivering them to your system. There are therefore three primary factors that will determine how fast your downloads are:
+
+* Your internet connection
+* The speed of the server itself, and
+* The proximity of the server to you (i.e. how close or how far away it is)
+
+
+Barring upgrading your internet package or switching providers, it is therefore potentially possible to improve the speed of downloads from the Manjaro repositories by selecting a different server to use. Servers are currently located in the following countries:
+
+* Brazil
+* France
+* Germany
+* Greece
+* United Kingdonm
+* United States
+
+
+Those who installed Manjaro 0.8.2 using the '''[[Installation_Guide_for_Beginners_0.8.2|Installation Guide for Beginners]]''' will have had the United Kingdom server set by default, irrespective of their actual country of residence. As such, users living in the United States may consequently achieve better results by switching to the U.S. server instead, for example. Two methods to switch servers are available. The first is to manually determine the server to use, as is provided in this guide. The second is to use the ''Rankmirrors'' command to automatically determine and set the fastest possible server on your behalf, provided in the '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]''' guide.
+
+
+{{note|The closest server may not always necessarily be the fastest!}}
+
+
+= Step 1: Changing Servers =
+
+{{note|The contents of the mirrorlist will look different depending on when and which version of Manjaro was installed. This is because prior to the release of 0.8.2, Rankmirrors was automatically used to select the fastest server. This feature was removed with the release of 0.8.2, resulting in a cleaner and simplier looking mirrorlist.}}
+
+
+This is undertaken by amending the '''mirrorlist''' file, which is used by Manjaro's package manager - '''[[pacman]]''' - to tell it the internet addresses of the Manjaro servers in order to download updates and software applications from them. 
+
+
+== Open the Mirrorlist ==
+
+{{tip|More than one server can be enabled. However, they will be selected in the order they are listed, and ''pacman'' will only select another server if there is a problem with the one before it.}}
+
+
+You will need to first open your terminal in order to edit the mirrorlist file. The syntax of the command to edit the mirrorlist is:
+
+ sudo [text editor] /etc/pacman.d/mirrorlist
+
+
+For example, if you wish to edit the file within the terminal using ''nano'' (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the mirrorlist file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+== Edit the Mirrorlist (Manjaro 0.8.2 and 0.8.3) ==
+
+'''Lines beginning with a hash '#' will be ignored by pacman'''. In the example below, only the UK server has had the hash removed, and as such, this is the only server that has been enabled for use:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ 
+ ## United States
+ # Server = http://mirror.dacentec.com/manjaro/$repo/$arch
+
+
+The United Kingdom Server can therefore be disabled by simply placing a hash at the beginning of the '''Server=''' line. Another Server can be enabled in turn by removing its hash at the beginning of the appropriate line. In the instance below, the United Kingdom server has been disabled, and the United States Sever has been enabled instead:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ ## United Kingdom
+ '''#''' Server = http://repo.manjaro.org.uk/$repo/$arch
+ 
+ '''## United States'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirror.dacentec.com/manjaro/$repo/$arch'''
+
+
+{{warning|Do not remove hashes from any lines that list the names of the server countries.}}
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+== Edit the Mirrorlist (Manjaro 0.8.0 and 0.8.1) ==
+
+{{tip|If you find the contents too confusing, then you may wish to consider replacing them with the example provided above for Manjaro 0.8.2. You may gain an additional server or two (i.e. Brazil and Germany) in the process. Otherwise, you could add these servers to your existing file; copying and pasting from the above example will work.}}
+
+
+Once opened, the mirrorlist file presented should look similar to this (text has been coloured for illustrative purposes):
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+
+
+'''Lines beginning with a hash '#' will be ignored by pacman.''' As such, the top part of the file is a table that lists the names of countries followed by their server internet addresses purely for your own information. Its purpose is to tell you - not pacman - which servers are available in what countries. The text coloured in &lt;font color=&quot;red&quot;&gt;red&lt;/font color&gt; at the end of each internet address is there to tell you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font color&gt; of the server. It is actually the bottom part of the file that is intended to be used by pacman to connect to the Manjaro servers. Notice that each of these lines does not have a hash, and begins with the command &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. They are also accessed in the order that they are listed.
+
+
+Any of the servers listed at the bottom of the file may therefore be disabled by placing a hash at the beginning of the appropriate line. The order they are used may also be changed by changing the order that they are listed in turn. '''If you wish to use any of the servers listed in the table above instead''':
+
+* start the server address line with the &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; command, and
+* remove the text that tells you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font&gt; of the server (e.g. '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;')
+
+
+In the following example, the servers at the bottom of the file have been disabled, and the United Kingdom Server has been enabled in the above table instead:
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ # Server = http://repo.manjaro.org.uk/$repo/$arch
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+= Step 2: Synchronising with the Newly Enabled Server(s) =
+
+Your Manjaro system has a database of all the software packages that are available from the official repositories. These are used by pacman to locate and download them for installation. Synchronising your database after changing servers will therefore ensure that it is up to date, and avoid any potential problems when subsequently downloading software packages.
+
+To synchronise your database with the Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -Syy
+
+
+Once the Mirrorlist has been amended and the database synchronised, the change will be immediate. There will be no need to reboot your system for the change to take effect.
+
+
+= See Also =
+
+* '''[[Pacman troubleshooting]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>hergb2xnfop3pw07wl9wfb941ufxc6m</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3751</id>
+      <parentid>3750</parentid>
+      <timestamp>2012-12-31T20:17:11Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="11951">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble = 
+
+{{Astuce|Ceux qui ont installé la Manjaro 0.8.0-1 vont avoir les serveurs les plus rapides (parmi ceux disponibles à l'époque) sélectionnés automatiquement pour eux durant le processus d'installation, grâce à l'utilisation de la commande '''Rankmirrors'''. Ceux qui ont installé la Manjaro 0.8.2 vont avoir le miroir anglais sélectionné par défaut s'ils ont utilisé le '''[[Installation_Guide_for_Beginners_0.8.2|Guide d'Installation pour Débutants]]'''.}}
+
+{{tip| Those who installed Manjaro 0.8.0-1 will have had the fastest server automatically selected for them during the installation process, via the use of the ''Rankmirrors'' command. Those who installed Manjaro 0.8.2 will have had the UK server selected by default.}}
+
+
+The official Manjaro repositories (also known as ''mirrors'') are hosted on ''Software Servers''. Physically located throughout the world, these servers are responsible for receiving requests for software packages via the terminal and/or pacman-gui, and consequently delivering them to your system. There are therefore three primary factors that will determine how fast your downloads are:
+
+* Your internet connection
+* The speed of the server itself, and
+* The proximity of the server to you (i.e. how close or how far away it is)
+
+
+Barring upgrading your internet package or switching providers, it is therefore potentially possible to improve the speed of downloads from the Manjaro repositories by selecting a different server to use. Servers are currently located in the following countries:
+
+* Brazil
+* France
+* Germany
+* Greece
+* United Kingdonm
+* United States
+
+
+Those who installed Manjaro 0.8.2 using the '''[[Installation_Guide_for_Beginners_0.8.2|Installation Guide for Beginners]]''' will have had the United Kingdom server set by default, irrespective of their actual country of residence. As such, users living in the United States may consequently achieve better results by switching to the U.S. server instead, for example. Two methods to switch servers are available. The first is to manually determine the server to use, as is provided in this guide. The second is to use the ''Rankmirrors'' command to automatically determine and set the fastest possible server on your behalf, provided in the '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]''' guide.
+
+
+{{note|The closest server may not always necessarily be the fastest!}}
+
+= Step 1: Changing Servers =
+
+{{note|The contents of the mirrorlist will look different depending on when and which version of Manjaro was installed. This is because prior to the release of 0.8.2, Rankmirrors was automatically used to select the fastest server. This feature was removed with the release of 0.8.2, resulting in a cleaner and simplier looking mirrorlist.}}
+
+
+This is undertaken by amending the '''mirrorlist''' file, which is used by Manjaro's package manager - '''[[pacman]]''' - to tell it the internet addresses of the Manjaro servers in order to download updates and software applications from them. 
+
+
+== Open the Mirrorlist ==
+
+{{tip|More than one server can be enabled. However, they will be selected in the order they are listed, and ''pacman'' will only select another server if there is a problem with the one before it.}}
+
+
+You will need to first open your terminal in order to edit the mirrorlist file. The syntax of the command to edit the mirrorlist is:
+
+ sudo [text editor] /etc/pacman.d/mirrorlist
+
+
+For example, if you wish to edit the file within the terminal using ''nano'' (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the mirrorlist file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+== Edit the Mirrorlist (Manjaro 0.8.2 and 0.8.3) ==
+
+'''Lines beginning with a hash '#' will be ignored by pacman'''. In the example below, only the UK server has had the hash removed, and as such, this is the only server that has been enabled for use:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ 
+ ## United States
+ # Server = http://mirror.dacentec.com/manjaro/$repo/$arch
+
+
+The United Kingdom Server can therefore be disabled by simply placing a hash at the beginning of the '''Server=''' line. Another Server can be enabled in turn by removing its hash at the beginning of the appropriate line. In the instance below, the United Kingdom server has been disabled, and the United States Sever has been enabled instead:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ ## United Kingdom
+ '''#''' Server = http://repo.manjaro.org.uk/$repo/$arch
+ 
+ '''## United States'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirror.dacentec.com/manjaro/$repo/$arch'''
+
+
+{{warning|Do not remove hashes from any lines that list the names of the server countries.}}
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+== Edit the Mirrorlist (Manjaro 0.8.0 and 0.8.1) ==
+
+{{tip|If you find the contents too confusing, then you may wish to consider replacing them with the example provided above for Manjaro 0.8.2. You may gain an additional server or two (i.e. Brazil and Germany) in the process. Otherwise, you could add these servers to your existing file; copying and pasting from the above example will work.}}
+
+
+Once opened, the mirrorlist file presented should look similar to this (text has been coloured for illustrative purposes):
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+
+
+'''Lines beginning with a hash '#' will be ignored by pacman.''' As such, the top part of the file is a table that lists the names of countries followed by their server internet addresses purely for your own information. Its purpose is to tell you - not pacman - which servers are available in what countries. The text coloured in &lt;font color=&quot;red&quot;&gt;red&lt;/font color&gt; at the end of each internet address is there to tell you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font color&gt; of the server. It is actually the bottom part of the file that is intended to be used by pacman to connect to the Manjaro servers. Notice that each of these lines does not have a hash, and begins with the command &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. They are also accessed in the order that they are listed.
+
+
+Any of the servers listed at the bottom of the file may therefore be disabled by placing a hash at the beginning of the appropriate line. The order they are used may also be changed by changing the order that they are listed in turn. '''If you wish to use any of the servers listed in the table above instead''':
+
+* start the server address line with the &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; command, and
+* remove the text that tells you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font&gt; of the server (e.g. '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;')
+
+
+In the following example, the servers at the bottom of the file have been disabled, and the United Kingdom Server has been enabled in the above table instead:
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ # Server = http://repo.manjaro.org.uk/$repo/$arch
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+= Step 2: Synchronising with the Newly Enabled Server(s) =
+
+Your Manjaro system has a database of all the software packages that are available from the official repositories. These are used by pacman to locate and download them for installation. Synchronising your database after changing servers will therefore ensure that it is up to date, and avoid any potential problems when subsequently downloading software packages.
+
+To synchronise your database with the Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -Syy
+
+
+Once the Mirrorlist has been amended and the database synchronised, the change will be immediate. There will be no need to reboot your system for the change to take effect.
+
+
+= See Also =
+
+* '''[[Pacman troubleshooting]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>mdchxq8d3s8dneu6l9rbmpu05o4l1q0</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3752</id>
+      <parentid>3751</parentid>
+      <timestamp>2012-12-31T20:17:57Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="11680">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble = 
+
+{{Astuce|Ceux qui ont installé la Manjaro 0.8.0-1 vont avoir les serveurs les plus rapides (parmi ceux disponibles à l'époque) sélectionnés automatiquement pour eux durant le processus d'installation, grâce à l'utilisation de la commande '''Rankmirrors'''. Ceux qui ont installé la Manjaro 0.8.2 vont avoir le miroir anglais sélectionné par défaut s'ils ont utilisé le '''[[Installation_Guide_for_Beginners_0.8.2|Guide d'Installation pour Débutants]]'''.}}
+
+
+The official Manjaro repositories (also known as ''mirrors'') are hosted on ''Software Servers''. Physically located throughout the world, these servers are responsible for receiving requests for software packages via the terminal and/or pacman-gui, and consequently delivering them to your system. There are therefore three primary factors that will determine how fast your downloads are:
+
+* Your internet connection
+* The speed of the server itself, and
+* The proximity of the server to you (i.e. how close or how far away it is)
+
+
+Barring upgrading your internet package or switching providers, it is therefore potentially possible to improve the speed of downloads from the Manjaro repositories by selecting a different server to use. Servers are currently located in the following countries:
+
+* Brazil
+* France
+* Germany
+* Greece
+* United Kingdonm
+* United States
+
+
+Those who installed Manjaro 0.8.2 using the '''[[Installation_Guide_for_Beginners_0.8.2|Installation Guide for Beginners]]''' will have had the United Kingdom server set by default, irrespective of their actual country of residence. As such, users living in the United States may consequently achieve better results by switching to the U.S. server instead, for example. Two methods to switch servers are available. The first is to manually determine the server to use, as is provided in this guide. The second is to use the ''Rankmirrors'' command to automatically determine and set the fastest possible server on your behalf, provided in the '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]''' guide.
+
+
+{{note|The closest server may not always necessarily be the fastest!}}
+
+= Step 1: Changing Servers =
+
+{{note|The contents of the mirrorlist will look different depending on when and which version of Manjaro was installed. This is because prior to the release of 0.8.2, Rankmirrors was automatically used to select the fastest server. This feature was removed with the release of 0.8.2, resulting in a cleaner and simplier looking mirrorlist.}}
+
+
+This is undertaken by amending the '''mirrorlist''' file, which is used by Manjaro's package manager - '''[[pacman]]''' - to tell it the internet addresses of the Manjaro servers in order to download updates and software applications from them. 
+
+
+== Open the Mirrorlist ==
+
+{{tip|More than one server can be enabled. However, they will be selected in the order they are listed, and ''pacman'' will only select another server if there is a problem with the one before it.}}
+
+
+You will need to first open your terminal in order to edit the mirrorlist file. The syntax of the command to edit the mirrorlist is:
+
+ sudo [text editor] /etc/pacman.d/mirrorlist
+
+
+For example, if you wish to edit the file within the terminal using ''nano'' (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the mirrorlist file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+== Edit the Mirrorlist (Manjaro 0.8.2 and 0.8.3) ==
+
+'''Lines beginning with a hash '#' will be ignored by pacman'''. In the example below, only the UK server has had the hash removed, and as such, this is the only server that has been enabled for use:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ 
+ ## United States
+ # Server = http://mirror.dacentec.com/manjaro/$repo/$arch
+
+
+The United Kingdom Server can therefore be disabled by simply placing a hash at the beginning of the '''Server=''' line. Another Server can be enabled in turn by removing its hash at the beginning of the appropriate line. In the instance below, the United Kingdom server has been disabled, and the United States Sever has been enabled instead:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ ## United Kingdom
+ '''#''' Server = http://repo.manjaro.org.uk/$repo/$arch
+ 
+ '''## United States'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirror.dacentec.com/manjaro/$repo/$arch'''
+
+
+{{warning|Do not remove hashes from any lines that list the names of the server countries.}}
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+== Edit the Mirrorlist (Manjaro 0.8.0 and 0.8.1) ==
+
+{{tip|If you find the contents too confusing, then you may wish to consider replacing them with the example provided above for Manjaro 0.8.2. You may gain an additional server or two (i.e. Brazil and Germany) in the process. Otherwise, you could add these servers to your existing file; copying and pasting from the above example will work.}}
+
+
+Once opened, the mirrorlist file presented should look similar to this (text has been coloured for illustrative purposes):
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+
+
+'''Lines beginning with a hash '#' will be ignored by pacman.''' As such, the top part of the file is a table that lists the names of countries followed by their server internet addresses purely for your own information. Its purpose is to tell you - not pacman - which servers are available in what countries. The text coloured in &lt;font color=&quot;red&quot;&gt;red&lt;/font color&gt; at the end of each internet address is there to tell you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font color&gt; of the server. It is actually the bottom part of the file that is intended to be used by pacman to connect to the Manjaro servers. Notice that each of these lines does not have a hash, and begins with the command &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. They are also accessed in the order that they are listed.
+
+
+Any of the servers listed at the bottom of the file may therefore be disabled by placing a hash at the beginning of the appropriate line. The order they are used may also be changed by changing the order that they are listed in turn. '''If you wish to use any of the servers listed in the table above instead''':
+
+* start the server address line with the &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; command, and
+* remove the text that tells you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font&gt; of the server (e.g. '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;')
+
+
+In the following example, the servers at the bottom of the file have been disabled, and the United Kingdom Server has been enabled in the above table instead:
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ # Server = http://repo.manjaro.org.uk/$repo/$arch
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+= Step 2: Synchronising with the Newly Enabled Server(s) =
+
+Your Manjaro system has a database of all the software packages that are available from the official repositories. These are used by pacman to locate and download them for installation. Synchronising your database after changing servers will therefore ensure that it is up to date, and avoid any potential problems when subsequently downloading software packages.
+
+To synchronise your database with the Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -Syy
+
+
+Once the Mirrorlist has been amended and the database synchronised, the change will be immediate. There will be no need to reboot your system for the change to take effect.
+
+
+= See Also =
+
+* '''[[Pacman troubleshooting]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>e0yss12jpm4pjpf60gjgdkwhvqoyno1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3753</id>
+      <parentid>3752</parentid>
+      <timestamp>2012-12-31T20:19:02Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="13080">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble = 
+
+{{Astuce|Ceux qui ont installé la Manjaro 0.8.0-1 vont avoir les serveurs les plus rapides (parmi ceux disponibles à l'époque) sélectionnés automatiquement pour eux durant le processus d'installation, grâce à l'utilisation de la commande '''Rankmirrors'''. Ceux qui ont installé la Manjaro 0.8.2 vont avoir le miroir anglais sélectionné par défaut s'ils ont utilisé le '''[[Installation_Guide_for_Beginners_0.8.2|Guide d'Installation pour Débutants]]'''.}}
+
+Les dépôts officiels Manjaro (également connus sous le nom miroirs) sont hébergés sur des ''Serveurs Logiciels''. Physiquement situés dans le monde entier, ces serveurs sont chargés de recevoir les demandes de paquets logiciels via le terminal et / ou pacman-gui, et par conséquent de les livrer à votre système. Il y a donc trois principaux facteurs qui vont déterminer la vitesse de vos téléchargements:
+
+* Votre connexion internet ;
+* La vitesse du serveur lui-même ;
+* La proximité du serveur par rapport à vous (c.-à-d. à quel point il est proche ou éloigné).
+
+Sans pour autant mettre à niveau votre forfait internet ou changer de fournisseur, il est donc éventuellement possible d'améliorer la vitesse de téléchargement depuis les dépôts Manjaro en utilisant la commande '''rankmirrors'''. Celle-ci va automatiquement détecter les serveurs les plus rapides disponibles et par conséquent mettre à jour le fichier mirrorlist (liste des miroirs) avec eux. Le fichier mirrorlist est lui-même utilisé par le gestionnaire de paquets Manjaro - '''[[pacman]]''' - pour lui indiquer les adresses Internet des serveurs Manjaro depuis lequels télécharger les mises à jour et les applications logicielles. Alternativement, il est possible de déterminer manuellement le ou les serveurs à utiliser, en utilisant le guide '''[[Change to a Different Download Server]]'''.
+
+
+The official Manjaro repositories (also known as ''mirrors'') are hosted on ''Software Servers''. Physically located throughout the world, these servers are responsible for receiving requests for software packages via the terminal and/or pacman-gui, and consequently delivering them to your system. There are therefore three primary factors that will determine how fast your downloads are:
+
+* Your internet connection
+* The speed of the server itself, and
+* The proximity of the server to you (i.e. how close or how far away it is)
+
+
+Barring upgrading your internet package or switching providers, it is therefore potentially possible to improve the speed of downloads from the Manjaro repositories by selecting a different server to use. Servers are currently located in the following countries:
+
+* Brazil
+* France
+* Germany
+* Greece
+* United Kingdonm
+* United States
+
+
+Those who installed Manjaro 0.8.2 using the '''[[Installation_Guide_for_Beginners_0.8.2|Installation Guide for Beginners]]''' will have had the United Kingdom server set by default, irrespective of their actual country of residence. As such, users living in the United States may consequently achieve better results by switching to the U.S. server instead, for example. Two methods to switch servers are available. The first is to manually determine the server to use, as is provided in this guide. The second is to use the ''Rankmirrors'' command to automatically determine and set the fastest possible server on your behalf, provided in the '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]''' guide.
+
+
+{{note|The closest server may not always necessarily be the fastest!}}
+
+= Step 1: Changing Servers =
+
+{{note|The contents of the mirrorlist will look different depending on when and which version of Manjaro was installed. This is because prior to the release of 0.8.2, Rankmirrors was automatically used to select the fastest server. This feature was removed with the release of 0.8.2, resulting in a cleaner and simplier looking mirrorlist.}}
+
+
+This is undertaken by amending the '''mirrorlist''' file, which is used by Manjaro's package manager - '''[[pacman]]''' - to tell it the internet addresses of the Manjaro servers in order to download updates and software applications from them. 
+
+
+== Open the Mirrorlist ==
+
+{{tip|More than one server can be enabled. However, they will be selected in the order they are listed, and ''pacman'' will only select another server if there is a problem with the one before it.}}
+
+
+You will need to first open your terminal in order to edit the mirrorlist file. The syntax of the command to edit the mirrorlist is:
+
+ sudo [text editor] /etc/pacman.d/mirrorlist
+
+
+For example, if you wish to edit the file within the terminal using ''nano'' (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the mirrorlist file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+== Edit the Mirrorlist (Manjaro 0.8.2 and 0.8.3) ==
+
+'''Lines beginning with a hash '#' will be ignored by pacman'''. In the example below, only the UK server has had the hash removed, and as such, this is the only server that has been enabled for use:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ 
+ ## United States
+ # Server = http://mirror.dacentec.com/manjaro/$repo/$arch
+
+
+The United Kingdom Server can therefore be disabled by simply placing a hash at the beginning of the '''Server=''' line. Another Server can be enabled in turn by removing its hash at the beginning of the appropriate line. In the instance below, the United Kingdom server has been disabled, and the United States Sever has been enabled instead:
+
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-11-08
+ ##
+ 
+ ## Brasil
+ # Server = http://manjaro.fis.unb.br/$repo/$arch
+ 
+ ## France
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ 
+ ## Germany
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ 
+ ## Greece
+ # Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch
+ 
+ ## United Kingdom
+ '''#''' Server = http://repo.manjaro.org.uk/$repo/$arch
+ 
+ '''## United States'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirror.dacentec.com/manjaro/$repo/$arch'''
+
+
+{{warning|Do not remove hashes from any lines that list the names of the server countries.}}
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+== Edit the Mirrorlist (Manjaro 0.8.0 and 0.8.1) ==
+
+{{tip|If you find the contents too confusing, then you may wish to consider replacing them with the example provided above for Manjaro 0.8.2. You may gain an additional server or two (i.e. Brazil and Germany) in the process. Otherwise, you could add these servers to your existing file; copying and pasting from the above example will work.}}
+
+
+Once opened, the mirrorlist file presented should look similar to this (text has been coloured for illustrative purposes):
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ ## United Kingdom
+ # http://repo.manjaro.org.uk/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.518&lt;/font color&gt;
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://mirrors.mycraft.eu/manjaro/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://manjarolinux.polymorf.fr/$repo/$arch'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+
+
+'''Lines beginning with a hash '#' will be ignored by pacman.''' As such, the top part of the file is a table that lists the names of countries followed by their server internet addresses purely for your own information. Its purpose is to tell you - not pacman - which servers are available in what countries. The text coloured in &lt;font color=&quot;red&quot;&gt;red&lt;/font color&gt; at the end of each internet address is there to tell you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font color&gt; of the server. It is actually the bottom part of the file that is intended to be used by pacman to connect to the Manjaro servers. Notice that each of these lines does not have a hash, and begins with the command &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt;. They are also accessed in the order that they are listed.
+
+
+Any of the servers listed at the bottom of the file may therefore be disabled by placing a hash at the beginning of the appropriate line. The order they are used may also be changed by changing the order that they are listed in turn. '''If you wish to use any of the servers listed in the table above instead''':
+
+* start the server address line with the &lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; command, and
+* remove the text that tells you the &lt;font color=&quot;red&quot;&gt;download speed&lt;/font&gt; of the server (e.g. '&lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;')
+
+
+In the following example, the servers at the bottom of the file have been disabled, and the United Kingdom Server has been enabled in the above table instead:
+
+ # Server list generated by rankmirrors on 2012-10-07
+ ##
+ ## Manjaro Linux repository mirrorlist
+ ## Generated on 2012-09-11
+ ##
+ ## France
+ # http://manjarolinux.polymorf.fr/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.494&lt;/font color&gt;
+ ## Germany
+ # http://mirrors.mycraft.eu/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.367&lt;/font color&gt;
+ # http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.300&lt;/font color&gt;
+ ## Greece
+ # http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.769&lt;/font color&gt;
+ '''## United Kingdom'''
+ '''&lt;font color=&quot;green&quot;&gt;Server =&lt;/font color&gt; http://repo.manjaro.org.uk/$repo/$arch'''
+ ## United States
+ # http://mirror.dacentec.com/manjaro/$repo/$arch &lt;font color=&quot;red&quot;&gt;... 0.887&lt;/font color&gt;
+ # Server = http://ftp.halifax.rwth-aachen.de/manjaro/$repo/$arch
+ # Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ # Server = http://manjarolinux.polymorf.fr/$repo/$arch
+ # Server = http://repo.manjaro.org.uk/$repo/$arch
+
+
+Once you have disabled and/or enabled the desired server(s), save the changes and close the mirrorlist by:
+
+*'''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+*'''gedit''': Select the 'save' option and then close the window.
+
+
+'''All that is required now is to Synchronise with the newly enabled server(s)'''.
+
+
+= Step 2: Synchronising with the Newly Enabled Server(s) =
+
+Your Manjaro system has a database of all the software packages that are available from the official repositories. These are used by pacman to locate and download them for installation. Synchronising your database after changing servers will therefore ensure that it is up to date, and avoid any potential problems when subsequently downloading software packages.
+
+To synchronise your database with the Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -Syy
+
+
+Once the Mirrorlist has been amended and the database synchronised, the change will be immediate. There will be no need to reboot your system for the change to take effect.
+
+
+= See Also =
+
+* '''[[Pacman troubleshooting]]'''
+* '''[[Rankmirrors to Set the Fastest Download Server|Use Rankmirrors to Set the Fastest Download Server]]'''
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>igqo07d5jll9x8q3jbz823c1iedkc9p</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

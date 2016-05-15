@@ -1,0 +1,318 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Activation de l'hibernation</title>
+    <ns>0</ns>
+    <id>989</id>
+    <revision>
+      <id>6390</id>
+      <timestamp>2013-07-18T22:18:51Z</timestamp>
+      <contributor>
+        <username>N1c0la5</username>
+        <id>109</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Vue d'ensemble =  {{note|Il faut avoir une partition Swap d'une taille au moins égale à celle de la RAM.}}  = Prérequis = ...&quot;</comment>
+      <text xml:space="preserve" bytes="1549">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Il faut avoir une partition Swap d'une taille au moins égale à celle de la RAM.}}
+
+= Prérequis =
+
+Vérifier le fichier ''/etc/default/grub'' dans lequel doit se trouver la ligne
+
+ GRUB_CMDLINE_LINUX=&quot;resume=UUID=xxxxx-xxxx-xxxxxx-xxxxxx&quot;
+
+
+Si elle n'existe pas l'ajouter en mettant le bon numéro UUID correspondant à la partition du swap. Pour connaître le numéro UUId de votre partition de swap, 
+ #sudo blkid 
+et regarder la ligne contenant:
+ /dev/sdXY: LABEL=&quot;swap&quot; UUID=&quot;xxxxx-xxxx-xxxxxx-xxxxxx&quot; TYPE=&quot;swap&quot;
+
+Mettre à jour Grub par la commande
+ #sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+= Activer les fonctions d'hibernation =
+
+Pour activer la fonction d'hibernation, il faut éditer le fichier ''/etc/mkinitcpio.conf'' et ajouter le paramètre '''resume''' à Hooks.
+
+{{note|Attention '''resume''' doit se trouver ''après'' '''blocks et/ou lvm2''' et ''avant'' '''filesystems'''}}
+
+Exenple de ligne Hooks
+
+ HOOKS=&quot;base udev autodetect modconf block resume filesystems keyboard fsck&quot;
+
+Après ça, il suffit de reconstruire le fichier initcpio:
+
+Si vous avez un seul noyau cette ligne suffira:
+
+ #sudo mkinitcpio -p linux
+
+Si vous avez plusieurs noyaux il vous faudra préciser son numéro, par exemple:
+
+ #sudo mkinitcpio -p linux39
+Tous les logiciels nécessaires à l'hibernation sont déjà pré-installés dans les versions complètes depuis Manjaro 0.8.4. 
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>2uyswj90qmupjzx36vbj0f6scq4h03f</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6391</id>
+      <parentid>6390</parentid>
+      <timestamp>2013-07-18T22:19:45Z</timestamp>
+      <contributor>
+        <username>N1c0la5</username>
+        <id>109</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1421">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Il faut avoir une partition Swap d'une taille au moins égale à celle de la RAM.}}
+
+= Prérequis =
+
+Vérifier le fichier ''/etc/default/grub'' dans lequel doit se trouver la ligne
+
+ GRUB_CMDLINE_LINUX=&quot;resume=UUID=xxxxx-xxxx-xxxxxx-xxxxxx&quot;
+
+
+Si elle n'existe pas l'ajouter en mettant le bon numéro UUID correspondant à la partition du swap. Pour connaître le numéro UUId de votre partition de swap, 
+ #sudo blkid 
+et regarder la ligne contenant:
+ /dev/sdXY: LABEL=&quot;swap&quot; UUID=&quot;xxxxx-xxxx-xxxxxx-xxxxxx&quot; TYPE=&quot;swap&quot;
+
+Mettre à jour Grub par la commande
+ #sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+= Activer les fonctions d'hibernation =
+
+Pour activer la fonction d'hibernation, il faut éditer le fichier ''/etc/mkinitcpio.conf'' et ajouter le paramètre '''resume''' à Hooks.
+
+{{note|Attention '''resume''' doit se trouver ''après'' '''blocks et/ou lvm2''' et ''avant'' '''filesystems'''}}
+
+Exenple de ligne Hooks
+
+ HOOKS=&quot;base udev autodetect modconf block resume filesystems keyboard fsck&quot;
+
+Après ça, il suffit de reconstruire le fichier initcpio:
+
+Si vous avez un seul noyau cette ligne suffira:
+
+ #sudo mkinitcpio -p linux
+
+Si vous avez plusieurs noyaux il vous faudra préciser son numéro, par exemple:
+
+ #sudo mkinitcpio -p linux39
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>3hhsvsfgq9l6yu4wa19n7ia6xa5imlm</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6392</id>
+      <parentid>6391</parentid>
+      <timestamp>2013-07-18T22:20:14Z</timestamp>
+      <contributor>
+        <username>N1c0la5</username>
+        <id>109</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1419">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Il faut avoir une partition Swap d'une taille au moins égale à celle de la RAM.}}
+
+= Prérequis =
+
+Vérifier le fichier ''/etc/default/grub'' dans lequel doit se trouver la ligne
+
+ GRUB_CMDLINE_LINUX=&quot;resume=UUID=xxxxx-xxxx-xxxxxx-xxxxxx&quot;
+
+
+Si elle n'existe pas l'ajouter en mettant le bon numéro UUID correspondant à la partition du swap. Pour connaître le numéro UUId de votre partition de swap, 
+ #sudo blkid 
+et regarder la ligne contenant:
+ /dev/sdXY: LABEL=&quot;swap&quot; UUID=&quot;xxxxx-xxxx-xxxxxx-xxxxxx&quot; TYPE=&quot;swap&quot;
+
+Mettre à jour Grub par la commande
+ #sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+= Activer la fonction d'hibernation =
+
+Pour activer la fonction d'hibernation, il faut éditer le fichier ''/etc/mkinitcpio.conf'' et ajouter le paramètre '''resume''' à Hooks.
+
+{{note|Attention '''resume''' doit se trouver ''après'' '''blocks et/ou lvm2''' et ''avant'' '''filesystems'''}}
+
+Exenple de ligne Hooks
+
+ HOOKS=&quot;base udev autodetect modconf block resume filesystems keyboard fsck&quot;
+
+Après ça, il suffit de reconstruire le fichier initcpio:
+
+Si vous avez un seul noyau cette ligne suffira:
+
+ #sudo mkinitcpio -p linux
+
+Si vous avez plusieurs noyaux il vous faudra préciser son numéro, par exemple:
+
+ #sudo mkinitcpio -p linux39
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>3dwgz224pa1h1nsr7jhbxq9l2nwi9av</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6393</id>
+      <parentid>6392</parentid>
+      <timestamp>2013-07-18T22:27:04Z</timestamp>
+      <contributor>
+        <username>N1c0la5</username>
+        <id>109</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1484">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Il faut avoir une partition Swap d'une taille au moins égale à celle de la RAM.}}
+
+= Prérequis =
+
+Vérifier le fichier ''/etc/default/grub'' dans lequel doit se trouver la ligne
+
+ GRUB_CMDLINE_LINUX=&quot;resume=UUID=xxxxx-xxxx-xxxxxx-xxxxxx&quot;
+
+
+Si elle n'existe pas l'ajouter en mettant le bon numéro UUID correspondant à la partition du swap. Pour connaître le numéro UUId de votre partition de swap, 
+ #sudo blkid 
+et regarder la ligne contenant:
+ /dev/sdXY: LABEL=&quot;swap&quot; UUID=&quot;xxxxx-xxxx-xxxxxx-xxxxxx&quot; TYPE=&quot;swap&quot;
+
+Mettre à jour Grub par la commande
+ #sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+= Activer la fonction d'hibernation =
+
+Pour activer la fonction d'hibernation, il faut éditer le fichier ''/etc/mkinitcpio.conf'' et ajouter le paramètre '''resume''' à Hooks.
+
+{{note|Attention '''resume''' doit se trouver ''après'' '''blocks et/ou lvm2''' et ''avant'' '''filesystems'''}}
+
+Exenple de ligne Hooks
+
+ HOOKS=&quot;base udev autodetect modconf block resume filesystems keyboard fsck&quot;
+
+Après ça, il suffit de reconstruire le fichier initcpio:
+
+Si vous avez un seul noyau cette ligne suffira:
+
+ #sudo mkinitcpio -p linux
+
+Si vous avez plusieurs noyaux il vous faudra préciser son numéro, par exemple:
+
+ #sudo mkinitcpio -p linux39
+
+Vous devriez pouvoir dès maintenant profiter de l'hibernation.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>3saetommybsfbsoj9g2v2sysg8z9ggs</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6398</id>
+      <parentid>6393</parentid>
+      <timestamp>2013-07-19T11:54:27Z</timestamp>
+      <contributor>
+        <username>N1c0la5</username>
+        <id>109</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1506">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note|Il faut avoir une partition Swap d'une taille au moins égale à celle de la RAM.}}
+
+= Prérequis =
+
+Vérifier le fichier ''/etc/default/grub'' dans lequel doit se trouver la ligne
+
+ GRUB_CMDLINE_LINUX=&quot;resume=UUID=xxxxx-xxxx-xxxxxx-xxxxxx&quot;
+
+
+Si elle n'existe pas l'ajouter en mettant le bon numéro UUID correspondant à la partition du swap. Pour connaître le numéro UUId de votre partition de swap, 
+ #sudo blkid 
+et regarder la ligne contenant:
+ /dev/sdXY: LABEL=&quot;swap&quot; UUID=&quot;xxxxx-xxxx-xxxxxx-xxxxxx&quot; TYPE=&quot;swap&quot;
+
+Mettre à jour Grub par la commande
+ #sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+= Activer la fonction d'hibernation =
+
+Pour activer la fonction d'hibernation, il faut éditer le fichier ''/etc/mkinitcpio.conf'' et ajouter le paramètre '''resume''' à Hooks.
+
+{{note|Attention '''resume''' doit se trouver ''après'' '''blocks et/ou lvm2''' et ''avant'' '''filesystems'''}}
+
+Exenple de ligne Hooks
+
+ HOOKS=&quot;base udev autodetect modconf block resume filesystems keyboard fsck&quot;
+
+Après ça, il suffit de reconstruire le fichier initcpio:
+
+Si vous avez un seul noyau cette ligne suffira:
+
+ #sudo mkinitcpio -p linux
+
+Si vous avez plusieurs noyaux il vous faudra préciser son numéro, par exemple:
+
+ #sudo mkinitcpio -p linux39
+
+Vous devriez pouvoir dès maintenant profiter de l'hibernation.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]
+[[Category:Système]]</text>
+      <sha1>oht4tbatzlldovu31k25uarxtl9f8za</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

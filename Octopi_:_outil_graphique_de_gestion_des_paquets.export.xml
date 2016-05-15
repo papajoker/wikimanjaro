@@ -1,0 +1,940 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Octopi : outil graphique de gestion des paquets</title>
+    <ns>0</ns>
+    <id>992</id>
+    <revision>
+      <id>6494</id>
+      <timestamp>2013-07-22T14:36:23Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  =A Propos d'Octopi=  Octopi est un puissant outil graphique de gestion des paquets Linux pour Arch et Manjaro. Il a une interfa...&quot;</comment>
+      <text xml:space="preserve" bytes="8287">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=A Propos d'Octopi=
+
+Octopi est un puissant outil graphique de gestion des paquets Linux pour Arch et Manjaro.
+Il a une interface simple et intuitive, décomposée en 2 panneaux :
+• Une liste des paquets disponibles
+• A panneau à 6 onglets : Informations, Fichiers, Op&quot;rations, Sortie, Actualités et un Guide d'aide 
+
+Les fonctionnalités principales :
+• FAIBLE consommation de ressources (y compris la mémoire)
+• RAPIDE
+• Supporte les environnements  de bureau KDE 3.x, KDE 4.x, XFCE, LXDE, MATE et Trinity
+• Synchronisé avec la base dCtrl+L pour trouver un paquet dans la listee donnée de Pacman
+• Support de AUR
+• Upgrade Système Pacman
+• Nettoie le cache Pacman
+• Installe/Ré-installe/Met à jour/Supprime les paquets sélectionnés - visualisation de la sortie des commandes dans un terminal sur demande (important dans le cas de mises à jour à problème, on retrouve l'interactivité de pacman)
+• Visualise le contenu des paquets installés (y compris l'ouverture et l'édition de ces fichiers)
+• Visualise la description des paquets dans une bulle d'info, il suffit de positionner la souris sur les noms des paquets
+• supporte la double mise à jour (paquets à mettre à jour en premier)
+• notifieur de mise à jour lancé par la session depuis la version 0.2.0
+
+Licence [http://www.gnu.org/licenses/gpl-2.0.html GPL2], écrit en Qt4 C++ et compatible avec les distributions basées sur ArchLinux qui utilisent pacman pour la gestion des paquets.
+
+
+=Un peu de culture, pourquoi le nom Octopi ?=
+
+Perdu, rien à voir avec le célèbre film de James Bond : Octopussy
+
+Le projet porte ce nom en hommage au célèbre jeu d'arcade Pac-Man. Comme indiqué dans Wikipedia : &quot;[https://en.wikipedia.org/wiki/Pac-man#Enemies les ennemis] de Pac-Man sont appelés diversement « fantômes », « gobelins », « pieuvres (Octopus) » et « monstres ».
+Octopi fait donc référence à  la fameuse pieuvre du célèbre jeu Pac-Man.
+
+==Son créateur :==
+
+Alexandre Albuquerque Arnt, un brésilien des états du sud, fan de Linux et de Manjaro. Il est également le créateur de [http://qtgzmanager.wordpress.com/ QTgzManager] (pour Slackware).
+
+=Installation :=
+
+Version des dépôts officiels : 
+ sudo pacman -S octopi
+
+=Utilisation :=
+
+Tout d'abord synchroniser les dépôts '''(CTRL+D)''' ou '''fichier -&gt; Synchroniser '''ou cliquer sur le symbole en haut à gauche.
+
+==Recherche d'un paquet :==
+
+Par défaut seuls les paquets des dépôts officiels sont visibles. Pour les paquets AUR à installer avec yaourt voir plus bas.
+Cliquer dans la barre de recherche ou '''CTRL+L''' , et taper le nom d'un paquet ou une partie du nom, Durant la frappe, Octopi propose la liste des paquets dont le nom correspond au texte.
+
+Une fonctionnalité très puissante d'octopi, la recherche avec la description du paquet : '''Recherche -&gt; Par Description'''
+
+Par exemple chercher les paquets en relation avec ''bluetooth''.
+
+
+La liste des paquets est par défaut celle des paquets installés et non installés.
+Pour voir  seulement la liste des paquets installés : '''Affichage -&gt;''' décocher '''Pas Installés''' ou '''CTRL+N''' et inversement.
+
+Il est toujours possible de cliquer sur le nom d'un paquet pour avoir plus d'informations dans les onglets du panneau inférieur (voir les détails ci-après).
+
+Astuce : un double clic sur un paquet affiche l'onglet d'informations si le paquet n'est pas installé et l'onglet des fichiers si celui-ci est installé.
+
+Possibilité de restreindre la liste des paquets à ceux appartenant à un groupe en sélectionnant ce groupe dans la liste déroulante en haut à gauche. 
+
+Pour installer un paquet de la liste : '''clic droit -&gt; Installation'''
+
+===AUR:===
+
+Il s'agit d'une fonction récente dans Octopi (depuis la version 0.1.9)
+
+REMARQUE : Il faut valider avec ''ENTREE'' le texte tapé dans la barre de recherche pour lancer la recherche par description des paquets dans le dépôt AUR. Le délai de réponse est fonction de la rapidité de la connexion internet. Octopi doit faire la recherche sur [https://aur.archlinux.org/ AUR Archlinux]
+
+La recherche dans AUR ne se fait qu'en mode ''par description''
+
+
+La sélection d'un paquet AUR pour installation lance immédiatement celle-ci dans un terminal après avoir demandé le mote de passe root.
+Durant l'installation, il faut répondre aux questions au même titre qu'une installation avec yaourt.
+
+Pour plus de détails sur les paquets [http://wiki.manjaro.org/index.php?title=D%C3%A9p%C3%B4t_AUR_%28Arch_User_Repository%29 AUR]
+
+Pour mieux comprendre le fonctionnement de [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt#Yaourt.2C_une_interface_pour_Pacman Yaourt]
+
+
+==Installation/suppression d'un ou des paquet(s) : ==
+
+Une fois tous les paquets sélectionnés on lance les opérations en cliquant sur l’icône en forme de coche en haut à gauche.
+Une boîte de dialogue rappelle la liste de '''Tous''' les paquets '''y compris les dépendances''' à installer et/ou à supprimer et/ou à réinstaller
+Y plus qu'à valider avec OUI.
+
+Le programme demande alors le mot de passe Root et lance les opérations sélectionnées précédemment.
+
+A noter qu'il est possible de valider avec l'option ''Lancer dans un terminal''.
+Toutes les opérations seront alors visibles dans un terminal.
+Fonction très pratique en cas de mise à jour à problème. On retrouve l'interactivité pour agir avec pacman.
+Pacman posera les questions de validation comme lors d'une exécution de pacman directement dans le terminal
+
+!!! Attention à la fin des opérations l'appui sur une touche ferme immédiatement le terminal !!! 
+Si vous souhaitez copier le résultat il faut le faire à la souris.
+
+==Les différents onglets :==
+===Onglet Info '''(ALT+1)''' : ===
+Un double clic sur un paquet de la liste affiche cet onglet.
+Donne les informations générales du paquet sélectionné.
+Il peut y avoir un délai entre le clic et l'apparition des informations en fonction de la rapidité de la connexion internet.
+
+===Onglet Fichiers '''(ALT+2)''' : (seulement pour les paquets installés)===
+Donne la liste des fichiers et de leur emplacement dans le système de fichiers du paquet sélectionné.
+Il est possible de sélectionner un fichier et de l'ouvrir dans l'éditeur de texte avec un clic droit.
+'''F4''' ouvre un terminal  à l'emplacement du fichier sélectionné.
+'''F6''' ouvrir l'explorateur de fichiers à l'emplacement sélectionné.
+
+===Onglet Opérations '''(ALT+3)''':===
+Un résumé des opérations à effectuer :
+	Liste des paquets sélectionnés à supprimer
+	Liste des paquets sélectionnés à installer
+	
+Un clic droit sur un élément permet de le supprimer de la liste.
+
+
+===Onglet Sortie '''(ALT+4)''' : ===
+Donne le résultats des opérations de l'installation/suppression du ou des paquet(s)
+
+Si on choisit une installation à travers le terminal cet onglet n'affichera que ces messages :
+Exécution de la commande dans le terminal...
+Commande terminée OK !
+
+
+===Onglet Actualités '''(ALT+5)''' :===
+Pour rester informé des actualités de Manjaro.
+Reprend les informations du blog de Manjaro.org : http://manjaro.org/blog/
+'''CTRL+G''' pour réactualiser l'onglet et obtenir les dernières infos du blog.
+
+
+===Onglet Utilisation '''(ALT+6)''' : ===
+Affiche le guide d'utilisation d'octopi.
+Que dire de plus ?
+ 
+
+=Paramètres supplémentaires=
+
+Pour aller plus loin dans l'utilisation d'octopi...
+'''Encore en chantier ;-))'''
+
+=Informations complémentaires :=
+Liens pour plus plus d'informations sur les sujets abordés.
+
+Le projet Octopi : [https://octopiproject.wordpress.com/ https://octopiproject.wordpress.com/]
+
+Les différents outils graphique de gestion de paquets ARCHLINUX : [https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends]
+
+Topic du forum Anglais : [http://forum.manjaro.org/index.php?topic=2846.0 http://forum.manjaro.org/index.php?topic=2846.0]
+
+Pacman et Yaourt : [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt]
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Applications]]
+[[Category:Français]]</text>
+      <sha1>gbfnnu7lx3dh546a85mor6cpcsgss4h</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6495</id>
+      <parentid>6494</parentid>
+      <timestamp>2013-07-22T14:41:15Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* A Propos d'Octopi */</comment>
+      <text xml:space="preserve" bytes="8287">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=A Propos d'Octopi=
+
+Octopi est un puissant outil graphique de gestion des paquets Linux pour Arch et Manjaro.
+Il a une interface simple et intuitive, décomposée en 2 panneaux :
+• Une liste des paquets disponibles
+• A panneau à 6 onglets : Informations, Fichiers, Opérations, Sortie, Actualités et un Guide d'aide 
+
+Les fonctionnalités principales :
+• FAIBLE consommation de ressources (y compris la mémoire)
+• RAPIDE
+• Supporte les environnements  de bureau KDE 3.x, KDE 4.x, XFCE, LXDE, MATE et Trinity
+• Synchronisé avec la base dCtrl+L pour trouver un paquet dans la listee donnée de Pacman
+• Support de AUR
+• Upgrade Système Pacman
+• Nettoie le cache Pacman
+• Installe/Ré-installe/Met à jour/Supprime les paquets sélectionnés - visualisation de la sortie des commandes dans un terminal sur demande (important dans le cas de mises à jour à problème, on retrouve l'interactivité de pacman)
+• Visualise le contenu des paquets installés (y compris l'ouverture et l'édition de ces fichiers)
+• Visualise la description des paquets dans une bulle d'info, il suffit de positionner la souris sur les noms des paquets
+• supporte la double mise à jour (paquets à mettre à jour en premier)
+• notifieur de mise à jour lancé par la session depuis la version 0.2.0
+
+Licence [http://www.gnu.org/licenses/gpl-2.0.html GPL2], écrit en Qt4 C++ et compatible avec les distributions basées sur ArchLinux qui utilisent pacman pour la gestion des paquets.
+
+=Un peu de culture, pourquoi le nom Octopi ?=
+
+Perdu, rien à voir avec le célèbre film de James Bond : Octopussy
+
+Le projet porte ce nom en hommage au célèbre jeu d'arcade Pac-Man. Comme indiqué dans Wikipedia : &quot;[https://en.wikipedia.org/wiki/Pac-man#Enemies les ennemis] de Pac-Man sont appelés diversement « fantômes », « gobelins », « pieuvres (Octopus) » et « monstres ».
+Octopi fait donc référence à  la fameuse pieuvre du célèbre jeu Pac-Man.
+
+==Son créateur :==
+
+Alexandre Albuquerque Arnt, un brésilien des états du sud, fan de Linux et de Manjaro. Il est également le créateur de [http://qtgzmanager.wordpress.com/ QTgzManager] (pour Slackware).
+
+=Installation :=
+
+Version des dépôts officiels : 
+ sudo pacman -S octopi
+
+=Utilisation :=
+
+Tout d'abord synchroniser les dépôts '''(CTRL+D)''' ou '''fichier -&gt; Synchroniser '''ou cliquer sur le symbole en haut à gauche.
+
+==Recherche d'un paquet :==
+
+Par défaut seuls les paquets des dépôts officiels sont visibles. Pour les paquets AUR à installer avec yaourt voir plus bas.
+Cliquer dans la barre de recherche ou '''CTRL+L''' , et taper le nom d'un paquet ou une partie du nom, Durant la frappe, Octopi propose la liste des paquets dont le nom correspond au texte.
+
+Une fonctionnalité très puissante d'octopi, la recherche avec la description du paquet : '''Recherche -&gt; Par Description'''
+
+Par exemple chercher les paquets en relation avec ''bluetooth''.
+
+
+La liste des paquets est par défaut celle des paquets installés et non installés.
+Pour voir  seulement la liste des paquets installés : '''Affichage -&gt;''' décocher '''Pas Installés''' ou '''CTRL+N''' et inversement.
+
+Il est toujours possible de cliquer sur le nom d'un paquet pour avoir plus d'informations dans les onglets du panneau inférieur (voir les détails ci-après).
+
+Astuce : un double clic sur un paquet affiche l'onglet d'informations si le paquet n'est pas installé et l'onglet des fichiers si celui-ci est installé.
+
+Possibilité de restreindre la liste des paquets à ceux appartenant à un groupe en sélectionnant ce groupe dans la liste déroulante en haut à gauche. 
+
+Pour installer un paquet de la liste : '''clic droit -&gt; Installation'''
+
+===AUR:===
+
+Il s'agit d'une fonction récente dans Octopi (depuis la version 0.1.9)
+
+REMARQUE : Il faut valider avec ''ENTREE'' le texte tapé dans la barre de recherche pour lancer la recherche par description des paquets dans le dépôt AUR. Le délai de réponse est fonction de la rapidité de la connexion internet. Octopi doit faire la recherche sur [https://aur.archlinux.org/ AUR Archlinux]
+
+La recherche dans AUR ne se fait qu'en mode ''par description''
+
+
+La sélection d'un paquet AUR pour installation lance immédiatement celle-ci dans un terminal après avoir demandé le mote de passe root.
+Durant l'installation, il faut répondre aux questions au même titre qu'une installation avec yaourt.
+
+Pour plus de détails sur les paquets [http://wiki.manjaro.org/index.php?title=D%C3%A9p%C3%B4t_AUR_%28Arch_User_Repository%29 AUR]
+
+Pour mieux comprendre le fonctionnement de [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt#Yaourt.2C_une_interface_pour_Pacman Yaourt]
+
+
+==Installation/suppression d'un ou des paquet(s) : ==
+
+Une fois tous les paquets sélectionnés on lance les opérations en cliquant sur l’icône en forme de coche en haut à gauche.
+Une boîte de dialogue rappelle la liste de '''Tous''' les paquets '''y compris les dépendances''' à installer et/ou à supprimer et/ou à réinstaller
+Y plus qu'à valider avec OUI.
+
+Le programme demande alors le mot de passe Root et lance les opérations sélectionnées précédemment.
+
+A noter qu'il est possible de valider avec l'option ''Lancer dans un terminal''.
+Toutes les opérations seront alors visibles dans un terminal.
+Fonction très pratique en cas de mise à jour à problème. On retrouve l'interactivité pour agir avec pacman.
+Pacman posera les questions de validation comme lors d'une exécution de pacman directement dans le terminal
+
+!!! Attention à la fin des opérations l'appui sur une touche ferme immédiatement le terminal !!! 
+Si vous souhaitez copier le résultat il faut le faire à la souris.
+
+==Les différents onglets :==
+===Onglet Info '''(ALT+1)''' : ===
+Un double clic sur un paquet de la liste affiche cet onglet.
+Donne les informations générales du paquet sélectionné.
+Il peut y avoir un délai entre le clic et l'apparition des informations en fonction de la rapidité de la connexion internet.
+
+===Onglet Fichiers '''(ALT+2)''' : (seulement pour les paquets installés)===
+Donne la liste des fichiers et de leur emplacement dans le système de fichiers du paquet sélectionné.
+Il est possible de sélectionner un fichier et de l'ouvrir dans l'éditeur de texte avec un clic droit.
+'''F4''' ouvre un terminal  à l'emplacement du fichier sélectionné.
+'''F6''' ouvrir l'explorateur de fichiers à l'emplacement sélectionné.
+
+===Onglet Opérations '''(ALT+3)''':===
+Un résumé des opérations à effectuer :
+	Liste des paquets sélectionnés à supprimer
+	Liste des paquets sélectionnés à installer
+	
+Un clic droit sur un élément permet de le supprimer de la liste.
+
+
+===Onglet Sortie '''(ALT+4)''' : ===
+Donne le résultats des opérations de l'installation/suppression du ou des paquet(s)
+
+Si on choisit une installation à travers le terminal cet onglet n'affichera que ces messages :
+Exécution de la commande dans le terminal...
+Commande terminée OK !
+
+
+===Onglet Actualités '''(ALT+5)''' :===
+Pour rester informé des actualités de Manjaro.
+Reprend les informations du blog de Manjaro.org : http://manjaro.org/blog/
+'''CTRL+G''' pour réactualiser l'onglet et obtenir les dernières infos du blog.
+
+
+===Onglet Utilisation '''(ALT+6)''' : ===
+Affiche le guide d'utilisation d'octopi.
+Que dire de plus ?
+ 
+
+=Paramètres supplémentaires=
+
+Pour aller plus loin dans l'utilisation d'octopi...
+'''Encore en chantier ;-))'''
+
+=Informations complémentaires :=
+Liens pour plus plus d'informations sur les sujets abordés.
+
+Le projet Octopi : [https://octopiproject.wordpress.com/ https://octopiproject.wordpress.com/]
+
+Les différents outils graphique de gestion de paquets ARCHLINUX : [https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends]
+
+Topic du forum Anglais : [http://forum.manjaro.org/index.php?topic=2846.0 http://forum.manjaro.org/index.php?topic=2846.0]
+
+Pacman et Yaourt : [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt]
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Applications]]
+[[Category:Français]]</text>
+      <sha1>oy4t48x57k7drgmek3pg22pypoa7c0k</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6496</id>
+      <parentid>6495</parentid>
+      <timestamp>2013-07-22T14:41:51Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* A Propos d'Octopi */</comment>
+      <text xml:space="preserve" bytes="8301">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=A Propos d'Octopi=
+
+Octopi est un puissant outil graphique de gestion des paquets Linux pour Arch et Manjaro.
+Il a une interface simple et intuitive, décomposée en 2 panneaux :
+
+• Une liste des paquets disponibles
+
+• A panneau à 6 onglets : Informations, Fichiers, Opérations, Sortie, Actualités et un Guide d'aide 
+
+Les fonctionnalités principales :
+
+• FAIBLE consommation de ressources (y compris la mémoire)
+
+• RAPIDE
+
+• Supporte les environnements  de bureau KDE 3.x, KDE 4.x, XFCE, LXDE, MATE et Trinity
+
+• Synchronisé avec la base dCtrl+L pour trouver un paquet dans la listee donnée de Pacman
+
+• Support de AUR
+
+• Upgrade Système Pacman
+
+• Nettoie le cache Pacman
+
+• Installe/Ré-installe/Met à jour/Supprime les paquets sélectionnés - visualisation de la sortie des commandes dans un terminal sur demande (important dans le cas de mises à jour à problème, on retrouve l'interactivité de pacman)
+
+• Visualise le contenu des paquets installés (y compris l'ouverture et l'édition de ces fichiers)
+
+• Visualise la description des paquets dans une bulle d'info, il suffit de positionner la souris sur les noms des paquets
+
+• supporte la double mise à jour (paquets à mettre à jour en premier)
+
+• notifieur de mise à jour lancé par la session depuis la version 0.2.0
+
+Licence [http://www.gnu.org/licenses/gpl-2.0.html GPL2], écrit en Qt4 C++ et compatible avec les distributions basées sur ArchLinux qui utilisent pacman pour la gestion des paquets.
+
+=Un peu de culture, pourquoi le nom Octopi ?=
+
+Perdu, rien à voir avec le célèbre film de James Bond : Octopussy
+
+Le projet porte ce nom en hommage au célèbre jeu d'arcade Pac-Man. Comme indiqué dans Wikipedia : &quot;[https://en.wikipedia.org/wiki/Pac-man#Enemies les ennemis] de Pac-Man sont appelés diversement « fantômes », « gobelins », « pieuvres (Octopus) » et « monstres ».
+Octopi fait donc référence à  la fameuse pieuvre du célèbre jeu Pac-Man.
+
+==Son créateur :==
+
+Alexandre Albuquerque Arnt, un brésilien des états du sud, fan de Linux et de Manjaro. Il est également le créateur de [http://qtgzmanager.wordpress.com/ QTgzManager] (pour Slackware).
+
+=Installation :=
+
+Version des dépôts officiels : 
+ sudo pacman -S octopi
+
+=Utilisation :=
+
+Tout d'abord synchroniser les dépôts '''(CTRL+D)''' ou '''fichier -&gt; Synchroniser '''ou cliquer sur le symbole en haut à gauche.
+
+==Recherche d'un paquet :==
+
+Par défaut seuls les paquets des dépôts officiels sont visibles. Pour les paquets AUR à installer avec yaourt voir plus bas.
+Cliquer dans la barre de recherche ou '''CTRL+L''' , et taper le nom d'un paquet ou une partie du nom, Durant la frappe, Octopi propose la liste des paquets dont le nom correspond au texte.
+
+Une fonctionnalité très puissante d'octopi, la recherche avec la description du paquet : '''Recherche -&gt; Par Description'''
+
+Par exemple chercher les paquets en relation avec ''bluetooth''.
+
+
+La liste des paquets est par défaut celle des paquets installés et non installés.
+Pour voir  seulement la liste des paquets installés : '''Affichage -&gt;''' décocher '''Pas Installés''' ou '''CTRL+N''' et inversement.
+
+Il est toujours possible de cliquer sur le nom d'un paquet pour avoir plus d'informations dans les onglets du panneau inférieur (voir les détails ci-après).
+
+Astuce : un double clic sur un paquet affiche l'onglet d'informations si le paquet n'est pas installé et l'onglet des fichiers si celui-ci est installé.
+
+Possibilité de restreindre la liste des paquets à ceux appartenant à un groupe en sélectionnant ce groupe dans la liste déroulante en haut à gauche. 
+
+Pour installer un paquet de la liste : '''clic droit -&gt; Installation'''
+
+===AUR:===
+
+Il s'agit d'une fonction récente dans Octopi (depuis la version 0.1.9)
+
+REMARQUE : Il faut valider avec ''ENTREE'' le texte tapé dans la barre de recherche pour lancer la recherche par description des paquets dans le dépôt AUR. Le délai de réponse est fonction de la rapidité de la connexion internet. Octopi doit faire la recherche sur [https://aur.archlinux.org/ AUR Archlinux]
+
+La recherche dans AUR ne se fait qu'en mode ''par description''
+
+
+La sélection d'un paquet AUR pour installation lance immédiatement celle-ci dans un terminal après avoir demandé le mote de passe root.
+Durant l'installation, il faut répondre aux questions au même titre qu'une installation avec yaourt.
+
+Pour plus de détails sur les paquets [http://wiki.manjaro.org/index.php?title=D%C3%A9p%C3%B4t_AUR_%28Arch_User_Repository%29 AUR]
+
+Pour mieux comprendre le fonctionnement de [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt#Yaourt.2C_une_interface_pour_Pacman Yaourt]
+
+
+==Installation/suppression d'un ou des paquet(s) : ==
+
+Une fois tous les paquets sélectionnés on lance les opérations en cliquant sur l’icône en forme de coche en haut à gauche.
+Une boîte de dialogue rappelle la liste de '''Tous''' les paquets '''y compris les dépendances''' à installer et/ou à supprimer et/ou à réinstaller
+Y plus qu'à valider avec OUI.
+
+Le programme demande alors le mot de passe Root et lance les opérations sélectionnées précédemment.
+
+A noter qu'il est possible de valider avec l'option ''Lancer dans un terminal''.
+Toutes les opérations seront alors visibles dans un terminal.
+Fonction très pratique en cas de mise à jour à problème. On retrouve l'interactivité pour agir avec pacman.
+Pacman posera les questions de validation comme lors d'une exécution de pacman directement dans le terminal
+
+!!! Attention à la fin des opérations l'appui sur une touche ferme immédiatement le terminal !!! 
+Si vous souhaitez copier le résultat il faut le faire à la souris.
+
+==Les différents onglets :==
+===Onglet Info '''(ALT+1)''' : ===
+Un double clic sur un paquet de la liste affiche cet onglet.
+Donne les informations générales du paquet sélectionné.
+Il peut y avoir un délai entre le clic et l'apparition des informations en fonction de la rapidité de la connexion internet.
+
+===Onglet Fichiers '''(ALT+2)''' : (seulement pour les paquets installés)===
+Donne la liste des fichiers et de leur emplacement dans le système de fichiers du paquet sélectionné.
+Il est possible de sélectionner un fichier et de l'ouvrir dans l'éditeur de texte avec un clic droit.
+'''F4''' ouvre un terminal  à l'emplacement du fichier sélectionné.
+'''F6''' ouvrir l'explorateur de fichiers à l'emplacement sélectionné.
+
+===Onglet Opérations '''(ALT+3)''':===
+Un résumé des opérations à effectuer :
+	Liste des paquets sélectionnés à supprimer
+	Liste des paquets sélectionnés à installer
+	
+Un clic droit sur un élément permet de le supprimer de la liste.
+
+
+===Onglet Sortie '''(ALT+4)''' : ===
+Donne le résultats des opérations de l'installation/suppression du ou des paquet(s)
+
+Si on choisit une installation à travers le terminal cet onglet n'affichera que ces messages :
+Exécution de la commande dans le terminal...
+Commande terminée OK !
+
+
+===Onglet Actualités '''(ALT+5)''' :===
+Pour rester informé des actualités de Manjaro.
+Reprend les informations du blog de Manjaro.org : http://manjaro.org/blog/
+'''CTRL+G''' pour réactualiser l'onglet et obtenir les dernières infos du blog.
+
+
+===Onglet Utilisation '''(ALT+6)''' : ===
+Affiche le guide d'utilisation d'octopi.
+Que dire de plus ?
+ 
+
+=Paramètres supplémentaires=
+
+Pour aller plus loin dans l'utilisation d'octopi...
+'''Encore en chantier ;-))'''
+
+=Informations complémentaires :=
+Liens pour plus plus d'informations sur les sujets abordés.
+
+Le projet Octopi : [https://octopiproject.wordpress.com/ https://octopiproject.wordpress.com/]
+
+Les différents outils graphique de gestion de paquets ARCHLINUX : [https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends]
+
+Topic du forum Anglais : [http://forum.manjaro.org/index.php?topic=2846.0 http://forum.manjaro.org/index.php?topic=2846.0]
+
+Pacman et Yaourt : [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt]
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Applications]]
+[[Category:Français]]</text>
+      <sha1>83490soqro6x9jq7rbg7hi3s6ua6zkp</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6497</id>
+      <parentid>6496</parentid>
+      <timestamp>2013-07-22T14:42:28Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* A Propos d'Octopi */</comment>
+      <text xml:space="preserve" bytes="8304">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=A Propos d'Octopi=
+
+Octopi est un puissant outil graphique de gestion des paquets Linux pour Arch et Manjaro.
+Il a une interface simple et intuitive, décomposée en 2 panneaux :
+
+• Une liste des paquets disponibles
+
+• A panneau à 6 onglets : Informations, Fichiers, Opérations, Sortie, Actualités et un Guide d'aide 
+
+Les fonctionnalités principales :
+
+• FAIBLE consommation de ressources (y compris la mémoire)
+
+• RAPIDE
+
+• Supporte les environnements  de bureau KDE 3.x, KDE 4.x, XFCE, LXDE, MATE et Trinity
+
+• Synchronisé avec la base dCtrl+L pour trouver un paquet dans la listee donnée de Pacman
+
+• Support de AUR
+
+• Upgrade Système Pacman
+
+• Nettoie le cache Pacman
+
+• Installe/Ré-installe/Met à jour/Supprime les paquets sélectionnés - visualisation de la sortie des commandes dans un terminal sur demande (important dans le cas de mise à jour à problème, on retrouve l'interactivité de pacman)
+
+• Visualise le contenu des paquets installés (y compris l'ouverture et l'édition de ces fichiers)
+
+• Visualise la description des paquets dans une bulle d'info, il suffit de positionner la souris sur les noms des paquets
+
+• supporte la double mise à jour (paquets à mettre à jour en premier)
+
+• notifieur de mise à jour lancé par la session depuis la version 0.2.0
+
+• Licence [http://www.gnu.org/licenses/gpl-2.0.html GPL2], écrit en Qt4 C++ et compatible avec les distributions basées sur ArchLinux qui utilisent pacman pour la gestion des paquets.
+
+=Un peu de culture, pourquoi le nom Octopi ?=
+
+Perdu, rien à voir avec le célèbre film de James Bond : Octopussy
+
+Le projet porte ce nom en hommage au célèbre jeu d'arcade Pac-Man. Comme indiqué dans Wikipedia : &quot;[https://en.wikipedia.org/wiki/Pac-man#Enemies les ennemis] de Pac-Man sont appelés diversement « fantômes », « gobelins », « pieuvres (Octopus) » et « monstres ».
+Octopi fait donc référence à  la fameuse pieuvre du célèbre jeu Pac-Man.
+
+==Son créateur :==
+
+Alexandre Albuquerque Arnt, un brésilien des états du sud, fan de Linux et de Manjaro. Il est également le créateur de [http://qtgzmanager.wordpress.com/ QTgzManager] (pour Slackware).
+
+=Installation :=
+
+Version des dépôts officiels : 
+ sudo pacman -S octopi
+
+=Utilisation :=
+
+Tout d'abord synchroniser les dépôts '''(CTRL+D)''' ou '''fichier -&gt; Synchroniser '''ou cliquer sur le symbole en haut à gauche.
+
+==Recherche d'un paquet :==
+
+Par défaut seuls les paquets des dépôts officiels sont visibles. Pour les paquets AUR à installer avec yaourt voir plus bas.
+Cliquer dans la barre de recherche ou '''CTRL+L''' , et taper le nom d'un paquet ou une partie du nom, Durant la frappe, Octopi propose la liste des paquets dont le nom correspond au texte.
+
+Une fonctionnalité très puissante d'octopi, la recherche avec la description du paquet : '''Recherche -&gt; Par Description'''
+
+Par exemple chercher les paquets en relation avec ''bluetooth''.
+
+
+La liste des paquets est par défaut celle des paquets installés et non installés.
+Pour voir  seulement la liste des paquets installés : '''Affichage -&gt;''' décocher '''Pas Installés''' ou '''CTRL+N''' et inversement.
+
+Il est toujours possible de cliquer sur le nom d'un paquet pour avoir plus d'informations dans les onglets du panneau inférieur (voir les détails ci-après).
+
+Astuce : un double clic sur un paquet affiche l'onglet d'informations si le paquet n'est pas installé et l'onglet des fichiers si celui-ci est installé.
+
+Possibilité de restreindre la liste des paquets à ceux appartenant à un groupe en sélectionnant ce groupe dans la liste déroulante en haut à gauche. 
+
+Pour installer un paquet de la liste : '''clic droit -&gt; Installation'''
+
+===AUR:===
+
+Il s'agit d'une fonction récente dans Octopi (depuis la version 0.1.9)
+
+REMARQUE : Il faut valider avec ''ENTREE'' le texte tapé dans la barre de recherche pour lancer la recherche par description des paquets dans le dépôt AUR. Le délai de réponse est fonction de la rapidité de la connexion internet. Octopi doit faire la recherche sur [https://aur.archlinux.org/ AUR Archlinux]
+
+La recherche dans AUR ne se fait qu'en mode ''par description''
+
+
+La sélection d'un paquet AUR pour installation lance immédiatement celle-ci dans un terminal après avoir demandé le mote de passe root.
+Durant l'installation, il faut répondre aux questions au même titre qu'une installation avec yaourt.
+
+Pour plus de détails sur les paquets [http://wiki.manjaro.org/index.php?title=D%C3%A9p%C3%B4t_AUR_%28Arch_User_Repository%29 AUR]
+
+Pour mieux comprendre le fonctionnement de [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt#Yaourt.2C_une_interface_pour_Pacman Yaourt]
+
+
+==Installation/suppression d'un ou des paquet(s) : ==
+
+Une fois tous les paquets sélectionnés on lance les opérations en cliquant sur l’icône en forme de coche en haut à gauche.
+Une boîte de dialogue rappelle la liste de '''Tous''' les paquets '''y compris les dépendances''' à installer et/ou à supprimer et/ou à réinstaller
+Y plus qu'à valider avec OUI.
+
+Le programme demande alors le mot de passe Root et lance les opérations sélectionnées précédemment.
+
+A noter qu'il est possible de valider avec l'option ''Lancer dans un terminal''.
+Toutes les opérations seront alors visibles dans un terminal.
+Fonction très pratique en cas de mise à jour à problème. On retrouve l'interactivité pour agir avec pacman.
+Pacman posera les questions de validation comme lors d'une exécution de pacman directement dans le terminal
+
+!!! Attention à la fin des opérations l'appui sur une touche ferme immédiatement le terminal !!! 
+Si vous souhaitez copier le résultat il faut le faire à la souris.
+
+==Les différents onglets :==
+===Onglet Info '''(ALT+1)''' : ===
+Un double clic sur un paquet de la liste affiche cet onglet.
+Donne les informations générales du paquet sélectionné.
+Il peut y avoir un délai entre le clic et l'apparition des informations en fonction de la rapidité de la connexion internet.
+
+===Onglet Fichiers '''(ALT+2)''' : (seulement pour les paquets installés)===
+Donne la liste des fichiers et de leur emplacement dans le système de fichiers du paquet sélectionné.
+Il est possible de sélectionner un fichier et de l'ouvrir dans l'éditeur de texte avec un clic droit.
+'''F4''' ouvre un terminal  à l'emplacement du fichier sélectionné.
+'''F6''' ouvrir l'explorateur de fichiers à l'emplacement sélectionné.
+
+===Onglet Opérations '''(ALT+3)''':===
+Un résumé des opérations à effectuer :
+	Liste des paquets sélectionnés à supprimer
+	Liste des paquets sélectionnés à installer
+	
+Un clic droit sur un élément permet de le supprimer de la liste.
+
+
+===Onglet Sortie '''(ALT+4)''' : ===
+Donne le résultats des opérations de l'installation/suppression du ou des paquet(s)
+
+Si on choisit une installation à travers le terminal cet onglet n'affichera que ces messages :
+Exécution de la commande dans le terminal...
+Commande terminée OK !
+
+
+===Onglet Actualités '''(ALT+5)''' :===
+Pour rester informé des actualités de Manjaro.
+Reprend les informations du blog de Manjaro.org : http://manjaro.org/blog/
+'''CTRL+G''' pour réactualiser l'onglet et obtenir les dernières infos du blog.
+
+
+===Onglet Utilisation '''(ALT+6)''' : ===
+Affiche le guide d'utilisation d'octopi.
+Que dire de plus ?
+ 
+
+=Paramètres supplémentaires=
+
+Pour aller plus loin dans l'utilisation d'octopi...
+'''Encore en chantier ;-))'''
+
+=Informations complémentaires :=
+Liens pour plus plus d'informations sur les sujets abordés.
+
+Le projet Octopi : [https://octopiproject.wordpress.com/ https://octopiproject.wordpress.com/]
+
+Les différents outils graphique de gestion de paquets ARCHLINUX : [https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends]
+
+Topic du forum Anglais : [http://forum.manjaro.org/index.php?topic=2846.0 http://forum.manjaro.org/index.php?topic=2846.0]
+
+Pacman et Yaourt : [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt]
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Applications]]
+[[Category:Français]]</text>
+      <sha1>1enx66rr3b5zdqytmpgdieotrm0gzcm</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>6498</id>
+      <parentid>6497</parentid>
+      <timestamp>2013-07-22T14:42:48Z</timestamp>
+      <contributor>
+        <username>Texaveryfun</username>
+        <id>114</id>
+      </contributor>
+      <comment>/* A Propos d'Octopi */</comment>
+      <text xml:space="preserve" bytes="8310">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=A Propos d'Octopi=
+
+Octopi est un puissant outil graphique de gestion des paquets Linux pour Arch et Manjaro.
+Il a une interface simple et intuitive, décomposée en 2 panneaux :
+
+• Une liste des paquets disponibles
+
+• A panneau à 6 onglets : Informations, Fichiers, Opérations, Sortie, Actualités et un Guide d'aide 
+
+'''Les fonctionnalités principales :'''
+
+• FAIBLE consommation de ressources (y compris la mémoire)
+
+• RAPIDE
+
+• Supporte les environnements  de bureau KDE 3.x, KDE 4.x, XFCE, LXDE, MATE et Trinity
+
+• Synchronisé avec la base dCtrl+L pour trouver un paquet dans la listee donnée de Pacman
+
+• Support de AUR
+
+• Upgrade Système Pacman
+
+• Nettoie le cache Pacman
+
+• Installe/Ré-installe/Met à jour/Supprime les paquets sélectionnés - visualisation de la sortie des commandes dans un terminal sur demande (important dans le cas de mise à jour à problème, on retrouve l'interactivité de pacman)
+
+• Visualise le contenu des paquets installés (y compris l'ouverture et l'édition de ces fichiers)
+
+• Visualise la description des paquets dans une bulle d'info, il suffit de positionner la souris sur les noms des paquets
+
+• supporte la double mise à jour (paquets à mettre à jour en premier)
+
+• notifieur de mise à jour lancé par la session depuis la version 0.2.0
+
+• Licence [http://www.gnu.org/licenses/gpl-2.0.html GPL2], écrit en Qt4 C++ et compatible avec les distributions basées sur ArchLinux qui utilisent pacman pour la gestion des paquets.
+
+=Un peu de culture, pourquoi le nom Octopi ?=
+
+Perdu, rien à voir avec le célèbre film de James Bond : Octopussy
+
+Le projet porte ce nom en hommage au célèbre jeu d'arcade Pac-Man. Comme indiqué dans Wikipedia : &quot;[https://en.wikipedia.org/wiki/Pac-man#Enemies les ennemis] de Pac-Man sont appelés diversement « fantômes », « gobelins », « pieuvres (Octopus) » et « monstres ».
+Octopi fait donc référence à  la fameuse pieuvre du célèbre jeu Pac-Man.
+
+==Son créateur :==
+
+Alexandre Albuquerque Arnt, un brésilien des états du sud, fan de Linux et de Manjaro. Il est également le créateur de [http://qtgzmanager.wordpress.com/ QTgzManager] (pour Slackware).
+
+=Installation :=
+
+Version des dépôts officiels : 
+ sudo pacman -S octopi
+
+=Utilisation :=
+
+Tout d'abord synchroniser les dépôts '''(CTRL+D)''' ou '''fichier -&gt; Synchroniser '''ou cliquer sur le symbole en haut à gauche.
+
+==Recherche d'un paquet :==
+
+Par défaut seuls les paquets des dépôts officiels sont visibles. Pour les paquets AUR à installer avec yaourt voir plus bas.
+Cliquer dans la barre de recherche ou '''CTRL+L''' , et taper le nom d'un paquet ou une partie du nom, Durant la frappe, Octopi propose la liste des paquets dont le nom correspond au texte.
+
+Une fonctionnalité très puissante d'octopi, la recherche avec la description du paquet : '''Recherche -&gt; Par Description'''
+
+Par exemple chercher les paquets en relation avec ''bluetooth''.
+
+
+La liste des paquets est par défaut celle des paquets installés et non installés.
+Pour voir  seulement la liste des paquets installés : '''Affichage -&gt;''' décocher '''Pas Installés''' ou '''CTRL+N''' et inversement.
+
+Il est toujours possible de cliquer sur le nom d'un paquet pour avoir plus d'informations dans les onglets du panneau inférieur (voir les détails ci-après).
+
+Astuce : un double clic sur un paquet affiche l'onglet d'informations si le paquet n'est pas installé et l'onglet des fichiers si celui-ci est installé.
+
+Possibilité de restreindre la liste des paquets à ceux appartenant à un groupe en sélectionnant ce groupe dans la liste déroulante en haut à gauche. 
+
+Pour installer un paquet de la liste : '''clic droit -&gt; Installation'''
+
+===AUR:===
+
+Il s'agit d'une fonction récente dans Octopi (depuis la version 0.1.9)
+
+REMARQUE : Il faut valider avec ''ENTREE'' le texte tapé dans la barre de recherche pour lancer la recherche par description des paquets dans le dépôt AUR. Le délai de réponse est fonction de la rapidité de la connexion internet. Octopi doit faire la recherche sur [https://aur.archlinux.org/ AUR Archlinux]
+
+La recherche dans AUR ne se fait qu'en mode ''par description''
+
+
+La sélection d'un paquet AUR pour installation lance immédiatement celle-ci dans un terminal après avoir demandé le mote de passe root.
+Durant l'installation, il faut répondre aux questions au même titre qu'une installation avec yaourt.
+
+Pour plus de détails sur les paquets [http://wiki.manjaro.org/index.php?title=D%C3%A9p%C3%B4t_AUR_%28Arch_User_Repository%29 AUR]
+
+Pour mieux comprendre le fonctionnement de [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt#Yaourt.2C_une_interface_pour_Pacman Yaourt]
+
+
+==Installation/suppression d'un ou des paquet(s) : ==
+
+Une fois tous les paquets sélectionnés on lance les opérations en cliquant sur l’icône en forme de coche en haut à gauche.
+Une boîte de dialogue rappelle la liste de '''Tous''' les paquets '''y compris les dépendances''' à installer et/ou à supprimer et/ou à réinstaller
+Y plus qu'à valider avec OUI.
+
+Le programme demande alors le mot de passe Root et lance les opérations sélectionnées précédemment.
+
+A noter qu'il est possible de valider avec l'option ''Lancer dans un terminal''.
+Toutes les opérations seront alors visibles dans un terminal.
+Fonction très pratique en cas de mise à jour à problème. On retrouve l'interactivité pour agir avec pacman.
+Pacman posera les questions de validation comme lors d'une exécution de pacman directement dans le terminal
+
+!!! Attention à la fin des opérations l'appui sur une touche ferme immédiatement le terminal !!! 
+Si vous souhaitez copier le résultat il faut le faire à la souris.
+
+==Les différents onglets :==
+===Onglet Info '''(ALT+1)''' : ===
+Un double clic sur un paquet de la liste affiche cet onglet.
+Donne les informations générales du paquet sélectionné.
+Il peut y avoir un délai entre le clic et l'apparition des informations en fonction de la rapidité de la connexion internet.
+
+===Onglet Fichiers '''(ALT+2)''' : (seulement pour les paquets installés)===
+Donne la liste des fichiers et de leur emplacement dans le système de fichiers du paquet sélectionné.
+Il est possible de sélectionner un fichier et de l'ouvrir dans l'éditeur de texte avec un clic droit.
+'''F4''' ouvre un terminal  à l'emplacement du fichier sélectionné.
+'''F6''' ouvrir l'explorateur de fichiers à l'emplacement sélectionné.
+
+===Onglet Opérations '''(ALT+3)''':===
+Un résumé des opérations à effectuer :
+	Liste des paquets sélectionnés à supprimer
+	Liste des paquets sélectionnés à installer
+	
+Un clic droit sur un élément permet de le supprimer de la liste.
+
+
+===Onglet Sortie '''(ALT+4)''' : ===
+Donne le résultats des opérations de l'installation/suppression du ou des paquet(s)
+
+Si on choisit une installation à travers le terminal cet onglet n'affichera que ces messages :
+Exécution de la commande dans le terminal...
+Commande terminée OK !
+
+
+===Onglet Actualités '''(ALT+5)''' :===
+Pour rester informé des actualités de Manjaro.
+Reprend les informations du blog de Manjaro.org : http://manjaro.org/blog/
+'''CTRL+G''' pour réactualiser l'onglet et obtenir les dernières infos du blog.
+
+
+===Onglet Utilisation '''(ALT+6)''' : ===
+Affiche le guide d'utilisation d'octopi.
+Que dire de plus ?
+ 
+
+=Paramètres supplémentaires=
+
+Pour aller plus loin dans l'utilisation d'octopi...
+'''Encore en chantier ;-))'''
+
+=Informations complémentaires :=
+Liens pour plus plus d'informations sur les sujets abordés.
+
+Le projet Octopi : [https://octopiproject.wordpress.com/ https://octopiproject.wordpress.com/]
+
+Les différents outils graphique de gestion de paquets ARCHLINUX : [https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends https://wiki.archlinux.org/index.php/Pacman_GUI_Frontends]
+
+Topic du forum Anglais : [http://forum.manjaro.org/index.php?topic=2846.0 http://forum.manjaro.org/index.php?topic=2846.0]
+
+Pacman et Yaourt : [http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt http://wiki.manjaro.org/index.php?title=Pacman_et_Yaourt]
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Applications]]
+[[Category:Français]]</text>
+      <sha1>ehz7tz84ra8kz9ny12toqzg1e9iuk2j</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

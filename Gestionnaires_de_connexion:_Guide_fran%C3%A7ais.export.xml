@@ -1,0 +1,752 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Gestionnaires de connexion: Guide français</title>
+    <ns>0</ns>
+    <id>564</id>
+    <revision>
+      <id>3036</id>
+      <timestamp>2012-12-25T15:48:07Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;=Vue d'ensemble=  {{tip|si vous n'utilisez qu'un seul environnement de bureau, alors pourquoi ne pas utiliser le gestionnaire de connexion prévu pour lui?}}   '''Les gestionn...&quot;</comment>
+      <text xml:space="preserve" bytes="6446">=Vue d'ensemble=
+
+{{tip|si vous n'utilisez qu'un seul environnement de bureau, alors pourquoi ne pas utiliser le gestionnaire de connexion prévu pour lui?}}
+
+
+'''Les gestionnaires de connexion''' servent à fournir des écrans de connexion (login), permettant ainsi d'empêcher tout accès non autorisé à votre système. De la même façon que pour des environnements de bureau différents, ils diffèrent par les ressources système utilisées et procurent leurs propres styles, interfaces et fonctionnalités. Les fonctionnalités qu'ils ont en commun – surtout si l'on s'en réfère à la liste de gestionnaires de connexion ci-dessous – incluent la personnalisation, les thèmes, la connexion automatique et le choix d'un bureau dans une liste.
+
+
+{{note|seuls les gestionnaires d'affichage qui peuvent être facilement installés et mis en œuvre ont été répertoriés. Plusieurs gestionnaires d'affichage supplémentaires sont disponibles dans les dépôts Manjaro pour les utilisateurs plus expérimentés, notamment '''XDM''', '''WDM''', et '''Qingy'''.}}
+
+
+=GDM=
+
+[[File:gdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/GNOME_Display_Manager GDM]''' - '''G'''nome '''D'''isplay '''M'''anager - est conçu pour une utilisation avec Gnome 3. Il prend en charge les thèmes, la connexion automatique et la détection automatique ainsi que l'utilisation de multiples environnements de bureau. Plus spécifiquement, pour ceux qui utilisent Gnome 3, une application de configuration est également disponible afin de pouvoir facilement personnaliser l'écran de connexion et activer la connexion automatique sans avoir à modifier les fichiers de configuration.
+
+GDM peut être installé par la commande:
+
+ sudo pacman -S gdm
+
+Une autre possibilité est de l'installer avec son application de configuration spécifique par:
+
+ sudo pacman -S gdm3setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:gdmsessions.png|thumb|left|375px]]
+
+
+{{warning|GDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – Gnome et/ou Cinnamon. Ceci parce que l'environnement de bureau Gnome 3 sera également installé en tant que dépendance.}}
+
+
+'''Pour activer GDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable gdm.service -f
+
+'''Pour activer GDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable gdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=KDM=
+
+[[File:kdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/KDE_Display_Manager KDM]''' - le '''K'''DE '''D'''isplay '''M'''anager - est conçu pour être utilisé avec KDE. Il prend en charge les thèmes, la connexion automatique ainsi que la détection automatique et l'utilisation de multiples environnements de bureau. Si l'environnement de bureau KDE complet a été installé, KDM devrait alors déjà être disponible pour activation.
+
+Sinon, pour installer KDM, entrez la commande:
+
+ sudo pacman -S kdebase-workspace
+
+Des thèmes supplémentaires pour KDM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S archlinux-themes-kdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kdmsessions.png|thumb|left|375px]]
+
+
+{{warning|KDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – KDE lui-même. Ceci parce que KDM ne peut être installé que dans le cadre de l'environnement KDE, qui, sinon, va être téléchargé avec lui.}}
+
+
+'''Pour activer KDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable kdm.service -f
+
+'''Pour activer KDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable kdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=LXDM=
+
+[[File:lxdm.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/en/LXDM LXDM]''' - the '''L'''ightweight '''X'''-Windows '''D'''isplay '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Il prend en charge les thèmes,  la connexion automatique, une sélection facile parmi plusieurs langues, et la détection automatique et l'utilisation de multiples environnements de bureau. 
+
+Pour installer LXDM, entrez la commande:
+
+ sudo pacman -S lxdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:lxdmsessions.png|thumb|left|375px]]
+
+
+'''Pour activer LXDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable lxdm.service -f
+
+'''Pour activer LXDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable lxdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+=SLiM=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/SLiM SLiM]''' - the '''S'''imple '''L'''og'''i'''n '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Populaire auprès des utilisateurs d'Arch, il prend en charge la gestion des thèmes, la connexion automatique, ainsi que l'utilisation de multiples environnements de bureau. '''Cependant, SLiM n'est pas recommandé pour les utilisateurs inexpérimentés''' car il ne détecte pas automatiquement les environnements de bureau installés, et il est donc nécessaire de modifier manuellement certains fichiers de configuration pour le faire fonctionner.
+
+Pour installer SLiM, entrez la commande:
+
+ sudo pacman -S slim
+
+Des thèmes additionnels pour SLiM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{warning|'''NE PAS''' redémarrer pas votre système après l'installation et l'activation de SliM! Si vous le faites, vous n'irez pas plus loin que l'écran de connexion. Vous &lt;u&gt;devez&lt;/u&gt; d'abord éditer le fichier /etc/slim.conf et le fichier ~/.xinitrc pour le faire fonctionner avant de redémarrer. Pour la façon de '''configurer SliM''', veuillez consulter le Guide '''«Comment configurer le gestionnaire de connexion SLiM»'''.}}
+
+
+'''Pour activer SLiM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable slim.service -f
+
+'''Pour activer SLiM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable slim-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;</text>
+      <sha1>lb3ccaxp2kc7zhtypm42wea8w0lwric</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3111</id>
+      <parentid>3036</parentid>
+      <timestamp>2012-12-25T23:06:08Z</timestamp>
+      <contributor>
+        <username>Verityproductions</username>
+        <id>4</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6474">=Vue d'ensemble=
+
+{{tip|si vous n'utilisez qu'un seul environnement de bureau, alors pourquoi ne pas utiliser le gestionnaire de connexion prévu pour lui?}}
+
+
+'''Les gestionnaires de connexion''' servent à fournir des écrans de connexion (login), permettant ainsi d'empêcher tout accès non autorisé à votre système. De la même façon que pour des environnements de bureau différents, ils diffèrent par les ressources système utilisées et procurent leurs propres styles, interfaces et fonctionnalités. Les fonctionnalités qu'ils ont en commun – surtout si l'on s'en réfère à la liste de gestionnaires de connexion ci-dessous – incluent la personnalisation, les thèmes, la connexion automatique et le choix d'un bureau dans une liste.
+
+
+{{note|seuls les gestionnaires d'affichage qui peuvent être facilement installés et mis en œuvre ont été répertoriés. Plusieurs gestionnaires d'affichage supplémentaires sont disponibles dans les dépôts Manjaro pour les utilisateurs plus expérimentés, notamment '''XDM''', '''WDM''', et '''Qingy'''.}}
+
+
+=GDM=
+
+[[File:gdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/GNOME_Display_Manager GDM]''' - '''G'''nome '''D'''isplay '''M'''anager - est conçu pour une utilisation avec Gnome 3. Il prend en charge les thèmes, la connexion automatique et la détection automatique ainsi que l'utilisation de multiples environnements de bureau. Plus spécifiquement, pour ceux qui utilisent Gnome 3, une application de configuration est également disponible afin de pouvoir facilement personnaliser l'écran de connexion et activer la connexion automatique sans avoir à modifier les fichiers de configuration.
+
+GDM peut être installé par la commande:
+
+ sudo pacman -S gdm
+
+Une autre possibilité est de l'installer avec son application de configuration spécifique par:
+
+ sudo pacman -S gdm3setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:gdmsessions.png|thumb|left|375px]]
+
+
+{{warning|GDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – Gnome et/ou Cinnamon. Ceci parce que l'environnement de bureau Gnome 3 sera également installé en tant que dépendance.}}
+
+
+'''Pour activer GDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable gdm.service -f
+
+'''Pour activer GDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable gdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=KDM=
+
+[[File:kdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/KDE_Display_Manager KDM]''' - le '''K'''DE '''D'''isplay '''M'''anager - est conçu pour être utilisé avec KDE. Il prend en charge les thèmes, la connexion automatique ainsi que la détection automatique et l'utilisation de multiples environnements de bureau. Si l'environnement de bureau KDE complet a été installé, KDM devrait alors déjà être disponible pour activation.
+
+Sinon, pour installer KDM, entrez la commande:
+
+ sudo pacman -S kdebase-workspace
+
+Des thèmes supplémentaires pour KDM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S archlinux-themes-kdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kdmsessions.png|thumb|left|375px]]
+
+
+{{warning|KDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – KDE lui-même. Ceci parce que KDM ne peut être installé que dans le cadre de l'environnement KDE, qui, sinon, va être téléchargé avec lui.}}
+
+
+'''Pour activer KDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable kdm.service -f
+
+'''Pour activer KDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable kdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=LXDM=
+
+[[File:lxdm.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/en/LXDM LXDM]''' - the '''L'''ightweight '''X'''-Windows '''D'''isplay '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Il prend en charge les thèmes,  la connexion automatique, une sélection facile parmi plusieurs langues, et la détection automatique et l'utilisation de multiples environnements de bureau. 
+
+Pour installer LXDM, entrez la commande:
+
+ sudo pacman -S lxdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:lxdmsessions.png|thumb|left|375px]]
+
+
+'''Pour activer LXDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable lxdm.service -f
+
+'''Pour activer LXDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable lxdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+=SLiM=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/SLiM SLiM]''' - the '''S'''imple '''L'''og'''i'''n '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Populaire auprès des utilisateurs d'Arch, il prend en charge la gestion des thèmes, la connexion automatique, ainsi que l'utilisation de multiples environnements de bureau. '''Cependant, SLiM n'est pas recommandé pour les utilisateurs inexpérimentés''' car il ne détecte pas automatiquement les environnements de bureau installés, et il est donc nécessaire de modifier manuellement certains fichiers de configuration pour le faire fonctionner.
+
+Pour installer SLiM, entrez la commande:
+
+ sudo pacman -S slim
+
+Des thèmes additionnels pour SLiM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{warning|'''NE PAS''' redémarrer pas votre système après l'installation et l'activation de SliM! Si vous le faites, vous n'irez pas plus loin que l'écran de connexion. Vous &lt;u&gt;devez&lt;/u&gt; d'abord éditer le fichier /etc/slim.conf et le fichier ~/.xinitrc pour le faire fonctionner avant de redémarrer. Pour la façon de '''configurer SliM''', veuillez consulter le Guide '''«Comment configurer le gestionnaire de connexion SLiM»'''.}}
+
+
+'''Pour activer SLiM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable slim.service -f
+
+'''Pour activer SLiM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable slim-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Category:Présentation]]</text>
+      <sha1>gixv1beqi23tjc6ju2t90zdbziq98cp</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3174</id>
+      <parentid>3111</parentid>
+      <timestamp>2012-12-26T17:35:20Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6483">=Vue d'ensemble=
+
+{{Astuce|si vous n'utilisez qu'un seul environnement de bureau, alors pourquoi ne pas utiliser le gestionnaire de connexion prévu pour lui?}}
+
+
+'''Les gestionnaires de connexion''' servent à fournir des écrans de connexion (login), permettant ainsi d'empêcher tout accès non autorisé à votre système. De la même façon que pour des environnements de bureau différents, ils diffèrent par les ressources système utilisées et procurent leurs propres styles, interfaces et fonctionnalités. Les fonctionnalités qu'ils ont en commun – surtout si l'on s'en réfère à la liste de gestionnaires de connexion ci-dessous – incluent la personnalisation, les thèmes, la connexion automatique et le choix d'un bureau dans une liste.
+
+
+{{note|seuls les gestionnaires d'affichage qui peuvent être facilement installés et mis en œuvre ont été répertoriés. Plusieurs gestionnaires d'affichage supplémentaires sont disponibles dans les dépôts Manjaro pour les utilisateurs plus expérimentés, notamment '''XDM''', '''WDM''', et '''Qingy'''.}}
+
+
+=GDM=
+
+[[File:gdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/GNOME_Display_Manager GDM]''' - '''G'''nome '''D'''isplay '''M'''anager - est conçu pour une utilisation avec Gnome 3. Il prend en charge les thèmes, la connexion automatique et la détection automatique ainsi que l'utilisation de multiples environnements de bureau. Plus spécifiquement, pour ceux qui utilisent Gnome 3, une application de configuration est également disponible afin de pouvoir facilement personnaliser l'écran de connexion et activer la connexion automatique sans avoir à modifier les fichiers de configuration.
+
+GDM peut être installé par la commande:
+
+ sudo pacman -S gdm
+
+Une autre possibilité est de l'installer avec son application de configuration spécifique par:
+
+ sudo pacman -S gdm3setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:gdmsessions.png|thumb|left|375px]]
+
+
+{{Attention|GDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – Gnome et/ou Cinnamon. Ceci parce que l'environnement de bureau Gnome 3 sera également installé en tant que dépendance.}}
+
+
+'''Pour activer GDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable gdm.service -f
+
+'''Pour activer GDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable gdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=KDM=
+
+[[File:kdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/KDE_Display_Manager KDM]''' - le '''K'''DE '''D'''isplay '''M'''anager - est conçu pour être utilisé avec KDE. Il prend en charge les thèmes, la connexion automatique ainsi que la détection automatique et l'utilisation de multiples environnements de bureau. Si l'environnement de bureau KDE complet a été installé, KDM devrait alors déjà être disponible pour activation.
+
+Sinon, pour installer KDM, entrez la commande:
+
+ sudo pacman -S kdebase-workspace
+
+Des thèmes supplémentaires pour KDM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S archlinux-themes-kdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kdmsessions.png|thumb|left|375px]]
+
+
+{{Attention|KDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – KDE lui-même. Ceci parce que KDM ne peut être installé que dans le cadre de l'environnement KDE, qui, sinon, va être téléchargé avec lui.}}
+
+
+'''Pour activer KDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable kdm.service -f
+
+'''Pour activer KDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable kdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=LXDM=
+
+[[File:lxdm.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/en/LXDM LXDM]''' - the '''L'''ightweight '''X'''-Windows '''D'''isplay '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Il prend en charge les thèmes,  la connexion automatique, une sélection facile parmi plusieurs langues, et la détection automatique et l'utilisation de multiples environnements de bureau. 
+
+Pour installer LXDM, entrez la commande:
+
+ sudo pacman -S lxdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:lxdmsessions.png|thumb|left|375px]]
+
+
+'''Pour activer LXDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable lxdm.service -f
+
+'''Pour activer LXDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable lxdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+=SLiM=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/SLiM SLiM]''' - the '''S'''imple '''L'''og'''i'''n '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Populaire auprès des utilisateurs d'Arch, il prend en charge la gestion des thèmes, la connexion automatique, ainsi que l'utilisation de multiples environnements de bureau. '''Cependant, SLiM n'est pas recommandé pour les utilisateurs inexpérimentés''' car il ne détecte pas automatiquement les environnements de bureau installés, et il est donc nécessaire de modifier manuellement certains fichiers de configuration pour le faire fonctionner.
+
+Pour installer SLiM, entrez la commande:
+
+ sudo pacman -S slim
+
+Des thèmes additionnels pour SLiM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{Attention|'''NE PAS''' redémarrer pas votre système après l'installation et l'activation de SliM! Si vous le faites, vous n'irez pas plus loin que l'écran de connexion. Vous &lt;u&gt;devez&lt;/u&gt; d'abord éditer le fichier /etc/slim.conf et le fichier ~/.xinitrc pour le faire fonctionner avant de redémarrer. Pour la façon de '''configurer SliM''', veuillez consulter le Guide '''«Comment configurer le gestionnaire de connexion SLiM»'''.}}
+
+
+'''Pour activer SLiM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable slim.service -f
+
+'''Pour activer SLiM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable slim-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Category:Présentation]]</text>
+      <sha1>2vwqpojfo1daw3j5loyx4z7paqo8xg1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3436</id>
+      <parentid>3174</parentid>
+      <timestamp>2012-12-28T20:15:28Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* SLiM */</comment>
+      <text xml:space="preserve" bytes="6507">=Vue d'ensemble=
+
+{{Astuce|si vous n'utilisez qu'un seul environnement de bureau, alors pourquoi ne pas utiliser le gestionnaire de connexion prévu pour lui?}}
+
+
+'''Les gestionnaires de connexion''' servent à fournir des écrans de connexion (login), permettant ainsi d'empêcher tout accès non autorisé à votre système. De la même façon que pour des environnements de bureau différents, ils diffèrent par les ressources système utilisées et procurent leurs propres styles, interfaces et fonctionnalités. Les fonctionnalités qu'ils ont en commun – surtout si l'on s'en réfère à la liste de gestionnaires de connexion ci-dessous – incluent la personnalisation, les thèmes, la connexion automatique et le choix d'un bureau dans une liste.
+
+
+{{note|seuls les gestionnaires d'affichage qui peuvent être facilement installés et mis en œuvre ont été répertoriés. Plusieurs gestionnaires d'affichage supplémentaires sont disponibles dans les dépôts Manjaro pour les utilisateurs plus expérimentés, notamment '''XDM''', '''WDM''', et '''Qingy'''.}}
+
+
+=GDM=
+
+[[File:gdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/GNOME_Display_Manager GDM]''' - '''G'''nome '''D'''isplay '''M'''anager - est conçu pour une utilisation avec Gnome 3. Il prend en charge les thèmes, la connexion automatique et la détection automatique ainsi que l'utilisation de multiples environnements de bureau. Plus spécifiquement, pour ceux qui utilisent Gnome 3, une application de configuration est également disponible afin de pouvoir facilement personnaliser l'écran de connexion et activer la connexion automatique sans avoir à modifier les fichiers de configuration.
+
+GDM peut être installé par la commande:
+
+ sudo pacman -S gdm
+
+Une autre possibilité est de l'installer avec son application de configuration spécifique par:
+
+ sudo pacman -S gdm3setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:gdmsessions.png|thumb|left|375px]]
+
+
+{{Attention|GDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – Gnome et/ou Cinnamon. Ceci parce que l'environnement de bureau Gnome 3 sera également installé en tant que dépendance.}}
+
+
+'''Pour activer GDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable gdm.service -f
+
+'''Pour activer GDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable gdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=KDM=
+
+[[File:kdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/KDE_Display_Manager KDM]''' - le '''K'''DE '''D'''isplay '''M'''anager - est conçu pour être utilisé avec KDE. Il prend en charge les thèmes, la connexion automatique ainsi que la détection automatique et l'utilisation de multiples environnements de bureau. Si l'environnement de bureau KDE complet a été installé, KDM devrait alors déjà être disponible pour activation.
+
+Sinon, pour installer KDM, entrez la commande:
+
+ sudo pacman -S kdebase-workspace
+
+Des thèmes supplémentaires pour KDM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S archlinux-themes-kdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kdmsessions.png|thumb|left|375px]]
+
+
+{{Attention|KDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – KDE lui-même. Ceci parce que KDM ne peut être installé que dans le cadre de l'environnement KDE, qui, sinon, va être téléchargé avec lui.}}
+
+
+'''Pour activer KDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable kdm.service -f
+
+'''Pour activer KDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable kdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=LXDM=
+
+[[File:lxdm.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/en/LXDM LXDM]''' - the '''L'''ightweight '''X'''-Windows '''D'''isplay '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Il prend en charge les thèmes,  la connexion automatique, une sélection facile parmi plusieurs langues, et la détection automatique et l'utilisation de multiples environnements de bureau. 
+
+Pour installer LXDM, entrez la commande:
+
+ sudo pacman -S lxdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:lxdmsessions.png|thumb|left|375px]]
+
+
+'''Pour activer LXDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable lxdm.service -f
+
+'''Pour activer LXDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable lxdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+=SLiM=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/SLiM SLiM]''' - the '''S'''imple '''L'''og'''i'''n '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Populaire auprès des utilisateurs d'Arch, il prend en charge la gestion des thèmes, la connexion automatique, ainsi que l'utilisation de multiples environnements de bureau. '''Cependant, SLiM n'est pas recommandé pour les utilisateurs inexpérimentés''' car il ne détecte pas automatiquement les environnements de bureau installés, et il est donc nécessaire de modifier manuellement certains fichiers de configuration pour le faire fonctionner.
+
+Pour installer SLiM, entrez la commande:
+
+ sudo pacman -S slim
+
+Des thèmes additionnels pour SLiM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{Attention|'''NE PAS''' redémarrer pas votre système après l'installation et l'activation de SliM! Si vous le faites, vous n'irez pas plus loin que l'écran de connexion. Vous &lt;u&gt;devez&lt;/u&gt; d'abord éditer le fichier /etc/slim.conf et le fichier ~/.xinitrc pour le faire fonctionner avant de redémarrer. Pour la façon de '''configurer SliM''', veuillez consulter le Guide '''«Comment configurer le gestionnaire de connexion SLiM»'''.}}
+
+
+'''Pour activer SLiM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable slim.service -f
+
+'''Pour activer SLiM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable slim-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Category:Environnements]]
+[[Category:Français]]</text>
+      <sha1>0m69uwk0pxxcj9xaqgvnu0w385spdzl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3514</id>
+      <parentid>3436</parentid>
+      <timestamp>2012-12-29T15:07:03Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6588">[[Page_Principale|Retour à l'accueil]]
+
+=Vue d'ensemble=
+
+{{Astuce|si vous n'utilisez qu'un seul environnement de bureau, alors pourquoi ne pas utiliser le gestionnaire de connexion prévu pour lui?}}
+
+
+'''Les gestionnaires de connexion''' servent à fournir des écrans de connexion (login), permettant ainsi d'empêcher tout accès non autorisé à votre système. De la même façon que pour des environnements de bureau différents, ils diffèrent par les ressources système utilisées et procurent leurs propres styles, interfaces et fonctionnalités. Les fonctionnalités qu'ils ont en commun – surtout si l'on s'en réfère à la liste de gestionnaires de connexion ci-dessous – incluent la personnalisation, les thèmes, la connexion automatique et le choix d'un bureau dans une liste.
+
+
+{{note|seuls les gestionnaires d'affichage qui peuvent être facilement installés et mis en œuvre ont été répertoriés. Plusieurs gestionnaires d'affichage supplémentaires sont disponibles dans les dépôts Manjaro pour les utilisateurs plus expérimentés, notamment '''XDM''', '''WDM''', et '''Qingy'''.}}
+
+
+=GDM=
+
+[[File:gdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/GNOME_Display_Manager GDM]''' - '''G'''nome '''D'''isplay '''M'''anager - est conçu pour une utilisation avec Gnome 3. Il prend en charge les thèmes, la connexion automatique et la détection automatique ainsi que l'utilisation de multiples environnements de bureau. Plus spécifiquement, pour ceux qui utilisent Gnome 3, une application de configuration est également disponible afin de pouvoir facilement personnaliser l'écran de connexion et activer la connexion automatique sans avoir à modifier les fichiers de configuration.
+
+GDM peut être installé par la commande:
+
+ sudo pacman -S gdm
+
+Une autre possibilité est de l'installer avec son application de configuration spécifique par:
+
+ sudo pacman -S gdm3setup
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:gdmsessions.png|thumb|left|375px]]
+
+
+{{Attention|GDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – Gnome et/ou Cinnamon. Ceci parce que l'environnement de bureau Gnome 3 sera également installé en tant que dépendance.}}
+
+
+'''Pour activer GDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable gdm.service -f
+
+'''Pour activer GDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable gdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=KDM=
+
+[[File:kdm.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/KDE_Display_Manager KDM]''' - le '''K'''DE '''D'''isplay '''M'''anager - est conçu pour être utilisé avec KDE. Il prend en charge les thèmes, la connexion automatique ainsi que la détection automatique et l'utilisation de multiples environnements de bureau. Si l'environnement de bureau KDE complet a été installé, KDM devrait alors déjà être disponible pour activation.
+
+Sinon, pour installer KDM, entrez la commande:
+
+ sudo pacman -S kdebase-workspace
+
+Des thèmes supplémentaires pour KDM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S archlinux-themes-kdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:kdmsessions.png|thumb|left|375px]]
+
+
+{{Attention|KDM ne convient que pour ceux qui utilisent – ou ont l'intention d'utiliser – KDE lui-même. Ceci parce que KDM ne peut être installé que dans le cadre de l'environnement KDE, qui, sinon, va être téléchargé avec lui.}}
+
+
+'''Pour activer KDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable kdm.service -f
+
+'''Pour activer KDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable kdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+=LXDM=
+
+[[File:lxdm.png|thumb|left|375px]]
+
+
+'''[http://wiki.lxde.org/en/LXDM LXDM]''' - the '''L'''ightweight '''X'''-Windows '''D'''isplay '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Il prend en charge les thèmes,  la connexion automatique, une sélection facile parmi plusieurs langues, et la détection automatique et l'utilisation de multiples environnements de bureau. 
+
+Pour installer LXDM, entrez la commande:
+
+ sudo pacman -S lxdm
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:lxdmsessions.png|thumb|left|375px]]
+
+
+'''Pour activer LXDM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable lxdm.service -f
+
+'''Pour activer LXDM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable lxdm-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+=SLiM=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+'''[http://en.wikipedia.org/wiki/SLiM SLiM]''' - the '''S'''imple '''L'''og'''i'''n '''M'''anager - est conçu pour être utilisé avec n'importe quel environnement de bureau. Populaire auprès des utilisateurs d'Arch, il prend en charge la gestion des thèmes, la connexion automatique, ainsi que l'utilisation de multiples environnements de bureau. '''Cependant, SLiM n'est pas recommandé pour les utilisateurs inexpérimentés''' car il ne détecte pas automatiquement les environnements de bureau installés, et il est donc nécessaire de modifier manuellement certains fichiers de configuration pour le faire fonctionner.
+
+Pour installer SLiM, entrez la commande:
+
+ sudo pacman -S slim
+
+Des thèmes additionnels pour SLiM peuvent en outre être obtenus par la commande:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{Attention|'''NE PAS''' redémarrer pas votre système après l'installation et l'activation de SliM! Si vous le faites, vous n'irez pas plus loin que l'écran de connexion. Vous &lt;u&gt;devez&lt;/u&gt; d'abord éditer le fichier /etc/slim.conf et le fichier ~/.xinitrc pour le faire fonctionner avant de redémarrer. Pour la façon de '''configurer SliM''', veuillez consulter le Guide '''«Comment configurer le gestionnaire de connexion SLiM»'''.}}
+
+
+'''Pour activer SLiM dans Manjaro 0.8.2 ou ultérieure''' (ou si Plymouth a été supprimé), entrez la commande:
+
+ sudo systemctl enable slim.service -f
+
+'''Pour activer SLiM dans Manjaro 0.8.1 ou une version antérieure''' (ou si Plymouth a été ajouté), entrez la commande:
+
+ sudo systemctl enable slim-plymouth.service -f
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Page_Principale|Retour à l'accueil]]
+[[Category:Environnements]]
+[[Category:Français]]</text>
+      <sha1>ke9en3grve16unhk0ug0cz6fdmvgmgo</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

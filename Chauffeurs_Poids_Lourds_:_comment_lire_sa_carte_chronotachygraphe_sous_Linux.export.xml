@@ -1,0 +1,1783 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Chauffeurs Poids Lourds : comment lire sa carte chronotachygraphe sous Linux</title>
+    <ns>0</ns>
+    <id>1362</id>
+    <revision>
+      <id>8872</id>
+      <timestamp>2014-02-14T13:04:58Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = Vue d'ensemble =  '''lemust83''' (modérateur du forum francophone de manjaro), aidé par '''Loubrix''' (administrateur du m...&quot;</comment>
+      <text xml:space="preserve" bytes="37194">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+'''lemust83''' (modérateur du forum francophone de manjaro), aidé par '''Loubrix''' (administrateur du même forum) a concocté ce tutoriel lui permettant de lire, sous GNU/ Linux, sa [http://www.teobyxiring.fr/Teo_by_XIRING-Lecteur_de_carte_chronotachygraphe.aspx '''carte conducteur'''] avec un lecteur de smartcards standard sous Linux, à décoder et sauvegarder les données directement sur son PC. Il décrie cette opération réalisée sous Manjaro.
+
+Pour ça, nous aurons besoin d'un lecteur de carte à puce, de la carte évidemment, des pilotes et outils pour le faire fonctionner, d'un logiciel capable de collecter les données de la carte et d'un programme pour rendre ces données humainement lisibles.
+
+= Le lecteur de carte à puce =
+
+Loin de moi l'idée d'en faire une promotion commerciale, je ne fais qu'indiquer celui que j'ai obtenu. C'est un [http://www.teobyxiring.fr/ '''Teo by Xiring'''] , simple, pas cher et suffisant pour ce que nous voulons faire.
+Pour installer les pilotes sur manjaro, passer la commande suivante dans un terminal :
+
+ yaourt ccid acsccid
+
+{{note|Pendant l'installation par yaourt, ne pas éditer PKGBUILD (N) et accepter la compilation et l'installation (o ou Entrée). C'est pratiquement toujours comme ça quand on installe depuis AUR.}}
+
+
+= Les outils =
+
+Tout d'abord, merci à Ludovic Rousseau d'avoir pris le temps de me répondre. Nous aurons besoin du paquet [http://ludovic.rousseau.free.fr/softwares/pcsc-tools/ '''pcsc-tools''']. Là encore passer la commande suivante :
+
+ sudo pacman -S pcsc-tools
+
+
+= Testons maintenant =
+
+Il faut d'abord activer le service pc/sc (Pc to SmardCard) avec la commande suivante :
+
+ sudo systemctl start pcscd
+
+On branche le lecteur avec la carte (puce vers la face avant)
+
+ pcsc_scan
+
+et on doit obtenir quelque chose comme ça :
+
+ steph@steph-GA-A55M-S2HP ~ $ pcsc_scan
+        PC/SC device scanner
+        V 1.4.20 (c) 2001-2011, Ludovic Rousseau &lt;ludovic.rousseau@free.fr&gt;
+        Compiled with PC/SC lite version: 1.8.3
+        Using reader plug'n play mechanism
+        Scanning present readers...
+        0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+ 
+        Fri Jan 24 09:57:48 2014
+        Reader 0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+           Card state: Card inserted,
+           ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+ 
+        ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+        + TS = 3B --&gt; Direct Convention
+        + T0 = 97, Y(1): 1001, K: 7 (historical bytes)
+           TA(1) = 11 --&gt; Fi=372, Di=1, 372 cycles/ETU
+             10752 bits/s at 4 MHz, fMax for Fi = 5 MHz =&gt; 13440 bits/s
+           TD(1) = C0 --&gt; Y(i+1) = 1100, Protocol T = 0
+        -----
+           TC(2) = FF --&gt; Work waiting time: 960 x 255 x (Fi/F)
+           TD(2) = B1 --&gt; Y(i+1) = 1011, Protocol T = 1
+        -----
+           TA(3) = FE --&gt; IFSC: 254
+           TB(3) = 35 --&gt; Block Waiting Integer: 3 - Character Waiting Integer: 5
+           TD(3) = 1F --&gt; Y(i+1) = 0001, Protocol T = 15 - Global interface bytes following
+        -----
+           TA(4) = 83 --&gt; Clock stop: state H - Class accepted by the card: (3G) A 5V B 3V
+        + Historical bytes: A5 05 01 01 02 A3 01
+           Category indicator byte: A5 (proprietary format)
+        + TCK = 5F (correct checksum)
+ 
+        Possibly identified card (using /home/steph/.smartcard_list.txt):
+        3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+             digital chronotachygraphe card: conducteur/driver, entreprise, contrôleur/controler et atelier/workshop, 2006-2010
+             manufactured by Imprimerie Nationale, distributed by Chronoservices
+
+
+= Passons maintenant a la lecture et l'extraction des données =
+
+Nous utiliserons [http://pannetrat.com/Cardpeek/En%20fran%C3%A7ais/ '''Cardpeek'''] (en), un soft léger, fonctionnel et intuitif qui permet de lire pas mal de cartes (bancaires, Vitale, carte de transport, etc.).
+Je ne remercierai jamais assez son développeur [http://pannetrat.com/About/ '''Alain Pannetrat'''] pour son écoute  et son dévouement ; nous pouvons lire nos cartes chronotachygraphe grâce a son nouveau script tout spécialement conçu.
+On peut télécharger l'archive [http://downloads.pannetrat.com/install/cardpeek-0.8.2.tar.gz '''ici'''] et la compiler soi-même en suivant les consignes de l'auteur, ou bien depuis AUR
+
+ yaourt cardpeek
+
+J'ai installé la version 0.8.1. Là aussi on refuse d'éditer PKGBUILD et Cardpeek install et on valide le reste.
+
+On lance Cardpeek Menu &gt; Système ou bien Alt+F2 et on tape '''cardpeek'''. Une fois lancé, le programme devrait vous proposer de créer un dossier caché '''.cardpeek''' dans le home ; évidemment on accepte.
+A l'heure où je tape ces lignes, la version 0.8.1 depuis AUR n'est pas encore pourvue du nouveau script &quot;Tachograph.lua&quot; qui nous interresse. Donc
+
+ gedit .cardpeek/scripts/tachograph.lua
+
+et collez-y ces lignes
+
+ --
+ -- This file is part of Cardpeek, the smartcard reader utility.
+ --
+ -- Copyright 2009-2014 by Alain Pannetrat &lt;L1L1@gmx.com&gt;
+ --
+ -- Cardpeek is free software: you can redistribute it and/or modify
+ -- it under the terms of the GNU General Public License as published by
+ -- the Free Software Foundation, either version 3 of the License, or
+ -- (at your option) any later version.
+ --
+ -- Cardpeek is distributed in the hope that it will be useful,
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ -- GNU General Public License for more details.
+ --
+ -- You should have received a copy of the GNU General Public License
+ -- along with Cardpeek.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ --
+ -- @name Tachograph (beta) 
+ -- @description Driver tachograph cards
+ -- @targets 0.8.2
+ --
+ 
+ require('lib.strict');
+ 
+ local Length_expected = &quot;unset&quot;
+ CLA = 0x00
+ 
+ log.print(log.INFO,&quot;Debut de test&quot;);
+ 
+ function tacho_select(fileid)
+     local sw
+ 
+     if Length_expected==&quot;unset&quot; then
+         sw = card.select(fileid,0x0C,&quot;&quot;)
+         if sw==0x9000 then
+             Length_expected = &quot;&quot;
+         else
+             Length_expected = 0x00
+             sw = card.select(fileid,0x0C,0x00)
+         end
+     else
+         sw = card.select(fileid,0x0C,Length_expected)
+     end
+     log.print(log.DEBUG,&quot;Selection du fichier &quot; .. fileid);
+     return sw
+ end
+ 
+ function tacho_read_file(size)
+     local pos=0
+     local sw, resp
+     local expected
+     local data = bytes.new(8)
+     local progress = 0
+ 
+     if size &gt; 500 then
+         progress = 1
+     end
+ 
+     log.print(log.DEBUG,&quot;Lecture de &quot; .. size .. &quot; octets&quot;);
+     while pos&lt;size do
+         if size-pos&lt;200 then
+             expected = size-pos
+         else
+             expected = 200
+         end
+ 
+         sw, resp = card.read_binary(&quot;.&quot;,pos,expected);
+ 
+         if sw~=0x9000 then return sw, data end
+ 
+         if progress&gt;0 then
+             log.print(log.DEBUG,string.format(&quot;Lecture du fichier: %.0f%%&quot;,100*pos/size))
+        end
+ 
+         data = bytes.concat(data,resp)
+         pos = pos + #resp
+     end
+     log.print(log.DEBUG,&quot;Lecture reussie&quot;);
+     return sw, data
+ end
+ 
+ local typeOfTachographCardId 
+ local cardStructureVersion 
+ local noOfEventsPerType  
+ local noOfFaultsPerType 
+ local activityStructureLength 
+ local noOfCardVehicleRecords 
+ local noOfCardPlaceRecords 
+ 
+ function Count_NoOfFaultsPerType()
+     return noOfFaultsPerType
+ end
+ 
+ function Count_NoOfEventsPerType()
+     return noOfEventsPerType
+ end
+ 
+ function Count_ActivityStructureLength()
+     return activityStructureLength 
+ end
+ 
+ function Count_NoOfCardVehicleRecords()
+     return noOfCardVehicleRecords
+ end
+  
+ function Count_NoOfCardPlaceRecords()
+     return noOfCardPlaceRecords
+ end 
+ 
+ TACHO_REGION_TABLE = {
+    [0x00] = &quot;None&quot;,
+    [0x01] = &quot;AndaluciÌa&quot;,
+    [0x02] = &quot;AragoÌn&quot;,
+    [0x03] = &quot;Asturias&quot;,
+    [0x04] = &quot;Cantabria&quot;,
+    [0x05] = &quot;CatalunÌƒa&quot;,
+    [0x06] = &quot;Castilla-LeoÌn&quot;,
+    [0x07] = &quot;Castilla-La-Mancha&quot;,
+    [0x08] = &quot;Valencia&quot;,
+    [0x09] = &quot;Extremadura&quot;, 
+    [0x0A] = &quot;Galicia&quot;, 
+    [0x0B] = &quot;Baleares&quot;, 
+    [0x0C] = &quot;Canarias&quot;, 
+    [0x0D] = &quot;La Rioja&quot;,
+    [0x0E] = &quot;Madrid&quot;,
+    [0x0F] = &quot;Murcia&quot;,
+    [0x10] = &quot;Navarra&quot;,
+    [0x11] = &quot;PaiÌs Vasco&quot;
+ } 
+ 
+ TACHO_EVENT_TABLE = {
+    [0x00] = &quot;No further details&quot;,
+    [0x01] = &quot;Insertion of a non-valid card&quot;,
+    [0x02] = &quot;Card conflict&quot;,
+    [0x03] = &quot;Time overlap&quot;,
+    [0x04] = &quot;Driving without an appropriate card&quot;,
+    [0x05] = &quot;Card insertion while driving&quot;,
+    [0x06] = &quot;Last card session not correctly closed&quot;, 
+    [0x07] = &quot;Over speeding&quot;,
+    [0x08] = &quot;Power supply interruption&quot;,
+    [0x09] = &quot;Motion data error&quot;,
+    [0x10] = &quot;Vehicle unit related security breach attempt event, No further details&quot;,
+    [0x11] = &quot;Vehicle unit, Motion sensor authentication failure&quot;, 
+    [0x12] = &quot;Vehicle unit, Tachograph card authentication failure&quot;, 
+    [0x13] = &quot;Vehicle unit, Unauthorised change of motion sensor&quot;, 
+    [0x14] = &quot;Vehicle unit, Card data input integrity error&quot;,
+    [0x15] = &quot;Vehicle unit, Stored user data integrity error&quot;, 
+    [0x16] = &quot;Vehicle unit, Internal data transfer error&quot;, 
+    [0x17] = &quot;Vehicle unit, Unauthorised case opening&quot;, 
+    [0x18] = &quot;Vehicle unit, Hardware sabotage&quot;,
+    [0x20] = &quot;Sensor related security breach attempt events, No further details&quot;,
+    [0x21] = &quot;Sensor, Authentication failure&quot;,
+    [0x22] = &quot;Sensor, Stored data integrity error&quot;,
+    [0x23] = &quot;Sensor, Internal data transfer error&quot;,
+    [0x24] = &quot;Sensor, Unauthorised case opening&quot;,
+    [0x18] = &quot;Sensor, Hardware sabotage&quot;,
+    [0x30] = &quot;Recording equipment fault, No further details&quot;,
+    [0x31] = &quot;Recording equipment, VU internal fault&quot;,
+    [0x32] = &quot;Recording equipment, Printer fault&quot;,
+    [0x33] = &quot;Recording equipment, Display fault&quot;,
+    [0x34] = &quot;Recording equipment, Downloading fault&quot;,
+    [0x35] = &quot;Recording equipment, Sensor fault&quot;,
+    [0x40] = &quot;Card faults, No further details&quot;,
+ }
+ 
+ TACHO_NATION_TABLE = {
+    [0x00] = &quot;No information available&quot;,
+    [0x01] = &quot;Austria&quot;,
+    [0x02] = &quot;Albania&quot;,
+    [0x03] = &quot;Andorra&quot;,
+    [0x04] = &quot;Armenia&quot;,
+    [0x05] = &quot;Azerbaijan&quot;,
+    [0x06] = &quot;Belgium&quot;,
+    [0x07] = &quot;Bulgaria&quot;,
+    [0x08] = &quot;Bosnia and Herzegovina&quot;,
+    [0x09] = &quot;Belarus&quot;,
+    [0x0A] = &quot;Switzerland&quot;,
+    [0x0B] = &quot;Cyprus&quot;,
+    [0x0C] = &quot;Czech Republic&quot;,
+    [0x0D] = &quot;Germany&quot;,
+    [0x0E] = &quot;Denmark&quot;,
+    [0x0F] = &quot;Spain&quot;,
+    [0x10] = &quot;Estonia&quot;,
+    [0x11] = &quot;France&quot;,
+    [0x12] = &quot;Finland&quot;,
+    [0x13] = &quot;Liechtenstein&quot;,
+    [0x14] = &quot;Faeroe Islands&quot;,
+    [0x15] = &quot;United Kingdom&quot;,
+    [0x16] = &quot;Georgia&quot;,
+    [0x17] = &quot;Greece&quot;,
+    [0x18] = &quot;Hungary&quot;,
+    [0x19] = &quot;Croatia&quot;,
+    [0x1A] = &quot;Italy&quot;,
+    [0x1B] = &quot;Ireland&quot;,
+    [0x1C] = &quot;Iceland&quot;,
+    [0x1D] = &quot;Kazakhstan&quot;,
+    [0x1E] = &quot;Luxembourg&quot;,
+    [0x1F] = &quot;Lithuania&quot;,
+    [0x20] = &quot;Latvia&quot;,
+    [0x21] = &quot;Malta&quot;,
+    [0x22] = &quot;Monaco&quot;,
+    [0x23] = &quot;Republic of Moldova&quot;,
+    [0x24] = &quot;Macedonia&quot;,
+    [0x25] = &quot;Norway&quot;,
+    [0x26] = &quot;Netherlands&quot;,
+    [0x27] = &quot;Portugal&quot;,
+    [0x28] = &quot;Poland&quot;,
+    [0x29] = &quot;Romania&quot;,
+    [0x2A] = &quot;San Marino&quot;,
+    [0x2B] = &quot;Russian Federation&quot;,
+    [0x2C] = &quot;Sweden&quot;,
+    [0x2D] = &quot;Slovakia&quot;,
+    [0x2E] = &quot;Slovenia&quot;,
+    [0x2F] = &quot;Turkmenistan&quot;,
+    [0x30] = &quot;Turkey&quot;,
+    [0x31] = &quot;Ukraine&quot;,
+    [0x32] = &quot;Vatican City&quot;,
+    [0x33] = &quot;Yugoslavia&quot;,
+    [0xFD] = &quot;European Community&quot;,
+    [0xFE] = &quot;Rest of Europe&quot;,
+    [0xFF] = &quot;Rest of the world&quot;,
+ }
+ 
+ TACHO_EQUIPMENT_TYPE = {
+    &quot;Driver card&quot;,
+    &quot;Workshop card&quot;,
+    &quot;Control card&quot;,
+    &quot;Company card&quot;,
+    &quot;Manufacturing card&quot;,
+    &quot;Vehicule unit&quot;,
+    &quot;Motion sensor&quot;
+ }
+ 
+ TACHO_WORK_PERIOD = {
+    [0] = &quot;Begin, related time = card insertion time or time of entry&quot;,
+    [1] = &quot;End, related time = card withdrawal time or time of entry&quot;,
+    [2] = &quot;Begin, related time manually entered (start time)&quot;,
+    [3] = &quot;End, related time manually entered (end of work period)&quot;,
+    [4] = &quot;Begin, related time assumed by VU&quot;,
+    [5] = &quot;End, related time assumed by VU&quot;
+ }
+ 
+ function Tacho_WORK_PERIOD(data,node)
+     node:set_attribute(&quot;alt&quot;,TACHO_WORK_PERIOD[data[0]])
+ end
+ 
+ function Tacho_EQUIPMENT_TYPE(data,node)
+     node:set_attribute(&quot;alt&quot;,TACHO_EQUIPMENT_TYPE[data[0]])
+ end
+ 
+ function Tacho_EVENT_TYPE(data,node)
+     node:set_attribute(&quot;alt&quot;,TACHO_EVENT_TABLE[data[0]])
+ end
+ 
+ function Tacho_NATION_NUMERIC(data,node)
+     node:set_attribute(&quot;alt&quot;,TACHO_NATION_TABLE[data[0]])
+ end
+ 
+ function Tacho_DATE(data,node)
+     local time=data:tonumber()
+     node:set_attribute(&quot;alt&quot;,os.date(&quot;!%d/%m/%Y&quot;,time))
+ end
+ 
+ function Tacho_TIME(data,node)
+     local time=data:tonumber()
+     node:set_attribute(&quot;alt&quot;,os.date(&quot;!%H:%M:%S %d/%m/%Y&quot;,time))
+ end
+ 
+ function Tacho_TEXT(data,node)
+     node:set_attribute(&quot;alt&quot;,data:format(&quot;%P&quot;))
+ end 
+ 
+ function Tacho_TEXT_8859(data,node)
+     global('iconv')
+     
+     if iconv and data[0]&gt;0 then
+         local format = &quot;ISO-8859-&quot;..data[0]
+         local conversion = iconv.open(format,&quot;UTF-8&quot;)
+         local converted = conversion:iconv(data:sub(1):format(&quot;%C&quot;))
+         if converted then
+             print(&quot;ICONV used&quot;)
+             node:set_attribute(&quot;alt&quot;,converted)
+             return
+         end
+     end
+     
+     if data[0]==1 then
+         node:set_attribute(&quot;alt&quot;,data:sub(1):format(&quot;%P&quot;))
+     elseif data[0]==0 then
+         node:set_attribute(&quot;alt&quot;,&quot;(empty)&quot;)
+     end
+ end 
+ 
+ function Tacho_DATEF(data,node)
+     local digits= data:convert(4)
+     node:set_attribute(&quot;alt&quot;,digits:sub(6,7):format(&quot;%D&quot;)..&quot;/&quot;..digits:sub(4,5):format(&quot;%D&quot;)..&quot;/&quot;..digits:sub(0,3):format(&quot;%D&quot;))
+ end
+ 
+ function Tacho_NUMERIC(data,node)
+     node:set_attribute(&quot;alt&quot;,data:tonumber())
+ end
+ 
+ function Tacho_REGION_NUMERIC(data,node)
+     node:set_attribute(&quot;alt&quot;,TACHO_REGION_TABLE[data[0]])
+ end
+ 
+ function Tacho_VEHICLE_RECORD_ADJUST(data,node)
+    local parent =  node:parent()
+    local o_begin = parent:find_first({label='vehicleOdometerBegin'}):get_attribute(&quot;val&quot;):tonumber()
+    local o_end =   parent:find_first({label='vehicleOdometerEnd'}):get_attribute(&quot;val&quot;):tonumber()
+    local v_date =  parent:find_first({label='vehicleFirstUse'}):get_attribute(&quot;val&quot;):tonumber()
+    local v_reg =   parent:find_first({label='vehicleRegistrationNumber'}):get_attribute(&quot;alt&quot;)
+    
+    parent:set_attribute(&quot;val&quot;, string.format(&quot;%s: %d km, %s&quot;, os.date(&quot;!%d/%m/%Y&quot;,v_date), o_end-o_begin, v_reg))
+ end
+ 
+ function Tacho_ActivityChangeInfo(data,node)
+    local summary
+    local time = bit.AND(data:tonumber(),0x07FF)
+    local sub_node = node:append({  classname='record',
+                                    label='Change', 
+                                    id=string.format(&quot;%02u:%02u&quot;,time/60,time%60),
+                                    val=data,
+                                    size=2 })
+    local activity = bit.SHR(bit.AND(data[0],0x18),3)
+    
+    node:set_attribute(&quot;val&quot;,nil)
+ 
+    if activity==00 then
+        sub_node:append({label='activity', val='0', alt='break/rest'})
+        summary = &quot;break of &quot;
+    elseif activity==01 then
+        sub_node:append({label='activity', val='1', alt='availabilty'})
+        summary = &quot;availability of &quot;
+    elseif activity==02 then
+        sub_node:append({label='activity', val='2', alt='work'})
+        summary = &quot;work of &quot;
+    else
+        sub_node:append({label='activity', val='3', alt='driving'}) 
+        summary = &quot;driving of &quot;
+    end
+ 
+    if bit.AND(data[0],0x80)==0 then
+        sub_node:append({label='slot', val='0', alt='driver'})
+        summary = summary .. &quot;driver&quot;
+    else
+        sub_node:append({label='slot', val='1', alt='co-driver'})
+        summary = summary .. &quot;co-driver&quot;
+    end
+ 
+    if bit.AND(data[0],0x40)==0 then
+        sub_node:append({label='driving status', val='0', alt='single'})
+    else
+        sub_node:append({label='driving status', val='1', alt='crew'})
+    end
+ 
+    if bit.AND(data[0],0x20)==0 then
+        sub_node:append({label='card status', val='0', alt='inserted'})
+    else
+        sub_node:append({label='card status', val='1', alt='not inserted'})
+    end
+    
+    if time==0 then
+        sub_node:set_attribute(&quot;alt&quot;,&quot;(Initial state: &quot; .. summary .. &quot;)&quot;)
+    else
+        sub_node:set_attribute(&quot;alt&quot;,&quot;(Update:&quot; .. summary .. &quot;)&quot;)
+    end
+ 
+    return time, 1+activity
+ end
+ 
+ function subpart(data,first,last)
+    if first&gt;=#data then
+        return data:sub(first-#data,last-#data)
+    end
+    if last&lt;#data then
+        return data:sub(first,last)
+    else
+        return data:sub(first,#data-1) .. data:sub(0,last-#data)
+    end
+ end
+ 
+ function Tacho_ACTIVITY_RECORDS(data,node)
+    local subnode
+    local newest = node:parent():find_first({label=&quot;activityPointerNewestRecord&quot;}):get_attribute(&quot;val&quot;):tonumber()
+    local oldest = node:parent():find_first({label=&quot;activityPointerOldestDayRecord&quot;}):get_attribute(&quot;val&quot;):tonumber()
+    local ptr = oldest
+    local counter = 1
+   
+    node:set_attribute(&quot;classname&quot;,&quot;record&quot;)
+    node:set_attribute(&quot;val&quot;,nil)
+ 
+    --print(&quot;newest: &quot;..newest);
+    --print(&quot;oldest: &quot;..oldest);
+ 
+    while true do
+        local rec_len = subpart(data,ptr+2,ptr+3):tonumber()
+        local activity = subpart(data,ptr+12,ptr+rec_len-1)
+        local subsub_node
+        local cat_total = { 0, 0, 0, 0 }
+        local cat_ptr = 0
+        local cur_time = 0 
+        local old_time = 0
+        local cat_cur = 0
+        local rec_date = os.date(&quot;!%d/%m/%Y&quot;, subpart(data,ptr+4,ptr+7):tonumber())
+ 
+        subnode = node:append({classname='record',label='CardActivityDailyRecord', size=rec_len, id=counter})
+        subnode:append({classname='item',
+                        label='activityRecordLength',
+                        val=subpart(data,ptr+2,ptr+3),
+                        alt=string.format(&quot;%d (address:%s)&quot;,rec_len,ptr)})
+        subnode:append({classname='item',
+                        label='activityPreviousRecordLength',
+                        val=subpart(data,ptr,ptr+1),
+                        alt=subpart(data,ptr,ptr+1):tonumber()})
+        subnode:append({classname='item',
+                        label='activityRecordDate',
+                        val=subpart(data,ptr+4,ptr+7),
+                        alt=rec_date})
+        subnode:append({classname='item',
+                        label='dailyPresenceCounter',
+                        val=subpart(data,ptr+8,ptr+9),
+                        alt=subpart(data,ptr+8,ptr+9):tonumber() })
+        subnode:append({classname='item',
+                        label='activityDayDistance',
+                        val=subpart(data,ptr+10,ptr+11),
+                        alt=subpart(data,ptr+10,ptr+11):tonumber() .. &quot; km&quot;})
+        subsub_node = subnode:append({classname='record',
+                        label='activityChangeInfo',
+                        size=#activity,
+                        val=activity})
+ 
+        if #activity&gt;0 then
+            for i=0,#activity-1,2 do
+                cur_time, cat_cur = Tacho_ActivityChangeInfo(activity:sub(i,i+1),subsub_node)
+                if cat_ptr~=0 then
+                    cat_total[cat_ptr] = cat_total[cat_ptr]+(cur_time-old_time)
+                end 
+                cat_ptr = cat_cur
+                old_time = cur_time
+            end
+ 
+            cat_total[cat_ptr]=cat_total[cat_ptr]+1440-cur_time
+            subnode:set_attribute(&quot;alt&quot;,string.format(&quot;%s: %d km\n  %dh%02d break, %dh%02d availability, %dh%02d work, %dh%02d drive&quot;,
+                    rec_date,
+                    subpart(data,ptr+10,ptr+11):tonumber(),
+                    cat_total[1]/60,  cat_total[1]%60,
+                    cat_total[2]/60,  cat_total[2]%60,
+                    cat_total[3]/60,  cat_total[3]%60,
+                    cat_total[4]/60,  cat_total[4]%60))
+        else
+             subnode:set_attribute(&quot;alt&quot;,&quot;(no activity)&quot;)
+        end         
+ 
+        --print(string.format(&quot;current ptr=%d, next ptr=%d, rec_len=%d, act_len=%d&quot;,ptr,ptr+rec_len,rec_len,#activity))
+ 
+        if ptr==newest then
+            break
+        end
+        ptr = (ptr + rec_len)%#data
+        counter=counter+1
+    end
+ end
+ 
+ local TACHO_MAP = 
+ {
+    [&quot;EF_ICC&quot;] = 
+    { { &quot;CardIccIdentification&quot;, &quot;record&quot;, 1, {
+            { &quot;clockStop&quot;, &quot;item&quot;, 1, 0 },
+            { &quot;cardExtendedSerialNumber&quot;, &quot;item&quot;, 8, 0 },
+            { &quot;cardApprovalNumber&quot;, &quot;item&quot;, 8, Tacho_TEXT },
+            { &quot;cardPersonaliserID&quot;, &quot;item&quot;, 1, 0 },
+            { &quot;embedderIcAssemblerId&quot;, &quot;item&quot;, 5, 0 },
+            { &quot;icIdentifier&quot;, &quot;item&quot;, 2, 0 } }
+    } },
+    [&quot;EF_IC&quot;] =
+    { { &quot;CardChipIdentification&quot;, &quot;record&quot;, 1, {
+            { &quot;icSerialNumber&quot;, &quot;item&quot;, 4, 0 },
+            { &quot;icManufacturingReferences&quot;, &quot;item&quot;, 4, 0 } }
+    } },
+    [&quot;EF_Application_Identification&quot;] = 
+    { { &quot;DriverCardApplicationIdentification&quot;, &quot;record&quot;, 1, {
+            { &quot;typeOfTachographCardId&quot;, &quot;item&quot;, 1, Tacho_EQUIPMENT_TYPE },
+            { &quot;cardStructureVersion&quot;, &quot;item&quot;, 2, 0 },
+            { &quot;noOfEventsPerType&quot;, &quot;item&quot;, 1, Tacho_NUMERIC  },
+            { &quot;noOfFaultsPerType&quot;, &quot;item&quot;, 1, Tacho_NUMERIC  },
+            { &quot;activityStructureLength&quot;, &quot;item&quot;, 2, Tacho_NUMERIC  },
+            { &quot;noOfCardVehicleRecords&quot;, &quot;item&quot;, 2, Tacho_NUMERIC  },
+            { &quot;noOfCardPlaceRecords&quot;, &quot;item&quot;, 1, Tacho_NUMERIC  } }
+    } },
+    [&quot;EF_Card_Certificate&quot;] = 
+    { { &quot;cardCertificate&quot;, &quot;item&quot;, 194, 0 
+    } },
+    [&quot;EF_CA_Certificate&quot;] = 
+    { { &quot;memberStateCertificate&quot;, &quot;item&quot;, 194, 0 
+    } },
+    [&quot;EF_Identification&quot;] = 
+    { { &quot;CardIdentification&quot;, &quot;record&quot;, 1, {
+            { &quot;cardIssuingMemberState&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC },
+            { &quot;cardNumber&quot;, &quot;item&quot;, 16, Tacho_TEXT },
+            { &quot;cardIssuingAuthorityName&quot;, &quot;item&quot;, 36, Tacho_TEXT_8859 },
+            { &quot;cardIssueDate&quot;, &quot;item&quot;, 4,  Tacho_TIME  },
+            { &quot;cardValidityBegin&quot;, &quot;item&quot;, 4, Tacho_TIME  },
+            { &quot;cardExpiryDate&quot;, &quot;item&quot;, 4, Tacho_TIME  } }
+       },
+       { &quot;DriverCardHolderIdentification&quot;, &quot;record&quot;, 1, {
+            { &quot;CardHolderName&quot;, &quot;record&quot;, 1, {
+                { &quot;hoderSurname&quot;, &quot;item&quot;, 36, Tacho_TEXT_8859 },
+                { &quot;hoderFirstNames&quot;, &quot;item&quot;, 36, Tacho_TEXT_8859 } }
+            },
+            { &quot;cardHolderBirthDate&quot;, &quot;item&quot;, 4, Tacho_DATEF },
+            { &quot;cardHolderPreferredLanguage&quot;, &quot;item&quot;, 2, Tacho_TEXT } }
+    } },
+    [&quot;EF_Card_Download&quot;] = 
+    { { &quot;lastCardDownload&quot;, &quot;item&quot;, 4, Tacho_TIME 
+    } }, 
+    [&quot;EF_Driving_Licence_info&quot;] = 
+    { { &quot;CardDrivingLicenceInformation&quot;, &quot;record&quot;, 1, {
+            { &quot;drivingLicenceIssuingAuthority&quot;, &quot;item&quot;, 36, Tacho_TEXT_8859 },
+            { &quot;drivingLicenceIssuingNation&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC },
+            { &quot;drivingLicenceNumber&quot;, &quot;item&quot;, 16, Tacho_TEXT } } 
+    } },
+    [&quot;EF_Events_Data&quot;] = 
+    { { &quot;CardEventData&quot;, &quot;record&quot;, 1, {
+            { &quot;CardEventRecords&quot;, &quot;record&quot;, 6, {
+                { &quot;CardEventRecord&quot;, &quot;record&quot;, Count_NoOfEventsPerType, {
+                    { &quot;eventType&quot;, &quot;item&quot;, 1, Tacho_EVENT_TYPE },
+                    { &quot;eventBeginTime&quot;, &quot;item&quot;, 4, Tacho_TIME },
+                    { &quot;eventEndtime&quot;, &quot;item&quot;, 4, Tacho_TIME },
+                    { &quot;EventVehicleRegistration&quot;, &quot;record&quot;, 1, {
+                        { &quot;vehiculeRegistrationNation&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC },
+                        { &quot;vehiculeRegistrationNumber&quot;, &quot;item&quot;, 14, Tacho_TEXT_8859 } } 
+                    } }
+                } }
+            } }
+    } },
+    [&quot;EF_Faults_Data&quot;] = 
+    { { &quot;CardFaultData&quot;, &quot;record&quot;, 1, {
+            { &quot;CardFaultsRecords&quot;, &quot;record&quot;, 2, {
+                { &quot;CardFaultRecord&quot;, &quot;record&quot;, Count_NoOfFaultsPerType, {
+                    { &quot;faultType&quot;, &quot;item&quot;, 1, Tacho_EVENT_TYPE },
+                    { &quot;faultBeginTime&quot;, &quot;item&quot;, 4, Tacho_TIME },
+                    { &quot;faultEndtime&quot;, &quot;item&quot;, 4, Tacho_TIME },
+                    { &quot;FaultVehicleRegistration&quot;, &quot;record&quot;, 1, {
+                        { &quot;vehiculeRegistrationNation&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC },
+                        { &quot;vehiculeRegistrationNumber&quot;, &quot;item&quot;, 14, Tacho_TEXT_8859 } } 
+                    } }
+                } }
+            } }        
+    } },
+    [&quot;EF_Driver_Activity_Data&quot;] = 
+    { { &quot;CardDriverActivity&quot;, &quot;record&quot;, 1, {
+            { &quot;activityPointerOldestDayRecord&quot;, &quot;item&quot;, 2, Tacho_NUMERIC },
+            { &quot;activityPointerNewestRecord&quot;, &quot;item&quot;, 2, Tacho_NUMERIC },
+            { &quot;activityDailyRecords&quot;, &quot;item&quot;, Count_ActivityStructureLength, Tacho_ACTIVITY_RECORDS } 
+        }
+    } },
+    [&quot;EF_Vehicles_Used&quot;] = 
+    { { &quot;CardVehiclesUsed&quot;, &quot;record&quot;, 1, {
+            { &quot;vehiclePointerNewestRecord&quot;, &quot;item&quot;, 2, 0 },
+            { &quot;CardVehicleRecords&quot;, &quot;record&quot;, 1, {
+                { &quot;CardVehicleRecord&quot;, &quot;record&quot;, Count_NoOfCardVehicleRecords, {
+                    { &quot;vehicleOdometerBegin&quot;, &quot;item&quot;, 3, Tacho_NUMERIC }, 
+                    { &quot;vehicleOdometerEnd&quot;, &quot;item&quot;, 3, Tacho_NUMERIC }, 
+                    { &quot;vehicleFirstUse&quot;, &quot;item&quot;, 4, Tacho_TIME }, 
+                    { &quot;vehicleLastUse&quot;, &quot;item&quot;, 4, Tacho_TIME }, 
+                    { &quot;vehicleRegistration&quot;, &quot;record&quot;, 1, {
+                        { &quot;vehicleRegistrationNation&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC }, 
+                        { &quot;vehicleRegistrationNumber&quot;, &quot;item&quot;, 14, Tacho_TEXT_8859 } 
+                    } },
+                    { &quot;vehicleDataBlockCounter&quot;, &quot;item&quot;, 2, Tacho_VEHICLE_RECORD_ADJUST } 
+                } }  
+            } }
+        }
+    } },
+    [&quot;EF_Places&quot;] = 
+    { { &quot;CardPlaceDailyWorkPeriod&quot;, &quot;record&quot;, 1, {
+            { &quot;placePointerNewestRecord&quot;, &quot;item&quot;, 1, 0 },
+            { &quot;PlaceRecords&quot;, &quot;record&quot;, 1, {
+                { &quot;PlaceRecord&quot;, &quot;record&quot;, Count_NoOfCardPlaceRecords, {
+                    { &quot;entryTime&quot;, &quot;item&quot;, 4, Tacho_TIME },
+                    { &quot;entryDailyWorkPeriod&quot;, &quot;item&quot;, 1, Tacho_WORK_PERIOD }, 
+                    { &quot;dailyWorkPeriodCountry&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC }, 
+                    { &quot;dailyWorkPeriodRegion&quot;, &quot;item&quot;, 1, Tacho_REGION_NUMERIC }, 
+                    { &quot;vehiculeOdometerValue&quot;, &quot;item&quot;, 3, Tacho_NUMERIC }
+                } }
+            } }
+        }
+    } },
+    [&quot;EF_Current_Usage&quot;] = 
+    { { &quot;CardCurrentUse&quot;, &quot;record&quot;, 1, {
+            { &quot;sessionOpenTime&quot;, &quot;item&quot;, 4, Tacho_TIME },
+            { &quot;SessionOpenVehicle&quot;, &quot;record&quot;, 1, {
+                 { &quot;vehicleRegistrationNation&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC }, 
+                 { &quot;vehicleRegistrationNumber&quot;, &quot;item&quot;, 14, Tacho_TEXT_8859 } 
+            } }
+        } 
+    } },
+    [&quot;EF_Control_Activity_Data&quot;] = 
+    { { &quot;CardControlActivityDataRecord&quot;, &quot;record&quot;, 1, {
+            { &quot;controlType&quot;, &quot;item&quot;, 1, 1 },
+            { &quot;controlTime&quot;, &quot;item&quot;, 4, Tacho_TIME },
+            { &quot;ControlCardNumber&quot;, &quot;record&quot;, 1, {
+                { &quot;cardType&quot;, &quot;item&quot;, 1, 1 },
+                { &quot;cardIssuingMemberState&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC },
+                { &quot;cardNumber&quot;, &quot;item&quot;, 16, Tacho_TEXT }
+            } },  
+            { &quot;ControlVehicleRegistration&quot;, &quot;record&quot;, 1, {
+                 { &quot;vehicleRegistrationNation&quot;, &quot;item&quot;, 1, Tacho_NATION_NUMERIC }, 
+                 { &quot;vehicleRegistrationNumber&quot;, &quot;item&quot;, 14, Tacho_TEXT_8859 } 
+            } },
+            { &quot;controlDownloadPeriodBegin&quot;, &quot;item&quot;, 4, Tacho_TIME },
+            { &quot;controlDownloadPeriodEnd&quot;, &quot;item&quot;, 4, Tacho_TIME }
+        }
+    } },
+    [&quot;EF_Specific_Conditions&quot;] = 
+    { { &quot;SepcificConditionRecord&quot;, &quot;record&quot;, 1, {
+            { &quot;SpecificConditionRecord&quot;, &quot;record&quot;, 56, {
+                { &quot;entryTime&quot;, &quot;item&quot;, 4, Tacho_TIME },
+                { &quot;specificConditionType&quot;, &quot;item&quot;, 1, 1 } 
+            } }
+        }
+    } }
+ }
+ 
+ function tacho_map_ex(map, data, node)
+ 
+    for i,v in ipairs(map) do
+        local item 
+        local count        
+ 
+        if #v~=4 then
+            log.print(log.ERROR,&quot;The mapping for &quot; .. v[1] .. &quot; is incomplete&quot;)
+            return nil
+        end
+ 
+        if not data or #data==0 then
+            return data
+        end
+ 
+        if type(v[3])=='function' then
+            count = v[3]()
+        else
+            count = v[3]
+        end
+ 
+        if v[2]=='record' then
+           for j=1,count do
+                item = node:append({label=v[1], classname=v[2]})
+                data = tacho_map_ex(v[4], data, item)
+                
+                if count&gt;1 then
+                    item:set_attribute(&quot;id&quot;,j)
+                end
+             end 
+        else
+            local data_sub = data:sub(0,count-1)
+            
+            item = node:append({label=v[1], classname=v[2], val=data_sub})
+            data = data:sub(count)
+ 
+            if type(v[4])==&quot;function&quot; then
+                v[4](data_sub,item)
+            end
+            
+            item:set_attribute(&quot;size&quot;,count)
+        end
+    end
+    return data
+ end
+ 
+ function tacho_map(efname, data, node)
+    local map = TACHO_MAP[efname]
+ 
+    if not map then
+        log.print(log.ERROR,efname .. &quot; is not a recognized EF name&quot;)
+        return file_node
+    end
+ 
+    local remains = tacho_map_ex(map,data,node)
+    
+    if remains and #remains&gt;0 then
+        log.print(log.ERROR,&quot;Unparsed data remains in &quot; .. efname .. &quot;: &quot; .. #remains)
+    end
+ end
+ 
+ local ddd = bytes.new(8)
+ 
+ function ddd_append(ef, data)
+    ddd = bytes.concat(ddd,ef,00,bit.SHR(#data,8),bit.AND(#data,0xFF),data)
+ end
+ 
+ function ddd_save(card)
+    local user_name
+    local user_surname
+    local current_date
+    local fpath, fname
+ 
+    if ui.question(&quot;Do you whish to export content of this card in an ESM file\n(also called DDD or C1B)?&quot;, {&quot;Yes&quot;, &quot;No&quot;})~=1 then
+        return false
+    end
+ 
+    user_name = card:find_first({label='hoderSurname'}):get_attribute(&quot;alt&quot;)
+    user_surnames = card:find_first({label='hoderFirstNames'}):get_attribute(&quot;alt&quot;)
+    current_date = os.date('%Y-%m-%d')
+ 
+    fname = user_name .. user_surnames .. current_date .. &quot;.ddd&quot; 
+ 
+    fname = fname:gsub(&quot;%s%s*&quot;,&quot;_&quot;):lower()
+ 
+    fpath, fname = ui.select_file(&quot;Save ESM file as&quot;,&quot;.&quot;,fname)
+ 
+    if fname then
+        file = io.open(fname,&quot;w&quot;)
+        for i=0,#ddd-1 do
+            file:write(string.format(&quot;%c&quot;,ddd[i]))
+        end
+        file:close()
+        log.print(log.INFO,&quot;Saved card data in &quot; .. fname);
+        return true
+    end
+    log.print(log.INFO,&quot;Card data not saved&quot;);
+    return false
+ end
+ 
+ local MAP_TABLE = {}
+ 
+ function tacho_read_file_and_store(node,fid,length,fname,cname)
+    local sw, resp
+    local sub_node
+    
+    sw = tacho_select(fid)
+    sub_node = node:append({classname=cname,label=fname,id=fid})
+ 
+    if sw==0x9000 and length&gt;0 then
+        sw, resp = tacho_read_file(length)
+        if sw==0x9000 then
+            table.insert(MAP_TABLE,{ sub_node, fid, length, fname, cname, resp })
+            ddd_append(fid:sub(2),resp)
+        else
+            sub_node:set_attribute(&quot;alt&quot;,string.format(&quot;File read error: %x&quot;,sw)) 
+        end
+    end
+ 
+    return sw, resp, sub_node
+ end
+ 
+ if card.connect() then
+    local resp
+    local sw 
+    local CARD = card.tree_startup(&quot;Tachograph&quot;) 
+    local TACHO
+ 
+    tacho_read_file_and_store(CARD,&quot;.0002&quot;,25,&quot;EF_ICC&quot;,&quot;file&quot;)
+ 
+    tacho_read_file_and_store(CARD,&quot;.0005&quot;,8,&quot;EF_IC&quot;,&quot;file&quot;)
+ 
+    sw,resp,TACHO = tacho_read_file_and_store(CARD,&quot;#FF544143484F&quot;,0,&quot;DF_Tachograph&quot;,&quot;application&quot;)
+ 
+    sw,resp = tacho_read_file_and_store(TACHO,&quot;.0501&quot;,10,&quot;EF_Application_Identification&quot;,&quot;file&quot;)
+ 
+    if sw==0x9000 then
+        typeOfTachographCardId = resp[0]
+        noOfEventsPerType = resp[3]               
+        noOfFaultsPerType = resp[4]
+        activityStructureLength = resp[5]*256 + resp[6]
+        noOfCardVehicleRecords = resp[7]*256 + resp[8]
+        noOfCardPlaceRecords = resp[9]
+ 
+        if typeOfTachographCardId~=1 then
+            ui.question(&quot;This is not a tachograph DRIVER card.\nThis script may not work on this card.&quot;,{&quot;OK&quot;})
+        end
+ 
+        tacho_read_file_and_store(TACHO,&quot;.C100&quot;,194,&quot;EF_Card_Certificate&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.C108&quot;,194, &quot;EF_CA_Certificate&quot;, &quot;file&quot;)
+        
+        tacho_read_file_and_store(TACHO,&quot;.0520&quot;,143,&quot;EF_Identification&quot;, &quot;file&quot;)
+    
+        tacho_read_file_and_store(TACHO,&quot;.050E&quot;,4,&quot;EF_Card_Download&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0521&quot;,53,&quot;EF_Driving_Licence_info&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0502&quot;,noOfEventsPerType*24*6,&quot;EF_Events_Data&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0503&quot;,noOfFaultsPerType*24*2,&quot;EF_Faults_Data&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0504&quot;,activityStructureLength+4,&quot;EF_Driver_Activity_Data&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0505&quot;,noOfCardVehicleRecords*31+2,&quot;EF_Vehicles_Used&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0506&quot;,noOfCardPlaceRecords*10+1,&quot;EF_Places&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0507&quot;,19,&quot;EF_Current_Usage&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0508&quot;,46,&quot;EF_Control_Activity_Data&quot;,&quot;file&quot;)
+ 
+        tacho_read_file_and_store(TACHO,&quot;.0522&quot;,280,&quot;EF_Specific_Conditions&quot;,&quot;file&quot;)
+ 
+        for i,v in ipairs(MAP_TABLE) do
+            if v[3]&gt;0 then
+                tacho_map(v[4],v[6],v[1])
+            end           
+        end
+ 
+        -- cleanup empty events:
+        for node in TACHO:find({label='eventType'}) do
+            if node:get_attribute(&quot;val&quot;):get(0)==0 then
+                node:parent():remove()
+            end
+        end
+        for node in TACHO:find({label='faultType'}) do
+            if node:get_attribute(&quot;val&quot;):get(0)==0 then
+                node:parent():remove()
+            end
+        end
+        for node in TACHO:find({label='specificConditionType'}) do
+            if node:get_attribute(&quot;val&quot;):get(0)==0 then
+                node:parent():remove()
+            end
+        end
+ 
+        ddd_save(CARD)
+ 
+    end
+ 
+    card.disconnect();
+ end
+ 
+ log.print(log.INFO,&quot;Fin de test&quot;);
+
+'''N'oubliez pas de sauvegarder.'''
+
+Si vous avez compilé la version 0.8.2 directement, le script est déjà en place.
+
+= Allez, on y va =
+
+Lançons cardpeek, la carte inserrée et validons le lecteur qui doit être reconnu. Sur &quot;Analyzer&quot;, on sélectionne le script &quot;Tachograph&quot; et c'est parti...
+
+[[File: cardpeek1.png|thumb|left|375px]]
+
+.......Le lecteur doit clignoter.......
+
+Environ 30 secondes plus tard , un message vous propose de sauvegarder dans un fichier du style ''nom_du_titulaire.ddd''. On valide.
+
+Le fichier se met par défaut dans ''scripts'' (ce sera corrigé dans la prochaine mise à jour de Cardpeek) si on n'a pas préalablement redirigé la destination.
+
+Il est important par la suite de le couper/coller dans le dossier ''non caché'' de votre choix, par exemple  '''Documents'''.
+
+Déjà dans la fenêtre de cardpeek, bon nombre d'informations sont accessibles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= L'interprétation des données dans un format plus ''humain'' =
+
+Il n'y a pas foule sur la toile ! Le seul logiciel que nous avons trouvé tournant sous Linux est [http://readesm.sourceforge.net/help.html '''READESM'''] (en). Malheureusement, il n'est plus maintenu depuis 2011 et a été conçu pour Debian/Ubuntu. La méthode d'installation par le PPA pour Manjaro est à proscrire et de toute façon le lien est mort. A moins de compiler [http://sourceforge.net/projects/readesm/ '''l'archive source'''] en créant un pkgbuild maison, je ne vois pas comment on peut faire. On y travaille et je ne manquerai pas de vous en faire part.
+
+En attendant, READESM a été porté sous Windows, et compromis acceptable, tourne correctement avec Wine ! Donc si Wine n'est pas installé, passez la commande suivante :
+
+ sudo pacman -S wine
+
+Puis on télécharge l'archive sq13163-ac.exe [http://sourceforge.net/projects/readesm/files/readesm/2011-10/readesm-2011.10-win32.exe/download '''ici'''].
+
+Allez dans votre répertoire Téléchargement et clic droit sur le fichier sans le décompresser &gt; Ouvrir avec Wine, chargeur de programme windows et on installe ! L'interface est simpliste, mais ça marche.
+
+Ensuite File &gt; Open et naviguez jusqu'au fichier .ddd généré par Cardpeek que vous aurez placé dans un dossier ''non caché'', car Wine ne peut les voir.
+
+Encore plus simple : Manjaro Xfce me permet, par clic droit sur le fichier .ddd depuis Document, ''Ouvrir avec Readesm''.
+
+[[File: cardpeek2.png|thumb|left|375px]]
+
+Après quelques secondes, vous verrez apparaître le contenu entier de votre carte avec près d'un an d'activité (329 jours chez moi).
+
+Voici un aperçu : c'est une image du site de Readesm.
+
+Petite précision : les dates sont au format Mois/Jour/Année (02-03-14 = 3 février et non 2 mars).
+
+Pour une meilleure lisibilité, vous pouvez sauvegarder au format HTML.
+
+N'oubliez pas de déplacer cette sauvegarde dans votre home via le navigateur de Wine, sinon il reste dans le disque virtuel.
+
+Vous pourrez consulter cette sauvegarde directement dans Firefox par exemple qui propose en plus de la possibilité d'agrandissement des images, des infos au survol du pointeur de la souris.
+
+
+
+
+
+
+
+
+
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>6bcydynzjwwrjuh1jivpz52io0ch72n</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>9173</id>
+      <parentid>8872</parentid>
+      <timestamp>2014-05-12T03:56:14Z</timestamp>
+      <contributor>
+        <username>Lemust83</username>
+        <id>260</id>
+      </contributor>
+      <comment>/* Passons maintenant a la lecture et l'extraction des données */</comment>
+      <text xml:space="preserve" bytes="7943">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+'''lemust83''' (modérateur du forum francophone de manjaro), aidé par '''Loubrix''' (administrateur du même forum) a concocté ce tutoriel lui permettant de lire, sous GNU/ Linux, sa [http://www.teobyxiring.fr/Teo_by_XIRING-Lecteur_de_carte_chronotachygraphe.aspx '''carte conducteur'''] avec un lecteur de smartcards standard sous Linux, à décoder et sauvegarder les données directement sur son PC. Il décrie cette opération réalisée sous Manjaro.
+
+Pour ça, nous aurons besoin d'un lecteur de carte à puce, de la carte évidemment, des pilotes et outils pour le faire fonctionner, d'un logiciel capable de collecter les données de la carte et d'un programme pour rendre ces données humainement lisibles.
+
+= Le lecteur de carte à puce =
+
+Loin de moi l'idée d'en faire une promotion commerciale, je ne fais qu'indiquer celui que j'ai obtenu. C'est un [http://www.teobyxiring.fr/ '''Teo by Xiring'''] , simple, pas cher et suffisant pour ce que nous voulons faire.
+Pour installer les pilotes sur manjaro, passer la commande suivante dans un terminal :
+
+ yaourt ccid acsccid
+
+{{note|Pendant l'installation par yaourt, ne pas éditer PKGBUILD (N) et accepter la compilation et l'installation (o ou Entrée). C'est pratiquement toujours comme ça quand on installe depuis AUR.}}
+
+
+= Les outils =
+
+Tout d'abord, merci à Ludovic Rousseau d'avoir pris le temps de me répondre. Nous aurons besoin du paquet [http://ludovic.rousseau.free.fr/softwares/pcsc-tools/ '''pcsc-tools''']. Là encore passer la commande suivante :
+
+ sudo pacman -S pcsc-tools
+
+
+= Testons maintenant =
+
+Il faut d'abord activer le service pc/sc (Pc to SmardCard) avec la commande suivante :
+
+ sudo systemctl start pcscd
+
+On branche le lecteur avec la carte (puce vers la face avant)
+
+ pcsc_scan
+
+et on doit obtenir quelque chose comme ça :
+
+ steph@steph-GA-A55M-S2HP ~ $ pcsc_scan
+        PC/SC device scanner
+        V 1.4.20 (c) 2001-2011, Ludovic Rousseau &lt;ludovic.rousseau@free.fr&gt;
+        Compiled with PC/SC lite version: 1.8.3
+        Using reader plug'n play mechanism
+        Scanning present readers...
+        0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+ 
+        Fri Jan 24 09:57:48 2014
+        Reader 0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+           Card state: Card inserted,
+           ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+ 
+        ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+        + TS = 3B --&gt; Direct Convention
+        + T0 = 97, Y(1): 1001, K: 7 (historical bytes)
+           TA(1) = 11 --&gt; Fi=372, Di=1, 372 cycles/ETU
+             10752 bits/s at 4 MHz, fMax for Fi = 5 MHz =&gt; 13440 bits/s
+           TD(1) = C0 --&gt; Y(i+1) = 1100, Protocol T = 0
+        -----
+           TC(2) = FF --&gt; Work waiting time: 960 x 255 x (Fi/F)
+           TD(2) = B1 --&gt; Y(i+1) = 1011, Protocol T = 1
+        -----
+           TA(3) = FE --&gt; IFSC: 254
+           TB(3) = 35 --&gt; Block Waiting Integer: 3 - Character Waiting Integer: 5
+           TD(3) = 1F --&gt; Y(i+1) = 0001, Protocol T = 15 - Global interface bytes following
+        -----
+           TA(4) = 83 --&gt; Clock stop: state H - Class accepted by the card: (3G) A 5V B 3V
+        + Historical bytes: A5 05 01 01 02 A3 01
+           Category indicator byte: A5 (proprietary format)
+        + TCK = 5F (correct checksum)
+ 
+        Possibly identified card (using /home/steph/.smartcard_list.txt):
+        3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+             digital chronotachygraphe card: conducteur/driver, entreprise, contrôleur/controler et atelier/workshop, 2006-2010
+             manufactured by Imprimerie Nationale, distributed by Chronoservices
+
+
+= Passons maintenant a la lecture et l'extraction des données =
+
+Nous utiliserons [http://pannetrat.com/Cardpeek/En%20fran%C3%A7ais/ '''Cardpeek'''] (en), un soft léger, fonctionnel et intuitif qui permet de lire pas mal de cartes (bancaires, Vitale, carte de transport, etc.).
+Je ne remercierai jamais assez son développeur [http://pannetrat.com/About/ '''Alain Pannetrat'''] pour son écoute  et son dévouement ; nous pouvons lire nos cartes chronotachygraphe grâce a son nouveau script tout spécialement conçu.
+On peut télécharger l'archive [http://downloads.pannetrat.com/install/cardpeek-0.8.2.tar.gz '''ici'''] et la compiler soi-même en suivant les consignes de l'auteur, ou bien depuis AUR
+
+ yaourt cardpeek
+
+J'ai installé la version 0.8.2. Là aussi on refuse d'éditer PKGBUILD et Cardpeek install et on valide le reste.
+
+On lance Cardpeek Menu &gt; Système ou bien Alt+F2 et on tape '''cardpeek'''. Une fois lancé, le programme devrait vous proposer de créer un dossier caché '''.cardpeek''' dans le home ; évidemment on accepte.
+
+= Allez, on y va =
+
+Lançons cardpeek, la carte inserrée et validons le lecteur qui doit être reconnu. Sur &quot;Analyzer&quot;, on sélectionne le script &quot;Tachograph&quot; et c'est parti...
+
+[[File: cardpeek1.png|thumb|left|375px]]
+
+.......Le lecteur doit clignoter.......
+
+Environ 30 secondes plus tard , un message vous propose de sauvegarder dans un fichier du style ''nom_du_titulaire.ddd''. On valide.
+
+Le fichier se met par défaut dans ''scripts'' (ce sera corrigé dans la prochaine mise à jour de Cardpeek) si on n'a pas préalablement redirigé la destination.
+
+Il est important par la suite de le couper/coller dans le dossier ''non caché'' de votre choix, par exemple  '''Documents'''.
+
+Déjà dans la fenêtre de cardpeek, bon nombre d'informations sont accessibles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= L'interprétation des données dans un format plus ''humain'' =
+
+Il n'y a pas foule sur la toile ! Le seul logiciel que nous avons trouvé tournant sous Linux est [http://readesm.sourceforge.net/help.html '''READESM'''] (en). Malheureusement, il n'est plus maintenu depuis 2011 et a été conçu pour Debian/Ubuntu. La méthode d'installation par le PPA pour Manjaro est à proscrire et de toute façon le lien est mort. A moins de compiler [http://sourceforge.net/projects/readesm/ '''l'archive source'''] en créant un pkgbuild maison, je ne vois pas comment on peut faire. On y travaille et je ne manquerai pas de vous en faire part.
+
+En attendant, READESM a été porté sous Windows, et compromis acceptable, tourne correctement avec Wine ! Donc si Wine n'est pas installé, passez la commande suivante :
+
+ sudo pacman -S wine
+
+Puis on télécharge l'archive sq13163-ac.exe [http://sourceforge.net/projects/readesm/files/readesm/2011-10/readesm-2011.10-win32.exe/download '''ici'''].
+
+Allez dans votre répertoire Téléchargement et clic droit sur le fichier sans le décompresser &gt; Ouvrir avec Wine, chargeur de programme windows et on installe ! L'interface est simpliste, mais ça marche.
+
+Ensuite File &gt; Open et naviguez jusqu'au fichier .ddd généré par Cardpeek que vous aurez placé dans un dossier ''non caché'', car Wine ne peut les voir.
+
+Encore plus simple : Manjaro Xfce me permet, par clic droit sur le fichier .ddd depuis Document, ''Ouvrir avec Readesm''.
+
+[[File: cardpeek2.png|thumb|left|375px]]
+
+Après quelques secondes, vous verrez apparaître le contenu entier de votre carte avec près d'un an d'activité (329 jours chez moi).
+
+Voici un aperçu : c'est une image du site de Readesm.
+
+Petite précision : les dates sont au format Mois/Jour/Année (02-03-14 = 3 février et non 2 mars).
+
+Pour une meilleure lisibilité, vous pouvez sauvegarder au format HTML.
+
+N'oubliez pas de déplacer cette sauvegarde dans votre home via le navigateur de Wine, sinon il reste dans le disque virtuel.
+
+Vous pourrez consulter cette sauvegarde directement dans Firefox par exemple qui propose en plus de la possibilité d'agrandissement des images, des infos au survol du pointeur de la souris.
+
+
+
+
+
+
+
+
+
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>8ae1pz78jf7ymu6vtz0xb065xyjwxbq</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>9174</id>
+      <parentid>9173</parentid>
+      <timestamp>2014-05-12T04:07:16Z</timestamp>
+      <contributor>
+        <username>Lemust83</username>
+        <id>260</id>
+      </contributor>
+      <comment>/* L'interprétation des données dans un format plus humain */</comment>
+      <text xml:space="preserve" bytes="7637">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+'''lemust83''' (modérateur du forum francophone de manjaro), aidé par '''Loubrix''' (administrateur du même forum) a concocté ce tutoriel lui permettant de lire, sous GNU/ Linux, sa [http://www.teobyxiring.fr/Teo_by_XIRING-Lecteur_de_carte_chronotachygraphe.aspx '''carte conducteur'''] avec un lecteur de smartcards standard sous Linux, à décoder et sauvegarder les données directement sur son PC. Il décrie cette opération réalisée sous Manjaro.
+
+Pour ça, nous aurons besoin d'un lecteur de carte à puce, de la carte évidemment, des pilotes et outils pour le faire fonctionner, d'un logiciel capable de collecter les données de la carte et d'un programme pour rendre ces données humainement lisibles.
+
+= Le lecteur de carte à puce =
+
+Loin de moi l'idée d'en faire une promotion commerciale, je ne fais qu'indiquer celui que j'ai obtenu. C'est un [http://www.teobyxiring.fr/ '''Teo by Xiring'''] , simple, pas cher et suffisant pour ce que nous voulons faire.
+Pour installer les pilotes sur manjaro, passer la commande suivante dans un terminal :
+
+ yaourt ccid acsccid
+
+{{note|Pendant l'installation par yaourt, ne pas éditer PKGBUILD (N) et accepter la compilation et l'installation (o ou Entrée). C'est pratiquement toujours comme ça quand on installe depuis AUR.}}
+
+
+= Les outils =
+
+Tout d'abord, merci à Ludovic Rousseau d'avoir pris le temps de me répondre. Nous aurons besoin du paquet [http://ludovic.rousseau.free.fr/softwares/pcsc-tools/ '''pcsc-tools''']. Là encore passer la commande suivante :
+
+ sudo pacman -S pcsc-tools
+
+
+= Testons maintenant =
+
+Il faut d'abord activer le service pc/sc (Pc to SmardCard) avec la commande suivante :
+
+ sudo systemctl start pcscd
+
+On branche le lecteur avec la carte (puce vers la face avant)
+
+ pcsc_scan
+
+et on doit obtenir quelque chose comme ça :
+
+ steph@steph-GA-A55M-S2HP ~ $ pcsc_scan
+        PC/SC device scanner
+        V 1.4.20 (c) 2001-2011, Ludovic Rousseau &lt;ludovic.rousseau@free.fr&gt;
+        Compiled with PC/SC lite version: 1.8.3
+        Using reader plug'n play mechanism
+        Scanning present readers...
+        0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+ 
+        Fri Jan 24 09:57:48 2014
+        Reader 0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+           Card state: Card inserted,
+           ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+ 
+        ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+        + TS = 3B --&gt; Direct Convention
+        + T0 = 97, Y(1): 1001, K: 7 (historical bytes)
+           TA(1) = 11 --&gt; Fi=372, Di=1, 372 cycles/ETU
+             10752 bits/s at 4 MHz, fMax for Fi = 5 MHz =&gt; 13440 bits/s
+           TD(1) = C0 --&gt; Y(i+1) = 1100, Protocol T = 0
+        -----
+           TC(2) = FF --&gt; Work waiting time: 960 x 255 x (Fi/F)
+           TD(2) = B1 --&gt; Y(i+1) = 1011, Protocol T = 1
+        -----
+           TA(3) = FE --&gt; IFSC: 254
+           TB(3) = 35 --&gt; Block Waiting Integer: 3 - Character Waiting Integer: 5
+           TD(3) = 1F --&gt; Y(i+1) = 0001, Protocol T = 15 - Global interface bytes following
+        -----
+           TA(4) = 83 --&gt; Clock stop: state H - Class accepted by the card: (3G) A 5V B 3V
+        + Historical bytes: A5 05 01 01 02 A3 01
+           Category indicator byte: A5 (proprietary format)
+        + TCK = 5F (correct checksum)
+ 
+        Possibly identified card (using /home/steph/.smartcard_list.txt):
+        3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+             digital chronotachygraphe card: conducteur/driver, entreprise, contrôleur/controler et atelier/workshop, 2006-2010
+             manufactured by Imprimerie Nationale, distributed by Chronoservices
+
+
+= Passons maintenant a la lecture et l'extraction des données =
+
+Nous utiliserons [http://pannetrat.com/Cardpeek/En%20fran%C3%A7ais/ '''Cardpeek'''] (en), un soft léger, fonctionnel et intuitif qui permet de lire pas mal de cartes (bancaires, Vitale, carte de transport, etc.).
+Je ne remercierai jamais assez son développeur [http://pannetrat.com/About/ '''Alain Pannetrat'''] pour son écoute  et son dévouement ; nous pouvons lire nos cartes chronotachygraphe grâce a son nouveau script tout spécialement conçu.
+On peut télécharger l'archive [http://downloads.pannetrat.com/install/cardpeek-0.8.2.tar.gz '''ici'''] et la compiler soi-même en suivant les consignes de l'auteur, ou bien depuis AUR
+
+ yaourt cardpeek
+
+J'ai installé la version 0.8.2. Là aussi on refuse d'éditer PKGBUILD et Cardpeek install et on valide le reste.
+
+On lance Cardpeek Menu &gt; Système ou bien Alt+F2 et on tape '''cardpeek'''. Une fois lancé, le programme devrait vous proposer de créer un dossier caché '''.cardpeek''' dans le home ; évidemment on accepte.
+
+= Allez, on y va =
+
+Lançons cardpeek, la carte inserrée et validons le lecteur qui doit être reconnu. Sur &quot;Analyzer&quot;, on sélectionne le script &quot;Tachograph&quot; et c'est parti...
+
+[[File: cardpeek1.png|thumb|left|375px]]
+
+.......Le lecteur doit clignoter.......
+
+Environ 30 secondes plus tard , un message vous propose de sauvegarder dans un fichier du style ''nom_du_titulaire.ddd''. On valide.
+
+Le fichier se met par défaut dans ''scripts'' (ce sera corrigé dans la prochaine mise à jour de Cardpeek) si on n'a pas préalablement redirigé la destination.
+
+Il est important par la suite de le couper/coller dans le dossier ''non caché'' de votre choix, par exemple  '''Documents'''.
+
+Déjà dans la fenêtre de cardpeek, bon nombre d'informations sont accessibles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= L'interprétation des données dans un format plus ''humain'' =
+
+Il n'y a pas foule sur la toile ! Le seul logiciel que nous avons trouvé tournant sous Linux est [http://readesm.sourceforge.net/help.html '''READESM'''] (en). Malheureusement, il n'est plus maintenu depuis 2011 et a été conçu pour Debian/Ubuntu. La méthode d'installation par le PPA pour Manjaro est à proscrire et de toute façon le lien est mort. A moins de compiler [http://sourceforge.net/projects/readesm/ '''l'archive source'''] en créant un pkgbuild maison, je ne vois pas comment on peut faire. On y travaille et je ne manquerai pas de vous en faire part.
+
+'''Edit du 11 mai 2014'''
+
+Ça y est !! On peut enfin installer Readesm directement sans passer par Wine .Encore un grand merci à Alain Pannetrat :
+Il faut que Boost , cmake et subversion soient installés.Si ce n'est pas le cas:
+
+Code : Tout sélectionner
+    yaourt boost
+
+
+J'ai installé la version extra/boost 1.55.0-5
+
+Code : Tout sélectionner
+    sudo pacman -S cmake 
+
+
+
+et /ou
+
+Code : Tout sélectionner
+    sudo pacman -S svn
+
+
+
+Nous avons  pu construire un paquet &quot;readesm&quot; disponible dans AUR , donc:
+
+Code : Tout sélectionner
+    yaourt readesm
+
+
+Ne choisissez pas &quot;readesm-manjaro&quot; ,c'est un prototype .
+On refuse d'éditer le PKGBUILD ,et on accepte le reste.
+Le programme est léger ,mais la compilation est un peu longue due a cmake...
+Voici un aperçu : c'est une image du site de Readesm.
+
+[http://andreas.goelzer.de/photos/screenshots/readesm/readesm_0.3.2_windows_xml_2.PNG]
+
+Petite précision : les dates sont au format Mois/Jour/Année (02-03-14 = 3 février et non 2 mars).
+
+Pour une meilleure lisibilité, vous pouvez sauvegarder au format HTML.
+
+Vous pourrez consulter cette sauvegarde directement dans Firefox par exemple qui propose en plus de la possibilité d'agrandissement des images, des infos au survol du pointeur de la souris.
+
+
+
+
+
+
+
+
+
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>oqeuo5lgx7rzdi0q61j4bnatrvopdhu</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>9175</id>
+      <parentid>9174</parentid>
+      <timestamp>2014-05-12T04:08:40Z</timestamp>
+      <contributor>
+        <username>Lemust83</username>
+        <id>260</id>
+      </contributor>
+      <comment>/* L'interprétation des données dans un format plus humain */</comment>
+      <text xml:space="preserve" bytes="7537">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+'''lemust83''' (modérateur du forum francophone de manjaro), aidé par '''Loubrix''' (administrateur du même forum) a concocté ce tutoriel lui permettant de lire, sous GNU/ Linux, sa [http://www.teobyxiring.fr/Teo_by_XIRING-Lecteur_de_carte_chronotachygraphe.aspx '''carte conducteur'''] avec un lecteur de smartcards standard sous Linux, à décoder et sauvegarder les données directement sur son PC. Il décrie cette opération réalisée sous Manjaro.
+
+Pour ça, nous aurons besoin d'un lecteur de carte à puce, de la carte évidemment, des pilotes et outils pour le faire fonctionner, d'un logiciel capable de collecter les données de la carte et d'un programme pour rendre ces données humainement lisibles.
+
+= Le lecteur de carte à puce =
+
+Loin de moi l'idée d'en faire une promotion commerciale, je ne fais qu'indiquer celui que j'ai obtenu. C'est un [http://www.teobyxiring.fr/ '''Teo by Xiring'''] , simple, pas cher et suffisant pour ce que nous voulons faire.
+Pour installer les pilotes sur manjaro, passer la commande suivante dans un terminal :
+
+ yaourt ccid acsccid
+
+{{note|Pendant l'installation par yaourt, ne pas éditer PKGBUILD (N) et accepter la compilation et l'installation (o ou Entrée). C'est pratiquement toujours comme ça quand on installe depuis AUR.}}
+
+
+= Les outils =
+
+Tout d'abord, merci à Ludovic Rousseau d'avoir pris le temps de me répondre. Nous aurons besoin du paquet [http://ludovic.rousseau.free.fr/softwares/pcsc-tools/ '''pcsc-tools''']. Là encore passer la commande suivante :
+
+ sudo pacman -S pcsc-tools
+
+
+= Testons maintenant =
+
+Il faut d'abord activer le service pc/sc (Pc to SmardCard) avec la commande suivante :
+
+ sudo systemctl start pcscd
+
+On branche le lecteur avec la carte (puce vers la face avant)
+
+ pcsc_scan
+
+et on doit obtenir quelque chose comme ça :
+
+ steph@steph-GA-A55M-S2HP ~ $ pcsc_scan
+        PC/SC device scanner
+        V 1.4.20 (c) 2001-2011, Ludovic Rousseau &lt;ludovic.rousseau@free.fr&gt;
+        Compiled with PC/SC lite version: 1.8.3
+        Using reader plug'n play mechanism
+        Scanning present readers...
+        0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+ 
+        Fri Jan 24 09:57:48 2014
+        Reader 0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+           Card state: Card inserted,
+           ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+ 
+        ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+        + TS = 3B --&gt; Direct Convention
+        + T0 = 97, Y(1): 1001, K: 7 (historical bytes)
+           TA(1) = 11 --&gt; Fi=372, Di=1, 372 cycles/ETU
+             10752 bits/s at 4 MHz, fMax for Fi = 5 MHz =&gt; 13440 bits/s
+           TD(1) = C0 --&gt; Y(i+1) = 1100, Protocol T = 0
+        -----
+           TC(2) = FF --&gt; Work waiting time: 960 x 255 x (Fi/F)
+           TD(2) = B1 --&gt; Y(i+1) = 1011, Protocol T = 1
+        -----
+           TA(3) = FE --&gt; IFSC: 254
+           TB(3) = 35 --&gt; Block Waiting Integer: 3 - Character Waiting Integer: 5
+           TD(3) = 1F --&gt; Y(i+1) = 0001, Protocol T = 15 - Global interface bytes following
+        -----
+           TA(4) = 83 --&gt; Clock stop: state H - Class accepted by the card: (3G) A 5V B 3V
+        + Historical bytes: A5 05 01 01 02 A3 01
+           Category indicator byte: A5 (proprietary format)
+        + TCK = 5F (correct checksum)
+ 
+        Possibly identified card (using /home/steph/.smartcard_list.txt):
+        3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+             digital chronotachygraphe card: conducteur/driver, entreprise, contrôleur/controler et atelier/workshop, 2006-2010
+             manufactured by Imprimerie Nationale, distributed by Chronoservices
+
+
+= Passons maintenant a la lecture et l'extraction des données =
+
+Nous utiliserons [http://pannetrat.com/Cardpeek/En%20fran%C3%A7ais/ '''Cardpeek'''] (en), un soft léger, fonctionnel et intuitif qui permet de lire pas mal de cartes (bancaires, Vitale, carte de transport, etc.).
+Je ne remercierai jamais assez son développeur [http://pannetrat.com/About/ '''Alain Pannetrat'''] pour son écoute  et son dévouement ; nous pouvons lire nos cartes chronotachygraphe grâce a son nouveau script tout spécialement conçu.
+On peut télécharger l'archive [http://downloads.pannetrat.com/install/cardpeek-0.8.2.tar.gz '''ici'''] et la compiler soi-même en suivant les consignes de l'auteur, ou bien depuis AUR
+
+ yaourt cardpeek
+
+J'ai installé la version 0.8.2. Là aussi on refuse d'éditer PKGBUILD et Cardpeek install et on valide le reste.
+
+On lance Cardpeek Menu &gt; Système ou bien Alt+F2 et on tape '''cardpeek'''. Une fois lancé, le programme devrait vous proposer de créer un dossier caché '''.cardpeek''' dans le home ; évidemment on accepte.
+
+= Allez, on y va =
+
+Lançons cardpeek, la carte inserrée et validons le lecteur qui doit être reconnu. Sur &quot;Analyzer&quot;, on sélectionne le script &quot;Tachograph&quot; et c'est parti...
+
+[[File: cardpeek1.png|thumb|left|375px]]
+
+.......Le lecteur doit clignoter.......
+
+Environ 30 secondes plus tard , un message vous propose de sauvegarder dans un fichier du style ''nom_du_titulaire.ddd''. On valide.
+
+Le fichier se met par défaut dans ''scripts'' (ce sera corrigé dans la prochaine mise à jour de Cardpeek) si on n'a pas préalablement redirigé la destination.
+
+Il est important par la suite de le couper/coller dans le dossier ''non caché'' de votre choix, par exemple  '''Documents'''.
+
+Déjà dans la fenêtre de cardpeek, bon nombre d'informations sont accessibles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= L'interprétation des données dans un format plus ''humain'' =
+
+Il n'y a pas foule sur la toile ! Le seul logiciel que nous avons trouvé tournant sous Linux est [http://readesm.sourceforge.net/help.html '''READESM'''] (en). Malheureusement, il n'est plus maintenu depuis 2011 et a été conçu pour Debian/Ubuntu. La méthode d'installation par le PPA pour Manjaro est à proscrire et de toute façon le lien est mort. A moins de compiler [http://sourceforge.net/projects/readesm/ '''l'archive source'''] en créant un pkgbuild maison, je ne vois pas comment on peut faire. On y travaille et je ne manquerai pas de vous en faire part.
+
+'''Edit du 11 mai 2014'''
+
+Ça y est !! On peut enfin installer Readesm directement sans passer par Wine .Encore un grand merci à Alain Pannetrat :
+Il faut que Boost , cmake et subversion soient installés.Si ce n'est pas le cas:
+
+
+    yaourt boost
+
+
+J'ai installé la version extra/boost 1.55.0-5
+
+
+    sudo pacman -S cmake 
+
+
+
+et /ou
+
+
+    sudo pacman -S svn
+
+
+
+Nous avons  pu construire un paquet &quot;readesm&quot; disponible dans AUR , donc:
+
+
+    yaourt readesm
+
+
+Ne choisissez pas &quot;readesm-manjaro&quot; ,c'est un prototype .
+On refuse d'éditer le PKGBUILD ,et on accepte le reste.
+Le programme est léger ,mais la compilation est un peu longue due a cmake...
+Voici un aperçu : c'est une image du site de Readesm.
+
+[http://andreas.goelzer.de/photos/screenshots/readesm/readesm_0.3.2_windows_xml_2.PNG]
+
+Petite précision : les dates sont au format Mois/Jour/Année (02-03-14 = 3 février et non 2 mars).
+
+Pour une meilleure lisibilité, vous pouvez sauvegarder au format HTML.
+
+Vous pourrez consulter cette sauvegarde directement dans Firefox par exemple qui propose en plus de la possibilité d'agrandissement des images, des infos au survol du pointeur de la souris.
+
+
+
+
+
+
+
+
+
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>m1nea64cgvojn9fqbbgg91b9fbgw7qf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>9176</id>
+      <parentid>9175</parentid>
+      <timestamp>2014-05-12T04:15:27Z</timestamp>
+      <contributor>
+        <username>Lemust83</username>
+        <id>260</id>
+      </contributor>
+      <comment>/* L'interprétation des données dans un format plus humain */</comment>
+      <text xml:space="preserve" bytes="7623">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+'''lemust83''' (modérateur du forum francophone de manjaro), aidé par '''Loubrix''' (administrateur du même forum) a concocté ce tutoriel lui permettant de lire, sous GNU/ Linux, sa [http://www.teobyxiring.fr/Teo_by_XIRING-Lecteur_de_carte_chronotachygraphe.aspx '''carte conducteur'''] avec un lecteur de smartcards standard sous Linux, à décoder et sauvegarder les données directement sur son PC. Il décrie cette opération réalisée sous Manjaro.
+
+Pour ça, nous aurons besoin d'un lecteur de carte à puce, de la carte évidemment, des pilotes et outils pour le faire fonctionner, d'un logiciel capable de collecter les données de la carte et d'un programme pour rendre ces données humainement lisibles.
+
+= Le lecteur de carte à puce =
+
+Loin de moi l'idée d'en faire une promotion commerciale, je ne fais qu'indiquer celui que j'ai obtenu. C'est un [http://www.teobyxiring.fr/ '''Teo by Xiring'''] , simple, pas cher et suffisant pour ce que nous voulons faire.
+Pour installer les pilotes sur manjaro, passer la commande suivante dans un terminal :
+
+ yaourt ccid acsccid
+
+{{note|Pendant l'installation par yaourt, ne pas éditer PKGBUILD (N) et accepter la compilation et l'installation (o ou Entrée). C'est pratiquement toujours comme ça quand on installe depuis AUR.}}
+
+
+= Les outils =
+
+Tout d'abord, merci à Ludovic Rousseau d'avoir pris le temps de me répondre. Nous aurons besoin du paquet [http://ludovic.rousseau.free.fr/softwares/pcsc-tools/ '''pcsc-tools''']. Là encore passer la commande suivante :
+
+ sudo pacman -S pcsc-tools
+
+
+= Testons maintenant =
+
+Il faut d'abord activer le service pc/sc (Pc to SmardCard) avec la commande suivante :
+
+ sudo systemctl start pcscd
+
+On branche le lecteur avec la carte (puce vers la face avant)
+
+ pcsc_scan
+
+et on doit obtenir quelque chose comme ça :
+
+ steph@steph-GA-A55M-S2HP ~ $ pcsc_scan
+        PC/SC device scanner
+        V 1.4.20 (c) 2001-2011, Ludovic Rousseau &lt;ludovic.rousseau@free.fr&gt;
+        Compiled with PC/SC lite version: 1.8.3
+        Using reader plug'n play mechanism
+        Scanning present readers...
+        0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+ 
+        Fri Jan 24 09:57:48 2014
+        Reader 0: SCM Microsystems Inc. SCR35xx v2.0 USB SC Reader [CCID Interface] 00 00
+           Card state: Card inserted,
+           ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+ 
+        ATR: 3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+        + TS = 3B --&gt; Direct Convention
+        + T0 = 97, Y(1): 1001, K: 7 (historical bytes)
+           TA(1) = 11 --&gt; Fi=372, Di=1, 372 cycles/ETU
+             10752 bits/s at 4 MHz, fMax for Fi = 5 MHz =&gt; 13440 bits/s
+           TD(1) = C0 --&gt; Y(i+1) = 1100, Protocol T = 0
+        -----
+           TC(2) = FF --&gt; Work waiting time: 960 x 255 x (Fi/F)
+           TD(2) = B1 --&gt; Y(i+1) = 1011, Protocol T = 1
+        -----
+           TA(3) = FE --&gt; IFSC: 254
+           TB(3) = 35 --&gt; Block Waiting Integer: 3 - Character Waiting Integer: 5
+           TD(3) = 1F --&gt; Y(i+1) = 0001, Protocol T = 15 - Global interface bytes following
+        -----
+           TA(4) = 83 --&gt; Clock stop: state H - Class accepted by the card: (3G) A 5V B 3V
+        + Historical bytes: A5 05 01 01 02 A3 01
+           Category indicator byte: A5 (proprietary format)
+        + TCK = 5F (correct checksum)
+ 
+        Possibly identified card (using /home/steph/.smartcard_list.txt):
+        3B 97 11 C0 FF B1 FE 35 1F 83 A5 05 01 01 02 A3 01 5F
+             digital chronotachygraphe card: conducteur/driver, entreprise, contrôleur/controler et atelier/workshop, 2006-2010
+             manufactured by Imprimerie Nationale, distributed by Chronoservices
+
+
+= Passons maintenant a la lecture et l'extraction des données =
+
+Nous utiliserons [http://pannetrat.com/Cardpeek/En%20fran%C3%A7ais/ '''Cardpeek'''] (en), un soft léger, fonctionnel et intuitif qui permet de lire pas mal de cartes (bancaires, Vitale, carte de transport, etc.).
+Je ne remercierai jamais assez son développeur [http://pannetrat.com/About/ '''Alain Pannetrat'''] pour son écoute  et son dévouement ; nous pouvons lire nos cartes chronotachygraphe grâce a son nouveau script tout spécialement conçu.
+On peut télécharger l'archive [http://downloads.pannetrat.com/install/cardpeek-0.8.2.tar.gz '''ici'''] et la compiler soi-même en suivant les consignes de l'auteur, ou bien depuis AUR
+
+ yaourt cardpeek
+
+J'ai installé la version 0.8.2. Là aussi on refuse d'éditer PKGBUILD et Cardpeek install et on valide le reste.
+
+On lance Cardpeek Menu &gt; Système ou bien Alt+F2 et on tape '''cardpeek'''. Une fois lancé, le programme devrait vous proposer de créer un dossier caché '''.cardpeek''' dans le home ; évidemment on accepte.
+
+= Allez, on y va =
+
+Lançons cardpeek, la carte inserrée et validons le lecteur qui doit être reconnu. Sur &quot;Analyzer&quot;, on sélectionne le script &quot;Tachograph&quot; et c'est parti...
+
+[[File: cardpeek1.png|thumb|left|375px]]
+
+.......Le lecteur doit clignoter.......
+
+Environ 30 secondes plus tard , un message vous propose de sauvegarder dans un fichier du style ''nom_du_titulaire.ddd''. On valide.
+
+Le fichier se met par défaut dans ''scripts'' (ce sera corrigé dans la prochaine mise à jour de Cardpeek) si on n'a pas préalablement redirigé la destination.
+
+Il est important par la suite de le couper/coller dans le dossier ''non caché'' de votre choix, par exemple  '''Documents'''.
+
+Déjà dans la fenêtre de cardpeek, bon nombre d'informations sont accessibles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= L'interprétation des données dans un format plus ''humain'' =
+
+Il n'y a pas foule sur la toile ! Le seul logiciel que nous avons trouvé tournant sous Linux est [http://readesm.sourceforge.net/help.html '''READESM'''] (en). Malheureusement, il n'est plus maintenu depuis 2011 et a été conçu pour Debian/Ubuntu. La méthode d'installation par le PPA pour Manjaro est à proscrire et de toute façon le lien est mort. A moins de compiler [http://sourceforge.net/projects/readesm/ '''l'archive source'''] en créant un pkgbuild maison, je ne vois pas comment on peut faire. On y travaille et je ne manquerai pas de vous en faire part.
+
+'''Edit du 11 mai 2014'''
+
+Ça y est !! On peut enfin installer Readesm directement sans passer par Wine .Encore un grand merci à Alain Pannetrat :
+Il faut que Boost , cmake et subversion soient installés.Si ce n'est pas le cas:
+
+
+    yaourt boost
+
+
+J'ai installé la version extra/boost 1.55.0-5
+
+
+    sudo pacman -S cmake 
+
+
+
+et /ou
+
+
+    sudo pacman -S svn
+
+
+
+Nous avons  pu construire un paquet &quot;readesm&quot; disponible dans AUR , donc:
+
+
+    yaourt readesm
+
+
+Ne choisissez pas &quot;readesm-manjaro&quot; ,c'est un prototype .
+On refuse d'éditer le PKGBUILD ,et on accepte le reste.
+Le programme est léger ,mais la compilation est un peu longue due a cmake...
+Voici un aperçu : c'est une image du site de Readesm.
+
+[http://andreas.goelzer.de/photos/screenshots/readesm/readesm_0.3.2_windows_xml_2.PNG]
+
+Petite précision : les dates sont au format Mois/Jour/Année (02-03-14 = 3 février et non 2 mars).
+
+Pour une meilleure lisibilité, vous pouvez sauvegarder au format HTML.
+
+Vous pourrez consulter cette sauvegarde directement dans Firefox par exemple qui propose en plus de la possibilité d'agrandissement des images, des infos au survol du pointeur de la souris.
+
+--[[User:Lemust83|Lemust83]] ([[User talk:Lemust83|talk]]) 06:15, 12 May 2014 (CEST)
+
+
+
+
+
+
+
+
+
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>rj50ou9fc65ap0aexgh7trv2uwt0llm</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

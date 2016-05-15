@@ -1,0 +1,1240 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Pacman et Yaourt</title>
+    <ns>0</ns>
+    <id>580</id>
+    <revision>
+      <id>3209</id>
+      <timestamp>2012-12-26T20:02:44Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>Created page with &quot;= Description de Pacman =  Dans la plupart des distributions GNU-Linux, les logiciels sont disponibles sous forme d'archives appelées '''paquets''' ( ''packages'' en anglais ...&quot;</comment>
+      <text xml:space="preserve" bytes="9746">= Description de Pacman =
+
+Dans la plupart des distributions GNU-Linux, les logiciels sont disponibles sous forme d'archives appelées '''paquets''' ( ''packages'' en anglais ) et centralisés sur des serveurs appelés '''dépôts''', sorte de boutiques d'applications en ligne (la marque à la pomme n'a rien inventé). Manjaro ne fait pas exception et gère ses logiciels de cette façon.
+
+Pacman est un gestionnaire de paquets créé pour ArchLinux, et par conséquent utilisé aussi dans Manjaro. Il est capable d'installer, de désinstaller, de mettre à jour, et de configurer les paquets logiciels, tout en gérant les dépendances entre eux, pour assurer la cohérence du système.
+
+Pacman s'utilise en ligne de commandes, donc toutes les commandes citées dans cet article sont à entrer dans un Terminal; lorsque les commandes ont besoin des privilèges administrateur, elles sont précédées par '''sudo''' (et le mot de passe de l'utilisateur lui sera demandé).
+
+{{tip| Si '''sudo''' n'est pas mentionné, cela signifie qu'un utilisateur sans privilège peut lancer la commande }}
+
+== Synchroniser avec les dépôts Manjaro ==
+
+La première chose à faire avant d'installer ou mettre à jour est de synchroniser les listes locales de paquets avec les listes des serveurs, ce qui se fait avec la commande suivante:
+
+ sudo pacman -Sy
+
+Dans certains cas, il peut être utile de forcer le remplacement des listes locales, même si elles sont déjà à jour; il suffit de doubler le '''y'''.
+
+ sudo pacman -Syy
+
+
+== Mettre à jour le système ==
+
+Les mises à jour sont fréquentes, puisque Manjaro est une ''Rolling-release'', mais si on les fait régulièrement, il y a rarement de gros volumes de données à télécharger.
+Manjaro est fournie avec un utilitaire capable de faire les mises à jour, '''Kalu''', toutefois, ceux qui veulent garder le contrôle ou en savoir plus sur ce qui se passe préfèreront le faire avec Pacman.
+
+Si on vient de synchroniser les listes de paquets logiciels, comme expliqué au chapitre précédent, il suffit de lancer cette commande:
+
+ sudo pacman -Su
+
+mais il est possible de tout faire (synchro et mise à jour) en une seule commande:
+
+ sudo pacman -Syu
+
+et même avec la synchro forcée:
+
+ sudo pacman -Syyu
+
+Dans tous les cas, Pacman vous demandera de confirmer l'installation des nouveaux paquets:
+
+ Procéder à l'installation ? [O/n]
+
+à quoi il suffit d'appuyer sur '''o''' (pour «oui») et '''Entrée''' (mais on peut aussi refuser, avec '''n''' et tout s'arrêtera).
+
+Vous pouvez rester devant à regarder, Pacman détaille ce qu'il fait: téléchargement des paquets, vérification de leur intégrité, installation, contrôle de l'espace disque, et éventuellement éxécution de tâches en rapport avec certains paquets.
+
+
+== Recherche d'un paquet ==
+
+Lorsqu'on cherche un logiciel dans un but précis, il va falloir le chercher dans les listes de ce qui est disponible (les fameuses listes qu'on a synchronisé au début).
+Pour cela, on peut lancer une recherche sur un mot-clé:
+
+{{tip| Il n'est pas nécessaire d'avoir les droits d'administration pour la recherche: '''sudo''' est facultatif }}
+
+ pacman -Ss [mot-clé]
+
+le mot-clé peut être tout ou une partie du nom du logiciel:
+
+ pacman -Ss leafp
+ 
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+il peut aussi correspondre à la description du logiciel:
+
+ pacman -Ss notepad
+
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+
+== Installer des logiciels ==
+
+Une fois que la recherche nous a donné la réponse qu'on cherchait, on peut installer le logiciel voulu; ici, il faut indiquer '''le nom exact''' du paquet, tel que l'a fourni la recherche:
+
+ sudo pacman -S [nom du paquet]
+
+Donc si on reprend notre exemple avec '''leafpad''':
+
+ sudo pacman -S leafpad
+
+Pacman voudra peut-être installer d'autres paquets en plus de celui que vous lui demandez (dépendances), mais dans tous les cas, il vous demandera de confirmer, comme on l'a vu pour la mise à jour.
+Il est bien sûr possible de demander l'installation de plusieurs paquets en une seule commande; il suffit de mettre tous les noms, séparés par des espaces:
+
+ sudo pacman -S leafpad supertux frozen-bubble
+
+
+== Désinstaller des logiciels ==
+
+Si vous souhaitez désinstaller un paquet logiciel, il suffit de lancer la commande:
+
+ sudo pacman -R [nom du paquet]
+
+Par exemple, avec notre '''leafpad''':
+
+ sudo pacman -R leafpad
+
+Ceci dit, on a vu que Pacman installait parfois des paquets additionnels pour satisfaire les dépendances; il peut donc être utile de demander à Pacman de supprimer également les dépendances du paquet:
+
+ sudo pacman -Rs leafpad
+
+Évidemment, Pacman supprimera ces dépendances uniquement si elle ne sont pas requises par un autre paquet encore installé.
+Comme pour l'installation, Pacman vous indique quels paquets il va supprimer, et vous demande de confirmer.
+
+En temps normal, lors d'une désinstallation, Pacman conservera une sauvegarde des fichiers de configuration du logiciel (pour une ré-installation ultérieure), mais il est possible de lui dire de ne pas garder la sauvegarde:
+
+ sudo pacman -Rsn leafpad
+
+
+== Installer un paquet hors-dépôt ==
+
+Supposons que vous ayez besoin d'un paquet non-disponible dans les dépots, mais que vous l'ayez trouvé ailleurs, et téléchargé, il est possible de l'installer avec cette commande:
+
+ sudo pacman -U [chemin vers le paquet]
+
+Par exemple, j'ai mis le paquet ''pamac-0.1.1-2-any.pkg.tar.xz'' dans mon dossier personnel, et je souhaite l'installer:
+
+ sudo pacman -U /home/david/pamac-0.1.1-2-any.pkg.tar.xz
+
+Bien sûr, la désinstallation se fait comme pour les paquets installés via le dépôt.
+
+{{tip| En règle générale, installer un paquet hors-dépot est déconseillé; cela va à l'encontre de la sécurité que procure le système de signatures de Pacman }}
+
+
+
+== Informations sur les paquets locaux ==
+
+Pacman peut fournir quelques informations sur les paquets installés, grâce à l'option '''-Q'''.
+Pour avoir des infos générales sur un paquet (notre '''leafpad''' par exemple):
+
+ pacman -Qi leafpad
+
+Connaitre la liste des fichiers appartenant à un paquet:
+
+ pacman -Ql leafpad
+
+Ou inversement, si on veut savoir à quel paquet appartient un fichier (donner le chemin complet du fichier):
+
+ pacman -Qo /etc/pacman.d/mirrorlist
+
+ce qui vous répondra:
+
+ /etc/pacman.d/mirrorlist appartient à pacman-mirrorlist 20121108-1
+
+En combinant plusieurs options, on peut connaître la liste des paquets orphelins (qui ont été installés comme dépendances mais ne sont plus requis par aucun paquet):
+
+ pacman -Qdt
+
+
+== Aller plus loin ==
+
+Une fois qu'on est familier avec toutes ces commandes de bases, il est possible d'en découvrir d'autres, pour des tâches précises (et parfois dangereuses pour le système, attention...), en consultant le manuel:
+
+ man pacman
+
+Pour fermer le manuel, appuyez sur '''q'''.
+
+
+== Yaourt, une interface pour Pacman ==
+
+Manjaro fournit aussi Yaourt, un autre logiciel de gestion des paquets, qui est en fait une ''surcouche'' pour Pacman.
+
+Yaourt peut être utilisé de la même façon que Pacman, car il supporte les même options, mais il fournit des fonctions supplémentaires.
+
+{{tip| Un point important de Yaourt est qu'il s'utilise sans être administrateur, sans '''sudo'''; il demande le mot de passe quand il en a besoin}}
+
+=== Utilisation comme Pacman ===
+
+On peut passer à Yaourt toutes les options de Pacman; dans ce cas, il se comportera exactement comme ce dernier, la couleur en plus...
+
+=== Mode interractif ===
+
+En utilisant Yaourt sans option, avec juste un mot-clé, Yaourt vous retournera un résultat de recherche sous forme de liste numérotée (en couleur), et vous demandera de choisir dans la liste ce que vous voulez installer, en donnant le ou les numéros correspondants.
+par exemple:
+
+ yaourt leafpad
+
+va répondre:
+
+ 1 extra/leafpad 0.8.18.1-3
+     A notepad clone for GTK+ 2.0
+ 2 aur/leafpad-le 0.8.17le-1 (33)
+     Limited edition series of the Leafpad text editor
+ 3 aur/leafpad-noheader 0.8.18.1-2 (0)
+     A notepad clone for GTK+ 2.0 with print header disabled
+ ==&gt; Numéro(s) des paquets à installer (ex: 1 2 3 ou 1-3)
+ ==&gt; ----------------------------------------------------
+ ==&gt; 
+
+(en couleur normalement)
+Il suffira de taper le numéro de ce qu'on veut dans la liste, puis '''entrée''', et Yaourt l'installera.
+
+Il faut noter que Yaourt fournit aussi les résultats de la recherche dans le dépôt AUR.
+
+
+=== AUR ===
+
+AUR ('''A'''rch '''U'''ser '''R'''epository) ne contient pas de paquets mais des Pkgbuilds.
+Ces Pkgbuilds sont des fichiers qui indiquent où télécharger les fichiers (sources le plus souvent), comment les compiler, et comment les installer.
+L'avantage de AUR est de fournir des logiciels introuvables dans les dépôts ordinaires de Manjaro.
+En revanche ces logiciels ne sont pas supportés par les développeurs de Manjaro (ou de Arch), et on peut avoir de mauvaises surprises.
+Un moyen de se faire une idée d'un logiciel de AUR est de regarder le vote, indiqué entre parenthèses dans le résultat fourni par Yaourt.
+
+yaourt est donc capable d'installer les logiciels de AUR aussi simplement que les paquets des dépôts.
+
+
+=== Statistiques ===
+
+Yaourt fournit aussi une commande plutôt pratique pour savoir où on en est de ses paquets:
+
+ yaourt --stats
+
+=== Et Packer ? ===
+
+Packer fournit les mêmes fonctions que Yaourt, sauf celles pour désinstaller, le développeur de Packer considérant que cette tache peut-être effectuée par Pacman.
+
+
+== En cas de problèmes ==
+
+En cas de soucis ou de disfonctionnements de Pacman, vous pouvez consulter [[Problèmes_avec_Pacman]]
+
+[[Category:Using Manjaro]]
+[[Category:Contents Page]]</text>
+      <sha1>ehfi5vvvqrnbpp3fg2rep38ppx9nwl9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3235</id>
+      <parentid>3209</parentid>
+      <timestamp>2012-12-26T20:14:33Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="9758">= Description de Pacman =
+
+Dans la plupart des distributions GNU-Linux, les logiciels sont disponibles sous forme d'archives appelées '''paquets''' ( ''packages'' en anglais ) et centralisés sur des serveurs appelés '''dépôts''', sorte de boutiques d'applications en ligne (la marque à la pomme n'a rien inventé). Manjaro ne fait pas exception et gère ses logiciels de cette façon.
+
+Pacman est un gestionnaire de paquets créé pour ArchLinux, et par conséquent utilisé aussi dans Manjaro. Il est capable d'installer, de désinstaller, de mettre à jour, et de configurer les paquets logiciels, tout en gérant les dépendances entre eux, pour assurer la cohérence du système.
+
+Pacman s'utilise en ligne de commandes, donc toutes les commandes citées dans cet article sont à entrer dans un Terminal; lorsque les commandes ont besoin des privilèges administrateur, elles sont précédées par '''sudo''' (et le mot de passe de l'utilisateur lui sera demandé).
+
+{{Astuce| Si '''sudo''' n'est pas mentionné, cela signifie qu'un utilisateur sans privilège peut lancer la commande }}
+
+== Synchroniser avec les dépôts Manjaro ==
+
+La première chose à faire avant d'installer ou mettre à jour est de synchroniser les listes locales de paquets avec les listes des serveurs, ce qui se fait avec la commande suivante:
+
+ sudo pacman -Sy
+
+Dans certains cas, il peut être utile de forcer le remplacement des listes locales, même si elles sont déjà à jour; il suffit de doubler le '''y'''.
+
+ sudo pacman -Syy
+
+
+== Mettre à jour le système ==
+
+Les mises à jour sont fréquentes, puisque Manjaro est une ''Rolling-release'', mais si on les fait régulièrement, il y a rarement de gros volumes de données à télécharger.
+Manjaro est fournie avec un utilitaire capable de faire les mises à jour, '''Kalu''', toutefois, ceux qui veulent garder le contrôle ou en savoir plus sur ce qui se passe préfèreront le faire avec Pacman.
+
+Si on vient de synchroniser les listes de paquets logiciels, comme expliqué au chapitre précédent, il suffit de lancer cette commande:
+
+ sudo pacman -Su
+
+mais il est possible de tout faire (synchro et mise à jour) en une seule commande:
+
+ sudo pacman -Syu
+
+et même avec la synchro forcée:
+
+ sudo pacman -Syyu
+
+Dans tous les cas, Pacman vous demandera de confirmer l'installation des nouveaux paquets:
+
+ Procéder à l'installation ? [O/n]
+
+à quoi il suffit d'appuyer sur '''o''' (pour «oui») et '''Entrée''' (mais on peut aussi refuser, avec '''n''' et tout s'arrêtera).
+
+Vous pouvez rester devant à regarder, Pacman détaille ce qu'il fait: téléchargement des paquets, vérification de leur intégrité, installation, contrôle de l'espace disque, et éventuellement éxécution de tâches en rapport avec certains paquets.
+
+
+== Recherche d'un paquet ==
+
+Lorsqu'on cherche un logiciel dans un but précis, il va falloir le chercher dans les listes de ce qui est disponible (les fameuses listes qu'on a synchronisé au début).
+Pour cela, on peut lancer une recherche sur un mot-clé:
+
+{{Astuce| Il n'est pas nécessaire d'avoir les droits d'administration pour la recherche: '''sudo''' est facultatif }}
+
+ pacman -Ss [mot-clé]
+
+le mot-clé peut être tout ou une partie du nom du logiciel:
+
+ pacman -Ss leafp
+ 
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+il peut aussi correspondre à la description du logiciel:
+
+ pacman -Ss notepad
+
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+
+== Installer des logiciels ==
+
+Une fois que la recherche nous a donné la réponse qu'on cherchait, on peut installer le logiciel voulu; ici, il faut indiquer '''le nom exact''' du paquet, tel que l'a fourni la recherche:
+
+ sudo pacman -S [nom du paquet]
+
+Donc si on reprend notre exemple avec '''leafpad''':
+
+ sudo pacman -S leafpad
+
+Pacman voudra peut-être installer d'autres paquets en plus de celui que vous lui demandez (dépendances), mais dans tous les cas, il vous demandera de confirmer, comme on l'a vu pour la mise à jour.
+Il est bien sûr possible de demander l'installation de plusieurs paquets en une seule commande; il suffit de mettre tous les noms, séparés par des espaces:
+
+ sudo pacman -S leafpad supertux frozen-bubble
+
+
+== Désinstaller des logiciels ==
+
+Si vous souhaitez désinstaller un paquet logiciel, il suffit de lancer la commande:
+
+ sudo pacman -R [nom du paquet]
+
+Par exemple, avec notre '''leafpad''':
+
+ sudo pacman -R leafpad
+
+Ceci dit, on a vu que Pacman installait parfois des paquets additionnels pour satisfaire les dépendances; il peut donc être utile de demander à Pacman de supprimer également les dépendances du paquet:
+
+ sudo pacman -Rs leafpad
+
+Évidemment, Pacman supprimera ces dépendances uniquement si elle ne sont pas requises par un autre paquet encore installé.
+Comme pour l'installation, Pacman vous indique quels paquets il va supprimer, et vous demande de confirmer.
+
+En temps normal, lors d'une désinstallation, Pacman conservera une sauvegarde des fichiers de configuration du logiciel (pour une ré-installation ultérieure), mais il est possible de lui dire de ne pas garder la sauvegarde:
+
+ sudo pacman -Rsn leafpad
+
+
+== Installer un paquet hors-dépôt ==
+
+Supposons que vous ayez besoin d'un paquet non-disponible dans les dépots, mais que vous l'ayez trouvé ailleurs, et téléchargé, il est possible de l'installer avec cette commande:
+
+ sudo pacman -U [chemin vers le paquet]
+
+Par exemple, j'ai mis le paquet ''pamac-0.1.1-2-any.pkg.tar.xz'' dans mon dossier personnel, et je souhaite l'installer:
+
+ sudo pacman -U /home/david/pamac-0.1.1-2-any.pkg.tar.xz
+
+Bien sûr, la désinstallation se fait comme pour les paquets installés via le dépôt.
+
+{{Astuce| En règle générale, installer un paquet hors-dépot est déconseillé; cela va à l'encontre de la sécurité que procure le système de signatures de Pacman }}
+
+
+
+== Informations sur les paquets locaux ==
+
+Pacman peut fournir quelques informations sur les paquets installés, grâce à l'option '''-Q'''.
+Pour avoir des infos générales sur un paquet (notre '''leafpad''' par exemple):
+
+ pacman -Qi leafpad
+
+Connaitre la liste des fichiers appartenant à un paquet:
+
+ pacman -Ql leafpad
+
+Ou inversement, si on veut savoir à quel paquet appartient un fichier (donner le chemin complet du fichier):
+
+ pacman -Qo /etc/pacman.d/mirrorlist
+
+ce qui vous répondra:
+
+ /etc/pacman.d/mirrorlist appartient à pacman-mirrorlist 20121108-1
+
+En combinant plusieurs options, on peut connaître la liste des paquets orphelins (qui ont été installés comme dépendances mais ne sont plus requis par aucun paquet):
+
+ pacman -Qdt
+
+
+== Aller plus loin ==
+
+Une fois qu'on est familier avec toutes ces commandes de bases, il est possible d'en découvrir d'autres, pour des tâches précises (et parfois dangereuses pour le système, attention...), en consultant le manuel:
+
+ man pacman
+
+Pour fermer le manuel, appuyez sur '''q'''.
+
+
+== Yaourt, une interface pour Pacman ==
+
+Manjaro fournit aussi Yaourt, un autre logiciel de gestion des paquets, qui est en fait une ''surcouche'' pour Pacman.
+
+Yaourt peut être utilisé de la même façon que Pacman, car il supporte les même options, mais il fournit des fonctions supplémentaires.
+
+{{Astuce| Un point important de Yaourt est qu'il s'utilise sans être administrateur, sans '''sudo'''; il demande le mot de passe quand il en a besoin}}
+
+=== Utilisation comme Pacman ===
+
+On peut passer à Yaourt toutes les options de Pacman; dans ce cas, il se comportera exactement comme ce dernier, la couleur en plus...
+
+=== Mode interractif ===
+
+En utilisant Yaourt sans option, avec juste un mot-clé, Yaourt vous retournera un résultat de recherche sous forme de liste numérotée (en couleur), et vous demandera de choisir dans la liste ce que vous voulez installer, en donnant le ou les numéros correspondants.
+par exemple:
+
+ yaourt leafpad
+
+va répondre:
+
+ 1 extra/leafpad 0.8.18.1-3
+     A notepad clone for GTK+ 2.0
+ 2 aur/leafpad-le 0.8.17le-1 (33)
+     Limited edition series of the Leafpad text editor
+ 3 aur/leafpad-noheader 0.8.18.1-2 (0)
+     A notepad clone for GTK+ 2.0 with print header disabled
+ ==&gt; Numéro(s) des paquets à installer (ex: 1 2 3 ou 1-3)
+ ==&gt; ----------------------------------------------------
+ ==&gt; 
+
+(en couleur normalement)
+Il suffira de taper le numéro de ce qu'on veut dans la liste, puis '''entrée''', et Yaourt l'installera.
+
+Il faut noter que Yaourt fournit aussi les résultats de la recherche dans le dépôt AUR.
+
+
+=== AUR ===
+
+AUR ('''A'''rch '''U'''ser '''R'''epository) ne contient pas de paquets mais des Pkgbuilds.
+Ces Pkgbuilds sont des fichiers qui indiquent où télécharger les fichiers (sources le plus souvent), comment les compiler, et comment les installer.
+L'avantage de AUR est de fournir des logiciels introuvables dans les dépôts ordinaires de Manjaro.
+En revanche ces logiciels ne sont pas supportés par les développeurs de Manjaro (ou de Arch), et on peut avoir de mauvaises surprises.
+Un moyen de se faire une idée d'un logiciel de AUR est de regarder le vote, indiqué entre parenthèses dans le résultat fourni par Yaourt.
+
+yaourt est donc capable d'installer les logiciels de AUR aussi simplement que les paquets des dépôts.
+
+
+=== Statistiques ===
+
+Yaourt fournit aussi une commande plutôt pratique pour savoir où on en est de ses paquets:
+
+ yaourt --stats
+
+=== Et Packer ? ===
+
+Packer fournit les mêmes fonctions que Yaourt, sauf celles pour désinstaller, le développeur de Packer considérant que cette tache peut-être effectuée par Pacman.
+
+
+== En cas de problèmes ==
+
+En cas de soucis ou de disfonctionnements de Pacman, vous pouvez consulter [[Problèmes_avec_Pacman]]
+
+[[Category:Using Manjaro]]
+[[Category:Contents Page]]</text>
+      <sha1>4sg53urz2zjq0jf6lzesgorar14vflu</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3362</id>
+      <parentid>3235</parentid>
+      <timestamp>2012-12-28T05:06:11Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* AUR */</comment>
+      <text xml:space="preserve" bytes="10038">= Description de Pacman =
+
+Dans la plupart des distributions GNU-Linux, les logiciels sont disponibles sous forme d'archives appelées '''paquets''' ( ''packages'' en anglais ) et centralisés sur des serveurs appelés '''dépôts''', sorte de boutiques d'applications en ligne (la marque à la pomme n'a rien inventé). Manjaro ne fait pas exception et gère ses logiciels de cette façon.
+
+Pacman est un gestionnaire de paquets créé pour ArchLinux, et par conséquent utilisé aussi dans Manjaro. Il est capable d'installer, de désinstaller, de mettre à jour, et de configurer les paquets logiciels, tout en gérant les dépendances entre eux, pour assurer la cohérence du système.
+
+Pacman s'utilise en ligne de commandes, donc toutes les commandes citées dans cet article sont à entrer dans un Terminal; lorsque les commandes ont besoin des privilèges administrateur, elles sont précédées par '''sudo''' (et le mot de passe de l'utilisateur lui sera demandé).
+
+{{Astuce| Si '''sudo''' n'est pas mentionné, cela signifie qu'un utilisateur sans privilège peut lancer la commande }}
+
+== Synchroniser avec les dépôts Manjaro ==
+
+La première chose à faire avant d'installer ou mettre à jour est de synchroniser les listes locales de paquets avec les listes des serveurs, ce qui se fait avec la commande suivante:
+
+ sudo pacman -Sy
+
+Dans certains cas, il peut être utile de forcer le remplacement des listes locales, même si elles sont déjà à jour; il suffit de doubler le '''y'''.
+
+ sudo pacman -Syy
+
+
+== Mettre à jour le système ==
+
+Les mises à jour sont fréquentes, puisque Manjaro est une ''Rolling-release'', mais si on les fait régulièrement, il y a rarement de gros volumes de données à télécharger.
+Manjaro est fournie avec un utilitaire capable de faire les mises à jour, '''Kalu''', toutefois, ceux qui veulent garder le contrôle ou en savoir plus sur ce qui se passe préfèreront le faire avec Pacman.
+
+Si on vient de synchroniser les listes de paquets logiciels, comme expliqué au chapitre précédent, il suffit de lancer cette commande:
+
+ sudo pacman -Su
+
+mais il est possible de tout faire (synchro et mise à jour) en une seule commande:
+
+ sudo pacman -Syu
+
+et même avec la synchro forcée:
+
+ sudo pacman -Syyu
+
+Dans tous les cas, Pacman vous demandera de confirmer l'installation des nouveaux paquets:
+
+ Procéder à l'installation ? [O/n]
+
+à quoi il suffit d'appuyer sur '''o''' (pour «oui») et '''Entrée''' (mais on peut aussi refuser, avec '''n''' et tout s'arrêtera).
+
+Vous pouvez rester devant à regarder, Pacman détaille ce qu'il fait: téléchargement des paquets, vérification de leur intégrité, installation, contrôle de l'espace disque, et éventuellement éxécution de tâches en rapport avec certains paquets.
+
+
+== Recherche d'un paquet ==
+
+Lorsqu'on cherche un logiciel dans un but précis, il va falloir le chercher dans les listes de ce qui est disponible (les fameuses listes qu'on a synchronisé au début).
+Pour cela, on peut lancer une recherche sur un mot-clé:
+
+{{Astuce| Il n'est pas nécessaire d'avoir les droits d'administration pour la recherche: '''sudo''' est facultatif }}
+
+ pacman -Ss [mot-clé]
+
+le mot-clé peut être tout ou une partie du nom du logiciel:
+
+ pacman -Ss leafp
+ 
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+il peut aussi correspondre à la description du logiciel:
+
+ pacman -Ss notepad
+
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+
+== Installer des logiciels ==
+
+Une fois que la recherche nous a donné la réponse qu'on cherchait, on peut installer le logiciel voulu; ici, il faut indiquer '''le nom exact''' du paquet, tel que l'a fourni la recherche:
+
+ sudo pacman -S [nom du paquet]
+
+Donc si on reprend notre exemple avec '''leafpad''':
+
+ sudo pacman -S leafpad
+
+Pacman voudra peut-être installer d'autres paquets en plus de celui que vous lui demandez (dépendances), mais dans tous les cas, il vous demandera de confirmer, comme on l'a vu pour la mise à jour.
+Il est bien sûr possible de demander l'installation de plusieurs paquets en une seule commande; il suffit de mettre tous les noms, séparés par des espaces:
+
+ sudo pacman -S leafpad supertux frozen-bubble
+
+
+== Désinstaller des logiciels ==
+
+Si vous souhaitez désinstaller un paquet logiciel, il suffit de lancer la commande:
+
+ sudo pacman -R [nom du paquet]
+
+Par exemple, avec notre '''leafpad''':
+
+ sudo pacman -R leafpad
+
+Ceci dit, on a vu que Pacman installait parfois des paquets additionnels pour satisfaire les dépendances; il peut donc être utile de demander à Pacman de supprimer également les dépendances du paquet:
+
+ sudo pacman -Rs leafpad
+
+Évidemment, Pacman supprimera ces dépendances uniquement si elle ne sont pas requises par un autre paquet encore installé.
+Comme pour l'installation, Pacman vous indique quels paquets il va supprimer, et vous demande de confirmer.
+
+En temps normal, lors d'une désinstallation, Pacman conservera une sauvegarde des fichiers de configuration du logiciel (pour une ré-installation ultérieure), mais il est possible de lui dire de ne pas garder la sauvegarde:
+
+ sudo pacman -Rsn leafpad
+
+
+== Installer un paquet hors-dépôt ==
+
+Supposons que vous ayez besoin d'un paquet non-disponible dans les dépots, mais que vous l'ayez trouvé ailleurs, et téléchargé, il est possible de l'installer avec cette commande:
+
+ sudo pacman -U [chemin vers le paquet]
+
+Par exemple, j'ai mis le paquet ''pamac-0.1.1-2-any.pkg.tar.xz'' dans mon dossier personnel, et je souhaite l'installer:
+
+ sudo pacman -U /home/david/pamac-0.1.1-2-any.pkg.tar.xz
+
+Bien sûr, la désinstallation se fait comme pour les paquets installés via le dépôt.
+
+{{Astuce| En règle générale, installer un paquet hors-dépot est déconseillé; cela va à l'encontre de la sécurité que procure le système de signatures de Pacman }}
+
+
+
+== Informations sur les paquets locaux ==
+
+Pacman peut fournir quelques informations sur les paquets installés, grâce à l'option '''-Q'''.
+Pour avoir des infos générales sur un paquet (notre '''leafpad''' par exemple):
+
+ pacman -Qi leafpad
+
+Connaitre la liste des fichiers appartenant à un paquet:
+
+ pacman -Ql leafpad
+
+Ou inversement, si on veut savoir à quel paquet appartient un fichier (donner le chemin complet du fichier):
+
+ pacman -Qo /etc/pacman.d/mirrorlist
+
+ce qui vous répondra:
+
+ /etc/pacman.d/mirrorlist appartient à pacman-mirrorlist 20121108-1
+
+En combinant plusieurs options, on peut connaître la liste des paquets orphelins (qui ont été installés comme dépendances mais ne sont plus requis par aucun paquet):
+
+ pacman -Qdt
+
+
+== Aller plus loin ==
+
+Une fois qu'on est familier avec toutes ces commandes de bases, il est possible d'en découvrir d'autres, pour des tâches précises (et parfois dangereuses pour le système, attention...), en consultant le manuel:
+
+ man pacman
+
+Pour fermer le manuel, appuyez sur '''q'''.
+
+
+== Yaourt, une interface pour Pacman ==
+
+Manjaro fournit aussi Yaourt, un autre logiciel de gestion des paquets, qui est en fait une ''surcouche'' pour Pacman.
+
+Yaourt peut être utilisé de la même façon que Pacman, car il supporte les même options, mais il fournit des fonctions supplémentaires.
+
+{{Astuce| Un point important de Yaourt est qu'il s'utilise sans être administrateur, sans '''sudo'''; il demande le mot de passe quand il en a besoin}}
+
+=== Utilisation comme Pacman ===
+
+On peut passer à Yaourt toutes les options de Pacman; dans ce cas, il se comportera exactement comme ce dernier, la couleur en plus...
+
+=== Mode interractif ===
+
+En utilisant Yaourt sans option, avec juste un mot-clé, Yaourt vous retournera un résultat de recherche sous forme de liste numérotée (en couleur), et vous demandera de choisir dans la liste ce que vous voulez installer, en donnant le ou les numéros correspondants.
+par exemple:
+
+ yaourt leafpad
+
+va répondre:
+
+ 1 extra/leafpad 0.8.18.1-3
+     A notepad clone for GTK+ 2.0
+ 2 aur/leafpad-le 0.8.17le-1 (33)
+     Limited edition series of the Leafpad text editor
+ 3 aur/leafpad-noheader 0.8.18.1-2 (0)
+     A notepad clone for GTK+ 2.0 with print header disabled
+ ==&gt; Numéro(s) des paquets à installer (ex: 1 2 3 ou 1-3)
+ ==&gt; ----------------------------------------------------
+ ==&gt; 
+
+(en couleur normalement)
+Il suffira de taper le numéro de ce qu'on veut dans la liste, puis '''entrée''', et Yaourt l'installera.
+
+Il faut noter que Yaourt fournit aussi les résultats de la recherche dans le dépôt AUR.
+
+
+=== AUR ===
+
+AUR ('''A'''rch '''U'''ser '''R'''epository) ne contient pas de paquets mais des Pkgbuilds.
+Ces Pkgbuilds sont des fichiers qui indiquent où télécharger les fichiers (sources le plus souvent), comment les compiler, et comment les installer.
+L'avantage de AUR est de fournir des logiciels introuvables dans les dépôts ordinaires de Manjaro.
+En revanche ces logiciels ne sont pas supportés par les développeurs de Manjaro (ou de Arch), et on peut avoir de mauvaises surprises.
+Un moyen de se faire une idée d'un logiciel de AUR est de regarder le vote, indiqué entre parenthèses dans le résultat fourni par Yaourt.
+
+yaourt est donc capable d'installer les logiciels de AUR aussi simplement que les paquets des dépôts.
+
+=== Mises à jour ===
+
+Nous avons précisé que Yaourt peut utiliser les mêmes commandes que Pacman; pour mettre à jour, on peut donc faire:
+
+ yaourt -Syu
+
+Toutefois, si on a installé des logiciels en provenance de AUR, on peut vouloir les mettre à jour aussi:
+
+ yaourt -Syua
+
+=== Statistiques ===
+
+Yaourt fournit aussi une commande plutôt pratique pour savoir où on en est de ses paquets:
+
+ yaourt --stats
+
+=== Et Packer ? ===
+
+Packer fournit les mêmes fonctions que Yaourt, sauf celles pour désinstaller, le développeur de Packer considérant que cette tache peut-être effectuée par Pacman.
+
+
+== En cas de problèmes ==
+
+En cas de soucis ou de disfonctionnements de Pacman, vous pouvez consulter [[Problèmes_avec_Pacman]]
+
+[[Category:Using Manjaro]]
+[[Category:Contents Page]]</text>
+      <sha1>6u5ee3kcxealg3eh9d69avvpock6u41</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3418</id>
+      <parentid>3362</parentid>
+      <timestamp>2012-12-28T18:55:07Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* En cas de problèmes */</comment>
+      <text xml:space="preserve" bytes="10094">= Description de Pacman =
+
+Dans la plupart des distributions GNU-Linux, les logiciels sont disponibles sous forme d'archives appelées '''paquets''' ( ''packages'' en anglais ) et centralisés sur des serveurs appelés '''dépôts''', sorte de boutiques d'applications en ligne (la marque à la pomme n'a rien inventé). Manjaro ne fait pas exception et gère ses logiciels de cette façon.
+
+Pacman est un gestionnaire de paquets créé pour ArchLinux, et par conséquent utilisé aussi dans Manjaro. Il est capable d'installer, de désinstaller, de mettre à jour, et de configurer les paquets logiciels, tout en gérant les dépendances entre eux, pour assurer la cohérence du système.
+
+Pacman s'utilise en ligne de commandes, donc toutes les commandes citées dans cet article sont à entrer dans un Terminal; lorsque les commandes ont besoin des privilèges administrateur, elles sont précédées par '''sudo''' (et le mot de passe de l'utilisateur lui sera demandé).
+
+{{Astuce| Si '''sudo''' n'est pas mentionné, cela signifie qu'un utilisateur sans privilège peut lancer la commande }}
+
+== Synchroniser avec les dépôts Manjaro ==
+
+La première chose à faire avant d'installer ou mettre à jour est de synchroniser les listes locales de paquets avec les listes des serveurs, ce qui se fait avec la commande suivante:
+
+ sudo pacman -Sy
+
+Dans certains cas, il peut être utile de forcer le remplacement des listes locales, même si elles sont déjà à jour; il suffit de doubler le '''y'''.
+
+ sudo pacman -Syy
+
+
+== Mettre à jour le système ==
+
+Les mises à jour sont fréquentes, puisque Manjaro est une ''Rolling-release'', mais si on les fait régulièrement, il y a rarement de gros volumes de données à télécharger.
+Manjaro est fournie avec un utilitaire capable de faire les mises à jour, '''Kalu''', toutefois, ceux qui veulent garder le contrôle ou en savoir plus sur ce qui se passe préfèreront le faire avec Pacman.
+
+Si on vient de synchroniser les listes de paquets logiciels, comme expliqué au chapitre précédent, il suffit de lancer cette commande:
+
+ sudo pacman -Su
+
+mais il est possible de tout faire (synchro et mise à jour) en une seule commande:
+
+ sudo pacman -Syu
+
+et même avec la synchro forcée:
+
+ sudo pacman -Syyu
+
+Dans tous les cas, Pacman vous demandera de confirmer l'installation des nouveaux paquets:
+
+ Procéder à l'installation ? [O/n]
+
+à quoi il suffit d'appuyer sur '''o''' (pour «oui») et '''Entrée''' (mais on peut aussi refuser, avec '''n''' et tout s'arrêtera).
+
+Vous pouvez rester devant à regarder, Pacman détaille ce qu'il fait: téléchargement des paquets, vérification de leur intégrité, installation, contrôle de l'espace disque, et éventuellement éxécution de tâches en rapport avec certains paquets.
+
+
+== Recherche d'un paquet ==
+
+Lorsqu'on cherche un logiciel dans un but précis, il va falloir le chercher dans les listes de ce qui est disponible (les fameuses listes qu'on a synchronisé au début).
+Pour cela, on peut lancer une recherche sur un mot-clé:
+
+{{Astuce| Il n'est pas nécessaire d'avoir les droits d'administration pour la recherche: '''sudo''' est facultatif }}
+
+ pacman -Ss [mot-clé]
+
+le mot-clé peut être tout ou une partie du nom du logiciel:
+
+ pacman -Ss leafp
+ 
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+il peut aussi correspondre à la description du logiciel:
+
+ pacman -Ss notepad
+
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+
+== Installer des logiciels ==
+
+Une fois que la recherche nous a donné la réponse qu'on cherchait, on peut installer le logiciel voulu; ici, il faut indiquer '''le nom exact''' du paquet, tel que l'a fourni la recherche:
+
+ sudo pacman -S [nom du paquet]
+
+Donc si on reprend notre exemple avec '''leafpad''':
+
+ sudo pacman -S leafpad
+
+Pacman voudra peut-être installer d'autres paquets en plus de celui que vous lui demandez (dépendances), mais dans tous les cas, il vous demandera de confirmer, comme on l'a vu pour la mise à jour.
+Il est bien sûr possible de demander l'installation de plusieurs paquets en une seule commande; il suffit de mettre tous les noms, séparés par des espaces:
+
+ sudo pacman -S leafpad supertux frozen-bubble
+
+
+== Désinstaller des logiciels ==
+
+Si vous souhaitez désinstaller un paquet logiciel, il suffit de lancer la commande:
+
+ sudo pacman -R [nom du paquet]
+
+Par exemple, avec notre '''leafpad''':
+
+ sudo pacman -R leafpad
+
+Ceci dit, on a vu que Pacman installait parfois des paquets additionnels pour satisfaire les dépendances; il peut donc être utile de demander à Pacman de supprimer également les dépendances du paquet:
+
+ sudo pacman -Rs leafpad
+
+Évidemment, Pacman supprimera ces dépendances uniquement si elle ne sont pas requises par un autre paquet encore installé.
+Comme pour l'installation, Pacman vous indique quels paquets il va supprimer, et vous demande de confirmer.
+
+En temps normal, lors d'une désinstallation, Pacman conservera une sauvegarde des fichiers de configuration du logiciel (pour une ré-installation ultérieure), mais il est possible de lui dire de ne pas garder la sauvegarde:
+
+ sudo pacman -Rsn leafpad
+
+
+== Installer un paquet hors-dépôt ==
+
+Supposons que vous ayez besoin d'un paquet non-disponible dans les dépots, mais que vous l'ayez trouvé ailleurs, et téléchargé, il est possible de l'installer avec cette commande:
+
+ sudo pacman -U [chemin vers le paquet]
+
+Par exemple, j'ai mis le paquet ''pamac-0.1.1-2-any.pkg.tar.xz'' dans mon dossier personnel, et je souhaite l'installer:
+
+ sudo pacman -U /home/david/pamac-0.1.1-2-any.pkg.tar.xz
+
+Bien sûr, la désinstallation se fait comme pour les paquets installés via le dépôt.
+
+{{Astuce| En règle générale, installer un paquet hors-dépot est déconseillé; cela va à l'encontre de la sécurité que procure le système de signatures de Pacman }}
+
+
+
+== Informations sur les paquets locaux ==
+
+Pacman peut fournir quelques informations sur les paquets installés, grâce à l'option '''-Q'''.
+Pour avoir des infos générales sur un paquet (notre '''leafpad''' par exemple):
+
+ pacman -Qi leafpad
+
+Connaitre la liste des fichiers appartenant à un paquet:
+
+ pacman -Ql leafpad
+
+Ou inversement, si on veut savoir à quel paquet appartient un fichier (donner le chemin complet du fichier):
+
+ pacman -Qo /etc/pacman.d/mirrorlist
+
+ce qui vous répondra:
+
+ /etc/pacman.d/mirrorlist appartient à pacman-mirrorlist 20121108-1
+
+En combinant plusieurs options, on peut connaître la liste des paquets orphelins (qui ont été installés comme dépendances mais ne sont plus requis par aucun paquet):
+
+ pacman -Qdt
+
+
+== Aller plus loin ==
+
+Une fois qu'on est familier avec toutes ces commandes de bases, il est possible d'en découvrir d'autres, pour des tâches précises (et parfois dangereuses pour le système, attention...), en consultant le manuel:
+
+ man pacman
+
+Pour fermer le manuel, appuyez sur '''q'''.
+
+
+== Yaourt, une interface pour Pacman ==
+
+Manjaro fournit aussi Yaourt, un autre logiciel de gestion des paquets, qui est en fait une ''surcouche'' pour Pacman.
+
+Yaourt peut être utilisé de la même façon que Pacman, car il supporte les même options, mais il fournit des fonctions supplémentaires.
+
+{{Astuce| Un point important de Yaourt est qu'il s'utilise sans être administrateur, sans '''sudo'''; il demande le mot de passe quand il en a besoin}}
+
+=== Utilisation comme Pacman ===
+
+On peut passer à Yaourt toutes les options de Pacman; dans ce cas, il se comportera exactement comme ce dernier, la couleur en plus...
+
+=== Mode interractif ===
+
+En utilisant Yaourt sans option, avec juste un mot-clé, Yaourt vous retournera un résultat de recherche sous forme de liste numérotée (en couleur), et vous demandera de choisir dans la liste ce que vous voulez installer, en donnant le ou les numéros correspondants.
+par exemple:
+
+ yaourt leafpad
+
+va répondre:
+
+ 1 extra/leafpad 0.8.18.1-3
+     A notepad clone for GTK+ 2.0
+ 2 aur/leafpad-le 0.8.17le-1 (33)
+     Limited edition series of the Leafpad text editor
+ 3 aur/leafpad-noheader 0.8.18.1-2 (0)
+     A notepad clone for GTK+ 2.0 with print header disabled
+ ==&gt; Numéro(s) des paquets à installer (ex: 1 2 3 ou 1-3)
+ ==&gt; ----------------------------------------------------
+ ==&gt; 
+
+(en couleur normalement)
+Il suffira de taper le numéro de ce qu'on veut dans la liste, puis '''entrée''', et Yaourt l'installera.
+
+Il faut noter que Yaourt fournit aussi les résultats de la recherche dans le dépôt AUR.
+
+
+=== AUR ===
+
+AUR ('''A'''rch '''U'''ser '''R'''epository) ne contient pas de paquets mais des Pkgbuilds.
+Ces Pkgbuilds sont des fichiers qui indiquent où télécharger les fichiers (sources le plus souvent), comment les compiler, et comment les installer.
+L'avantage de AUR est de fournir des logiciels introuvables dans les dépôts ordinaires de Manjaro.
+En revanche ces logiciels ne sont pas supportés par les développeurs de Manjaro (ou de Arch), et on peut avoir de mauvaises surprises.
+Un moyen de se faire une idée d'un logiciel de AUR est de regarder le vote, indiqué entre parenthèses dans le résultat fourni par Yaourt.
+
+yaourt est donc capable d'installer les logiciels de AUR aussi simplement que les paquets des dépôts.
+
+=== Mises à jour ===
+
+Nous avons précisé que Yaourt peut utiliser les mêmes commandes que Pacman; pour mettre à jour, on peut donc faire:
+
+ yaourt -Syu
+
+Toutefois, si on a installé des logiciels en provenance de AUR, on peut vouloir les mettre à jour aussi:
+
+ yaourt -Syua
+
+=== Statistiques ===
+
+Yaourt fournit aussi une commande plutôt pratique pour savoir où on en est de ses paquets:
+
+ yaourt --stats
+
+=== Et Packer ? ===
+
+Packer fournit les mêmes fonctions que Yaourt, sauf celles pour désinstaller, le développeur de Packer considérant que cette tache peut-être effectuée par Pacman.
+
+
+== En cas de problèmes ==
+
+En cas de soucis ou de disfonctionnements de Pacman, vous pouvez consulter [[Problèmes_avec_Pacman]]
+
+[[Category:Using Manjaro]]
+[[Category:Doc-FR|Toute la documentation en Français]]
+[[Category:Contents Page]]</text>
+      <sha1>amgos0w40j6155b55niac3iexa0mc9u</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3419</id>
+      <parentid>3418</parentid>
+      <timestamp>2012-12-28T18:56:00Z</timestamp>
+      <contributor>
+        <username>Loubrix</username>
+        <id>28</id>
+      </contributor>
+      <comment>/* En cas de problèmes */</comment>
+      <text xml:space="preserve" bytes="10061">= Description de Pacman =
+
+Dans la plupart des distributions GNU-Linux, les logiciels sont disponibles sous forme d'archives appelées '''paquets''' ( ''packages'' en anglais ) et centralisés sur des serveurs appelés '''dépôts''', sorte de boutiques d'applications en ligne (la marque à la pomme n'a rien inventé). Manjaro ne fait pas exception et gère ses logiciels de cette façon.
+
+Pacman est un gestionnaire de paquets créé pour ArchLinux, et par conséquent utilisé aussi dans Manjaro. Il est capable d'installer, de désinstaller, de mettre à jour, et de configurer les paquets logiciels, tout en gérant les dépendances entre eux, pour assurer la cohérence du système.
+
+Pacman s'utilise en ligne de commandes, donc toutes les commandes citées dans cet article sont à entrer dans un Terminal; lorsque les commandes ont besoin des privilèges administrateur, elles sont précédées par '''sudo''' (et le mot de passe de l'utilisateur lui sera demandé).
+
+{{Astuce| Si '''sudo''' n'est pas mentionné, cela signifie qu'un utilisateur sans privilège peut lancer la commande }}
+
+== Synchroniser avec les dépôts Manjaro ==
+
+La première chose à faire avant d'installer ou mettre à jour est de synchroniser les listes locales de paquets avec les listes des serveurs, ce qui se fait avec la commande suivante:
+
+ sudo pacman -Sy
+
+Dans certains cas, il peut être utile de forcer le remplacement des listes locales, même si elles sont déjà à jour; il suffit de doubler le '''y'''.
+
+ sudo pacman -Syy
+
+
+== Mettre à jour le système ==
+
+Les mises à jour sont fréquentes, puisque Manjaro est une ''Rolling-release'', mais si on les fait régulièrement, il y a rarement de gros volumes de données à télécharger.
+Manjaro est fournie avec un utilitaire capable de faire les mises à jour, '''Kalu''', toutefois, ceux qui veulent garder le contrôle ou en savoir plus sur ce qui se passe préfèreront le faire avec Pacman.
+
+Si on vient de synchroniser les listes de paquets logiciels, comme expliqué au chapitre précédent, il suffit de lancer cette commande:
+
+ sudo pacman -Su
+
+mais il est possible de tout faire (synchro et mise à jour) en une seule commande:
+
+ sudo pacman -Syu
+
+et même avec la synchro forcée:
+
+ sudo pacman -Syyu
+
+Dans tous les cas, Pacman vous demandera de confirmer l'installation des nouveaux paquets:
+
+ Procéder à l'installation ? [O/n]
+
+à quoi il suffit d'appuyer sur '''o''' (pour «oui») et '''Entrée''' (mais on peut aussi refuser, avec '''n''' et tout s'arrêtera).
+
+Vous pouvez rester devant à regarder, Pacman détaille ce qu'il fait: téléchargement des paquets, vérification de leur intégrité, installation, contrôle de l'espace disque, et éventuellement éxécution de tâches en rapport avec certains paquets.
+
+
+== Recherche d'un paquet ==
+
+Lorsqu'on cherche un logiciel dans un but précis, il va falloir le chercher dans les listes de ce qui est disponible (les fameuses listes qu'on a synchronisé au début).
+Pour cela, on peut lancer une recherche sur un mot-clé:
+
+{{Astuce| Il n'est pas nécessaire d'avoir les droits d'administration pour la recherche: '''sudo''' est facultatif }}
+
+ pacman -Ss [mot-clé]
+
+le mot-clé peut être tout ou une partie du nom du logiciel:
+
+ pacman -Ss leafp
+ 
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+il peut aussi correspondre à la description du logiciel:
+
+ pacman -Ss notepad
+
+ extra/leafpad 0.8.18.1-3
+    A notepad clone for GTK+ 2.0
+
+
+== Installer des logiciels ==
+
+Une fois que la recherche nous a donné la réponse qu'on cherchait, on peut installer le logiciel voulu; ici, il faut indiquer '''le nom exact''' du paquet, tel que l'a fourni la recherche:
+
+ sudo pacman -S [nom du paquet]
+
+Donc si on reprend notre exemple avec '''leafpad''':
+
+ sudo pacman -S leafpad
+
+Pacman voudra peut-être installer d'autres paquets en plus de celui que vous lui demandez (dépendances), mais dans tous les cas, il vous demandera de confirmer, comme on l'a vu pour la mise à jour.
+Il est bien sûr possible de demander l'installation de plusieurs paquets en une seule commande; il suffit de mettre tous les noms, séparés par des espaces:
+
+ sudo pacman -S leafpad supertux frozen-bubble
+
+
+== Désinstaller des logiciels ==
+
+Si vous souhaitez désinstaller un paquet logiciel, il suffit de lancer la commande:
+
+ sudo pacman -R [nom du paquet]
+
+Par exemple, avec notre '''leafpad''':
+
+ sudo pacman -R leafpad
+
+Ceci dit, on a vu que Pacman installait parfois des paquets additionnels pour satisfaire les dépendances; il peut donc être utile de demander à Pacman de supprimer également les dépendances du paquet:
+
+ sudo pacman -Rs leafpad
+
+Évidemment, Pacman supprimera ces dépendances uniquement si elle ne sont pas requises par un autre paquet encore installé.
+Comme pour l'installation, Pacman vous indique quels paquets il va supprimer, et vous demande de confirmer.
+
+En temps normal, lors d'une désinstallation, Pacman conservera une sauvegarde des fichiers de configuration du logiciel (pour une ré-installation ultérieure), mais il est possible de lui dire de ne pas garder la sauvegarde:
+
+ sudo pacman -Rsn leafpad
+
+
+== Installer un paquet hors-dépôt ==
+
+Supposons que vous ayez besoin d'un paquet non-disponible dans les dépots, mais que vous l'ayez trouvé ailleurs, et téléchargé, il est possible de l'installer avec cette commande:
+
+ sudo pacman -U [chemin vers le paquet]
+
+Par exemple, j'ai mis le paquet ''pamac-0.1.1-2-any.pkg.tar.xz'' dans mon dossier personnel, et je souhaite l'installer:
+
+ sudo pacman -U /home/david/pamac-0.1.1-2-any.pkg.tar.xz
+
+Bien sûr, la désinstallation se fait comme pour les paquets installés via le dépôt.
+
+{{Astuce| En règle générale, installer un paquet hors-dépot est déconseillé; cela va à l'encontre de la sécurité que procure le système de signatures de Pacman }}
+
+
+
+== Informations sur les paquets locaux ==
+
+Pacman peut fournir quelques informations sur les paquets installés, grâce à l'option '''-Q'''.
+Pour avoir des infos générales sur un paquet (notre '''leafpad''' par exemple):
+
+ pacman -Qi leafpad
+
+Connaitre la liste des fichiers appartenant à un paquet:
+
+ pacman -Ql leafpad
+
+Ou inversement, si on veut savoir à quel paquet appartient un fichier (donner le chemin complet du fichier):
+
+ pacman -Qo /etc/pacman.d/mirrorlist
+
+ce qui vous répondra:
+
+ /etc/pacman.d/mirrorlist appartient à pacman-mirrorlist 20121108-1
+
+En combinant plusieurs options, on peut connaître la liste des paquets orphelins (qui ont été installés comme dépendances mais ne sont plus requis par aucun paquet):
+
+ pacman -Qdt
+
+
+== Aller plus loin ==
+
+Une fois qu'on est familier avec toutes ces commandes de bases, il est possible d'en découvrir d'autres, pour des tâches précises (et parfois dangereuses pour le système, attention...), en consultant le manuel:
+
+ man pacman
+
+Pour fermer le manuel, appuyez sur '''q'''.
+
+
+== Yaourt, une interface pour Pacman ==
+
+Manjaro fournit aussi Yaourt, un autre logiciel de gestion des paquets, qui est en fait une ''surcouche'' pour Pacman.
+
+Yaourt peut être utilisé de la même façon que Pacman, car il supporte les même options, mais il fournit des fonctions supplémentaires.
+
+{{Astuce| Un point important de Yaourt est qu'il s'utilise sans être administrateur, sans '''sudo'''; il demande le mot de passe quand il en a besoin}}
+
+=== Utilisation comme Pacman ===
+
+On peut passer à Yaourt toutes les options de Pacman; dans ce cas, il se comportera exactement comme ce dernier, la couleur en plus...
+
+=== Mode interractif ===
+
+En utilisant Yaourt sans option, avec juste un mot-clé, Yaourt vous retournera un résultat de recherche sous forme de liste numérotée (en couleur), et vous demandera de choisir dans la liste ce que vous voulez installer, en donnant le ou les numéros correspondants.
+par exemple:
+
+ yaourt leafpad
+
+va répondre:
+
+ 1 extra/leafpad 0.8.18.1-3
+     A notepad clone for GTK+ 2.0
+ 2 aur/leafpad-le 0.8.17le-1 (33)
+     Limited edition series of the Leafpad text editor
+ 3 aur/leafpad-noheader 0.8.18.1-2 (0)
+     A notepad clone for GTK+ 2.0 with print header disabled
+ ==&gt; Numéro(s) des paquets à installer (ex: 1 2 3 ou 1-3)
+ ==&gt; ----------------------------------------------------
+ ==&gt; 
+
+(en couleur normalement)
+Il suffira de taper le numéro de ce qu'on veut dans la liste, puis '''entrée''', et Yaourt l'installera.
+
+Il faut noter que Yaourt fournit aussi les résultats de la recherche dans le dépôt AUR.
+
+
+=== AUR ===
+
+AUR ('''A'''rch '''U'''ser '''R'''epository) ne contient pas de paquets mais des Pkgbuilds.
+Ces Pkgbuilds sont des fichiers qui indiquent où télécharger les fichiers (sources le plus souvent), comment les compiler, et comment les installer.
+L'avantage de AUR est de fournir des logiciels introuvables dans les dépôts ordinaires de Manjaro.
+En revanche ces logiciels ne sont pas supportés par les développeurs de Manjaro (ou de Arch), et on peut avoir de mauvaises surprises.
+Un moyen de se faire une idée d'un logiciel de AUR est de regarder le vote, indiqué entre parenthèses dans le résultat fourni par Yaourt.
+
+yaourt est donc capable d'installer les logiciels de AUR aussi simplement que les paquets des dépôts.
+
+=== Mises à jour ===
+
+Nous avons précisé que Yaourt peut utiliser les mêmes commandes que Pacman; pour mettre à jour, on peut donc faire:
+
+ yaourt -Syu
+
+Toutefois, si on a installé des logiciels en provenance de AUR, on peut vouloir les mettre à jour aussi:
+
+ yaourt -Syua
+
+=== Statistiques ===
+
+Yaourt fournit aussi une commande plutôt pratique pour savoir où on en est de ses paquets:
+
+ yaourt --stats
+
+=== Et Packer ? ===
+
+Packer fournit les mêmes fonctions que Yaourt, sauf celles pour désinstaller, le développeur de Packer considérant que cette tache peut-être effectuée par Pacman.
+
+
+== En cas de problèmes ==
+
+En cas de soucis ou de disfonctionnements de Pacman, vous pouvez consulter [[Problèmes_avec_Pacman]]
+
+[[Category:Using Manjaro]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>bnjcbylopid7803a88msjeouzf9vo2f</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

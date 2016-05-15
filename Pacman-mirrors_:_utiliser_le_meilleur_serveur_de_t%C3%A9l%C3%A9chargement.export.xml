@@ -1,0 +1,411 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Pacman-mirrors : utiliser le meilleur serveur de téléchargement</title>
+    <ns>0</ns>
+    <id>624</id>
+    <revision>
+      <id>3589</id>
+      <timestamp>2012-12-29T20:17:11Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;&quot;</comment>
+      <text xml:space="preserve" bytes="46">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;</text>
+      <sha1>nkeigsftakhbu6x64xof2k9ega0pm87</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3590</id>
+      <parentid>3589</parentid>
+      <timestamp>2012-12-29T20:17:55Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="167">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>0fin8arxpxk17bcgssm12kflkqpotr8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3591</id>
+      <parentid>3590</parentid>
+      <timestamp>2012-12-29T20:20:43Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5804">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Overview = 
+
+{{tip| Those who installed Manjaro 0.8.0-1 will have had the fastest server (of those available at the time) automatically selected for them during the installation process, via the use of the ''Rankmirrors'' command. Those who installed Manjaro 0.8.2 will have had the UK server selected by default if using the '''[[Installation_Guide_for_Beginners_0.8.2|Installation Guide for Beginners]]'''.}}
+
+
+The official Manjaro repositories (also known as ''mirrors'') are hosted on ''Software Servers''. Physically located throughout the world, these servers are responsible for receiving requests for software packages via the terminal and/or pacman-gui, and consequently delivering them to your system. There are therefore three primary factors that will determine how fast your downloads are:
+
+* Your internet connection
+* The speed of the server itself, and
+* The proximity of the server to you (i.e. how close or how far away it is)
+
+
+Barring upgrading your internet package or switching providers, it is therefore potentially possible to improve the speed of downloads from the Manjaro repositories by using the '''rankmirrors''' command. This will automatically detect the fastest servers available and consequently update the ''mirrorlist'' file with them. The Mirrorlist file is itself used by Manjaro's package manager - '''[[pacman]]''' - to tell it the internet addresses of the Manjaro servers in order to download updates and software applications from them. Alternatively, it is possible to manually determine which server(s) to use, by using the '''[[Change to a Different Download Server]]''' guide.
+
+
+= Preparing the allservers File = 
+
+The first step is to create and move the ''allservers'' file to it's proper place, which will contain all available Manjaro servers to date. Rankmirrors will use this file to determine the fastest available servers and consequently update the mirrorlist accordingly. 
+
+
+== Create the allservers File ==
+
+Open a terminal and enter following commands:
+
+  wget http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist -O /tmp/mirrorlist-git
+  cat /tmp/mirrorlist-git | grep &quot;Server&quot; | sed s'/# Server/Server/'g &gt; /tmp/allservers
+
+== Move the allservers File ==
+
+Now we have to move our ''allservers'' file to it's proper place. To do so, enter the following command in the terminal:
+
+  sudo mv -v /tmp/allservers /etc/pacman.d
+
+
+= Running the RankMirrors Command to Update the Mirrorlist =
+
+Once the ''allservers'' file has been prepared, step two is to run the rankmirror command on it. Again, once the fastest servers have been determined, the mirrorlist will then be updated with the results. To do so, it will first be necessary to switch to the '''Root account''', as otherwise permission to amend the mirrorlist will be denied, even if using the ''sudo'' ('''s'''uper '''u'''ser '''do''') prefix. To do so, enter the command:
+
+ sudo su
+
+
+Switching to the Root account will be indicated by the name '''root''' replacing your username, and a hash ('#') replacing the dollar sign ('$') at the prompt. Once in the Root account, in order to use rankmirrors to update the mirrorlist with the fastest servers, enter the following command:
+
+ rankmirrors -n 3 /etc/pacman.d/allservers &gt; /etc/pacman.d/mirrorlist
+
+
+The process may take a few moments, before the mirrorlist is updated with the top three fastest available servers. Once complete, it will then be necessary to synchronise with the newly enabled server(s)'''.
+
+
+= Synchronising with the Manjaro Servers =
+
+Your Manjaro system has a database of all the software packages that are available from the official repositories. These are used by pacman to locate and download them for installation. Synchronising your database after amending the mirrorlist in the third and final step will therefore ensure that it is up to date, and avoid any potential problems when subsequently downloading software packages.
+
+To synchronise your database with the Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -Syy
+
+
+Once the Mirrorlist has been amended and the database synchronised, the change will be immediate. There will be no need to reboot your system for the change to take effect.
+
+
+= Optional: Inspect the Contents of the Revised Mirrorlist = 
+
+The syntax of the command to open the mirrorlist file is:
+
+ sudo [text editor] /etc/pacman.d/mirrorlist
+
+
+For example, if you wish to view the mirrorlist file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the mirrorlist file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+Below is an example of an amended mirrorlist, generated after running the rankmirrors command. Despite the author residing in the United Kingdom, the server for this country has not been listed. Again, the closest server may not necessarily be the fastest:
+
+ # Server list generated by rankmirrors on 2012-11-25
+ Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ Server = http://manjarolinux.polymorf.fr/$repo/$arch
+
+
+Once the contents of the mirrorlist have been viewed, close the file by:
+
+*'''nano''': Press CTRL and 'x' to exit, or
+*'''gedit''': Close the window.
+
+
+= See Also =
+
+* '''[[Change to a Different Download Server]]'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>nsl7pki0exr6i3396n5rfu0qfh4bpq9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3592</id>
+      <parentid>3591</parentid>
+      <timestamp>2012-12-29T20:28:54Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="5875">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Overview = 
+
+{{Astuce|Ceux qui ont installé la Manjaro 0.8.0-1 vont avoir les serveurs les plus rapides (parmi ceux disponibles à l'époque) sélectionnés automatiquement pour eux durant le processus d'installation, grâce à l'utilisation de la commande '''Rankmirrors'''. Ceux qui ont installé la Manjaro 0.8.2 vont avoir le miroir anglais sélectionné par défaut s'ils ont utilisé le '''[[Installation_Guide_for_Beginners_0.8.2|Guide d'Installation pour Débutants]]'''.}}
+
+
+The official Manjaro repositories (also known as ''mirrors'') are hosted on ''Software Servers''. Physically located throughout the world, these servers are responsible for receiving requests for software packages via the terminal and/or pacman-gui, and consequently delivering them to your system. There are therefore three primary factors that will determine how fast your downloads are:
+
+* Your internet connection
+* The speed of the server itself, and
+* The proximity of the server to you (i.e. how close or how far away it is)
+
+
+Barring upgrading your internet package or switching providers, it is therefore potentially possible to improve the speed of downloads from the Manjaro repositories by using the '''rankmirrors''' command. This will automatically detect the fastest servers available and consequently update the ''mirrorlist'' file with them. The Mirrorlist file is itself used by Manjaro's package manager - '''[[pacman]]''' - to tell it the internet addresses of the Manjaro servers in order to download updates and software applications from them. Alternatively, it is possible to manually determine which server(s) to use, by using the '''[[Change to a Different Download Server]]''' guide.
+
+= Preparing the allservers File = 
+
+The first step is to create and move the ''allservers'' file to it's proper place, which will contain all available Manjaro servers to date. Rankmirrors will use this file to determine the fastest available servers and consequently update the mirrorlist accordingly. 
+
+
+== Create the allservers File ==
+
+Open a terminal and enter following commands:
+
+  wget http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist -O /tmp/mirrorlist-git
+  cat /tmp/mirrorlist-git | grep &quot;Server&quot; | sed s'/# Server/Server/'g &gt; /tmp/allservers
+
+== Move the allservers File ==
+
+Now we have to move our ''allservers'' file to it's proper place. To do so, enter the following command in the terminal:
+
+  sudo mv -v /tmp/allservers /etc/pacman.d
+
+
+= Running the RankMirrors Command to Update the Mirrorlist =
+
+Once the ''allservers'' file has been prepared, step two is to run the rankmirror command on it. Again, once the fastest servers have been determined, the mirrorlist will then be updated with the results. To do so, it will first be necessary to switch to the '''Root account''', as otherwise permission to amend the mirrorlist will be denied, even if using the ''sudo'' ('''s'''uper '''u'''ser '''do''') prefix. To do so, enter the command:
+
+ sudo su
+
+
+Switching to the Root account will be indicated by the name '''root''' replacing your username, and a hash ('#') replacing the dollar sign ('$') at the prompt. Once in the Root account, in order to use rankmirrors to update the mirrorlist with the fastest servers, enter the following command:
+
+ rankmirrors -n 3 /etc/pacman.d/allservers &gt; /etc/pacman.d/mirrorlist
+
+
+The process may take a few moments, before the mirrorlist is updated with the top three fastest available servers. Once complete, it will then be necessary to synchronise with the newly enabled server(s)'''.
+
+
+= Synchronising with the Manjaro Servers =
+
+Your Manjaro system has a database of all the software packages that are available from the official repositories. These are used by pacman to locate and download them for installation. Synchronising your database after amending the mirrorlist in the third and final step will therefore ensure that it is up to date, and avoid any potential problems when subsequently downloading software packages.
+
+To synchronise your database with the Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -Syy
+
+
+Once the Mirrorlist has been amended and the database synchronised, the change will be immediate. There will be no need to reboot your system for the change to take effect.
+
+
+= Optional: Inspect the Contents of the Revised Mirrorlist = 
+
+The syntax of the command to open the mirrorlist file is:
+
+ sudo [text editor] /etc/pacman.d/mirrorlist
+
+
+For example, if you wish to view the mirrorlist file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the mirrorlist file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+Below is an example of an amended mirrorlist, generated after running the rankmirrors command. Despite the author residing in the United Kingdom, the server for this country has not been listed. Again, the closest server may not necessarily be the fastest:
+
+ # Server list generated by rankmirrors on 2012-11-25
+ Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ Server = http://manjarolinux.polymorf.fr/$repo/$arch
+
+
+Once the contents of the mirrorlist have been viewed, close the file by:
+
+*'''nano''': Press CTRL and 'x' to exit, or
+*'''gedit''': Close the window.
+
+
+= See Also =
+
+* '''[[Change to a Different Download Server]]'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>dn8zg1hr6gsxcm618b92ngb9kee37kb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3593</id>
+      <parentid>3592</parentid>
+      <timestamp>2012-12-29T20:29:47Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="5881">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble = 
+
+{{Astuce|Ceux qui ont installé la Manjaro 0.8.0-1 vont avoir les serveurs les plus rapides (parmi ceux disponibles à l'époque) sélectionnés automatiquement pour eux durant le processus d'installation, grâce à l'utilisation de la commande '''Rankmirrors'''. Ceux qui ont installé la Manjaro 0.8.2 vont avoir le miroir anglais sélectionné par défaut s'ils ont utilisé le '''[[Installation_Guide_for_Beginners_0.8.2|Guide d'Installation pour Débutants]]'''.}}
+
+
+The official Manjaro repositories (also known as ''mirrors'') are hosted on ''Software Servers''. Physically located throughout the world, these servers are responsible for receiving requests for software packages via the terminal and/or pacman-gui, and consequently delivering them to your system. There are therefore three primary factors that will determine how fast your downloads are:
+
+* Your internet connection
+* The speed of the server itself, and
+* The proximity of the server to you (i.e. how close or how far away it is)
+
+
+Barring upgrading your internet package or switching providers, it is therefore potentially possible to improve the speed of downloads from the Manjaro repositories by using the '''rankmirrors''' command. This will automatically detect the fastest servers available and consequently update the ''mirrorlist'' file with them. The Mirrorlist file is itself used by Manjaro's package manager - '''[[pacman]]''' - to tell it the internet addresses of the Manjaro servers in order to download updates and software applications from them. Alternatively, it is possible to manually determine which server(s) to use, by using the '''[[Change to a Different Download Server]]''' guide.
+
+= Preparing the allservers File = 
+
+The first step is to create and move the ''allservers'' file to it's proper place, which will contain all available Manjaro servers to date. Rankmirrors will use this file to determine the fastest available servers and consequently update the mirrorlist accordingly. 
+
+
+== Create the allservers File ==
+
+Open a terminal and enter following commands:
+
+  wget http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist -O /tmp/mirrorlist-git
+  cat /tmp/mirrorlist-git | grep &quot;Server&quot; | sed s'/# Server/Server/'g &gt; /tmp/allservers
+
+== Move the allservers File ==
+
+Now we have to move our ''allservers'' file to it's proper place. To do so, enter the following command in the terminal:
+
+  sudo mv -v /tmp/allservers /etc/pacman.d
+
+
+= Running the RankMirrors Command to Update the Mirrorlist =
+
+Once the ''allservers'' file has been prepared, step two is to run the rankmirror command on it. Again, once the fastest servers have been determined, the mirrorlist will then be updated with the results. To do so, it will first be necessary to switch to the '''Root account''', as otherwise permission to amend the mirrorlist will be denied, even if using the ''sudo'' ('''s'''uper '''u'''ser '''do''') prefix. To do so, enter the command:
+
+ sudo su
+
+
+Switching to the Root account will be indicated by the name '''root''' replacing your username, and a hash ('#') replacing the dollar sign ('$') at the prompt. Once in the Root account, in order to use rankmirrors to update the mirrorlist with the fastest servers, enter the following command:
+
+ rankmirrors -n 3 /etc/pacman.d/allservers &gt; /etc/pacman.d/mirrorlist
+
+
+The process may take a few moments, before the mirrorlist is updated with the top three fastest available servers. Once complete, it will then be necessary to synchronise with the newly enabled server(s)'''.
+
+
+= Synchronising with the Manjaro Servers =
+
+Your Manjaro system has a database of all the software packages that are available from the official repositories. These are used by pacman to locate and download them for installation. Synchronising your database after amending the mirrorlist in the third and final step will therefore ensure that it is up to date, and avoid any potential problems when subsequently downloading software packages.
+
+To synchronise your database with the Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -Syy
+
+
+Once the Mirrorlist has been amended and the database synchronised, the change will be immediate. There will be no need to reboot your system for the change to take effect.
+
+
+= Optional: Inspect the Contents of the Revised Mirrorlist = 
+
+The syntax of the command to open the mirrorlist file is:
+
+ sudo [text editor] /etc/pacman.d/mirrorlist
+
+
+For example, if you wish to view the mirrorlist file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/pacman.d/mirrorlist
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed gedit text editor instead. This will open the mirrorlist file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/pacman.d/mirrorlist
+
+
+Below is an example of an amended mirrorlist, generated after running the rankmirrors command. Despite the author residing in the United Kingdom, the server for this country has not been listed. Again, the closest server may not necessarily be the fastest:
+
+ # Server list generated by rankmirrors on 2012-11-25
+ Server = http://mirror.vinzv.de/manjaro/repo/$repo/$arch
+ Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch
+ Server = http://manjarolinux.polymorf.fr/$repo/$arch
+
+
+Once the contents of the mirrorlist have been viewed, close the file by:
+
+*'''nano''': Press CTRL and 'x' to exit, or
+*'''gedit''': Close the window.
+
+
+= See Also =
+
+* '''[[Change to a Different Download Server]]'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Contents Page]]</text>
+      <sha1>0da3xpfh7l1zgcgtb4y897vsrurpiyj</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

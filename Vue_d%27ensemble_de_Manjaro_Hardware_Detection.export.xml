@@ -1,0 +1,716 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Vue d'ensemble de Manjaro Hardware Detection</title>
+    <ns>0</ns>
+    <id>645</id>
+    <revision>
+      <id>4021</id>
+      <timestamp>2013-01-03T20:15:30Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =   [[File: mhwd.png|left]]   The '''M'''anjaro '''H'''ard'''W'''are '''D'''etection (mhwd) command is a unique feature of Manjaro. There are currently two types of...&quot;</comment>
+      <text xml:space="preserve" bytes="4930">= Overview =
+
+
+[[File: mhwd.png|left]] 
+
+The '''M'''anjaro '''H'''ard'''W'''are '''D'''etection (mhwd) command is a unique feature of Manjaro. There are currently two types of mhwd command:
+
+'''1. mhwd:''' Enables the automatic detection and configuration of computer hardware the system is running on. This includes both hardware connected internally via '''[http://en.wikipedia.org/wiki/Conventional_PCI PCI]''' (e.g. graphics cards), and connected externally via '''[http://en.wikipedia.org/wiki/USB USB]''' (e.g. flashdrives). '''Note:''' The mhwd command is still ''under development'', and at present is only able to install drivers for graphics cards connected internally via pci.
+
+'''2. mhwd-kernel:''' Enables the installation and easy management of ''multiple'' kernels on your system.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= mhwd =
+
+Run automatically during the installation process, it allows for Manjaro to work fully on your system 'straight out of the box', without the need to manually identify and install the necessary drivers or to manually edit the appropriate configuration files. Also usable via the terminal after installation, the features of the mhwd command include:
+
+* The choice of free (i.e. open-source) or non-free (i.e. proprietary) drivers
+* Identification and listing (general or detailed) of your system's hardware
+* Identification and listing (general or detailed) of installed drivers
+* Listing of available drivers for installation (free and proprietary)
+* Support of hybrid graphics cards (e.g. Nvidia Optimus)
+* Easy removal and installation of drivers (selected automatically, or you can identify and choose your own)
+
+
+== mhwd Commands ==
+
+All mhwd commands are undertaken using the terminal. The syntax of a mhwd command is:
+
+ mhwd [option(s)] &lt;config(s)&gt;
+
+The mhwd options available are:
+
+  &lt;u&gt;'''Option'''&lt;/u&gt;                                           &lt;u&gt;'''Explanation'''&lt;/u&gt;
+  --pci					          list only pci devices and driver configs
+  --usb					          list only usb devices and driver configs
+  -h/--help				          show help
+  -f/--force				          force reinstallation
+  -d/--detail				          show detailed info for -l/-li/-lh
+  -l/--list				          list available configs for devices
+  -la/--listall				          list all driver configs
+  -li/--listinstalled			          list installed driver configs
+  -lh/--listhardware			          list hardware information
+  -i/--install &lt;usb/pci&gt; &lt;config(s)&gt;	          install driver config(s)
+  -ic/--installcustom &lt;usb/pci&gt; &lt;path&gt;	          install custom config(s)
+  -r/--remove &lt;usb/pci&gt; &lt;config(s)&gt;	          remove driver config(s)
+  -a/--auto &lt;usb/pci&gt; &lt;free/nonfree&gt; &lt;classid&gt;	  auto install configs for classid
+  --pmcachedir &lt;path&gt;			          set package manager cache path
+  --pmconfig &lt;path&gt;			          set package manager config
+  --pmroot &lt;path&gt;			          set package manager root
+
+
+=== Listing Hardware Information ===
+
+To identify and list your computer's hardware, the syntax is:
+
+ mhwd -lh [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your hardware can be obtained by entering:
+
+ mhwd -lh -d
+
+
+It is also possible to filter your list by devices connected via pci or usb. In this instance, a detailed list will be generated only of hardware with a PCI connection:
+
+ mhwd -lh -d --pci
+
+
+=== Listing Installed Driver Information ===
+
+To identify and list Manjaro's installed drivers, the syntax is:
+
+ mhwd  -li [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your installed drivers can be obtained by entering:
+
+ mhwd -li -d
+
+
+It is also possible to filter your list of installed drivers by whether they are used on hardware connected via pci or usb. In this instance, a detailed list will be generated only for installed drivers used on hardware with a PCI connection:
+
+ mhwd -li -d --pci
+
+
+=== Listing Available Drivers ===
+
+'''To list all the drivers that are available''' (whether appropriate for your system or not), the basic syntax is:
+
+ mhwd -la [optional: pci or usb]
+
+
+For example, a list of all drivers available for just USB devices (and not just those connected to your system) can be obtained by entering:
+
+ mhwd -la --usb
+
+
+'''To list only the appropriate drivers that are available for your system''', the basic syntax is:
+
+ mhwd -l [optional: pci or usb]
+
+
+For example, a list of all available drivers specifically for devices connected via pci &lt;u&gt;on your system&lt;/u&gt; can be obtained by entering:
+
+ mhwd -l --pci
+
+
+=== Configuring Graphics Cards ===
+
+A guide to using the mwhd command to identify, install or remove graphics drivers can be found in the '''[[Configure Graphics Cards|Configure Graphics Cards page]]'''.
+
+
+= mhwd-kernel  =
+
+A guide to using the '''mhwd-kernel''' command can be found in the '''[[Manjaro_Kernels|Manjaro Kernels page]]'''.
+
+
+[[Category:Using Manjaro]]
+[[Category:Contents Page]]</text>
+      <sha1>ndk2aib2pjvyc7eqjhf06f0st282owx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4022</id>
+      <parentid>4021</parentid>
+      <timestamp>2013-01-03T20:16:59Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="5027">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+
+[[File: mhwd.png|left]] 
+
+The '''M'''anjaro '''H'''ard'''W'''are '''D'''etection (mhwd) command is a unique feature of Manjaro. There are currently two types of mhwd command:
+
+'''1. mhwd:''' Enables the automatic detection and configuration of computer hardware the system is running on. This includes both hardware connected internally via '''[http://en.wikipedia.org/wiki/Conventional_PCI PCI]''' (e.g. graphics cards), and connected externally via '''[http://en.wikipedia.org/wiki/USB USB]''' (e.g. flashdrives). '''Note:''' The mhwd command is still ''under development'', and at present is only able to install drivers for graphics cards connected internally via pci.
+
+'''2. mhwd-kernel:''' Enables the installation and easy management of ''multiple'' kernels on your system.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= mhwd =
+
+Run automatically during the installation process, it allows for Manjaro to work fully on your system 'straight out of the box', without the need to manually identify and install the necessary drivers or to manually edit the appropriate configuration files. Also usable via the terminal after installation, the features of the mhwd command include:
+
+* The choice of free (i.e. open-source) or non-free (i.e. proprietary) drivers
+* Identification and listing (general or detailed) of your system's hardware
+* Identification and listing (general or detailed) of installed drivers
+* Listing of available drivers for installation (free and proprietary)
+* Support of hybrid graphics cards (e.g. Nvidia Optimus)
+* Easy removal and installation of drivers (selected automatically, or you can identify and choose your own)
+
+
+== mhwd Commands ==
+
+All mhwd commands are undertaken using the terminal. The syntax of a mhwd command is:
+
+ mhwd [option(s)] &lt;config(s)&gt;
+
+The mhwd options available are:
+
+  &lt;u&gt;'''Option'''&lt;/u&gt;                                           &lt;u&gt;'''Explanation'''&lt;/u&gt;
+  --pci					          list only pci devices and driver configs
+  --usb					          list only usb devices and driver configs
+  -h/--help				          show help
+  -f/--force				          force reinstallation
+  -d/--detail				          show detailed info for -l/-li/-lh
+  -l/--list				          list available configs for devices
+  -la/--listall				          list all driver configs
+  -li/--listinstalled			          list installed driver configs
+  -lh/--listhardware			          list hardware information
+  -i/--install &lt;usb/pci&gt; &lt;config(s)&gt;	          install driver config(s)
+  -ic/--installcustom &lt;usb/pci&gt; &lt;path&gt;	          install custom config(s)
+  -r/--remove &lt;usb/pci&gt; &lt;config(s)&gt;	          remove driver config(s)
+  -a/--auto &lt;usb/pci&gt; &lt;free/nonfree&gt; &lt;classid&gt;	  auto install configs for classid
+  --pmcachedir &lt;path&gt;			          set package manager cache path
+  --pmconfig &lt;path&gt;			          set package manager config
+  --pmroot &lt;path&gt;			          set package manager root
+
+
+=== Listing Hardware Information ===
+
+To identify and list your computer's hardware, the syntax is:
+
+ mhwd -lh [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your hardware can be obtained by entering:
+
+ mhwd -lh -d
+
+
+It is also possible to filter your list by devices connected via pci or usb. In this instance, a detailed list will be generated only of hardware with a PCI connection:
+
+ mhwd -lh -d --pci
+
+
+=== Listing Installed Driver Information ===
+
+To identify and list Manjaro's installed drivers, the syntax is:
+
+ mhwd  -li [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your installed drivers can be obtained by entering:
+
+ mhwd -li -d
+
+
+It is also possible to filter your list of installed drivers by whether they are used on hardware connected via pci or usb. In this instance, a detailed list will be generated only for installed drivers used on hardware with a PCI connection:
+
+ mhwd -li -d --pci
+
+
+=== Listing Available Drivers ===
+
+'''To list all the drivers that are available''' (whether appropriate for your system or not), the basic syntax is:
+
+ mhwd -la [optional: pci or usb]
+
+
+For example, a list of all drivers available for just USB devices (and not just those connected to your system) can be obtained by entering:
+
+ mhwd -la --usb
+
+
+'''To list only the appropriate drivers that are available for your system''', the basic syntax is:
+
+ mhwd -l [optional: pci or usb]
+
+
+For example, a list of all available drivers specifically for devices connected via pci &lt;u&gt;on your system&lt;/u&gt; can be obtained by entering:
+
+ mhwd -l --pci
+
+
+=== Configuring Graphics Cards ===
+
+A guide to using the mwhd command to identify, install or remove graphics drivers can be found in the '''[[Configure Graphics Cards|Configure Graphics Cards page]]'''.
+
+
+= mhwd-kernel  =
+
+A guide to using the '''mhwd-kernel''' command can be found in the '''[[Manjaro_Kernels|Manjaro Kernels page]]'''.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>2zzc53e2lmug9hwtqlxth3urvv2vjya</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4023</id>
+      <parentid>4022</parentid>
+      <timestamp>2013-01-03T20:21:48Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="5482">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+
+[[File: mhwd.png|left]] 
+
+La commande '''M'''anjaro '''H'''ard'''W'''are '''D'''etection (mhwd) est une caractéristique Manjaro. Il existe actuellement deux types de commande mhwd :
+
+'''1. mhwd :'''Active la détection automatique et la configuration de matériel informatique sur lequel le système fonctionne. Cela inclut à la fois le matériel connecté en interne via PCI (cartes graphiques), et connecté en externe via USB (par exemple flashdrives). 
+
+Note: La commande mhwd est encore en cours de développement , et à l'heure actuelle n'est en mesure d'installer les pilotes pour cartes graphiques connectées en interne via pci .  
+
+Enables the automatic detection and configuration of computer hardware the system is running on. This includes both hardware connected internally via '''[http://en.wikipedia.org/wiki/Conventional_PCI PCI]''' (e.g. graphics cards), and connected externally via '''[http://en.wikipedia.org/wiki/USB USB]''' (e.g. flashdrives). '''Note:''' The mhwd command is still ''under development'', and at present is only able to install drivers for graphics cards connected internally via pci.
+
+'''2. mhwd-kernel :''' Enables the installation and easy management of ''multiple'' kernels on your system.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= mhwd =
+
+Run automatically during the installation process, it allows for Manjaro to work fully on your system 'straight out of the box', without the need to manually identify and install the necessary drivers or to manually edit the appropriate configuration files. Also usable via the terminal after installation, the features of the mhwd command include:
+
+* The choice of free (i.e. open-source) or non-free (i.e. proprietary) drivers
+* Identification and listing (general or detailed) of your system's hardware
+* Identification and listing (general or detailed) of installed drivers
+* Listing of available drivers for installation (free and proprietary)
+* Support of hybrid graphics cards (e.g. Nvidia Optimus)
+* Easy removal and installation of drivers (selected automatically, or you can identify and choose your own)
+
+
+== mhwd Commands ==
+
+All mhwd commands are undertaken using the terminal. The syntax of a mhwd command is:
+
+ mhwd [option(s)] &lt;config(s)&gt;
+
+The mhwd options available are:
+
+  &lt;u&gt;'''Option'''&lt;/u&gt;                                           &lt;u&gt;'''Explanation'''&lt;/u&gt;
+  --pci					          list only pci devices and driver configs
+  --usb					          list only usb devices and driver configs
+  -h/--help				          show help
+  -f/--force				          force reinstallation
+  -d/--detail				          show detailed info for -l/-li/-lh
+  -l/--list				          list available configs for devices
+  -la/--listall				          list all driver configs
+  -li/--listinstalled			          list installed driver configs
+  -lh/--listhardware			          list hardware information
+  -i/--install &lt;usb/pci&gt; &lt;config(s)&gt;	          install driver config(s)
+  -ic/--installcustom &lt;usb/pci&gt; &lt;path&gt;	          install custom config(s)
+  -r/--remove &lt;usb/pci&gt; &lt;config(s)&gt;	          remove driver config(s)
+  -a/--auto &lt;usb/pci&gt; &lt;free/nonfree&gt; &lt;classid&gt;	  auto install configs for classid
+  --pmcachedir &lt;path&gt;			          set package manager cache path
+  --pmconfig &lt;path&gt;			          set package manager config
+  --pmroot &lt;path&gt;			          set package manager root
+
+
+=== Listing Hardware Information ===
+
+To identify and list your computer's hardware, the syntax is:
+
+ mhwd -lh [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your hardware can be obtained by entering:
+
+ mhwd -lh -d
+
+
+It is also possible to filter your list by devices connected via pci or usb. In this instance, a detailed list will be generated only of hardware with a PCI connection:
+
+ mhwd -lh -d --pci
+
+
+=== Listing Installed Driver Information ===
+
+To identify and list Manjaro's installed drivers, the syntax is:
+
+ mhwd  -li [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your installed drivers can be obtained by entering:
+
+ mhwd -li -d
+
+
+It is also possible to filter your list of installed drivers by whether they are used on hardware connected via pci or usb. In this instance, a detailed list will be generated only for installed drivers used on hardware with a PCI connection:
+
+ mhwd -li -d --pci
+
+
+=== Listing Available Drivers ===
+
+'''To list all the drivers that are available''' (whether appropriate for your system or not), the basic syntax is:
+
+ mhwd -la [optional: pci or usb]
+
+
+For example, a list of all drivers available for just USB devices (and not just those connected to your system) can be obtained by entering:
+
+ mhwd -la --usb
+
+
+'''To list only the appropriate drivers that are available for your system''', the basic syntax is:
+
+ mhwd -l [optional: pci or usb]
+
+
+For example, a list of all available drivers specifically for devices connected via pci &lt;u&gt;on your system&lt;/u&gt; can be obtained by entering:
+
+ mhwd -l --pci
+
+
+=== Configuring Graphics Cards ===
+
+A guide to using the mwhd command to identify, install or remove graphics drivers can be found in the '''[[Configure Graphics Cards|Configure Graphics Cards page]]'''.
+
+
+= mhwd-kernel  =
+
+A guide to using the '''mhwd-kernel''' command can be found in the '''[[Manjaro_Kernels|Manjaro Kernels page]]'''.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>03ketiyek6b2bmyrie72jj3vqws0969</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4024</id>
+      <parentid>4023</parentid>
+      <timestamp>2013-01-03T20:24:30Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="5486">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+
+[[File: mhwd.png|left]] 
+
+La commande '''M'''anjaro '''H'''ard'''W'''are '''D'''etection (mhwd) est une caractéristique Manjaro. Il existe actuellement deux types de commande mhwd :
+
+'''1. mhwd : '''Active la détection automatique et la configuration de matériel informatique sur lequel le système fonctionne. Cela inclut à la fois le matériel connecté en interne via PCI (cartes graphiques), et connecté en externe via USB (par exemple flashdrives). 
+
+{{Note| La commande mhwd est encore en cours de développement , et à l'heure actuelle n'est en mesure d'installer les pilotes pour cartes graphiques connectées en interne via pci.}}  
+
+Enables the automatic detection and configuration of computer hardware the system is running on. This includes both hardware connected internally via '''[http://en.wikipedia.org/wiki/Conventional_PCI PCI]''' (e.g. graphics cards), and connected externally via '''[http://en.wikipedia.org/wiki/USB USB]''' (e.g. flashdrives). '''Note:''' The mhwd command is still ''under development'', and at present is only able to install drivers for graphics cards connected internally via pci.
+
+'''2. mhwd-kernel :''' Enables the installation and easy management of ''multiple'' kernels on your system.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= mhwd =
+
+Run automatically during the installation process, it allows for Manjaro to work fully on your system 'straight out of the box', without the need to manually identify and install the necessary drivers or to manually edit the appropriate configuration files. Also usable via the terminal after installation, the features of the mhwd command include:
+
+* The choice of free (i.e. open-source) or non-free (i.e. proprietary) drivers
+* Identification and listing (general or detailed) of your system's hardware
+* Identification and listing (general or detailed) of installed drivers
+* Listing of available drivers for installation (free and proprietary)
+* Support of hybrid graphics cards (e.g. Nvidia Optimus)
+* Easy removal and installation of drivers (selected automatically, or you can identify and choose your own)
+
+
+== mhwd Commands ==
+
+All mhwd commands are undertaken using the terminal. The syntax of a mhwd command is:
+
+ mhwd [option(s)] &lt;config(s)&gt;
+
+The mhwd options available are:
+
+  &lt;u&gt;'''Option'''&lt;/u&gt;                                           &lt;u&gt;'''Explanation'''&lt;/u&gt;
+  --pci					          list only pci devices and driver configs
+  --usb					          list only usb devices and driver configs
+  -h/--help				          show help
+  -f/--force				          force reinstallation
+  -d/--detail				          show detailed info for -l/-li/-lh
+  -l/--list				          list available configs for devices
+  -la/--listall				          list all driver configs
+  -li/--listinstalled			          list installed driver configs
+  -lh/--listhardware			          list hardware information
+  -i/--install &lt;usb/pci&gt; &lt;config(s)&gt;	          install driver config(s)
+  -ic/--installcustom &lt;usb/pci&gt; &lt;path&gt;	          install custom config(s)
+  -r/--remove &lt;usb/pci&gt; &lt;config(s)&gt;	          remove driver config(s)
+  -a/--auto &lt;usb/pci&gt; &lt;free/nonfree&gt; &lt;classid&gt;	  auto install configs for classid
+  --pmcachedir &lt;path&gt;			          set package manager cache path
+  --pmconfig &lt;path&gt;			          set package manager config
+  --pmroot &lt;path&gt;			          set package manager root
+
+
+=== Listing Hardware Information ===
+
+To identify and list your computer's hardware, the syntax is:
+
+ mhwd -lh [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your hardware can be obtained by entering:
+
+ mhwd -lh -d
+
+
+It is also possible to filter your list by devices connected via pci or usb. In this instance, a detailed list will be generated only of hardware with a PCI connection:
+
+ mhwd -lh -d --pci
+
+
+=== Listing Installed Driver Information ===
+
+To identify and list Manjaro's installed drivers, the syntax is:
+
+ mhwd  -li [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your installed drivers can be obtained by entering:
+
+ mhwd -li -d
+
+
+It is also possible to filter your list of installed drivers by whether they are used on hardware connected via pci or usb. In this instance, a detailed list will be generated only for installed drivers used on hardware with a PCI connection:
+
+ mhwd -li -d --pci
+
+
+=== Listing Available Drivers ===
+
+'''To list all the drivers that are available''' (whether appropriate for your system or not), the basic syntax is:
+
+ mhwd -la [optional: pci or usb]
+
+
+For example, a list of all drivers available for just USB devices (and not just those connected to your system) can be obtained by entering:
+
+ mhwd -la --usb
+
+
+'''To list only the appropriate drivers that are available for your system''', the basic syntax is:
+
+ mhwd -l [optional: pci or usb]
+
+
+For example, a list of all available drivers specifically for devices connected via pci &lt;u&gt;on your system&lt;/u&gt; can be obtained by entering:
+
+ mhwd -l --pci
+
+
+=== Configuring Graphics Cards ===
+
+A guide to using the mwhd command to identify, install or remove graphics drivers can be found in the '''[[Configure Graphics Cards|Configure Graphics Cards page]]'''.
+
+
+= mhwd-kernel  =
+
+A guide to using the '''mhwd-kernel''' command can be found in the '''[[Manjaro_Kernels|Manjaro Kernels page]]'''.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>m1zjqg6k74h4okp3tbmf8ztsl393jzo</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4025</id>
+      <parentid>4024</parentid>
+      <timestamp>2013-01-03T20:26:28Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="5598">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+
+[[File: mhwd.png|left]] 
+
+La commande '''M'''anjaro '''H'''ard'''W'''are '''D'''etection (mhwd) est une caractéristique Manjaro. Il existe actuellement deux types de commande mhwd :
+
+'''1. mhwd : '''Active la détection automatique et la configuration de matériel informatique sur lequel le système fonctionne. Cela inclut à la fois le matériel connecté en interne via le bus '''[http://en.wikipedia.org/wiki/Conventional_PCI PCI]''' (cartes graphiques), et connecté en externe via '''[http://en.wikipedia.org/wiki/USB USB]''' (par exemple flashdrives). 
+
+{{Note| La commande mhwd est encore en cours de développement, et à l'heure actuelle n'est pas en mesure d'installer les pilotes pour cartes graphiques connectées en interne via le bus PCI.}}  
+
+Enables the automatic detection and configuration of computer hardware the system is running on. This includes both hardware connected internally via '''[http://en.wikipedia.org/wiki/Conventional_PCI PCI]''' (e.g. graphics cards), and connected externally via '''[http://en.wikipedia.org/wiki/USB USB]''' (e.g. flashdrives). '''Note:''' The mhwd command is still ''under development'', and at present is only able to install drivers for graphics cards connected internally via pci.
+
+'''2. mhwd-kernel :''' Enables the installation and easy management of ''multiple'' kernels on your system.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= mhwd =
+
+Run automatically during the installation process, it allows for Manjaro to work fully on your system 'straight out of the box', without the need to manually identify and install the necessary drivers or to manually edit the appropriate configuration files. Also usable via the terminal after installation, the features of the mhwd command include:
+
+* The choice of free (i.e. open-source) or non-free (i.e. proprietary) drivers
+* Identification and listing (general or detailed) of your system's hardware
+* Identification and listing (general or detailed) of installed drivers
+* Listing of available drivers for installation (free and proprietary)
+* Support of hybrid graphics cards (e.g. Nvidia Optimus)
+* Easy removal and installation of drivers (selected automatically, or you can identify and choose your own)
+
+
+== mhwd Commands ==
+
+All mhwd commands are undertaken using the terminal. The syntax of a mhwd command is:
+
+ mhwd [option(s)] &lt;config(s)&gt;
+
+The mhwd options available are:
+
+  &lt;u&gt;'''Option'''&lt;/u&gt;                                           &lt;u&gt;'''Explanation'''&lt;/u&gt;
+  --pci					          list only pci devices and driver configs
+  --usb					          list only usb devices and driver configs
+  -h/--help				          show help
+  -f/--force				          force reinstallation
+  -d/--detail				          show detailed info for -l/-li/-lh
+  -l/--list				          list available configs for devices
+  -la/--listall				          list all driver configs
+  -li/--listinstalled			          list installed driver configs
+  -lh/--listhardware			          list hardware information
+  -i/--install &lt;usb/pci&gt; &lt;config(s)&gt;	          install driver config(s)
+  -ic/--installcustom &lt;usb/pci&gt; &lt;path&gt;	          install custom config(s)
+  -r/--remove &lt;usb/pci&gt; &lt;config(s)&gt;	          remove driver config(s)
+  -a/--auto &lt;usb/pci&gt; &lt;free/nonfree&gt; &lt;classid&gt;	  auto install configs for classid
+  --pmcachedir &lt;path&gt;			          set package manager cache path
+  --pmconfig &lt;path&gt;			          set package manager config
+  --pmroot &lt;path&gt;			          set package manager root
+
+
+=== Listing Hardware Information ===
+
+To identify and list your computer's hardware, the syntax is:
+
+ mhwd -lh [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your hardware can be obtained by entering:
+
+ mhwd -lh -d
+
+
+It is also possible to filter your list by devices connected via pci or usb. In this instance, a detailed list will be generated only of hardware with a PCI connection:
+
+ mhwd -lh -d --pci
+
+
+=== Listing Installed Driver Information ===
+
+To identify and list Manjaro's installed drivers, the syntax is:
+
+ mhwd  -li [optional: detailed view] [optional: pci or usb devices only]
+
+
+For example, a detailed list of your installed drivers can be obtained by entering:
+
+ mhwd -li -d
+
+
+It is also possible to filter your list of installed drivers by whether they are used on hardware connected via pci or usb. In this instance, a detailed list will be generated only for installed drivers used on hardware with a PCI connection:
+
+ mhwd -li -d --pci
+
+
+=== Listing Available Drivers ===
+
+'''To list all the drivers that are available''' (whether appropriate for your system or not), the basic syntax is:
+
+ mhwd -la [optional: pci or usb]
+
+
+For example, a list of all drivers available for just USB devices (and not just those connected to your system) can be obtained by entering:
+
+ mhwd -la --usb
+
+
+'''To list only the appropriate drivers that are available for your system''', the basic syntax is:
+
+ mhwd -l [optional: pci or usb]
+
+
+For example, a list of all available drivers specifically for devices connected via pci &lt;u&gt;on your system&lt;/u&gt; can be obtained by entering:
+
+ mhwd -l --pci
+
+
+=== Configuring Graphics Cards ===
+
+A guide to using the mwhd command to identify, install or remove graphics drivers can be found in the '''[[Configure Graphics Cards|Configure Graphics Cards page]]'''.
+
+
+= mhwd-kernel  =
+
+A guide to using the '''mhwd-kernel''' command can be found in the '''[[Manjaro_Kernels|Manjaro Kernels page]]'''.
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>5yzj1mwn103pxs73xwacq29mu2pg6l1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

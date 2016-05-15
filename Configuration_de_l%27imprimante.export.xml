@@ -1,0 +1,476 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Configuration de l'imprimante</title>
+    <ns>0</ns>
+    <id>634</id>
+    <revision>
+      <id>3715</id>
+      <timestamp>2012-12-30T16:44:38Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  = EN COURS DE TRADUCTION =  = Overview =  {{note| All the necessary printer software will be pre-installed in the full versions...&quot;</comment>
+      <text xml:space="preserve" bytes="7237">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= EN COURS DE TRADUCTION =
+
+= Overview =
+
+{{note| All the necessary printer software will be pre-installed in the full versions of Manjaro 0.8.0 to 0.8.2. However, if installing 0.8.3 and/or the NET-Edition, please review the '''[[Printing Enablement]]''' guide on how to install the necessary software and enable printing capabilities.}}
+
+
+Once the necessary printing software has been downloaded and the capacity to actually print has been enabled, the final step to start printing will of course be to actually add a printer in order to do so.
+
+
+= Adding a Printer =
+
+Don't worry - there's no need to use the terminal here! In fact, assuming CUPS has been enabled (and started), upon connecting a printer, it should be automatically detected and configured for you to use. The process itself should take only about a minute. However, if the automatic detection and configuration doesn't seem to work, then your printer can be manually set up with relative ease. There are two methods to do so:
+
+
+* '''Webpage Interface''': CUPS provides an webpage interface that will open in your default web browser to configure your printer. This interface also provides access to further information about CUPS, as well as on-line help.
+
+* '''Desktop Interface''': A standard desktop wizard is also available, which should be instantly familiar to those who have configured a printer before, whether using Linux or another operating system such as windows.
+
+
+== CUPS Webpage Interface ==
+
+
+[[File:CUPSweb.png|thumb|left|375px]]
+
+
+To access the webpage interface, select '''Manage Printing''' from your desktop menu. The interface will automatically open in your default web browser. Alternatively, you can also open your choice of web browser, and enter the following into the address bar:
+
+ http://localhost:631/
+
+
+{{tip|You can also just click the address provided above to access the CUPS web interface!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== CUPS Desktop Interface Part 1: The Automatic Method ==
+
+[[File:CUPS1.png|thumb|left|375px]]
+
+
+'''1. Add your printer'''. Ensuring that your printer is properly connected and switched on, select '''Print Settings''' from your desktop menu. Once the ''Print Settings'' window has opened, click '''+ add''' to add a new printer. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS2.png|thumb|left|375px]]
+
+
+'''2. Select your printer name'''. Once the ''New Printer'' window has opened, under the '''Select Device''' heading, find the name of your printer and click to highlight it. If your printer is listed more than once, check the description on the right to ensure your selection is not for another function, such as scanning or faxing.
+
+
+'''3. Select your printer connection'''. Under the '''Connection''' heading, click to highlight your printer's connection method. As illustrated, this will usually always be 'USB'.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS3.png|thumb|left|375px]]
+
+
+'''4. Install your printer driver'''. Once your printer name and connection have been highlighted, click the '''Forward''' button and CUPS will automatically search for the available drivers for it. In most instances, once the appropriate driver has been found it will be automatically installed, and the set-up process will have completed. 
+
+Otherwise, if the process did not succeed, it will be necessary to click the forward button again in order chose the appropriate driver yourself. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== CUPS Desktop Interface Part 2: The Manual Method ==
+
+
+[[File:CUPS4.png|thumb|left|375px]]
+
+
+{{tip|CUPS will usually help you out by showing recommended choices for each step.}}
+
+'''1. Select your printer make'''. If the Automatic method did not automatically find and install an appropriate driver for your printer, then clicking the forward button again will present the ''Chose Driver'' window. The first step is to select the make of your printer. As illustrated, as an HP printer is to be installed, the recommended choice of ''HP'' has been highlighted by clicking on it.
+
+Once your make of printer has been highlighted, click the forward button to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS5.png|thumb|left|375px]]
+
+
+'''2. Select your printer model'''. Under the left-heading '''models''', select the specific model of your printer. As illustrated, as the printer model to be installed in this instance is a Model 2210, the recommended choice of ''PSC 2210'' has been highlighted by clicking on it.
+
+
+'''3. Select your printer driver'''. At last! Under the right-heading '''Drivers''', select the appropriate driver for your printer. As illustrated, the recommended printer driver has been clicked to highlight it. '''It is advised that you also select whatever driver is recommended for you'''.
+
+Once your printer model and driver have been highlighted, click the forward button to proceed to the next step.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS6.png|thumb|left|375px]]
+
+
+'''4. Choose your printer name, description (optional), and location (optional)'''. Unless you want to change something, it will not be necessary to make any amendments here.
+
+If you are happy with the information provided - or have made the desired changes - click the '''Apply''' button to complete the process.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+'''5. Configure your printer'''. Having clicked the Apply button in the previous step, your printer's properties will be displayed. By selecting the categories on the right-hand side, you can view information and amend your printer's settings if you wish. '''The standard settings will be fine for most people, so unless you have something specific in mind, there will be nothing you need to do'''.
+
+
+'''6. Test your printer'''. Although optional, this step is highly recommended! Click the '''Print Test Page''' button to ensure that your printer is set up and working properly.
+
+{{tip|Your printer properties can be accessed - and changed - at any time by selecting the '''Print Settings''' option from your menu, and then double-clicking your printer's icon.}}
+
+That's it! Now click the '''OK''' button to close the window and start using your printer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuring an Installed Printer =
+
+To configure an installed printer at any time:
+
+'''1.''' select the '''Print Settings''' option from your desktop menu, and
+
+'''2.''' double-click the printer's icon.
+
+The configuration window will appear. Select any of the categories on the left-hand side of the window to view the appropriate information and make any desired changes. Once complete, click the '''Apply''' and then '''OK''' buttons to confirm and save your changes, or click the '''Cancel''' button to close the window without making any changes.
+
+
+= Removing an Installed Printer =
+
+If for any reason you wish to remove a printer (e.g. to reinstall it), select the '''Print Settings''' option from your menu, right-click your printer's icon, and then select '''delete'''. You will need to confirm your decision to delete the printer, as well as enter your password to complete the task.
+
+
+[[Printer Configuration|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>jpfrlgu7d3h4kd2wf7ztl24nc33zm9r</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3950</id>
+      <parentid>3715</parentid>
+      <timestamp>2013-01-03T14:29:56Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="8431">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note| Tous les logiciels nécessaires aux imprimantes sont déjà pré-installés dans les versions complètes de Manjaro 0.8.0 à 0.8.2. Toutefois, en cas d'installation 0.8.3 et/ou de la ''NET-Edition'', regardez, s'il vous plaît, le guide '''[[Activation de l'impression]]''' sur la façon d'installer le logiciel nécessaire et activer les fonctions d'impression.}}
+
+
+Une fois que le logiciel d'impression nécessaire a été téléchargé et que les fonctions d'impression ont été réellement activées, la dernière étape pour lancer l'impression sera bien sûr d'ajouter l'imprimante.
+
+
+= Ajout d'une imprimante =
+
+Ne vous inquiétez pas - il n'est pas nécessaire d'utiliser le terminal ici! En effet, en supposant que CUPS a été activé (et démarré), lors de la connexion d'une imprimante, celle-ci devrait être automatiquement détectée et configurée, et prête à utiliser. Le processus lui-même ne devrait prendre qu'une minute. Toutefois, si la détection et la configuration automatique ne semblent pas fonctionner, votre imprimante peut être réglée manuellement avec une relative facilité. Il existe deux méthodes pour ce faire:
+
+
+* '''Interface Internet:''' CUPS fournit une interface internet qui s'ouvre dans votre navigateur internet par défaut pour configurer votre imprimante. Cette interface permet également d'accéder à des informations complémentaires à propos de CUPS, ainsi qu'à l'aide en ligne.
+
+* '''Interface de bureau:''' Un assistant de bureau standard est également disponible, qui devrait être immédiatement familier à ceux qui ont déjà configuré une imprimante, que ce soit sous Linux ou un autre système d'exploitation tel que Windows.
+
+
+== Page internet de l'interface CUPS ==
+
+
+[[File:CUPSweb.png|thumb|left|375px]]
+
+
+Pour accéder à la page internet de CUPS, sélectionnez '''Gestionnaire d'impression''' à partir du menu de votre bureau. L'interface sera automatiquement ouvert dans votre navigateur Internet par défaut. Alternativement, vous pouvez également ouvrir le navigateur internet votre choix de navigateur et saisir le texte suivant dans la barre d'adresse:
+
+ http://localhost:631/
+
+
+{{Astuce|Vous pouvez aussi cliquer sur l'adresse fournie ci-dessus pour accéder à la page internet de CUPS!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Interface de bureau CUPS - Partie 1: la méthode automatique ==
+
+[[File:CUPS1.png|thumb|left|375px]]
+
+
+'''1. Ajoutez votre imprimante.''' Faire en sorte que votre imprimante soit correctement allumée et connectée, sélectionnez '''Print Settings''' à partir de votre menu du bureau. Une fois la fenêtre ''Print Settings'' ouverte, cliquez sur '''Ajouter''' pour ajouter une nouvelle imprimante.  
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS2.png|thumb|left|375px]]
+
+
+'''2. Sélectionnez le nom de votre imprimante.''' Une fois la fenêtre ''Nouvelle imprimante'' ouverte, sous la rubrique '''Sélectionnez votre périphérique''', recherchez le nom de votre imprimante et cliquez pour le sélectionner. Si votre imprimante est répertoriée plusieurs fois, vérifiez la description pour que ce ne soit pas pour une autre fonction, telle la numérisation ou la télécopie.
+
+
+'''3. Sélectionnez votre connexion à l'imprimante.''' Sous la rubrique '''Connexion''', cliquez pour sélectionner la méthode de connexion de votre imprimante. Comme illustré, ce sera généralement toujours «USB».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS3.png|thumb|left|375px]]
+
+
+'''4. Installez votre pilote d'imprimante.''' Une fois le nom de l'imprimante et la connexion mis en évidence, cliquez sur '''Suivant''' et CUPS recherchera automatiquement les pilotes disponibles pour celle-ci. Dans la plupart des cas, une fois le pilote approprié trouvé, il sera automatiquement installé, et le processus de mise en place sera terminé.
+
+Dans le cas contraire, si le processus n'a pas abouti, il sera nécessaire de cliquer à nouveau sur ''Suivant'' à nouveau pour choisir vous-même le pilote approprié. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Interface de bureau CUPS - Partie 2: La méthode manuelle ==
+
+
+[[File:CUPS4.png|thumb|left|375px]]
+
+
+{{Astuce|Généralement, CUPS vous aidera en montrant les choix recommandés pour chaque étape.}}
+
+'''1. Sélectionnez votre imprimante.''' Si la méthode automatique ne trouve pas et n'installe pas un pilote approprié pour votre imprimante, cliquer sur ''Suivant'' présentera la fenêtre '''Sélection du pilote'''. La première étape consiste à sélectionner la marque de votre imprimante. Comme illustré, puisqu'une imprimante HP doit être installée, le choix ''HP (recommandé)'' a été mis en évidence en cliquant dessus.
+
+Une fois la marque de votre imprimante sélectionnée, cliquez sur ''Suivant'' pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS5.png|thumb|left|375px]]
+
+
+'''2. Sélectionnez votre modèle d'imprimante.''' A gauche, dans la rubrique '''Modèles''', sélectionnez le modèle précis de votre imprimante. Comme illustré, puisque le modèle d'imprimante à installer est un modèle 2210, le choix ''PSC 2210 (recommandé)'' a été mis en évidence en cliquant dessus.
+
+
+'''3. Sélectionnez le pilote d'imprimante.''' A droite, dans la rubrique '''Pilotes''', sélectionnez le pilote approprié pour votre imprimante. Comme illustré, le pilote d'imprimante (recommandé) a été mis en évidence en cliquant dessus. '''Il est conseillé de sélectionner le pilote qui est recommandé pour votre imprimante.'''
+
+Une fois le modèle d'imprimante et le pilote mis en évidence, cliquez sur ''Suivant'' pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS6.png|thumb|left|375px]]
+
+
+'''4. Choisissez le nom de votre imprimante, une description (facultatif), et l'emplacement (facultatif).''' Sauf si vous voulez changer quelque chose, il ne sera pas nécessaire, ici, de faire des modifications.
+
+Si vous êtes satisfait de l'information fournie - ou après avoir procédé à des modifications - cliquez sur '''Appliquer''' pour terminer le processus.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+'''5. Configurez votre imprimante.''' Après avoir cliqué sur ''Appliquer'' à l'étape précédente, les propriétés de votre imprimante s'affichent. En sélectionnant les catégories sur le côté droit, vous pouvez afficher des informations et modifier, si vous le souhaitez, les paramètres de votre imprimante. '''Les paramètres standard seront suffisants pour la plupart des utilisateurs; à moins d'avoir en tête un paramétrage bien précis, vous n'aurez rien d'autre à faire.'''
+
+
+'''6. Testez votre imprimante.''' Bien que facultative, cette étape est fortement recommandée! Cliquez sur '''Imprimer la page de test''' pour vous assurer que votre imprimante est configurée et fonctionne correctement.
+
+{{Astuce|Les propriétés de votre imprimante peuvent être consultées - et changées - à tout moment en sélectionnant dans le menu de votre bureau '''Print Settings''' puis en double-cliquant sur l'icône de votre imprimante.}}
+
+C'est tout! Maintenant, cliquez sur '''OK''' pour fermer la fenêtre et commencer à utiliser votre imprimante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuration d'une imprimante installée =
+
+Pour configurer à tout moment une imprimante installée:
+
+'''1.''' sélectionnez dans le menu de votre bureau '''Print Settings''', et
+
+'''2.''' double-cliquez sur l'icône de l'imprimante.
+
+La fenêtre de configuration apparaît. Sélectionnez l'une des catégories sur le côté gauche de la fenêtre pour afficher les informations appropriées et apportez les modifications souhaitées. Une fois terminé, cliquez sur '''Appliquer''' puis '''OK''' pour confirmer et enregistrer vos modifications ou cliquez sur '''Annuler''' pour fermer la fenêtre sans effectuer de modifications.
+
+
+= Suppression d'une imprimante installée =
+
+Si pour une raison quelconque vous souhaitez supprimer une imprimante (par exemple pour la réinstaller), sélectionnez dans le menu de votre bureau '''Print Settings''', cliquez droit sur ​​l'icône de votre imprimante, puis sélectionnez '''Supprimer'''. Vous devrez confirmer votre décision de supprimer l'imprimante, ainsi que renseigner votre mot de passe pour terminer la tâche.
+
+
+[[Printer Configuration|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>93il4216rfdzdll2a718zta4rofeock</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>5358</id>
+      <parentid>3950</parentid>
+      <timestamp>2013-03-25T06:54:54Z</timestamp>
+      <contributor>
+        <username>Actifsuicide</username>
+        <id>66</id>
+      </contributor>
+      <comment>/* Interface de bureau CUPS - Partie 1: la méthode automatique */</comment>
+      <text xml:space="preserve" bytes="8499">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{note| Tous les logiciels nécessaires aux imprimantes sont déjà pré-installés dans les versions complètes de Manjaro 0.8.0 à 0.8.2. Toutefois, en cas d'installation 0.8.3 et/ou de la ''NET-Edition'', regardez, s'il vous plaît, le guide '''[[Activation de l'impression]]''' sur la façon d'installer le logiciel nécessaire et activer les fonctions d'impression.}}
+
+
+Une fois que le logiciel d'impression nécessaire a été téléchargé et que les fonctions d'impression ont été réellement activées, la dernière étape pour lancer l'impression sera bien sûr d'ajouter l'imprimante.
+
+
+= Ajout d'une imprimante =
+
+Ne vous inquiétez pas - il n'est pas nécessaire d'utiliser le terminal ici! En effet, en supposant que CUPS a été activé (et démarré), lors de la connexion d'une imprimante, celle-ci devrait être automatiquement détectée et configurée, et prête à utiliser. Le processus lui-même ne devrait prendre qu'une minute. Toutefois, si la détection et la configuration automatique ne semblent pas fonctionner, votre imprimante peut être réglée manuellement avec une relative facilité. Il existe deux méthodes pour ce faire:
+
+
+* '''Interface Internet:''' CUPS fournit une interface internet qui s'ouvre dans votre navigateur internet par défaut pour configurer votre imprimante. Cette interface permet également d'accéder à des informations complémentaires à propos de CUPS, ainsi qu'à l'aide en ligne.
+
+* '''Interface de bureau:''' Un assistant de bureau standard est également disponible, qui devrait être immédiatement familier à ceux qui ont déjà configuré une imprimante, que ce soit sous Linux ou un autre système d'exploitation tel que Windows.
+
+
+== Page internet de l'interface CUPS ==
+
+
+[[File:CUPSweb.png|thumb|left|375px]]
+
+
+Pour accéder à la page internet de CUPS, sélectionnez '''Gestionnaire d'impression''' à partir du menu de votre bureau. L'interface sera automatiquement ouvert dans votre navigateur Internet par défaut. Alternativement, vous pouvez également ouvrir le navigateur internet votre choix de navigateur et saisir le texte suivant dans la barre d'adresse:
+
+ http://localhost:631/
+
+
+{{Astuce|Vous pouvez aussi cliquer sur l'adresse fournie ci-dessus pour accéder à la page internet de CUPS!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Interface de bureau CUPS - Partie 1: la méthode automatique ==
+
+[[File:CUPS1.png|thumb|left|375px]]
+
+
+'''1. Ajoutez votre imprimante.''' Faire en sorte que votre imprimante soit correctement allumée et connectée, sélectionnez '''Print Settings''' à partir de votre menu du bureau. Une fois la fenêtre ''Print Settings'' ouverte, cliquez sur '''Ajouter''' pour ajouter une nouvelle imprimante.  
+
+
+----
+Commande pour l'interface graphique :
+ system-config-printer
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS2.png|thumb|left|375px]]
+
+
+'''2. Sélectionnez le nom de votre imprimante.''' Une fois la fenêtre ''Nouvelle imprimante'' ouverte, sous la rubrique '''Sélectionnez votre périphérique''', recherchez le nom de votre imprimante et cliquez pour le sélectionner. Si votre imprimante est répertoriée plusieurs fois, vérifiez la description pour que ce ne soit pas pour une autre fonction, telle la numérisation ou la télécopie.
+
+
+'''3. Sélectionnez votre connexion à l'imprimante.''' Sous la rubrique '''Connexion''', cliquez pour sélectionner la méthode de connexion de votre imprimante. Comme illustré, ce sera généralement toujours «USB».
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS3.png|thumb|left|375px]]
+
+
+'''4. Installez votre pilote d'imprimante.''' Une fois le nom de l'imprimante et la connexion mis en évidence, cliquez sur '''Suivant''' et CUPS recherchera automatiquement les pilotes disponibles pour celle-ci. Dans la plupart des cas, une fois le pilote approprié trouvé, il sera automatiquement installé, et le processus de mise en place sera terminé.
+
+Dans le cas contraire, si le processus n'a pas abouti, il sera nécessaire de cliquer à nouveau sur ''Suivant'' à nouveau pour choisir vous-même le pilote approprié. 
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Interface de bureau CUPS - Partie 2: La méthode manuelle ==
+
+
+[[File:CUPS4.png|thumb|left|375px]]
+
+
+{{Astuce|Généralement, CUPS vous aidera en montrant les choix recommandés pour chaque étape.}}
+
+'''1. Sélectionnez votre imprimante.''' Si la méthode automatique ne trouve pas et n'installe pas un pilote approprié pour votre imprimante, cliquer sur ''Suivant'' présentera la fenêtre '''Sélection du pilote'''. La première étape consiste à sélectionner la marque de votre imprimante. Comme illustré, puisqu'une imprimante HP doit être installée, le choix ''HP (recommandé)'' a été mis en évidence en cliquant dessus.
+
+Une fois la marque de votre imprimante sélectionnée, cliquez sur ''Suivant'' pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS5.png|thumb|left|375px]]
+
+
+'''2. Sélectionnez votre modèle d'imprimante.''' A gauche, dans la rubrique '''Modèles''', sélectionnez le modèle précis de votre imprimante. Comme illustré, puisque le modèle d'imprimante à installer est un modèle 2210, le choix ''PSC 2210 (recommandé)'' a été mis en évidence en cliquant dessus.
+
+
+'''3. Sélectionnez le pilote d'imprimante.''' A droite, dans la rubrique '''Pilotes''', sélectionnez le pilote approprié pour votre imprimante. Comme illustré, le pilote d'imprimante (recommandé) a été mis en évidence en cliquant dessus. '''Il est conseillé de sélectionner le pilote qui est recommandé pour votre imprimante.'''
+
+Une fois le modèle d'imprimante et le pilote mis en évidence, cliquez sur ''Suivant'' pour continuer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS6.png|thumb|left|375px]]
+
+
+'''4. Choisissez le nom de votre imprimante, une description (facultatif), et l'emplacement (facultatif).''' Sauf si vous voulez changer quelque chose, il ne sera pas nécessaire, ici, de faire des modifications.
+
+Si vous êtes satisfait de l'information fournie - ou après avoir procédé à des modifications - cliquez sur '''Appliquer''' pour terminer le processus.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File:CUPS7.png|thumb|left|375px]]
+
+
+'''5. Configurez votre imprimante.''' Après avoir cliqué sur ''Appliquer'' à l'étape précédente, les propriétés de votre imprimante s'affichent. En sélectionnant les catégories sur le côté droit, vous pouvez afficher des informations et modifier, si vous le souhaitez, les paramètres de votre imprimante. '''Les paramètres standard seront suffisants pour la plupart des utilisateurs; à moins d'avoir en tête un paramétrage bien précis, vous n'aurez rien d'autre à faire.'''
+
+
+'''6. Testez votre imprimante.''' Bien que facultative, cette étape est fortement recommandée! Cliquez sur '''Imprimer la page de test''' pour vous assurer que votre imprimante est configurée et fonctionne correctement.
+
+{{Astuce|Les propriétés de votre imprimante peuvent être consultées - et changées - à tout moment en sélectionnant dans le menu de votre bureau '''Print Settings''' puis en double-cliquant sur l'icône de votre imprimante.}}
+
+C'est tout! Maintenant, cliquez sur '''OK''' pour fermer la fenêtre et commencer à utiliser votre imprimante.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Configuration d'une imprimante installée =
+
+Pour configurer à tout moment une imprimante installée:
+
+'''1.''' sélectionnez dans le menu de votre bureau '''Print Settings''', et
+
+'''2.''' double-cliquez sur l'icône de l'imprimante.
+
+La fenêtre de configuration apparaît. Sélectionnez l'une des catégories sur le côté gauche de la fenêtre pour afficher les informations appropriées et apportez les modifications souhaitées. Une fois terminé, cliquez sur '''Appliquer''' puis '''OK''' pour confirmer et enregistrer vos modifications ou cliquez sur '''Annuler''' pour fermer la fenêtre sans effectuer de modifications.
+
+
+= Suppression d'une imprimante installée =
+
+Si pour une raison quelconque vous souhaitez supprimer une imprimante (par exemple pour la réinstaller), sélectionnez dans le menu de votre bureau '''Print Settings''', cliquez droit sur ​​l'icône de votre imprimante, puis sélectionnez '''Supprimer'''. Vous devrez confirmer votre décision de supprimer l'imprimante, ainsi que renseigner votre mot de passe pour terminer la tâche.
+
+
+[[Printer Configuration|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>rykmb3zp4yp8yv9e15w5w6l9fupg7yl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

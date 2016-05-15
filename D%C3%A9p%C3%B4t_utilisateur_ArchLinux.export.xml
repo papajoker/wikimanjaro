@@ -1,0 +1,491 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Dépôt utilisateur ArchLinux</title>
+    <ns>0</ns>
+    <id>637</id>
+    <revision>
+      <id>3785</id>
+      <timestamp>2013-01-01T14:33:25Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =  {{warning|Use the AUR at your own risk! Support will not be provided by the Manjaro team for any issues that may arise relating to software installations from th...&quot;</comment>
+      <text xml:space="preserve" bytes="6007">= Overview =
+
+{{warning|Use the AUR at your own risk! Support will not be provided by the Manjaro team for any issues that may arise relating to software installations from the AUR. }}
+
+
+Although Manjaro is 100% Arch compatible - being based on Arch itself - it is not possible access the official repositories of the Arch System to download software. Manjaro instead uses its own official repositories in order to ensure that any software packages provided (e.g. system updates and applications) have been fully tested and are completely stable before release.
+
+However, it is still possible to access additional software packages from the ''Arch User Repository'' (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. '''Unfortunately, as a community maintained repository, using the AUR does still present potential risks and problems.''' These include the AUR providing:
+
+* Multiple versions of the same packages
+* Out of date packages
+* Broken or only partially working packages
+* Improperly configured packages (e.g. downloading unnecessary dependencies, and/or not downloading necessary dependencies)
+* Malicious packages (although extremely rare) 
+
+
+As such, although much of the software packages provided by the AUR should work, do not expect the installation process to always be quite as straightforward as when using the official repositories. On occasion, it may be necessary to manually identify and install dependencies yourself after an aborted installation attempt, for example. In addition, there is no guarantee that any installed software will work properly, if at all.
+
+
+= Accessing the AUR =
+
+All the necessary software needed to access and use the AUR will have already been pre-installed for you in Manjaro 0.8.2. Where any other release of Manjaro has been installed, it will be necessary to consequently install these packages manually. They are:
+
+
+'''1. The base-developer group of packages:''' Rather than downloading pre-compiled software packages for installation, you will instead be downloading the instructions for Manjaro to build and compile them on your system. The base-developer group package is required to do this. 
+
+'''2. yaourt''': This is used to search and download from the AUR, rather like '''[[pacman]]''' is used to search and download from from Manjaro's official repositories. Just like ''pacman'' it will also automatically find and download the necessary dependencies for downloaded software as well, provided that the software packages themselves have properly stated which dependencies are needed. 
+
+
+To install the base-developer group and yaourt, enter the following command in your terminal:
+
+ sudo pacman -S base-devel yaourt
+
+
+= Searching for and Installing Software From the AUR =
+
+{{tip|It is '''strongly''' recommended to first visit the AUR website and examine the relevant page(s) for any and all software intended to be installed. These pages contain comments from both existing users and package developers, which may provide valuable information (e.g. warnings and/or solutions to problems). The AUR website can be found '''[http://aur.archlinux.org/ here]'''}}
+
+
+Yaourt must be used in the terminal, and is itself very similar to pacman to use. Furthermore, as with pacman, it is not necessary to specify precise or complete package names in order to search for or download software. For example, if wishing the download the ''Avant Window Navigator'' (a popular dock/toolbar), simply entering 'avant' will yield a list of potential matches to browse and select from. While the use of the ''sudo'' command is a convention when using pacman to install files (e.g. sudo pacman -S [software package name]), it is not necessary to use this with yaourt.
+
+
+To search for and install software packages from the AUR, the syntax is:
+
+ yaourt [software package name]
+
+
+For example, to search for the ''Avant Window Navigator'', the following command would be entered:
+
+ yaourt avant
+
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+As illustrated, a search for the ''Avant Window Navigator'' undertaken has resulted in ten possible matches being listed. Any combination of listed packages can be downloaded by simply entering their numbers. For example, entering '''3''' would install the package ''avant-window-navigaor-bzr''. Adding '''5''' after this would also install extra applets for for this package:
+
+ '''==&gt; Enter No of packages to be installed (ex: 1 2 3 or 1-3)'''
+ '''==&gt; -------------------------------------------------------'''
+ 3 5
+
+
+{{tip|The numbers at the end of each line are user votes for each package. The higher the number, the more popular the package. Note that option '3' has the highest number of votes by far!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file:yaourtdownload.png|thumb|left|375px]]
+
+
+Once the number(s) of your chosen software package(s) have been entered, and the installation process has begun, user comments from the AUR website will also be displayed. You may also be presented with a standard warning that the download package is unsupported and potentially dangerous. 
+
+You may also be asked if you wish to '''Edit PKGBUILD'''. Unless you know what you are doing, always type '''n''' for 'no' when asked. The purpose of this option is to allow experienced users to inspect the instructions that will be used to build the package(s) to be installed. As dependencies may also have to be installed first in the process, it is possible to be prompted to edit these as well. 
+
+Although you should just keep entering 'no' to these prompts, be aware that you will also be prompted on occasion to continue the installation as well. '''So make sure you read each prompt properly before entering anything,''' else you could end up aborting the installation by accident!
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[Category:Using Manjaro]]
+[[Category:Contents Page]]</text>
+      <sha1>50t42bnay6s850mzfhg7vkpxmrrpp6f</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3786</id>
+      <parentid>3785</parentid>
+      <timestamp>2013-01-01T14:35:32Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Searching for and Installing Software From the AUR */</comment>
+      <text xml:space="preserve" bytes="6046">= Overview =
+
+{{warning|Use the AUR at your own risk! Support will not be provided by the Manjaro team for any issues that may arise relating to software installations from the AUR. }}
+
+
+Although Manjaro is 100% Arch compatible - being based on Arch itself - it is not possible access the official repositories of the Arch System to download software. Manjaro instead uses its own official repositories in order to ensure that any software packages provided (e.g. system updates and applications) have been fully tested and are completely stable before release.
+
+However, it is still possible to access additional software packages from the ''Arch User Repository'' (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. '''Unfortunately, as a community maintained repository, using the AUR does still present potential risks and problems.''' These include the AUR providing:
+
+* Multiple versions of the same packages
+* Out of date packages
+* Broken or only partially working packages
+* Improperly configured packages (e.g. downloading unnecessary dependencies, and/or not downloading necessary dependencies)
+* Malicious packages (although extremely rare) 
+
+
+As such, although much of the software packages provided by the AUR should work, do not expect the installation process to always be quite as straightforward as when using the official repositories. On occasion, it may be necessary to manually identify and install dependencies yourself after an aborted installation attempt, for example. In addition, there is no guarantee that any installed software will work properly, if at all.
+
+
+= Accessing the AUR =
+
+All the necessary software needed to access and use the AUR will have already been pre-installed for you in Manjaro 0.8.2. Where any other release of Manjaro has been installed, it will be necessary to consequently install these packages manually. They are:
+
+
+'''1. The base-developer group of packages:''' Rather than downloading pre-compiled software packages for installation, you will instead be downloading the instructions for Manjaro to build and compile them on your system. The base-developer group package is required to do this. 
+
+'''2. yaourt''': This is used to search and download from the AUR, rather like '''[[pacman]]''' is used to search and download from from Manjaro's official repositories. Just like ''pacman'' it will also automatically find and download the necessary dependencies for downloaded software as well, provided that the software packages themselves have properly stated which dependencies are needed. 
+
+
+To install the base-developer group and yaourt, enter the following command in your terminal:
+
+ sudo pacman -S base-devel yaourt
+
+
+= Searching for and Installing Software From the AUR =
+
+{{tip|It is '''strongly''' recommended to first visit the AUR website and examine the relevant page(s) for any and all software intended to be installed. These pages contain comments from both existing users and package developers, which may provide valuable information (e.g. warnings and/or solutions to problems). The AUR website can be found '''[http://aur.archlinux.org/ here]'''}}
+
+
+Yaourt must be used in the terminal, and is itself very similar to pacman to use. Furthermore, as with pacman, it is not necessary to specify precise or complete package names in order to search for or download software. For example, if wishing the download the ''Avant Window Navigator'' (a popular dock/toolbar), simply entering 'avant' will yield a list of potential matches to browse and select from. While the use of the ''sudo'' command is a convention when using pacman to install files (e.g. sudo pacman -S [software package name]), it is not necessary to use this with yaourt.
+
+
+To search for and install software packages from the AUR, the syntax is:
+
+ yaourt [software package name]
+
+
+For example, to search for the ''Avant Window Navigator'', the following command would be entered:
+
+ yaourt avant
+
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+As illustrated, a search for the ''Avant Window Navigator'' undertaken has resulted in ten possible matches being listed. Any combination of listed packages can be downloaded by simply entering their numbers. For example, entering '''3''' would install the package ''avant-window-navigaor-bzr''. Adding '''5''' after this would also install extra applets for for this package:
+
+ '''==&gt; Enter No of packages to be installed (ex: 1 2 3 or 1-3)'''
+ '''==&gt; -------------------------------------------------------'''
+ 3 5
+
+
+{{tip|The numbers at the end of each line are user votes for each package. The higher the number, the more popular the package. Note that option '3' has the highest number of votes by far!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file:yaourtdownload.png|thumb|left|375px]]
+
+
+Once the number(s) of your chosen software package(s) have been entered, and the installation process has begun, user comments from the AUR website will also be displayed. You may also be presented with a standard warning that the download package is unsupported and potentially dangerous. 
+
+You may also be asked if you wish to '''Edit PKGBUILD'''. Unless you know what you are doing, always type '''n''' for 'no' when asked. The purpose of this option is to allow experienced users to inspect the instructions that will be used to build the package(s) to be installed. As dependencies may also have to be installed first in the process, it is possible to be prompted to edit these as well. 
+
+Although you should just keep entering 'no' to these prompts, be aware that you will also be prompted on occasion to continue the installation as well. '''So make sure you read each prompt properly before entering anything,''' else you could end up aborting the installation by accident!
+&lt;br clear=&quot;all&quot; /&gt;
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]</text>
+      <sha1>c5k5fdwdb4mvo1lu1kgfd5bspehu86n</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3787</id>
+      <parentid>3786</parentid>
+      <timestamp>2013-01-01T14:36:00Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="6093">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Overview =
+
+{{warning|Use the AUR at your own risk! Support will not be provided by the Manjaro team for any issues that may arise relating to software installations from the AUR. }}
+
+
+Although Manjaro is 100% Arch compatible - being based on Arch itself - it is not possible access the official repositories of the Arch System to download software. Manjaro instead uses its own official repositories in order to ensure that any software packages provided (e.g. system updates and applications) have been fully tested and are completely stable before release.
+
+However, it is still possible to access additional software packages from the ''Arch User Repository'' (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. '''Unfortunately, as a community maintained repository, using the AUR does still present potential risks and problems.''' These include the AUR providing:
+
+* Multiple versions of the same packages
+* Out of date packages
+* Broken or only partially working packages
+* Improperly configured packages (e.g. downloading unnecessary dependencies, and/or not downloading necessary dependencies)
+* Malicious packages (although extremely rare) 
+
+
+As such, although much of the software packages provided by the AUR should work, do not expect the installation process to always be quite as straightforward as when using the official repositories. On occasion, it may be necessary to manually identify and install dependencies yourself after an aborted installation attempt, for example. In addition, there is no guarantee that any installed software will work properly, if at all.
+
+= Accessing the AUR =
+
+All the necessary software needed to access and use the AUR will have already been pre-installed for you in Manjaro 0.8.2. Where any other release of Manjaro has been installed, it will be necessary to consequently install these packages manually. They are:
+
+
+'''1. The base-developer group of packages:''' Rather than downloading pre-compiled software packages for installation, you will instead be downloading the instructions for Manjaro to build and compile them on your system. The base-developer group package is required to do this. 
+
+'''2. yaourt''': This is used to search and download from the AUR, rather like '''[[pacman]]''' is used to search and download from from Manjaro's official repositories. Just like ''pacman'' it will also automatically find and download the necessary dependencies for downloaded software as well, provided that the software packages themselves have properly stated which dependencies are needed. 
+
+
+To install the base-developer group and yaourt, enter the following command in your terminal:
+
+ sudo pacman -S base-devel yaourt
+
+
+= Searching for and Installing Software From the AUR =
+
+{{tip|It is '''strongly''' recommended to first visit the AUR website and examine the relevant page(s) for any and all software intended to be installed. These pages contain comments from both existing users and package developers, which may provide valuable information (e.g. warnings and/or solutions to problems). The AUR website can be found '''[http://aur.archlinux.org/ here]'''}}
+
+
+Yaourt must be used in the terminal, and is itself very similar to pacman to use. Furthermore, as with pacman, it is not necessary to specify precise or complete package names in order to search for or download software. For example, if wishing the download the ''Avant Window Navigator'' (a popular dock/toolbar), simply entering 'avant' will yield a list of potential matches to browse and select from. While the use of the ''sudo'' command is a convention when using pacman to install files (e.g. sudo pacman -S [software package name]), it is not necessary to use this with yaourt.
+
+
+To search for and install software packages from the AUR, the syntax is:
+
+ yaourt [software package name]
+
+
+For example, to search for the ''Avant Window Navigator'', the following command would be entered:
+
+ yaourt avant
+
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+As illustrated, a search for the ''Avant Window Navigator'' undertaken has resulted in ten possible matches being listed. Any combination of listed packages can be downloaded by simply entering their numbers. For example, entering '''3''' would install the package ''avant-window-navigaor-bzr''. Adding '''5''' after this would also install extra applets for for this package:
+
+ '''==&gt; Enter No of packages to be installed (ex: 1 2 3 or 1-3)'''
+ '''==&gt; -------------------------------------------------------'''
+ 3 5
+
+
+{{tip|The numbers at the end of each line are user votes for each package. The higher the number, the more popular the package. Note that option '3' has the highest number of votes by far!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file:yaourtdownload.png|thumb|left|375px]]
+
+
+Once the number(s) of your chosen software package(s) have been entered, and the installation process has begun, user comments from the AUR website will also be displayed. You may also be presented with a standard warning that the download package is unsupported and potentially dangerous. 
+
+You may also be asked if you wish to '''Edit PKGBUILD'''. Unless you know what you are doing, always type '''n''' for 'no' when asked. The purpose of this option is to allow experienced users to inspect the instructions that will be used to build the package(s) to be installed. As dependencies may also have to be installed first in the process, it is possible to be prompted to edit these as well. 
+
+Although you should just keep entering 'no' to these prompts, be aware that you will also be prompted on occasion to continue the installation as well. '''So make sure you read each prompt properly before entering anything,''' else you could end up aborting the installation by accident!
+&lt;br clear=&quot;all&quot; /&gt;
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]</text>
+      <sha1>c4epn5miwibrfsfp71zocpdh5tmbzl8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3788</id>
+      <parentid>3787</parentid>
+      <timestamp>2013-01-01T14:46:37Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="6172">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Overview =
+
+{{Attention|Utilisez AUR à vos risques et périls ! L'équipeManjaro ne fournira pas de solutions aux problèmes qui peuvent survenir suite à l'installation de logiciels depuis AUR.}}
+
+Bien que Manjaro soit 100% compatible avec Arch - étant elle-même basée sur Arch - il n'est pas possible d'accéder aux dépôts officiels du système Arch pour télécharger des logiciels. Manjaro utilise à la place ses propres dépôts pour s'assurer que tous les paquets logiciels fournis (par exemple mises à jour système et applications) ont été totalement testés et sont complètement stables avant leur mise à disposition.
+
+However, it is still possible to access additional software packages from the ''Arch User Repository'' (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. '''Unfortunately, as a community maintained repository, using the AUR does still present potential risks and problems.''' These include the AUR providing:
+
+* Multiple versions of the same packages
+* Out of date packages
+* Broken or only partially working packages
+* Improperly configured packages (e.g. downloading unnecessary dependencies, and/or not downloading necessary dependencies)
+* Malicious packages (although extremely rare) 
+
+
+As such, although much of the software packages provided by the AUR should work, do not expect the installation process to always be quite as straightforward as when using the official repositories. On occasion, it may be necessary to manually identify and install dependencies yourself after an aborted installation attempt, for example. In addition, there is no guarantee that any installed software will work properly, if at all.
+
+= Accessing the AUR =
+
+All the necessary software needed to access and use the AUR will have already been pre-installed for you in Manjaro 0.8.2. Where any other release of Manjaro has been installed, it will be necessary to consequently install these packages manually. They are:
+
+
+'''1. The base-developer group of packages:''' Rather than downloading pre-compiled software packages for installation, you will instead be downloading the instructions for Manjaro to build and compile them on your system. The base-developer group package is required to do this. 
+
+'''2. yaourt''': This is used to search and download from the AUR, rather like '''[[pacman]]''' is used to search and download from from Manjaro's official repositories. Just like ''pacman'' it will also automatically find and download the necessary dependencies for downloaded software as well, provided that the software packages themselves have properly stated which dependencies are needed. 
+
+
+To install the base-developer group and yaourt, enter the following command in your terminal:
+
+ sudo pacman -S base-devel yaourt
+
+
+= Searching for and Installing Software From the AUR =
+
+{{tip|It is '''strongly''' recommended to first visit the AUR website and examine the relevant page(s) for any and all software intended to be installed. These pages contain comments from both existing users and package developers, which may provide valuable information (e.g. warnings and/or solutions to problems). The AUR website can be found '''[http://aur.archlinux.org/ here]'''}}
+
+
+Yaourt must be used in the terminal, and is itself very similar to pacman to use. Furthermore, as with pacman, it is not necessary to specify precise or complete package names in order to search for or download software. For example, if wishing the download the ''Avant Window Navigator'' (a popular dock/toolbar), simply entering 'avant' will yield a list of potential matches to browse and select from. While the use of the ''sudo'' command is a convention when using pacman to install files (e.g. sudo pacman -S [software package name]), it is not necessary to use this with yaourt.
+
+
+To search for and install software packages from the AUR, the syntax is:
+
+ yaourt [software package name]
+
+
+For example, to search for the ''Avant Window Navigator'', the following command would be entered:
+
+ yaourt avant
+
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+As illustrated, a search for the ''Avant Window Navigator'' undertaken has resulted in ten possible matches being listed. Any combination of listed packages can be downloaded by simply entering their numbers. For example, entering '''3''' would install the package ''avant-window-navigaor-bzr''. Adding '''5''' after this would also install extra applets for for this package:
+
+ '''==&gt; Enter No of packages to be installed (ex: 1 2 3 or 1-3)'''
+ '''==&gt; -------------------------------------------------------'''
+ 3 5
+
+
+{{tip|The numbers at the end of each line are user votes for each package. The higher the number, the more popular the package. Note that option '3' has the highest number of votes by far!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file:yaourtdownload.png|thumb|left|375px]]
+
+
+Once the number(s) of your chosen software package(s) have been entered, and the installation process has begun, user comments from the AUR website will also be displayed. You may also be presented with a standard warning that the download package is unsupported and potentially dangerous. 
+
+You may also be asked if you wish to '''Edit PKGBUILD'''. Unless you know what you are doing, always type '''n''' for 'no' when asked. The purpose of this option is to allow experienced users to inspect the instructions that will be used to build the package(s) to be installed. As dependencies may also have to be installed first in the process, it is possible to be prompted to edit these as well. 
+
+Although you should just keep entering 'no' to these prompts, be aware that you will also be prompted on occasion to continue the installation as well. '''So make sure you read each prompt properly before entering anything,''' else you could end up aborting the installation by accident!
+&lt;br clear=&quot;all&quot; /&gt;
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]</text>
+      <sha1>em7ueytf48j2fi82xpk9754hhpa4dzh</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3789</id>
+      <parentid>3788</parentid>
+      <timestamp>2013-01-01T14:47:11Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="6178">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+{{Attention|Utilisez AUR à vos risques et périls ! L'équipeManjaro ne fournira pas de solutions aux problèmes qui peuvent survenir suite à l'installation de logiciels depuis AUR.}}
+
+Bien que Manjaro soit 100% compatible avec Arch - étant elle-même basée sur Arch - il n'est pas possible d'accéder aux dépôts officiels du système Arch pour télécharger des logiciels. Manjaro utilise à la place ses propres dépôts pour s'assurer que tous les paquets logiciels fournis (par exemple mises à jour système et applications) ont été totalement testés et sont complètement stables avant leur mise à disposition.
+
+However, it is still possible to access additional software packages from the ''Arch User Repository'' (AUR), which is managed by the Arch community (i.e. users) themselves. Although this repository is unofficial, software packages first placed here are known to make their way into Arch's official repositories if they become popular enough. '''Unfortunately, as a community maintained repository, using the AUR does still present potential risks and problems.''' These include the AUR providing:
+
+* Multiple versions of the same packages
+* Out of date packages
+* Broken or only partially working packages
+* Improperly configured packages (e.g. downloading unnecessary dependencies, and/or not downloading necessary dependencies)
+* Malicious packages (although extremely rare) 
+
+
+As such, although much of the software packages provided by the AUR should work, do not expect the installation process to always be quite as straightforward as when using the official repositories. On occasion, it may be necessary to manually identify and install dependencies yourself after an aborted installation attempt, for example. In addition, there is no guarantee that any installed software will work properly, if at all.
+
+= Accessing the AUR =
+
+All the necessary software needed to access and use the AUR will have already been pre-installed for you in Manjaro 0.8.2. Where any other release of Manjaro has been installed, it will be necessary to consequently install these packages manually. They are:
+
+
+'''1. The base-developer group of packages:''' Rather than downloading pre-compiled software packages for installation, you will instead be downloading the instructions for Manjaro to build and compile them on your system. The base-developer group package is required to do this. 
+
+'''2. yaourt''': This is used to search and download from the AUR, rather like '''[[pacman]]''' is used to search and download from from Manjaro's official repositories. Just like ''pacman'' it will also automatically find and download the necessary dependencies for downloaded software as well, provided that the software packages themselves have properly stated which dependencies are needed. 
+
+
+To install the base-developer group and yaourt, enter the following command in your terminal:
+
+ sudo pacman -S base-devel yaourt
+
+
+= Searching for and Installing Software From the AUR =
+
+{{tip|It is '''strongly''' recommended to first visit the AUR website and examine the relevant page(s) for any and all software intended to be installed. These pages contain comments from both existing users and package developers, which may provide valuable information (e.g. warnings and/or solutions to problems). The AUR website can be found '''[http://aur.archlinux.org/ here]'''}}
+
+
+Yaourt must be used in the terminal, and is itself very similar to pacman to use. Furthermore, as with pacman, it is not necessary to specify precise or complete package names in order to search for or download software. For example, if wishing the download the ''Avant Window Navigator'' (a popular dock/toolbar), simply entering 'avant' will yield a list of potential matches to browse and select from. While the use of the ''sudo'' command is a convention when using pacman to install files (e.g. sudo pacman -S [software package name]), it is not necessary to use this with yaourt.
+
+
+To search for and install software packages from the AUR, the syntax is:
+
+ yaourt [software package name]
+
+
+For example, to search for the ''Avant Window Navigator'', the following command would be entered:
+
+ yaourt avant
+
+
+[[File:yaourtsearch.png|thumb|left|375px]]
+
+
+As illustrated, a search for the ''Avant Window Navigator'' undertaken has resulted in ten possible matches being listed. Any combination of listed packages can be downloaded by simply entering their numbers. For example, entering '''3''' would install the package ''avant-window-navigaor-bzr''. Adding '''5''' after this would also install extra applets for for this package:
+
+ '''==&gt; Enter No of packages to be installed (ex: 1 2 3 or 1-3)'''
+ '''==&gt; -------------------------------------------------------'''
+ 3 5
+
+
+{{tip|The numbers at the end of each line are user votes for each package. The higher the number, the more popular the package. Note that option '3' has the highest number of votes by far!}}
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[file:yaourtdownload.png|thumb|left|375px]]
+
+
+Once the number(s) of your chosen software package(s) have been entered, and the installation process has begun, user comments from the AUR website will also be displayed. You may also be presented with a standard warning that the download package is unsupported and potentially dangerous. 
+
+You may also be asked if you wish to '''Edit PKGBUILD'''. Unless you know what you are doing, always type '''n''' for 'no' when asked. The purpose of this option is to allow experienced users to inspect the instructions that will be used to build the package(s) to be installed. As dependencies may also have to be installed first in the process, it is possible to be prompted to edit these as well. 
+
+Although you should just keep entering 'no' to these prompts, be aware that you will also be prompted on occasion to continue the installation as well. '''So make sure you read each prompt properly before entering anything,''' else you could end up aborting the installation by accident!
+&lt;br clear=&quot;all&quot; /&gt;
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]</text>
+      <sha1>6qaqgl12n76q5aq4xktwuxitp9uayxw</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

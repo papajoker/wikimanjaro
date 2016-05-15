@@ -1,0 +1,462 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Guide du partitionnement simplifié pour installer manjaro</title>
+    <ns>0</ns>
+    <id>576</id>
+    <revision>
+      <id>3199</id>
+      <timestamp>2012-12-26T19:54:41Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;EN COURS&quot;</comment>
+      <text xml:space="preserve" bytes="8">EN COURS</text>
+      <sha1>rxofj6sisdd5svt8ujy62kqptqfo62e</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3201</id>
+      <parentid>3199</parentid>
+      <timestamp>2012-12-26T19:55:25Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="39">EN COURS
+
+
+
+
+[[Category:Présentation]]</text>
+      <sha1>bjbu6aon8uppjr3te12hh4kq9dispvk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3204</id>
+      <parentid>3201</parentid>
+      <timestamp>2012-12-26T19:59:59Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1341">EN COURS
+= Introduction =
+
+Ce petit guide sans prétention n'a qu'un seul but, celui de faciliter le partitionnement de votre disque dur pour accueillir manjaro. 
+
+Il arrive quelquefois que votre disque dur possède déjà 4 partitions principales, auquel cas on ne peut rajouter la possibilité d'installer manjaro. Pas d'inquiétude, il existe toujours une solution. 
+Si vous êtes dans ce cas, consulter la doc de votre ordinateur ou internet ; il faut absolument supprimer une partition principale afin de faire une partition étendue. 
+
+Si vous avez un système windows installé sur votre ordinateur, et si vous devez redimensionner vos partitions, faites-le sous windows avec une bonne défragmentation au passage. 
+
+Donc on part du principe que vous avez un disque dur avec maximum 3 partitions principales et de la place pour installer votre manjaro. 
+
+
+= Premier cas: vous avez un système windows d'installé =
+
+[[File: gparted1.png|thumb|left|375px]] 
+
+
+Démarrer sur le support manjaro (clé USB, DVD, ...). 
+
+Arrivé sur le bureau, ouvrez gparted (Outils système)
+ou Partition Manager pour KDE (K =&gt; Applications =&gt; Système =&gt; Editeur de partitions).
+
+'''Le mot de passe root vous sera demandé; tapez: manjaro'''
+
+Clic droit sur l'espace non alloué: choisir '''Nouvelle'''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+
+[[Category:Présentation]]</text>
+      <sha1>n1et1hg5a5hxmf0vqlzswq6ivtd7aw3</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3208</id>
+      <parentid>3204</parentid>
+      <timestamp>2012-12-26T20:02:17Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1873">EN COURS
+= Introduction =
+
+Ce petit guide sans prétention n'a qu'un seul but, celui de faciliter le partitionnement de votre disque dur pour accueillir manjaro. 
+
+Il arrive quelquefois que votre disque dur possède déjà 4 partitions principales, auquel cas on ne peut rajouter la possibilité d'installer manjaro. Pas d'inquiétude, il existe toujours une solution. 
+Si vous êtes dans ce cas, consulter la doc de votre ordinateur ou internet ; il faut absolument supprimer une partition principale afin de faire une partition étendue. 
+
+Si vous avez un système windows installé sur votre ordinateur, et si vous devez redimensionner vos partitions, faites-le sous windows avec une bonne défragmentation au passage. 
+
+Donc on part du principe que vous avez un disque dur avec maximum 3 partitions principales et de la place pour installer votre manjaro. 
+
+
+= Premier cas: vous avez un système windows d'installé =
+
+[[File: gparted1.png|thumb|left|375px]] 
+
+
+Démarrer sur le support manjaro (clé USB, DVD, ...). 
+
+Arrivé sur le bureau, ouvrez gparted (Outils système)
+ou Partition Manager pour KDE (K =&gt; Applications =&gt; Système =&gt; Editeur de partitions).
+
+'''Le mot de passe root vous sera demandé; tapez: manjaro'''
+
+Clic droit sur l'espace non alloué: choisir '''Nouvelle'''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted2.png|thumb|left|375px]] 
+
+
+Choisir Partition étendue.
+
+Validez l'opération.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted3.png|thumb|left|375px]] 
+
+
+Dans cette partition étendue, créez normalement vos partitions pour recevoir manjaro.
+
+La partition de boot n'est pas obligatoire.
+
+Dans l'exemple ci-contre, une partition de swap, une partition système et une partition home ont été créées.
+
+'''Tant que vous ne validez pas ces opérations, il est toujours possible de faire machine arrière.'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+
+[[Category:Présentation]]</text>
+      <sha1>24jwjmmx0nt930dip47fnlgsa9cclci</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3243</id>
+      <parentid>3208</parentid>
+      <timestamp>2012-12-26T21:08:08Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="6563">= Introduction =
+
+Ce petit guide n'a qu'un seul but, celui de faciliter le partitionnement de votre disque dur pour accueillir votre distribution manjaro. 
+
+Il arrive quelquefois que votre disque dur possède déjà '''4 partitions principales''', auquel cas on ne peut rajouter la possibilité d'installer manjaro. Pas d'inquiétude, il existe toujours une solution. 
+Si vous êtes dans ce cas, consulter la doc de votre ordinateur ou internet; il faut absolument supprimer une '''partition principale''' afin de faire une '''partition étendue'''. 
+
+Si vous avez un système windows installé sur votre ordinateur, et si vous devez redimensionner vos partitions, faites-le sous windows avec une bonne défragmentation au passage. 
+
+Donc on part du principe que vous avez un disque dur avec maximum 3 partitions principales et de la place pour installer votre manjaro. 
+
+
+= Premier cas: vous avez un système windows d'installé =
+
+[[File: gparted1.png|thumb|left|375px]] 
+
+
+Démarrer sur le support manjaro (clé USB, DVD, ...). 
+
+Arrivé sur le bureau, ouvrez '''gparted''' (Outils système)
+ou '''Partition Manager''' pour KDE (K =&gt; Applications =&gt; Système =&gt; Editeur de partitions).
+
+'''Le mot de passe root vous sera demandé; tapez: manjaro'''
+
+Clic droit sur l'espace non alloué: choisir '''Nouvelle'''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted2.png|thumb|left|375px]] 
+
+
+Choisir '''Partition étendue'''.
+
+Validez l'opération.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted3.png|thumb|left|375px]] 
+
+
+Dans cette partition étendue, créez normalement vos partitions pour recevoir manjaro.
+
+'''La partition de boot n'est pas obligatoire.'''
+
+Dans l'exemple ci-contre, une partition de '''swap''', une partition '''système''' et une partition '''home''' ont été créées.
+
+'''Tant que vous ne validez pas ces opérations, il est toujours possible de faire machine arrière.'''
+
+Fermez '''gparted'''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Deuxième cas: vous avez une autre distribution Linux d'installée =
+
+[[File: gparted4.png|thumb|left|375px]] 
+
+
+Démarrer sur le support manjaro (clé USB, DVD, ...). 
+
+Arrivé sur le bureau, ouvrez '''gparted''' (Outils système)
+ou '''Partition Manager''' pour KDE (K =&gt; Applications =&gt; Système =&gt; Editeur de partitions).
+
+'''Le mot de passe root vous sera demandé; tapez: manjaro'''
+
+Clic droit sur l'espace non alloué: choisir '''Nouvelle'''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted5.png|thumb|left|375px]] 
+
+
+Choisir '''Partition étendue'''.
+
+Validez l'opération.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted6.png|thumb|left|375px]] 
+
+
+Dans cette partition étendue, créez normalement vos partitions pour recevoir manjaro.
+
+Inutile de créer une deuxième partition de swap.
+
+'''La partition de boot n'est pas obligatoire.'''
+
+Dans l'exemple ci-contre, une partition '''système''' et une partition '''home''' ont été créées.
+
+'''Tant que vous ne validez pas ces opérations, il est toujours possible de faire machine arrière.'''
+
+Fermez '''gparted'''.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Allez, on y va! =
+
+[[File: gparted7.png|thumb|left|375px]] 
+
+
+Lancer l'installation selon les guides.
+
+L'installation décrite ci-après se fait avec la configuration du '''deuxième cas''' décrit ci-dessus (la '''swap''' est en '''sda1''', la partition '''système''' pour manjaro en '''sda5''', et le '''home''' de manjaro est en '''sda6''').
+
+'''Vous devez adapter à votre configuration.'''
+
+'''Arrivé au point 2 Disk(s) preparation''', appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted8.png|thumb|left|375px]] 
+
+
+Choisissez l'option 2: '''Partition by hand and choose the partitions to use.'''
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted9.png|thumb|left|375px]] 
+
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted10.png|thumb|left|375px]] 
+
+
+Descendre sur '''DONE'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted11.png|thumb|left|375px]] 
+
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted12.png|thumb|left|375px]] 
+
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted13.png|thumb|left|375px]] 
+
+
+Sélectionnez la partition pour '''swap'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+{{Attention|Si votre configuration est comme le '''premier cas''' décrit plus haut: à la demande, la partition '''swap''' sera '''sda5'''.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted14.png|thumb|left|375px]] 
+
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted15.png|thumb|left|375px]] 
+
+
+Sélectionnez la partition pour le '''système'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+{{Attention|Si votre configuration est comme le '''premier cas''' décrit plus haut: à la demande, la partition '''système''' sera '''sda6'''.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted16.png|thumb|left|375px]] 
+
+
+Sélectionnez '''ext4''' pour le '''système'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted17.png|thumb|left|375px]] 
+
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted18.png|thumb|left|375px]] 
+
+
+Sélectionnez la partition pour le '''home'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+{{Attention|Si votre configuration est comme le '''premier cas''' décrit plus haut: à la demande, la partition '''home''' sera '''sda7'''.}}
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted19.png|thumb|left|375px]] 
+
+
+Sélectionnez '''ext4''' pour le '''home'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted20.png|thumb|left|375px]] 
+
+
+Modifiez pour avoir '''/home'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted21.png|thumb|left|375px]] 
+
+
+{{Attention|Dans le cas d'un '''home existant''', veuillez répondre &lt;'''No'''&gt; pour conserver les données. Sinon laisser sur &lt;'''Yes'''&gt;.}}
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted22.png|thumb|left|375px]] 
+
+
+Descendre sur '''DONE'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted23.png|thumb|left|375px]] 
+
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted24.png|thumb|left|375px]] 
+
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted25.png|thumb|left|375px]] 
+
+
+Descendre sur '''Main menu'''.
+
+Appuyez sur &lt;Entrée&gt; pour continuer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: gparted26.png|thumb|left|375px]] 
+
+
+'''A partir de là, reprenez les Guides d'installation.'''
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[Category:Getting Started]]
+
+[[Category:Présentation]]</text>
+      <sha1>0oepycxrmtcrkw028g7mwvva3rj2gho</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

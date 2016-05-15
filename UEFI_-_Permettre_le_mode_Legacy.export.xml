@@ -1,0 +1,271 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>UEFI - Permettre le mode Legacy</title>
+    <ns>0</ns>
+    <id>1302</id>
+    <revision>
+      <id>8400</id>
+      <timestamp>2013-12-25T17:33:49Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;   =En cours de traduction=   = Summary =  {{Tip|Where Secure Boot has been disabled and Legacy Mode has been enabled for compute...&quot;</comment>
+      <text xml:space="preserve" bytes="4730">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+=En cours de traduction=
+
+
+= Summary =
+
+{{Tip|Where Secure Boot has been disabled and Legacy Mode has been enabled for computers using hard drives less than 2 terrabytes (2,000 Gigabytes), then the UEFI partition can be removed completely if desired (at least where no longer wishing to use Windows 8). This can be done using an application such as ''Gparted'').}}
+
+
+'''Legacy Mode''' is an option that basically enables computers to install and run operating systems that do not provide UEFI support. This is the case for Windows 7 and earlier, as well as many smaller Linux distributions. This is because the UEFI will be disabled, resulting in the computer running straight from the BIOS, as was the case prior to the release of Windows 8.
+
+Although Manjaro does indeed provide support for UEFI, unless Legacy Mode has been enabled, the user-friendly graphical bootup screen seen in the installation guides will not be shown. Instead, a somewhat plain-looking menu will be shown in its place. This is the menu for the UEFI.
+
+
+= Step 1: Access The BIOS Settings =
+
+{{tip|You do not need to go through the complex and confusing process provided by ''Windows 8'' to access your BIOS or UEFI. '''You can also click on the images provided below to enlarge them'''.}}
+
+
+The UEFI system sits on top of your computer BIOS. As such, it is necessary to go into the BIOS settings in order to enable the Legacy Support option in turn. This is achieved by tapping the appropriate Function (F) key - '''usually &lt;F10&gt;''' - immediately after turning on or rebooting your system. The &lt;F9&gt; key will usually access the UEFI system itself.
+
+
+[[File: UEFI-1.jpg|thumb|left|375px]] 
+
+
+'''If you accidentally end up in the UEFI menu''', then you may see a screen that looks like this.
+
+
+As illustrated however, it should still be possible to access the BIOS settings from here, on this occasion by pressing the &lt;F10&gt; key.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: UEFI-2.jpg|thumb|left|375px]] 
+
+
+'''Upon entering your BIOS settings''', then you may see a screen that looks like this.
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Step 2: Access The Boot Settings =
+
+[[File: UEFI-3.jpg|thumb|left|375px]]
+
+
+'''Once in the BIOS settings''', you should be able to use the &lt;left&gt; and &lt;right&gt; arrow keys to navigate the top menu tabs (usually ''Main, Security, System Configuration'' and ''Exit''). You can then use the &lt;up&gt; or &lt;down&gt; arrow keys to highlight and select the options provided in these tabs.
+
+
+1. Navigate using the &lt;left&gt; / &lt;right&gt; arrow keys to the '''System Configuration''' tab. 
+
+2. The '''Boot Options''' section should be now visible. Highlight this by using the &lt;up&gt; / &lt;down&gt; arrow keys.
+
+3. Once highlighted, press &lt;enter&gt; to access it.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Step 3: Enable Legacy Mode =
+
+[[File: UEFI-7.jpg|thumb|left|375px]]
+
+
+{{warning|Again, if you are using a hard drive larger than 2TB / 2000GB, then you should not enable legacy mode. '''Where already disabled, your BIOS may also automatically re-enable Secure Boot upon enabling Legacy Mode, too.'''}}
+
+
+'''Once in the Boot Options''', the '''Legacy Support / Mode''' option should be visible.
+
+
+1. Highlight the '''Legacy Support / Mode''' option by using the &lt;up&gt; / &lt;down&gt; arrow keys.
+
+2. Once highlighted, press &lt;enter&gt; to access it.
+
+3. As illustrated, a new menu will pop up, where 'Disabled' or 'Enabled' may be selected. Highlight '''Enabled''' by using the &lt;up&gt; / &lt;down&gt; arrow keys, and then press &lt;enter&gt; to confirm.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-8.jpg|thumb|left|375px]]
+
+
+{{Tip|Windows 8 will still be able to boot in Legacy Mode.}}
+
+
+As illustrated, a warning message will appear, stating that enabling legacy mode 'may make the system unable to boot the OS'. Highlight '''Yes''' by using the &lt;left&gt; / &lt;right&gt; arrow keys, and then press &lt;enter&gt; to confirm.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-9.jpg|thumb|left|375px]]
+
+
+Legacy Mode has now been enabled. Now press the appropriate Function key to '''Save and Exit'''. In this instance, the &lt;F10&gt; key must be pressed to do so.
+
+A confirmation message should appear asking if you want to '''Exit Saving Changes'''. Highlight '''Yes''' by using the &lt;left&gt; / &lt;right&gt; arrow keys, and then press &lt;enter&gt; to confirm.
+
+Your computer will now begin to boot, and you will now be able to install any operating system that does not support UEFI (including Windows 7).
+&lt;br clear=&quot;all&quot; /&gt;
+
+=Voir aussi=
+
+* '''[[UEFI et BIOS|BIOS and UEFI Section]]'''
+* '''[[UEFI - Désactiver le Secure Boot]]'''
+* '''[[Virtualbox|Installation et Utilisation]]'''
+
+[[UEFI - Enable Legacy Mode|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>ruln9aah3omm9wrzovcdomfp4mbplnu</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8416</id>
+      <parentid>8400</parentid>
+      <timestamp>2013-12-26T17:04:59Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5349">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Résumé =
+
+{{Astuce|Lorsque le Secure Boot a été désactivé et le mode Legacy activé pour les ordinateurs utilisant des disques durs de moins de 2 To, la partition UEFI peut être enlevée complètement (au moins si on ne désire plus utiliser Windows 8). Cela peut être fait à l'aide de ''Gparted'' par exemple.}}
+
+
+Le '''mode Legacy''' est une option qui permet essentiellement aux ordinateurs d'installer et exécuter des systèmes d'exploitation qui ne fournissent pas de support UEFI. C'est le cas pour Windows 7 et les versions antérieures, ainsi que de nombreuses petites distributions Linux. C'est parce que l'UEFI est désactivée que l'ordinateur exécute directement depuis le BIOS, comme c'était le cas avant la sortie de Windows 8.
+
+Bien que Manjaro fournisse en effet un soutien pour UEFI, sauf si le mode Legacy a été permis, l'écran de démarrage graphique convivial vu dans les guides d'installation ne sera pas affiché. Au lieu de cela, un menu quelque peu d'apparence simple sera montré à la place. C'est le menu pour l'UEFI.
+
+
+= Etape 1: Accéder aux paramètres du BIOS =
+
+{{Astuce|Vous n'avez pas besoin de passer par le processus complexe et déroutant fourni par ''Windows 8'' pour accéder à votre BIOS ou UEFI. '''Vous pouvez également cliquer sur les images fournies ci-dessous pour les agrandir'''.}}
+
+
+Le système d'UEFI se repose sur le BIOS de votre ordinateur. En tant que tel, il est nécessaire d'entrer dans les paramètres du BIOS afin de désactiver l'option Secure Boot de l'UEFI à son tour. Ceci est réalisé en appuyant sur la touche de fonction appropriée (F) - '''habituellement &lt;F10&gt;''' - immédiatement après la mise  en route ou le redémarrage de votre système. &lt;F9&gt; permet généralement d'accéder au système UEFI lui-même.
+
+
+[[File: UEFI-1.jpg|thumb|left|375px]] 
+
+
+'''Si vous vous retrouvez accidentellement dans le menu UEFI''', vous pouvez voir un écran qui ressemble à ceci.
+
+
+Comme illustré ci-contre, il devrait cependant toujours être possible d'accéder aux paramètres du BIOS à partir d'ici, en appuyant sur la touche &lt;F10&gt;.
+&lt;br clear=&quot;all&quot; /&gt;
+
+[[File: UEFI-2.jpg|thumb|left|375px]] 
+
+
+'''En entrant dans les paramètres du BIOS''', vous devriez voir un écran qui ressemble à ceci.
+
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Etape 2: Accéder aux paramètres de démarrage (Boot Settings) =
+
+[[File: UEFI-3.jpg|thumb|left|375px]]
+
+
+'''Une fois dans les paramètres du BIOS''', vous devriez être en mesure d'utiliser les touches fléchées &lt;gauche&gt; / &lt;droite&gt; pour naviguer dans les onglets du menu supérieur (en général ''Main'', ''Security'', ''System Configuration'' et ''Exit''). Vous pouvez alors utiliser les touches fléchées &lt;haut&gt; / &lt;bas&gt; pour sélectionner et choisir les options prévues dans ces onglets.
+
+
+1. Naviguez en utilisant les touches fléchées &lt;gauche&gt; / &lt;droite&gt; pour l'onglet '''System Configuration'''.
+
+2. La section '''Boot Options''' devrait être maintenant visible. Sélectionnez-la en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+3. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Etape 3: Activer le mode Legacy =
+
+[[File: UEFI-7.jpg|thumb|left|375px]]
+
+
+{{Attention|Encore une fois, si vous utilisez un disque dur de plus de 2 To, vous ne devez pas activer le mode Legacy.}}
+
+
+'''Une fois dans les options de démarrage''', l'option '''Legacy Support / Mode''' doit être visible.
+
+
+1. Mettez en surbrillance l'option '''Legacy Support / Mode''' en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;.
+
+2. Une fois en surbrillance, appuyez sur &lt;Entrée&gt; pour y accéder.
+
+3. Comme illustré, un nouveau menu apparaîtra, où 'Disabled' ou 'Enabled' peut être sélectionné. Mettre en surbrillance '''Disabled''' en utilisant les touches fléchées &lt;haut&gt; / &lt;bas&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-8.jpg|thumb|left|375px]]
+
+
+{{Astuce|Windows 8 sera toujours en mesure de démarrer en mode Legacy.}}
+
+
+Comme illustré, un message d'avertissement s'affiche, indiquant que l'activation du mode Legacy 'peut rendre le système incapable de démarrer le système d'exploitation'. Sélectionnez '''Oui''' à l'aide des touches fléchées &lt;gauche&gt; / &lt;droite&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+[[File: UEFI-9.jpg|thumb|left|375px]]
+
+
+Le mode Legacy a été activé. Maintenant appuyez sur la touche de fonction appropriée pour '''sauvegarder et quitter'''. Dans l'exemple, la touche F10 doit être pressée pour le faire.
+
+Un message de confirmation devrait apparaître vous demandant si vous souhaitez '''Quitter en enregistrant les modifications'''. Sélectionnez '''Oui''' à l'aide des touches fléchées &lt;gauche&gt; / &lt;droite&gt;, puis appuyez sur &lt;Entrée&gt; pour confirmer.
+
+Votre ordinateur va maintenant démarrer, et vous allez être en mesure d'installer un système d'exploitation qui ne prend pas en charge l'UEFI (y compris Windows 7).
+&lt;br clear=&quot;all&quot; /&gt;
+
+=Voir aussi=
+
+* '''[[UEFI et BIOS|BIOS and UEFI Section]]'''
+* '''[[UEFI - Désactiver le Secure Boot]]'''
+* '''[[Virtualbox|Installation et Utilisation]]'''
+
+[[UEFI - Enable Legacy Mode|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>9zo4y52l3t5wkdv2y5ymyoabczoxu9x</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

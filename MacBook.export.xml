@@ -1,0 +1,1141 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>MacBook</title>
+    <ns>0</ns>
+    <id>1351</id>
+    <revision>
+      <id>8559</id>
+      <timestamp>2014-01-21T20:43:09Z</timestamp>
+      <contributor>
+        <username>Otacon</username>
+        <id>220</id>
+      </contributor>
+      <comment>mise en ligne</comment>
+      <text xml:space="preserve" bytes="11078">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Introduction=
+
+Installer Manjaro sur un MacBook est presque similaire à l'installer sur un autre ordinateur. Cependant, en raison des spécificités de la configuration matériel sur un MacBook, il y a quelques divergences et considérations spéciales qui sont approchées dans ce guide séparé. Pour plus d'informations sur l'installation générale, reférez-vous au [http://wiki.manjaro.org/index.php?title=Category:Installation Manuels d'installation].
+ 
+Ce manuel est applicable aux MacBook, MacBook Pro, MacBook Air unibody à processeurs intel 64 bits. Par contre, il ne traite pas des modèles de MacBook qui possèdent deux cartes graphiques : un chipset intel et une carte dédiée.
+
+{{tip|ce manuel décrit une configuration en double boot Manjaro/OSX. Pour un single boot, il suffira une fois l'installation terminée d'effacer et formater la partition OSX pour obtenir une configuration Manjaro seule, avec 2 partitions libres}}
+
+{{Note | Ce manuel est écrit sur une base MacBook Air Mid 2013 11&quot;, les éléments suivants de ce matériel ne seront pas supportés sous Manjaro : le fonctionnement du port thunderbolt à chaud et la caméra Isight.}}
+
+=Préparation=
+
+==Pré requis==
+
+Avant de commencer, assurez vous d'avoir à portée de main les éléments suivants :
+
+*Un macbook avec OSX installé, propre (pas de bootcamp, refind, rEFIt)
+*Un câble ethernet et l'adaptateur Thunderbolt/Ethernet (pour macbook air) pour le début d'installation de Manjaro
+*Un poste informatique avec une distribution linux, fonctionnels
+*Un DVD OSX, ou une clé USB 8GO pour mettre OSX
+*Une clé USB pour mettre archlinux
+
+==Mise à jour du Firmware OSX, Clé USB ou DVD OSX bootable==
+
+OSX est installé sur le macbook. Lancez '''Mise à jour de logiciels''' depuis le menu Apple.
+
+Et mettez à jour tous vos logiciels. Une fois que ces mises à jours auront été faites vous devrez redémarrer votre ordinateur. Faites le puis relancez '''Mise à jour de logiciels''' pour être sur que toutes les mises à jours ont bien été installées.
+
+{{Note | Parfois '''Mise à jour de logiciels''' ne récupère pas toutes les mises à jour firmware disponibles pour votre ordinateur. Dans ce cas, vous pouvez rechercher les mises à jour directement dans le site de Support d'Apple.}}
+
+OSX étant à jour, créer un DVD ou une clé USB bootable de OSX:
+*télécharger le dernier OSX (maverick à ce jour) via App Store
+*le fichier Mavericks.App se télécharge dans Applications
+*formater la clé USB 8GO en hfs+ journalisé via Utilitaire de Disque
+*télécharger et installer Lion DiskMaker
+*lancer Lion DiskMaker sur Mavericks.App
+
+{{Warning |Un DVD ou Clé USB d'OSX bootable est necessaire pour permettre le demarrage instantané de Manjaro. De plus, en cas de fausse manoeuvre, pouvoir revenir à l'état d'origine de la configuration est une précaution sage}}
+
+==Préparation de Manjaro==
+
+Sur OSX :
+*formater la deuxième clé USB à disposition en Fat32 sous OSX avec Utilitaire de disque
+*télécharger la version de manjaro souhaitée: [http://manjaro.org/get-manjaro/].
+*télécharger [http://penguintosh.com/tag/linux-usb-creator/ linux usb creator pour Mac].
+*utiliser linux usb creator pour créer la clé Archlinux en choisissant l'image locale .iso téléchargée
+
+=Partitionnement=
+
+====Etat des lieux====
+
+L'étape suivante de l'installation est le re-partitionnement du disque dur. Si Mac OS X à été installé en utilisant la procédure conventionnelle, alors le disque devrait avoir le format GPT et les deux partitions suivantes :
+
+* '''Une partition EFI''': une partition de 200 Mo au début du disque. Elle est souvent affichée comme une partitions de type '''msdos''' ou '''FAT''' par la certains outils de partitionnement et généralement nommée ''#1''
+* '''Une partition Mac OS X''': la partition ''(HFS+)'' qui devrait prendre tout le reste de l'espace disque généralement nommée ''#2''.
+
+====Choix du partitionnement====
+
+La façon de partitionner votre disque dépend :
+*du nombre de systèmes d'exploitation que vous voudrez installer. 
+*du choix de partionnement pour l'installation de Manjaro :
+**/boot, /, /home sur la même partition
+**/boot sur une partition, / et /home sur une autre partition
+**/boot, /, /home, /var, etc... sur partitions séparées
+*de la présence ou non d'une partition swap pour permettre l'hibernation
+
+====Partitionnement====
+
+La solution la plus simple pour partitionner votre disque dur et faire que Mac OS X et Manjaro co-habitent, est d'utiliser l'outil de partitionnement de Mac OS X et ensuite de terminer avec les outils de Manjaro.
+
+{{Warning | Il est fortement recommandé de faire ceci aprés une installation propre de Mac OS X. Utiliser cette méthode avec un système déjà existant pourrait engendrer des résultats indésirables.}}
+
+Procedure :
+* Dans Mac OS X, lancez '''Utilitaire de Disque''' (se trouvant dans /Applications/Utilitaires)
+
+* Sélectionnez le disque dur que vous souhaitez partitionner dans la colonne de gauche (pas les partitions !). Cliquez sur l'onglet '''Partition''' dans le tableau de droite. 
+* Sélectionnez le volume à redimensionner dans le '''Schéma de partition'''. 
+
+* Choisissez ensuite combien d'espace vous souhaitez allouer pour votre partition Mac OS X, et de même pour votre partition Manjaro. A noter qu'une installation standard de Mac OS X requiert environ 20-30 GiB, en fonction du nombre d'applications et du nombre de fichiers qui s'y trouveront. 
+
+* Pour finir, écrivez la nouvelle taille (plus petite) pour la partition MacOS dans la case '''Taille''' et cliquez sur '''Appliquer'''. Ceci créera automatiquement une nouvelle partition à partir de l'espace qui vient d'être libéré.  
+
+* Créez une nouvelle partition en sélectionnant l'espace libre après la partition MacOS, choisir un type de système de fichier, ('''Fat''' par exemple), définir la '''Taille''' et cliquer sur '''Appliquer'''
+
+* Si les étapes au dessus ont été complétées, vous pouvez continuer. Sinon, vous devrez continuer à utiliser OSX pour finaliser le partitionnement.
+
+Pour exemple, sans swap, avec /boot, /, /home sur une même partition et une partition Data pour liaison par liens symboliques dans le /home :
+
+{| class=&quot;wikitable&quot;
+ !Partition
+ !Usage
+ |-
+ |/dev/sda1
+ |EFI System
+ |-
+ |/dev/sda2
+ |Apple 
+ |-
+ |/dev/sda3
+ |Manjaro
+ |-
+ |/dev/sda4
+ |Data
+ |}
+
+====Mise à jour du MBR====
+
+*redemarrer sur OSX (OSX se charge directement à la mise en route du macbook)
+*[http://refit.sourceforge.net/#download installer rEFIt au format dmg]
+
+{{ Tip | rEFIt est un bootloader populaire pour les ordinateurs équipés de firmware EFI (ce qui inclus les Macs). Il peut être installé à n'importe quel moment sur OSX durant l'installation.}}
+
+*redemarrer 2 fois pour avoir le boot rEFIt
+*lancer le &quot;partitionning tool&quot; et accepter la modification du MBR
+*éteindre et redemarrer sur OSX
+*[http://refit.sourceforge.net/doc/c1s3_remove.html supprimer rEFIt]
+
+=Installation de Manjaro=
+
+====Installation====
+
+*Eteindre le PC
+*insérer la clé USB Manjaro
+*brancher l'adaptateur Thunderbolt/Ethernet au PC et à la box en filaire.
+*démarrer et maintenir Alt pour booter sur la clé UEFI
+
+
+* 1. Avec la touche F2, définir la langue française et le clavier françaisChoisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+* 2. Choisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 3. Après chargement du live, ouvrir un terminal et entrer:
+
+ $ sudo setup
+Maintenant, nous sommes dans l'installateur texte (l'installateur graphique supporte uEFI depuis la version d'installation 0.8.9).
+* 4. '''Choisissez 2'''. Utilisez les tests d'installation (support EFI).
+
+* 5. '''Choisissez 1'''. Régler la date et l'heure - configuration simple et intuitive.
+
+* 6. Maintenant, '''choisissez 2'''. Disk(s) preparation.
+**Allez à '''2. Partition Hard Drives''' 
+**#L'installeur liste les disques. 
+**#Sélectionnez le disque sur lequel Manjaro sera installé
+**#L'installeur lance le programme cfdisk
+**#Naviguer avec les fleches gauche et droite vers [Quit] et Entrée
+**#Sélectionner [DONE] dans le menu de Partition
+**Allez à '''4. Set Filesystem Mountpoints''' 
+**#L'installeur liste les partitions. 
+**#Sélectionnez la partition de swap [NONE] (notre choix de partionnement ne prévoit pas de swap)
+**#Sélectionner la partition pour installer la racine : /dev/sda3 dans notre choix de partionnement
+**#Sélectionnez le format Ext4 pour cette partition
+**#Accepter la création du système de fichier (formatage de la partition)
+**#Entrez le nom de la partition
+**#Le champs suivant peut être laissé vide
+**#Sélectionner [DONE] dans le menu de montage des partitions additionelles
+**#Acceptez la création du système de fichier
+**#Sélectionner le schéma PARTUUID recommandé
+**Allez à '''5. Return to main menu''' 
+
+* 7. '''Choisissez 3.''' Install system and wait...
+
+* 8. Maintenant, allez à '''4. Configure System''' et configurez comme vous le souhaitez (nom d'utilisateur, mot de passe, les miroirs, nom de la machine, ...).
+
+* 9. Lorsque vous avez terminé, passez à '''5. Install bootloader.''' Choisissez EFI_x86_64&gt; GRUB (2) UEFI x86_64, '''NE PAS sélectionner BIOS GRUB.'''
+Il sera demandé de formater la partition EFI existante en FAT32, juste marquer Oui.
+
+* 10. Si une erreur est donnée dans les étapes finales indiquant &quot;efivars kernel module was not properly loaded&quot;, ne vous inquiétez pas, le système travaillera très bien !
+
+* 11. Si le programme d'installation vous demande de copier les fichiers grub/efi dans un autre dossier afin de maintenir la compatibilité dans certains systèmes, choisissez Oui.
+
+* 12. '''Cliquez sur 6.''' Quit
+
+Arrêt, retirez le DVD ou la clé USB &gt; DONE, SYSTEM INSTALLED!
+
+====Déclaration du demarrage linux au firmware OSX====
+
+*insérer la clé USB ou le DVD OSX
+*demarrer en maintenant Alt au demarrage et choisir le Boot EFI OSX amovible
+*apres le choix de la langue, ouvrir un terminal
+*Contrôler le nom de la partition EFI avec
+ diskutil list
+*Puis dans l'ordre (attention à la casse, la partition est en Fat32)
+
+ cd /Volumes
+ mkdir efi
+ mount -t msdos /dev/disk0s1 /Volumes/efi
+ bless --folder=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+ bless --mount=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+
+*fermer le terminal, éteindre.
+*le boot suivant demarre Manjaro linux en quelques secondes
+
+{{Note | Pour demarrer OSX, maintenir Alt au demarrage et choisir le disque OSX.}}
+{{Note | Pour supprimer le son au demarrage de linux, le 'chime', diminuer ou couper le son dans OSX}}
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>n730y5pttbuelecq1kcyi0p4g51mjx1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8560</id>
+      <parentid>8559</parentid>
+      <timestamp>2014-01-21T21:05:38Z</timestamp>
+      <contributor>
+        <username>Otacon</username>
+        <id>220</id>
+      </contributor>
+      <minor/>
+      <comment>Complement pour créer une USB bootable sous linux ou windows</comment>
+      <text xml:space="preserve" bytes="11252">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Introduction=
+
+Installer Manjaro sur un MacBook est presque similaire à l'installer sur un autre ordinateur. Cependant, en raison des spécificités de la configuration matériel sur un MacBook, il y a quelques divergences et considérations spéciales qui sont approchées dans ce guide séparé. Pour plus d'informations sur l'installation générale, reférez-vous au [http://wiki.manjaro.org/index.php?title=Category:Installation Manuels d'installation].
+ 
+Ce manuel est applicable aux MacBook, MacBook Pro, MacBook Air unibody à processeurs intel 64 bits. Par contre, il ne traite pas des modèles de MacBook qui possèdent deux cartes graphiques : un chipset intel et une carte dédiée.
+
+{{tip|ce manuel décrit une configuration en double boot Manjaro/OSX. Pour un single boot, il suffira une fois l'installation terminée d'effacer et formater la partition OSX pour obtenir une configuration Manjaro seule, avec 2 partitions libres}}
+
+{{Note | Ce manuel est écrit sur une base MacBook Air Mid 2013 11&quot;, les éléments suivants de ce matériel ne seront pas supportés sous Manjaro : le fonctionnement du port thunderbolt à chaud et la caméra Isight.}}
+
+=Préparation=
+
+==Pré requis==
+
+Avant de commencer, assurez vous d'avoir à portée de main les éléments suivants :
+
+*Un macbook avec OSX installé, propre (pas de bootcamp, refind, rEFIt)
+*Un câble ethernet et l'adaptateur Thunderbolt/Ethernet (pour macbook air) pour le début d'installation de Manjaro
+*Un poste informatique avec une distribution linux, fonctionnels
+*Un DVD OSX, ou une clé USB 8GO pour mettre OSX
+*Une clé USB pour mettre archlinux
+
+==Mise à jour du Firmware OSX, Clé USB ou DVD OSX bootable==
+
+OSX est installé sur le macbook. Lancez '''Mise à jour de logiciels''' depuis le menu Apple.
+
+Et mettez à jour tous vos logiciels. Une fois que ces mises à jours auront été faites vous devrez redémarrer votre ordinateur. Faites le puis relancez '''Mise à jour de logiciels''' pour être sur que toutes les mises à jours ont bien été installées.
+
+{{Note | Parfois '''Mise à jour de logiciels''' ne récupère pas toutes les mises à jour firmware disponibles pour votre ordinateur. Dans ce cas, vous pouvez rechercher les mises à jour directement dans le site de Support d'Apple.}}
+
+OSX étant à jour, créer un DVD ou une clé USB bootable de OSX:
+*télécharger le dernier OSX (maverick à ce jour) via App Store
+*le fichier Mavericks.App se télécharge dans Applications
+*formater la clé USB 8GO en hfs+ journalisé via Utilitaire de Disque
+*télécharger et installer Lion DiskMaker
+*lancer Lion DiskMaker sur Mavericks.App
+
+{{Warning |Un DVD ou Clé USB d'OSX bootable est necessaire pour permettre le demarrage instantané de Manjaro. De plus, en cas de fausse manoeuvre, pouvoir revenir à l'état d'origine de la configuration est une précaution sage}}
+
+==Préparation de Manjaro==
+
+Sur OSX :
+*formater la deuxième clé USB à disposition en Fat32 sous OSX avec Utilitaire de disque
+*télécharger la version de manjaro souhaitée: [http://manjaro.org/get-manjaro/].
+*télécharger [http://penguintosh.com/tag/linux-usb-creator/ linux usb creator pour Mac].
+*utiliser linux usb creator pour créer la clé Archlinux en choisissant l'image locale .iso téléchargée
+
+{{tip| Solutions alternatives pour créer une clé USB bootable sous linux ou windows: [http://wiki.manjaro.org/index.php?title=Graver_une_image_ISO Graver une image ISO]}}
+
+=Partitionnement=
+
+====Etat des lieux====
+
+L'étape suivante de l'installation est le re-partitionnement du disque dur. Si Mac OS X à été installé en utilisant la procédure conventionnelle, alors le disque devrait avoir le format GPT et les deux partitions suivantes :
+
+* '''Une partition EFI''': une partition de 200 Mo au début du disque. Elle est souvent affichée comme une partitions de type '''msdos''' ou '''FAT''' par la certains outils de partitionnement et généralement nommée ''#1''
+* '''Une partition Mac OS X''': la partition ''(HFS+)'' qui devrait prendre tout le reste de l'espace disque généralement nommée ''#2''.
+
+====Choix du partitionnement====
+
+La façon de partitionner votre disque dépend :
+*du nombre de systèmes d'exploitation que vous voudrez installer. 
+*du choix de partionnement pour l'installation de Manjaro :
+**/boot, /, /home sur la même partition
+**/boot sur une partition, / et /home sur une autre partition
+**/boot, /, /home, /var, etc... sur partitions séparées
+*de la présence ou non d'une partition swap pour permettre l'hibernation
+
+====Partitionnement====
+
+La solution la plus simple pour partitionner votre disque dur et faire que Mac OS X et Manjaro co-habitent, est d'utiliser l'outil de partitionnement de Mac OS X et ensuite de terminer avec les outils de Manjaro.
+
+{{Warning | Il est fortement recommandé de faire ceci aprés une installation propre de Mac OS X. Utiliser cette méthode avec un système déjà existant pourrait engendrer des résultats indésirables.}}
+
+Procedure :
+* Dans Mac OS X, lancez '''Utilitaire de Disque''' (se trouvant dans /Applications/Utilitaires)
+
+* Sélectionnez le disque dur que vous souhaitez partitionner dans la colonne de gauche (pas les partitions !). Cliquez sur l'onglet '''Partition''' dans le tableau de droite. 
+* Sélectionnez le volume à redimensionner dans le '''Schéma de partition'''. 
+
+* Choisissez ensuite combien d'espace vous souhaitez allouer pour votre partition Mac OS X, et de même pour votre partition Manjaro. A noter qu'une installation standard de Mac OS X requiert environ 20-30 GiB, en fonction du nombre d'applications et du nombre de fichiers qui s'y trouveront. 
+
+* Pour finir, écrivez la nouvelle taille (plus petite) pour la partition MacOS dans la case '''Taille''' et cliquez sur '''Appliquer'''. Ceci créera automatiquement une nouvelle partition à partir de l'espace qui vient d'être libéré.  
+
+* Créez une nouvelle partition en sélectionnant l'espace libre après la partition MacOS, choisir un type de système de fichier, ('''Fat''' par exemple), définir la '''Taille''' et cliquer sur '''Appliquer'''
+
+* Si les étapes au dessus ont été complétées, vous pouvez continuer. Sinon, vous devrez continuer à utiliser OSX pour finaliser le partitionnement.
+
+Pour exemple, sans swap, avec /boot, /, /home sur une même partition et une partition Data pour liaison par liens symboliques dans le /home :
+
+{| class=&quot;wikitable&quot;
+ !Partition
+ !Usage
+ |-
+ |/dev/sda1
+ |EFI System
+ |-
+ |/dev/sda2
+ |Apple 
+ |-
+ |/dev/sda3
+ |Manjaro
+ |-
+ |/dev/sda4
+ |Data
+ |}
+
+====Mise à jour du MBR====
+
+*redemarrer sur OSX (OSX se charge directement à la mise en route du macbook)
+*[http://refit.sourceforge.net/#download installer rEFIt au format dmg]
+
+{{ Tip | rEFIt est un bootloader populaire pour les ordinateurs équipés de firmware EFI (ce qui inclus les Macs). Il peut être installé à n'importe quel moment sur OSX durant l'installation.}}
+
+*redemarrer 2 fois pour avoir le boot rEFIt
+*lancer le &quot;partitionning tool&quot; et accepter la modification du MBR
+*éteindre et redemarrer sur OSX
+*[http://refit.sourceforge.net/doc/c1s3_remove.html supprimer rEFIt]
+
+=Installation de Manjaro=
+
+====Installation====
+
+*Eteindre le PC
+*insérer la clé USB Manjaro
+*brancher l'adaptateur Thunderbolt/Ethernet au PC et à la box en filaire.
+*démarrer et maintenir Alt pour booter sur la clé UEFI
+
+
+* 1. Avec la touche F2, définir la langue française et le clavier françaisChoisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+* 2. Choisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 3. Après chargement du live, ouvrir un terminal et entrer:
+
+ $ sudo setup
+Maintenant, nous sommes dans l'installateur texte (l'installateur graphique supporte uEFI depuis la version d'installation 0.8.9).
+* 4. '''Choisissez 2'''. Utilisez les tests d'installation (support EFI).
+
+* 5. '''Choisissez 1'''. Régler la date et l'heure - configuration simple et intuitive.
+
+* 6. Maintenant, '''choisissez 2'''. Disk(s) preparation.
+**Allez à '''2. Partition Hard Drives''' 
+**#L'installeur liste les disques. 
+**#Sélectionnez le disque sur lequel Manjaro sera installé
+**#L'installeur lance le programme cfdisk
+**#Naviguer avec les fleches gauche et droite vers [Quit] et Entrée
+**#Sélectionner [DONE] dans le menu de Partition
+**Allez à '''4. Set Filesystem Mountpoints''' 
+**#L'installeur liste les partitions. 
+**#Sélectionnez la partition de swap [NONE] (notre choix de partionnement ne prévoit pas de swap)
+**#Sélectionner la partition pour installer la racine : /dev/sda3 dans notre choix de partionnement
+**#Sélectionnez le format Ext4 pour cette partition
+**#Accepter la création du système de fichier (formatage de la partition)
+**#Entrez le nom de la partition
+**#Le champs suivant peut être laissé vide
+**#Sélectionner [DONE] dans le menu de montage des partitions additionelles
+**#Acceptez la création du système de fichier
+**#Sélectionner le schéma PARTUUID recommandé
+**Allez à '''5. Return to main menu''' 
+
+* 7. '''Choisissez 3.''' Install system and wait...
+
+* 8. Maintenant, allez à '''4. Configure System''' et configurez comme vous le souhaitez (nom d'utilisateur, mot de passe, les miroirs, nom de la machine, ...).
+
+* 9. Lorsque vous avez terminé, passez à '''5. Install bootloader.''' Choisissez EFI_x86_64&gt; GRUB (2) UEFI x86_64, '''NE PAS sélectionner BIOS GRUB.'''
+Il sera demandé de formater la partition EFI existante en FAT32, juste marquer Oui.
+
+* 10. Si une erreur est donnée dans les étapes finales indiquant &quot;efivars kernel module was not properly loaded&quot;, ne vous inquiétez pas, le système travaillera très bien !
+
+* 11. Si le programme d'installation vous demande de copier les fichiers grub/efi dans un autre dossier afin de maintenir la compatibilité dans certains systèmes, choisissez Oui.
+
+* 12. '''Cliquez sur 6.''' Quit
+
+Arrêt, retirez le DVD ou la clé USB &gt; DONE, SYSTEM INSTALLED!
+
+====Déclaration du demarrage linux au firmware OSX====
+
+*insérer la clé USB ou le DVD OSX
+*demarrer en maintenant Alt au demarrage et choisir le Boot EFI OSX amovible
+*apres le choix de la langue, ouvrir un terminal
+*Contrôler le nom de la partition EFI avec
+ diskutil list
+*Puis dans l'ordre (attention à la casse, la partition est en Fat32)
+
+ cd /Volumes
+ mkdir efi
+ mount -t msdos /dev/disk0s1 /Volumes/efi
+ bless --folder=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+ bless --mount=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+
+*fermer le terminal, éteindre.
+*le boot suivant demarre Manjaro linux en quelques secondes
+
+{{Note | Pour demarrer OSX, maintenir Alt au demarrage et choisir le disque OSX.}}
+{{Note | Pour supprimer le son au demarrage de linux, le 'chime', diminuer ou couper le son dans OSX}}
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>95s00hopbbjwxkljqla9gspn33using</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8561</id>
+      <parentid>8560</parentid>
+      <timestamp>2014-01-21T21:37:36Z</timestamp>
+      <contributor>
+        <username>Anhaedre</username>
+        <id>221</id>
+      </contributor>
+      <minor/>
+      <comment>/* Mise à jour du Firmware OSX, Clé USB ou DVD OSX bootable */</comment>
+      <text xml:space="preserve" bytes="11254">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Introduction=
+
+Installer Manjaro sur un MacBook est presque similaire à l'installer sur un autre ordinateur. Cependant, en raison des spécificités de la configuration matériel sur un MacBook, il y a quelques divergences et considérations spéciales qui sont approchées dans ce guide séparé. Pour plus d'informations sur l'installation générale, reférez-vous au [http://wiki.manjaro.org/index.php?title=Category:Installation Manuels d'installation].
+ 
+Ce manuel est applicable aux MacBook, MacBook Pro, MacBook Air unibody à processeurs intel 64 bits. Par contre, il ne traite pas des modèles de MacBook qui possèdent deux cartes graphiques : un chipset intel et une carte dédiée.
+
+{{tip|ce manuel décrit une configuration en double boot Manjaro/OSX. Pour un single boot, il suffira une fois l'installation terminée d'effacer et formater la partition OSX pour obtenir une configuration Manjaro seule, avec 2 partitions libres}}
+
+{{Note | Ce manuel est écrit sur une base MacBook Air Mid 2013 11&quot;, les éléments suivants de ce matériel ne seront pas supportés sous Manjaro : le fonctionnement du port thunderbolt à chaud et la caméra Isight.}}
+
+=Préparation=
+
+==Pré requis==
+
+Avant de commencer, assurez vous d'avoir à portée de main les éléments suivants :
+
+*Un macbook avec OSX installé, propre (pas de bootcamp, refind, rEFIt)
+*Un câble ethernet et l'adaptateur Thunderbolt/Ethernet (pour macbook air) pour le début d'installation de Manjaro
+*Un poste informatique avec une distribution linux, fonctionnels
+*Un DVD OSX, ou une clé USB 8GO pour mettre OSX
+*Une clé USB pour mettre archlinux
+
+==Mise à jour du Firmware OSX, Clé USB ou DVD OSX bootable==
+
+OSX est installé sur le macbook. Lancez '''Mise à jour de logiciels''' depuis le menu Apple.
+
+Et mettez à jour tous vos logiciels. Une fois que ces mises à jours auront été faites vous devrez redémarrer votre ordinateur. Faites le puis relancez '''Mise à jour de logiciels''' pour être sur que toutes les mises à jours ont bien été installées.
+
+{{Note | Parfois '''Mise à jour de logiciels''' ne récupère pas toutes les mises à jour firmware disponibles pour votre ordinateur. Dans ce cas, vous pouvez rechercher les mises à jour directement dans le site de Support d'Apple.}}
+
+OSX étant à jour, créer un DVD ou une clé USB bootable de OSX:
+*télécharger le dernier OSX (maverick à ce jour) via App Store
+*le fichier Mavericks.App se télécharge dans Applications
+*formater la clé USB 8GO en hfs+ journalisé via Utilitaire de Disque
+*télécharger et installer Lion DiskMaker
+*lancer Lion DiskMaker sur Mavericks.App
+
+{{Warning |Un DVD ou Clé USB d'OSX bootable est nécessaire pour permettre le démarrage instantané de Manjaro. De plus, en cas de fausse manoeuvre, pouvoir revenir à l'état d'origine de la configuration est une précaution sage}}
+
+==Préparation de Manjaro==
+
+Sur OSX :
+*formater la deuxième clé USB à disposition en Fat32 sous OSX avec Utilitaire de disque
+*télécharger la version de manjaro souhaitée: [http://manjaro.org/get-manjaro/].
+*télécharger [http://penguintosh.com/tag/linux-usb-creator/ linux usb creator pour Mac].
+*utiliser linux usb creator pour créer la clé Archlinux en choisissant l'image locale .iso téléchargée
+
+{{tip| Solutions alternatives pour créer une clé USB bootable sous linux ou windows: [http://wiki.manjaro.org/index.php?title=Graver_une_image_ISO Graver une image ISO]}}
+
+=Partitionnement=
+
+====Etat des lieux====
+
+L'étape suivante de l'installation est le re-partitionnement du disque dur. Si Mac OS X à été installé en utilisant la procédure conventionnelle, alors le disque devrait avoir le format GPT et les deux partitions suivantes :
+
+* '''Une partition EFI''': une partition de 200 Mo au début du disque. Elle est souvent affichée comme une partitions de type '''msdos''' ou '''FAT''' par la certains outils de partitionnement et généralement nommée ''#1''
+* '''Une partition Mac OS X''': la partition ''(HFS+)'' qui devrait prendre tout le reste de l'espace disque généralement nommée ''#2''.
+
+====Choix du partitionnement====
+
+La façon de partitionner votre disque dépend :
+*du nombre de systèmes d'exploitation que vous voudrez installer. 
+*du choix de partionnement pour l'installation de Manjaro :
+**/boot, /, /home sur la même partition
+**/boot sur une partition, / et /home sur une autre partition
+**/boot, /, /home, /var, etc... sur partitions séparées
+*de la présence ou non d'une partition swap pour permettre l'hibernation
+
+====Partitionnement====
+
+La solution la plus simple pour partitionner votre disque dur et faire que Mac OS X et Manjaro co-habitent, est d'utiliser l'outil de partitionnement de Mac OS X et ensuite de terminer avec les outils de Manjaro.
+
+{{Warning | Il est fortement recommandé de faire ceci aprés une installation propre de Mac OS X. Utiliser cette méthode avec un système déjà existant pourrait engendrer des résultats indésirables.}}
+
+Procedure :
+* Dans Mac OS X, lancez '''Utilitaire de Disque''' (se trouvant dans /Applications/Utilitaires)
+
+* Sélectionnez le disque dur que vous souhaitez partitionner dans la colonne de gauche (pas les partitions !). Cliquez sur l'onglet '''Partition''' dans le tableau de droite. 
+* Sélectionnez le volume à redimensionner dans le '''Schéma de partition'''. 
+
+* Choisissez ensuite combien d'espace vous souhaitez allouer pour votre partition Mac OS X, et de même pour votre partition Manjaro. A noter qu'une installation standard de Mac OS X requiert environ 20-30 GiB, en fonction du nombre d'applications et du nombre de fichiers qui s'y trouveront. 
+
+* Pour finir, écrivez la nouvelle taille (plus petite) pour la partition MacOS dans la case '''Taille''' et cliquez sur '''Appliquer'''. Ceci créera automatiquement une nouvelle partition à partir de l'espace qui vient d'être libéré.  
+
+* Créez une nouvelle partition en sélectionnant l'espace libre après la partition MacOS, choisir un type de système de fichier, ('''Fat''' par exemple), définir la '''Taille''' et cliquer sur '''Appliquer'''
+
+* Si les étapes au dessus ont été complétées, vous pouvez continuer. Sinon, vous devrez continuer à utiliser OSX pour finaliser le partitionnement.
+
+Pour exemple, sans swap, avec /boot, /, /home sur une même partition et une partition Data pour liaison par liens symboliques dans le /home :
+
+{| class=&quot;wikitable&quot;
+ !Partition
+ !Usage
+ |-
+ |/dev/sda1
+ |EFI System
+ |-
+ |/dev/sda2
+ |Apple 
+ |-
+ |/dev/sda3
+ |Manjaro
+ |-
+ |/dev/sda4
+ |Data
+ |}
+
+====Mise à jour du MBR====
+
+*redemarrer sur OSX (OSX se charge directement à la mise en route du macbook)
+*[http://refit.sourceforge.net/#download installer rEFIt au format dmg]
+
+{{ Tip | rEFIt est un bootloader populaire pour les ordinateurs équipés de firmware EFI (ce qui inclus les Macs). Il peut être installé à n'importe quel moment sur OSX durant l'installation.}}
+
+*redemarrer 2 fois pour avoir le boot rEFIt
+*lancer le &quot;partitionning tool&quot; et accepter la modification du MBR
+*éteindre et redemarrer sur OSX
+*[http://refit.sourceforge.net/doc/c1s3_remove.html supprimer rEFIt]
+
+=Installation de Manjaro=
+
+====Installation====
+
+*Eteindre le PC
+*insérer la clé USB Manjaro
+*brancher l'adaptateur Thunderbolt/Ethernet au PC et à la box en filaire.
+*démarrer et maintenir Alt pour booter sur la clé UEFI
+
+
+* 1. Avec la touche F2, définir la langue française et le clavier françaisChoisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+* 2. Choisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 3. Après chargement du live, ouvrir un terminal et entrer:
+
+ $ sudo setup
+Maintenant, nous sommes dans l'installateur texte (l'installateur graphique supporte uEFI depuis la version d'installation 0.8.9).
+* 4. '''Choisissez 2'''. Utilisez les tests d'installation (support EFI).
+
+* 5. '''Choisissez 1'''. Régler la date et l'heure - configuration simple et intuitive.
+
+* 6. Maintenant, '''choisissez 2'''. Disk(s) preparation.
+**Allez à '''2. Partition Hard Drives''' 
+**#L'installeur liste les disques. 
+**#Sélectionnez le disque sur lequel Manjaro sera installé
+**#L'installeur lance le programme cfdisk
+**#Naviguer avec les fleches gauche et droite vers [Quit] et Entrée
+**#Sélectionner [DONE] dans le menu de Partition
+**Allez à '''4. Set Filesystem Mountpoints''' 
+**#L'installeur liste les partitions. 
+**#Sélectionnez la partition de swap [NONE] (notre choix de partionnement ne prévoit pas de swap)
+**#Sélectionner la partition pour installer la racine : /dev/sda3 dans notre choix de partionnement
+**#Sélectionnez le format Ext4 pour cette partition
+**#Accepter la création du système de fichier (formatage de la partition)
+**#Entrez le nom de la partition
+**#Le champs suivant peut être laissé vide
+**#Sélectionner [DONE] dans le menu de montage des partitions additionelles
+**#Acceptez la création du système de fichier
+**#Sélectionner le schéma PARTUUID recommandé
+**Allez à '''5. Return to main menu''' 
+
+* 7. '''Choisissez 3.''' Install system and wait...
+
+* 8. Maintenant, allez à '''4. Configure System''' et configurez comme vous le souhaitez (nom d'utilisateur, mot de passe, les miroirs, nom de la machine, ...).
+
+* 9. Lorsque vous avez terminé, passez à '''5. Install bootloader.''' Choisissez EFI_x86_64&gt; GRUB (2) UEFI x86_64, '''NE PAS sélectionner BIOS GRUB.'''
+Il sera demandé de formater la partition EFI existante en FAT32, juste marquer Oui.
+
+* 10. Si une erreur est donnée dans les étapes finales indiquant &quot;efivars kernel module was not properly loaded&quot;, ne vous inquiétez pas, le système travaillera très bien !
+
+* 11. Si le programme d'installation vous demande de copier les fichiers grub/efi dans un autre dossier afin de maintenir la compatibilité dans certains systèmes, choisissez Oui.
+
+* 12. '''Cliquez sur 6.''' Quit
+
+Arrêt, retirez le DVD ou la clé USB &gt; DONE, SYSTEM INSTALLED!
+
+====Déclaration du demarrage linux au firmware OSX====
+
+*insérer la clé USB ou le DVD OSX
+*demarrer en maintenant Alt au demarrage et choisir le Boot EFI OSX amovible
+*apres le choix de la langue, ouvrir un terminal
+*Contrôler le nom de la partition EFI avec
+ diskutil list
+*Puis dans l'ordre (attention à la casse, la partition est en Fat32)
+
+ cd /Volumes
+ mkdir efi
+ mount -t msdos /dev/disk0s1 /Volumes/efi
+ bless --folder=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+ bless --mount=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+
+*fermer le terminal, éteindre.
+*le boot suivant demarre Manjaro linux en quelques secondes
+
+{{Note | Pour demarrer OSX, maintenir Alt au demarrage et choisir le disque OSX.}}
+{{Note | Pour supprimer le son au demarrage de linux, le 'chime', diminuer ou couper le son dans OSX}}
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>jivrw7nnyehepmm54mywpvgjpzxodxf</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8562</id>
+      <parentid>8561</parentid>
+      <timestamp>2014-01-21T21:49:42Z</timestamp>
+      <contributor>
+        <username>Anhaedre</username>
+        <id>221</id>
+      </contributor>
+      <minor/>
+      <comment>/* Mise à jour du Firmware OSX, Clé USB ou DVD OSX bootable */</comment>
+      <text xml:space="preserve" bytes="11458">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Introduction=
+
+Installer Manjaro sur un MacBook est presque similaire à l'installer sur un autre ordinateur. Cependant, en raison des spécificités de la configuration matériel sur un MacBook, il y a quelques divergences et considérations spéciales qui sont approchées dans ce guide séparé. Pour plus d'informations sur l'installation générale, reférez-vous au [http://wiki.manjaro.org/index.php?title=Category:Installation Manuels d'installation].
+ 
+Ce manuel est applicable aux MacBook, MacBook Pro, MacBook Air unibody à processeurs intel 64 bits. Par contre, il ne traite pas des modèles de MacBook qui possèdent deux cartes graphiques : un chipset intel et une carte dédiée.
+
+{{tip|ce manuel décrit une configuration en double boot Manjaro/OSX. Pour un single boot, il suffira une fois l'installation terminée d'effacer et formater la partition OSX pour obtenir une configuration Manjaro seule, avec 2 partitions libres}}
+
+{{Note | Ce manuel est écrit sur une base MacBook Air Mid 2013 11&quot;, les éléments suivants de ce matériel ne seront pas supportés sous Manjaro : le fonctionnement du port thunderbolt à chaud et la caméra Isight.}}
+
+=Préparation=
+
+==Pré requis==
+
+Avant de commencer, assurez vous d'avoir à portée de main les éléments suivants :
+
+*Un macbook avec OSX installé, propre (pas de bootcamp, refind, rEFIt)
+*Un câble ethernet et l'adaptateur Thunderbolt/Ethernet (pour macbook air) pour le début d'installation de Manjaro
+*Un poste informatique avec une distribution linux, fonctionnels
+*Un DVD OSX, ou une clé USB 8GO pour mettre OSX
+*Une clé USB pour mettre archlinux
+
+==Mise à jour du Firmware OSX, Clé USB ou DVD OSX bootable==accessoirement
+
+OSX est installé sur le macbook. Lancez '''Mise à jour }}de logiciels''' depuis le menu Apple.
+
+Et mettez à jour tous vos logiciels. Une fois que ces mises à jours auront été faites vous devrez redémarrer votre ordinateur. Faites le puis relancez '''Mise à jour de logiciels''' pour être sur que toutes les mises à jours ont bien été installées.
+
+{{Note | Parfois '''Mise à jour de logiciels''' ne récupère pas toutes les mises à jour firmware disponibles pour votre ordinateur. Dans ce cas, vous pouvez rechercher les mises à jour directement dans le site de Support d'Apple.}}
+
+OSX étant à jour, créer un DVD ou une clé USB bootable de OSX:
+*télécharger le dernier OSX (maverick à ce jour) via App Store
+*le fichier Mavericks.App se télécharge dans Applications
+*formater la clé USB 8GO en hfs+ journalisé via Utilitaire de Disque
+*télécharger et installer Lion DiskMaker
+*lancer Lion DiskMaker sur Mavericks.App
+
+{{Warning |Un DVD ou Clé USB d'OSX bootable est nécessaire pour permettre le démarrage instantané de Manjaro. De plus, en cas de fausse manoeuvre, pouvoir revenir à l'état d'origine de la configuration est une précaution sage}}
+{{tip |Vous pouvez également utiliser la combinaison de touches CMD+R au démarrage pour arriver sur l'utilitaire de restauration en ligne d'OS X et notamment avoir accès au terminal.}}
+
+==Préparation de Manjaro==
+
+Sur OSX :
+*formater la deuxième clé USB à disposition en Fat32 sous OSX avec Utilitaire de disque
+*télécharger la version de manjaro souhaitée: [http://manjaro.org/get-manjaro/].
+*télécharger [http://penguintosh.com/tag/linux-usb-creator/ linux usb creator pour Mac].
+*utiliser linux usb creator pour créer la clé Archlinux en choisissant l'image locale .iso téléchargée
+
+{{tip| Solutions alternatives pour créer une clé USB bootable sous linux ou windows: [http://wiki.manjaro.org/index.php?title=Graver_une_image_ISO Graver une image ISO]}}
+
+=Partitionnement=
+
+====Etat des lieux====
+
+L'étape suivante de l'installation est le re-partitionnement du disque dur. Si Mac OS X à été installé en utilisant la procédure conventionnelle, alors le disque devrait avoir le format GPT et les deux partitions suivantes :
+
+* '''Une partition EFI''': une partition de 200 Mo au début du disque. Elle est souvent affichée comme une partitions de type '''msdos''' ou '''FAT''' par la certains outils de partitionnement et généralement nommée ''#1''
+* '''Une partition Mac OS X''': la partition ''(HFS+)'' qui devrait prendre tout le reste de l'espace disque généralement nommée ''#2''.
+
+====Choix du partitionnement====
+
+La façon de partitionner votre disque dépend :
+*du nombre de systèmes d'exploitation que vous voudrez installer. 
+*du choix de partionnement pour l'installation de Manjaro :
+**/boot, /, /home sur la même partition
+**/boot sur une partition, / et /home sur une autre partition
+**/boot, /, /home, /var, etc... sur partitions séparées
+*de la présence ou non d'une partition swap pour permettre l'hibernation
+
+====Partitionnement====
+
+La solution la plus simple pour partitionner votre disque dur et faire que Mac OS X et Manjaro co-habitent, est d'utiliser l'outil de partitionnement de Mac OS X et ensuite de terminer avec les outils de Manjaro.
+
+{{Warning | Il est fortement recommandé de faire ceci aprés une installation propre de Mac OS X. Utiliser cette méthode avec un système déjà existant pourrait engendrer des résultats indésirables.}}
+
+Procedure :
+* Dans Mac OS X, lancez '''Utilitaire de Disque''' (se trouvant dans /Applications/Utilitaires)
+
+* Sélectionnez le disque dur que vous souhaitez partitionner dans la colonne de gauche (pas les partitions !). Cliquez sur l'onglet '''Partition''' dans le tableau de droite. 
+* Sélectionnez le volume à redimensionner dans le '''Schéma de partition'''. 
+
+* Choisissez ensuite combien d'espace vous souhaitez allouer pour votre partition Mac OS X, et de même pour votre partition Manjaro. A noter qu'une installation standard de Mac OS X requiert environ 20-30 GiB, en fonction du nombre d'applications et du nombre de fichiers qui s'y trouveront. 
+
+* Pour finir, écrivez la nouvelle taille (plus petite) pour la partition MacOS dans la case '''Taille''' et cliquez sur '''Appliquer'''. Ceci créera automatiquement une nouvelle partition à partir de l'espace qui vient d'être libéré.  
+
+* Créez une nouvelle partition en sélectionnant l'espace libre après la partition MacOS, choisir un type de système de fichier, ('''Fat''' par exemple), définir la '''Taille''' et cliquer sur '''Appliquer'''
+
+* Si les étapes au dessus ont été complétées, vous pouvez continuer. Sinon, vous devrez continuer à utiliser OSX pour finaliser le partitionnement.
+
+Pour exemple, sans swap, avec /boot, /, /home sur une même partition et une partition Data pour liaison par liens symboliques dans le /home :
+
+{| class=&quot;wikitable&quot;
+ !Partition
+ !Usage
+ |-
+ |/dev/sda1
+ |EFI System
+ |-
+ |/dev/sda2
+ |Apple 
+ |-
+ |/dev/sda3
+ |Manjaro
+ |-
+ |/dev/sda4
+ |Data
+ |}
+
+====Mise à jour du MBR====
+
+*redemarrer sur OSX (OSX se charge directement à la mise en route du macbook)
+*[http://refit.sourceforge.net/#download installer rEFIt au format dmg]
+
+{{ Tip | rEFIt est un bootloader populaire pour les ordinateurs équipés de firmware EFI (ce qui inclus les Macs). Il peut être installé à n'importe quel moment sur OSX durant l'installation.}}
+
+*redemarrer 2 fois pour avoir le boot rEFIt
+*lancer le &quot;partitionning tool&quot; et accepter la modification du MBR
+*éteindre et redemarrer sur OSX
+*[http://refit.sourceforge.net/doc/c1s3_remove.html supprimer rEFIt]
+
+=Installation de Manjaro=
+
+====Installation====
+
+*Eteindre le PC
+*insérer la clé USB Manjaro
+*brancher l'adaptateur Thunderbolt/Ethernet au PC et à la box en filaire.
+*démarrer et maintenir Alt pour booter sur la clé UEFI
+
+
+* 1. Avec la touche F2, définir la langue française et le clavier françaisChoisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+* 2. Choisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 3. Après chargement du live, ouvrir un terminal et entrer:
+
+ $ sudo setup
+Maintenant, nous sommes dans l'installateur texte (l'installateur graphique supporte uEFI depuis la version d'installation 0.8.9).
+* 4. '''Choisissez 2'''. Utilisez les tests d'installation (support EFI).
+
+* 5. '''Choisissez 1'''. Régler la date et l'heure - configuration simple et intuitive.
+
+* 6. Maintenant, '''choisissez 2'''. Disk(s) preparation.
+**Allez à '''2. Partition Hard Drives''' 
+**#L'installeur liste les disques. 
+**#Sélectionnez le disque sur lequel Manjaro sera installé
+**#L'installeur lance le programme cfdisk
+**#Naviguer avec les fleches gauche et droite vers [Quit] et Entrée
+**#Sélectionner [DONE] dans le menu de Partition
+**Allez à '''4. Set Filesystem Mountpoints''' 
+**#L'installeur liste les partitions. 
+**#Sélectionnez la partition de swap [NONE] (notre choix de partionnement ne prévoit pas de swap)
+**#Sélectionner la partition pour installer la racine : /dev/sda3 dans notre choix de partionnement
+**#Sélectionnez le format Ext4 pour cette partition
+**#Accepter la création du système de fichier (formatage de la partition)
+**#Entrez le nom de la partition
+**#Le champs suivant peut être laissé vide
+**#Sélectionner [DONE] dans le menu de montage des partitions additionelles
+**#Acceptez la création du système de fichier
+**#Sélectionner le schéma PARTUUID recommandé
+**Allez à '''5. Return to main menu''' 
+
+* 7. '''Choisissez 3.''' Install system and wait...
+
+* 8. Maintenant, allez à '''4. Configure System''' et configurez comme vous le souhaitez (nom d'utilisateur, mot de passe, les miroirs, nom de la machine, ...).
+
+* 9. Lorsque vous avez terminé, passez à '''5. Install bootloader.''' Choisissez EFI_x86_64&gt; GRUB (2) UEFI x86_64, '''NE PAS sélectionner BIOS GRUB.'''
+Il sera demandé de formater la partition EFI existante en FAT32, juste marquer Oui.
+
+* 10. Si une erreur est donnée dans les étapes finales indiquant &quot;efivars kernel module was not properly loaded&quot;, ne vous inquiétez pas, le système travaillera très bien !
+
+* 11. Si le programme d'installation vous demande de copier les fichiers grub/efi dans un autre dossier afin de maintenir la compatibilité dans certains systèmes, choisissez Oui.
+
+* 12. '''Cliquez sur 6.''' Quit
+
+Arrêt, retirez le DVD ou la clé USB &gt; DONE, SYSTEM INSTALLED!
+
+====Déclaration du demarrage linux au firmware OSX====
+
+*insérer la clé USB ou le DVD OSX
+*demarrer en maintenant Alt au demarrage et choisir le Boot EFI OSX amovible
+*apres le choix de la langue, ouvrir un terminal
+*Contrôler le nom de la partition EFI avec
+ diskutil list
+*Puis dans l'ordre (attention à la casse, la partition est en Fat32)
+
+ cd /Volumes
+ mkdir efi
+ mount -t msdos /dev/disk0s1 /Volumes/efi
+ bless --folder=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+ bless --mount=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+
+*fermer le terminal, éteindre.
+*le boot suivant demarre Manjaro linux en quelques secondes
+
+{{Note | Pour demarrer OSX, maintenir Alt au demarrage et choisir le disque OSX.}}
+{{Note | Pour supprimer le son au demarrage de linux, le 'chime', diminuer ou couper le son dans OSX}}
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>00wbmtzjavsm2e08qdp48ak2xz0ne7p</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8563</id>
+      <parentid>8562</parentid>
+      <timestamp>2014-01-21T21:50:53Z</timestamp>
+      <contributor>
+        <username>Anhaedre</username>
+        <id>221</id>
+      </contributor>
+      <minor/>
+      <comment>/* Pré requis */</comment>
+      <text xml:space="preserve" bytes="11456">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Introduction=
+
+Installer Manjaro sur un MacBook est presque similaire à l'installer sur un autre ordinateur. Cependant, en raison des spécificités de la configuration matériel sur un MacBook, il y a quelques divergences et considérations spéciales qui sont approchées dans ce guide séparé. Pour plus d'informations sur l'installation générale, reférez-vous au [http://wiki.manjaro.org/index.php?title=Category:Installation Manuels d'installation].
+ 
+Ce manuel est applicable aux MacBook, MacBook Pro, MacBook Air unibody à processeurs intel 64 bits. Par contre, il ne traite pas des modèles de MacBook qui possèdent deux cartes graphiques : un chipset intel et une carte dédiée.
+
+{{tip|ce manuel décrit une configuration en double boot Manjaro/OSX. Pour un single boot, il suffira une fois l'installation terminée d'effacer et formater la partition OSX pour obtenir une configuration Manjaro seule, avec 2 partitions libres}}
+
+{{Note | Ce manuel est écrit sur une base MacBook Air Mid 2013 11&quot;, les éléments suivants de ce matériel ne seront pas supportés sous Manjaro : le fonctionnement du port thunderbolt à chaud et la caméra Isight.}}
+
+=Préparation=
+
+==Pré requis==
+
+Avant de commencer, assurez vous d'avoir à portée de main les éléments suivants :
+
+*Un macbook avec OSX installé, propre (pas de bootcamp, refind, rEFIt)
+*Un câble ethernet et l'adaptateur Thunderbolt/Ethernet (pour macbook air) pour le début d'installation de Manjaro
+*Un poste informatique avec une distribution linux, fonctionnels
+*Un DVD OSX, ou une clé USB 8GO pour mettre OSX
+*Une clé USB pour mettre Manjaro
+
+==Mise à jour du Firmware OSX, Clé USB ou DVD OSX bootable==accessoirement
+
+OSX est installé sur le macbook. Lancez '''Mise à jour }}de logiciels''' depuis le menu Apple.
+
+Et mettez à jour tous vos logiciels. Une fois que ces mises à jours auront été faites vous devrez redémarrer votre ordinateur. Faites le puis relancez '''Mise à jour de logiciels''' pour être sur que toutes les mises à jours ont bien été installées.
+
+{{Note | Parfois '''Mise à jour de logiciels''' ne récupère pas toutes les mises à jour firmware disponibles pour votre ordinateur. Dans ce cas, vous pouvez rechercher les mises à jour directement dans le site de Support d'Apple.}}
+
+OSX étant à jour, créer un DVD ou une clé USB bootable de OSX:
+*télécharger le dernier OSX (maverick à ce jour) via App Store
+*le fichier Mavericks.App se télécharge dans Applications
+*formater la clé USB 8GO en hfs+ journalisé via Utilitaire de Disque
+*télécharger et installer Lion DiskMaker
+*lancer Lion DiskMaker sur Mavericks.App
+
+{{Warning |Un DVD ou Clé USB d'OSX bootable est nécessaire pour permettre le démarrage instantané de Manjaro. De plus, en cas de fausse manoeuvre, pouvoir revenir à l'état d'origine de la configuration est une précaution sage}}
+{{tip |Vous pouvez également utiliser la combinaison de touches CMD+R au démarrage pour arriver sur l'utilitaire de restauration en ligne d'OS X et notamment avoir accès au terminal.}}
+
+==Préparation de Manjaro==
+
+Sur OSX :
+*formater la deuxième clé USB à disposition en Fat32 sous OSX avec Utilitaire de disque
+*télécharger la version de manjaro souhaitée: [http://manjaro.org/get-manjaro/].
+*télécharger [http://penguintosh.com/tag/linux-usb-creator/ linux usb creator pour Mac].
+*utiliser linux usb creator pour créer la clé Archlinux en choisissant l'image locale .iso téléchargée
+
+{{tip| Solutions alternatives pour créer une clé USB bootable sous linux ou windows: [http://wiki.manjaro.org/index.php?title=Graver_une_image_ISO Graver une image ISO]}}
+
+=Partitionnement=
+
+====Etat des lieux====
+
+L'étape suivante de l'installation est le re-partitionnement du disque dur. Si Mac OS X à été installé en utilisant la procédure conventionnelle, alors le disque devrait avoir le format GPT et les deux partitions suivantes :
+
+* '''Une partition EFI''': une partition de 200 Mo au début du disque. Elle est souvent affichée comme une partitions de type '''msdos''' ou '''FAT''' par la certains outils de partitionnement et généralement nommée ''#1''
+* '''Une partition Mac OS X''': la partition ''(HFS+)'' qui devrait prendre tout le reste de l'espace disque généralement nommée ''#2''.
+
+====Choix du partitionnement====
+
+La façon de partitionner votre disque dépend :
+*du nombre de systèmes d'exploitation que vous voudrez installer. 
+*du choix de partionnement pour l'installation de Manjaro :
+**/boot, /, /home sur la même partition
+**/boot sur une partition, / et /home sur une autre partition
+**/boot, /, /home, /var, etc... sur partitions séparées
+*de la présence ou non d'une partition swap pour permettre l'hibernation
+
+====Partitionnement====
+
+La solution la plus simple pour partitionner votre disque dur et faire que Mac OS X et Manjaro co-habitent, est d'utiliser l'outil de partitionnement de Mac OS X et ensuite de terminer avec les outils de Manjaro.
+
+{{Warning | Il est fortement recommandé de faire ceci aprés une installation propre de Mac OS X. Utiliser cette méthode avec un système déjà existant pourrait engendrer des résultats indésirables.}}
+
+Procedure :
+* Dans Mac OS X, lancez '''Utilitaire de Disque''' (se trouvant dans /Applications/Utilitaires)
+
+* Sélectionnez le disque dur que vous souhaitez partitionner dans la colonne de gauche (pas les partitions !). Cliquez sur l'onglet '''Partition''' dans le tableau de droite. 
+* Sélectionnez le volume à redimensionner dans le '''Schéma de partition'''. 
+
+* Choisissez ensuite combien d'espace vous souhaitez allouer pour votre partition Mac OS X, et de même pour votre partition Manjaro. A noter qu'une installation standard de Mac OS X requiert environ 20-30 GiB, en fonction du nombre d'applications et du nombre de fichiers qui s'y trouveront. 
+
+* Pour finir, écrivez la nouvelle taille (plus petite) pour la partition MacOS dans la case '''Taille''' et cliquez sur '''Appliquer'''. Ceci créera automatiquement une nouvelle partition à partir de l'espace qui vient d'être libéré.  
+
+* Créez une nouvelle partition en sélectionnant l'espace libre après la partition MacOS, choisir un type de système de fichier, ('''Fat''' par exemple), définir la '''Taille''' et cliquer sur '''Appliquer'''
+
+* Si les étapes au dessus ont été complétées, vous pouvez continuer. Sinon, vous devrez continuer à utiliser OSX pour finaliser le partitionnement.
+
+Pour exemple, sans swap, avec /boot, /, /home sur une même partition et une partition Data pour liaison par liens symboliques dans le /home :
+
+{| class=&quot;wikitable&quot;
+ !Partition
+ !Usage
+ |-
+ |/dev/sda1
+ |EFI System
+ |-
+ |/dev/sda2
+ |Apple 
+ |-
+ |/dev/sda3
+ |Manjaro
+ |-
+ |/dev/sda4
+ |Data
+ |}
+
+====Mise à jour du MBR====
+
+*redemarrer sur OSX (OSX se charge directement à la mise en route du macbook)
+*[http://refit.sourceforge.net/#download installer rEFIt au format dmg]
+
+{{ Tip | rEFIt est un bootloader populaire pour les ordinateurs équipés de firmware EFI (ce qui inclus les Macs). Il peut être installé à n'importe quel moment sur OSX durant l'installation.}}
+
+*redemarrer 2 fois pour avoir le boot rEFIt
+*lancer le &quot;partitionning tool&quot; et accepter la modification du MBR
+*éteindre et redemarrer sur OSX
+*[http://refit.sourceforge.net/doc/c1s3_remove.html supprimer rEFIt]
+
+=Installation de Manjaro=
+
+====Installation====
+
+*Eteindre le PC
+*insérer la clé USB Manjaro
+*brancher l'adaptateur Thunderbolt/Ethernet au PC et à la box en filaire.
+*démarrer et maintenir Alt pour booter sur la clé UEFI
+
+
+* 1. Avec la touche F2, définir la langue française et le clavier françaisChoisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+* 2. Choisir dans le menu principal les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 3. Après chargement du live, ouvrir un terminal et entrer:
+
+ $ sudo setup
+Maintenant, nous sommes dans l'installateur texte (l'installateur graphique supporte uEFI depuis la version d'installation 0.8.9).
+* 4. '''Choisissez 2'''. Utilisez les tests d'installation (support EFI).
+
+* 5. '''Choisissez 1'''. Régler la date et l'heure - configuration simple et intuitive.
+
+* 6. Maintenant, '''choisissez 2'''. Disk(s) preparation.
+**Allez à '''2. Partition Hard Drives''' 
+**#L'installeur liste les disques. 
+**#Sélectionnez le disque sur lequel Manjaro sera installé
+**#L'installeur lance le programme cfdisk
+**#Naviguer avec les fleches gauche et droite vers [Quit] et Entrée
+**#Sélectionner [DONE] dans le menu de Partition
+**Allez à '''4. Set Filesystem Mountpoints''' 
+**#L'installeur liste les partitions. 
+**#Sélectionnez la partition de swap [NONE] (notre choix de partionnement ne prévoit pas de swap)
+**#Sélectionner la partition pour installer la racine : /dev/sda3 dans notre choix de partionnement
+**#Sélectionnez le format Ext4 pour cette partition
+**#Accepter la création du système de fichier (formatage de la partition)
+**#Entrez le nom de la partition
+**#Le champs suivant peut être laissé vide
+**#Sélectionner [DONE] dans le menu de montage des partitions additionelles
+**#Acceptez la création du système de fichier
+**#Sélectionner le schéma PARTUUID recommandé
+**Allez à '''5. Return to main menu''' 
+
+* 7. '''Choisissez 3.''' Install system and wait...
+
+* 8. Maintenant, allez à '''4. Configure System''' et configurez comme vous le souhaitez (nom d'utilisateur, mot de passe, les miroirs, nom de la machine, ...).
+
+* 9. Lorsque vous avez terminé, passez à '''5. Install bootloader.''' Choisissez EFI_x86_64&gt; GRUB (2) UEFI x86_64, '''NE PAS sélectionner BIOS GRUB.'''
+Il sera demandé de formater la partition EFI existante en FAT32, juste marquer Oui.
+
+* 10. Si une erreur est donnée dans les étapes finales indiquant &quot;efivars kernel module was not properly loaded&quot;, ne vous inquiétez pas, le système travaillera très bien !
+
+* 11. Si le programme d'installation vous demande de copier les fichiers grub/efi dans un autre dossier afin de maintenir la compatibilité dans certains systèmes, choisissez Oui.
+
+* 12. '''Cliquez sur 6.''' Quit
+
+Arrêt, retirez le DVD ou la clé USB &gt; DONE, SYSTEM INSTALLED!
+
+====Déclaration du demarrage linux au firmware OSX====
+
+*insérer la clé USB ou le DVD OSX
+*demarrer en maintenant Alt au demarrage et choisir le Boot EFI OSX amovible
+*apres le choix de la langue, ouvrir un terminal
+*Contrôler le nom de la partition EFI avec
+ diskutil list
+*Puis dans l'ordre (attention à la casse, la partition est en Fat32)
+
+ cd /Volumes
+ mkdir efi
+ mount -t msdos /dev/disk0s1 /Volumes/efi
+ bless --folder=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+ bless --mount=/Volumes/efi --file=/Volumes/efi/EFI/boot/bootx64.efi --setBoot
+
+*fermer le terminal, éteindre.
+*le boot suivant demarre Manjaro linux en quelques secondes
+
+{{Note | Pour demarrer OSX, maintenir Alt au demarrage et choisir le disque OSX.}}
+{{Note | Pour supprimer le son au demarrage de linux, le 'chime', diminuer ou couper le son dans OSX}}
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>bz27bl0jvlqq1xqsio2ifbawaixhgms</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

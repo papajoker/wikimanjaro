@@ -1,0 +1,1785 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Gestionnaire de connexion SLiM: Guide français</title>
+    <ns>0</ns>
+    <id>562</id>
+    <revision>
+      <id>3023</id>
+      <timestamp>2012-12-25T13:59:03Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;=Overview=  [[File:slim.png|thumb|left|375px]]   {{note|It will likely be necessary to manually edit the SLiM configuration file and the X-Windows initialisation file whenever...&quot;</comment>
+      <text xml:space="preserve" bytes="16816">=Overview=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+{{note|It will likely be necessary to manually edit the SLiM configuration file and the X-Windows initialisation file whenever a new desktop is added or an old one is removed. However, as illustrated below, it is possible to pre-configure SLiM to automatically work with multiple desktop environments.}}
+
+
+SLiM - the '''S'''imple '''L'''og'''i'''n '''M'''anager - is not currently pre-installed with any Manjaro flavour. However, due to popular demand, it has still been made available for download and installation from the official Manjaro repositories. SLiM is responsible for providing the login screen, where your preferred desktop environment may be selected for your personal user account(s). It also functions as a protective security barrier to prevent unauthorised access to your system.
+
+Although SLiM is highly configurable with an abundance of extra themes available, it is also perhaps suited to more experienced users. This is primarily due to the fact that whereas other display managers such as ''LXDM'' will automatically detect installed desktop environments, SLiM does not and so must be manually configure to work with them.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Configuring SLiM to Start Desktop Environments =
+
+{{tip|Don't worry if it transpires that SLiM has been mis-configured in some way, and it is not consequently possible to actually get past the login screen. There are a list of commands below that can be used in SLiM, including returning to the command line or launching a terminal.}}
+
+
+Once SLiM has been '''[[Install_Display_Managers#SLiM|installed and enabled]]''', it will be necessary to manually edit both the ''SLiM configuration file'' and the ''X-Windows initialisation file'' in order to actually start your installed desktop environment(s). '''If these files are not edited - or not edited properly - then it is likely that you will not be able to proceed any further than the login screen itself.'''
+
+
+==Open the SLiM Configuration File==
+
+The purpose of editing this file is to add the name(s) of your installed desktop environment(s). SLiM will then pass these name(s) to the X-Windows initialisation file (.xinitrc), which in turn will actually start your desired desktop environment(s). You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+==Add Desktop Environments to the SLiM Configuration File==
+
+Once the SLiM configuration file has been opened, it will be necessary to add the name(s) of your installed desktop(s) in order to:
+
+* display the name(s) of your desktop(s) on the login screen - which is helpful if you want to know which one you are switching to, and 
+* to tell the .xinitrc file which desktop it is to start
+
+
+This is undertaken in the '''# Available Sessions''' section, located towards the middle of the file. In the example below, all the available desktops have been added. The text itself has been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ '''# Available sessions (first one is the default).'''
+ # The current chosen session name is replaced in the login_cmd
+ # above, so your login command can handle different sessions.
+ # see the xinitrc.sample file shipped with slim sources
+ '''&lt;font color=&quot;green&quot;&gt;sessions            xfce,gnome3,kde,cinnamon,razor-qt,openbox,lxde,mate &lt;/font color&gt;'''
+
+
+As illustrated, if two or more desktops are listed, they must be seperated with a comma (''','''). In addition, as stated, the first desktop listed will be the default. This means that if you do not choose which desktop you want on the login screen, the name of the default one will be automatically sent to the .xinitrc file. '''You do not have to add all of the desktops listed in the above illustration.''' 
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The next - and final - step necessary is to edit and configure the '''X-Windows Initialisation File'''.
+
+
+==Open the X-Windows Initialisation File==
+
+The .xinitrc is responsible for actually starting your installed desktop environment(s). In essence, the .xinitrc file will take the name of your chosen (or only) desktop environment from SLiM, and then use that to determine which command to use to actually start it. You will need to first open your terminal in order to edit the '''X-Windows initialisation file'''. The syntax of the command to do this is:
+
+ sudo [text editor] ~/.xinitrc
+
+
+'''Don't forget the dot'''. For example, if you wish to edit the file within the terminal using nano, then enter:
+
+ sudo nano ~/.xinitrc
+
+
+Otherwise you could use the ''gedit'' text editor instead, by entering the command:
+
+ sudo gedit ~/.xinitrc
+
+
+==Add Desktop Environments to the X-Windows Initialisation File==
+
+Again, the purpose of editing this file is to:
+
+* list the name(s) (or labels) of your installed desktop environment(s) from the SLiM configuration file, and
+* match those name(s) with the command(s) necessary to actually start the desktop environment(s)
+
+
+The key point to keep in mind is that the name(s) of the desktop(s) listed in the SLiM configuration file must be matched with those listed in the X-Windows Initialisation file. As such, it is therefore '''&lt;u&gt;vitally important&lt;/u&gt;''' that the name of any given desktop environment is listed '''EXACTLY''' the same way in both files. This includes the use of captial and lower-case letters. Should there by any difference at all, then there will not be a match, and your chosen desktop environment will not be started. The names and commands themselves must be added after the '''DEFAULTSESSION=''' command. All the names used in the SLiM configuration file above have been listed exactly the same way here, and have been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ #!/bin/sh
+ 
+ #
+ # ~/.xinitrc
+ #
+ # Executed by startx (run your window manager from here)
+ #
+ 
+ export GTK2_RC_FILES=&quot;$HOME/.gtkrc-2.0&quot;
+ 
+ '''DEFAULTSESSION=xfce4-session'''
+ 
+ case &quot;$1&quot; in
+      '''&lt;font color=&quot;green&quot;&gt;xfce&lt;/font color&gt;''') exec xfce4-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;gnome3&lt;/font color&gt;''') exec gnome-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;kde&lt;/font color&gt;''') exec startkde ;;
+      '''&lt;font color=&quot;green&quot;&gt;cinnamon&lt;/font color&gt;''') exec gnome-session-cinnamon ;;
+      '''&lt;font color=&quot;green&quot;&gt;razor-qt&lt;/font color&gt;''') exec razor-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;openbox&lt;/font color&gt;''') exec openbox-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;lxde&lt;/font color&gt;''') exec lxsession ;;
+      '''&lt;font color=&quot;green&quot;&gt;mate&lt;/font color&gt;''') exec mate-session ;;
+      *) exec $DEFAULTSESSION ;;
+ esac
+
+
+The '''default session''' has been set to xfce4 in this instance as the author's Manjaro installation came with that desktop environment pre-installed. Yours may be different, and you are entirely free to change it if you wish. Note that each line starting with green text:
+
+'''1.''' starts with the  '''&lt;font color=&quot;green&quot;&gt;''name'' of the desktop environment&lt;/font color&gt;'''
+
+'''2.''' uses the command ''exec'' which means ''execute'' (i.e. start), and
+
+'''3.''' ends with the actual ''command'' necessary to start a desktop environment appropriate to the name
+
+
+The exception is the last line which begins with an asterisk ('*' - a wildcard). This is to ensure that if a match is not found, then the default session will be started instead - which in this instance, is xfce4. Again, if the name of a desktop environment listed in this file does not exactly match a name passed to it by the SLiM configuration file, then the actual command to start that desktop cannot be executed.
+
+If you wish, you are free to use the entire example provided in your own .xinitrc file, even if you do not have all of these desktop environments installed. Doing so will not cause any problems, and can make life much easier if you decide to install any new desktops at a future point (i.e. it will only be necessary to edit the SLiM configuration file). '''Otherwise you may just delete the lines for any desktop environments that you do not have installed'''.
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now reboot the system for the changes to take effect.
+
+
+=Selecting Multiple Desktop Environments=
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{tip|The desktop environments shown will be listed in both the order and manner they were listed in the SLiM configuration file.}}
+
+
+Where two or more desktop environments have be installed - and consequently enabled by editing the above files - then they can be cycled and selected by pressing the '''F1''' key on the SLiM login screen.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Enabling Auto Login =
+
+It is possible to bypass the login screen completely and go straight into your chosen desktop environment upon booting up Manjaro. '''Of course, it will be necessary to have already configured SLiM to manually launch your installed desktop environment in order to use this feature'''.
+
+
+== Open the Slim Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Step 1: Set the Default User ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''default_user''' command, otherwise it will not work.}}
+
+
+The first step is to set your personal account to be automatically logged in. This is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ # &lt;font color=&quot;green&quot;&gt;'''default_user        simone'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''default_user''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the existing name (i.e. simone) after the default_user command with the name of your personal user account
+
+
+As an example, SLiM has been configured below to enable a personal user account named 'carl' to be logged in automatically:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ &lt;font color=&quot;green&quot;&gt;'''default_user        carl'''&lt;/font color&gt;
+
+
+Once complete, the second and step is to enable the autologin feature itself.
+
+
+== Step 2: Enable Auto Login ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''auto_login''' command, otherwise it will not work.}}
+
+
+Enabling the automatic login is undertaken in the following section, also located near the bottom of the SLiM configuration file:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ # &lt;font color=&quot;green&quot;&gt;'''auto_login          no'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''auto_login''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the 'no' after the auto_login command with '''yes'''
+
+
+As an example, SLiM has been configured below to enable the automatic login feature:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ &lt;font color=&quot;green&quot;&gt;'''auto_login          yes'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect.
+
+
+= Previewing Installed Themes =
+
+{{note|It is apparently not possible to preview themes where the auto login feature has been enabled.}}
+
+
+Thankfully, it is not necessary to repeatedly edit the SLiM configuration file and re-boot your system in order to see what the installed themes look like. More conveniently, they can instead be previewed in the terminal. To do so, once the themes have of course been installed:
+
+1. Change to the directory that contains the themes by entering the following command:
+
+ cd /usr/share/slim/themes/
+
+
+2. List the installed themes available by entering the following command:
+
+ ls
+
+
+3. Preview any and all installed themes listed. The syntax of the command to do so is:
+
+ slim -p [name of theme]
+
+
+For example, to preview a listed theme called ''mindlock'', the following command would be entered
+
+ slim -p mindlock
+
+
+To exit from a theme currently being previewed, simply type '''exit''' into the ''user name'' field and then press &lt;enter&gt;
+
+
+= Changing Themes =
+
+[[File:slimmindlock.png|thumb|left|375px]]
+
+
+{{tip|There may be even more themes available from the '''[[Arch User Repository]]'''.}}
+
+
+A particularly strong feature of SLiM that has attracted many users is the abundance of varied and wide-ranging themes available for it. Moreover, these themes are very easy to set. To install all available themes for SLiM from the official Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Open the SLiM Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Set the Desired Theme ==
+
+{{warning|Make sure that you list the name of the desired theme correctly.}}
+
+
+Enabling the automatic login is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       default'''&lt;/font color&gt;
+
+
+To change the theme, simply replace the name of the current theme listed after the '''current_theme''' command (e.g. default) with the name of the desired theme to set. As an example, SliM has been configured to use the ''mindlock'' theme:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       mindlock'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+=SLiM Login Commands=
+
+{{tip|This section may prove especially useful if SLiM has been misconfigured in some way!}}
+
+
+SLiM also provides a number of basic functions in addition to logging into a desktop environment. To use these features, simply enter the following commands into the user name field:
+
+* '''exit''' - Return to the command line
+* '''halt''' - Shutdown the system
+* '''reboot''' - Reboot the system
+* '''console''' - Launch the terminal
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>iesuxqwx80jgwlrz4alfwhmkz32fauw</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3037</id>
+      <parentid>3023</parentid>
+      <timestamp>2012-12-25T16:57:09Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="16978">=Overview=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+{{note|Il sera probablement nécessaire de modifier manuellement le fichier de configuration SLiM et le fichier d'initialisation X-Windows à chaque fois qu'un nouveau bureau sera ajouté ou qu'un ancien sera supprimé. Toutefois, comme illustré ci-dessous, il est possible de pré-configurer automatiquement SLiM pour travailler avec plusieurs environnements de bureau.
+}}
+
+
+SLiM - the '''S'''imple '''L'''og'''i'''n '''M'''anager - n'est actuellement pré-installé avec aucune variante Manjaro. Toutefois, en raison de la demande populaire, il a maintenant été mis à disposition pour téléchargement et installation à partir des dépôts Manjaro officiels. SLiM est chargé de fournir l'écran de connexion où votre environnement de bureau préféré peut être choisi pour votre pu vos comptes utilisateurs personnels. Il fonctionne également comme une barrière de sécurité de protection pour empêcher l'accès non autorisé à votre système.
+
+Although SLiM is highly configurable with an abundance of extra themes available, it is also perhaps suited to more experienced users. This is primarily due to the fact that whereas other display managers such as ''LXDM'' will automatically detect installed desktop environments, SLiM does not and so must be manually configure to work with them.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Configuring SLiM to Start Desktop Environments =
+
+{{tip|Don't worry if it transpires that SLiM has been mis-configured in some way, and it is not consequently possible to actually get past the login screen. There are a list of commands below that can be used in SLiM, including returning to the command line or launching a terminal.}}
+
+
+Once SLiM has been '''[[Install_Display_Managers#SLiM|installed and enabled]]''', it will be necessary to manually edit both the ''SLiM configuration file'' and the ''X-Windows initialisation file'' in order to actually start your installed desktop environment(s). '''If these files are not edited - or not edited properly - then it is likely that you will not be able to proceed any further than the login screen itself.'''
+
+
+==Open the SLiM Configuration File==
+
+The purpose of editing this file is to add the name(s) of your installed desktop environment(s). SLiM will then pass these name(s) to the X-Windows initialisation file (.xinitrc), which in turn will actually start your desired desktop environment(s). You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+==Add Desktop Environments to the SLiM Configuration File==
+
+Once the SLiM configuration file has been opened, it will be necessary to add the name(s) of your installed desktop(s) in order to:
+
+* display the name(s) of your desktop(s) on the login screen - which is helpful if you want to know which one you are switching to, and 
+* to tell the .xinitrc file which desktop it is to start
+
+
+This is undertaken in the '''# Available Sessions''' section, located towards the middle of the file. In the example below, all the available desktops have been added. The text itself has been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ '''# Available sessions (first one is the default).'''
+ # The current chosen session name is replaced in the login_cmd
+ # above, so your login command can handle different sessions.
+ # see the xinitrc.sample file shipped with slim sources
+ '''&lt;font color=&quot;green&quot;&gt;sessions            xfce,gnome3,kde,cinnamon,razor-qt,openbox,lxde,mate &lt;/font color&gt;'''
+
+
+As illustrated, if two or more desktops are listed, they must be seperated with a comma (''','''). In addition, as stated, the first desktop listed will be the default. This means that if you do not choose which desktop you want on the login screen, the name of the default one will be automatically sent to the .xinitrc file. '''You do not have to add all of the desktops listed in the above illustration.''' 
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The next - and final - step necessary is to edit and configure the '''X-Windows Initialisation File'''.
+
+
+==Open the X-Windows Initialisation File==
+
+The .xinitrc is responsible for actually starting your installed desktop environment(s). In essence, the .xinitrc file will take the name of your chosen (or only) desktop environment from SLiM, and then use that to determine which command to use to actually start it. You will need to first open your terminal in order to edit the '''X-Windows initialisation file'''. The syntax of the command to do this is:
+
+ sudo [text editor] ~/.xinitrc
+
+
+'''Don't forget the dot'''. For example, if you wish to edit the file within the terminal using nano, then enter:
+
+ sudo nano ~/.xinitrc
+
+
+Otherwise you could use the ''gedit'' text editor instead, by entering the command:
+
+ sudo gedit ~/.xinitrc
+
+
+==Add Desktop Environments to the X-Windows Initialisation File==
+
+Again, the purpose of editing this file is to:
+
+* list the name(s) (or labels) of your installed desktop environment(s) from the SLiM configuration file, and
+* match those name(s) with the command(s) necessary to actually start the desktop environment(s)
+
+
+The key point to keep in mind is that the name(s) of the desktop(s) listed in the SLiM configuration file must be matched with those listed in the X-Windows Initialisation file. As such, it is therefore '''&lt;u&gt;vitally important&lt;/u&gt;''' that the name of any given desktop environment is listed '''EXACTLY''' the same way in both files. This includes the use of captial and lower-case letters. Should there by any difference at all, then there will not be a match, and your chosen desktop environment will not be started. The names and commands themselves must be added after the '''DEFAULTSESSION=''' command. All the names used in the SLiM configuration file above have been listed exactly the same way here, and have been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ #!/bin/sh
+ 
+ #
+ # ~/.xinitrc
+ #
+ # Executed by startx (run your window manager from here)
+ #
+ 
+ export GTK2_RC_FILES=&quot;$HOME/.gtkrc-2.0&quot;
+ 
+ '''DEFAULTSESSION=xfce4-session'''
+ 
+ case &quot;$1&quot; in
+      '''&lt;font color=&quot;green&quot;&gt;xfce&lt;/font color&gt;''') exec xfce4-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;gnome3&lt;/font color&gt;''') exec gnome-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;kde&lt;/font color&gt;''') exec startkde ;;
+      '''&lt;font color=&quot;green&quot;&gt;cinnamon&lt;/font color&gt;''') exec gnome-session-cinnamon ;;
+      '''&lt;font color=&quot;green&quot;&gt;razor-qt&lt;/font color&gt;''') exec razor-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;openbox&lt;/font color&gt;''') exec openbox-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;lxde&lt;/font color&gt;''') exec lxsession ;;
+      '''&lt;font color=&quot;green&quot;&gt;mate&lt;/font color&gt;''') exec mate-session ;;
+      *) exec $DEFAULTSESSION ;;
+ esac
+
+
+The '''default session''' has been set to xfce4 in this instance as the author's Manjaro installation came with that desktop environment pre-installed. Yours may be different, and you are entirely free to change it if you wish. Note that each line starting with green text:
+
+'''1.''' starts with the  '''&lt;font color=&quot;green&quot;&gt;''name'' of the desktop environment&lt;/font color&gt;'''
+
+'''2.''' uses the command ''exec'' which means ''execute'' (i.e. start), and
+
+'''3.''' ends with the actual ''command'' necessary to start a desktop environment appropriate to the name
+
+
+The exception is the last line which begins with an asterisk ('*' - a wildcard). This is to ensure that if a match is not found, then the default session will be started instead - which in this instance, is xfce4. Again, if the name of a desktop environment listed in this file does not exactly match a name passed to it by the SLiM configuration file, then the actual command to start that desktop cannot be executed.
+
+If you wish, you are free to use the entire example provided in your own .xinitrc file, even if you do not have all of these desktop environments installed. Doing so will not cause any problems, and can make life much easier if you decide to install any new desktops at a future point (i.e. it will only be necessary to edit the SLiM configuration file). '''Otherwise you may just delete the lines for any desktop environments that you do not have installed'''.
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now reboot the system for the changes to take effect.
+
+
+=Selecting Multiple Desktop Environments=
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{tip|The desktop environments shown will be listed in both the order and manner they were listed in the SLiM configuration file.}}
+
+
+Where two or more desktop environments have be installed - and consequently enabled by editing the above files - then they can be cycled and selected by pressing the '''F1''' key on the SLiM login screen.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Enabling Auto Login =
+
+It is possible to bypass the login screen completely and go straight into your chosen desktop environment upon booting up Manjaro. '''Of course, it will be necessary to have already configured SLiM to manually launch your installed desktop environment in order to use this feature'''.
+
+
+== Open the Slim Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Step 1: Set the Default User ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''default_user''' command, otherwise it will not work.}}
+
+
+The first step is to set your personal account to be automatically logged in. This is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ # &lt;font color=&quot;green&quot;&gt;'''default_user        simone'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''default_user''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the existing name (i.e. simone) after the default_user command with the name of your personal user account
+
+
+As an example, SLiM has been configured below to enable a personal user account named 'carl' to be logged in automatically:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ &lt;font color=&quot;green&quot;&gt;'''default_user        carl'''&lt;/font color&gt;
+
+
+Once complete, the second and step is to enable the autologin feature itself.
+
+
+== Step 2: Enable Auto Login ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''auto_login''' command, otherwise it will not work.}}
+
+
+Enabling the automatic login is undertaken in the following section, also located near the bottom of the SLiM configuration file:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ # &lt;font color=&quot;green&quot;&gt;'''auto_login          no'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''auto_login''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the 'no' after the auto_login command with '''yes'''
+
+
+As an example, SLiM has been configured below to enable the automatic login feature:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ &lt;font color=&quot;green&quot;&gt;'''auto_login          yes'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect.
+
+
+= Previewing Installed Themes =
+
+{{note|It is apparently not possible to preview themes where the auto login feature has been enabled.}}
+
+
+Thankfully, it is not necessary to repeatedly edit the SLiM configuration file and re-boot your system in order to see what the installed themes look like. More conveniently, they can instead be previewed in the terminal. To do so, once the themes have of course been installed:
+
+1. Change to the directory that contains the themes by entering the following command:
+
+ cd /usr/share/slim/themes/
+
+
+2. List the installed themes available by entering the following command:
+
+ ls
+
+
+3. Preview any and all installed themes listed. The syntax of the command to do so is:
+
+ slim -p [name of theme]
+
+
+For example, to preview a listed theme called ''mindlock'', the following command would be entered
+
+ slim -p mindlock
+
+
+To exit from a theme currently being previewed, simply type '''exit''' into the ''user name'' field and then press &lt;enter&gt;
+
+
+= Changing Themes =
+
+[[File:slimmindlock.png|thumb|left|375px]]
+
+
+{{tip|There may be even more themes available from the '''[[Arch User Repository]]'''.}}
+
+
+A particularly strong feature of SLiM that has attracted many users is the abundance of varied and wide-ranging themes available for it. Moreover, these themes are very easy to set. To install all available themes for SLiM from the official Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Open the SLiM Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Set the Desired Theme ==
+
+{{warning|Make sure that you list the name of the desired theme correctly.}}
+
+
+Enabling the automatic login is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       default'''&lt;/font color&gt;
+
+
+To change the theme, simply replace the name of the current theme listed after the '''current_theme''' command (e.g. default) with the name of the desired theme to set. As an example, SliM has been configured to use the ''mindlock'' theme:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       mindlock'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+=SLiM Login Commands=
+
+{{tip|This section may prove especially useful if SLiM has been misconfigured in some way!}}
+
+
+SLiM also provides a number of basic functions in addition to logging into a desktop environment. To use these features, simply enter the following commands into the user name field:
+
+* '''exit''' - Return to the command line
+* '''halt''' - Shutdown the system
+* '''reboot''' - Reboot the system
+* '''console''' - Launch the terminal
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>21mvmsc18jnqy7t2eobbgj4tjkgzm3k</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3038</id>
+      <parentid>3037</parentid>
+      <timestamp>2012-12-25T17:02:08Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="17066">=Overview=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+{{note|Il sera probablement nécessaire de modifier manuellement le fichier de configuration SLiM et le fichier d'initialisation X-Windows à chaque fois qu'un nouveau bureau sera ajouté ou qu'un ancien sera supprimé. Toutefois, comme illustré ci-dessous, il est possible de pré-configurer automatiquement SLiM pour travailler avec plusieurs environnements de bureau.
+}}
+
+
+SLiM - the '''S'''imple '''L'''og'''i'''n '''M'''anager - n'est actuellement pré-installé avec aucune variante Manjaro. Toutefois, en raison de la demande populaire, il a maintenant été mis à disposition pour téléchargement et installation à partir des dépôts Manjaro officiels. SLiM est chargé de fournir l'écran de connexion où votre environnement de bureau préféré peut être choisi pour votre ou vos comptes utilisateurs personnels. Il fonctionne également comme une barrière de sécurité de protection pour empêcher l'accès non autorisé à votre système.
+
+Bien que SLiM soit hautement configurable et doté d'une abondance de thèmes supplémentaires disponibles, il est peut-être aussi adapté aux utilisateurs plus expérimentés. Ceci est principalement dû au fait que, tandis que les gestionnaires d'affichage tels que'''' lxdm détectent automatiquement les environnements de bureau installés, SLiM ne le fait pas et doit donc être configuré manuellement pour travailler avec eux.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Configuring SLiM to Start Desktop Environments =
+
+{{tip|Don't worry if it transpires that SLiM has been mis-configured in some way, and it is not consequently possible to actually get past the login screen. There are a list of commands below that can be used in SLiM, including returning to the command line or launching a terminal.}}
+
+
+Once SLiM has been '''[[Install_Display_Managers#SLiM|installed and enabled]]''', it will be necessary to manually edit both the ''SLiM configuration file'' and the ''X-Windows initialisation file'' in order to actually start your installed desktop environment(s). '''If these files are not edited - or not edited properly - then it is likely that you will not be able to proceed any further than the login screen itself.'''
+
+
+==Open the SLiM Configuration File==
+
+The purpose of editing this file is to add the name(s) of your installed desktop environment(s). SLiM will then pass these name(s) to the X-Windows initialisation file (.xinitrc), which in turn will actually start your desired desktop environment(s). You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+==Add Desktop Environments to the SLiM Configuration File==
+
+Once the SLiM configuration file has been opened, it will be necessary to add the name(s) of your installed desktop(s) in order to:
+
+* display the name(s) of your desktop(s) on the login screen - which is helpful if you want to know which one you are switching to, and 
+* to tell the .xinitrc file which desktop it is to start
+
+
+This is undertaken in the '''# Available Sessions''' section, located towards the middle of the file. In the example below, all the available desktops have been added. The text itself has been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ '''# Available sessions (first one is the default).'''
+ # The current chosen session name is replaced in the login_cmd
+ # above, so your login command can handle different sessions.
+ # see the xinitrc.sample file shipped with slim sources
+ '''&lt;font color=&quot;green&quot;&gt;sessions            xfce,gnome3,kde,cinnamon,razor-qt,openbox,lxde,mate &lt;/font color&gt;'''
+
+
+As illustrated, if two or more desktops are listed, they must be seperated with a comma (''','''). In addition, as stated, the first desktop listed will be the default. This means that if you do not choose which desktop you want on the login screen, the name of the default one will be automatically sent to the .xinitrc file. '''You do not have to add all of the desktops listed in the above illustration.''' 
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The next - and final - step necessary is to edit and configure the '''X-Windows Initialisation File'''.
+
+
+==Open the X-Windows Initialisation File==
+
+The .xinitrc is responsible for actually starting your installed desktop environment(s). In essence, the .xinitrc file will take the name of your chosen (or only) desktop environment from SLiM, and then use that to determine which command to use to actually start it. You will need to first open your terminal in order to edit the '''X-Windows initialisation file'''. The syntax of the command to do this is:
+
+ sudo [text editor] ~/.xinitrc
+
+
+'''Don't forget the dot'''. For example, if you wish to edit the file within the terminal using nano, then enter:
+
+ sudo nano ~/.xinitrc
+
+
+Otherwise you could use the ''gedit'' text editor instead, by entering the command:
+
+ sudo gedit ~/.xinitrc
+
+
+==Add Desktop Environments to the X-Windows Initialisation File==
+
+Again, the purpose of editing this file is to:
+
+* list the name(s) (or labels) of your installed desktop environment(s) from the SLiM configuration file, and
+* match those name(s) with the command(s) necessary to actually start the desktop environment(s)
+
+
+The key point to keep in mind is that the name(s) of the desktop(s) listed in the SLiM configuration file must be matched with those listed in the X-Windows Initialisation file. As such, it is therefore '''&lt;u&gt;vitally important&lt;/u&gt;''' that the name of any given desktop environment is listed '''EXACTLY''' the same way in both files. This includes the use of captial and lower-case letters. Should there by any difference at all, then there will not be a match, and your chosen desktop environment will not be started. The names and commands themselves must be added after the '''DEFAULTSESSION=''' command. All the names used in the SLiM configuration file above have been listed exactly the same way here, and have been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ #!/bin/sh
+ 
+ #
+ # ~/.xinitrc
+ #
+ # Executed by startx (run your window manager from here)
+ #
+ 
+ export GTK2_RC_FILES=&quot;$HOME/.gtkrc-2.0&quot;
+ 
+ '''DEFAULTSESSION=xfce4-session'''
+ 
+ case &quot;$1&quot; in
+      '''&lt;font color=&quot;green&quot;&gt;xfce&lt;/font color&gt;''') exec xfce4-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;gnome3&lt;/font color&gt;''') exec gnome-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;kde&lt;/font color&gt;''') exec startkde ;;
+      '''&lt;font color=&quot;green&quot;&gt;cinnamon&lt;/font color&gt;''') exec gnome-session-cinnamon ;;
+      '''&lt;font color=&quot;green&quot;&gt;razor-qt&lt;/font color&gt;''') exec razor-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;openbox&lt;/font color&gt;''') exec openbox-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;lxde&lt;/font color&gt;''') exec lxsession ;;
+      '''&lt;font color=&quot;green&quot;&gt;mate&lt;/font color&gt;''') exec mate-session ;;
+      *) exec $DEFAULTSESSION ;;
+ esac
+
+
+The '''default session''' has been set to xfce4 in this instance as the author's Manjaro installation came with that desktop environment pre-installed. Yours may be different, and you are entirely free to change it if you wish. Note that each line starting with green text:
+
+'''1.''' starts with the  '''&lt;font color=&quot;green&quot;&gt;''name'' of the desktop environment&lt;/font color&gt;'''
+
+'''2.''' uses the command ''exec'' which means ''execute'' (i.e. start), and
+
+'''3.''' ends with the actual ''command'' necessary to start a desktop environment appropriate to the name
+
+
+The exception is the last line which begins with an asterisk ('*' - a wildcard). This is to ensure that if a match is not found, then the default session will be started instead - which in this instance, is xfce4. Again, if the name of a desktop environment listed in this file does not exactly match a name passed to it by the SLiM configuration file, then the actual command to start that desktop cannot be executed.
+
+If you wish, you are free to use the entire example provided in your own .xinitrc file, even if you do not have all of these desktop environments installed. Doing so will not cause any problems, and can make life much easier if you decide to install any new desktops at a future point (i.e. it will only be necessary to edit the SLiM configuration file). '''Otherwise you may just delete the lines for any desktop environments that you do not have installed'''.
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now reboot the system for the changes to take effect.
+
+
+=Selecting Multiple Desktop Environments=
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{tip|The desktop environments shown will be listed in both the order and manner they were listed in the SLiM configuration file.}}
+
+
+Where two or more desktop environments have be installed - and consequently enabled by editing the above files - then they can be cycled and selected by pressing the '''F1''' key on the SLiM login screen.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Enabling Auto Login =
+
+It is possible to bypass the login screen completely and go straight into your chosen desktop environment upon booting up Manjaro. '''Of course, it will be necessary to have already configured SLiM to manually launch your installed desktop environment in order to use this feature'''.
+
+
+== Open the Slim Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Step 1: Set the Default User ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''default_user''' command, otherwise it will not work.}}
+
+
+The first step is to set your personal account to be automatically logged in. This is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ # &lt;font color=&quot;green&quot;&gt;'''default_user        simone'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''default_user''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the existing name (i.e. simone) after the default_user command with the name of your personal user account
+
+
+As an example, SLiM has been configured below to enable a personal user account named 'carl' to be logged in automatically:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ &lt;font color=&quot;green&quot;&gt;'''default_user        carl'''&lt;/font color&gt;
+
+
+Once complete, the second and step is to enable the autologin feature itself.
+
+
+== Step 2: Enable Auto Login ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''auto_login''' command, otherwise it will not work.}}
+
+
+Enabling the automatic login is undertaken in the following section, also located near the bottom of the SLiM configuration file:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ # &lt;font color=&quot;green&quot;&gt;'''auto_login          no'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''auto_login''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the 'no' after the auto_login command with '''yes'''
+
+
+As an example, SLiM has been configured below to enable the automatic login feature:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ &lt;font color=&quot;green&quot;&gt;'''auto_login          yes'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect.
+
+
+= Previewing Installed Themes =
+
+{{note|It is apparently not possible to preview themes where the auto login feature has been enabled.}}
+
+
+Thankfully, it is not necessary to repeatedly edit the SLiM configuration file and re-boot your system in order to see what the installed themes look like. More conveniently, they can instead be previewed in the terminal. To do so, once the themes have of course been installed:
+
+1. Change to the directory that contains the themes by entering the following command:
+
+ cd /usr/share/slim/themes/
+
+
+2. List the installed themes available by entering the following command:
+
+ ls
+
+
+3. Preview any and all installed themes listed. The syntax of the command to do so is:
+
+ slim -p [name of theme]
+
+
+For example, to preview a listed theme called ''mindlock'', the following command would be entered
+
+ slim -p mindlock
+
+
+To exit from a theme currently being previewed, simply type '''exit''' into the ''user name'' field and then press &lt;enter&gt;
+
+
+= Changing Themes =
+
+[[File:slimmindlock.png|thumb|left|375px]]
+
+
+{{tip|There may be even more themes available from the '''[[Arch User Repository]]'''.}}
+
+
+A particularly strong feature of SLiM that has attracted many users is the abundance of varied and wide-ranging themes available for it. Moreover, these themes are very easy to set. To install all available themes for SLiM from the official Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Open the SLiM Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Set the Desired Theme ==
+
+{{warning|Make sure that you list the name of the desired theme correctly.}}
+
+
+Enabling the automatic login is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       default'''&lt;/font color&gt;
+
+
+To change the theme, simply replace the name of the current theme listed after the '''current_theme''' command (e.g. default) with the name of the desired theme to set. As an example, SliM has been configured to use the ''mindlock'' theme:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       mindlock'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+=SLiM Login Commands=
+
+{{tip|This section may prove especially useful if SLiM has been misconfigured in some way!}}
+
+
+SLiM also provides a number of basic functions in addition to logging into a desktop environment. To use these features, simply enter the following commands into the user name field:
+
+* '''exit''' - Return to the command line
+* '''halt''' - Shutdown the system
+* '''reboot''' - Reboot the system
+* '''console''' - Launch the terminal
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>4opihz26mtvxnemnerpae8ob9yb0657</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3039</id>
+      <parentid>3038</parentid>
+      <timestamp>2012-12-25T17:04:06Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Overview */</comment>
+      <text xml:space="preserve" bytes="17070">=Overview=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+{{note|Il sera probablement nécessaire de modifier manuellement le fichier de configuration SLiM et le fichier d'initialisation X-Windows à chaque fois qu'un nouveau bureau sera ajouté ou qu'un ancien sera supprimé. Toutefois, comme illustré ci-dessous, il est possible de pré-configurer automatiquement SLiM pour travailler avec plusieurs environnements de bureau.
+}}
+
+
+SLiM - the '''S'''imple '''L'''og'''i'''n '''M'''anager - n'est actuellement pré-installé avec aucune variante Manjaro. Toutefois, en raison de la demande populaire, il a maintenant été mis à disposition pour téléchargement et installation à partir des dépôts Manjaro officiels. SLiM est chargé de fournir l'écran de connexion où votre environnement de bureau préféré peut être choisi pour votre ou vos comptes utilisateurs personnels. Il fonctionne également comme une barrière de sécurité de protection pour empêcher l'accès non autorisé à votre système.
+
+Bien que SLiM soit hautement configurable et doté d'une abondance de thèmes supplémentaires disponibles, il est peut-être aussi adapté aux utilisateurs plus expérimentés. Ceci est principalement dû au fait que, tandis que les gestionnaires d'affichage tels que ''''lxdm'''' détectent automatiquement les environnements de bureau installés, SLiM ne le fait pas et doit donc être configuré manuellement pour travailler avec eux.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Configuring SLiM to Start Desktop Environments =
+
+{{tip|Don't worry if it transpires that SLiM has been mis-configured in some way, and it is not consequently possible to actually get past the login screen. There are a list of commands below that can be used in SLiM, including returning to the command line or launching a terminal.}}
+
+
+Once SLiM has been '''[[Install_Display_Managers#SLiM|installed and enabled]]''', it will be necessary to manually edit both the ''SLiM configuration file'' and the ''X-Windows initialisation file'' in order to actually start your installed desktop environment(s). '''If these files are not edited - or not edited properly - then it is likely that you will not be able to proceed any further than the login screen itself.'''
+
+
+==Open the SLiM Configuration File==
+
+The purpose of editing this file is to add the name(s) of your installed desktop environment(s). SLiM will then pass these name(s) to the X-Windows initialisation file (.xinitrc), which in turn will actually start your desired desktop environment(s). You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+==Add Desktop Environments to the SLiM Configuration File==
+
+Once the SLiM configuration file has been opened, it will be necessary to add the name(s) of your installed desktop(s) in order to:
+
+* display the name(s) of your desktop(s) on the login screen - which is helpful if you want to know which one you are switching to, and 
+* to tell the .xinitrc file which desktop it is to start
+
+
+This is undertaken in the '''# Available Sessions''' section, located towards the middle of the file. In the example below, all the available desktops have been added. The text itself has been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ '''# Available sessions (first one is the default).'''
+ # The current chosen session name is replaced in the login_cmd
+ # above, so your login command can handle different sessions.
+ # see the xinitrc.sample file shipped with slim sources
+ '''&lt;font color=&quot;green&quot;&gt;sessions            xfce,gnome3,kde,cinnamon,razor-qt,openbox,lxde,mate &lt;/font color&gt;'''
+
+
+As illustrated, if two or more desktops are listed, they must be seperated with a comma (''','''). In addition, as stated, the first desktop listed will be the default. This means that if you do not choose which desktop you want on the login screen, the name of the default one will be automatically sent to the .xinitrc file. '''You do not have to add all of the desktops listed in the above illustration.''' 
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The next - and final - step necessary is to edit and configure the '''X-Windows Initialisation File'''.
+
+
+==Open the X-Windows Initialisation File==
+
+The .xinitrc is responsible for actually starting your installed desktop environment(s). In essence, the .xinitrc file will take the name of your chosen (or only) desktop environment from SLiM, and then use that to determine which command to use to actually start it. You will need to first open your terminal in order to edit the '''X-Windows initialisation file'''. The syntax of the command to do this is:
+
+ sudo [text editor] ~/.xinitrc
+
+
+'''Don't forget the dot'''. For example, if you wish to edit the file within the terminal using nano, then enter:
+
+ sudo nano ~/.xinitrc
+
+
+Otherwise you could use the ''gedit'' text editor instead, by entering the command:
+
+ sudo gedit ~/.xinitrc
+
+
+==Add Desktop Environments to the X-Windows Initialisation File==
+
+Again, the purpose of editing this file is to:
+
+* list the name(s) (or labels) of your installed desktop environment(s) from the SLiM configuration file, and
+* match those name(s) with the command(s) necessary to actually start the desktop environment(s)
+
+
+The key point to keep in mind is that the name(s) of the desktop(s) listed in the SLiM configuration file must be matched with those listed in the X-Windows Initialisation file. As such, it is therefore '''&lt;u&gt;vitally important&lt;/u&gt;''' that the name of any given desktop environment is listed '''EXACTLY''' the same way in both files. This includes the use of captial and lower-case letters. Should there by any difference at all, then there will not be a match, and your chosen desktop environment will not be started. The names and commands themselves must be added after the '''DEFAULTSESSION=''' command. All the names used in the SLiM configuration file above have been listed exactly the same way here, and have been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ #!/bin/sh
+ 
+ #
+ # ~/.xinitrc
+ #
+ # Executed by startx (run your window manager from here)
+ #
+ 
+ export GTK2_RC_FILES=&quot;$HOME/.gtkrc-2.0&quot;
+ 
+ '''DEFAULTSESSION=xfce4-session'''
+ 
+ case &quot;$1&quot; in
+      '''&lt;font color=&quot;green&quot;&gt;xfce&lt;/font color&gt;''') exec xfce4-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;gnome3&lt;/font color&gt;''') exec gnome-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;kde&lt;/font color&gt;''') exec startkde ;;
+      '''&lt;font color=&quot;green&quot;&gt;cinnamon&lt;/font color&gt;''') exec gnome-session-cinnamon ;;
+      '''&lt;font color=&quot;green&quot;&gt;razor-qt&lt;/font color&gt;''') exec razor-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;openbox&lt;/font color&gt;''') exec openbox-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;lxde&lt;/font color&gt;''') exec lxsession ;;
+      '''&lt;font color=&quot;green&quot;&gt;mate&lt;/font color&gt;''') exec mate-session ;;
+      *) exec $DEFAULTSESSION ;;
+ esac
+
+
+The '''default session''' has been set to xfce4 in this instance as the author's Manjaro installation came with that desktop environment pre-installed. Yours may be different, and you are entirely free to change it if you wish. Note that each line starting with green text:
+
+'''1.''' starts with the  '''&lt;font color=&quot;green&quot;&gt;''name'' of the desktop environment&lt;/font color&gt;'''
+
+'''2.''' uses the command ''exec'' which means ''execute'' (i.e. start), and
+
+'''3.''' ends with the actual ''command'' necessary to start a desktop environment appropriate to the name
+
+
+The exception is the last line which begins with an asterisk ('*' - a wildcard). This is to ensure that if a match is not found, then the default session will be started instead - which in this instance, is xfce4. Again, if the name of a desktop environment listed in this file does not exactly match a name passed to it by the SLiM configuration file, then the actual command to start that desktop cannot be executed.
+
+If you wish, you are free to use the entire example provided in your own .xinitrc file, even if you do not have all of these desktop environments installed. Doing so will not cause any problems, and can make life much easier if you decide to install any new desktops at a future point (i.e. it will only be necessary to edit the SLiM configuration file). '''Otherwise you may just delete the lines for any desktop environments that you do not have installed'''.
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now reboot the system for the changes to take effect.
+
+
+=Selecting Multiple Desktop Environments=
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{tip|The desktop environments shown will be listed in both the order and manner they were listed in the SLiM configuration file.}}
+
+
+Where two or more desktop environments have be installed - and consequently enabled by editing the above files - then they can be cycled and selected by pressing the '''F1''' key on the SLiM login screen.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Enabling Auto Login =
+
+It is possible to bypass the login screen completely and go straight into your chosen desktop environment upon booting up Manjaro. '''Of course, it will be necessary to have already configured SLiM to manually launch your installed desktop environment in order to use this feature'''.
+
+
+== Open the Slim Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Step 1: Set the Default User ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''default_user''' command, otherwise it will not work.}}
+
+
+The first step is to set your personal account to be automatically logged in. This is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ # &lt;font color=&quot;green&quot;&gt;'''default_user        simone'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''default_user''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the existing name (i.e. simone) after the default_user command with the name of your personal user account
+
+
+As an example, SLiM has been configured below to enable a personal user account named 'carl' to be logged in automatically:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ &lt;font color=&quot;green&quot;&gt;'''default_user        carl'''&lt;/font color&gt;
+
+
+Once complete, the second and step is to enable the autologin feature itself.
+
+
+== Step 2: Enable Auto Login ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''auto_login''' command, otherwise it will not work.}}
+
+
+Enabling the automatic login is undertaken in the following section, also located near the bottom of the SLiM configuration file:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ # &lt;font color=&quot;green&quot;&gt;'''auto_login          no'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''auto_login''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the 'no' after the auto_login command with '''yes'''
+
+
+As an example, SLiM has been configured below to enable the automatic login feature:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ &lt;font color=&quot;green&quot;&gt;'''auto_login          yes'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect.
+
+
+= Previewing Installed Themes =
+
+{{note|It is apparently not possible to preview themes where the auto login feature has been enabled.}}
+
+
+Thankfully, it is not necessary to repeatedly edit the SLiM configuration file and re-boot your system in order to see what the installed themes look like. More conveniently, they can instead be previewed in the terminal. To do so, once the themes have of course been installed:
+
+1. Change to the directory that contains the themes by entering the following command:
+
+ cd /usr/share/slim/themes/
+
+
+2. List the installed themes available by entering the following command:
+
+ ls
+
+
+3. Preview any and all installed themes listed. The syntax of the command to do so is:
+
+ slim -p [name of theme]
+
+
+For example, to preview a listed theme called ''mindlock'', the following command would be entered
+
+ slim -p mindlock
+
+
+To exit from a theme currently being previewed, simply type '''exit''' into the ''user name'' field and then press &lt;enter&gt;
+
+
+= Changing Themes =
+
+[[File:slimmindlock.png|thumb|left|375px]]
+
+
+{{tip|There may be even more themes available from the '''[[Arch User Repository]]'''.}}
+
+
+A particularly strong feature of SLiM that has attracted many users is the abundance of varied and wide-ranging themes available for it. Moreover, these themes are very easy to set. To install all available themes for SLiM from the official Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Open the SLiM Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Set the Desired Theme ==
+
+{{warning|Make sure that you list the name of the desired theme correctly.}}
+
+
+Enabling the automatic login is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       default'''&lt;/font color&gt;
+
+
+To change the theme, simply replace the name of the current theme listed after the '''current_theme''' command (e.g. default) with the name of the desired theme to set. As an example, SliM has been configured to use the ''mindlock'' theme:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       mindlock'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+=SLiM Login Commands=
+
+{{tip|This section may prove especially useful if SLiM has been misconfigured in some way!}}
+
+
+SLiM also provides a number of basic functions in addition to logging into a desktop environment. To use these features, simply enter the following commands into the user name field:
+
+* '''exit''' - Return to the command line
+* '''halt''' - Shutdown the system
+* '''reboot''' - Reboot the system
+* '''console''' - Launch the terminal
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>r6mh6j6hq8nt8xxj25raavkog7i5zrq</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>3040</id>
+      <parentid>3039</parentid>
+      <timestamp>2012-12-25T17:06:12Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Configuring SLiM to Start Desktop Environments */</comment>
+      <text xml:space="preserve" bytes="17086">=Overview=
+
+[[File:slim.png|thumb|left|375px]]
+
+
+{{note|Il sera probablement nécessaire de modifier manuellement le fichier de configuration SLiM et le fichier d'initialisation X-Windows à chaque fois qu'un nouveau bureau sera ajouté ou qu'un ancien sera supprimé. Toutefois, comme illustré ci-dessous, il est possible de pré-configurer automatiquement SLiM pour travailler avec plusieurs environnements de bureau.
+}}
+
+
+SLiM - the '''S'''imple '''L'''og'''i'''n '''M'''anager - n'est actuellement pré-installé avec aucune variante Manjaro. Toutefois, en raison de la demande populaire, il a maintenant été mis à disposition pour téléchargement et installation à partir des dépôts Manjaro officiels. SLiM est chargé de fournir l'écran de connexion où votre environnement de bureau préféré peut être choisi pour votre ou vos comptes utilisateurs personnels. Il fonctionne également comme une barrière de sécurité de protection pour empêcher l'accès non autorisé à votre système.
+
+Bien que SLiM soit hautement configurable et doté d'une abondance de thèmes supplémentaires disponibles, il est peut-être aussi adapté aux utilisateurs plus expérimentés. Ceci est principalement dû au fait que, tandis que les gestionnaires d'affichage tels que ''''lxdm'''' détectent automatiquement les environnements de bureau installés, SLiM ne le fait pas et doit donc être configuré manuellement pour travailler avec eux.
+&lt;br clear=&quot;all&quot; /&gt;
+
+= Configurer SLiM pour le démarrage des environnements de bureau =
+
+{{tip|Don't worry if it transpires that SLiM has been mis-configured in some way, and it is not consequently possible to actually get past the login screen. There are a list of commands below that can be used in SLiM, including returning to the command line or launching a terminal.}}
+
+
+Once SLiM has been '''[[Install_Display_Managers#SLiM|installed and enabled]]''', it will be necessary to manually edit both the ''SLiM configuration file'' and the ''X-Windows initialisation file'' in order to actually start your installed desktop environment(s). '''If these files are not edited - or not edited properly - then it is likely that you will not be able to proceed any further than the login screen itself.'''
+
+
+==Open the SLiM Configuration File==
+
+The purpose of editing this file is to add the name(s) of your installed desktop environment(s). SLiM will then pass these name(s) to the X-Windows initialisation file (.xinitrc), which in turn will actually start your desired desktop environment(s). You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+==Add Desktop Environments to the SLiM Configuration File==
+
+Once the SLiM configuration file has been opened, it will be necessary to add the name(s) of your installed desktop(s) in order to:
+
+* display the name(s) of your desktop(s) on the login screen - which is helpful if you want to know which one you are switching to, and 
+* to tell the .xinitrc file which desktop it is to start
+
+
+This is undertaken in the '''# Available Sessions''' section, located towards the middle of the file. In the example below, all the available desktops have been added. The text itself has been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ '''# Available sessions (first one is the default).'''
+ # The current chosen session name is replaced in the login_cmd
+ # above, so your login command can handle different sessions.
+ # see the xinitrc.sample file shipped with slim sources
+ '''&lt;font color=&quot;green&quot;&gt;sessions            xfce,gnome3,kde,cinnamon,razor-qt,openbox,lxde,mate &lt;/font color&gt;'''
+
+
+As illustrated, if two or more desktops are listed, they must be seperated with a comma (''','''). In addition, as stated, the first desktop listed will be the default. This means that if you do not choose which desktop you want on the login screen, the name of the default one will be automatically sent to the .xinitrc file. '''You do not have to add all of the desktops listed in the above illustration.''' 
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+The next - and final - step necessary is to edit and configure the '''X-Windows Initialisation File'''.
+
+
+==Open the X-Windows Initialisation File==
+
+The .xinitrc is responsible for actually starting your installed desktop environment(s). In essence, the .xinitrc file will take the name of your chosen (or only) desktop environment from SLiM, and then use that to determine which command to use to actually start it. You will need to first open your terminal in order to edit the '''X-Windows initialisation file'''. The syntax of the command to do this is:
+
+ sudo [text editor] ~/.xinitrc
+
+
+'''Don't forget the dot'''. For example, if you wish to edit the file within the terminal using nano, then enter:
+
+ sudo nano ~/.xinitrc
+
+
+Otherwise you could use the ''gedit'' text editor instead, by entering the command:
+
+ sudo gedit ~/.xinitrc
+
+
+==Add Desktop Environments to the X-Windows Initialisation File==
+
+Again, the purpose of editing this file is to:
+
+* list the name(s) (or labels) of your installed desktop environment(s) from the SLiM configuration file, and
+* match those name(s) with the command(s) necessary to actually start the desktop environment(s)
+
+
+The key point to keep in mind is that the name(s) of the desktop(s) listed in the SLiM configuration file must be matched with those listed in the X-Windows Initialisation file. As such, it is therefore '''&lt;u&gt;vitally important&lt;/u&gt;''' that the name of any given desktop environment is listed '''EXACTLY''' the same way in both files. This includes the use of captial and lower-case letters. Should there by any difference at all, then there will not be a match, and your chosen desktop environment will not be started. The names and commands themselves must be added after the '''DEFAULTSESSION=''' command. All the names used in the SLiM configuration file above have been listed exactly the same way here, and have been '''&lt;font color=&quot;green&quot;&gt;colured in green&lt;/font color&gt;''' for illustrative purposes.
+
+ #!/bin/sh
+ 
+ #
+ # ~/.xinitrc
+ #
+ # Executed by startx (run your window manager from here)
+ #
+ 
+ export GTK2_RC_FILES=&quot;$HOME/.gtkrc-2.0&quot;
+ 
+ '''DEFAULTSESSION=xfce4-session'''
+ 
+ case &quot;$1&quot; in
+      '''&lt;font color=&quot;green&quot;&gt;xfce&lt;/font color&gt;''') exec xfce4-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;gnome3&lt;/font color&gt;''') exec gnome-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;kde&lt;/font color&gt;''') exec startkde ;;
+      '''&lt;font color=&quot;green&quot;&gt;cinnamon&lt;/font color&gt;''') exec gnome-session-cinnamon ;;
+      '''&lt;font color=&quot;green&quot;&gt;razor-qt&lt;/font color&gt;''') exec razor-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;openbox&lt;/font color&gt;''') exec openbox-session ;;
+      '''&lt;font color=&quot;green&quot;&gt;lxde&lt;/font color&gt;''') exec lxsession ;;
+      '''&lt;font color=&quot;green&quot;&gt;mate&lt;/font color&gt;''') exec mate-session ;;
+      *) exec $DEFAULTSESSION ;;
+ esac
+
+
+The '''default session''' has been set to xfce4 in this instance as the author's Manjaro installation came with that desktop environment pre-installed. Yours may be different, and you are entirely free to change it if you wish. Note that each line starting with green text:
+
+'''1.''' starts with the  '''&lt;font color=&quot;green&quot;&gt;''name'' of the desktop environment&lt;/font color&gt;'''
+
+'''2.''' uses the command ''exec'' which means ''execute'' (i.e. start), and
+
+'''3.''' ends with the actual ''command'' necessary to start a desktop environment appropriate to the name
+
+
+The exception is the last line which begins with an asterisk ('*' - a wildcard). This is to ensure that if a match is not found, then the default session will be started instead - which in this instance, is xfce4. Again, if the name of a desktop environment listed in this file does not exactly match a name passed to it by the SLiM configuration file, then the actual command to start that desktop cannot be executed.
+
+If you wish, you are free to use the entire example provided in your own .xinitrc file, even if you do not have all of these desktop environments installed. Doing so will not cause any problems, and can make life much easier if you decide to install any new desktops at a future point (i.e. it will only be necessary to edit the SLiM configuration file). '''Otherwise you may just delete the lines for any desktop environments that you do not have installed'''.
+
+
+Once your amendments have been completed, save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Now reboot the system for the changes to take effect.
+
+=Selecting Multiple Desktop Environments=
+
+[[File:slimsessions.png|thumb|left|375px]]
+
+
+{{tip|The desktop environments shown will be listed in both the order and manner they were listed in the SLiM configuration file.}}
+
+
+Where two or more desktop environments have be installed - and consequently enabled by editing the above files - then they can be cycled and selected by pressing the '''F1''' key on the SLiM login screen.
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+= Enabling Auto Login =
+
+It is possible to bypass the login screen completely and go straight into your chosen desktop environment upon booting up Manjaro. '''Of course, it will be necessary to have already configured SLiM to manually launch your installed desktop environment in order to use this feature'''.
+
+
+== Open the Slim Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Step 1: Set the Default User ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''default_user''' command, otherwise it will not work.}}
+
+
+The first step is to set your personal account to be automatically logged in. This is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ # &lt;font color=&quot;green&quot;&gt;'''default_user        simone'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''default_user''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the existing name (i.e. simone) after the default_user command with the name of your personal user account
+
+
+As an example, SLiM has been configured below to enable a personal user account named 'carl' to be logged in automatically:
+
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+ &lt;font color=&quot;green&quot;&gt;'''default_user        carl'''&lt;/font color&gt;
+
+
+Once complete, the second and step is to enable the autologin feature itself.
+
+
+== Step 2: Enable Auto Login ==
+
+{{warning|There '''&lt;u&gt;must not&lt;/u&gt;''' be any spaces before the '''auto_login''' command, otherwise it will not work.}}
+
+
+Enabling the automatic login is undertaken in the following section, also located near the bottom of the SLiM configuration file:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ # &lt;font color=&quot;green&quot;&gt;'''auto_login          no'''&lt;/font color&gt;
+
+
+1. Remove the hash ('#') from the beginning of the '''auto_login''' command to activate it, ensuring that there are no spaces remaining at the beginning of the line.
+
+2. Replace the 'no' after the auto_login command with '''yes'''
+
+
+As an example, SLiM has been configured below to enable the automatic login feature:
+
+ # Automatically login the default user (without entering
+ # the password. Set to &quot;yes&quot; to enable this feature
+ &lt;font color=&quot;green&quot;&gt;'''auto_login          yes'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+Reboot your system for the changes to take effect.
+
+
+= Previewing Installed Themes =
+
+{{note|It is apparently not possible to preview themes where the auto login feature has been enabled.}}
+
+
+Thankfully, it is not necessary to repeatedly edit the SLiM configuration file and re-boot your system in order to see what the installed themes look like. More conveniently, they can instead be previewed in the terminal. To do so, once the themes have of course been installed:
+
+1. Change to the directory that contains the themes by entering the following command:
+
+ cd /usr/share/slim/themes/
+
+
+2. List the installed themes available by entering the following command:
+
+ ls
+
+
+3. Preview any and all installed themes listed. The syntax of the command to do so is:
+
+ slim -p [name of theme]
+
+
+For example, to preview a listed theme called ''mindlock'', the following command would be entered
+
+ slim -p mindlock
+
+
+To exit from a theme currently being previewed, simply type '''exit''' into the ''user name'' field and then press &lt;enter&gt;
+
+
+= Changing Themes =
+
+[[File:slimmindlock.png|thumb|left|375px]]
+
+
+{{tip|There may be even more themes available from the '''[[Arch User Repository]]'''.}}
+
+
+A particularly strong feature of SLiM that has attracted many users is the abundance of varied and wide-ranging themes available for it. Moreover, these themes are very easy to set. To install all available themes for SLiM from the official Manjaro repositories, enter the following command in the terminal:
+
+ sudo pacman -S slim-themes archlinux-themes-slim
+&lt;br clear=&quot;all&quot; /&gt;
+
+
+== Open the SLiM Configuration File ==
+
+You will need to first open your terminal in order to edit the '''SLiM configuration file'''. The syntax of the command to do this is:
+
+ sudo [text editor] /etc/slim.conf
+
+
+For example, if you wish to edit the file within the terminal using nano (a standard terminal-based text editor) then enter:
+
+ sudo nano /etc/slim.conf
+
+
+Otherwise - if you have installed the full version of Manjaro (i.e. not the NET-Edition) - you may find it easier to use the pre-installed ''gedit'' text editor instead. This will open the configuration file up as a document, making it easier to read and edit. To use gedit instead, the command is:
+
+ sudo gedit /etc/slim.conf
+
+
+== Set the Desired Theme ==
+
+{{warning|Make sure that you list the name of the desired theme correctly.}}
+
+
+Enabling the automatic login is undertaken in the following section, located near the bottom of the SLiM configuration file:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       default'''&lt;/font color&gt;
+
+
+To change the theme, simply replace the name of the current theme listed after the '''current_theme''' command (e.g. default) with the name of the desired theme to set. As an example, SliM has been configured to use the ''mindlock'' theme:
+
+ # current theme, use comma separated list to specify a set to 
+ # randomly choose from
+ &lt;font color=&quot;green&quot;&gt;'''current_theme       mindlock'''&lt;/font color&gt;
+
+
+Once your amendments have been completed, you can save your changes and close the configuration file by:
+
+* '''nano''': Press CTRL and 'x' to exit, 'y' to save, and &lt;enter&gt; to finish, or
+* '''gedit''': Select the 'save' option and then close the window.
+
+
+=SLiM Login Commands=
+
+{{tip|This section may prove especially useful if SLiM has been misconfigured in some way!}}
+
+
+SLiM also provides a number of basic functions in addition to logging into a desktop environment. To use these features, simply enter the following commands into the user name field:
+
+* '''exit''' - Return to the command line
+* '''halt''' - Shutdown the system
+* '''reboot''' - Reboot the system
+* '''console''' - Launch the terminal
+
+
+[[Category:Customisation and Configuration]]
+[[Category:Contents Page]]</text>
+      <sha1>gv020nywd868o697tv1nuqkih2x09e3</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

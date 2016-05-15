@@ -1,0 +1,207 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Réactivation du rétroéclairage</title>
+    <ns>0</ns>
+    <id>660</id>
+    <revision>
+      <id>4206</id>
+      <timestamp>2013-01-06T00:59:20Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;== Overview ==  Some people - particularly those using laptops - are encountering a problem where the screen brightness is too dim upon replacing Microsoft Windows with a Linu...&quot;</comment>
+      <text xml:space="preserve" bytes="1165">== Overview ==
+
+Some people - particularly those using laptops - are encountering a problem where the screen brightness is too dim upon replacing Microsoft Windows with a Linux distribution as their main operating system. Although it affects all Linux distributions, the problem is actually due to the computer's BIOS settings. Certain hardware manufacturers have set it up so that if Windows is not detected running on their systems, the backlight is automatically disabled.
+
+== Reactivating the Screen Backlight ==
+
+This problem can be easily fixed by ensuring that the GRUB bootloader re-activates the backlight. To do this, first open up your terminal, and enter the following command:
+
+ sudo sed &quot;s/\(GRUB_CMDLINE_LINUX=\)\&quot;\&quot;/\1\&quot;acpi_osi=Linux acpi_backlight=vendor\&quot;/&quot; /etc/default/grub -i
+
+You will also have to enter your password to continue. Now enter the second and final command:
+
+ sudo update-grub
+
+Once complete, close the terminal and re-boot your system for the changes to take permanent effect. '''A Youtube video tutorial is available [http://www.youtube.com/watch?v=CMEpd3zvOoU here.]'''
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>sykab6px33hd8eoobanw1yvuiybqpts</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4207</id>
+      <parentid>4206</parentid>
+      <timestamp>2013-01-06T01:00:49Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1283">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+== Vue d'ensemble ==
+
+Some people - particularly those using laptops - are encountering a problem where the screen brightness is too dim upon replacing Microsoft Windows with a Linux distribution as their main operating system. Although it affects all Linux distributions, the problem is actually due to the computer's BIOS settings. Certain hardware manufacturers have set it up so that if Windows is not detected running on their systems, the backlight is automatically disabled.
+
+== Reactivating the Screen Backlight ==
+
+This problem can be easily fixed by ensuring that the GRUB bootloader re-activates the backlight. To do this, first open up your terminal, and enter the following command:
+
+ sudo sed &quot;s/\(GRUB_CMDLINE_LINUX=\)\&quot;\&quot;/\1\&quot;acpi_osi=Linux acpi_backlight=vendor\&quot;/&quot; /etc/default/grub -i
+
+You will also have to enter your password to continue. Now enter the second and final command:
+
+ sudo update-grub
+
+Once complete, close the terminal and re-boot your system for the changes to take permanent effect. '''A Youtube video tutorial is available [http://www.youtube.com/watch?v=CMEpd3zvOoU here.]'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>mato5r93i30wamusy6tjb6x5tu62jp3</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4208</id>
+      <parentid>4207</parentid>
+      <timestamp>2013-01-06T01:02:00Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Reactivating the Screen Backlight */</comment>
+      <text xml:space="preserve" bytes="1293">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+== Vue d'ensemble ==
+
+Some people - particularly those using laptops - are encountering a problem where the screen brightness is too dim upon replacing Microsoft Windows with a Linux distribution as their main operating system. Although it affects all Linux distributions, the problem is actually due to the computer's BIOS settings. Certain hardware manufacturers have set it up so that if Windows is not detected running on their systems, the backlight is automatically disabled.
+
+== Réactiver le rétro-éclairage de l'écran ==
+
+This problem can be easily fixed by ensuring that the GRUB bootloader re-activates the backlight. To do this, first open up your terminal, and enter the following command:
+
+ sudo sed &quot;s/\(GRUB_CMDLINE_LINUX=\)\&quot;\&quot;/\1\&quot;acpi_osi=Linux acpi_backlight=vendor\&quot;/&quot; /etc/default/grub -i
+
+You will also have to enter your password to continue. Now enter the second and final command:
+
+ sudo update-grub
+
+Once complete, close the terminal and re-boot your system for the changes to take permanent effect. '''A Youtube video tutorial is available [http://www.youtube.com/watch?v=CMEpd3zvOoU here.]'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>givu6ev1kumg5gnxwe5gympvypillyn</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4213</id>
+      <parentid>4208</parentid>
+      <timestamp>2013-01-06T01:23:18Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="1422">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+== Vue d'ensemble ==
+
+Certaines personnes - en particulier celles qui utilisent des ordinateurs portables - se heurtent à un problème de la luminosité d'écran trop faible lors du remplacement de Microsoft Windows par une distribution Linux comme système d'exploitation principal. Bien qu'il affecte toutes les distributions Linux, le problème est en fait dû à des paramètres du BIOS de l'ordinateur. Certains fabricants de matériel l'ont paramétré de façon à ce que, si Windows n'est pas détectée en cours d'exécution sur leurs systèmes, le rétro-éclairage soit automatiquement désactivé.
+
+== Réactiver le rétro-éclairage de l'écran ==
+
+This problem can be easily fixed by ensuring that the GRUB bootloader re-activates the backlight. To do this, first open up your terminal, and enter the following command:
+
+ sudo sed &quot;s/\(GRUB_CMDLINE_LINUX=\)\&quot;\&quot;/\1\&quot;acpi_osi=Linux acpi_backlight=vendor\&quot;/&quot; /etc/default/grub -i
+
+You will also have to enter your password to continue. Now enter the second and final command:
+
+ sudo update-grub
+
+Once complete, close the terminal and re-boot your system for the changes to take permanent effect. '''A Youtube video tutorial is available [http://www.youtube.com/watch?v=CMEpd3zvOoU here.]'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>gcz2c30m6cvuk8fotcde5nww5ijjb12</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4214</id>
+      <parentid>4213</parentid>
+      <timestamp>2013-01-06T01:24:02Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Réactiver le rétro-éclairage de l'écran */</comment>
+      <text xml:space="preserve" bytes="1461">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+== Vue d'ensemble ==
+
+Certaines personnes - en particulier celles qui utilisent des ordinateurs portables - se heurtent à un problème de la luminosité d'écran trop faible lors du remplacement de Microsoft Windows par une distribution Linux comme système d'exploitation principal. Bien qu'il affecte toutes les distributions Linux, le problème est en fait dû à des paramètres du BIOS de l'ordinateur. Certains fabricants de matériel l'ont paramétré de façon à ce que, si Windows n'est pas détectée en cours d'exécution sur leurs systèmes, le rétro-éclairage soit automatiquement désactivé.
+
+== Réactiver le rétro-éclairage de l'écran ==
+
+Ce problème peut être facilement résolu en veillant à ce que le chargeur de démarrage GRUB ré-active le rétroéclairage. Pour ce faire, commencez par ouvrir votre terminal et entrez la commande suivante:
+
+ sudo sed &quot;s/\(GRUB_CMDLINE_LINUX=\)\&quot;\&quot;/\1\&quot;acpi_osi=Linux acpi_backlight=vendor\&quot;/&quot; /etc/default/grub -i
+
+You will also have to enter your password to continue. Now enter the second and final command:
+
+ sudo update-grub
+
+Once complete, close the terminal and re-boot your system for the changes to take permanent effect. '''A Youtube video tutorial is available [http://www.youtube.com/watch?v=CMEpd3zvOoU here.]'''
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>6g4itmw5ycurogu409md7gtnlj2cuss</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

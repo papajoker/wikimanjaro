@@ -1,0 +1,671 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Restaurer le chargeur de démarrage GRUB</title>
+    <ns>0</ns>
+    <id>659</id>
+    <revision>
+      <id>4168</id>
+      <timestamp>2013-01-05T17:21:50Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>Created page with &quot;= Overview =  As with any Linux operating system, the GRUB ('''GR'''and '''U'''nified '''B'''ootloader) is responsible for booting up Manjaro. If for any reason your GRUB is n...&quot;</comment>
+      <text xml:space="preserve" bytes="5302">= Overview =
+
+As with any Linux operating system, the GRUB ('''GR'''and '''U'''nified '''B'''ootloader) is responsible for booting up Manjaro. If for any reason your GRUB is not working - perhaps due to being corrupted, mis-configured, or even deleted - then it may not be necessary to reinstall Manjaro as a consequence. '''The GRUB can instead be fully repaired and restored, retaining your installed Manjaro system'''. To undertake this task, you will need to use your Manjaro installation media (e.g. CD/DVD or USB Flashdrive).
+
+
+= Boot the Manjaro Installation Media =
+
+'''1.''' Insert and boot your Manjaro installation media. 
+
+'''2.''' Select your '''preferred language''' (F2) and '''keyboard layout''' (F3).
+
+{{tip|Setting the language and keyboard layout are undertaken by pressing the ''Function'' (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+
+'''3.''' Boot Manjaro Linux. It does not matter which boot option you choose, as the installation media is being used solely to repair/reinstate the GRUB, and not to install a fresh system.
+
+'''4.''' Open the terminal or access the command line of the live CD. 
+
+* '''From the desktop environment''': open the terminal from your desktop menu, or
+* '''From the command line''' (e.g. NET-Edition or having used the ''Boot in Text mode'' option): enter the default username (manjaro) and password (manjaro) to log in.
+
+
+= Identify and Prepare the Installed Partition(s) =
+{{tip|'''If you had installed Manjaro using the ''assisted preparation'' method''' - whereby the installer automatically prepared and partitioned your computer's hard disk for you - then you will have the same four partitions as those listed by the author, below. This will include a separate Boot partition, named ''/dev/sda1''.}}
+
+
+'''1.''' Ensure that you are using the Root account, which is identified by a hash ('#') at the beginning of the command line, rather than a dollar ('$'). To switch to Root, enter the command:
+
+ sudo su
+
+
+'''2.''' List your partitions. This is necessary in order to identify the partition your Manjaro system is installed on. If you have used a separate boot partition, it will be necessary to identify this as well. For a list of your paritions, enter the command:
+
+ sudo blkid
+
+
+In this particular instance, '''having used the assisted preparation method to install Manjaro earlier''', the partitions for the author's Manjaro system are as follows:
+
+* '''/dev/sda1''': Boot partition
+* '''/dev/sda2''': Swap partition
+* '''/dev/sda3''': Manjaro system
+* '''/dev/sda4''': Space for personal files.
+
+
+If you are still unsure, then you can also use an application called ''gparted'', which should be selectable from your desktop menu. This will provide a simple visual illustration of the partitions on your hard drive(s). If a seperate partition for the GRUB exists, it will be marked as 'bootable', and should only be about 100MB in size.
+
+
+'''3.''' Mount your Manjaro system partition. The syntax to mount the Manjaro system partition is:
+
+ mount /dev/'''[partition used for Manjaro system]''' /mnt
+
+
+In this instance, as the Manjaro system partition is ''/dev/sda3'', this will be mounted using the following command:
+
+ mount /dev/'''sda3''' /mnt
+
+
+'''IF''' you have used a seperate partition for your GRUB bootloader, then this must also be mounted. The syntax to mount a separate partition used to boot is:
+
+ mount /dev/'''[partition used for GRUB]''' /mnt/boot
+
+
+In this instance, a seperate partition - ''/dev/sda1'' - has been used for the GRUB, and will be mounted using the following command:
+
+ mount /dev/'''sda1''' /mnt/boot
+
+{{note|Again, if you have not used a seperate boot partition, then it (obviously) does not need to be mounted!}}
+
+
+'''3.''' Change to the root directory of your mounted partitions. This is undertaken so that you are working from  - and with - your installed system, rather than the installation media. To do so, it will be necessary to enter a series of commands in the following order:
+
+ mount -t proc proc /mnt/proc
+ mount -t sysfs sys /mnt/sys
+ mount -o bind /dev /mnt/dev
+ mount -t devpts pts /mnt/dev/pts/
+ chroot /mnt
+
+
+'''4.''' Install the software applications ''mtools'' and ''os-prober''. mtools is a collection of tools to access Microsoft Operating Systems (i.e. MS-DOS). os-prober is a utility that detects if there are any other operating systems present. Install them with the following command:
+
+ pacman -S mtools os-prober
+
+
+= Restore the GRUB =
+
+'''1.''' Install a new GRUB bootloader with the following command:
+
+ grub-install /dev/sda
+
+
+'''2.''' Recheck to ensure the that installation has completed without any errors:
+
+ grub-install --recheck /dev/sda
+
+
+'''3.''' Finally, configure the freshly installed GRUB bootloader:
+
+ update-grub
+
+
+All done! Now close the terminal and reboot your system to use your freshly re-installed GRUB.
+
+
+= Troubleshooting =
+
+=== Arch Linux is not recognized ===
+If Arch Linux wasn't recognized after an update-grub then probably your Arch installation is missing the package lsb-release.
+
+[[Category:Troubleshooting]]
+[[Category:Contents Page]]</text>
+      <sha1>pd25wnq90zg5tji9pwq8bln18comh1z</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4170</id>
+      <parentid>4168</parentid>
+      <timestamp>2013-01-05T17:23:40Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5421">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+As with any Linux operating system, the GRUB ('''GR'''and '''U'''nified '''B'''ootloader) is responsible for booting up Manjaro. If for any reason your GRUB is not working - perhaps due to being corrupted, mis-configured, or even deleted - then it may not be necessary to reinstall Manjaro as a consequence. '''The GRUB can instead be fully repaired and restored, retaining your installed Manjaro system'''. To undertake this task, you will need to use your Manjaro installation media (e.g. CD/DVD or USB Flashdrive).
+
+
+= Boot the Manjaro Installation Media =
+
+'''1.''' Insert and boot your Manjaro installation media. 
+
+'''2.''' Select your '''preferred language''' (F2) and '''keyboard layout''' (F3).
+
+{{tip|Setting the language and keyboard layout are undertaken by pressing the ''Function'' (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+
+'''3.''' Boot Manjaro Linux. It does not matter which boot option you choose, as the installation media is being used solely to repair/reinstate the GRUB, and not to install a fresh system.
+
+'''4.''' Open the terminal or access the command line of the live CD. 
+
+* '''From the desktop environment''': open the terminal from your desktop menu, or
+* '''From the command line''' (e.g. NET-Edition or having used the ''Boot in Text mode'' option): enter the default username (manjaro) and password (manjaro) to log in.
+
+
+= Identify and Prepare the Installed Partition(s) =
+{{tip|'''If you had installed Manjaro using the ''assisted preparation'' method''' - whereby the installer automatically prepared and partitioned your computer's hard disk for you - then you will have the same four partitions as those listed by the author, below. This will include a separate Boot partition, named ''/dev/sda1''.}}
+
+
+'''1.''' Ensure that you are using the Root account, which is identified by a hash ('#') at the beginning of the command line, rather than a dollar ('$'). To switch to Root, enter the command:
+
+ sudo su
+
+
+'''2.''' List your partitions. This is necessary in order to identify the partition your Manjaro system is installed on. If you have used a separate boot partition, it will be necessary to identify this as well. For a list of your paritions, enter the command:
+
+ sudo blkid
+
+
+In this particular instance, '''having used the assisted preparation method to install Manjaro earlier''', the partitions for the author's Manjaro system are as follows:
+
+* '''/dev/sda1''': Boot partition
+* '''/dev/sda2''': Swap partition
+* '''/dev/sda3''': Manjaro system
+* '''/dev/sda4''': Space for personal files.
+
+
+If you are still unsure, then you can also use an application called ''gparted'', which should be selectable from your desktop menu. This will provide a simple visual illustration of the partitions on your hard drive(s). If a seperate partition for the GRUB exists, it will be marked as 'bootable', and should only be about 100MB in size.
+
+
+'''3.''' Mount your Manjaro system partition. The syntax to mount the Manjaro system partition is:
+
+ mount /dev/'''[partition used for Manjaro system]''' /mnt
+
+
+In this instance, as the Manjaro system partition is ''/dev/sda3'', this will be mounted using the following command:
+
+ mount /dev/'''sda3''' /mnt
+
+
+'''IF''' you have used a seperate partition for your GRUB bootloader, then this must also be mounted. The syntax to mount a separate partition used to boot is:
+
+ mount /dev/'''[partition used for GRUB]''' /mnt/boot
+
+
+In this instance, a seperate partition - ''/dev/sda1'' - has been used for the GRUB, and will be mounted using the following command:
+
+ mount /dev/'''sda1''' /mnt/boot
+
+{{note|Again, if you have not used a seperate boot partition, then it (obviously) does not need to be mounted!}}
+
+
+'''3.''' Change to the root directory of your mounted partitions. This is undertaken so that you are working from  - and with - your installed system, rather than the installation media. To do so, it will be necessary to enter a series of commands in the following order:
+
+ mount -t proc proc /mnt/proc
+ mount -t sysfs sys /mnt/sys
+ mount -o bind /dev /mnt/dev
+ mount -t devpts pts /mnt/dev/pts/
+ chroot /mnt
+
+
+'''4.''' Install the software applications ''mtools'' and ''os-prober''. mtools is a collection of tools to access Microsoft Operating Systems (i.e. MS-DOS). os-prober is a utility that detects if there are any other operating systems present. Install them with the following command:
+
+ pacman -S mtools os-prober
+
+
+= Restore the GRUB =
+
+'''1.''' Install a new GRUB bootloader with the following command:
+
+ grub-install /dev/sda
+
+
+'''2.''' Recheck to ensure the that installation has completed without any errors:
+
+ grub-install --recheck /dev/sda
+
+
+'''3.''' Finally, configure the freshly installed GRUB bootloader:
+
+ update-grub
+
+
+All done! Now close the terminal and reboot your system to use your freshly re-installed GRUB.
+
+
+= Troubleshooting =
+
+=== Arch Linux is not recognized ===
+If Arch Linux wasn't recognized after an update-grub then probably your Arch installation is missing the package lsb-release.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>jbq3vajio5ln8iqg9pp237h8p0x90vm</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4171</id>
+      <parentid>4170</parentid>
+      <timestamp>2013-01-05T17:32:28Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="5502">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+= Vue d'ensemble =
+
+Comme sur les autres systèmes d'exploitation Linux, le GRUB ('''GR'''and '''U'''nified '''B'''ootloader) est chargé du démarrage de Manjaro. Si pour une raison quelconque le GRUB ne marche pas - parce qu'il est peut-être détérioré, mal configuré, ou même supprimé - il ne va pas pour autant être nécessaire de réinstaller Manjaro. Le GRUB peut au contraire être totalement réparé et restauré, '''en conservant votre installation du système Manjaro'''. Pour effectuer cette tâche, vous aurez besoin de votre média d'installation de Manjaro (par exemple un CD/DVD ou une clé USB).
+
+= Boot the Manjaro Installation Media =
+
+'''1.''' Insert and boot your Manjaro installation media. 
+
+'''2.''' Select your '''preferred language''' (F2) and '''keyboard layout''' (F3).
+
+{{tip|Setting the language and keyboard layout are undertaken by pressing the ''Function'' (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+
+'''3.''' Boot Manjaro Linux. It does not matter which boot option you choose, as the installation media is being used solely to repair/reinstate the GRUB, and not to install a fresh system.
+
+'''4.''' Open the terminal or access the command line of the live CD. 
+
+* '''From the desktop environment''': open the terminal from your desktop menu, or
+* '''From the command line''' (e.g. NET-Edition or having used the ''Boot in Text mode'' option): enter the default username (manjaro) and password (manjaro) to log in.
+
+
+= Identify and Prepare the Installed Partition(s) =
+{{tip|'''If you had installed Manjaro using the ''assisted preparation'' method''' - whereby the installer automatically prepared and partitioned your computer's hard disk for you - then you will have the same four partitions as those listed by the author, below. This will include a separate Boot partition, named ''/dev/sda1''.}}
+
+
+'''1.''' Ensure that you are using the Root account, which is identified by a hash ('#') at the beginning of the command line, rather than a dollar ('$'). To switch to Root, enter the command:
+
+ sudo su
+
+
+'''2.''' List your partitions. This is necessary in order to identify the partition your Manjaro system is installed on. If you have used a separate boot partition, it will be necessary to identify this as well. For a list of your paritions, enter the command:
+
+ sudo blkid
+
+
+In this particular instance, '''having used the assisted preparation method to install Manjaro earlier''', the partitions for the author's Manjaro system are as follows:
+
+* '''/dev/sda1''': Boot partition
+* '''/dev/sda2''': Swap partition
+* '''/dev/sda3''': Manjaro system
+* '''/dev/sda4''': Space for personal files.
+
+
+If you are still unsure, then you can also use an application called ''gparted'', which should be selectable from your desktop menu. This will provide a simple visual illustration of the partitions on your hard drive(s). If a seperate partition for the GRUB exists, it will be marked as 'bootable', and should only be about 100MB in size.
+
+
+'''3.''' Mount your Manjaro system partition. The syntax to mount the Manjaro system partition is:
+
+ mount /dev/'''[partition used for Manjaro system]''' /mnt
+
+
+In this instance, as the Manjaro system partition is ''/dev/sda3'', this will be mounted using the following command:
+
+ mount /dev/'''sda3''' /mnt
+
+
+'''IF''' you have used a seperate partition for your GRUB bootloader, then this must also be mounted. The syntax to mount a separate partition used to boot is:
+
+ mount /dev/'''[partition used for GRUB]''' /mnt/boot
+
+
+In this instance, a seperate partition - ''/dev/sda1'' - has been used for the GRUB, and will be mounted using the following command:
+
+ mount /dev/'''sda1''' /mnt/boot
+
+{{note|Again, if you have not used a seperate boot partition, then it (obviously) does not need to be mounted!}}
+
+
+'''3.''' Change to the root directory of your mounted partitions. This is undertaken so that you are working from  - and with - your installed system, rather than the installation media. To do so, it will be necessary to enter a series of commands in the following order:
+
+ mount -t proc proc /mnt/proc
+ mount -t sysfs sys /mnt/sys
+ mount -o bind /dev /mnt/dev
+ mount -t devpts pts /mnt/dev/pts/
+ chroot /mnt
+
+
+'''4.''' Install the software applications ''mtools'' and ''os-prober''. mtools is a collection of tools to access Microsoft Operating Systems (i.e. MS-DOS). os-prober is a utility that detects if there are any other operating systems present. Install them with the following command:
+
+ pacman -S mtools os-prober
+
+
+= Restore the GRUB =
+
+'''1.''' Install a new GRUB bootloader with the following command:
+
+ grub-install /dev/sda
+
+
+'''2.''' Recheck to ensure the that installation has completed without any errors:
+
+ grub-install --recheck /dev/sda
+
+
+'''3.''' Finally, configure the freshly installed GRUB bootloader:
+
+ update-grub
+
+
+All done! Now close the terminal and reboot your system to use your freshly re-installed GRUB.
+
+
+= Troubleshooting =
+
+=== Arch Linux is not recognized ===
+If Arch Linux wasn't recognized after an update-grub then probably your Arch installation is missing the package lsb-release.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>jvv02wti3j3ge6ony2csv4drrc66vzi</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4172</id>
+      <parentid>4171</parentid>
+      <timestamp>2013-01-05T17:33:10Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Vue d'ensemble */</comment>
+      <text xml:space="preserve" bytes="5503">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Vue d'ensemble =
+
+Comme sur les autres systèmes d'exploitation Linux, le GRUB ('''GR'''and '''U'''nified '''B'''ootloader) est chargé du démarrage de Manjaro. Si pour une raison quelconque le GRUB ne marche pas - parce qu'il est peut-être détérioré, mal configuré, ou même supprimé - il ne va pas pour autant être nécessaire de réinstaller Manjaro. Le GRUB peut au contraire être totalement réparé et restauré, '''en conservant votre installation du système Manjaro'''. Pour effectuer cette tâche, vous aurez besoin de votre média d'installation de Manjaro (par exemple un CD/DVD ou une clé USB).
+
+= Boot the Manjaro Installation Media =
+
+'''1.''' Insert and boot your Manjaro installation media. 
+
+'''2.''' Select your '''preferred language''' (F2) and '''keyboard layout''' (F3).
+
+{{tip|Setting the language and keyboard layout are undertaken by pressing the ''Function'' (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+
+'''3.''' Boot Manjaro Linux. It does not matter which boot option you choose, as the installation media is being used solely to repair/reinstate the GRUB, and not to install a fresh system.
+
+'''4.''' Open the terminal or access the command line of the live CD. 
+
+* '''From the desktop environment''': open the terminal from your desktop menu, or
+* '''From the command line''' (e.g. NET-Edition or having used the ''Boot in Text mode'' option): enter the default username (manjaro) and password (manjaro) to log in.
+
+
+= Identify and Prepare the Installed Partition(s) =
+{{tip|'''If you had installed Manjaro using the ''assisted preparation'' method''' - whereby the installer automatically prepared and partitioned your computer's hard disk for you - then you will have the same four partitions as those listed by the author, below. This will include a separate Boot partition, named ''/dev/sda1''.}}
+
+
+'''1.''' Ensure that you are using the Root account, which is identified by a hash ('#') at the beginning of the command line, rather than a dollar ('$'). To switch to Root, enter the command:
+
+ sudo su
+
+
+'''2.''' List your partitions. This is necessary in order to identify the partition your Manjaro system is installed on. If you have used a separate boot partition, it will be necessary to identify this as well. For a list of your paritions, enter the command:
+
+ sudo blkid
+
+
+In this particular instance, '''having used the assisted preparation method to install Manjaro earlier''', the partitions for the author's Manjaro system are as follows:
+
+* '''/dev/sda1''': Boot partition
+* '''/dev/sda2''': Swap partition
+* '''/dev/sda3''': Manjaro system
+* '''/dev/sda4''': Space for personal files.
+
+
+If you are still unsure, then you can also use an application called ''gparted'', which should be selectable from your desktop menu. This will provide a simple visual illustration of the partitions on your hard drive(s). If a seperate partition for the GRUB exists, it will be marked as 'bootable', and should only be about 100MB in size.
+
+
+'''3.''' Mount your Manjaro system partition. The syntax to mount the Manjaro system partition is:
+
+ mount /dev/'''[partition used for Manjaro system]''' /mnt
+
+
+In this instance, as the Manjaro system partition is ''/dev/sda3'', this will be mounted using the following command:
+
+ mount /dev/'''sda3''' /mnt
+
+
+'''IF''' you have used a seperate partition for your GRUB bootloader, then this must also be mounted. The syntax to mount a separate partition used to boot is:
+
+ mount /dev/'''[partition used for GRUB]''' /mnt/boot
+
+
+In this instance, a seperate partition - ''/dev/sda1'' - has been used for the GRUB, and will be mounted using the following command:
+
+ mount /dev/'''sda1''' /mnt/boot
+
+{{note|Again, if you have not used a seperate boot partition, then it (obviously) does not need to be mounted!}}
+
+
+'''3.''' Change to the root directory of your mounted partitions. This is undertaken so that you are working from  - and with - your installed system, rather than the installation media. To do so, it will be necessary to enter a series of commands in the following order:
+
+ mount -t proc proc /mnt/proc
+ mount -t sysfs sys /mnt/sys
+ mount -o bind /dev /mnt/dev
+ mount -t devpts pts /mnt/dev/pts/
+ chroot /mnt
+
+
+'''4.''' Install the software applications ''mtools'' and ''os-prober''. mtools is a collection of tools to access Microsoft Operating Systems (i.e. MS-DOS). os-prober is a utility that detects if there are any other operating systems present. Install them with the following command:
+
+ pacman -S mtools os-prober
+
+
+= Restore the GRUB =
+
+'''1.''' Install a new GRUB bootloader with the following command:
+
+ grub-install /dev/sda
+
+
+'''2.''' Recheck to ensure the that installation has completed without any errors:
+
+ grub-install --recheck /dev/sda
+
+
+'''3.''' Finally, configure the freshly installed GRUB bootloader:
+
+ update-grub
+
+
+All done! Now close the terminal and reboot your system to use your freshly re-installed GRUB.
+
+
+= Troubleshooting =
+
+=== Arch Linux is not recognized ===
+If Arch Linux wasn't recognized after an update-grub then probably your Arch installation is missing the package lsb-release.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>64rvbloluu5o8nwieg327xod7are1wx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>4173</id>
+      <parentid>4172</parentid>
+      <timestamp>2013-01-05T17:33:46Z</timestamp>
+      <contributor>
+        <username>Esclapion</username>
+        <id>27</id>
+      </contributor>
+      <minor/>
+      <comment>/* Boot the Manjaro Installation Media */</comment>
+      <text xml:space="preserve" bytes="5517">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+= Vue d'ensemble =
+
+Comme sur les autres systèmes d'exploitation Linux, le GRUB ('''GR'''and '''U'''nified '''B'''ootloader) est chargé du démarrage de Manjaro. Si pour une raison quelconque le GRUB ne marche pas - parce qu'il est peut-être détérioré, mal configuré, ou même supprimé - il ne va pas pour autant être nécessaire de réinstaller Manjaro. Le GRUB peut au contraire être totalement réparé et restauré, '''en conservant votre installation du système Manjaro'''. Pour effectuer cette tâche, vous aurez besoin de votre média d'installation de Manjaro (par exemple un CD/DVD ou une clé USB).
+
+
+= Démarrer sur le média d'installation de Manjaro =
+
+'''1.''' Insert and boot your Manjaro installation media. 
+
+'''2.''' Select your '''preferred language''' (F2) and '''keyboard layout''' (F3).
+
+{{tip|Setting the language and keyboard layout are undertaken by pressing the ''Function'' (F) keys. As many computers have multiple functions assigned to each function key, it may be necessary to hold down another key first to use them. For example, on a HP G62 laptop, to use the function keys, the 'fn' key must first be pressed and held.}}
+
+
+'''3.''' Boot Manjaro Linux. It does not matter which boot option you choose, as the installation media is being used solely to repair/reinstate the GRUB, and not to install a fresh system.
+
+'''4.''' Open the terminal or access the command line of the live CD. 
+
+* '''From the desktop environment''': open the terminal from your desktop menu, or
+* '''From the command line''' (e.g. NET-Edition or having used the ''Boot in Text mode'' option): enter the default username (manjaro) and password (manjaro) to log in.
+
+= Identify and Prepare the Installed Partition(s) =
+{{tip|'''If you had installed Manjaro using the ''assisted preparation'' method''' - whereby the installer automatically prepared and partitioned your computer's hard disk for you - then you will have the same four partitions as those listed by the author, below. This will include a separate Boot partition, named ''/dev/sda1''.}}
+
+
+'''1.''' Ensure that you are using the Root account, which is identified by a hash ('#') at the beginning of the command line, rather than a dollar ('$'). To switch to Root, enter the command:
+
+ sudo su
+
+
+'''2.''' List your partitions. This is necessary in order to identify the partition your Manjaro system is installed on. If you have used a separate boot partition, it will be necessary to identify this as well. For a list of your paritions, enter the command:
+
+ sudo blkid
+
+
+In this particular instance, '''having used the assisted preparation method to install Manjaro earlier''', the partitions for the author's Manjaro system are as follows:
+
+* '''/dev/sda1''': Boot partition
+* '''/dev/sda2''': Swap partition
+* '''/dev/sda3''': Manjaro system
+* '''/dev/sda4''': Space for personal files.
+
+
+If you are still unsure, then you can also use an application called ''gparted'', which should be selectable from your desktop menu. This will provide a simple visual illustration of the partitions on your hard drive(s). If a seperate partition for the GRUB exists, it will be marked as 'bootable', and should only be about 100MB in size.
+
+
+'''3.''' Mount your Manjaro system partition. The syntax to mount the Manjaro system partition is:
+
+ mount /dev/'''[partition used for Manjaro system]''' /mnt
+
+
+In this instance, as the Manjaro system partition is ''/dev/sda3'', this will be mounted using the following command:
+
+ mount /dev/'''sda3''' /mnt
+
+
+'''IF''' you have used a seperate partition for your GRUB bootloader, then this must also be mounted. The syntax to mount a separate partition used to boot is:
+
+ mount /dev/'''[partition used for GRUB]''' /mnt/boot
+
+
+In this instance, a seperate partition - ''/dev/sda1'' - has been used for the GRUB, and will be mounted using the following command:
+
+ mount /dev/'''sda1''' /mnt/boot
+
+{{note|Again, if you have not used a seperate boot partition, then it (obviously) does not need to be mounted!}}
+
+
+'''3.''' Change to the root directory of your mounted partitions. This is undertaken so that you are working from  - and with - your installed system, rather than the installation media. To do so, it will be necessary to enter a series of commands in the following order:
+
+ mount -t proc proc /mnt/proc
+ mount -t sysfs sys /mnt/sys
+ mount -o bind /dev /mnt/dev
+ mount -t devpts pts /mnt/dev/pts/
+ chroot /mnt
+
+
+'''4.''' Install the software applications ''mtools'' and ''os-prober''. mtools is a collection of tools to access Microsoft Operating Systems (i.e. MS-DOS). os-prober is a utility that detects if there are any other operating systems present. Install them with the following command:
+
+ pacman -S mtools os-prober
+
+
+= Restore the GRUB =
+
+'''1.''' Install a new GRUB bootloader with the following command:
+
+ grub-install /dev/sda
+
+
+'''2.''' Recheck to ensure the that installation has completed without any errors:
+
+ grub-install --recheck /dev/sda
+
+
+'''3.''' Finally, configure the freshly installed GRUB bootloader:
+
+ update-grub
+
+
+All done! Now close the terminal and reboot your system to use your freshly re-installed GRUB.
+
+
+= Troubleshooting =
+
+=== Arch Linux is not recognized ===
+If Arch Linux wasn't recognized after an update-grub then probably your Arch installation is missing the package lsb-release.
+
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+[[Category:Système]]
+[[Category:Français]]
+[[Category:Présentation]]</text>
+      <sha1>hvz6mrja5p1zu1q9d79x9aob96s3cou</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

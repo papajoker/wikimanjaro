@@ -1,0 +1,1269 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>UEFI - Guide d'installation</title>
+    <ns>0</ns>
+    <id>1303</id>
+    <revision>
+      <id>8405</id>
+      <timestamp>2013-12-25T17:45:42Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;   =En cours de traduction=  =Introduction=  At this stage of the game, installing a Linux distro on a UEFI can be the trickiest ...&quot;</comment>
+      <text xml:space="preserve" bytes="8587">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+=En cours de traduction=
+
+=Introduction=
+
+At this stage of the game, installing a Linux distro on a UEFI can be the trickiest part of the installation.
+
+ UEFI is the commonly agreed on name for both the EFI &amp; UEFI 
+ standards which merged. It does not include the old EFI v1, 
+ or Apple's own non-standard version of EFI.
+
+So the following guide can be a huge time &amp; frustration saver for some users.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Target computer:==
+
+The following guide will install Manjaro as the sole installation on a machine with UEFI enabled, Secure boot disabled using GUID Partition Table  (GPT) disk(s).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Simple steps:==
+
+* 1. Download your preferred Manjaro version (XFCE, Openbox, Cinnamon, KDE, ...), must be 64-bits.
+
+* 2. Burn the .iso to USB or DVD. For Windows users using USB media, Rufus [http://rufus.akeo.ie/] is highly recommended.
+
+* 2.1. Rufus (Windows) users should use the following settings:
+
+ * Click on the DVD icon and load your .iso
+ * Device: &quot;choose your USB&quot; (Attention: choose correctly,
+   the device selected here will be formatted!!!)
+ * Partition scheme: GPT partition scheme for UEFI computer
+ * File system: FAT32
+ * Cluster size: &quot;Don't modify&quot;
+ * Volume label: &quot;Don't modify&quot;
+ * Click Start, and you are done (takes 2~5 min to complete).
+
+* 3. Check your BIOS, UEFI must be ON and Secure boot OFF.
+
+* 4. Boot with your USB or DVD &amp; use the rEFInd - Main Menu... to choose which GPU drivers you want to have installed, the open-source or proprietary:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 5. Open terminal &amp; enter:
+
+ $ sudo setup
+
+* 6. Now, we are in the CLI Installer (the graphical installer doesn't support UEFI yet). 
+'''Choose 2.''' Use testing installer (EFI support).
+
+* 7. '''Choose 1.''' Set date and time - an easy intuitive configuration.
+
+* 8. Now, '''Choose 2.''' Disk(s) preparation. 
+Go to '''2. Partition Hard Drives''' or follow the instruction in the next point '''8.1''' to automatically partition the entire disk.
+
+* 8.1 If you want to use the entire disk, and don't want to manually configure your partitions, you can choose '''1. Auto-Prepare.''' 
+
+ Attention: I don't know for sure if using the 
+ Auto-Prepare option of the installation will be 
+ successful as I always prefer to manually configure 
+ my partitions. Give it a try, if you have problems
+ then please post here: [http://forum.manjaro.org/index.php?topic=5268.0]
+
+So, if '''8.1''' (Auto-Prepare) is chosen, you skip the process below and go to 9...
+
+ * When you '''click 2.''' Partition Hard Drives, 
+   you get a dialog saying &quot;Do you want to use GUID
+   Partition Table (GPT)&quot;, '''choose Yes'''.
+ * Partition your disk(s) as you want (Instructions on
+   manually partitioning are beyond the scope of this
+   guide.)
+ * '''Important Step:''' Create a 50~250MB EFI Partition,
+   mine is 100MB (code: ef00)
+ * When you are done, go to '''4. Set Filesystem'''
+   '''Mountpoints.''' (Again, instructions on manually
+   partitioning are beyond the scope of this guide.
+ * '''Important Step:''' Format the EFI Partition you
+   created as '''VFAT''' and mount on /boot/efi
+
+* 9. '''Choose 3.''' Install system and wait...
+
+* 10. Now, go to '''4. Configure System''' and configure it the way you like (username, password, mirrorlist, system-name, ...).
+
+* 11. When you are done, go to '''5. Install bootloader.''' Choose EFI_x86_64 &gt; GRUB (2) UEFI x86_64,  '''DON'T select BIOS GRUB.'''
+
+* 11.1 It will ask to format the EFI Partition you created earlier as FAT32, just mark Yes.
+
+* 12. If it gives a error in the final stages saying &quot;efivars kernel module was not properly loaded&quot;, don't worry, the system will work fine!
+
+* 13. If the installer asks you about copying grub/efi files to another folder in order to maintain compatibility in some systems, choose Yes.
+
+* 14. '''Click 6.''' Quit
+
+====Note====
+
+To make sure that Grub was installed correctly, open a terminal and type-
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+* 15. Shutdown, remove the DVD or USB, and boot. Your system should appear now!
+
+DONE, SYSTEM INSTALLED!
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Switching from BIOS to UEFI == 
+
+For UEFI install the Disk partition table should be of type '''GPT (Guid Partition Table).'''
+
+If you dont want to format your hard disk to GPT, but instead want to migrate from MBR to GPT while trying to save your data, can have a look at 
+http://www.rodsbooks.com/gdisk/mbr2gpt.html
+
+
+1.) You would need to create an ''ESP (EFI System Partition)''.
+
+Its basically a fat32 partition which has the .efi files for booting.
+
+You can create the partition using Gparted.
+
+You would also need to install/check whether following packages are present-
+
+ 1. efibootmgr
+ 2. dosfstools
+ 3. grub
+
+
+2.) Create the ''/boot/efi'' directory
+ sudo mkdir /boot/efi
+
+
+3.) Mount the EFI partition as ''/boot/efi''
+ sudo mount /dev/sdXY /boot/efi
+X = Alphabet of the drive = a,b,c ...
+Y = Partition number of the EFI partition = 1,2,3,4...
+
+Example - ''/dev/sda4''
+
+
+4.) Install Grub according to UEFI
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+5.) Update Grub configuration file.
+ sudo update-grub
+
+'''Note-'''
+If you get an error like
+ path '/boot/grub' is not readable by Grub on boot. Installation is impossible. Aborting
+
+Then you will need to [https://wiki.archlinux.org/index.php/Change_Root chroot] as described [[Restore_the_GRUB_Bootloader#Identify_and_Prepare_the_Installed_Partition.28s.29|here]], and then perform Step 5 again.
+
+
+'''See also'''
+
+[[Restore the GRUB Bootloader]]
+
+== Dual booting with Windows ==
+
+{{tip|Some manufactures EFI implementations cause GRUB not to be showed in the Boot Menu, or even if its there it can't be made default.}}
+
+
+'''In such cases install ''[http://www.rodsbooks.com/refind/index.html rEFInd]'''''
+
+
+[[File:Refind.png]]
+
+
+There are two ways to install rEFInd-
+
+1.Install rEFInd from its website [http://www.rodsbooks.com/refind/installing.html] (detailed) or '''install using pacman'''''(preferred)''-
+ sudo pacman -S refind-efi
+
+Files will be present in  /usr/share/refind .
+
+2.Or use mine [https://www.dropbox.com/s/bafo0sp432pw2tj/refind.zip here]
+Extract the contents of the zip file.
+
+=== Instructions ===
+
+Go inside the refind folder ('''/usr/share/refind''', or from the one obtained from my .zip file), and copy the files and folders to-
+
+ /boot/efi/EFI/Boot/
+
+'''Note-'''
+
+My ESP (EFI System Partition) is mounted at /boot/efi.
+
+You need to copy these files to the Boot folder on your EFI partition, and the Boot folder itself will be present inside the EFI folder on the EFI Partition, so take note of it.
+
+You can check which partition is your ESP using Gparted; find which partition is formatted as fat32 and has size around 200mb-1gb.
+
+Can mount it as /boot/efi by
+
+ sudo mount /dev/sdXN /boot/efi
+X=a,b,c...
+N=1,2,3...
+These depend on which partition your ESP is present which can be obtained via Gparted as mentioned earlier.
+
+Now inside the /boot/efi/EFI/Boot/ folder, there should already be a file present-
+ bootx64.efi
+
+You need to '''''rename''''' it to  ''windows.bootx64.efi''
+Then you should rename ''refind_x64.efi'' to ''bootx64.efi''
+And you are done!
+
+The bootx64.efi files boot by default, hence rEFInd would now boot by default, and would detect your grubx64.efi(linux-manjaro) and efibootmgfw.efi (windows) automatically.
+
+'''Note'''-
+
+A folder Manjaro (name could be some other also) containing the file grubx64.efi should also be present in /boot/efi/EFI/ folder, which should contain the grubx64.efi file which will be used by rEFInd to boot Grub.
+
+So it could be like-
+ /boot/efi/EFI/Manjaro/grubx64.efi
+
+rEFInd would use this file for booting Manjaro.
+
+If you do not have this file or folder, try-
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Manjaro --recheck
+
+to create '''/boot/efi/EFI/Manjaro/grubx64.efi'''
+
+
+See this also- [http://www.rodsbooks.com/refind/installing.html#naming http://www.rodsbooks.com/refind/installing.html#naming]
+
+==Feedback:==
+
+Questions, suggestions, critics? Please post here: [http://forum.manjaro.org/index.php?topic=5268.0]
+
+
+[[UEFI - Install Guide|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>o6ljdxew6w5rl2zu9qh7w8mkne7rsw8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8406</id>
+      <parentid>8405</parentid>
+      <timestamp>2013-12-25T17:46:07Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="8587">=En cours de traduction=
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+
+=Introduction=
+
+At this stage of the game, installing a Linux distro on a UEFI can be the trickiest part of the installation.
+
+ UEFI is the commonly agreed on name for both the EFI &amp; UEFI 
+ standards which merged. It does not include the old EFI v1, 
+ or Apple's own non-standard version of EFI.
+
+So the following guide can be a huge time &amp; frustration saver for some users.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Target computer:==
+
+The following guide will install Manjaro as the sole installation on a machine with UEFI enabled, Secure boot disabled using GUID Partition Table  (GPT) disk(s).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Simple steps:==
+
+* 1. Download your preferred Manjaro version (XFCE, Openbox, Cinnamon, KDE, ...), must be 64-bits.
+
+* 2. Burn the .iso to USB or DVD. For Windows users using USB media, Rufus [http://rufus.akeo.ie/] is highly recommended.
+
+* 2.1. Rufus (Windows) users should use the following settings:
+
+ * Click on the DVD icon and load your .iso
+ * Device: &quot;choose your USB&quot; (Attention: choose correctly,
+   the device selected here will be formatted!!!)
+ * Partition scheme: GPT partition scheme for UEFI computer
+ * File system: FAT32
+ * Cluster size: &quot;Don't modify&quot;
+ * Volume label: &quot;Don't modify&quot;
+ * Click Start, and you are done (takes 2~5 min to complete).
+
+* 3. Check your BIOS, UEFI must be ON and Secure boot OFF.
+
+* 4. Boot with your USB or DVD &amp; use the rEFInd - Main Menu... to choose which GPU drivers you want to have installed, the open-source or proprietary:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 5. Open terminal &amp; enter:
+
+ $ sudo setup
+
+* 6. Now, we are in the CLI Installer (the graphical installer doesn't support UEFI yet). 
+'''Choose 2.''' Use testing installer (EFI support).
+
+* 7. '''Choose 1.''' Set date and time - an easy intuitive configuration.
+
+* 8. Now, '''Choose 2.''' Disk(s) preparation. 
+Go to '''2. Partition Hard Drives''' or follow the instruction in the next point '''8.1''' to automatically partition the entire disk.
+
+* 8.1 If you want to use the entire disk, and don't want to manually configure your partitions, you can choose '''1. Auto-Prepare.''' 
+
+ Attention: I don't know for sure if using the 
+ Auto-Prepare option of the installation will be 
+ successful as I always prefer to manually configure 
+ my partitions. Give it a try, if you have problems
+ then please post here: [http://forum.manjaro.org/index.php?topic=5268.0]
+
+So, if '''8.1''' (Auto-Prepare) is chosen, you skip the process below and go to 9...
+
+ * When you '''click 2.''' Partition Hard Drives, 
+   you get a dialog saying &quot;Do you want to use GUID
+   Partition Table (GPT)&quot;, '''choose Yes'''.
+ * Partition your disk(s) as you want (Instructions on
+   manually partitioning are beyond the scope of this
+   guide.)
+ * '''Important Step:''' Create a 50~250MB EFI Partition,
+   mine is 100MB (code: ef00)
+ * When you are done, go to '''4. Set Filesystem'''
+   '''Mountpoints.''' (Again, instructions on manually
+   partitioning are beyond the scope of this guide.
+ * '''Important Step:''' Format the EFI Partition you
+   created as '''VFAT''' and mount on /boot/efi
+
+* 9. '''Choose 3.''' Install system and wait...
+
+* 10. Now, go to '''4. Configure System''' and configure it the way you like (username, password, mirrorlist, system-name, ...).
+
+* 11. When you are done, go to '''5. Install bootloader.''' Choose EFI_x86_64 &gt; GRUB (2) UEFI x86_64,  '''DON'T select BIOS GRUB.'''
+
+* 11.1 It will ask to format the EFI Partition you created earlier as FAT32, just mark Yes.
+
+* 12. If it gives a error in the final stages saying &quot;efivars kernel module was not properly loaded&quot;, don't worry, the system will work fine!
+
+* 13. If the installer asks you about copying grub/efi files to another folder in order to maintain compatibility in some systems, choose Yes.
+
+* 14. '''Click 6.''' Quit
+
+====Note====
+
+To make sure that Grub was installed correctly, open a terminal and type-
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+* 15. Shutdown, remove the DVD or USB, and boot. Your system should appear now!
+
+DONE, SYSTEM INSTALLED!
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Switching from BIOS to UEFI == 
+
+For UEFI install the Disk partition table should be of type '''GPT (Guid Partition Table).'''
+
+If you dont want to format your hard disk to GPT, but instead want to migrate from MBR to GPT while trying to save your data, can have a look at 
+http://www.rodsbooks.com/gdisk/mbr2gpt.html
+
+
+1.) You would need to create an ''ESP (EFI System Partition)''.
+
+Its basically a fat32 partition which has the .efi files for booting.
+
+You can create the partition using Gparted.
+
+You would also need to install/check whether following packages are present-
+
+ 1. efibootmgr
+ 2. dosfstools
+ 3. grub
+
+
+2.) Create the ''/boot/efi'' directory
+ sudo mkdir /boot/efi
+
+
+3.) Mount the EFI partition as ''/boot/efi''
+ sudo mount /dev/sdXY /boot/efi
+X = Alphabet of the drive = a,b,c ...
+Y = Partition number of the EFI partition = 1,2,3,4...
+
+Example - ''/dev/sda4''
+
+
+4.) Install Grub according to UEFI
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+5.) Update Grub configuration file.
+ sudo update-grub
+
+'''Note-'''
+If you get an error like
+ path '/boot/grub' is not readable by Grub on boot. Installation is impossible. Aborting
+
+Then you will need to [https://wiki.archlinux.org/index.php/Change_Root chroot] as described [[Restore_the_GRUB_Bootloader#Identify_and_Prepare_the_Installed_Partition.28s.29|here]], and then perform Step 5 again.
+
+
+'''See also'''
+
+[[Restore the GRUB Bootloader]]
+
+== Dual booting with Windows ==
+
+{{tip|Some manufactures EFI implementations cause GRUB not to be showed in the Boot Menu, or even if its there it can't be made default.}}
+
+
+'''In such cases install ''[http://www.rodsbooks.com/refind/index.html rEFInd]'''''
+
+
+[[File:Refind.png]]
+
+
+There are two ways to install rEFInd-
+
+1.Install rEFInd from its website [http://www.rodsbooks.com/refind/installing.html] (detailed) or '''install using pacman'''''(preferred)''-
+ sudo pacman -S refind-efi
+
+Files will be present in  /usr/share/refind .
+
+2.Or use mine [https://www.dropbox.com/s/bafo0sp432pw2tj/refind.zip here]
+Extract the contents of the zip file.
+
+=== Instructions ===
+
+Go inside the refind folder ('''/usr/share/refind''', or from the one obtained from my .zip file), and copy the files and folders to-
+
+ /boot/efi/EFI/Boot/
+
+'''Note-'''
+
+My ESP (EFI System Partition) is mounted at /boot/efi.
+
+You need to copy these files to the Boot folder on your EFI partition, and the Boot folder itself will be present inside the EFI folder on the EFI Partition, so take note of it.
+
+You can check which partition is your ESP using Gparted; find which partition is formatted as fat32 and has size around 200mb-1gb.
+
+Can mount it as /boot/efi by
+
+ sudo mount /dev/sdXN /boot/efi
+X=a,b,c...
+N=1,2,3...
+These depend on which partition your ESP is present which can be obtained via Gparted as mentioned earlier.
+
+Now inside the /boot/efi/EFI/Boot/ folder, there should already be a file present-
+ bootx64.efi
+
+You need to '''''rename''''' it to  ''windows.bootx64.efi''
+Then you should rename ''refind_x64.efi'' to ''bootx64.efi''
+And you are done!
+
+The bootx64.efi files boot by default, hence rEFInd would now boot by default, and would detect your grubx64.efi(linux-manjaro) and efibootmgfw.efi (windows) automatically.
+
+'''Note'''-
+
+A folder Manjaro (name could be some other also) containing the file grubx64.efi should also be present in /boot/efi/EFI/ folder, which should contain the grubx64.efi file which will be used by rEFInd to boot Grub.
+
+So it could be like-
+ /boot/efi/EFI/Manjaro/grubx64.efi
+
+rEFInd would use this file for booting Manjaro.
+
+If you do not have this file or folder, try-
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Manjaro --recheck
+
+to create '''/boot/efi/EFI/Manjaro/grubx64.efi'''
+
+
+See this also- [http://www.rodsbooks.com/refind/installing.html#naming http://www.rodsbooks.com/refind/installing.html#naming]
+
+==Feedback:==
+
+Questions, suggestions, critics? Please post here: [http://forum.manjaro.org/index.php?topic=5268.0]
+
+
+[[UEFI - Install Guide|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>bbqsntlqo23nzyybyls3u3q18axqf0f</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8407</id>
+      <parentid>8406</parentid>
+      <timestamp>2013-12-25T17:46:34Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="8587">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction=
+
+
+=Introduction=
+
+At this stage of the game, installing a Linux distro on a UEFI can be the trickiest part of the installation.
+
+ UEFI is the commonly agreed on name for both the EFI &amp; UEFI 
+ standards which merged. It does not include the old EFI v1, 
+ or Apple's own non-standard version of EFI.
+
+So the following guide can be a huge time &amp; frustration saver for some users.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==Target computer:==
+
+The following guide will install Manjaro as the sole installation on a machine with UEFI enabled, Secure boot disabled using GUID Partition Table  (GPT) disk(s).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==The Simple steps:==
+
+* 1. Download your preferred Manjaro version (XFCE, Openbox, Cinnamon, KDE, ...), must be 64-bits.
+
+* 2. Burn the .iso to USB or DVD. For Windows users using USB media, Rufus [http://rufus.akeo.ie/] is highly recommended.
+
+* 2.1. Rufus (Windows) users should use the following settings:
+
+ * Click on the DVD icon and load your .iso
+ * Device: &quot;choose your USB&quot; (Attention: choose correctly,
+   the device selected here will be formatted!!!)
+ * Partition scheme: GPT partition scheme for UEFI computer
+ * File system: FAT32
+ * Cluster size: &quot;Don't modify&quot;
+ * Volume label: &quot;Don't modify&quot;
+ * Click Start, and you are done (takes 2~5 min to complete).
+
+* 3. Check your BIOS, UEFI must be ON and Secure boot OFF.
+
+* 4. Boot with your USB or DVD &amp; use the rEFInd - Main Menu... to choose which GPU drivers you want to have installed, the open-source or proprietary:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 5. Open terminal &amp; enter:
+
+ $ sudo setup
+
+* 6. Now, we are in the CLI Installer (the graphical installer doesn't support UEFI yet). 
+'''Choose 2.''' Use testing installer (EFI support).
+
+* 7. '''Choose 1.''' Set date and time - an easy intuitive configuration.
+
+* 8. Now, '''Choose 2.''' Disk(s) preparation. 
+Go to '''2. Partition Hard Drives''' or follow the instruction in the next point '''8.1''' to automatically partition the entire disk.
+
+* 8.1 If you want to use the entire disk, and don't want to manually configure your partitions, you can choose '''1. Auto-Prepare.''' 
+
+ Attention: I don't know for sure if using the 
+ Auto-Prepare option of the installation will be 
+ successful as I always prefer to manually configure 
+ my partitions. Give it a try, if you have problems
+ then please post here: [http://forum.manjaro.org/index.php?topic=5268.0]
+
+So, if '''8.1''' (Auto-Prepare) is chosen, you skip the process below and go to 9...
+
+ * When you '''click 2.''' Partition Hard Drives, 
+   you get a dialog saying &quot;Do you want to use GUID
+   Partition Table (GPT)&quot;, '''choose Yes'''.
+ * Partition your disk(s) as you want (Instructions on
+   manually partitioning are beyond the scope of this
+   guide.)
+ * '''Important Step:''' Create a 50~250MB EFI Partition,
+   mine is 100MB (code: ef00)
+ * When you are done, go to '''4. Set Filesystem'''
+   '''Mountpoints.''' (Again, instructions on manually
+   partitioning are beyond the scope of this guide.
+ * '''Important Step:''' Format the EFI Partition you
+   created as '''VFAT''' and mount on /boot/efi
+
+* 9. '''Choose 3.''' Install system and wait...
+
+* 10. Now, go to '''4. Configure System''' and configure it the way you like (username, password, mirrorlist, system-name, ...).
+
+* 11. When you are done, go to '''5. Install bootloader.''' Choose EFI_x86_64 &gt; GRUB (2) UEFI x86_64,  '''DON'T select BIOS GRUB.'''
+
+* 11.1 It will ask to format the EFI Partition you created earlier as FAT32, just mark Yes.
+
+* 12. If it gives a error in the final stages saying &quot;efivars kernel module was not properly loaded&quot;, don't worry, the system will work fine!
+
+* 13. If the installer asks you about copying grub/efi files to another folder in order to maintain compatibility in some systems, choose Yes.
+
+* 14. '''Click 6.''' Quit
+
+====Note====
+
+To make sure that Grub was installed correctly, open a terminal and type-
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+* 15. Shutdown, remove the DVD or USB, and boot. Your system should appear now!
+
+DONE, SYSTEM INSTALLED!
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Switching from BIOS to UEFI == 
+
+For UEFI install the Disk partition table should be of type '''GPT (Guid Partition Table).'''
+
+If you dont want to format your hard disk to GPT, but instead want to migrate from MBR to GPT while trying to save your data, can have a look at 
+http://www.rodsbooks.com/gdisk/mbr2gpt.html
+
+
+1.) You would need to create an ''ESP (EFI System Partition)''.
+
+Its basically a fat32 partition which has the .efi files for booting.
+
+You can create the partition using Gparted.
+
+You would also need to install/check whether following packages are present-
+
+ 1. efibootmgr
+ 2. dosfstools
+ 3. grub
+
+
+2.) Create the ''/boot/efi'' directory
+ sudo mkdir /boot/efi
+
+
+3.) Mount the EFI partition as ''/boot/efi''
+ sudo mount /dev/sdXY /boot/efi
+X = Alphabet of the drive = a,b,c ...
+Y = Partition number of the EFI partition = 1,2,3,4...
+
+Example - ''/dev/sda4''
+
+
+4.) Install Grub according to UEFI
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+5.) Update Grub configuration file.
+ sudo update-grub
+
+'''Note-'''
+If you get an error like
+ path '/boot/grub' is not readable by Grub on boot. Installation is impossible. Aborting
+
+Then you will need to [https://wiki.archlinux.org/index.php/Change_Root chroot] as described [[Restore_the_GRUB_Bootloader#Identify_and_Prepare_the_Installed_Partition.28s.29|here]], and then perform Step 5 again.
+
+
+'''See also'''
+
+[[Restore the GRUB Bootloader]]
+
+== Dual booting with Windows ==
+
+{{tip|Some manufactures EFI implementations cause GRUB not to be showed in the Boot Menu, or even if its there it can't be made default.}}
+
+
+'''In such cases install ''[http://www.rodsbooks.com/refind/index.html rEFInd]'''''
+
+
+[[File:Refind.png]]
+
+
+There are two ways to install rEFInd-
+
+1.Install rEFInd from its website [http://www.rodsbooks.com/refind/installing.html] (detailed) or '''install using pacman'''''(preferred)''-
+ sudo pacman -S refind-efi
+
+Files will be present in  /usr/share/refind .
+
+2.Or use mine [https://www.dropbox.com/s/bafo0sp432pw2tj/refind.zip here]
+Extract the contents of the zip file.
+
+=== Instructions ===
+
+Go inside the refind folder ('''/usr/share/refind''', or from the one obtained from my .zip file), and copy the files and folders to-
+
+ /boot/efi/EFI/Boot/
+
+'''Note-'''
+
+My ESP (EFI System Partition) is mounted at /boot/efi.
+
+You need to copy these files to the Boot folder on your EFI partition, and the Boot folder itself will be present inside the EFI folder on the EFI Partition, so take note of it.
+
+You can check which partition is your ESP using Gparted; find which partition is formatted as fat32 and has size around 200mb-1gb.
+
+Can mount it as /boot/efi by
+
+ sudo mount /dev/sdXN /boot/efi
+X=a,b,c...
+N=1,2,3...
+These depend on which partition your ESP is present which can be obtained via Gparted as mentioned earlier.
+
+Now inside the /boot/efi/EFI/Boot/ folder, there should already be a file present-
+ bootx64.efi
+
+You need to '''''rename''''' it to  ''windows.bootx64.efi''
+Then you should rename ''refind_x64.efi'' to ''bootx64.efi''
+And you are done!
+
+The bootx64.efi files boot by default, hence rEFInd would now boot by default, and would detect your grubx64.efi(linux-manjaro) and efibootmgfw.efi (windows) automatically.
+
+'''Note'''-
+
+A folder Manjaro (name could be some other also) containing the file grubx64.efi should also be present in /boot/efi/EFI/ folder, which should contain the grubx64.efi file which will be used by rEFInd to boot Grub.
+
+So it could be like-
+ /boot/efi/EFI/Manjaro/grubx64.efi
+
+rEFInd would use this file for booting Manjaro.
+
+If you do not have this file or folder, try-
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Manjaro --recheck
+
+to create '''/boot/efi/EFI/Manjaro/grubx64.efi'''
+
+
+See this also- [http://www.rodsbooks.com/refind/installing.html#naming http://www.rodsbooks.com/refind/installing.html#naming]
+
+==Feedback:==
+
+Questions, suggestions, critics? Please post here: [http://forum.manjaro.org/index.php?topic=5268.0]
+
+
+[[UEFI - Install Guide|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>4snxce6unlm9zl6rjgwz20izjdm4v6g</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8423</id>
+      <parentid>8407</parentid>
+      <timestamp>2013-12-27T16:50:42Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="9080">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Introduction=
+
+A ce stade, l'installation d'une distribution Linux sur un UEFI peut être la partie la plus délicate de l'installation.
+
+ UEFI is the commonly agreed on name for both the EFI &amp; UEFI 
+ standards which merged. It does not include the old EFI v1, 
+ or Apple's own non-standard version of EFI.
+
+Le guide suivant peut épargner beaucoup de temps et de frustration pour certains utilisateurs.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==L'ordinateur cible:==
+
+Le guide suivant va installer Manjaro comme seule installation sur une machine avec UEFI activé, Secure boot désactivé et en utilisant la table de partition GUID (GPT).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Les étapes simples:==
+
+* 1. Téléchargez votre version préférée Manjaro (KDE, XFCE, Openbox, Cinnamon, ...), en 64 bits.
+
+* 2. Gravez l'image iso sur USB ou DVD. Pour les utilisateurs de Windows qui utilisent un support USB, Rufus est fortement recommandé.
+
+* 2.1. Les utilisateurs de Rufus (Windows) doivent utiliser les paramètres suivants:
+
+ * Click on the DVD icon and load your .iso
+ * Device: &quot;choose your USB&quot; (Attention: choose correctly,
+   the device selected here will be formatted!!!)
+ * Partition scheme: GPT partition scheme for UEFI computer
+ * File system: FAT32
+ * Cluster size: &quot;Don't modify&quot;
+ * Volume label: &quot;Don't modify&quot;
+ * Click Start, and you are done (takes 2~5 min to complete).
+
+* 3. Vérifiez votre BIOS, l'UEFI doit être '''activé''' et le Secure boot '''désactivé'''.
+
+* 4. Démarrez avec votre USB ou votre DVD et utilisez rEFInd - Menu principal ... et choisir les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 5. Ouvrez un terminal et entrez:
+
+ $ sudo setup
+
+* 6. Maintenant, nous sommes dans l'installateur texte (l'installateur graphique ne supporte pas encore UEFI).
+'''Choisissez 2'''. Utilisez les tests d'installation (support EFI).
+
+* 7. '''Choisissez 1'''. Régler la date et l'heure - configuration simple et intuitive.
+
+* 8. Maintenant, '''choisissez 2'''. Disk(s) preparation.
+Allez à '''2. Partition Hard Drives''' ou suivre les instructions dans le point '''8.1''' suivant le partitionnement automatique du disque entier.
+
+* 8.1 Si vous voulez utiliser tout le disque, et ne voulez pas configurer manuellement vos partitions, vous pouvez choisir '''1. Auto-Prepare.''' 
+
+ Attention: I don't know for sure if using the 
+ Auto-Prepare option of the installation will be 
+ successful as I always prefer to manually configure 
+ my partitions. Give it a try, if you have problems
+ then please post here: [http://forum.manjaro.org/index.php?topic=5268.0]
+
+Donc, si '''8.1''' (Auto-Prepare) est choisi, vous ignorez le processus ci-dessous et allez à 9 ...
+
+ * When you '''click 2.''' Partition Hard Drives, 
+   you get a dialog saying &quot;Do you want to use GUID
+   Partition Table (GPT)&quot;, '''choose Yes'''.
+ * Partition your disk(s) as you want (Instructions on
+   manually partitioning are beyond the scope of this
+   guide.)
+ * '''Important Step:''' Create a 50~250MB EFI Partition,
+   mine is 100MB (code: ef00)
+ * When you are done, go to '''4. Set Filesystem'''
+   '''Mountpoints.''' (Again, instructions on manually
+   partitioning are beyond the scope of this guide.
+ * '''Important Step:''' Format the EFI Partition you
+   created as '''VFAT''' and mount on /boot/efi
+
+* 9. '''Choisissez 3.''' Install system and wait...
+
+* 10. Maintenant, allez à '''4. Configure System''' et configurez comme vous le souhaitez (nom d'utilisateur, mot de passe, les miroirs, nom de la machine, ...).
+
+* 11. Lorsque vous avez terminé, passez à '''5. Install bootloader.''' Choisissez EFI_x86_64&gt; GRUB (2) UEFI x86_64, '''NE PAS sélectionner BIOS GRUB.'''
+
+* 11.1 Il sera demandé de formater la partition EFI vous avez créée précédemment en FAT32, juste marquer Oui.
+
+* 12. Si une erreur est donnée dans les étapes finales indiquant &quot;efivars kernel module was not properly loaded&quot;, ne vous inquiétez pas, le système travaillera très bien !
+
+* 13. Si le programme d'installation vous demande de copier les fichiers grub/efi dans un autre dossier afin de maintenir la compatibilité dans certains systèmes, choisissez Oui.
+
+* 14. '''Clicquez sur 6.''' Quit
+
+====Remarque====
+
+Pour vous assurer que Grub a bien été installé correctement, ouvrez un terminal et tapez:
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+* 15. Arrêt, retirez le DVD ou la clé USB, et redémarrez. Votre système devrait maintenant apparaître !
+
+DONE, SYSTEM INSTALLED!
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Passage de BIOS à UEFI == 
+
+Pour installer en UEFI, la table de partition du disque doit être de type '''GPT (Guid Partition Table).'''
+
+Si vous ne voulez pas formater votre disque dur au format GPT, mais que vous souhaitez migrer de MBR en GPT en essayant de sauver vos données, vous pouvez regarder (en anglais) là
+http://www.rodsbooks.com/gdisk/mbr2gpt.html
+
+
+1). Vous devez créer un ''ESP (EFI System Partition)''.
+
+Essentiellement une partition fat32 qui contient les fichiers .efi pour démarrer.
+
+Vous pouvez créer la partition en utilisant Gparted.
+
+Vous aurez également besoin d'installer/vérifier si les paquets suivants sont présents :
+
+ 1. efibootmgr
+ 2. dosfstools
+ 3. grub
+
+
+2.) Créez le répertoire ''/boot/efi''
+ sudo mkdir /boot/efi
+
+
+3.) Montez la partition EFI ''/boot/efi''
+ sudo mount /dev/sdXY /boot/efi
+X = Alphabet du disque = a, b, c ...
+Y = numéro de la partition EFI = 1,2,3,4 ...
+
+Exemple ''/dev/sda4''
+
+
+4.) Installer Grub pour UEFI
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+5.) Mise à jour de la configuration de Grub.
+ sudo update-grub
+
+'''Remarque-'''
+Si vous obtenez une erreur comme
+ path '/boot/grub' is not readable by Grub on boot. Installation is impossible. Aborting
+
+Ensuite, vous aurez besoin d'un [https://wiki.archlinux.org/index.php/Change_Root chroot] comme décrit [[Restore_the_GRUB_Bootloader#Identify_and_Prepare_the_Installed_Partition.28s.29|ici]], puis passez de nouveau à l'étape 5.
+
+
+'''Voir aussi'''
+
+[[Restore the GRUB Bootloader]]
+
+== Dual boot avec Windows ==
+
+{{Astuce|Some manufactures EFI implementations cause GRUB not to be showed in the Boot Menu, or even if its there it can't be made default.}}
+
+
+'''Dans de tels cas, installer ''[http://www.rodsbooks.com/refind/index.html rEFInd]'''''
+
+
+[[File:Refind.png]]
+
+
+Il y a deux façons d'installer rEFInd :
+
+1.Installez rEFInd depuis son site internet [http://www.rodsbooks.com/refind/installing.html] (détaillé) ou '''installer en utilisant pacman'''''(préféré)'' :
+ sudo pacman -S refind-efi
+
+Les fichiers seront présents dans /usr/share/refind
+
+2.Ou utiliser le mien [https://www.dropbox.com/s/bafo0sp432pw2tj/refind.zip ici]
+Extraire le contenu du fichier zip.
+
+=== Instructions ===
+
+Allez dans le répertoire de refind ('''/usr/share/refind''', ou dans celui obtenu à partir de mon fichier zip.), et copier les fichiers et dossiers à
+
+ /boot/efi/EFI/Boot/
+
+'''Remarque'''
+
+Mon ESP (EFI System Partition) est montée sur /boot/efi.
+
+Vous devez copier ces fichiers dans le dossier de démarrage sur la partition EFI, et le dossier de démarrage lui-même sera présent dans le dossier EFI sur la partition EFI, afin d'en prendre note.
+
+Vous pouvez vérifier la partition qui est votre ESP en utilisant Gparted ; la partition est formatée en FAT32 et a la taille d'environ 200 Mo-1 Go.
+
+Peut monter /boot/efi par :
+
+ sudo mount /dev/sdXN /boot/efi
+X=a,b,c...
+N=1,2,3...
+Peut être obtenu grâce à Gparted commen mentionné déjà plus haut.
+
+Maintenant dans le répertoire /boot/efi/EFI/Boot/, il devrait déjà y avoir ce fichier présent :
+ bootx64.efi
+
+Vous devez le '''''renommer''''' en ''windows.bootx64.efi''. Ensuite, vous devez renommer ''refind_x64.efi'' en ''bootx64.efi'' et vous avez terminé !
+
+bootx64.efi est le fichier de démarrage par défaut, donc rEFInd serait maintenant le démarrage par défaut, et permettrait de détecter votre grubx64.efi (linux-Manjaro) et efibootmgfw.efi (Windows) automatiquement.
+
+'''Remarque'''
+
+Un dossier Manjaro (ça pourrait aussi être un autre nom) contenant le fichier grubx64.efi devrait également être présent dans /boot/efi/EFI/, qui devrait contenir le fichier grubx64.efi qui sera utilisé par rEFInd pour démarrer Grub.
+
+Ainsi, il pourrait être comme :
+ /boot/efi/EFI/Manjaro/grubx64.efi
+
+rEFInd utilisera ce fichier pour démarrer Manjaro.
+
+Si vous n'avez pas ce fichier ou dossier, essayez :
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Manjaro --recheck
+
+pour créer '''/boot/efi/EFI/Manjaro/grubx64.efi'''
+
+
+[[UEFI - Install Guide|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>saxxqa6dgxxybzp8irqs88jqtf220bk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8424</id>
+      <parentid>8423</parentid>
+      <timestamp>2013-12-27T17:52:29Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="9079">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=Introduction=
+
+A ce stade, l'installation d'une distribution Linux sur un UEFI peut être la partie la plus délicate de l'installation.
+
+ UEFI is the commonly agreed on name for both the EFI &amp; UEFI 
+ standards which merged. It does not include the old EFI v1, 
+ or Apple's own non-standard version of EFI.
+
+Le guide suivant peut épargner beaucoup de temps et de frustration pour certains utilisateurs.
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+==L'ordinateur cible:==
+
+Le guide suivant va installer Manjaro comme seule installation sur une machine avec UEFI activé, Secure boot désactivé et en utilisant la table de partition GUID (GPT).
+
+&lt;br clear=&quot;all&quot; /&gt;
+==Les étapes simples:==
+
+* 1. Téléchargez votre version préférée Manjaro (KDE, XFCE, Openbox, Cinnamon, ...), en 64 bits.
+
+* 2. Gravez l'image iso sur USB ou DVD. Pour les utilisateurs de Windows qui utilisent un support USB, Rufus est fortement recommandé.
+
+* 2.1. Les utilisateurs de Rufus (Windows) doivent utiliser les paramètres suivants:
+
+ * Click on the DVD icon and load your .iso
+ * Device: &quot;choose your USB&quot; (Attention: choose correctly,
+   the device selected here will be formatted!!!)
+ * Partition scheme: GPT partition scheme for UEFI computer
+ * File system: FAT32
+ * Cluster size: &quot;Don't modify&quot;
+ * Volume label: &quot;Don't modify&quot;
+ * Click Start, and you are done (takes 2~5 min to complete).
+
+* 3. Vérifiez votre BIOS, l'UEFI doit être '''activé''' et le Secure boot '''désactivé'''.
+
+* 4. Démarrez avec votre USB ou votre DVD et utilisez rEFInd - Menu principal ... et choisir les pilotes GPU que vous voulez installer, open-source ou propriétaire:
+
+ * Boot Manjaro Linux ... (default) - 
+   This chooses the ''open-source - free'' GPU drivers.
+ * Boot Manjaro Linux ... (nonfree) - 
+   This option chooses the '''proprietary''' GPU drivers
+   from Nvidia or ATI.
+
+* 5. Ouvrez un terminal et entrez:
+
+ $ sudo setup
+
+* 6. Maintenant, nous sommes dans l'installateur texte (l'installateur graphique ne supporte pas encore UEFI).
+'''Choisissez 2'''. Utilisez les tests d'installation (support EFI).
+
+* 7. '''Choisissez 1'''. Régler la date et l'heure - configuration simple et intuitive.
+
+* 8. Maintenant, '''choisissez 2'''. Disk(s) preparation.
+Allez à '''2. Partition Hard Drives''' ou suivre les instructions dans le point '''8.1''' suivant le partitionnement automatique du disque entier.
+
+* 8.1 Si vous voulez utiliser tout le disque, et ne voulez pas configurer manuellement vos partitions, vous pouvez choisir '''1. Auto-Prepare.''' 
+
+ Attention: I don't know for sure if using the 
+ Auto-Prepare option of the installation will be 
+ successful as I always prefer to manually configure 
+ my partitions. Give it a try, if you have problems
+ then please post here: [http://forum.manjaro.org/index.php?topic=5268.0]
+
+Donc, si '''8.1''' (Auto-Prepare) est choisi, vous ignorez le processus ci-dessous et allez à 9 ...
+
+ * When you '''click 2.''' Partition Hard Drives, 
+   you get a dialog saying &quot;Do you want to use GUID
+   Partition Table (GPT)&quot;, '''choose Yes'''.
+ * Partition your disk(s) as you want (Instructions on
+   manually partitioning are beyond the scope of this
+   guide.)
+ * '''Important Step:''' Create a 50~250MB EFI Partition,
+   mine is 100MB (code: ef00)
+ * When you are done, go to '''4. Set Filesystem'''
+   '''Mountpoints.''' (Again, instructions on manually
+   partitioning are beyond the scope of this guide.
+ * '''Important Step:''' Format the EFI Partition you
+   created as '''VFAT''' and mount on /boot/efi
+
+* 9. '''Choisissez 3.''' Install system and wait...
+
+* 10. Maintenant, allez à '''4. Configure System''' et configurez comme vous le souhaitez (nom d'utilisateur, mot de passe, les miroirs, nom de la machine, ...).
+
+* 11. Lorsque vous avez terminé, passez à '''5. Install bootloader.''' Choisissez EFI_x86_64&gt; GRUB (2) UEFI x86_64, '''NE PAS sélectionner BIOS GRUB.'''
+
+* 11.1 Il sera demandé de formater la partition EFI vous avez créée précédemment en FAT32, juste marquer Oui.
+
+* 12. Si une erreur est donnée dans les étapes finales indiquant &quot;efivars kernel module was not properly loaded&quot;, ne vous inquiétez pas, le système travaillera très bien !
+
+* 13. Si le programme d'installation vous demande de copier les fichiers grub/efi dans un autre dossier afin de maintenir la compatibilité dans certains systèmes, choisissez Oui.
+
+* 14. '''Cliquez sur 6.''' Quit
+
+====Remarque====
+
+Pour vous assurer que Grub a bien été installé correctement, ouvrez un terminal et tapez:
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+* 15. Arrêt, retirez le DVD ou la clé USB, et redémarrez. Votre système devrait maintenant apparaître !
+
+DONE, SYSTEM INSTALLED!
+
+&lt;br clear=&quot;all&quot; /&gt;
+
+== Passage de BIOS à UEFI == 
+
+Pour installer en UEFI, la table de partition du disque doit être de type '''GPT (Guid Partition Table).'''
+
+Si vous ne voulez pas formater votre disque dur au format GPT, mais que vous souhaitez migrer de MBR en GPT en essayant de sauver vos données, vous pouvez regarder (en anglais) là
+http://www.rodsbooks.com/gdisk/mbr2gpt.html
+
+
+1). Vous devez créer un ''ESP (EFI System Partition)''.
+
+Essentiellement une partition fat32 qui contient les fichiers .efi pour démarrer.
+
+Vous pouvez créer la partition en utilisant Gparted.
+
+Vous aurez également besoin d'installer/vérifier si les paquets suivants sont présents :
+
+ 1. efibootmgr
+ 2. dosfstools
+ 3. grub
+
+
+2.) Créez le répertoire ''/boot/efi''
+ sudo mkdir /boot/efi
+
+
+3.) Montez la partition EFI ''/boot/efi''
+ sudo mount /dev/sdXY /boot/efi
+X = Alphabet du disque = a, b, c ...
+Y = numéro de la partition EFI = 1,2,3,4 ...
+
+Exemple ''/dev/sda4''
+
+
+4.) Installer Grub pour UEFI
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+
+5.) Mise à jour de la configuration de Grub.
+ sudo update-grub
+
+'''Remarque-'''
+Si vous obtenez une erreur comme
+ path '/boot/grub' is not readable by Grub on boot. Installation is impossible. Aborting
+
+Ensuite, vous aurez besoin d'un [https://wiki.archlinux.org/index.php/Change_Root chroot] comme décrit [[Restore_the_GRUB_Bootloader#Identify_and_Prepare_the_Installed_Partition.28s.29|ici]], puis passez de nouveau à l'étape 5.
+
+
+'''Voir aussi'''
+
+[[Restore the GRUB Bootloader]]
+
+== Dual boot avec Windows ==
+
+{{Astuce|Some manufactures EFI implementations cause GRUB not to be showed in the Boot Menu, or even if its there it can't be made default.}}
+
+
+'''Dans de tels cas, installer ''[http://www.rodsbooks.com/refind/index.html rEFInd]'''''
+
+
+[[File:Refind.png]]
+
+
+Il y a deux façons d'installer rEFInd :
+
+1.Installez rEFInd depuis son site internet [http://www.rodsbooks.com/refind/installing.html] (détaillé) ou '''installer en utilisant pacman'''''(préféré)'' :
+ sudo pacman -S refind-efi
+
+Les fichiers seront présents dans /usr/share/refind
+
+2.Ou utiliser le mien [https://www.dropbox.com/s/bafo0sp432pw2tj/refind.zip ici]
+Extraire le contenu du fichier zip.
+
+=== Instructions ===
+
+Allez dans le répertoire de refind ('''/usr/share/refind''', ou dans celui obtenu à partir de mon fichier zip.), et copier les fichiers et dossiers à
+
+ /boot/efi/EFI/Boot/
+
+'''Remarque'''
+
+Mon ESP (EFI System Partition) est montée sur /boot/efi.
+
+Vous devez copier ces fichiers dans le dossier de démarrage sur la partition EFI, et le dossier de démarrage lui-même sera présent dans le dossier EFI sur la partition EFI, afin d'en prendre note.
+
+Vous pouvez vérifier la partition qui est votre ESP en utilisant Gparted ; la partition est formatée en FAT32 et a la taille d'environ 200 Mo-1 Go.
+
+Peut monter /boot/efi par :
+
+ sudo mount /dev/sdXN /boot/efi
+X=a,b,c...
+N=1,2,3...
+Peut être obtenu grâce à Gparted commen mentionné déjà plus haut.
+
+Maintenant dans le répertoire /boot/efi/EFI/Boot/, il devrait déjà y avoir ce fichier présent :
+ bootx64.efi
+
+Vous devez le '''''renommer''''' en ''windows.bootx64.efi''. Ensuite, vous devez renommer ''refind_x64.efi'' en ''bootx64.efi'' et vous avez terminé !
+
+bootx64.efi est le fichier de démarrage par défaut, donc rEFInd serait maintenant le démarrage par défaut, et permettrait de détecter votre grubx64.efi (linux-Manjaro) et efibootmgfw.efi (Windows) automatiquement.
+
+'''Remarque'''
+
+Un dossier Manjaro (ça pourrait aussi être un autre nom) contenant le fichier grubx64.efi devrait également être présent dans /boot/efi/EFI/, qui devrait contenir le fichier grubx64.efi qui sera utilisé par rEFInd pour démarrer Grub.
+
+Ainsi, il pourrait être comme :
+ /boot/efi/EFI/Manjaro/grubx64.efi
+
+rEFInd utilisera ce fichier pour démarrer Manjaro.
+
+Si vous n'avez pas ce fichier ou dossier, essayez :
+
+ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Manjaro --recheck
+
+pour créer '''/boot/efi/EFI/Manjaro/grubx64.efi'''
+
+
+[[UEFI - Install Guide|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>siuhnk4o750wm34hlzrby9nld27nlv4</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,438 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>UEFI et BIOS</title>
+    <ns>0</ns>
+    <id>1301</id>
+    <revision>
+      <id>8397</id>
+      <timestamp>2013-12-25T17:27:25Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;  En cours de traduction   =Unified Extensible Firmware Interface (UEFI)=  {{tip|As the UEFI system sits on top of the old BIOS s...&quot;</comment>
+      <text xml:space="preserve" bytes="2730">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+En cours de traduction
+
+
+=Unified Extensible Firmware Interface (UEFI)=
+
+{{tip|As the UEFI system sits on top of the old BIOS system, UEFI can be disabled or even removed completely to run in '''[[UEFI - Enable Legacy Mode|Legacy Mode]]''', meaning that the BIOS has taken back over. The author did so with a laptop using a 1 Terrabyte (TB) hard-disk, which the BIOS can handle.}}
+
+
+'''UEFI''' was introduced with Windows 8 as a replacement / upgrade to the BIOS system. One example of this upgrade is that it allows for computers to use hard-disks larger than 2 Terrabytes (2,000 Gigabytes). Unfortunately, UEFI was also secretly manipulated by Microsoft in tandem with certain hardware manufacturers to prevent - or at least make it very difficult - to replace or dual boot Windows 8 with another operating system. 
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[UEFI - Disable Secure Boot]]
+: ''Can't boot Manjaro on your Windows 8 system? Here's why!''
+
+
+* [[UEFI - Enable Legacy Mode]]
+: ''Disable UEFI to run like any pre-Windows 8 system''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[UEFI_-_Install_Guide|UEFI Installation Guide]]
+: ''Overcome the odds!''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+
+=Basic Input / Output System (BIOS)=
+{{tip|Some unpleasant hardware manufacturers have configured the BIOS to automatcially disable the screen backlight if Windows has been removed, resulting in a dim screen. A guide has been provided to '''[[Reactivating_the_Backlight|reactivate the backlight]]'''.}}
+
+
+The '''GRUB''' is used to manage and boot up linux operating systems on computers that use the BIOS system. These are typically older computers or those that did not come with Windows 8 pre-installed. It is worthwhile noting that the UEFI can be disabled on many systems to run using the BIOS instead; this is known as running in '''Legacy Mode'''. Computers sold prior to the release and pre-installation of Windows 8 - which introduced '''UEFI''' - will therefore use the BIOS.
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[Reactivating the Backlight|Fix the Dim Screen Problem]]
+: ''A BIOS-related problem: how dare you remove Windows!''
+
+
+* [[Virtualbox|Enable your Computer to use Virtual Machines]]
+: ''Enable virtualisation in your BIOS settings''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[Grub-Customizer]]
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+
+* [[Restore the GRUB Bootloader]]
+: What to do if something goes wrong...''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+[[BIOS and UEFI Section|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>sm4qasm6jzotr16b2ivfnc8pmbt1iyv</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8398</id>
+      <parentid>8397</parentid>
+      <timestamp>2013-12-25T17:28:27Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2722">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+En cours de traduction
+
+
+=Unified Extensible Firmware Interface (UEFI)=
+
+{{tip|As the UEFI system sits on top of the old BIOS system, UEFI can be disabled or even removed completely to run in '''[[UEFI - Enable Legacy Mode|Legacy Mode]]''', meaning that the BIOS has taken back over. The author did so with a laptop using a 1 Terrabyte (TB) hard-disk, which the BIOS can handle.}}
+
+
+'''UEFI''' was introduced with Windows 8 as a replacement / upgrade to the BIOS system. One example of this upgrade is that it allows for computers to use hard-disks larger than 2 Terrabytes (2,000 Gigabytes). Unfortunately, UEFI was also secretly manipulated by Microsoft in tandem with certain hardware manufacturers to prevent - or at least make it very difficult - to replace or dual boot Windows 8 with another operating system. 
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[UEFI - Disable Secure Boot]]
+: ''Can't boot Manjaro on your Windows 8 system? Here's why!''
+
+
+* [[UEFI - Enable Legacy Mode]]
+: ''Disable UEFI to run like any pre-Windows 8 system''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[UEFI_-_Install_Guide|UEFI Installation Guide]]
+: ''Overcome the odds!''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+
+=Basic Input / Output System (BIOS)=
+{{tip|Some unpleasant hardware manufacturers have configured the BIOS to automatcially disable the screen backlight if Windows has been removed, resulting in a dim screen. A guide has been provided to '''[[Reactivating_the_Backlight|reactivate the backlight]]'''.}}
+
+
+The '''GRUB''' is used to manage and boot up linux operating systems on computers that use the BIOS system. These are typically older computers or those that did not come with Windows 8 pre-installed. It is worthwhile noting that the UEFI can be disabled on many systems to run using the BIOS instead; this is known as running in '''Legacy Mode'''. Computers sold prior to the release and pre-installation of Windows 8 - which introduced '''UEFI''' - will therefore use the BIOS.
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[Reactivating the Backlight|Fix the Dim Screen Problem]]
+: ''A BIOS-related problem: how dare you remove Windows!''
+
+
+* [[Virtualbox|Enable your Computer to use Virtual Machines]]
+: ''Enable virtualisation in your BIOS settings''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[Grub-Customizer]]
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+
+* [[Restore the GRUB Bootloader]]
+: What to do if something goes wrong...''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+[[BIOS and UEFI|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>j1lx6pfgupzglmjik8hkup7qkjug86b</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8399</id>
+      <parentid>8398</parentid>
+      <timestamp>2013-12-25T17:29:10Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2724">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction=
+
+
+=Unified Extensible Firmware Interface (UEFI)=
+
+{{tip|As the UEFI system sits on top of the old BIOS system, UEFI can be disabled or even removed completely to run in '''[[UEFI - Enable Legacy Mode|Legacy Mode]]''', meaning that the BIOS has taken back over. The author did so with a laptop using a 1 Terrabyte (TB) hard-disk, which the BIOS can handle.}}
+
+
+'''UEFI''' was introduced with Windows 8 as a replacement / upgrade to the BIOS system. One example of this upgrade is that it allows for computers to use hard-disks larger than 2 Terrabytes (2,000 Gigabytes). Unfortunately, UEFI was also secretly manipulated by Microsoft in tandem with certain hardware manufacturers to prevent - or at least make it very difficult - to replace or dual boot Windows 8 with another operating system. 
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[UEFI - Disable Secure Boot]]
+: ''Can't boot Manjaro on your Windows 8 system? Here's why!''
+
+
+* [[UEFI - Enable Legacy Mode]]
+: ''Disable UEFI to run like any pre-Windows 8 system''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[UEFI_-_Install_Guide|UEFI Installation Guide]]
+: ''Overcome the odds!''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+
+=Basic Input / Output System (BIOS)=
+{{tip|Some unpleasant hardware manufacturers have configured the BIOS to automatcially disable the screen backlight if Windows has been removed, resulting in a dim screen. A guide has been provided to '''[[Reactivating_the_Backlight|reactivate the backlight]]'''.}}
+
+
+The '''GRUB''' is used to manage and boot up linux operating systems on computers that use the BIOS system. These are typically older computers or those that did not come with Windows 8 pre-installed. It is worthwhile noting that the UEFI can be disabled on many systems to run using the BIOS instead; this is known as running in '''Legacy Mode'''. Computers sold prior to the release and pre-installation of Windows 8 - which introduced '''UEFI''' - will therefore use the BIOS.
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[Reactivating the Backlight|Fix the Dim Screen Problem]]
+: ''A BIOS-related problem: how dare you remove Windows!''
+
+
+* [[Virtualbox|Enable your Computer to use Virtual Machines]]
+: ''Enable virtualisation in your BIOS settings''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[Grub-Customizer]]
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+
+* [[Restore the GRUB Bootloader]]
+: What to do if something goes wrong...''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+[[BIOS and UEFI|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>k8sow9yo7wuxfbmx8n5yzvha6o81bx9</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8408</id>
+      <parentid>8399</parentid>
+      <timestamp>2013-12-25T17:49:05Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2720">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction=
+
+
+=Unified Extensible Firmware Interface (UEFI)=
+
+{{tip|As the UEFI system sits on top of the old BIOS system, UEFI can be disabled or even removed completely to run in '''[[UEFI - Enable Legacy Mode|Legacy Mode]]''', meaning that the BIOS has taken back over. The author did so with a laptop using a 1 Terrabyte (TB) hard-disk, which the BIOS can handle.}}
+
+
+'''UEFI''' was introduced with Windows 8 as a replacement / upgrade to the BIOS system. One example of this upgrade is that it allows for computers to use hard-disks larger than 2 Terrabytes (2,000 Gigabytes). Unfortunately, UEFI was also secretly manipulated by Microsoft in tandem with certain hardware manufacturers to prevent - or at least make it very difficult - to replace or dual boot Windows 8 with another operating system. 
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[UEFI - Désactiver le Secure Boot]]
+: ''Can't boot Manjaro on your Windows 8 system? Here's why!''
+
+
+* [[UEFI - Permettre le mode Legacy]]
+: ''Disable UEFI to run like any pre-Windows 8 system''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[UEFI - Guide d'installation]]
+: ''Overcome the odds!''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+
+=Basic Input / Output System (BIOS)=
+{{tip|Some unpleasant hardware manufacturers have configured the BIOS to automatcially disable the screen backlight if Windows has been removed, resulting in a dim screen. A guide has been provided to '''[[Reactivating_the_Backlight|reactivate the backlight]]'''.}}
+
+
+The '''GRUB''' is used to manage and boot up linux operating systems on computers that use the BIOS system. These are typically older computers or those that did not come with Windows 8 pre-installed. It is worthwhile noting that the UEFI can be disabled on many systems to run using the BIOS instead; this is known as running in '''Legacy Mode'''. Computers sold prior to the release and pre-installation of Windows 8 - which introduced '''UEFI''' - will therefore use the BIOS.
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[Reactivating the Backlight|Fix the Dim Screen Problem]]
+: ''A BIOS-related problem: how dare you remove Windows!''
+
+
+* [[Virtualbox|Enable your Computer to use Virtual Machines]]
+: ''Enable virtualisation in your BIOS settings''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[Grub-Customizer]]
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+
+* [[Restore the GRUB Bootloader]]
+: What to do if something goes wrong...''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+[[BIOS and UEFI|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>6as3d9o1ysethhe9mz04thmc04kfsrz</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8409</id>
+      <parentid>8408</parentid>
+      <timestamp>2013-12-25T17:53:04Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2705">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+=En cours de traduction=
+
+
+=Unified Extensible Firmware Interface (UEFI)=
+
+{{tip|As the UEFI system sits on top of the old BIOS system, UEFI can be disabled or even removed completely to run in '''[[UEFI - Enable Legacy Mode|Legacy Mode]]''', meaning that the BIOS has taken back over. The author did so with a laptop using a 1 Terrabyte (TB) hard-disk, which the BIOS can handle.}}
+
+
+'''UEFI''' was introduced with Windows 8 as a replacement / upgrade to the BIOS system. One example of this upgrade is that it allows for computers to use hard-disks larger than 2 Terrabytes (2,000 Gigabytes). Unfortunately, UEFI was also secretly manipulated by Microsoft in tandem with certain hardware manufacturers to prevent - or at least make it very difficult - to replace or dual boot Windows 8 with another operating system. 
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[UEFI - Désactiver le Secure Boot]]
+: ''Can't boot Manjaro on your Windows 8 system? Here's why!''
+
+
+* [[UEFI - Permettre le mode Legacy]]
+: ''Disable UEFI to run like any pre-Windows 8 system''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[UEFI - Guide d'installation]]
+: ''Overcome the odds!''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+
+=Basic Input / Output System (BIOS)=
+{{tip|Some unpleasant hardware manufacturers have configured the BIOS to automatcially disable the screen backlight if Windows has been removed, resulting in a dim screen. A guide has been provided to '''[[Reactivating_the_Backlight|reactivate the backlight]]'''.}}
+
+
+The '''GRUB''' is used to manage and boot up linux operating systems on computers that use the BIOS system. These are typically older computers or those that did not come with Windows 8 pre-installed. It is worthwhile noting that the UEFI can be disabled on many systems to run using the BIOS instead; this is known as running in '''Legacy Mode'''. Computers sold prior to the release and pre-installation of Windows 8 - which introduced '''UEFI''' - will therefore use the BIOS.
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+
+
+* [[Reactivating the Backlight|Fix the Dim Screen Problem]]
+: ''A BIOS-related problem: how dare you remove Windows!''
+
+
+* [[Virtualbox - Installation et Utilisation]]
+: ''Enable virtualisation in your BIOS settings''.
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+
+
+* [[Grub-Customizer]]
+: ''Easily customize GRUB2 with the Grub-Customizer GUI tool.''
+
+
+* [[Restore the GRUB Bootloader]]
+: What to do if something goes wrong...''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+[[BIOS and UEFI|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>cvitfgtzqq2kzodup03078bpsav2s41</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>

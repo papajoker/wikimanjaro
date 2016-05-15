@@ -1,0 +1,104 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Manjaro Linux</sitename>
+    <base>https://wiki.manjaro.org/index.php?title=Main_Page</base>
+    <generator>MediaWiki 1.22.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Manjaro Linux</namespace>
+      <namespace key="5" case="first-letter">Manjaro Linux talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Paramètres d'alimentation</title>
+    <ns>0</ns>
+    <id>1305</id>
+    <revision>
+      <id>8432</id>
+      <timestamp>2013-12-30T17:00:10Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <comment>Created page with &quot;&lt;div style=&quot;float: left; width: 50%&quot;&gt; {| [[File:battery.png|left|96px]] | * [[Optimisez vos paramètres d'alimentation]] : ''Optimisez l'économie d'énergie pour votre ordina...&quot;</comment>
+      <text xml:space="preserve" bytes="553">&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+{|
+[[File:battery.png|left|96px]]
+|
+* [[Optimisez vos paramètres d'alimentation]]
+: ''Optimisez l'économie d'énergie pour votre ordinateur portable Manjaro.''
+
+
+* [[PowerTOP pour optimiser la consommation d'énergie de votre portable]]
+: ''Améliorez l'autonomie de votre ordinateur portable avec l'outil de diagnostic PowerTOP.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+* [[Economie d'énergie]]
+: ''Economie d'énergie pour votre ordinateur portable Manjaro.''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;</text>
+      <sha1>bv3yinzfj6kmt94a95t4odwcu56zmp0</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+    <revision>
+      <id>8434</id>
+      <parentid>8432</parentid>
+      <timestamp>2013-12-30T17:06:09Z</timestamp>
+      <contributor>
+        <username>Ewolnux</username>
+        <id>26</id>
+      </contributor>
+      <text xml:space="preserve" bytes="751">&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+
+&lt;div style=&quot;float: left; width: 50%&quot;&gt;
+{|
+[[File:battery.png|left|96px]]
+|
+* [[Optimisez vos paramètres d'alimentation]]
+: ''Optimisez l'économie d'énergie pour votre ordinateur portable Manjaro.''
+
+
+* [[PowerTOP pour optimiser la consommation d'énergie de votre portable]]
+: ''Améliorez l'autonomie de votre ordinateur portable avec l'outil de diagnostic PowerTOP.''
+|}
+&lt;/div&gt;
+
+&lt;div style=&quot;float: right; width: 50%&quot;&gt;
+* [[Economie d'énergie]]
+: ''Economie d'énergie pour votre ordinateur portable Manjaro.''
+
+&lt;/div&gt;
+&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;
+
+
+[[Power Settings|Page originale du wiki anglais]]
+
+&lt;u&gt;[[Page_Principale|Retour à l'accueil]]&lt;/u&gt;
+[[Category:Présentation]]
+[[Category:Français]]</text>
+      <sha1>aow5bt0zwi2qnwywi8fa8dc71fog36g</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>
